@@ -1,0 +1,16 @@
+#ifndef CONFIG_VALUE_H
+#define CONFIG_VALUE_H
+
+
+extern const int CAN_TG_ERROR_INTERNAL_CORUPTION;
+extern const int CAN_TG_ERROR_TAG_NAME_TO_BIGS;
+extern const int CAN_TG_ERROR_TAG_NAME_INVALIDE;
+extern const int CAN_TG_ERROR_TAG_NOT_FOUND;
+extern const int CAN_TG_ERROR_NOT_ENOUNG_SPACE;
+extern const int CAN_TG_ERROR_NULL_POINTOR;
+extern const int CAN_TG_ERROR_TRY_TO_FIND_END_CARACTER;
+extern const int CAN_TG_ERROR_SIZE_VALUE_INVALIDE;
+extern const int CAN_TG_ERROR_SUBDIVISION_FAIL;
+extern const int CAN_TG_ERROR_TOO_MAY_TAGS;
+extern const int CAN_TG_ERROR_NAME_ALREADY_USE;
+#endif // CONFIG_VALUE_H
