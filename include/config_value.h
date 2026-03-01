@@ -13,4 +13,6 @@ extern const int CAN_TG_ERROR_SIZE_VALUE_INVALIDE;
 extern const int CAN_TG_ERROR_SUBDIVISION_FAIL;
 extern const int CAN_TG_ERROR_TOO_MAY_TAGS;
 extern const int CAN_TG_ERROR_NAME_ALREADY_USE;
+extern const int SUCCES_TO_SET;
+extern const int SUCCES;
 #endif // CONFIG_VALUE_H

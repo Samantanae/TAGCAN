@@ -31,8 +31,55 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<UnitsGlob directory="include" wildcard="" recursive="1" id="299603298" addToProject="1">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</UnitsGlob>
+		<UnitsGlob directory="scripts" wildcard="" recursive="1" id="530276766" addToProject="1">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</UnitsGlob>
+		<Unit filename="include/config_value.h">
+			<Option glob="299603298" />
+		</Unit>
+		<Unit filename="include/data_container.h">
+			<Option glob="299603298" />
+		</Unit>
+		<Unit filename="include/empty_tags_value.h">
+			<Option glob="299603298" />
+		</Unit>
+		<Unit filename="include/tag_manager.h">
+			<Option glob="299603298" />
+		</Unit>
+		<Unit filename="include/tag_struct.h">
+			<Option glob="299603298" />
+		</Unit>
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="scripts/config_value.c">
+			<Option compilerVar="CC" />
+			<Option glob="530276766" />
+		</Unit>
+		<Unit filename="scripts/data_container.c">
+			<Option compilerVar="CC" />
+			<Option glob="530276766" />
+		</Unit>
+		<Unit filename="scripts/empty_tags_value.c">
+			<Option compilerVar="CC" />
+			<Option glob="530276766" />
+		</Unit>
+		<Unit filename="scripts/main.c">
+			<Option compilerVar="CC" />
+			<Option glob="530276766" />
+		</Unit>
+		<Unit filename="scripts/tag_manager.c">
+			<Option compilerVar="CC" />
+			<Option glob="530276766" />
+		</Unit>
+		<Unit filename="scripts/tag_struct.c">
+			<Option compilerVar="CC" />
+			<Option glob="530276766" />
 		</Unit>
 		<Extensions />
 	</Project>

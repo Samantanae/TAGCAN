@@ -20,7 +20,7 @@ void init_tag_manager(void){
         g_tags[i].n_bits = 0;
         g_tags[i].byte_idx_a = -1;
         g_tags[i].byte_idx_b = -1;
-
+        g_tags[i].bit_pos = 0;
     }
 }
 
@@ -41,11 +41,12 @@ void set_name_tag(int n_tag, const char* tag_name){
     // copie the value
     g_tags[n_tag].name[MAX_TAG_NAME_LEN - 1] = '\0';
     // voire le nom (juste pour débugé)
-    printf("le nom du tag est: [%s]\n", g_tags[n_tag].name);
+    //printf("le nom du tag est: [%s]\n", g_tags[n_tag].name);
 }
 
 // set the ellement how is set to any tags (redusing the redundance of code)
-void general_set_tag(int n_tag,const char* tag_name, uint8_t n_bits, int8_t byte_idx_a){
+void general_set_tag(int n_tag,const char* tag_name,
+                      uint8_t n_bits, int8_t byte_idx_a){
     set_name_tag(n_tag, tag_name);
     g_tags[n_tag].n_bits = n_bits;
     g_tags[n_tag].byte_idx_a = byte_idx_a;
@@ -63,13 +64,13 @@ void general_set_tag(int n_tag,const char* tag_name, uint8_t n_bits, int8_t byte
 }
 
 // pas suposé d'être utilisé avant les vérification.
-void set_new_tag_16(const char* tag_name, int8_t byte_idx_a, int8_t byte_idxb){
+void set_new_tag_16(const char* tag_name, int8_t byte_idx_a, int8_t byte_idx_b){
     // détermination d'une espace de tag vierge
     int n_tag = get_first_tags_vide();
     uint8_t n_bits = 16;
     general_set_tag(n_tag, tag_name, n_bits, byte_idx_a);
-    g_tags[n_tag].byte_idx_b = byte_idxb;
-
+    g_tags[n_tag].byte_idx_b = byte_idx_b;
+    g_bytes_used[byte_idx_b] = 8;
 }
 
 // permet la définition des tags
@@ -103,11 +104,75 @@ int set_tag(const char* tag_name, uint8_t size){
         };
         // vérification de s'il y a asser d'espace (après analyse)
         if(n_byte_nesessaire > 0){return CAN_TG_ERROR_NOT_ENOUNG_SPACE;}
-
-
+        // set the tags
+        set_new_tag_16(tag_name, bytea, byteb);
+        return SUCCES_TO_SET;
     }
+    else if(size == 8){    // cas de 8 bits
+         for (int i = 0; i < N_BYTES; i++){
+            if(g_bytes_used[i]==0){
+                int n_tag = get_first_tags_vide();
+                general_set_tag(n_tag, tag_name, 8, i);
+                return SUCCES_TO_SET;
+            }
+         }
+    }
+    else if(size == 4){
+        // priorité au endroi où il y a déjà un autre 4 (pour formé un byte complet.
+        for (int i = 0; i < N_BYTES; i++){
+           int n_tag = get_first_tags_vide();
+            general_set_tag(n_tag, tag_name, 4, i);
+            return SUCCES_TO_SET;
+        }
+        // sinon, priorisé ceux avec rien.
+        for (int i = 0; i < N_BYTES; i++){
+            if(g_bytes_used[i] == 0){
+                int n_tag = get_first_tags_vide();
+                general_set_tag(n_tag, tag_name, 4, i);
+                return SUCCES_TO_SET;
+            }
+        }
+        // sinon, là, permettre d'ajouté la valeurs à un endrois incomplet.
+        for (int i = 0; i < N_BYTES; i++){
+            if(g_bytes_used[i] <= 4){
+                int n_tag = get_first_tags_vide();
+                general_set_tag(n_tag, tag_name, 4, i);
+                return SUCCES_TO_SET;
+            }
+        }
+    }
+    else if(size == 3 || size == 1){
+        // vérification de s'il y a des bytes impaire (affin de le compler)
+        for (int i = 0; i < N_BYTES; i++){
+            if(g_bytes_used[i]%2 == 0){}
+            else{
+                if((8 - g_bytes_used[i]) >= size){
+                    int n_tag = get_first_tags_vide();
+                    general_set_tag(n_tag, tag_name, size, i);
+                    return SUCCES_TO_SET;
+                }
+            }
+        }
+        // sinon, essayer avec les autres
+        for (int i = 0; i < N_BYTES; i++){
+            if((8 - g_bytes_used[i]) >= size){
+                int n_tag = get_first_tags_vide();
+                general_set_tag(n_tag, tag_name, size, i);
+                return SUCCES_TO_SET;
+            }
+         }
+         // sinon, pas asser de place.
+         return CAN_TG_ERROR_NOT_ENOUNG_SPACE;
+    }
+    // taille invalide
+    return CAN_TG_ERROR_SIZE_VALUE_INVALIDE;
 }
-const TagDef* get_tag_def(const char* tag_name){
-
+const TagDef* get_tag_def(const char* tag_name) {
+    for (int i = 0; i < g_tag_count; i++) {
+        if (strncmp(g_tags[i].name, tag_name, MAX_TAG_NAME_LEN) == 0) {
+            return &g_tags[i];
+        }
+    }
+    return NULL; // Tag non trouvé
 }
 

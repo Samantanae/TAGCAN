@@ -1,0 +1,173 @@
+#include <stdio.h>
+#include <assert.h>
+#include <stdbool.h>
+#include "../include/config_value.h"
+#include "../include/data_container.h"
+
+int passed_tests = 0;
+int total_tests = 0;
+
+void TEST(const char* name, const bool condition){
+    if(condition){printf("success\t\t\t%s\n", name);}
+    else{printf("fail\t\t\t%s\n", name);}
+}
+
+void TEST_EQ_INT(const char* name, const int val_1, const int val_2){
+    bool condition = val_1 == val_2;
+    if(condition){
+        printf("success\t\t\t%s\n", name);
+    passed_tests++;}
+    else{
+        printf("fail\t\t\t%s", name);
+        printf("\t%d != ", val_1);
+        printf("%d\n", val_2);
+    }
+    total_tests++;
+}
+
+void run_all_tests(void) {
+    uint32_t val = 0;
+
+    printf("=== Lancement des tests unitaires ===\n");
+
+    // ---------------------------------------------------------
+    // TEST 1 : Cas d'erreurs de set_tag
+    // ---------------------------------------------------------
+    printf("Test 1: Erreurs de set_tag... ");
+    init_tag_manager(); // On part d'un état propre
+
+    // Tailles invalides (doit retourner -2)
+    printf("\tTailles invalides\n");
+    TEST_EQ_INT("0",set_tag("inv1", 0), CAN_TG_ERROR_SIZE_VALUE_INVALIDE);
+    TEST_EQ_INT("2",set_tag("inv2", 2), CAN_TG_ERROR_SIZE_VALUE_INVALIDE);
+    TEST_EQ_INT("5",set_tag("inv5", 5), CAN_TG_ERROR_SIZE_VALUE_INVALIDE);
+
+    // Tag en double (doit retourner -2)
+    printf("\tTag en double\n");
+    TEST_EQ_INT("première insertion",set_tag("TAG_A", 4), SUCCES_TO_SET); // Succès
+    TEST_EQ_INT("duplica détection",set_tag("TAG_A", 3), CAN_TG_ERROR_NAME_ALREADY_USE); // Erreur : existe déjà
+    printf("OK\n");
+
+    // ---------------------------------------------------------
+    // TEST 2 : Dépassement de l'espace mémoire (8 octets max)
+    // ---------------------------------------------------------
+    printf("Test 2: Remplissage memoire (8 bytes max)... ");
+    init_tag_manager();
+
+    // On ajoute 4 tags de 16 bits (4 * 2 = 8 octets complets)
+    printf("\tpreparation du GT\n");
+    TEST_EQ_INT("ajout de valeurs 16 bit (1/4)",set_tag("T1", 16), SUCCES_TO_SET);
+    TEST_EQ_INT("ajout de valeurs 16 bit (2/4)",set_tag("T2", 16), SUCCES_TO_SET);
+    TEST_EQ_INT("ajout de valeurs 16 bit (3/4)",set_tag("T3", 16), SUCCES_TO_SET);
+    TEST_EQ_INT("ajout de valeurs 16 bit (4/4)",set_tag("T4", 16), SUCCES_TO_SET);
+
+    // Le prochain tag doit être refusé, peu importe sa taille (-1)
+    printf("\ttest de Dépassement de l'espace mémoire (8 octets max)\n");
+    TEST_EQ_INT("avec 1 bit",set_tag("T5", 1) , CAN_TG_ERROR_NOT_ENOUNG_SPACE);
+    TEST_EQ_INT("avec 16 bits",set_tag("T6", 16), CAN_TG_ERROR_NOT_ENOUNG_SPACE);
+    printf("OK\n");
+
+    // ---------------------------------------------------------
+    // TEST 3 : Cas d'erreurs de set_value et get_value
+    // ---------------------------------------------------------
+    printf("Test 3: Erreurs et depassements de valeurs... ");
+    init_tag_manager();
+    init_data_container();
+    printf("\tpreparation du GT\n");
+    TEST_EQ_INT("prepa... ",set_tag("BIT_1", 1), SUCCES);
+    TEST_EQ_INT("prepa... ",set_tag("BIT_3", 3), SUCCES);
+    TEST_EQ_INT("prepa... ",set_tag("BIT_4", 4), SUCCES);
+
+    // Tag inexistant (doit retourner -3)
+    printf("\tTag inexistant\n");
+    TEST_EQ_INT("test set",set_value("FANTOME", 5), -3);
+    TEST_EQ_INT("test get",get_value("FANTOME", &val), -3);
+
+    // Dépassement de capacité (doit retourner -4)
+    printf("\tDépassement de capacité\n");
+    // - Un tag de 1 bit ne peut contenir que 0 ou 1
+    TEST_EQ_INT("Un tag de 1 bits[0 ou 1]",set_value("BIT_1", 2), -4);
+    // - Un tag de 3 bits ne peut contenir que de 0 à 7
+    TEST_EQ_INT("Un tag de 3 bits [0 à 7]",set_value("BIT_3", 8), -4);
+    // - Un tag de 4 bits ne peut contenir que de 0 à 15
+    TEST_EQ_INT("Un tag de 4 bits [0 à 15]", set_value("BIT_4", 16), -4);
+    printf("OK\n");
+
+    // ---------------------------------------------------------
+    // TEST 4 : Indépendance des écritures (Masquage binaire)
+    // ---------------------------------------------------------
+    printf("Test 4: Indépendance des bits contigus... ");
+    init_tag_manager();
+    init_data_container();
+
+    // On crée une configuration qui remplit exactement 1 octet (1 + 3 + 4 = 8 bits)
+    printf("\tpreparation du GT\n");
+    TEST_EQ_INT("preparation [set_tag] (1/3)",set_tag("T_1", 1), SUCCES);
+    TEST_EQ_INT("preparation [set_tag] (2/3)",set_tag("T_3", 3), SUCCES);
+    TEST_EQ_INT("preparation [set_tag] (3/3)",set_tag("T_4", 4), SUCCES);
+
+    // On assigne les valeurs maximales à chaque tag
+    printf("\tpreparation du GT (partie 2)\n");
+    TEST_EQ_INT("preparation [set_tag] (1) 1 bits (1/3)",set_value("T_1", 1), SUCCES);
+    TEST_EQ_INT("preparation [set_tag] (7) 3 bits (2/3)",set_value("T_3", 7), SUCCES);
+    TEST_EQ_INT("preparation [set_tag] (15) 4 bits (3/3)",set_value("T_4", 15), SUCCES);
+
+    // On vérifie qu'elles sont bien mémorisées
+    printf("\t\n");
+    get_value("T_1", &val); TEST_EQ_INT("get value T_1",val, 1);
+    get_value("T_3", &val); TEST_EQ_INT("get value T_3",val, 7);
+    get_value("T_4", &val); TEST_EQ_INT("get value T_4",val, 15);
+
+    // On modifie T_3 sans toucher aux autres
+    printf("\tmodification de T_3 sans toucher aux autres\n");
+    TEST_EQ_INT("",set_value("T_3", 2), 1);
+
+    // On vérifie que T_1 et T_4 n'ont pas bougé
+    printf("\t\n");
+    get_value("T_1", &val); TEST_EQ_INT("verif valeur [encien]",val, 1);
+    get_value("T_3", &val); TEST_EQ_INT("verif valeur [nouvel]",val, 2); // Nouvelle valeur
+    get_value("T_4", &val); TEST_EQ_INT("verif valeur [encien]",val, 15);
+    printf("OK\n");
+
+    // ---------------------------------------------------------
+    // TEST 5 : Variables de 8 bits
+    // ---------------------------------------------------------
+    printf("Test 5: Variables 8 bits... ");
+    init_tag_manager();
+    init_data_container();
+    printf("\t\n");
+    TEST_EQ_INT("prapa de la valeur",set_tag("V8", 8), SUCCES);
+
+    // Test des bornes 0 et 255
+    printf("\tTest des bornes 0 et 255\n");
+    set_value("V8", 0);   get_value("V8", &val); TEST_EQ_INT("val = 0",val, 0);
+    set_value("V8", 255); get_value("V8", &val); TEST_EQ_INT("val = 255",val, 255);
+    printf("\tErreur dépassement\n");
+    TEST_EQ_INT("val: [256]",set_value("V8", 256), -4); // Erreur dépassement
+    printf("OK\n");
+
+    //--------------------------------------
+    // TEST 6: Tout les test de 4 bits
+    //--------------------------------------
+    printf("\ttest de tags à 4 bits (tout les type possible)\n");
+    init_tag_manager();
+    init_data_container();
+    printf("test d'inserssion des tags\n");
+    TEST_EQ_INT("ajout 1 tags à 4 bits ", set_tag("ma_val1", 4),SUCCES);
+    TEST_EQ_INT("ajout 1 tags après 4 bits ", set_tag("ma_2", 4),SUCCES);
+    printf("le dernier cas n'ais pas encore testé!!!!\n");
+    printf("test  d'ajout de valeurs\n");
+    TEST_EQ_INT("set val",set_value("ma_val1", 3),1);
+    TEST_EQ_INT("set val 2",set_value("ma_2", 9),1);
+    get_value("ma_val1", &val);TEST_EQ_INT("get val 1",val,3);;
+    get_value("ma_2", &val);TEST_EQ_INT("get val 2",val,9);;
+    //printf("=== TOUS LES TESTS SONT PASSES AVEC SUCCES ! ===\n\n");
+}
+
+int main(void) {
+    // Il suffit d'appeler la fonction de test au début de votre main
+    run_all_tests();
+
+    // ... suite de votre code (simulation CAN, etc.) ...
+    return 0;
+}
