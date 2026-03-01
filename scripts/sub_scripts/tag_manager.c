@@ -1,5 +1,5 @@
-#include "../include/tag_manager.h"
-#include "../include/config_value.h"
+#include "../../include/sub_include/tag_manager.h"
+#include "../../include/config_value.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdint.h>

@@ -24,8 +24,9 @@ extern uint8_t g_tag_count;
 // Allocation des bits dans chaque byte (0 à 7)
 extern uint8_t g_bytes_used[N_BYTES];
 
+// fonction qui gère les tags
 void init_tag_manager(void);
-int set_tag(const char* tag_name, uint8_t size);
+int set_tag(const char* tag_name, uint8_t n_bit);
 const TagDef* get_tag_def(const char* tag_name);
 
 #endif // TAG_MANAGER_H

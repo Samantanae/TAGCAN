@@ -1,7 +1,7 @@
 # depslib dependency file v1.0
 1772326474 source:c:\programation\ulaval\gaul\programmation\tagcan\main.c
 
-1772355389 source:c:\programation\ulaval\gaul\programmation\tagcan\scripts\data_container.c
+1772395965 source:c:\programation\ulaval\gaul\programmation\tagcan\scripts\data_container.c
 	"../include/data_container.h"
 	"../include/config_value.h"
 	<stdio.h>
@@ -14,7 +14,7 @@
 1772317016 source:c:\programation\ulaval\gaul\programmation\tagcan\scripts\tag_struct.c
 	<stdio.h>
 
-1772327399 source:c:\programation\ulaval\gaul\programmation\tagcan\scripts\config_value.c
+1772397226 source:c:\programation\ulaval\gaul\programmation\tagcan\scripts\config_value.c
 	"../include/config_value.h"
 
 1772327217 c:\programation\ulaval\gaul\programmation\tagcan\include\config_value.h
@@ -30,14 +30,27 @@
 	<stdint.h>
 	<stdbool.h>
 
-1772356727 source:c:\programation\ulaval\gaul\programmation\tagcan\scripts\main.c
+1772397696 source:c:\programation\ulaval\gaul\programmation\tagcan\scripts\main.c
 	<stdio.h>
 	<assert.h>
 	<stdbool.h>
 	"../include/config_value.h"
-	"../include/data_container.h"
+	"../include/sub_include/data_container.h"
 
-1772340900 c:\programation\ulaval\gaul\programmation\tagcan\include\data_container.h
+1772395746 c:\programation\ulaval\gaul\programmation\tagcan\include\data_container.h
 	<stdint.h>
 	"tag_manager.h"
+
+1772397637 source:c:\programation\ulaval\gaul\programmation\tagcan\scripts\sub_scripts\data_container.c
+	"../../include/sub_include/data_container.h"
+	"../../include/config_value.h"
+	<stdio.h>
+
+1772395746 c:\programation\ulaval\gaul\programmation\tagcan\include\sub_include\data_container.h
+	<stdint.h>
+	"tag_manager.h"
+
+1772397543 c:\programation\ulaval\gaul\programmation\tagcan\include\sub_include\tag_manager.h
+	<stdint.h>
+	<stdbool.h>
 
