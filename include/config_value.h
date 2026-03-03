@@ -36,4 +36,10 @@ typedef enum {
     CAN_TG_ERROR_VALUE_TO_BIG = -10,
 } CAN_TG_STATUE;
 
+typedef enum {
+    RECEVE_ONLY,    /**< In this mode, the 'packet' cannot  be wrinten to from 'set_value', but the value (assuming it's the correct id) while be updated if the id match. */
+    SEND_ONLY,    /**< In this mode, the 'packet' linked with can only send data. In other words, if an other CAN perif send a 'paquet' with the same ID, it's while not modifie he value. */
+    SEND_AND_RECEVE,    /**< In this mode, you can modifie the value, send the value and receve an update form the CAN line. (In other word, it's the less free of contrainte, but also the most suceptible to have unwished change of value.) */
+} CAN_MODE;
+
 #endif // CONFIG_VALUE_H

@@ -14,7 +14,6 @@ int total_tests = 0; /**< le nombre total de test effectué */
  * \param condition:Le resultat du test (vrai si réussi, faux sinon)
  *
  */
-
 void TEST(const char* name, const bool condition)
 {
     if(condition)
@@ -50,6 +49,110 @@ void TEST_EQ_INT(const char* name, const int val_1, const int val_2)
         printf("%d\n", val_2);
     }
     total_tests++;
+}
+
+
+
+
+
+
+
+void test_print(void){
+printf("test des fonction d'impression.\n");
+// prepa du gt
+init_data_container();
+init_tag_manager();
+
+// set the tags
+set_tag("a1",2);
+set_tag("agh5",5);
+set_tag("patapo",16);
+set_tag("patate",12);
+set_tag("uni1",1);
+set_tag("triot", 3);
+
+// set the value
+set_value("a1",2);
+set_value("agh5",42);
+set_value("patapo",45);
+set_value("patate",12);
+set_value("uni1",1);
+set_value("triot", 3);
+
+print_all_tag_set();
+print_all_data();
+print_repartition_bit();
+}
+
+
+
+
+void somme_other_test(void){
+printf("----------------------test mask ------------------------\n");
+    printf("\t(0,8): ");
+    print_bin_8(prep_mask(0, 8));
+    printf("\n");
+    printf("\t(4,4): ");
+    print_bin_8(prep_mask(4, 4));
+    printf("\n");
+    printf("\t(4,3): ");
+    print_bin_8(prep_mask(4, 3));
+    printf("\n");
+    printf("\t(1,4): ");
+    print_bin_8(prep_mask(1, 4));
+    printf("\n");
+    printf("\t(5,1): ");
+    print_bin_8(prep_mask(5, 1));
+    printf("\n");
+    printf("------------------------------test shift----------------------\n");
+    uint8_t val1 = 0b01110000;
+    uint8_t bi = 0b01110100;
+    printf("val1: ");
+    print_bin_8(val1);
+    printf("\n");
+    int p_bit = 4;
+    int n_bit = 4;
+    // eq logic pour la prise de la valeur
+    uint8_t vrai_val = val1 >> (8 - p_bit - n_bit);
+    // prepa du mask
+    uint8_t mask_val = 0b1;
+    uint8_t mask_temp = 0b1;
+    // mask des bits de la valeurs
+    for (int i = 0; i < (n_bit - 1); i++)
+    {
+        mask_val = mask_val << 1;
+        mask_val |= mask_temp;
+    }
+    // mask pour conserver uniquement la valeurs dans le bytes
+    uint8_t mask_val_p = mask_val << (8 - p_bit - n_bit);
+
+    uint8_t byte_sans_val = bi;
+    byte_sans_val &= ~mask_val_p;
+
+
+    //mask_val = mask_val >> (8 - n_bit);
+    printf("vrai_val: ");
+    print_bin_8(vrai_val);
+    printf("\n");
+    printf("mask: ");
+    print_bin_8(mask_val);
+    printf("\n");
+    printf("mask2: ");
+    print_bin_8(mask_val_p);
+    printf("\n");
+    printf("byte avant: ");
+    print_bin_8(bi);
+    printf("\n");
+    printf("byte sans val: ");
+    print_bin_8(byte_sans_val);
+    printf("\n");
+
+
+    printf("test final\n");
+
+    init_data_container();
+    init_tag_manager();
+
 }
 
 /** \brief effectue les divers tests affin de vérifier que tout fonctionne bien.
@@ -215,70 +318,7 @@ int main(void)
 
     // Il suffit d'appeler la fonction de test au début de votre main
     run_all_tests();
-    printf("----------------------test mask ------------------------\n");
-    printf("\t(0,8): ");
-    print_bin_8(prep_mask(0, 8));
-    printf("\n");
-    printf("\t(4,4): ");
-    print_bin_8(prep_mask(4, 4));
-    printf("\n");
-    printf("\t(4,3): ");
-    print_bin_8(prep_mask(4, 3));
-    printf("\n");
-    printf("\t(1,4): ");
-    print_bin_8(prep_mask(1, 4));
-    printf("\n");
-    printf("\t(5,1): ");
-    print_bin_8(prep_mask(5, 1));
-    printf("\n");
-    printf("------------------------------test shift----------------------\n");
-    uint8_t val1 = 0b01110000;
-    uint8_t bi = 0b01110100;
-    printf("val1: ");
-    print_bin_8(val1);
-    printf("\n");
-    int p_bit = 4;
-    int n_bit = 4;
-    // eq logic pour la prise de la valeur
-    uint8_t vrai_val = val1 >> (8 - p_bit - n_bit);
-    // prepa du mask
-    uint8_t mask_val = 0b1;
-    uint8_t mask_temp = 0b1;
-    // mask des bits de la valeurs
-    for (int i = 0; i < (n_bit - 1); i++)
-    {
-        mask_val = mask_val << 1;
-        mask_val |= mask_temp;
-    }
-    // mask pour conserver uniquement la valeurs dans le bytes
-    uint8_t mask_val_p = mask_val << (8 - p_bit - n_bit);
-
-    uint8_t byte_sans_val = bi;
-    byte_sans_val &= ~mask_val_p;
-
-
-    //mask_val = mask_val >> (8 - n_bit);
-    printf("vrai_val: ");
-    print_bin_8(vrai_val);
-    printf("\n");
-    printf("mask: ");
-    print_bin_8(mask_val);
-    printf("\n");
-    printf("mask2: ");
-    print_bin_8(mask_val_p);
-    printf("\n");
-    printf("byte avant: ");
-    print_bin_8(bi);
-    printf("\n");
-    printf("byte sans val: ");
-    print_bin_8(byte_sans_val);
-    printf("\n");
-
-
-    printf("test final\n");
-
-    init_data_container();
-    init_tag_manager();
+    test_print();
 
 
     // ... suite de votre code (simulation CAN, etc.) ...

@@ -59,7 +59,7 @@ CAN_TG_STATUE set_value(const char* tag_name, uint32_t value)
         else{
             // ont traite cette valeurs
             // Création du masque binaire
-            uint8_t mask = prep_mask(bit_pos_b, n_bits);
+            uint8_t mask = prep_mask(bit_pos_b, n_bits - 8);
             // déplacement de la deuxième partie (de manière adéqua)
             data_b = data_b << (8 - bit_pos_b - n_bits);
             // changement des bits de la deuxième partie.
@@ -99,32 +99,42 @@ int get_value(const char* tag_name, uint32_t* out_value)
     if (!tag) return CAN_TG_ERROR_TAG_NOT_FOUND_; // Tag non trouvé
     // la sortie temporaire des valeurs ici sont juste pour voire les val. lors du débugages.
     const uint8_t n_bits = tag->n_bits;
-    const uint8_t bit_pos_a = tag->bit_pos_a;
-    const int8_t byte_indx_a = tag->byte_idx_a;
+    const uint8_t bpa = tag->bit_pos_a;
+    const uint8_t bpb = tag->bit_pos_b;
+    const int8_t byta = tag->byte_idx_a;
+    const int8_t bytb = tag->byte_idx_b;
     if(tag->byte_idx_b > -1){
             //conditionnal declaration (avoid declaring for nofing)
             const int8_t byte_indx_b = tag->byte_idx_b;
     }
-    if (tag->n_bits == 16)
+    if (tag->n_bits == 16)    // cas de 16 bits exactement
     {
-        uint8_t ba = TxData[byte_indx_a];
-        uint8_t bb = TxData[tag->byte_idx_b];
+        uint8_t ba = TxData[byta];
+        uint8_t bb = TxData[bytb];
         *out_value = ba | (bb << 8);   // the B should be the one wo can be less tan 8 bit.
+    }
+    else if((n_bits < 16) && (n_bits > 8)){// cas d'entre 8 et 16 bits.
+        uint8_t ba = TxData[byta];
+        uint8_t bb;
+        // création d'un masque
+        uint8_t mask = prep_mask(bpb, n_bits - 8);
+        uint8_t data_temp = TxData[bytb] & mask;
+        bb = data_temp >> (8 - bpa - n_bits);
+        *out_value = ba | (bb << 8);   // the B should be the one wo can be less tan 8 bit.
+
     }
     else
     {
-
-
         // création du mask
-        uint8_t mask = prep_mask(bit_pos_a, n_bits);
+        uint8_t mask = prep_mask(bpa, n_bits);
 
 
         //uint8_t mask = ((1 << n_bits) - 1) << shift;
 
-        uint8_t data_temp = TxData[byte_indx_a] & mask;
-        *out_value = data_temp >> (8 - bit_pos_a - n_bits);;
+        uint8_t data_temp = TxData[byta] & mask;
+        *out_value = data_temp >> (8 - bpa - n_bits);
     }
-    return 1;
+    return CAN_TG_SUCCESS;
 }
 
 

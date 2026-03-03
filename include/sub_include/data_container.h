@@ -49,4 +49,7 @@ uint8_t prep_mask(uint8_t p_bit, uint8_t n_bit);
 // Simulation de transmission (remplace send/receve python)
 void can_simulate_send_receive(uint8_t* tx_buffer, uint8_t* rx_buffer);
 
+//int CAN_RECEVE
+
+
 #endif // DATA_CONTAINER_H
