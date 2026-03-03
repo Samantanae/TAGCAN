@@ -1,0 +1,8 @@
+<map id="init_data_container" name="init_data_container">
+<area shape="rect" id="Node000001" title="clean le TxData affin d&#39;être certain de ne pas avoir de donnée poubelle dedans. Si réexécuté,..." alt="" coords="248,5,379,31"/>
+<area shape="rect" id="Node000002" href="$scripts_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,5,56,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="234,21,56,21,56,15,234,15"/>
+<area shape="rect" id="Node000003" href="$scripts_2main_8c.html#ae9bbb2f5bb69f73e92c761f83223285a" title="effectue les divers tests affin de vérifier que tout fonctionne bien. les résultat sont présenté dans..." alt="" coords="104,31,200,56"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="235,33,201,39,200,33,234,28"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="90,33,56,26,57,21,91,28"/>
+</map>

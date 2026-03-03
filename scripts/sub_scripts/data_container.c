@@ -1,5 +1,6 @@
 #include "../../include/sub_include/data_container.h"
 #include "../../include/config_value.h"
+#include "../../include/sub_include/print_val.h"
 #include <stdio.h>
 
 uint8_t TxData[N_BYTES];
@@ -30,70 +31,90 @@ uint8_t prep_mask(uint8_t p_bit, uint8_t n_bit)
     return mask_val << (8 - p_bit - n_bit);
 }
 
-int set_value(const char* tag_name, uint32_t value)
+CAN_TG_STATUE set_value(const char* tag_name, uint32_t value)
 {
     const TagDef* tag = get_tag_def(tag_name);
     if (!tag) return -3; // Tag non trouvé
+
+    const uint8_t n_bits = tag->n_bits;
+    const uint8_t bit_pos_a = tag->bit_pos_a;
+    const uint8_t bit_pos_b = tag->bit_pos_b;
+    const int8_t byte_idx_a = tag->byte_idx_a;
+    const int8_t byte_idx_b = tag->byte_idx_b;
 
     // Vérification de débordement de valeur
     if (tag->n_bits < 32 && value >= (1ULL << tag->n_bits))
     {
         printf("[ERREUR] Valeur %u trop grande pour le tag %s (%u bits)\n", value, tag_name, tag->n_bits);
-        return -4;
+        return CAN_TG_ERROR_VALUE_TO_BIG;
     }
 
-    if (tag->n_bits == 16)
-    {
-        // Séparation de la data en 2 bytes (Logique Python set_value16)
+    // dans le cas des valeurs entre 9 et 16 bits, ont extrait d'abord les 2 valeurs désirer et ont les place enssuite dans les endroite correspondent
+    if(n_bits > 8){
         uint8_t data_b = (value & 0xFF00) >> 8;
         uint8_t data_a = (value & 0x00FF);
-
-        TxData[tag->byte_idx_a] = data_a;
-        TxData[tag->byte_idx_b] = data_b;
+        TxData[byte_idx_a] = data_a;
+        // si la donnée est de 16 bits, simplement la set
+        if(n_bits == 16){TxData[tag->byte_idx_b] = data_b;}
+        else{
+            // ont traite cette valeurs
+            // Création du masque binaire
+            uint8_t mask = prep_mask(bit_pos_b, n_bits);
+            // déplacement de la deuxième partie (de manière adéqua)
+            data_b = data_b << (8 - bit_pos_b - n_bits);
+            // changement des bits de la deuxième partie.
+            TxData[byte_idx_b] &= ~mask;
+            TxData[byte_idx_b] |= data_b;
+            return CAN_TG_SUCCESS;
+        }
     }
     else if(tag->n_bits == 8)
     {
         uint8_t data_a = (value & 0x00FF);
         TxData[tag->byte_idx_a] = data_a;
+        return CAN_TG_SUCCESS;
     }
-
-    else
-    {
-        // Valeur <= 8 bits
-        // Création du masque binaire aligné à droite puis décalé (simule make_binary_mask python)
-        uint8_t n_bits = tag->n_bits;
-        uint8_t bit_pos_a = tag->bit_pos_a;
-        int8_t byte_indx_a = tag->byte_idx_a;
-
+    else{
+        // Valeur <= 8 bits (entre 1 et 7 bits inclusivement)
+        // Création du masque binaire aligné à droite puis décalé
         uint8_t mask = prep_mask(bit_pos_a, n_bits);
-
         uint8_t vrai_val = value;
         // déplacement de la vrai valeur
         vrai_val = vrai_val << (8 - bit_pos_a - n_bits);
-        TxData[byte_indx_a] &= ~mask;
-        TxData[byte_indx_a] |= vrai_val;
+        TxData[byte_idx_a] &= ~mask;
+        TxData[byte_idx_a] |= vrai_val;
     }
-    return 1;
+    return CAN_TG_SUCCESS;
+}
+
+uint16_t convert_8_to_16bit(uint8_t ba, uint8_t bb){
+    uint16_t r;
+    r = ba | (bb << 8);   // the B should be the one wo can be less tan 8 bit.
+    return r;
 }
 
 int get_value(const char* tag_name, uint32_t* out_value)
 {
     const TagDef* tag = get_tag_def(tag_name);
-    if (!tag) return CAN_TG_ERROR_TAG_NOT_FOUND; // Tag non trouvé
-
+    if (!tag) return CAN_TG_ERROR_TAG_NOT_FOUND_; // Tag non trouvé
+    // la sortie temporaire des valeurs ici sont juste pour voire les val. lors du débugages.
+    const uint8_t n_bits = tag->n_bits;
+    const uint8_t bit_pos_a = tag->bit_pos_a;
+    const int8_t byte_indx_a = tag->byte_idx_a;
+    if(tag->byte_idx_b > -1){
+            //conditionnal declaration (avoid declaring for nofing)
+            const int8_t byte_indx_b = tag->byte_idx_b;
+    }
     if (tag->n_bits == 16)
     {
-        uint8_t ba = TxData[tag->byte_idx_a];
+        uint8_t ba = TxData[byte_indx_a];
         uint8_t bb = TxData[tag->byte_idx_b];
-        *out_value = ba | (bb << 8);
+        *out_value = ba | (bb << 8);   // the B should be the one wo can be less tan 8 bit.
     }
     else
     {
 
-        // la sortie temporaire des valeurs ici sont juste pour voire les val. lors du débugages.
-        uint8_t n_bits = tag->n_bits;
-        uint8_t bit_pos_a = tag->bit_pos_a;
-        int8_t byte_indx_a = tag->byte_idx_a;
+
         // création du mask
         uint8_t mask = prep_mask(bit_pos_a, n_bits);
 

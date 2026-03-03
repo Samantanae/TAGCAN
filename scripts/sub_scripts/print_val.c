@@ -33,5 +33,15 @@ void print_all_data_bin(void)
     printf("\n");
 }
 
+void print_all_with_title(const char* title){
+    printf("%s\t",title);
+    int i;
+    for (int i = 0; i < N_BYTES; i++);
+    {
+        print_bin_8(TxData[i]);
+        printf("\t");
+    };
+    printf("\n");
+}
 
 

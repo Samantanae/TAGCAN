@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.0" xml:lang="fr">
+  <compounddef id="dir_d44c64559bbebec7f509842c48db8b23" kind="dir">
+    <compoundname>include</compoundname>
+    <innerdir refid="dir_a499dd318be9fa7a25b8a54dc71aa43f">sub_include</innerdir>
+    <innerfile refid="config__value_8h">config_value.h</innerfile>
+    <innerfile refid="gestion__tag_8h">gestion_tag.h</innerfile>
+    <innerfile refid="_t_a_g_c_a_n__fonction_8h">TAGCAN_fonction.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/"/>
+  </compounddef>
+</doxygen>

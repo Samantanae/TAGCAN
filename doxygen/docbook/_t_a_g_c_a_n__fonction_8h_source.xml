@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__t_a_g_c_a_n__fonction_8h_source" xml:lang="fr">
+<title>TAGCAN_fonction.h</title>
+<indexterm><primary>TAGCAN_fonction.h</primary></indexterm>
+Aller Ã  la documentation de ce fichier.<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;TAGCAN_FONCTION_H_INCLUDED</emphasis>
+2 <emphasis role="preprocessor">#define&#32;TAGCAN_FONCTION_H_INCLUDED</emphasis>
+3 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_data__container_8h">sub_include/data_container.h</link>&quot;</emphasis>
+4 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_tag__manager_8h">sub_include/tag_manager.h</link>&quot;</emphasis>
+5 
+6 <emphasis role="comment">//(la&#32;ligne&#32;suivante&#32;risque&#32;de&#32;causé&#32;une&#32;double&#32;définition)</emphasis>
+7 <emphasis role="comment">//int&#32;set_tag(const&#32;char*&#32;tag_name,&#32;uint8_t&#32;n_bits);</emphasis>
+8 
+9 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;TAGCAN_FONCTION_H_INCLUDED</emphasis>
+</programlisting></section>

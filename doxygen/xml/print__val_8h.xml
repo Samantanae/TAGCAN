@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.0" xml:lang="fr">
+  <compounddef id="print__val_8h" kind="file" language="C++">
+    <compoundname>print_val.h</compoundname>
+    <includes local="no">stdio.h</includes>
+    <includes local="no">stdint.h</includes>
+    <includedby refid="scripts_2main_8c" local="yes">main.c</includedby>
+    <includedby refid="print__val_8c" local="yes">print_val.c</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>print_val.h</label>
+        <link refid="print__val_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>stdint.h</label>
+      </node>
+      <node id="2">
+        <label>stdio.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>print_val.h</label>
+        <link refid="print__val_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>main.c</label>
+        <link refid="scripts_2main_8c"/>
+      </node>
+      <node id="3">
+        <label>print_val.c</label>
+        <link refid="print__val_8c"/>
+      </node>
+    </invincdepgraph>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="print__val_8h_1a9e9dc5564a1158a2c1381b3de0c6d20e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void print_bin_8</definition>
+        <argsstring>(uint8_t val)</argsstring>
+        <name>print_bin_8</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+<para>imprime dans le terminal la représentation 8 bits (binaire) de la valeur passé en argument </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>la valeurs à voire au format mentionner précédament.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+@bref prints the binary representation of an 8-bit unsigned integer.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <computeroutput>val</computeroutput> [from 0 to 255]. The function prints the binary representation of this value by iterating over each bit. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/print_val.h" line="14" column="6" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/sub_scripts/print_val.c" bodystart="13" bodyend="19" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/print_val.h" declline="14" declcolumn="6"/>
+        <referencedby refid="scripts_2main_8c_1a840291bc02cba5474a4cb46a9b9566fe" compoundref="scripts_2main_8c" startline="212" endline="286">main</referencedby>
+        <referencedby refid="print__val_8h_1a7d217b9d9a6575858c03ca9854bb151b" compoundref="print__val_8c" startline="25" endline="34">print_all_data_bin</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="print__val_8h_1a7d217b9d9a6575858c03ca9854bb151b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void print_all_data_bin</definition>
+        <argsstring>(void)</argsstring>
+        <name>print_all_data_bin</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>prints the binary representation of each byte in the <computeroutput><ref refid="data__container_8c_1a0b96d44a8da73070e470c7bf30523ca1" kindref="member">TxData</ref></computeroutput> array. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/print_val.h" line="15" column="6" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/sub_scripts/print_val.c" bodystart="25" bodyend="34" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/print_val.h" declline="15" declcolumn="6"/>
+        <references refid="config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1" compoundref="config__value_8h" startline="6">N_BYTES</references>
+        <references refid="print__val_8c_1a9e9dc5564a1158a2c1381b3de0c6d20e" compoundref="print__val_8c" startline="13" endline="19">print_bin_8</references>
+        <references refid="data__container_8c_1a0b96d44a8da73070e470c7bf30523ca1" compoundref="data__container_8c" startline="5">TxData</references>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>PRINT_VAL_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PRINT_VAL_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Utilitaires<sp/>d&apos;affichage<sp/>pour<sp/>le<sp/>débogage</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="print__val_8h_1a9e9dc5564a1158a2c1381b3de0c6d20e" kindref="member">print_bin_8</ref>(uint8_t<sp/>val);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="print__val_8h_1a7d217b9d9a6575858c03ca9854bb151b" kindref="member">print_all_data_bin</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>PRINT_VAL_H<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/print_val.h"/>
+  </compounddef>
+</doxygen>

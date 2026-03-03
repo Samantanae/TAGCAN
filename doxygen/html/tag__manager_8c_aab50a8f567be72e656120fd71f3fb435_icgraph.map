@@ -1,0 +1,8 @@
+<map id="init_tag_manager" name="init_tag_manager">
+<area shape="rect" id="Node000001" title="Initialise/réinitialise le gestionnaire de tags." alt="" coords="248,5,369,31"/>
+<area shape="rect" id="Node000002" href="$scripts_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,5,56,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="235,21,56,21,56,15,235,15"/>
+<area shape="rect" id="Node000003" href="$scripts_2main_8c.html#ae9bbb2f5bb69f73e92c761f83223285a" title="effectue les divers tests affin de vérifier que tout fonctionne bien. les résultat sont présenté dans..." alt="" coords="104,31,200,56"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="235,33,201,38,200,33,234,27"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="90,33,56,26,57,21,91,28"/>
+</map>

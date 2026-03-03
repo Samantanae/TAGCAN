@@ -1,6 +1,7 @@
 #include "../../include/sub_include/tag_manager.h"
 #include "../../include/config_value.h"
 #include "../../include/gestion_tag.h"
+#include "../../include/sub_include/print_val.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdint.h>
@@ -75,6 +76,7 @@ void general_set_tag(const int n_tag,const char* tag_name,
 {
     set_name_tag(n_tag, tag_name);
     g_tags[n_tag].n_bits = n_bits;
+
     g_tags[n_tag].byte_idx_a = byte_idx_a;
     // signal l'augmentation du nombre de tags
     // comme de base, le nombre de tags est défini pour 32 tags de 1 bits,
@@ -105,8 +107,13 @@ void set_new_tag_9_to_16(const char* tag_name, const int8_t byte_idx_a, const in
     // au cas où 0 est passé, nous n'avons pas besoins d'utiliser un deuxième bytes.
     if(n_bits_total > 8)
     {
+
         g_tags[n_tag].byte_idx_b = byte_idx_b;
+        g_tags[n_tag].bit_pos_b = g_bytes_used[byte_idx_b];
         g_bytes_used[byte_idx_b] += n_bits_total - 8;
+        g_tags[n_tag].bit_pos_a = 0;
+        /* comme c'est à cette étape certain que les bits vont être set,
+        le compteur d'encombrement de chacun des deux concerner et le changement de la localisation des premier bits peux être fait.*/
     }
 }
 
@@ -139,7 +146,7 @@ CAN_TG_STATUE find_byte_with_enoung_space(uint8_t siz, int8_t* retur_var)
         }
     }
     // si aucun trouver ou si c'est déjà une valeur paire, faire une recherche normal.
-    for (uint8_t i = 0; i < N_BYTES; i++)
+    for (int8_t i = 0; i < N_BYTES; i++)
     {
         if((8 - g_bytes_used[i]) >= siz)
         {
@@ -216,7 +223,8 @@ CAN_TG_STATUE set_tag(const char* tag_name, uint8_t siz){
     if(tag_name[0]=='\0'){
         return CAN_TG_ERROR_TAG_NAME_INVALIDE;
     }
-    //
+    // validation de la taille
+    if(siz <= 0 || siz > 16){return CAN_TG_ERROR_SIZE_VALUE_INVALIDE;}
 
     //------------------------- v2 de l'algo pour trouver des tailles valides.
 
@@ -249,7 +257,7 @@ CAN_TG_STATUE set_tag(const char* tag_name, uint8_t siz){
     // -------------------------fin nouvelle algo
     // En théorie, le reste ne devrais plus être appeller.
 
-    if(siz == 16){
+    /*if(siz == 16){
         // détermine s'il y a des bits avec asser d'espace (pour les 16 bites)
         // et en même temps, déterminer quel bytes possiblement prendre
         int bytea, byteb;    // l'id des futures bytes pris (s'il en reste asser)
@@ -271,6 +279,7 @@ CAN_TG_STATUE set_tag(const char* tag_name, uint8_t siz){
         if(n_byte_nesessaire > 0){return CAN_TG_ERROR_NOT_ENOUNG_SPACE;}
         // set the tags
         set_new_tag_9_to_16(tag_name, bytea, byteb,8);
+        print_all_data_bin();printf("\t creation of tag\n");
         return SUCCES_TO_SET;
     }
     else if(siz == 8)     // cas de 8 bits
@@ -343,7 +352,7 @@ CAN_TG_STATUE set_tag(const char* tag_name, uint8_t siz){
         return CAN_TG_ERROR_NOT_ENOUNG_SPACE;
     }
     // taille invalide
-    return CAN_TG_ERROR_SIZE_VALUE_INVALIDE;
+    return CAN_TG_ERROR_SIZE_VALUE_INVALIDE;*/
 };
 
 const TagDef* get_tag_def(const char* tag_name)

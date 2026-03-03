@@ -13,5 +13,5 @@
 
 void print_bin_8(uint8_t val);
 void print_all_data_bin(void);
-
+void print_all_with_title(const char* title);
 #endif /* PRINT_VAL_H */

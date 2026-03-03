@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_data__container_8h_source" xml:lang="fr">
+<title>data_container.h</title>
+<indexterm><primary>data_container.h</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;DATA_CONTAINER_H</emphasis>
+2 
+3 <emphasis role="preprocessor">#include&#32;&lt;stdint.h&gt;</emphasis>
+4 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_tag__manager_8h">tag_manager.h</link>&quot;</emphasis>
+5 
+6 <emphasis role="preprocessor">#define&#32;DATA_CONTAINER_H</emphasis>
+7 
+8 <emphasis role="comment">//&#32;Représente&#32;le&#32;buffer&#32;de&#32;données&#32;(le&#32;payload&#32;CAN&#32;de&#32;8&#32;octets)</emphasis>
+9 <emphasis role="keyword">extern</emphasis>&#32;uint8_t&#32;<link linkend="_data__container_8c_1a0b96d44a8da73070e470c7bf30523ca1">TxData</link>[<link linkend="_config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1">N_BYTES</link>];&#32;&#32;&#32;&#32;
+10 
+14 
+15 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_data__container_8h_1a129f017feb0712be1dcf7932e6035aa0">init_data_container</link>(<emphasis role="keywordtype">void</emphasis>);
+16 
+17 <emphasis role="comment">//&#32;Fonctions&#32;principales&#32;(getters&#32;/&#32;setters)</emphasis>
+26 
+27 <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_data__container_8h_1aa84538f1ab0c319056787e9674157405">set_value</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;tag_name,&#32;uint32_t&#32;value);
+28 
+37 <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f">get_value</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;tag_name,&#32;uint32_t*&#32;out_value);
+38 
+39 
+48 uint8_t&#32;<link linkend="_data__container_8h_1a66768c162c3a8352b7d5397e90206085">prep_mask</link>(uint8_t&#32;p_bit,&#32;uint8_t&#32;n_bit);
+49 <emphasis role="comment">//&#32;Simulation&#32;de&#32;transmission&#32;(remplace&#32;send/receve&#32;python)</emphasis>
+50 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_data__container_8h_1ae1649807202241b28239e8cb212a18b6">can_simulate_send_receive</link>(uint8_t*&#32;tx_buffer,&#32;uint8_t*&#32;rx_buffer);
+51 
+52 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;DATA_CONTAINER_H</emphasis>
+</programlisting></section>

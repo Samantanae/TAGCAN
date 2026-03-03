@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_tag__manager_8h_source" xml:lang="fr">
+<title>tag_manager.h</title>
+<indexterm><primary>tag_manager.h</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;TAG_MANAGER_H</emphasis>
+2 <emphasis role="preprocessor">#define&#32;TAG_MANAGER_H</emphasis>
+3 
+4 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_config__value_8h">../config_value.h</link>&quot;</emphasis>
+5 <emphasis role="preprocessor">#include&#32;&lt;stdint.h&gt;</emphasis>
+6 <emphasis role="preprocessor">#include&#32;&lt;stdbool.h&gt;</emphasis>
+7 
+8 
+12 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">struct</emphasis>
+13 {
+14 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;<link linkend="_struct_tag_def_1a5365d3ceaa5fb559687e0d26268ca709">name</link>[<link linkend="_config__value_8h_1ada71b9f258860d58a86ab220bfce6bf4">MAX_TAG_NAME_LEN</link>];&#32;&#32;&#32;&#32;
+15 &#32;&#32;&#32;&#32;uint8_t&#32;<link linkend="_struct_tag_def_1a894ffee63faf79f0877a12c871a18b3a">n_bits</link>;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;1,&#32;3,&#32;4,&#32;8,&#32;ou&#32;16</emphasis>
+16 &#32;&#32;&#32;&#32;int8_t&#32;<link linkend="_struct_tag_def_1a985f815d0edbf8a411fbf325a30baec8">byte_idx_a</link>;&#32;&#32;&#32;&#32;
+17 &#32;&#32;&#32;&#32;int8_t&#32;<link linkend="_struct_tag_def_1a1368f5414ba506dc1626d65a1083dc92">byte_idx_b</link>;&#32;&#32;&#32;&#32;
+18 &#32;&#32;&#32;&#32;uint8_t&#32;<link linkend="_struct_tag_def_1ab2ab707c2832eb3cd8776c3134b29b1d">bit_pos_a</link>;&#32;&#32;&#32;&#32;&#32;&#32;
+19 &#32;&#32;&#32;&#32;uint8_t&#32;<link linkend="_struct_tag_def_1a315b71fd9f91bd21c82164e006859ede">bit_pos_b</link>;&#32;&#32;&#32;&#32;&#32;&#32;
+20 }&#32;<link linkend="_struct_tag_def">TagDef</link>;
+21 
+22 <emphasis role="comment">//&#32;Gestionnaire&#32;global&#32;de&#32;tags</emphasis>
+23 
+24 <emphasis role="keyword">extern</emphasis>&#32;<link linkend="_struct_tag_def">TagDef</link>&#32;<link linkend="_tag__manager_8h_1ace5be789d004e0752b6b2dec9d845864">g_tags</link>[<link linkend="_config__value_8h_1aa653c0eca99802a09fd9560f28a9b1c1">MAX_TAGS</link>];&#32;&#32;&#32;&#32;
+25 <emphasis role="keyword">extern</emphasis>&#32;uint8_t&#32;<link linkend="_tag__manager_8h_1ab7cad863197c93abe397155a1946c0d0">g_tag_count</link>;&#32;&#32;&#32;&#32;
+26 <emphasis role="comment">//&#32;Allocation&#32;des&#32;bits&#32;dans&#32;chaque&#32;byte&#32;(0&#32;à&#32;7)</emphasis>
+27 <emphasis role="keyword">extern</emphasis>&#32;uint8_t&#32;<link linkend="_tag__manager_8h_1af12845c0234390db7498ec51e94f7d58">g_bytes_used</link>[<link linkend="_config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1">N_BYTES</link>];&#32;&#32;&#32;&#32;
+28 
+29 <emphasis role="comment">//&#32;structure&#32;de&#32;multi&#32;gestionnaire&#32;de&#32;tags&#32;(en&#32;dévelopement)</emphasis>
+30 
+31 <emphasis role="comment">/*typedef&#32;struct&#32;{</emphasis>
+32 <emphasis role="comment"></emphasis>
+33 <emphasis role="comment"></emphasis>
+34 <emphasis role="comment">}*/</emphasis>
+35 
+36 <emphasis role="comment">//--------------------------------fonction&#32;utilisé&#32;de&#32;manière&#32;général&#32;------------------------</emphasis>
+42 <emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_tag_def">TagDef</link>*&#32;<link linkend="_tag__manager_8h_1a5737e741608851f8e3822cf07261da44">get_tag_def</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;tag_name);
+43 
+44 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;TAG_MANAGER_H</emphasis>
+</programlisting></section>

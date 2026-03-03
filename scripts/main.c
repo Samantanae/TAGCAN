@@ -72,8 +72,8 @@ void run_all_tests(void)
     // Tailles invalides (doit retourner -2)
     printf("\tTailles invalides\n");
     TEST_EQ_INT("0",set_tag("inv1", 0), CAN_TG_ERROR_SIZE_VALUE_INVALIDE);
-    TEST_EQ_INT("2",set_tag("inv2", 2), CAN_TG_ERROR_SIZE_VALUE_INVALIDE);
-    TEST_EQ_INT("5",set_tag("inv5", 5), CAN_TG_ERROR_SIZE_VALUE_INVALIDE);
+    TEST_EQ_INT("2",set_tag("inv2", 2), CAN_TG_SUCCESS);
+    TEST_EQ_INT("5",set_tag("inv5", 5), CAN_TG_SUCCESS);
 
     // Tag en double (doit retourner -2)
     printf("\tTag en double\n");

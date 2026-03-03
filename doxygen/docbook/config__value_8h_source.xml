@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_config__value_8h_source" xml:lang="fr">
+<title>config_value.h</title>
+<indexterm><primary>config_value.h</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;CONFIG_VALUE_H</emphasis>
+2 <emphasis role="preprocessor">#define&#32;CONFIG_VALUE_H</emphasis>
+3 
+4 <emphasis role="preprocessor">#define&#32;MAX_TAGS&#32;32</emphasis>
+5 <emphasis role="preprocessor">#define&#32;MAX_TAG_NAME_LEN&#32;16</emphasis>
+6 <emphasis role="preprocessor">#define&#32;N_BYTES&#32;8</emphasis>
+7 <emphasis role="preprocessor">#define&#32;MAX_N_GT&#32;3</emphasis>
+8 
+9 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_config__value_8h_1a7f995285b1ed198ba4c10528ef66b8fe">CAN_TG_ERROR_INTERNAL_CORUPTION</link>;
+10 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_config__value_8h_1af68b72a5b65a0168415d1363dc09a0a6">CAN_TG_ERROR_TAG_NAME_TO_BIGS</link>;
+11 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_config__value_8h_1a49d547279f99d23ff36998f3874d3c5a">CAN_TG_ERROR_TAG_NAME_INVALIDE</link>;
+12 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_config__value_8h_1ab0c8b9c7e93d137cd8956e4c391a0f4c">CAN_TG_ERROR_TAG_NOT_FOUND</link>;
+13 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_config__value_8h_1a6ac7074ca0f94196368735678d92c7b8">CAN_TG_ERROR_NOT_ENOUNG_SPACE</link>;
+14 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_config__value_8h_1ada864c858133fa1c52368562add7d64e">CAN_TG_ERROR_NULL_POINTOR</link>;
+15 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_config__value_8h_1a3cf459060e0c412c5908438afc160d9f">CAN_TG_ERROR_TRY_TO_FIND_END_CARACTER</link>;
+16 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_config__value_8h_1a73337c3ada0009e763ea5af164e25d70">CAN_TG_ERROR_SIZE_VALUE_INVALIDE</link>;
+17 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_config__value_8h_1acb2aafd99394462e0f83f05673be52a9">CAN_TG_ERROR_SUBDIVISION_FAIL</link>;
+18 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_config__value_8h_1a1e77443066dccbc42ef0acdd0f597c07">CAN_TG_ERROR_TOO_MAY_TAGS</link>;
+19 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_config__value_8h_1a18061c1ca5fc2e5ab20fa7bc8dbe81d6">CAN_TG_ERROR_NAME_ALREADY_USE</link>;
+20 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_config__value_8h_1af9a28b199e843773aefbb1e1bcf50559">SUCCES_TO_SET</link>;
+21 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_config__value_8h_1afb042b80a35ed7a692f9001589ddf8c6">SUCCES</link>;
+22 
+23 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">enum</emphasis>&#32;{
+24 &#32;&#32;&#32;&#32;<link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947fa4add2030061ed8081fd69bbc7961b88e">CAN_TG_ERROR_NOT_ENOUNG_SPACE_</link>&#32;=&#32;-2,
+25 &#32;&#32;&#32;&#32;<link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3">CAN_TG_SUCCESS</link>&#32;=&#32;1,
+26 &#32;&#32;&#32;&#32;<link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947faefecc0d5f9f8d279aeeac67967a54040">CAN_TG_ERROR_TAG_NOT_FOUND_</link>&#32;=&#32;-3,
+27 &#32;&#32;&#32;&#32;<link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947fa0766008cbf1754ab42a2e4995b18e1d2">CAN_TG_ERROR_TAG_NAME_TO_BIGS_</link>&#32;=&#32;-4,
+28 &#32;&#32;&#32;&#32;<link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947fa2d5a4a6abf40a9b845d30b4927cc8321">CAN_TG_ERROR_TOO_MAY_TAGS_</link>&#32;=&#32;-5,
+29 &#32;&#32;&#32;&#32;<link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947fa1f64facc77e1738f2ed16fae7f38140f">CAN_TG_ERROR_SIZE_VALUE_INVALIDE_</link>&#32;=&#32;-6,
+30 &#32;&#32;&#32;&#32;<link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947fadb8a1b35ff867562e04d179242c150f2">CAN_TG_ERROR_NAME_ALREADY_USE_</link>&#32;=&#32;-7,
+31 &#32;&#32;&#32;&#32;<link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947faf1069aa607410cd4bdeb9609f6b03a6b">CAN_TG_ERROR_SUBDIVISION_FAIL_</link>&#32;=&#32;-8,
+32 &#32;&#32;&#32;&#32;<link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947faa30bc0e8a501b29dbf6d3b5c3e4fe6f9">CAN_TG_ERROR_TAG_NAME_INVALIDE_</link>=-9,
+33 &#32;&#32;&#32;&#32;<link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947fa8f8b6e84f2b232e0ed2995b7afbd0c44">CAN_TG_ERROR_NULL_POINTOR_</link>&#32;=&#32;-2,
+34 &#32;&#32;&#32;&#32;<link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947fab194d19ed0940cb65b5c625b913aaa40">CAN_TG_ERROR_TRY_TO_FIND_END_CARACTER_</link>&#32;=&#32;-21,
+35 &#32;&#32;&#32;&#32;<link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947fa4ec6d89f60bf1ee862d7b94bed822768">CAN_TG_ERROR_INTERNAL_CORUPTION_</link>&#32;=&#32;-30,
+36 &#32;&#32;&#32;&#32;<link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947fab1cfc87a8731dfcbc6e986a1b81115ac">CAN_TG_ERROR_VALUE_TO_BIG</link>&#32;=&#32;-10,
+37 }&#32;<link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947f">CAN_TG_STATUE</link>;
+38 
+39 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;CONFIG_VALUE_H</emphasis>
+</programlisting></section>

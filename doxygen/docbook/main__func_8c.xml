@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_main__func_8c" xml:lang="fr">
+<title>Référence du fichier main_func.c</title>
+<indexterm><primary>main_func.c</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;../include/sub_include/data_container.h&quot;<?linebreak?>#include &quot;../include/sub_include/tag_manager.h&quot;<?linebreak?>#include &quot;../include/config_value.h&quot;<?linebreak?></programlisting>Graphe des dépendances par inclusion de main_func.c:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="main__func_8c__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
