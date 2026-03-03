@@ -66,16 +66,16 @@ init_tag_manager();
 // set the tags
 set_tag("a1",2);
 set_tag("agh5",5);
-set_tag("patapo",16);
-set_tag("patate",12);
+set_tag("patap",16);
+set_tag("patat",12);
 set_tag("uni1",1);
 set_tag("triot", 3);
 
 // set the value
-set_value("a1",2);
+set_value("a1",3);
 set_value("agh5",42);
-set_value("patapo",45);
-set_value("patate",12);
+set_value("patap",45);
+set_value("patat",12);
 set_value("uni1",1);
 set_value("triot", 3);
 

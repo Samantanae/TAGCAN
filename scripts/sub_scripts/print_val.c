@@ -8,9 +8,15 @@
 tsfp gbc2[9];
 void print_all_tag_set(void){
     printf("-------------------------------------------------\n");
-    printf("\tid\tname\t\tn_bits\tbyte_idx_a\tbyte_idx_b\tbit_pos_a\tbit_pos_b\n");
-    for(int i = 0; i <= g_tag_count ; i++){
-        printf("\t%d",i);
+    printf("legende\n\tnb:\tn_bits\t (le nombre de bites attribuer à la valeurs)\n");
+    printf("\tbia:\tbyte_idx_a\t (le numéro du bytes de la partie A de la valeur \n");
+    printf("\tbib:\tbyte_idx_b\t (le numéro de bytes de la partie B de la valeur (-1: pas de partie B))\n");
+    printf("\tbpa:\tbit_pos_a (La position du premier bits dans le byte en question de la partie A.)\n");
+    printf("\tbpb:\tbit_pos_b (idem, mais pour la partie B.\n");
+    printf("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n");
+    printf("\tid\tname\tnb\tbia\tbib\tbpa\tbpb\n");
+    for(int i = 0; i <= g_tag_count - 1; i++){
+        printf("\t%d\t",i);
         printf("%s\t",g_tags[i].name);
         printf("%d\t",g_tags[i].n_bits);
         printf("%d\t",g_tags[i].byte_idx_a);
@@ -19,14 +25,14 @@ void print_all_tag_set(void){
         printf("%d\t",g_tags[i].bit_pos_b);
         printf("\n");
     }
-    printf("-------------------------------------------------\n");
+    printf("---------------------------------------------------------------------\n");
 }
 
 void print_all_data(void){
     printf("---------------------[view of all data]----------------------------\n");
-    printf("format: tag[nb bits pour la valeur]:\tactuel valeur");
+    printf("format: tag[n.bits]:\tvaleur\n");
     int32_t result_val;
-    for(int i = 0; i <= g_tag_count ; i++){
+    for(int i = 0; i <= g_tag_count - 1; i++){
         printf("\t%d",i);
         printf("%s\t",g_tags[i].name);
         get_value(g_tags[i].name,&result_val);
@@ -61,16 +67,15 @@ void print_repartition_bit(void){
     }
 
 
-    printf("legend:\n");
+    printf("legend (des bits de la trame):\n");
     char possible_id[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     //char* vt1[8],vt2[8],vt3[8],vt4[8],vt5[8],vt6[8],vt7[8], vt8[8];
     uint8_t gbu[N_BYTES] = {0};
     memset(gbu, 0, sizeof(gbu));
-    for(int i = 0; i <= g_tag_count ; i++){
+    for(int i = 0; i <= g_tag_count - 1; i++){
         printf("%s :\t",g_tags[i].name);
         printf("[%c]\n", possible_id[i]);
         if(g_tags[i].n_bits > 8){
-            // suposon 'v' le bon 'byte_idx_a'
             // 1) pour toute les valeurs présent dans le a, les 8 bites vont être attribuer à celui-ci.
             for(int i2=0; i2<8;i2++){
                 gbc2[g_tags[i].bit_pos_a].bi[i2] = possible_id[i];
