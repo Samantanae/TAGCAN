@@ -15,9 +15,17 @@ int total_tests = 0; /**< le nombre total de test effectué */
  *
  */
 
-void TEST(const char* name, const bool condition){
-    if(condition){printf("success\t\t\t%s\n", name);passed_tests++;}
-    else{printf("fail\t\t\t%s\n", name);}
+void TEST(const char* name, const bool condition)
+{
+    if(condition)
+    {
+        printf("success\t\t\t%s\n", name);
+        passed_tests++;
+    }
+    else
+    {
+        printf("fail\t\t\t%s\n", name);
+    }
     total_tests++;
 }
 /** \brief permet l'impression des testes d'égalité entre 2 int de manière plus stendardisé.
@@ -27,12 +35,16 @@ void TEST(const char* name, const bool condition){
  * \param val_2 la deuxième valeurs à comparer.
  *
  */
-void TEST_EQ_INT(const char* name, const int val_1, const int val_2){
+void TEST_EQ_INT(const char* name, const int val_1, const int val_2)
+{
     bool condition = val_1 == val_2;
-    if(condition){
+    if(condition)
+    {
         printf("success\t\t\t%s\n", name);
-    passed_tests++;}
-    else{
+        passed_tests++;
+    }
+    else
+    {
         printf("fail\t\t\t%s", name);
         printf("\t%d != ", val_1);
         printf("%d\n", val_2);
@@ -45,7 +57,8 @@ void TEST_EQ_INT(const char* name, const int val_1, const int val_2){
  *
  */
 
-void run_all_tests(void) {
+void run_all_tests(void)
+{
     uint32_t val = 0;
 
     printf("=== Lancement des tests unitaires ===\n");
@@ -83,7 +96,7 @@ void run_all_tests(void) {
 
     // Le prochain tag doit être refusé, peu importe sa taille (-1)
     printf("\ttest de Dépassement de l'espace mémoire (8 octets max)\n");
-    TEST_EQ_INT("avec 1 bit",set_tag("T5", 1) , CAN_TG_ERROR_NOT_ENOUNG_SPACE);
+    TEST_EQ_INT("avec 1 bit",set_tag("T5", 1), CAN_TG_ERROR_NOT_ENOUNG_SPACE);
     TEST_EQ_INT("avec 16 bits",set_tag("T6", 16), CAN_TG_ERROR_NOT_ENOUNG_SPACE);
     printf("OK\n");
 
@@ -134,9 +147,12 @@ void run_all_tests(void) {
 
     // On vérifie qu'elles sont bien mémorisées
     printf("\t\n");
-    get_value("T_1", &val); TEST_EQ_INT("get value T_1",val, 1);
-    get_value("T_3", &val); TEST_EQ_INT("get value T_3",val, 7);
-    get_value("T_4", &val); TEST_EQ_INT("get value T_4",val, 15);
+    get_value("T_1", &val);
+    TEST_EQ_INT("get value T_1",val, 1);
+    get_value("T_3", &val);
+    TEST_EQ_INT("get value T_3",val, 7);
+    get_value("T_4", &val);
+    TEST_EQ_INT("get value T_4",val, 15);
 
     // On modifie T_3 sans toucher aux autres
     printf("\tmodification de T_3 sans toucher aux autres\n");
@@ -144,9 +160,12 @@ void run_all_tests(void) {
 
     // On vérifie que T_1 et T_4 n'ont pas bougé
     printf("\t\n");
-    get_value("T_1", &val); TEST_EQ_INT("verif valeur [encien]",val, 1);
-    get_value("T_3", &val); TEST_EQ_INT("verif valeur [nouvel]",val, 2); // Nouvelle valeur
-    get_value("T_4", &val); TEST_EQ_INT("verif valeur [encien]",val, 15);
+    get_value("T_1", &val);
+    TEST_EQ_INT("verif valeur [encien]",val, 1);
+    get_value("T_3", &val);
+    TEST_EQ_INT("verif valeur [nouvel]",val, 2); // Nouvelle valeur
+    get_value("T_4", &val);
+    TEST_EQ_INT("verif valeur [encien]",val, 15);
     printf("OK\n");
 
     // ---------------------------------------------------------
@@ -160,8 +179,12 @@ void run_all_tests(void) {
 
     // Test des bornes 0 et 255
     printf("\tTest des bornes 0 et 255\n");
-    set_value("V8", 0);   get_value("V8", &val); TEST_EQ_INT("val = 0",val, 0);
-    set_value("V8", 255); get_value("V8", &val); TEST_EQ_INT("val = 255",val, 255);
+    set_value("V8", 0);
+    get_value("V8", &val);
+    TEST_EQ_INT("val = 0",val, 0);
+    set_value("V8", 255);
+    get_value("V8", &val);
+    TEST_EQ_INT("val = 255",val, 255);
     printf("\tErreur dépassement\n");
     TEST_EQ_INT("val: [256]",set_value("V8", 256), -4); // Erreur dépassement
     printf("OK\n");
@@ -179,26 +202,41 @@ void run_all_tests(void) {
     printf("test  d'ajout de valeurs\n");
     TEST_EQ_INT("set val",set_value("ma_val1", 3),1);
     TEST_EQ_INT("set val 2",set_value("ma_2", 9),1);
-    get_value("ma_val1", &val);TEST_EQ_INT("get val 1",val,3);;
-    get_value("ma_2", &val);TEST_EQ_INT("get val 2",val,9);;
+    get_value("ma_val1", &val);
+    TEST_EQ_INT("get val 1",val,3);;
+    get_value("ma_2", &val);
+    TEST_EQ_INT("get val 2",val,9);;
     //printf("=== TOUS LES TESTS SONT PASSES AVEC SUCCES ! ===\n\n");
 }
 
-int main(void) {
+int main(void)
+{
 
 
     // Il suffit d'appeler la fonction de test au début de votre main
     run_all_tests();
     printf("----------------------test mask ------------------------\n");
-    printf("\t(0,8): ");   print_bin_8(prep_mask(0, 8));printf("\n");
-    printf("\t(4,4): ");   print_bin_8(prep_mask(4, 4));printf("\n");
-    printf("\t(4,3): ");   print_bin_8(prep_mask(4, 3));printf("\n");
-    printf("\t(1,4): ");   print_bin_8(prep_mask(1, 4));printf("\n");
-    printf("\t(5,1): ");   print_bin_8(prep_mask(5, 1));printf("\n");
+    printf("\t(0,8): ");
+    print_bin_8(prep_mask(0, 8));
+    printf("\n");
+    printf("\t(4,4): ");
+    print_bin_8(prep_mask(4, 4));
+    printf("\n");
+    printf("\t(4,3): ");
+    print_bin_8(prep_mask(4, 3));
+    printf("\n");
+    printf("\t(1,4): ");
+    print_bin_8(prep_mask(1, 4));
+    printf("\n");
+    printf("\t(5,1): ");
+    print_bin_8(prep_mask(5, 1));
+    printf("\n");
     printf("------------------------------test shift----------------------\n");
     uint8_t val1 = 0b01110000;
     uint8_t bi = 0b01110100;
-    printf("val1: ");   print_bin_8(val1);printf("\n");
+    printf("val1: ");
+    print_bin_8(val1);
+    printf("\n");
     int p_bit = 4;
     int n_bit = 4;
     // eq logic pour la prise de la valeur
@@ -207,7 +245,8 @@ int main(void) {
     uint8_t mask_val = 0b1;
     uint8_t mask_temp = 0b1;
     // mask des bits de la valeurs
-    for (int i = 0; i < (n_bit - 1); i++){
+    for (int i = 0; i < (n_bit - 1); i++)
+    {
         mask_val = mask_val << 1;
         mask_val |= mask_temp;
     }
@@ -219,11 +258,21 @@ int main(void) {
 
 
     //mask_val = mask_val >> (8 - n_bit);
-    printf("vrai_val: ");   print_bin_8(vrai_val);printf("\n");
-    printf("mask: ");   print_bin_8(mask_val);printf("\n");
-    printf("mask2: ");   print_bin_8(mask_val_p);printf("\n");
-    printf("byte avant: ");   print_bin_8(bi);printf("\n");
-    printf("byte sans val: ");   print_bin_8(byte_sans_val);printf("\n");
+    printf("vrai_val: ");
+    print_bin_8(vrai_val);
+    printf("\n");
+    printf("mask: ");
+    print_bin_8(mask_val);
+    printf("\n");
+    printf("mask2: ");
+    print_bin_8(mask_val_p);
+    printf("\n");
+    printf("byte avant: ");
+    print_bin_8(bi);
+    printf("\n");
+    printf("byte sans val: ");
+    print_bin_8(byte_sans_val);
+    printf("\n");
 
 
     printf("test final\n");

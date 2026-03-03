@@ -6,12 +6,14 @@
 
 /**
  * @bref prints the binary representation of an 8-bit unsigned integer.
- * 
+ *
  * @param val The `val` [from 0 to 255]. The function prints the binary
  * representation of this value by iterating over each bit.
  */
-void print_bin_8(uint8_t val){
-    for(int i = 7; i >= 0 ; i--){
+void print_bin_8(uint8_t val)
+{
+    for(int i = 7; i >= 0 ; i--)
+    {
         printf("%c", (val & (1 << i)) ? '1' : '0');
     }
 }
@@ -20,9 +22,11 @@ void print_bin_8(uint8_t val){
  * prints the binary representation of each byte in the `TxData`
  * array.
  */
-void print_all_data_bin(void) {
+void print_all_data_bin(void)
+{
     printf("DATA: \t");
-    for (int i = 0; i < N_BYTES; i++) {
+    for (int i = 0; i < N_BYTES; i++)
+    {
         print_bin_8(TxData[i]);
         printf("\t");
     }

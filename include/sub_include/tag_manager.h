@@ -9,7 +9,8 @@
 /**
  * \brief structure représentent un tag.
  */
-typedef struct {
+typedef struct
+{
     char name[MAX_TAG_NAME_LEN];    /**< Nom du tag (il dois être unique et être d'une longueur inférieur à la longueur maximal spécifier par MAX_TAG_NAME_LEN) */
     uint8_t n_bits;    /**< Taille de la valeur (peux être 1, 3, 4, 8, ou 16. si 0, le tag n'ais juste pas encore utilisé) */         // 1, 3, 4, 8, ou 16
     int8_t byte_idx_a;    /**< Index du byte (0 à 7), -1 si non utilisé */
