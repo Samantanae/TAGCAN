@@ -1,6 +1,3 @@
-
-
-
 #include "../include/config_value.h"
 
 //const int //CAN_TG_ERROR = ;
@@ -17,3 +14,8 @@ const int CAN_TG_ERROR_TRY_TO_FIND_END_CARACTER = -21;
 const int CAN_TG_ERROR_INTERNAL_CORUPTION = -30;
 const int SUCCES_TO_SET = 1;
 const int SUCCES = 1;
+
+typedef enum {
+    CAN_TG_ERROR_NOT_ENOUNG_SPACE_ = 2
+
+} CAN_TG_STATUE;

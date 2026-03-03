@@ -3,15 +3,30 @@
 #include <stdbool.h>
 #include "../include/config_value.h"
 #include "../include/sub_include/data_container.h"
+#include "../include/gestion_tag.h"
+#include "../include/sub_include/print_val.h"
+int passed_tests = 0; /**< le nombre total de test réussi */
+int total_tests = 0; /**< le nombre total de test effectué */
 
-int passed_tests = 0;
-int total_tests = 0;
+/** \brief permet l'impression des testes de manière identique pour chacun.
+ *
+ * \param name:     le nom du test (peux aussi être sa description court.)
+ * \param condition:Le resultat du test (vrai si réussi, faux sinon)
+ *
+ */
 
 void TEST(const char* name, const bool condition){
-    if(condition){printf("success\t\t\t%s\n", name);}
+    if(condition){printf("success\t\t\t%s\n", name);passed_tests++;}
     else{printf("fail\t\t\t%s\n", name);}
+    total_tests++;
 }
-
+/** \brief permet l'impression des testes d'égalité entre 2 int de manière plus stendardisé.
+ *
+ * \param name: même chose que TEST
+ * \param val_1 la première valeurs à comparer.
+ * \param val_2 la deuxième valeurs à comparer.
+ *
+ */
 void TEST_EQ_INT(const char* name, const int val_1, const int val_2){
     bool condition = val_1 == val_2;
     if(condition){
@@ -24,6 +39,11 @@ void TEST_EQ_INT(const char* name, const int val_1, const int val_2){
     }
     total_tests++;
 }
+
+/** \brief effectue les divers tests affin de vérifier que tout fonctionne bien.
+ *      les résultat sont présenté dans le terminal.
+ *
+ */
 
 void run_all_tests(void) {
     uint32_t val = 0;

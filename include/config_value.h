@@ -1,6 +1,10 @@
 #ifndef CONFIG_VALUE_H
 #define CONFIG_VALUE_H
 
+#define MAX_TAGS 32
+#define MAX_TAG_NAME_LEN 16
+#define N_BYTES 8
+#define MAX_N_GT 3
 
 extern const int CAN_TG_ERROR_INTERNAL_CORUPTION;
 extern const int CAN_TG_ERROR_TAG_NAME_TO_BIGS;
