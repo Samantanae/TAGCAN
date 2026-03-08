@@ -23,7 +23,7 @@ Aller Γ  la documentation de ce fichier.<programlisting linenumbering="unnumbere
 19 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_config__value_8h_1a18061c1ca5fc2e5ab20fa7bc8dbe81d6">CAN_TG_ERROR_NAME_ALREADY_USE</link>;
 20 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_config__value_8h_1af9a28b199e843773aefbb1e1bcf50559">SUCCES_TO_SET</link>;
 21 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_config__value_8h_1afb042b80a35ed7a692f9001589ddf8c6">SUCCES</link>;
-22 
+22 <emphasis role="comment">//&#32;ιθΰβ</emphasis>
 23 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">enum</emphasis>&#32;{
 24 &#32;&#32;&#32;&#32;<link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947fa4add2030061ed8081fd69bbc7961b88e">CAN_TG_ERROR_NOT_ENOUNG_SPACE_</link>&#32;=&#32;-2,
 25 &#32;&#32;&#32;&#32;<link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3">CAN_TG_SUCCESS</link>&#32;=&#32;1,
@@ -40,5 +40,11 @@ Aller Γ  la documentation de ce fichier.<programlisting linenumbering="unnumbere
 36 &#32;&#32;&#32;&#32;<link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947fab1cfc87a8731dfcbc6e986a1b81115ac">CAN_TG_ERROR_VALUE_TO_BIG</link>&#32;=&#32;-10,
 37 }&#32;<link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947f">CAN_TG_STATUE</link>;
 38 
-39 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;CONFIG_VALUE_H</emphasis>
+39 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">enum</emphasis>&#32;{
+40 &#32;&#32;&#32;&#32;<link linkend="_config__value_8h_1ac0d6cdda2cf4abb51116b86bc99acf99a7d47d78204fba2e07bda4e65594ff332">RECEVE_ONLY</link>,&#32;&#32;&#32;&#32;
+41 &#32;&#32;&#32;&#32;<link linkend="_config__value_8h_1ac0d6cdda2cf4abb51116b86bc99acf99ad5ec70c56183ea13f8a0c16a3708a23e">SEND_ONLY</link>,&#32;&#32;&#32;&#32;
+42 &#32;&#32;&#32;&#32;<link linkend="_config__value_8h_1ac0d6cdda2cf4abb51116b86bc99acf99ac4e66207fce47c294e4aaab76000c9ce">SEND_AND_RECEVE</link>,&#32;&#32;&#32;&#32;
+43 }&#32;<link linkend="_config__value_8h_1ac0d6cdda2cf4abb51116b86bc99acf99">CAN_MODE</link>;
+44 
+45 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;CONFIG_VALUE_H</emphasis>
 </programlisting></section>

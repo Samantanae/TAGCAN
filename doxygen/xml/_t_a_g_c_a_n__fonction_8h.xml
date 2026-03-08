@@ -52,7 +52,7 @@
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="data__container_8h" kindref="compound">sub_include/data_container.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="tag__manager_8h" kindref="compound">sub_include/tag_manager.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="5"><highlight class="normal"></highlight></codeline>
-<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//(la<sp/>ligne<sp/>suivante<sp/>risque<sp/>de<sp/>causé une<sp/>double<sp/>définition)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//(la<sp/>ligne<sp/>suivante<sp/>risque<sp/>de<sp/>causÃ©<sp/>une<sp/>double<sp/>dÃ©finition)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//int<sp/>set_tag(const<sp/>char*<sp/>tag_name,<sp/>uint8_t<sp/>n_bits);</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="8"><highlight class="normal"></highlight></codeline>
 <codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>TAGCAN_FONCTION_H_INCLUDED</highlight><highlight class="normal"></highlight></codeline>

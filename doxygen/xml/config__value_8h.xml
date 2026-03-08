@@ -93,9 +93,9 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" line="4" column="9" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" bodystart="4" bodyend="-1"/>
-        <referencedby refid="tag__manager_8c_1a7b7413adbae2eabbe7fcd13e9f91f151" compoundref="tag__manager_8c" startline="31" endline="48">get_first_tags_vide</referencedby>
-        <referencedby refid="gestion__tag_8h_1aab50a8f567be72e656120fd71f3fb435" compoundref="tag__manager_8c" startline="13" endline="29">init_tag_manager</referencedby>
-        <referencedby refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="207" endline="354">set_tag</referencedby>
+        <referencedby refid="tag__manager_8c_1a7b7413adbae2eabbe7fcd13e9f91f151" compoundref="tag__manager_8c" startline="32" endline="49">get_first_tags_vide</referencedby>
+        <referencedby refid="gestion__tag_8h_1aab50a8f567be72e656120fd71f3fb435" compoundref="tag__manager_8c" startline="14" endline="30">init_tag_manager</referencedby>
+        <referencedby refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="208" endline="356">set_tag</referencedby>
       </memberdef>
       <memberdef kind="define" id="config__value_8h_1ada71b9f258860d58a86ab220bfce6bf4" prot="public" static="no">
         <name>MAX_TAG_NAME_LEN</name>
@@ -107,9 +107,9 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" line="5" column="9" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" bodystart="5" bodyend="-1"/>
-        <referencedby refid="tag__manager_8h_1a5737e741608851f8e3822cf07261da44" compoundref="tag__manager_8c" startline="356" endline="366">get_tag_def</referencedby>
-        <referencedby refid="tag__manager_8c_1a9963af2c23a14e289a3ff39769ea4eeb" compoundref="tag__manager_8c" startline="57" endline="70">set_name_tag</referencedby>
-        <referencedby refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="207" endline="354">set_tag</referencedby>
+        <referencedby refid="tag__manager_8h_1a5737e741608851f8e3822cf07261da44" compoundref="tag__manager_8c" startline="358" endline="368">get_tag_def</referencedby>
+        <referencedby refid="tag__manager_8c_1a9963af2c23a14e289a3ff39769ea4eeb" compoundref="tag__manager_8c" startline="58" endline="71">set_name_tag</referencedby>
+        <referencedby refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="208" endline="356">set_tag</referencedby>
       </memberdef>
       <memberdef kind="define" id="config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1" prot="public" static="no">
         <name>N_BYTES</name>
@@ -121,12 +121,13 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" line="6" column="9" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" bodystart="6" bodyend="-1"/>
-        <referencedby refid="data__container_8c_1ae1649807202241b28239e8cb212a18b6" compoundref="data__container_8c" startline="123" endline="129">can_simulate_send_receive</referencedby>
-        <referencedby refid="tag__manager_8c_1ad5772dac2622697b5f563da0dbfaede3" compoundref="tag__manager_8c" startline="168" endline="202">find_byte2_with_enoung_space</referencedby>
-        <referencedby refid="tag__manager_8c_1a5f1ce2cac9791e6b46be230dcce3f804" compoundref="tag__manager_8c" startline="125" endline="157">find_byte_with_enoung_space</referencedby>
-        <referencedby refid="data__container_8c_1a129f017feb0712be1dcf7932e6035aa0" compoundref="data__container_8c" startline="7" endline="13">init_data_container</referencedby>
-        <referencedby refid="print__val_8h_1a7d217b9d9a6575858c03ca9854bb151b" compoundref="print__val_8c" startline="25" endline="34">print_all_data_bin</referencedby>
-        <referencedby refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="207" endline="354">set_tag</referencedby>
+        <referencedby refid="data__container_8c_1ae1649807202241b28239e8cb212a18b6" compoundref="data__container_8c" startline="141" endline="147">can_simulate_send_receive</referencedby>
+        <referencedby refid="tag__manager_8c_1ad5772dac2622697b5f563da0dbfaede3" compoundref="tag__manager_8c" startline="169" endline="203">find_byte2_with_enoung_space</referencedby>
+        <referencedby refid="tag__manager_8c_1a5f1ce2cac9791e6b46be230dcce3f804" compoundref="tag__manager_8c" startline="126" endline="158">find_byte_with_enoung_space</referencedby>
+        <referencedby refid="data__container_8c_1a129f017feb0712be1dcf7932e6035aa0" compoundref="data__container_8c" startline="8" endline="14">init_data_container</referencedby>
+        <referencedby refid="print__val_8h_1a7d217b9d9a6575858c03ca9854bb151b" compoundref="print__val_8c" startline="129" endline="138">print_all_data_bin</referencedby>
+        <referencedby refid="print__val_8h_1aab1b8ef8b5cbbf7a78a88248ae81155c" compoundref="print__val_8c" startline="140" endline="149">print_all_with_title</referencedby>
+        <referencedby refid="print__val_8h_1a8ee4bb928c2cca54d191cf23edea60ec" compoundref="print__val_8c" startline="61" endline="109">print_repartition_bit</referencedby>
       </memberdef>
       <memberdef kind="define" id="config__value_8h_1a486663aa90115780beab9f9d39fa8973" prot="public" static="no">
         <name>MAX_N_GT</name>
@@ -256,6 +257,41 @@
         </inbodydescription>
         <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" line="23" column="1" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" bodystart="23" bodyend="37"/>
       </memberdef>
+      <memberdef kind="enum" id="config__value_8h_1ac0d6cdda2cf4abb51116b86bc99acf99" prot="public" static="no" strong="no">
+        <type></type>
+        <name>CAN_MODE</name>
+        <enumvalue id="config__value_8h_1ac0d6cdda2cf4abb51116b86bc99acf99a7d47d78204fba2e07bda4e65594ff332" prot="public">
+          <name>RECEVE_ONLY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>In this mode, the &apos;packet&apos; cannot be wrinten to from &apos;set_value&apos;, but the value (assuming it&apos;s the correct id) while be updated if the id match. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="config__value_8h_1ac0d6cdda2cf4abb51116b86bc99acf99ad5ec70c56183ea13f8a0c16a3708a23e" prot="public">
+          <name>SEND_ONLY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>In this mode, the &apos;packet&apos; linked with can only send data. In other words, if an other CAN perif send a &apos;paquet&apos; with the same ID, it&apos;s while not modifie he value. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="config__value_8h_1ac0d6cdda2cf4abb51116b86bc99acf99ac4e66207fce47c294e4aaab76000c9ce" prot="public">
+          <name>SEND_AND_RECEVE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>In this mode, you can modifie the value, send the value and receve an update form the CAN line. (In other word, it&apos;s the less free of contrainte, but also the most suceptible to have unwished change of value.) </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" line="39" column="1" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" bodystart="39" bodyend="43"/>
+      </memberdef>
     </sectiondef>
     <sectiondef kind="var">
       <memberdef kind="variable" id="config__value_8h_1a7f995285b1ed198ba4c10528ef66b8fe" prot="public" static="no" extern="yes" mutable="no">
@@ -283,7 +319,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" line="10" column="18" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/config_value.c" bodystart="6" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" declline="10" declcolumn="18"/>
-        <referencedby refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="207" endline="354">set_tag</referencedby>
+        <referencedby refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="208" endline="356">set_tag</referencedby>
       </memberdef>
       <memberdef kind="variable" id="config__value_8h_1a49d547279f99d23ff36998f3874d3c5a" prot="public" static="no" extern="yes" mutable="no">
         <type>const int</type>
@@ -297,7 +333,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" line="11" column="18" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/config_value.c" bodystart="11" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" declline="11" declcolumn="18"/>
-        <referencedby refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="207" endline="354">set_tag</referencedby>
+        <referencedby refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="208" endline="356">set_tag</referencedby>
       </memberdef>
       <memberdef kind="variable" id="config__value_8h_1ab0c8b9c7e93d137cd8956e4c391a0f4c" prot="public" static="no" extern="yes" mutable="no">
         <type>const int</type>
@@ -324,8 +360,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" line="13" column="18" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/config_value.c" bodystart="4" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" declline="13" declcolumn="18"/>
-        <referencedby refid="scripts_2main_8c_1ae9bbb2f5bb69f73e92c761f83223285a" compoundref="scripts_2main_8c" startline="60" endline="210">run_all_tests</referencedby>
-        <referencedby refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="207" endline="354">set_tag</referencedby>
+        <referencedby refid="scripts_2main_8c_1ae9bbb2f5bb69f73e92c761f83223285a" compoundref="scripts_2main_8c" startline="163" endline="313">run_all_tests</referencedby>
       </memberdef>
       <memberdef kind="variable" id="config__value_8h_1ada864c858133fa1c52368562add7d64e" prot="public" static="no" extern="yes" mutable="no">
         <type>const int</type>
@@ -365,8 +400,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" line="16" column="18" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/config_value.c" bodystart="8" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" declline="16" declcolumn="18"/>
-        <referencedby refid="scripts_2main_8c_1ae9bbb2f5bb69f73e92c761f83223285a" compoundref="scripts_2main_8c" startline="60" endline="210">run_all_tests</referencedby>
-        <referencedby refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="207" endline="354">set_tag</referencedby>
+        <referencedby refid="scripts_2main_8c_1ae9bbb2f5bb69f73e92c761f83223285a" compoundref="scripts_2main_8c" startline="163" endline="313">run_all_tests</referencedby>
+        <referencedby refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="208" endline="356">set_tag</referencedby>
       </memberdef>
       <memberdef kind="variable" id="config__value_8h_1acb2aafd99394462e0f83f05673be52a9" prot="public" static="no" extern="yes" mutable="no">
         <type>const int</type>
@@ -393,8 +428,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" line="18" column="18" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/config_value.c" bodystart="7" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" declline="18" declcolumn="18"/>
-        <referencedby refid="tag__manager_8c_1a7b7413adbae2eabbe7fcd13e9f91f151" compoundref="tag__manager_8c" startline="31" endline="48">get_first_tags_vide</referencedby>
-        <referencedby refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="207" endline="354">set_tag</referencedby>
+        <referencedby refid="tag__manager_8c_1a7b7413adbae2eabbe7fcd13e9f91f151" compoundref="tag__manager_8c" startline="32" endline="49">get_first_tags_vide</referencedby>
+        <referencedby refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="208" endline="356">set_tag</referencedby>
       </memberdef>
       <memberdef kind="variable" id="config__value_8h_1a18061c1ca5fc2e5ab20fa7bc8dbe81d6" prot="public" static="no" extern="yes" mutable="no">
         <type>const int</type>
@@ -408,8 +443,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" line="19" column="18" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/config_value.c" bodystart="9" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" declline="19" declcolumn="18"/>
-        <referencedby refid="scripts_2main_8c_1ae9bbb2f5bb69f73e92c761f83223285a" compoundref="scripts_2main_8c" startline="60" endline="210">run_all_tests</referencedby>
-        <referencedby refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="207" endline="354">set_tag</referencedby>
+        <referencedby refid="scripts_2main_8c_1ae9bbb2f5bb69f73e92c761f83223285a" compoundref="scripts_2main_8c" startline="163" endline="313">run_all_tests</referencedby>
+        <referencedby refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="208" endline="356">set_tag</referencedby>
       </memberdef>
       <memberdef kind="variable" id="config__value_8h_1af9a28b199e843773aefbb1e1bcf50559" prot="public" static="no" extern="yes" mutable="no">
         <type>const int</type>
@@ -423,8 +458,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" line="20" column="18" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/config_value.c" bodystart="15" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" declline="20" declcolumn="18"/>
-        <referencedby refid="scripts_2main_8c_1ae9bbb2f5bb69f73e92c761f83223285a" compoundref="scripts_2main_8c" startline="60" endline="210">run_all_tests</referencedby>
-        <referencedby refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="207" endline="354">set_tag</referencedby>
+        <referencedby refid="scripts_2main_8c_1ae9bbb2f5bb69f73e92c761f83223285a" compoundref="scripts_2main_8c" startline="163" endline="313">run_all_tests</referencedby>
       </memberdef>
       <memberdef kind="variable" id="config__value_8h_1afb042b80a35ed7a692f9001589ddf8c6" prot="public" static="no" extern="yes" mutable="no">
         <type>const int</type>
@@ -438,7 +472,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" line="21" column="18" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/config_value.c" bodystart="16" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" declline="21" declcolumn="18"/>
-        <referencedby refid="scripts_2main_8c_1ae9bbb2f5bb69f73e92c761f83223285a" compoundref="scripts_2main_8c" startline="60" endline="210">run_all_tests</referencedby>
+        <referencedby refid="scripts_2main_8c_1ae9bbb2f5bb69f73e92c761f83223285a" compoundref="scripts_2main_8c" startline="163" endline="313">run_all_tests</referencedby>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -467,7 +501,7 @@
 <codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="config__value_8h_1a18061c1ca5fc2e5ab20fa7bc8dbe81d6" kindref="member">CAN_TG_ERROR_NAME_ALREADY_USE</ref>;</highlight></codeline>
 <codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="config__value_8h_1af9a28b199e843773aefbb1e1bcf50559" kindref="member">SUCCES_TO_SET</ref>;</highlight></codeline>
 <codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="config__value_8h_1afb042b80a35ed7a692f9001589ddf8c6" kindref="member">SUCCES</ref>;</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//<sp/>יטאג</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="23" refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="24" refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947fa4add2030061ed8081fd69bbc7961b88e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947fa4add2030061ed8081fd69bbc7961b88e" kindref="member">CAN_TG_ERROR_NOT_ENOUNG_SPACE_</ref><sp/>=<sp/>-2,</highlight></codeline>
 <codeline lineno="25" refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3" kindref="member">CAN_TG_SUCCESS</ref><sp/>=<sp/>1,</highlight></codeline>
@@ -484,7 +518,13 @@
 <codeline lineno="36" refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947fab1cfc87a8731dfcbc6e986a1b81115ac" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947fab1cfc87a8731dfcbc6e986a1b81115ac" kindref="member">CAN_TG_ERROR_VALUE_TO_BIG</ref><sp/>=<sp/>-10,</highlight></codeline>
 <codeline lineno="37"><highlight class="normal">}<sp/><ref refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947f" kindref="member">CAN_TG_STATUE</ref>;</highlight></codeline>
 <codeline lineno="38"><highlight class="normal"></highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>CONFIG_VALUE_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="config__value_8h_1ac0d6cdda2cf4abb51116b86bc99acf99" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="40" refid="config__value_8h_1ac0d6cdda2cf4abb51116b86bc99acf99a7d47d78204fba2e07bda4e65594ff332" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="config__value_8h_1ac0d6cdda2cf4abb51116b86bc99acf99a7d47d78204fba2e07bda4e65594ff332" kindref="member">RECEVE_ONLY</ref>,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="41" refid="config__value_8h_1ac0d6cdda2cf4abb51116b86bc99acf99ad5ec70c56183ea13f8a0c16a3708a23e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="config__value_8h_1ac0d6cdda2cf4abb51116b86bc99acf99ad5ec70c56183ea13f8a0c16a3708a23e" kindref="member">SEND_ONLY</ref>,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="42" refid="config__value_8h_1ac0d6cdda2cf4abb51116b86bc99acf99ac4e66207fce47c294e4aaab76000c9ce" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="config__value_8h_1ac0d6cdda2cf4abb51116b86bc99acf99ac4e66207fce47c294e4aaab76000c9ce" kindref="member">SEND_AND_RECEVE</ref>,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="43"><highlight class="normal">}<sp/><ref refid="config__value_8h_1ac0d6cdda2cf4abb51116b86bc99acf99" kindref="member">CAN_MODE</ref>;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>CONFIG_VALUE_H</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h"/>
   </compounddef>

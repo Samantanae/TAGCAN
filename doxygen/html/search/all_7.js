@@ -1,9 +1,6 @@
 var searchData=
 [
-  ['main_0',['main',['../scripts_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe',1,'main.c']]],
-  ['main_2ec_1',['main.c',['../main_8c.html',1,'']]],
-  ['main_5ffunc_2ec_2',['main_func.c',['../main__func_8c.html',1,'']]],
-  ['max_5fn_5fgt_3',['MAX_N_GT',['../config__value_8h.html#a486663aa90115780beab9f9d39fa8973',1,'config_value.h']]],
-  ['max_5ftag_5fname_5flen_4',['MAX_TAG_NAME_LEN',['../config__value_8h.html#ada71b9f258860d58a86ab220bfce6bf4',1,'config_value.h']]],
-  ['max_5ftags_5',['MAX_TAGS',['../config__value_8h.html#aa653c0eca99802a09fd9560f28a9b1c1',1,'config_value.h']]]
+  ['n_5fbits_0',['n_bits',['../struct_tag_def.html#a894ffee63faf79f0877a12c871a18b3a',1,'TagDef']]],
+  ['n_5fbytes_1',['N_BYTES',['../config__value_8h.html#a470399f7b67e59b1cd04ab17e03c96d1',1,'config_value.h']]],
+  ['name_2',['name',['../struct_tag_def.html#a5365d3ceaa5fb559687e0d26268ca709',1,'TagDef']]]
 ];

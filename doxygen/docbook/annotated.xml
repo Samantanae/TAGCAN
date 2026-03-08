@@ -3,4 +3,4 @@
 <title>Structures de données</title>
 Liste des structures de données avec une brève description :<link linkend="_struct_tag_def">TagDef</link>
 <para>Structure représentent un tag </para>
-</section>
+<link linkend="_structtsfp">tsfp</link></section>

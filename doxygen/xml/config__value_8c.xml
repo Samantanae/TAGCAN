@@ -29,8 +29,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/config_value.c" line="4" column="11" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/config_value.c" bodystart="4" bodyend="-1"/>
-        <referencedby refid="scripts_2main_8c_1ae9bbb2f5bb69f73e92c761f83223285a" compoundref="scripts_2main_8c" startline="60" endline="210">run_all_tests</referencedby>
-        <referencedby refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="207" endline="354">set_tag</referencedby>
+        <referencedby refid="scripts_2main_8c_1ae9bbb2f5bb69f73e92c761f83223285a" compoundref="scripts_2main_8c" startline="163" endline="313">run_all_tests</referencedby>
       </memberdef>
       <memberdef kind="variable" id="config__value_8c_1ab0c8b9c7e93d137cd8956e4c391a0f4c" prot="public" static="no" mutable="no">
         <type>const int</type>
@@ -59,7 +58,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/config_value.c" line="6" column="11" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/config_value.c" bodystart="6" bodyend="-1"/>
-        <referencedby refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="207" endline="354">set_tag</referencedby>
+        <referencedby refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="208" endline="356">set_tag</referencedby>
       </memberdef>
       <memberdef kind="variable" id="config__value_8c_1a1e77443066dccbc42ef0acdd0f597c07" prot="public" static="no" mutable="no">
         <type>const int</type>
@@ -74,8 +73,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/config_value.c" line="7" column="11" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/config_value.c" bodystart="7" bodyend="-1"/>
-        <referencedby refid="tag__manager_8c_1a7b7413adbae2eabbe7fcd13e9f91f151" compoundref="tag__manager_8c" startline="31" endline="48">get_first_tags_vide</referencedby>
-        <referencedby refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="207" endline="354">set_tag</referencedby>
+        <referencedby refid="tag__manager_8c_1a7b7413adbae2eabbe7fcd13e9f91f151" compoundref="tag__manager_8c" startline="32" endline="49">get_first_tags_vide</referencedby>
+        <referencedby refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="208" endline="356">set_tag</referencedby>
       </memberdef>
       <memberdef kind="variable" id="config__value_8c_1a73337c3ada0009e763ea5af164e25d70" prot="public" static="no" mutable="no">
         <type>const int</type>
@@ -90,8 +89,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/config_value.c" line="8" column="11" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/config_value.c" bodystart="8" bodyend="-1"/>
-        <referencedby refid="scripts_2main_8c_1ae9bbb2f5bb69f73e92c761f83223285a" compoundref="scripts_2main_8c" startline="60" endline="210">run_all_tests</referencedby>
-        <referencedby refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="207" endline="354">set_tag</referencedby>
+        <referencedby refid="scripts_2main_8c_1ae9bbb2f5bb69f73e92c761f83223285a" compoundref="scripts_2main_8c" startline="163" endline="313">run_all_tests</referencedby>
+        <referencedby refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="208" endline="356">set_tag</referencedby>
       </memberdef>
       <memberdef kind="variable" id="config__value_8c_1a18061c1ca5fc2e5ab20fa7bc8dbe81d6" prot="public" static="no" mutable="no">
         <type>const int</type>
@@ -106,8 +105,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/config_value.c" line="9" column="11" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/config_value.c" bodystart="9" bodyend="-1"/>
-        <referencedby refid="scripts_2main_8c_1ae9bbb2f5bb69f73e92c761f83223285a" compoundref="scripts_2main_8c" startline="60" endline="210">run_all_tests</referencedby>
-        <referencedby refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="207" endline="354">set_tag</referencedby>
+        <referencedby refid="scripts_2main_8c_1ae9bbb2f5bb69f73e92c761f83223285a" compoundref="scripts_2main_8c" startline="163" endline="313">run_all_tests</referencedby>
+        <referencedby refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="208" endline="356">set_tag</referencedby>
       </memberdef>
       <memberdef kind="variable" id="config__value_8c_1acb2aafd99394462e0f83f05673be52a9" prot="public" static="no" mutable="no">
         <type>const int</type>
@@ -136,7 +135,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/config_value.c" line="11" column="11" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/config_value.c" bodystart="11" bodyend="-1"/>
-        <referencedby refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="207" endline="354">set_tag</referencedby>
+        <referencedby refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="208" endline="356">set_tag</referencedby>
       </memberdef>
       <memberdef kind="variable" id="config__value_8c_1ada864c858133fa1c52368562add7d64e" prot="public" static="no" mutable="no">
         <type>const int</type>
@@ -193,8 +192,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/config_value.c" line="15" column="11" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/config_value.c" bodystart="15" bodyend="-1"/>
-        <referencedby refid="scripts_2main_8c_1ae9bbb2f5bb69f73e92c761f83223285a" compoundref="scripts_2main_8c" startline="60" endline="210">run_all_tests</referencedby>
-        <referencedby refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="207" endline="354">set_tag</referencedby>
+        <referencedby refid="scripts_2main_8c_1ae9bbb2f5bb69f73e92c761f83223285a" compoundref="scripts_2main_8c" startline="163" endline="313">run_all_tests</referencedby>
       </memberdef>
       <memberdef kind="variable" id="config__value_8c_1afb042b80a35ed7a692f9001589ddf8c6" prot="public" static="no" mutable="no">
         <type>const int</type>
@@ -209,7 +207,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/config_value.c" line="16" column="11" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/config_value.c" bodystart="16" bodyend="-1"/>
-        <referencedby refid="scripts_2main_8c_1ae9bbb2f5bb69f73e92c761f83223285a" compoundref="scripts_2main_8c" startline="60" endline="210">run_all_tests</referencedby>
+        <referencedby refid="scripts_2main_8c_1ae9bbb2f5bb69f73e92c761f83223285a" compoundref="scripts_2main_8c" startline="163" endline="313">run_all_tests</referencedby>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -218,7 +216,7 @@
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="config__value_8h" kindref="compound">../include/config_value.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>יטאג</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//const<sp/>int<sp/>//CAN_TG_ERROR<sp/>=<sp/>;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4" refid="config__value_8h_1a6ac7074ca0f94196368735678d92c7b8" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="config__value_8h_1a6ac7074ca0f94196368735678d92c7b8" kindref="member">CAN_TG_ERROR_NOT_ENOUNG_SPACE</ref><sp/>=<sp/>-2;</highlight></codeline>
 <codeline lineno="5" refid="config__value_8h_1ab0c8b9c7e93d137cd8956e4c391a0f4c" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="config__value_8h_1ab0c8b9c7e93d137cd8956e4c391a0f4c" kindref="member">CAN_TG_ERROR_TAG_NOT_FOUND</ref><sp/>=<sp/>-3;</highlight></codeline>

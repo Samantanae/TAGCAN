@@ -33,8 +33,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/tag_manager.h" line="15" column="13" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/tag_manager.h" bodystart="15" bodyend="-1"/>
-        <referencedby refid="data__container_8c_1a66cbaaa79a2ba3c2c7912514c1dc805f" compoundref="data__container_8c" startline="88" endline="120">get_value</referencedby>
-        <referencedby refid="data__container_8c_1aa84538f1ab0c319056787e9674157405" compoundref="data__container_8c" startline="33" endline="80">set_value</referencedby>
+        <referencedby refid="data__container_8c_1a66cbaaa79a2ba3c2c7912514c1dc805f" compoundref="data__container_8c" startline="96" endline="138">get_value</referencedby>
+        <referencedby refid="data__container_8c_1ae30fab9c73b624e37f064c836fefb7de" compoundref="data__container_8c" startline="34" endline="88">set_value</referencedby>
       </memberdef>
       <memberdef kind="variable" id="struct_tag_def_1a985f815d0edbf8a411fbf325a30baec8" prot="public" static="no" mutable="no">
         <type>int8_t</type>
@@ -50,8 +50,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/tag_manager.h" line="16" column="12" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/tag_manager.h" bodystart="16" bodyend="-1"/>
-        <referencedby refid="data__container_8c_1a66cbaaa79a2ba3c2c7912514c1dc805f" compoundref="data__container_8c" startline="88" endline="120">get_value</referencedby>
-        <referencedby refid="data__container_8c_1aa84538f1ab0c319056787e9674157405" compoundref="data__container_8c" startline="33" endline="80">set_value</referencedby>
+        <referencedby refid="data__container_8c_1a66cbaaa79a2ba3c2c7912514c1dc805f" compoundref="data__container_8c" startline="96" endline="138">get_value</referencedby>
+        <referencedby refid="data__container_8c_1ae30fab9c73b624e37f064c836fefb7de" compoundref="data__container_8c" startline="34" endline="88">set_value</referencedby>
       </memberdef>
       <memberdef kind="variable" id="struct_tag_def_1a1368f5414ba506dc1626d65a1083dc92" prot="public" static="no" mutable="no">
         <type>int8_t</type>
@@ -67,8 +67,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/tag_manager.h" line="17" column="12" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/tag_manager.h" bodystart="17" bodyend="-1"/>
-        <referencedby refid="data__container_8c_1a66cbaaa79a2ba3c2c7912514c1dc805f" compoundref="data__container_8c" startline="88" endline="120">get_value</referencedby>
-        <referencedby refid="data__container_8c_1aa84538f1ab0c319056787e9674157405" compoundref="data__container_8c" startline="33" endline="80">set_value</referencedby>
+        <referencedby refid="data__container_8c_1a66cbaaa79a2ba3c2c7912514c1dc805f" compoundref="data__container_8c" startline="96" endline="138">get_value</referencedby>
+        <referencedby refid="data__container_8c_1ae30fab9c73b624e37f064c836fefb7de" compoundref="data__container_8c" startline="34" endline="88">set_value</referencedby>
       </memberdef>
       <memberdef kind="variable" id="struct_tag_def_1ab2ab707c2832eb3cd8776c3134b29b1d" prot="public" static="no" mutable="no">
         <type>uint8_t</type>
@@ -84,8 +84,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/tag_manager.h" line="18" column="13" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/tag_manager.h" bodystart="18" bodyend="-1"/>
-        <referencedby refid="data__container_8c_1a66cbaaa79a2ba3c2c7912514c1dc805f" compoundref="data__container_8c" startline="88" endline="120">get_value</referencedby>
-        <referencedby refid="data__container_8c_1aa84538f1ab0c319056787e9674157405" compoundref="data__container_8c" startline="33" endline="80">set_value</referencedby>
+        <referencedby refid="data__container_8c_1a66cbaaa79a2ba3c2c7912514c1dc805f" compoundref="data__container_8c" startline="96" endline="138">get_value</referencedby>
+        <referencedby refid="data__container_8c_1ae30fab9c73b624e37f064c836fefb7de" compoundref="data__container_8c" startline="34" endline="88">set_value</referencedby>
       </memberdef>
       <memberdef kind="variable" id="struct_tag_def_1a315b71fd9f91bd21c82164e006859ede" prot="public" static="no" mutable="no">
         <type>uint8_t</type>
@@ -101,6 +101,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/tag_manager.h" line="19" column="13" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/tag_manager.h" bodystart="19" bodyend="-1"/>
+        <referencedby refid="data__container_8c_1a66cbaaa79a2ba3c2c7912514c1dc805f" compoundref="data__container_8c" startline="96" endline="138">get_value</referencedby>
+        <referencedby refid="data__container_8c_1ae30fab9c73b624e37f064c836fefb7de" compoundref="data__container_8c" startline="34" endline="88">set_value</referencedby>
       </memberdef>
     </sectiondef>
     <briefdescription>

@@ -100,13 +100,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/tag_manager.h" line="24" column="15" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/sub_scripts/tag_manager.c" bodystart="9" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/tag_manager.h" declline="24" declcolumn="15"/>
-        <referencedby refid="tag__manager_8c_1ac5f7362c0af4f03bd98573151458442d" compoundref="tag__manager_8c" startline="73" endline="96">general_set_tag</referencedby>
-        <referencedby refid="tag__manager_8c_1a7b7413adbae2eabbe7fcd13e9f91f151" compoundref="tag__manager_8c" startline="31" endline="48">get_first_tags_vide</referencedby>
-        <referencedby refid="tag__manager_8h_1a5737e741608851f8e3822cf07261da44" compoundref="tag__manager_8c" startline="356" endline="366">get_tag_def</referencedby>
-        <referencedby refid="gestion__tag_8h_1aab50a8f567be72e656120fd71f3fb435" compoundref="tag__manager_8c" startline="13" endline="29">init_tag_manager</referencedby>
-        <referencedby refid="tag__manager_8c_1a9963af2c23a14e289a3ff39769ea4eeb" compoundref="tag__manager_8c" startline="57" endline="70">set_name_tag</referencedby>
-        <referencedby refid="tag__manager_8c_1a30325d29d4baf058d75e6f3c269341af" compoundref="tag__manager_8c" startline="101" endline="117">set_new_tag_9_to_16</referencedby>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/tag_manager.h" line="24" column="15" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/sub_scripts/tag_manager.c" bodystart="10" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/tag_manager.h" declline="24" declcolumn="15"/>
+        <referencedby refid="tag__manager_8c_1ac5f7362c0af4f03bd98573151458442d" compoundref="tag__manager_8c" startline="74" endline="97">general_set_tag</referencedby>
+        <referencedby refid="tag__manager_8c_1a7b7413adbae2eabbe7fcd13e9f91f151" compoundref="tag__manager_8c" startline="32" endline="49">get_first_tags_vide</referencedby>
+        <referencedby refid="tag__manager_8h_1a5737e741608851f8e3822cf07261da44" compoundref="tag__manager_8c" startline="358" endline="368">get_tag_def</referencedby>
+        <referencedby refid="gestion__tag_8h_1aab50a8f567be72e656120fd71f3fb435" compoundref="tag__manager_8c" startline="14" endline="30">init_tag_manager</referencedby>
+        <referencedby refid="print__val_8h_1a6904e40665dc664fc6611bfe2d913773" compoundref="print__val_8c" startline="31" endline="44">print_all_data</referencedby>
+        <referencedby refid="print__val_8h_1a2b276a5dd504a1eb4d6f216b8f9d7fdb" compoundref="print__val_8c" startline="9" endline="29">print_all_tag_set</referencedby>
+        <referencedby refid="print__val_8h_1a8ee4bb928c2cca54d191cf23edea60ec" compoundref="print__val_8c" startline="61" endline="109">print_repartition_bit</referencedby>
+        <referencedby refid="tag__manager_8c_1a9963af2c23a14e289a3ff39769ea4eeb" compoundref="tag__manager_8c" startline="58" endline="71">set_name_tag</referencedby>
+        <referencedby refid="tag__manager_8c_1a30325d29d4baf058d75e6f3c269341af" compoundref="tag__manager_8c" startline="102" endline="118">set_new_tag_9_to_16</referencedby>
       </memberdef>
       <memberdef kind="variable" id="tag__manager_8h_1ab7cad863197c93abe397155a1946c0d0" prot="public" static="no" extern="yes" mutable="no">
         <type>uint8_t</type>
@@ -120,11 +123,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/tag_manager.h" line="25" column="16" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/sub_scripts/tag_manager.c" bodystart="10" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/tag_manager.h" declline="25" declcolumn="16"/>
-        <referencedby refid="tag__manager_8c_1ac5f7362c0af4f03bd98573151458442d" compoundref="tag__manager_8c" startline="73" endline="96">general_set_tag</referencedby>
-        <referencedby refid="tag__manager_8h_1a5737e741608851f8e3822cf07261da44" compoundref="tag__manager_8c" startline="356" endline="366">get_tag_def</referencedby>
-        <referencedby refid="gestion__tag_8h_1aab50a8f567be72e656120fd71f3fb435" compoundref="tag__manager_8c" startline="13" endline="29">init_tag_manager</referencedby>
-        <referencedby refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="207" endline="354">set_tag</referencedby>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/tag_manager.h" line="25" column="16" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/sub_scripts/tag_manager.c" bodystart="11" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/tag_manager.h" declline="25" declcolumn="16"/>
+        <referencedby refid="tag__manager_8c_1ac5f7362c0af4f03bd98573151458442d" compoundref="tag__manager_8c" startline="74" endline="97">general_set_tag</referencedby>
+        <referencedby refid="tag__manager_8h_1a5737e741608851f8e3822cf07261da44" compoundref="tag__manager_8c" startline="358" endline="368">get_tag_def</referencedby>
+        <referencedby refid="gestion__tag_8h_1aab50a8f567be72e656120fd71f3fb435" compoundref="tag__manager_8c" startline="14" endline="30">init_tag_manager</referencedby>
+        <referencedby refid="print__val_8h_1a6904e40665dc664fc6611bfe2d913773" compoundref="print__val_8c" startline="31" endline="44">print_all_data</referencedby>
+        <referencedby refid="print__val_8h_1a2b276a5dd504a1eb4d6f216b8f9d7fdb" compoundref="print__val_8c" startline="9" endline="29">print_all_tag_set</referencedby>
+        <referencedby refid="print__val_8h_1a8ee4bb928c2cca54d191cf23edea60ec" compoundref="print__val_8c" startline="61" endline="109">print_repartition_bit</referencedby>
+        <referencedby refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="208" endline="356">set_tag</referencedby>
       </memberdef>
       <memberdef kind="variable" id="tag__manager_8h_1af12845c0234390db7498ec51e94f7d58" prot="public" static="no" extern="yes" mutable="no">
         <type>uint8_t</type>
@@ -138,13 +144,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/tag_manager.h" line="27" column="16" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/sub_scripts/tag_manager.c" bodystart="11" bodyend="11" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/tag_manager.h" declline="27" declcolumn="16"/>
-        <referencedby refid="tag__manager_8c_1ad5772dac2622697b5f563da0dbfaede3" compoundref="tag__manager_8c" startline="168" endline="202">find_byte2_with_enoung_space</referencedby>
-        <referencedby refid="tag__manager_8c_1a5f1ce2cac9791e6b46be230dcce3f804" compoundref="tag__manager_8c" startline="125" endline="157">find_byte_with_enoung_space</referencedby>
-        <referencedby refid="tag__manager_8c_1ac5f7362c0af4f03bd98573151458442d" compoundref="tag__manager_8c" startline="73" endline="96">general_set_tag</referencedby>
-        <referencedby refid="gestion__tag_8h_1aab50a8f567be72e656120fd71f3fb435" compoundref="tag__manager_8c" startline="13" endline="29">init_tag_manager</referencedby>
-        <referencedby refid="tag__manager_8c_1a30325d29d4baf058d75e6f3c269341af" compoundref="tag__manager_8c" startline="101" endline="117">set_new_tag_9_to_16</referencedby>
-        <referencedby refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="207" endline="354">set_tag</referencedby>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/tag_manager.h" line="27" column="16" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/sub_scripts/tag_manager.c" bodystart="12" bodyend="12" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/tag_manager.h" declline="27" declcolumn="16"/>
+        <referencedby refid="tag__manager_8c_1ad5772dac2622697b5f563da0dbfaede3" compoundref="tag__manager_8c" startline="169" endline="203">find_byte2_with_enoung_space</referencedby>
+        <referencedby refid="tag__manager_8c_1a5f1ce2cac9791e6b46be230dcce3f804" compoundref="tag__manager_8c" startline="126" endline="158">find_byte_with_enoung_space</referencedby>
+        <referencedby refid="tag__manager_8c_1ac5f7362c0af4f03bd98573151458442d" compoundref="tag__manager_8c" startline="74" endline="97">general_set_tag</referencedby>
+        <referencedby refid="gestion__tag_8h_1aab50a8f567be72e656120fd71f3fb435" compoundref="tag__manager_8c" startline="14" endline="30">init_tag_manager</referencedby>
+        <referencedby refid="tag__manager_8c_1a30325d29d4baf058d75e6f3c269341af" compoundref="tag__manager_8c" startline="102" endline="118">set_new_tag_9_to_16</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="func">
@@ -178,13 +183,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/tag_manager.h" line="42" column="14" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/sub_scripts/tag_manager.c" bodystart="356" bodyend="366" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/tag_manager.h" declline="42" declcolumn="14"/>
-        <references refid="tag__manager_8h_1ab7cad863197c93abe397155a1946c0d0" compoundref="tag__manager_8c" startline="10">g_tag_count</references>
-        <references refid="tag__manager_8h_1ace5be789d004e0752b6b2dec9d845864" compoundref="tag__manager_8c" startline="9">g_tags</references>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/tag_manager.h" line="42" column="14" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/sub_scripts/tag_manager.c" bodystart="358" bodyend="368" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/tag_manager.h" declline="42" declcolumn="14"/>
+        <references refid="tag__manager_8h_1ab7cad863197c93abe397155a1946c0d0" compoundref="tag__manager_8c" startline="11">g_tag_count</references>
+        <references refid="tag__manager_8h_1ace5be789d004e0752b6b2dec9d845864" compoundref="tag__manager_8c" startline="10">g_tags</references>
         <references refid="config__value_8h_1ada71b9f258860d58a86ab220bfce6bf4" compoundref="config__value_8h" startline="5">MAX_TAG_NAME_LEN</references>
-        <referencedby refid="data__container_8c_1a66cbaaa79a2ba3c2c7912514c1dc805f" compoundref="data__container_8c" startline="88" endline="120">get_value</referencedby>
-        <referencedby refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="207" endline="354">set_tag</referencedby>
-        <referencedby refid="data__container_8c_1aa84538f1ab0c319056787e9674157405" compoundref="data__container_8c" startline="33" endline="80">set_value</referencedby>
+        <referencedby refid="data__container_8c_1a66cbaaa79a2ba3c2c7912514c1dc805f" compoundref="data__container_8c" startline="96" endline="138">get_value</referencedby>
+        <referencedby refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="208" endline="356">set_tag</referencedby>
+        <referencedby refid="data__container_8c_1ae30fab9c73b624e37f064c836fefb7de" compoundref="data__container_8c" startline="34" endline="88">set_value</referencedby>
       </memberdef>
     </sectiondef>
     <briefdescription>

@@ -7,7 +7,7 @@ Aller Ã  la documentation de ce fichier.<programlisting linenumbering="unnumbere
 3 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_data__container_8h">sub_include/data_container.h</link>&quot;</emphasis>
 4 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_tag__manager_8h">sub_include/tag_manager.h</link>&quot;</emphasis>
 5 
-6 <emphasis role="comment">//(la&#32;ligne&#32;suivante&#32;risque&#32;de&#32;causé&#32;une&#32;double&#32;définition)</emphasis>
+6 <emphasis role="comment">//(la&#32;ligne&#32;suivante&#32;risque&#32;de&#32;causÃ©&#32;une&#32;double&#32;dÃ©finition)</emphasis>
 7 <emphasis role="comment">//int&#32;set_tag(const&#32;char*&#32;tag_name,&#32;uint8_t&#32;n_bits);</emphasis>
 8 
 9 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;TAGCAN_FONCTION_H_INCLUDED</emphasis>

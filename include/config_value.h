@@ -19,7 +19,7 @@ extern const int CAN_TG_ERROR_TOO_MAY_TAGS;
 extern const int CAN_TG_ERROR_NAME_ALREADY_USE;
 extern const int SUCCES_TO_SET;
 extern const int SUCCES;
-
+// יטאג
 typedef enum {
     CAN_TG_ERROR_NOT_ENOUNG_SPACE_ = -2,
     CAN_TG_SUCCESS = 1,

@@ -1,39 +1,36 @@
 var indexSectionsWithContent =
 {
-  0: "abcdfgimnprstv",
+  0: "bcdfgimnprstv",
   1: "t",
-  2: "a",
-  3: "cdgmpstv",
-  4: "cfgimprst",
-  5: "bcgnpst",
-  6: "c",
-  7: "c",
-  8: "mnr"
+  2: "cdgmpstv",
+  3: "cfgimprst",
+  4: "bcgnpst",
+  5: "c",
+  6: "crs",
+  7: "mnr"
 };
 
 var indexSectionNames =
 {
   0: "all",
   1: "classes",
-  2: "namespaces",
-  3: "files",
-  4: "functions",
-  5: "variables",
-  6: "enums",
-  7: "enumvalues",
-  8: "defines"
+  2: "files",
+  3: "functions",
+  4: "variables",
+  5: "enums",
+  6: "enumvalues",
+  7: "defines"
 };
 
 var indexSectionLabels =
 {
   0: "Tout",
   1: "Structures de données",
-  2: "Espaces de nommage",
-  3: "Fichiers",
-  4: "Fonctions",
-  5: "Variables",
-  6: "Énumérations",
-  7: "Valeurs énumérées",
-  8: "Macros"
+  2: "Fichiers",
+  3: "Fonctions",
+  4: "Variables",
+  5: "Énumérations",
+  6: "Valeurs énumérées",
+  7: "Macros"
 };
 

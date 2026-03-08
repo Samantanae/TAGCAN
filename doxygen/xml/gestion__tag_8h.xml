@@ -41,13 +41,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/gestion_tag.h" line="9" column="6" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/sub_scripts/tag_manager.c" bodystart="13" bodyend="29" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/gestion_tag.h" declline="9" declcolumn="6"/>
-        <references refid="tag__manager_8h_1af12845c0234390db7498ec51e94f7d58" compoundref="tag__manager_8c" startline="11" endline="11">g_bytes_used</references>
-        <references refid="tag__manager_8h_1ab7cad863197c93abe397155a1946c0d0" compoundref="tag__manager_8c" startline="10">g_tag_count</references>
-        <references refid="tag__manager_8h_1ace5be789d004e0752b6b2dec9d845864" compoundref="tag__manager_8c" startline="9">g_tags</references>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/gestion_tag.h" line="9" column="6" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/sub_scripts/tag_manager.c" bodystart="14" bodyend="30" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/gestion_tag.h" declline="9" declcolumn="6"/>
+        <references refid="tag__manager_8h_1af12845c0234390db7498ec51e94f7d58" compoundref="tag__manager_8c" startline="12" endline="12">g_bytes_used</references>
+        <references refid="tag__manager_8h_1ab7cad863197c93abe397155a1946c0d0" compoundref="tag__manager_8c" startline="11">g_tag_count</references>
+        <references refid="tag__manager_8h_1ace5be789d004e0752b6b2dec9d845864" compoundref="tag__manager_8c" startline="10">g_tags</references>
         <references refid="config__value_8h_1aa653c0eca99802a09fd9560f28a9b1c1" compoundref="config__value_8h" startline="4">MAX_TAGS</references>
-        <referencedby refid="scripts_2main_8c_1a840291bc02cba5474a4cb46a9b9566fe" compoundref="scripts_2main_8c" startline="212" endline="286">main</referencedby>
-        <referencedby refid="scripts_2main_8c_1ae9bbb2f5bb69f73e92c761f83223285a" compoundref="scripts_2main_8c" startline="60" endline="210">run_all_tests</referencedby>
+        <referencedby refid="scripts_2main_8c_1ae9bbb2f5bb69f73e92c761f83223285a" compoundref="scripts_2main_8c" startline="163" endline="313">run_all_tests</referencedby>
+        <referencedby refid="scripts_2main_8c_1a4f26f5b24d899127d66338ba3bfd7f1b" compoundref="scripts_2main_8c" startline="90" endline="156">somme_other_test</referencedby>
+        <referencedby refid="scripts_2main_8c_1a9c4bb6f6d00e76eae45e966a4c628178" compoundref="scripts_2main_8c" startline="60" endline="85">test_print</referencedby>
       </memberdef>
       <memberdef kind="function" id="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -89,28 +90,25 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/gestion_tag.h" line="18" column="5" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/sub_scripts/tag_manager.c" bodystart="207" bodyend="354" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/gestion_tag.h" declline="18" declcolumn="5"/>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/gestion_tag.h" line="18" column="5" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/sub_scripts/tag_manager.c" bodystart="208" bodyend="356" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/gestion_tag.h" declline="18" declcolumn="5"/>
         <references refid="config__value_8h_1a18061c1ca5fc2e5ab20fa7bc8dbe81d6" compoundref="config__value_8c" startline="9">CAN_TG_ERROR_NAME_ALREADY_USE</references>
-        <references refid="config__value_8h_1a6ac7074ca0f94196368735678d92c7b8" compoundref="config__value_8c" startline="4">CAN_TG_ERROR_NOT_ENOUNG_SPACE</references>
         <references refid="config__value_8h_1a73337c3ada0009e763ea5af164e25d70" compoundref="config__value_8c" startline="8">CAN_TG_ERROR_SIZE_VALUE_INVALIDE</references>
         <references refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947fa1f64facc77e1738f2ed16fae7f38140f" compoundref="config__value_8h" startline="29">CAN_TG_ERROR_SIZE_VALUE_INVALIDE_</references>
         <references refid="config__value_8h_1a49d547279f99d23ff36998f3874d3c5a" compoundref="config__value_8c" startline="11">CAN_TG_ERROR_TAG_NAME_INVALIDE</references>
         <references refid="config__value_8h_1af68b72a5b65a0168415d1363dc09a0a6" compoundref="config__value_8c" startline="6">CAN_TG_ERROR_TAG_NAME_TO_BIGS</references>
         <references refid="config__value_8h_1a1e77443066dccbc42ef0acdd0f597c07" compoundref="config__value_8c" startline="7">CAN_TG_ERROR_TOO_MAY_TAGS</references>
         <references refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3" compoundref="config__value_8h" startline="25">CAN_TG_SUCCESS</references>
-        <references refid="tag__manager_8c_1ad5772dac2622697b5f563da0dbfaede3" compoundref="tag__manager_8c" startline="168" endline="202">find_byte2_with_enoung_space</references>
-        <references refid="tag__manager_8c_1a5f1ce2cac9791e6b46be230dcce3f804" compoundref="tag__manager_8c" startline="125" endline="157">find_byte_with_enoung_space</references>
-        <references refid="tag__manager_8h_1af12845c0234390db7498ec51e94f7d58" compoundref="tag__manager_8c" startline="11" endline="11">g_bytes_used</references>
-        <references refid="tag__manager_8h_1ab7cad863197c93abe397155a1946c0d0" compoundref="tag__manager_8c" startline="10">g_tag_count</references>
-        <references refid="tag__manager_8c_1ac5f7362c0af4f03bd98573151458442d" compoundref="tag__manager_8c" startline="73" endline="96">general_set_tag</references>
-        <references refid="tag__manager_8c_1a7b7413adbae2eabbe7fcd13e9f91f151" compoundref="tag__manager_8c" startline="31" endline="48">get_first_tags_vide</references>
-        <references refid="tag__manager_8c_1a5737e741608851f8e3822cf07261da44" compoundref="tag__manager_8c" startline="356" endline="366">get_tag_def</references>
+        <references refid="tag__manager_8c_1ad5772dac2622697b5f563da0dbfaede3" compoundref="tag__manager_8c" startline="169" endline="203">find_byte2_with_enoung_space</references>
+        <references refid="tag__manager_8c_1a5f1ce2cac9791e6b46be230dcce3f804" compoundref="tag__manager_8c" startline="126" endline="158">find_byte_with_enoung_space</references>
+        <references refid="tag__manager_8h_1ab7cad863197c93abe397155a1946c0d0" compoundref="tag__manager_8c" startline="11">g_tag_count</references>
+        <references refid="tag__manager_8c_1ac5f7362c0af4f03bd98573151458442d" compoundref="tag__manager_8c" startline="74" endline="97">general_set_tag</references>
+        <references refid="tag__manager_8c_1a7b7413adbae2eabbe7fcd13e9f91f151" compoundref="tag__manager_8c" startline="32" endline="49">get_first_tags_vide</references>
+        <references refid="tag__manager_8c_1a5737e741608851f8e3822cf07261da44" compoundref="tag__manager_8c" startline="358" endline="368">get_tag_def</references>
         <references refid="config__value_8h_1ada71b9f258860d58a86ab220bfce6bf4" compoundref="config__value_8h" startline="5">MAX_TAG_NAME_LEN</references>
         <references refid="config__value_8h_1aa653c0eca99802a09fd9560f28a9b1c1" compoundref="config__value_8h" startline="4">MAX_TAGS</references>
-        <references refid="config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1" compoundref="config__value_8h" startline="6">N_BYTES</references>
-        <references refid="tag__manager_8c_1a30325d29d4baf058d75e6f3c269341af" compoundref="tag__manager_8c" startline="101" endline="117">set_new_tag_9_to_16</references>
-        <references refid="config__value_8h_1af9a28b199e843773aefbb1e1bcf50559" compoundref="config__value_8c" startline="15">SUCCES_TO_SET</references>
-        <referencedby refid="scripts_2main_8c_1ae9bbb2f5bb69f73e92c761f83223285a" compoundref="scripts_2main_8c" startline="60" endline="210">run_all_tests</referencedby>
+        <references refid="tag__manager_8c_1a30325d29d4baf058d75e6f3c269341af" compoundref="tag__manager_8c" startline="102" endline="118">set_new_tag_9_to_16</references>
+        <referencedby refid="scripts_2main_8c_1ae9bbb2f5bb69f73e92c761f83223285a" compoundref="scripts_2main_8c" startline="163" endline="313">run_all_tests</referencedby>
+        <referencedby refid="scripts_2main_8c_1a9c4bb6f6d00e76eae45e966a4c628178" compoundref="scripts_2main_8c" startline="60" endline="85">test_print</referencedby>
       </memberdef>
     </sectiondef>
     <briefdescription>

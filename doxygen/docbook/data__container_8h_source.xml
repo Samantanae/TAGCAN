@@ -26,5 +26,8 @@ Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbere
 49 <emphasis role="comment">//&#32;Simulation&#32;de&#32;transmission&#32;(remplace&#32;send/receve&#32;python)</emphasis>
 50 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_data__container_8h_1ae1649807202241b28239e8cb212a18b6">can_simulate_send_receive</link>(uint8_t*&#32;tx_buffer,&#32;uint8_t*&#32;rx_buffer);
 51 
-52 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;DATA_CONTAINER_H</emphasis>
+52 <emphasis role="comment">//int&#32;CAN_RECEVE</emphasis>
+53 
+54 
+55 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;DATA_CONTAINER_H</emphasis>
 </programlisting></section>

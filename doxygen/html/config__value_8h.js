@@ -4,6 +4,11 @@ var config__value_8h =
     [ "MAX_TAG_NAME_LEN", "config__value_8h.html#ada71b9f258860d58a86ab220bfce6bf4", null ],
     [ "MAX_TAGS", "config__value_8h.html#aa653c0eca99802a09fd9560f28a9b1c1", null ],
     [ "N_BYTES", "config__value_8h.html#a470399f7b67e59b1cd04ab17e03c96d1", null ],
+    [ "CAN_MODE", "config__value_8h.html#ac0d6cdda2cf4abb51116b86bc99acf99", [
+      [ "RECEVE_ONLY", "config__value_8h.html#ac0d6cdda2cf4abb51116b86bc99acf99a7d47d78204fba2e07bda4e65594ff332", null ],
+      [ "SEND_ONLY", "config__value_8h.html#ac0d6cdda2cf4abb51116b86bc99acf99ad5ec70c56183ea13f8a0c16a3708a23e", null ],
+      [ "SEND_AND_RECEVE", "config__value_8h.html#ac0d6cdda2cf4abb51116b86bc99acf99ac4e66207fce47c294e4aaab76000c9ce", null ]
+    ] ],
     [ "CAN_TG_STATUE", "config__value_8h.html#af59c8e96bb2966b590726fc2d285947f", [
       [ "CAN_TG_ERROR_NOT_ENOUNG_SPACE_", "config__value_8h.html#af59c8e96bb2966b590726fc2d285947fa4add2030061ed8081fd69bbc7961b88e", null ],
       [ "CAN_TG_SUCCESS", "config__value_8h.html#af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3", null ],

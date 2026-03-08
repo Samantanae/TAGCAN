@@ -1,5 +1,5 @@
 #include "../include/config_value.h"
-
+// יטאג
 //const int //CAN_TG_ERROR = ;
 const int CAN_TG_ERROR_NOT_ENOUNG_SPACE = -2;
 const int CAN_TG_ERROR_TAG_NOT_FOUND = -3;

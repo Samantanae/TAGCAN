@@ -39,6 +39,11 @@ enum \doxymbox{\hyperlink{config__value_8h_af59c8e96bb2966b590726fc2d285947f}{CA
 , \newline
 \doxymbox{\hyperlink{config__value_8h_af59c8e96bb2966b590726fc2d285947fab1cfc87a8731dfcbc6e986a1b81115ac}{CAN\+\_\+\+TG\+\_\+\+ERROR\+\_\+\+VALUE\+\_\+\+TO\+\_\+\+BIG}} = -\/10
  \}
+\item 
+enum \doxymbox{\hyperlink{config__value_8h_ac0d6cdda2cf4abb51116b86bc99acf99}{CAN\+\_\+\+MODE}} \{ \doxymbox{\hyperlink{config__value_8h_ac0d6cdda2cf4abb51116b86bc99acf99a7d47d78204fba2e07bda4e65594ff332}{RECEVE\+\_\+\+ONLY}}
+, \doxymbox{\hyperlink{config__value_8h_ac0d6cdda2cf4abb51116b86bc99acf99ad5ec70c56183ea13f8a0c16a3708a23e}{SEND\+\_\+\+ONLY}}
+, \doxymbox{\hyperlink{config__value_8h_ac0d6cdda2cf4abb51116b86bc99acf99ac4e66207fce47c294e4aaab76000c9ce}{SEND\+\_\+\+AND\+\_\+\+RECEVE}}
+ \}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -103,6 +108,32 @@ const int \doxymbox{\hyperlink{config__value_8h_afb042b80a35ed7a692f9001589ddf8c
 \label{doc-enum-members}
 \Hypertarget{config__value_8h_doc-enum-members}
 \doxysubsection{Documentation du type de l\textquotesingle{}énumération}
+\Hypertarget{config__value_8h_ac0d6cdda2cf4abb51116b86bc99acf99}\index{config\_value.h@{config\_value.h}!CAN\_MODE@{CAN\_MODE}}
+\index{CAN\_MODE@{CAN\_MODE}!config\_value.h@{config\_value.h}}
+\doxysubsubsection{\texorpdfstring{CAN\_MODE}{CAN\_MODE}}
+{\footnotesize\ttfamily \label{config__value_8h_ac0d6cdda2cf4abb51116b86bc99acf99} 
+enum \doxymbox{\hyperlink{config__value_8h_ac0d6cdda2cf4abb51116b86bc99acf99}{CAN\+\_\+\+MODE}}}
+
+\begin{DoxyEnumFields}[2]{Valeurs énumérées}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RECEVE\_ONLY@{RECEVE\_ONLY}!config\_value.h@{config\_value.h}}
+\index{config\_value.h@{config\_value.h}!RECEVE\_ONLY@{RECEVE\_ONLY}}
+}\Hypertarget{config__value_8h_ac0d6cdda2cf4abb51116b86bc99acf99a7d47d78204fba2e07bda4e65594ff332}\label{config__value_8h_ac0d6cdda2cf4abb51116b86bc99acf99a7d47d78204fba2e07bda4e65594ff332} 
+RECEVE\+\_\+\+ONLY&In this mode, the \textquotesingle{}packet\textquotesingle{} cannot be wrinten to from \textquotesingle{}set\+\_\+value\textquotesingle{}, but the value (assuming it\textquotesingle{}s the correct id) while be updated if the id match. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SEND\_ONLY@{SEND\_ONLY}!config\_value.h@{config\_value.h}}
+\index{config\_value.h@{config\_value.h}!SEND\_ONLY@{SEND\_ONLY}}
+}\Hypertarget{config__value_8h_ac0d6cdda2cf4abb51116b86bc99acf99ad5ec70c56183ea13f8a0c16a3708a23e}\label{config__value_8h_ac0d6cdda2cf4abb51116b86bc99acf99ad5ec70c56183ea13f8a0c16a3708a23e} 
+SEND\+\_\+\+ONLY&In this mode, the \textquotesingle{}packet\textquotesingle{} linked with can only send data. In other words, if an other CAN perif send a \textquotesingle{}paquet\textquotesingle{} with the same ID, it\textquotesingle{}s while not modifie he value. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SEND\_AND\_RECEVE@{SEND\_AND\_RECEVE}!config\_value.h@{config\_value.h}}
+\index{config\_value.h@{config\_value.h}!SEND\_AND\_RECEVE@{SEND\_AND\_RECEVE}}
+}\Hypertarget{config__value_8h_ac0d6cdda2cf4abb51116b86bc99acf99ac4e66207fce47c294e4aaab76000c9ce}\label{config__value_8h_ac0d6cdda2cf4abb51116b86bc99acf99ac4e66207fce47c294e4aaab76000c9ce} 
+SEND\+\_\+\+AND\+\_\+\+RECEVE&In this mode, you can modifie the value, send the value and receve an update form the CAN line. (In other word, it\textquotesingle{}s the less free of contrainte, but also the most suceptible to have unwished change of value.) \\
+\hline
+
+\end{DoxyEnumFields}
 \Hypertarget{config__value_8h_af59c8e96bb2966b590726fc2d285947f}\index{config\_value.h@{config\_value.h}!CAN\_TG\_STATUE@{CAN\_TG\_STATUE}}
 \index{CAN\_TG\_STATUE@{CAN\_TG\_STATUE}!config\_value.h@{config\_value.h}}
 \doxysubsubsection{\texorpdfstring{CAN\_TG\_STATUE}{CAN\_TG\_STATUE}}

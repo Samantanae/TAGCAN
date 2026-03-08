@@ -2,7 +2,7 @@
 <section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_tag__manager_8c" xml:lang="fr">
 <title>Référence du fichier tag_manager.c</title>
 <indexterm><primary>tag_manager.c</primary></indexterm>
-<programlisting linenumbering="unnumbered">#include &quot;../../include/sub_include/tag_manager.h&quot;<?linebreak?>#include &quot;../../include/config_value.h&quot;<?linebreak?>#include &quot;../../include/gestion_tag.h&quot;<?linebreak?>#include &lt;stdio.h&gt;<?linebreak?>#include &lt;string.h&gt;<?linebreak?>#include &lt;stdint.h&gt;<?linebreak?></programlisting>Graphe des dépendances par inclusion de tag_manager.c:<para>
+<programlisting linenumbering="unnumbered">#include &quot;../../include/sub_include/tag_manager.h&quot;<?linebreak?>#include &quot;../../include/config_value.h&quot;<?linebreak?>#include &quot;../../include/gestion_tag.h&quot;<?linebreak?>#include &quot;../../include/sub_include/print_val.h&quot;<?linebreak?>#include &lt;stdio.h&gt;<?linebreak?>#include &lt;string.h&gt;<?linebreak?>#include &lt;stdint.h&gt;<?linebreak?></programlisting>Graphe des dépendances par inclusion de tag_manager.c:<para>
     <informalfigure>
         <mediaobject>
             <imageobject>

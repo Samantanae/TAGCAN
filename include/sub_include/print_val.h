@@ -5,10 +5,10 @@
 
 #define PRINT_VAL_H
 
-// Utilitaires d'affichage pour le débogage
-/** \brief imprime dans le terminal la représentation 8 bits (binaire) de la valeur passé en argument
+// Utilitaires d'affichage pour le dÃ©bogage
+/** \brief imprime dans le terminal la reprÃ©sentation 8 bits (binaire) de la valeur passÃ© en argument
  *
- * \param val la valeurs à voire au format mentionner précédament.
+ * \param val la valeurs Ã  voire au format mentionner prÃ©cÃ©dament.
  */
 
 void print_bin_8(uint8_t val);

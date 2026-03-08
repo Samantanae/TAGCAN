@@ -2,7 +2,7 @@
 <section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_data__container_8c" xml:lang="fr">
 <title>Référence du fichier data_container.c</title>
 <indexterm><primary>data_container.c</primary></indexterm>
-<programlisting linenumbering="unnumbered">#include &quot;../../include/sub_include/data_container.h&quot;<?linebreak?>#include &quot;../../include/config_value.h&quot;<?linebreak?>#include &lt;stdio.h&gt;<?linebreak?></programlisting>Graphe des dépendances par inclusion de data_container.c:<para>
+<programlisting linenumbering="unnumbered">#include &quot;../../include/sub_include/data_container.h&quot;<?linebreak?>#include &quot;../../include/config_value.h&quot;<?linebreak?>#include &quot;../../include/sub_include/print_val.h&quot;<?linebreak?>#include &lt;stdio.h&gt;<?linebreak?></programlisting>Graphe des dépendances par inclusion de data_container.c:<para>
     <informalfigure>
         <mediaobject>
             <imageobject>
@@ -22,7 +22,7 @@
 
 <para>[FONCTION INTERNE] prépare le mask utiliser pour set/get la valeur. (uniquement utiliser pour les valeurs de moins de 8 bits) </para>
 </listitem>
-            <listitem><para>int <link linkend="_data__container_8c_1aa84538f1ab0c319056787e9674157405">set_value</link> (const char *tag_name, uint32_t value)</para>
+            <listitem><para><link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947f">CAN_TG_STATUE</link> <link linkend="_data__container_8c_1ae30fab9c73b624e37f064c836fefb7de">set_value</link> (const char *tag_name, uint32_t value)</para>
 
 <para>change la valeur relier au tag. </para>
 </listitem>
@@ -174,11 +174,11 @@ Voici le graphe des appelants de cette fonction :<para>
     </informalfigure>
 </para>
 </section>
-<anchor xml:id="_data__container_8c_1aa84538f1ab0c319056787e9674157405"/><section>
+<anchor xml:id="_data__container_8c_1ae30fab9c73b624e37f064c836fefb7de"/><section>
     <title>set_value()</title>
 <indexterm><primary>set_value</primary><secondary>data_container.c</secondary></indexterm>
 <indexterm><primary>data_container.c</primary><secondary>set_value</secondary></indexterm>
-<para><computeroutput>int set_value (const char * tag_name, uint32_t value)</computeroutput></para><para>
+<para><computeroutput><link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947f">CAN_TG_STATUE</link> set_value (const char * tag_name, uint32_t value)</computeroutput></para><para>
 
 <para>change la valeur relier au tag. </para>
 </para>
@@ -221,7 +221,7 @@ Voici le graphe d&apos;appel pour cette fonction :<para>
     <informalfigure>
         <mediaobject>
             <imageobject>
-                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="data__container_8c_aa84538f1ab0c319056787e9674157405_cgraph.png"></imagedata>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="data__container_8c_ae30fab9c73b624e37f064c836fefb7de_cgraph.png"></imagedata>
             </imageobject>
         </mediaobject>
     </informalfigure>
@@ -230,7 +230,7 @@ Voici le graphe des appelants de cette fonction :<para>
     <informalfigure>
         <mediaobject>
             <imageobject>
-                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="data__container_8c_aa84538f1ab0c319056787e9674157405_icgraph.png"></imagedata>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="data__container_8c_ae30fab9c73b624e37f064c836fefb7de_icgraph.png"></imagedata>
             </imageobject>
         </mediaobject>
     </informalfigure>

@@ -42,6 +42,11 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 , <?linebreak?><link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947fab1cfc87a8731dfcbc6e986a1b81115ac">CAN_TG_ERROR_VALUE_TO_BIG</link> = -10
  }</para>
 </listitem>
+            <listitem><para>enum <link linkend="_config__value_8h_1ac0d6cdda2cf4abb51116b86bc99acf99">CAN_MODE</link> { <link linkend="_config__value_8h_1ac0d6cdda2cf4abb51116b86bc99acf99a7d47d78204fba2e07bda4e65594ff332">RECEVE_ONLY</link>
+, <link linkend="_config__value_8h_1ac0d6cdda2cf4abb51116b86bc99acf99ad5ec70c56183ea13f8a0c16a3708a23e">SEND_ONLY</link>
+, <link linkend="_config__value_8h_1ac0d6cdda2cf4abb51116b86bc99acf99ac4e66207fce47c294e4aaab76000c9ce">SEND_AND_RECEVE</link>
+ }</para>
+</listitem>
         </itemizedlist>
 </simplesect>
 <simplesect>
@@ -100,6 +105,32 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 </section>
 <section>
 <title>Documentation du type de l&apos;énumération</title>
+<anchor xml:id="_config__value_8h_1ac0d6cdda2cf4abb51116b86bc99acf99"/><section>
+    <title>CAN_MODE</title>
+<indexterm><primary>CAN_MODE</primary><secondary>config_value.h</secondary></indexterm>
+<indexterm><primary>config_value.h</primary><secondary>CAN_MODE</secondary></indexterm>
+<para><computeroutput>enum <link linkend="_config__value_8h_1ac0d6cdda2cf4abb51116b86bc99acf99">CAN_MODE</link></computeroutput></para><informaltable frame="all">
+<title>Valeurs énumérées</title>
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<tbody>
+<row><entry><indexterm><primary>RECEVE_ONLY</primary><secondary>config_value.h</secondary></indexterm>
+<indexterm><primary>config_value.h</primary><secondary>RECEVE_ONLY</secondary></indexterm>
+<anchor xml:id="_config__value_8h_1ac0d6cdda2cf4abb51116b86bc99acf99a7d47d78204fba2e07bda4e65594ff332"/>RECEVE_ONLY</entry><entry>
+<para>In this mode, the &apos;packet&apos; cannot be wrinten to from &apos;set_value&apos;, but the value (assuming it&apos;s the correct id) while be updated if the id match. </para>
+</entry></row><row><entry><indexterm><primary>SEND_ONLY</primary><secondary>config_value.h</secondary></indexterm>
+<indexterm><primary>config_value.h</primary><secondary>SEND_ONLY</secondary></indexterm>
+<anchor xml:id="_config__value_8h_1ac0d6cdda2cf4abb51116b86bc99acf99ad5ec70c56183ea13f8a0c16a3708a23e"/>SEND_ONLY</entry><entry>
+<para>In this mode, the &apos;packet&apos; linked with can only send data. In other words, if an other CAN perif send a &apos;paquet&apos; with the same ID, it&apos;s while not modifie he value. </para>
+</entry></row><row><entry><indexterm><primary>SEND_AND_RECEVE</primary><secondary>config_value.h</secondary></indexterm>
+<indexterm><primary>config_value.h</primary><secondary>SEND_AND_RECEVE</secondary></indexterm>
+<anchor xml:id="_config__value_8h_1ac0d6cdda2cf4abb51116b86bc99acf99ac4e66207fce47c294e4aaab76000c9ce"/>SEND_AND_RECEVE</entry><entry>
+<para>In this mode, you can modifie the value, send the value and receve an update form the CAN line. (In other word, it&apos;s the less free of contrainte, but also the most suceptible to have unwished change of value.) </para>
+</entry></row>    </tbody>
+    </tgroup>
+</informaltable>
+</section>
 <anchor xml:id="_config__value_8h_1af59c8e96bb2966b590726fc2d285947f"/><section>
     <title>CAN_TG_STATUE</title>
 <indexterm><primary>CAN_TG_STATUE</primary><secondary>config_value.h</secondary></indexterm>

@@ -156,6 +156,10 @@ Macros</h2></td></tr>
 &#160;&#160;<a class="el" href="#af59c8e96bb2966b590726fc2d285947fab1cfc87a8731dfcbc6e986a1b81115ac">CAN_TG_ERROR_VALUE_TO_BIG</a> = -10
 <br />
  }</td></tr>
+<tr class="memitem:ac0d6cdda2cf4abb51116b86bc99acf99" id="r_ac0d6cdda2cf4abb51116b86bc99acf99"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#ac0d6cdda2cf4abb51116b86bc99acf99">CAN_MODE</a> { <a class="el" href="#ac0d6cdda2cf4abb51116b86bc99acf99a7d47d78204fba2e07bda4e65594ff332">RECEVE_ONLY</a>
+, <a class="el" href="#ac0d6cdda2cf4abb51116b86bc99acf99ad5ec70c56183ea13f8a0c16a3708a23e">SEND_ONLY</a>
+, <a class="el" href="#ac0d6cdda2cf4abb51116b86bc99acf99ac4e66207fce47c294e4aaab76000c9ce">SEND_AND_RECEVE</a>
+ }</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -231,6 +235,28 @@ Variables</h2></td></tr>
 </div>
 </div>
 <a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Documentation du type de l'énumération</h2>
+<a id="ac0d6cdda2cf4abb51116b86bc99acf99" name="ac0d6cdda2cf4abb51116b86bc99acf99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0d6cdda2cf4abb51116b86bc99acf99">&#9670;&#160;</a></span>CAN_MODE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#ac0d6cdda2cf4abb51116b86bc99acf99">CAN_MODE</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><a id="ac0d6cdda2cf4abb51116b86bc99acf99a7d47d78204fba2e07bda4e65594ff332" name="ac0d6cdda2cf4abb51116b86bc99acf99a7d47d78204fba2e07bda4e65594ff332"></a>RECEVE_ONLY&#160;</td><td class="fielddoc"><p>In this mode, the 'packet' cannot be wrinten to from 'set_value', but the value (assuming it's the correct id) while be updated if the id match. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ac0d6cdda2cf4abb51116b86bc99acf99ad5ec70c56183ea13f8a0c16a3708a23e" name="ac0d6cdda2cf4abb51116b86bc99acf99ad5ec70c56183ea13f8a0c16a3708a23e"></a>SEND_ONLY&#160;</td><td class="fielddoc"><p>In this mode, the 'packet' linked with can only send data. In other words, if an other CAN perif send a 'paquet' with the same ID, it's while not modifie he value. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ac0d6cdda2cf4abb51116b86bc99acf99ac4e66207fce47c294e4aaab76000c9ce" name="ac0d6cdda2cf4abb51116b86bc99acf99ac4e66207fce47c294e4aaab76000c9ce"></a>SEND_AND_RECEVE&#160;</td><td class="fielddoc"><p>In this mode, you can modifie the value, send the value and receve an update form the CAN line. (In other word, it's the less free of contrainte, but also the most suceptible to have unwished change of value.) </p>
+</td></tr>
+</table>
+
+</div>
+</div>
 <a id="af59c8e96bb2966b590726fc2d285947f" name="af59c8e96bb2966b590726fc2d285947f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af59c8e96bb2966b590726fc2d285947f">&#9670;&#160;</a></span>CAN_TG_STATUE</h2>
 

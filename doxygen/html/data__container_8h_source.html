@@ -28,7 +28,7 @@
   <td id="projectalign">
    <div id="projectname">TAGCAN
    </div>
-   <div id="projectbrief">An helpfull modul to send multiple data with one CAN frame.</div>
+   <div id="projectbrief">A helpful module to send multiple data with one CAN frame.</div>
   </td>
  </tr>
  </tbody>
@@ -80,8 +80,8 @@ $(function(){initNavTree('data__container_8h_source.html','',''); });
 <div class="SRPage">
 <div id="SRIndex">
 <div id="SRResults"></div>
-<div class="SRStatus" id="Loading">Chargement...</div>
-<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="Loading">Chargement…</div>
+<div class="SRStatus" id="Searching">Recherche…</div>
 <div class="SRStatus" id="NoMatches">Aucune correspondance</div>
 </div>
 </div>
@@ -95,35 +95,38 @@ $(function(){initNavTree('data__container_8h_source.html','',''); });
 <a href="data__container_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef DATA_CONTAINER_H</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="tag__manager_8h.html">tag_manager.h</a>&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include “<a class="code" href="tag__manager_8h.html">tag_manager.h</a>”</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#define DATA_CONTAINER_H</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">// Représente le buffer de données (le payload CAN de 8 octets)</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">//représente la mémoire tampon de données (le payload CAN de 8 octets)</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">extern</span> uint8_t <a class="code hl_variable" href="data__container_8c.html#a0b96d44a8da73070e470c7bf30523ca1">TxData</a>[<a class="code hl_define" href="config__value_8h.html#a470399f7b67e59b1cd04ab17e03c96d1">N_BYTES</a>];    </div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keywordtype">void</span> <a class="code hl_function" href="data__container_8h.html#a129f017feb0712be1dcf7932e6035aa0">init_data_container</a>(<span class="keywordtype">void</span>);</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">// Fonctions principales (getters / setters)</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">//Fonctions principales (getters/setters)</span></div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keywordtype">int</span> <a class="code hl_function" href="data__container_8h.html#aa84538f1ab0c319056787e9674157405">set_value</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* tag_name, uint32_t value);</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="keywordtype">int</span> <a class="code hl_function" href="data__container_8h.html#a66cbaaa79a2ba3c2c7912514c1dc805f">get_value</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* tag_name, uint32_t* out_value);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="keywordtype">int</span> <a class="code hl_function" href="data__container_8h.html#a66cbaaa79a2ba3c2c7912514c1dc805f">get_value</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* tag_name, uint32_t* out_value);</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>uint8_t <a class="code hl_function" href="data__container_8h.html#a66768c162c3a8352b7d5397e90206085">prep_mask</a>(uint8_t p_bit, uint8_t n_bit);</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">// Simulation de transmission (remplace send/receve python)</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keywordtype">void</span> <a class="code hl_function" href="data__container_8h.html#ae1649807202241b28239e8cb212a18b6">can_simulate_send_receive</a>(uint8_t* tx_buffer, uint8_t* rx_buffer);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>uint8_t <a class="code hl_function" href="data__container_8h.html#a66768c162c3a8352b7d5397e90206085">prep_mask </a>(uint8_t p_bit, uint8_t n_bit);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">//Simulation de transmission (remplace send/receve python)</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keywordtype">void</span> <a class="code hl_function" href="data__container_8h.html#ae1649807202241b28239e8cb212a18b6">can_simulate_send_receive </a>(uint8_t* tx_buffer, uint8_t* rx_buffer);</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#endif </span><span class="comment">// DATA_CONTAINER_H</span></div>
-<div class="ttc" id="aconfig__value_8h_html_a470399f7b67e59b1cd04ab17e03c96d1"><div class="ttname"><a href="config__value_8h.html#a470399f7b67e59b1cd04ab17e03c96d1">N_BYTES</a></div><div class="ttdeci">#define N_BYTES</div><div class="ttdef"><b>Definition</b> config_value.h:6</div></div>
-<div class="ttc" id="adata__container_8c_html_a0b96d44a8da73070e470c7bf30523ca1"><div class="ttname"><a href="data__container_8c.html#a0b96d44a8da73070e470c7bf30523ca1">TxData</a></div><div class="ttdeci">uint8_t TxData[N_BYTES]</div><div class="ttdef"><b>Definition</b> data_container.c:5</div></div>
-<div class="ttc" id="adata__container_8h_html_a129f017feb0712be1dcf7932e6035aa0"><div class="ttname"><a href="data__container_8h.html#a129f017feb0712be1dcf7932e6035aa0">init_data_container</a></div><div class="ttdeci">void init_data_container(void)</div><div class="ttdoc">clean le TxData affin d&#39;être certain de ne pas avoir de donnée poubelle dedans. Si réexécuté,...</div><div class="ttdef"><b>Definition</b> data_container.c:7</div></div>
-<div class="ttc" id="adata__container_8h_html_a66768c162c3a8352b7d5397e90206085"><div class="ttname"><a href="data__container_8h.html#a66768c162c3a8352b7d5397e90206085">prep_mask</a></div><div class="ttdeci">uint8_t prep_mask(uint8_t p_bit, uint8_t n_bit)</div><div class="ttdoc">[FONCTION INTERNE] prépare le mask utiliser pour set/get la valeur. (uniquement utiliser pour les val...</div><div class="ttdef"><b>Definition</b> data_container.c:18</div></div>
-<div class="ttc" id="adata__container_8h_html_a66cbaaa79a2ba3c2c7912514c1dc805f"><div class="ttname"><a href="data__container_8h.html#a66cbaaa79a2ba3c2c7912514c1dc805f">get_value</a></div><div class="ttdeci">int get_value(const char *tag_name, uint32_t *out_value)</div><div class="ttdoc">obtien la valeur désigner par le tag.</div><div class="ttdef"><b>Definition</b> data_container.c:88</div></div>
-<div class="ttc" id="adata__container_8h_html_aa84538f1ab0c319056787e9674157405"><div class="ttname"><a href="data__container_8h.html#aa84538f1ab0c319056787e9674157405">set_value</a></div><div class="ttdeci">int set_value(const char *tag_name, uint32_t value)</div><div class="ttdoc">change la valeur relier au tag.</div><div class="ttdef"><b>Definition</b> data_container.c:33</div></div>
-<div class="ttc" id="adata__container_8h_html_ae1649807202241b28239e8cb212a18b6"><div class="ttname"><a href="data__container_8h.html#ae1649807202241b28239e8cb212a18b6">can_simulate_send_receive</a></div><div class="ttdeci">void can_simulate_send_receive(uint8_t *tx_buffer, uint8_t *rx_buffer)</div><div class="ttdef"><b>Definition</b> data_container.c:123</div></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment">//int CAN_RECEVE</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="preprocessor">#endif</span><span class="comment">//DATA_CONTAINER_H</span></div>
+<div class="ttc" id="aconfig__value_8h_html_a470399f7b67e59b1cd04ab17e03c96d1"><div class="ttname"><a href="config__value_8h.html#a470399f7b67e59b1cd04ab17e03c96d1">N_BYTES</a></div><div class="ttdeci">#define N_BYTES</div><div class="ttdef"><b>Definition</b> config_value.h:6</div></div>
+<div class="ttc" id="adata__container_8c_html_a0b96d44a8da73070e470c7bf30523ca1"><div class="ttname"><a href="data__container_8c.html#a0b96d44a8da73070e470c7bf30523ca1">TxData</a></div><div class="ttdeci">uint8_t TxData[N_BYTES]</div><div class="ttdef"><b>Definition</b> data_container.c:6</div></div>
+<div class="ttc" id="adata__container_8h_html_a129f017feb0712be1dcf7932e6035aa0"><div class="ttname"><a href="data__container_8h.html#a129f017feb0712be1dcf7932e6035aa0">init_data_container</a></div><div class="ttdeci">void init_data_container(void)</div><div class="ttdoc">clean le TxData afin d’être certain de ne pas avoir de donnée poubelle dedans. Si réexécuté,…</div><div class="ttdef"><b>Definition</b> data_container.c:8</div></div>
+<div class="ttc" id="adata__container_8h_html_a66768c162c3a8352b7d5397e90206085"><div class="ttname"><a href="data__container_8h.html#a66768c162c3a8352b7d5397e90206085">prep_mask</a></div><div class="ttdeci">uint8_t prep_mask (uint8_t p_bit, uint8_t n_bit)</div><div class="ttdoc">[FONCTION INTERNE] prépare le maque utiliser pour set/get la valeur. (Uniquement utilisé pour les vals…</div><div class="ttdef"><b>Définition</b> data_container.c:19</div></div>
+<div class="ttc" id="adata__container_8h_html_a66cbaaa79a2ba3c2c7912514c1dc805f"><div class="ttname"><a href="data__container_8h.html#a66cbaaa79a2ba3c2c7912514c1dc805f">get_value</a></div><div class="ttdeci">int get_value(const char *tag_name, uint32_t *out_value)</div><div class="ttdoc">Obtient la valeur désigner par le tag.</div><div class="ttdef"><b>Definition</b> data_container.c:96</div></div>
+<div class="ttc" id="adata__container_8h_html_aa84538f1ab0c319056787e9674157405"><div class="ttname"><a href="data__container_8h.html#aa84538f1ab0c319056787e9674157405">set_value</a></div><div class="ttdeci">int set_value(const char *tag_name, uint32_t value)</div><div class="ttdoc">Change la valeur reliée au tag.</div><div class="ttdef"><b>Definition</b> data_container.c:34</div></div>
+<div class="ttc" id="adata__container_8h_html_ae1649807202241b28239e8cb212a18b6"><div class="ttname"><a href="data__container_8h.html#ae1649807202241b28239e8cb212a18b6">can_simulate_send_receive</a></div><div class="ttdeci">void can_simulate_send_receive(uint8_t *tx_buffer, uint8_t *rx_buffer)</div><div class="ttdef"><b>Definition</b> data_container.c:141</div></div>
 <div class="ttc" id="atag__manager_8h_html"><div class="ttname"><a href="tag__manager_8h.html">tag_manager.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

@@ -10,6 +10,8 @@ data_container.c
 .br
 \fR#include '\&.\&./\&.\&./include/config_value\&.h'\fP
 .br
+\fR#include '\&.\&./\&.\&./include/sub_include/print_val\&.h'\fP
+.br
 \fR#include <stdio\&.h>\fP
 .br
 
@@ -25,7 +27,7 @@ data_container.c
 .br
 .RI "[FONCTION INTERNE] prépare le mask utiliser pour set/get la valeur\&. (uniquement utiliser pour les valeurs de moins de 8 bits) "
 .ti -1c
-.RI "int \fBset_value\fP (const char *tag_name, uint32_t value)"
+.RI "\fBCAN_TG_STATUE\fP \fBset_value\fP (const char *tag_name, uint32_t value)"
 .br
 .RI "change la valeur relier au tag\&. "
 .ti -1c
@@ -92,7 +94,7 @@ Un masque binaire pour conserver uniquement la valeurs d'intéress ou retirer un
 .RE
 .PP
 
-.SS "int set_value (const char * tag_name, uint32_t value)"
+.SS "\fBCAN_TG_STATUE\fP set_value (const char * tag_name, uint32_t value)"
 
 .PP
 change la valeur relier au tag\&. 

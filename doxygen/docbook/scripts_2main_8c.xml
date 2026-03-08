@@ -22,6 +22,10 @@
 
 <para>permet l&apos;impression des testes d&apos;égalité entre 2 int de manière plus stendardisé. </para>
 </listitem>
+            <listitem><para>void <link linkend="_scripts_2main_8c_1a9c4bb6f6d00e76eae45e966a4c628178">test_print</link> (void)</para>
+</listitem>
+            <listitem><para>void <link linkend="_scripts_2main_8c_1a4f26f5b24d899127d66338ba3bfd7f1b">somme_other_test</link> (void)</para>
+</listitem>
             <listitem><para>void <link linkend="_scripts_2main_8c_1ae9bbb2f5bb69f73e92c761f83223285a">run_all_tests</link> (void)</para>
 
 <para>effectue les divers tests affin de vérifier que tout fonctionne bien. les résultat sont présenté dans le terminal. </para>
@@ -77,6 +81,20 @@ Voici le graphe des appelants de cette fonction :<para>
         <mediaobject>
             <imageobject>
                 <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="scripts_2main_8c_ae9bbb2f5bb69f73e92c761f83223285a_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_scripts_2main_8c_1a4f26f5b24d899127d66338ba3bfd7f1b"/><section>
+    <title>somme_other_test()</title>
+<indexterm><primary>somme_other_test</primary><secondary>main.c</secondary></indexterm>
+<indexterm><primary>main.c</primary><secondary>somme_other_test</secondary></indexterm>
+<para><computeroutput>void somme_other_test (void )</computeroutput></para>Voici le graphe d&apos;appel pour cette fonction :<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="scripts_2main_8c_a4f26f5b24d899127d66338ba3bfd7f1b_cgraph.png"></imagedata>
             </imageobject>
         </mediaobject>
     </informalfigure>
@@ -163,6 +181,29 @@ Voici le graphe des appelants de cette fonction :<para>
         <mediaobject>
             <imageobject>
                 <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="scripts_2main_8c_a67a63463b204713946cce11511fc9231_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_scripts_2main_8c_1a9c4bb6f6d00e76eae45e966a4c628178"/><section>
+    <title>test_print()</title>
+<indexterm><primary>test_print</primary><secondary>main.c</secondary></indexterm>
+<indexterm><primary>main.c</primary><secondary>test_print</secondary></indexterm>
+<para><computeroutput>void test_print (void )</computeroutput></para>Voici le graphe d&apos;appel pour cette fonction :<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="scripts_2main_8c_a9c4bb6f6d00e76eae45e966a4c628178_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Voici le graphe des appelants de cette fonction :<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="scripts_2main_8c_a9c4bb6f6d00e76eae45e966a4c628178_icgraph.png"></imagedata>
             </imageobject>
         </mediaobject>
     </informalfigure>

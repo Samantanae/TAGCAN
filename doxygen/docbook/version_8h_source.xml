@@ -4,33 +4,30 @@
 Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;VERSION_H</emphasis>
 2 <emphasis role="preprocessor">#define&#32;VERSION_H</emphasis>
 3 
-4 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_auto_version">AutoVersion</link>{
-5 
-6 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//Date&#32;Version&#32;Types</emphasis>
-7 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;DATE[]&#32;=&#32;<emphasis role="stringliteral">&quot;01&quot;</emphasis>;
-8 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;MONTH[]&#32;=&#32;<emphasis role="stringliteral">&quot;03&quot;</emphasis>;
-9 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;YEAR[]&#32;=&#32;<emphasis role="stringliteral">&quot;2026&quot;</emphasis>;
-10 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;UBUNTU_VERSION_STYLE[]&#32;=&#32;&#32;<emphasis role="stringliteral">&quot;26.03&quot;</emphasis>;
-11 
-12 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//Software&#32;Status</emphasis>
-13 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;STATUS[]&#32;=&#32;&#32;<emphasis role="stringliteral">&quot;Alpha&quot;</emphasis>;
-14 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;STATUS_SHORT[]&#32;=&#32;&#32;<emphasis role="stringliteral">&quot;a&quot;</emphasis>;
-15 
-16 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//Standard&#32;Version&#32;Type</emphasis>
-17 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;MAJOR&#32;&#32;=&#32;9;
-18 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;MINOR&#32;&#32;=&#32;0;
-19 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;BUILD&#32;&#32;=&#32;0;
-20 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;REVISION&#32;&#32;=&#32;0;
-21 
-22 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//Miscellaneous&#32;Version&#32;Types</emphasis>
-23 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;BUILDS_COUNT&#32;&#32;=&#32;1;
-24 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#define&#32;RC_FILEVERSION&#32;9,0,0,0</emphasis>
-25 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#define&#32;RC_FILEVERSION_STRING&#32;&quot;9,&#32;0,&#32;0,&#32;0\0&quot;</emphasis>
-26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;FULLVERSION_STRING&#32;[]&#32;=&#32;<emphasis role="stringliteral">&quot;9.0.0.0&quot;</emphasis>;
-27 
-28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//These&#32;values&#32;are&#32;to&#32;keep&#32;track&#32;of&#32;your&#32;versioning&#32;state,&#32;don&apos;t&#32;modify&#32;them.</emphasis>
-29 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;BUILD_HISTORY&#32;&#32;=&#32;0;
-30 
-31 }
-32 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//VERSION_H</emphasis>
+4 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//Date&#32;Version&#32;Types</emphasis>
+5 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;DATE[]&#32;=&#32;<emphasis role="stringliteral">&quot;03&quot;</emphasis>;
+6 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;MONTH[]&#32;=&#32;<emphasis role="stringliteral">&quot;03&quot;</emphasis>;
+7 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;YEAR[]&#32;=&#32;<emphasis role="stringliteral">&quot;2026&quot;</emphasis>;
+8 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;UBUNTU_VERSION_STYLE[]&#32;=&#32;&#32;<emphasis role="stringliteral">&quot;26.03&quot;</emphasis>;
+9 
+10 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//Software&#32;Status</emphasis>
+11 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;STATUS[]&#32;=&#32;&#32;<emphasis role="stringliteral">&quot;Alpha&quot;</emphasis>;
+12 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;STATUS_SHORT[]&#32;=&#32;&#32;<emphasis role="stringliteral">&quot;a&quot;</emphasis>;
+13 
+14 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//Standard&#32;Version&#32;Type</emphasis>
+15 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;MAJOR&#32;&#32;=&#32;9;
+16 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;MINOR&#32;&#32;=&#32;0;
+17 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;BUILD&#32;&#32;=&#32;24;
+18 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;REVISION&#32;&#32;=&#32;114;
+19 
+20 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//Miscellaneous&#32;Version&#32;Types</emphasis>
+21 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;BUILDS_COUNT&#32;&#32;=&#32;135;
+22 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#define&#32;RC_FILEVERSION&#32;9,0,24,114</emphasis>
+23 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#define&#32;RC_FILEVERSION_STRING&#32;&quot;9,&#32;0,&#32;24,&#32;114\0&quot;</emphasis>
+24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;FULLVERSION_STRING&#32;[]&#32;=&#32;<emphasis role="stringliteral">&quot;9.0.24.114&quot;</emphasis>;
+25 
+26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//These&#32;values&#32;are&#32;to&#32;keep&#32;track&#32;of&#32;your&#32;versioning&#32;state,&#32;don&apos;t&#32;modify&#32;them.</emphasis>
+27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;BUILD_HISTORY&#32;&#32;=&#32;24;
+28 
+29 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//VERSION_H</emphasis>
 </programlisting></section>

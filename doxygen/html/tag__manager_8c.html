@@ -95,6 +95,7 @@ $(function(){initNavTree('tag__manager_8c.html','',''); });
 <div class="textblock"><code>#include &quot;<a class="el" href="tag__manager_8h_source.html">../../include/sub_include/tag_manager.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="config__value_8h_source.html">../../include/config_value.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="gestion__tag_8h_source.html">../../include/gestion_tag.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="print__val_8h_source.html">../../include/sub_include/print_val.h</a>&quot;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
 <code>#include &lt;stdint.h&gt;</code><br />
@@ -103,23 +104,27 @@ Graphe des dépendances par inclusion de tag_manager.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="tag__manager_8c__incl.png" border="0" usemap="#atag__manager_8c" loading="lazy" alt=""/></div>
 <map name="atag__manager_8c" id="atag__manager_8c">
-<area shape="rect" title=" " alt="" coords="295,5,403,31"/>
+<area shape="rect" title=" " alt="" coords="347,5,455,31"/>
 <area shape="rect" href="tag__manager_8h.html" title=" " alt="" coords="100,79,260,119"/>
-<area shape="poly" title=" " alt="" coords="326,33,234,75,232,70,324,28"/>
+<area shape="poly" title=" " alt="" coords="370,33,247,77,245,72,368,28"/>
 <area shape="rect" href="config__value_8h.html" title=" " alt="" coords="5,167,120,192"/>
-<area shape="poly" title=" " alt="" coords="295,28,178,47,124,62,104,71,90,81,78,96,71,115,65,153,60,152,66,114,73,94,86,77,101,66,122,57,176,42,295,22"/>
-<area shape="rect" title=" " alt="" coords="254,167,319,192"/>
-<area shape="poly" title=" " alt="" coords="346,32,325,80,298,154,293,152,320,78,341,30"/>
+<area shape="poly" title=" " alt="" coords="347,25,279,32,202,43,134,59,108,69,90,81,78,96,70,115,65,153,59,152,65,114,73,94,86,77,105,64,132,54,201,37,278,26,347,20"/>
+<area shape="rect" title=" " alt="" coords="265,167,330,192"/>
+<area shape="poly" title=" " alt="" coords="380,33,351,53,325,80,309,117,302,153,296,152,304,115,320,77,347,49,377,29"/>
 <area shape="rect" href="gestion__tag_8h.html" title=" " alt="" coords="335,79,468,119"/>
-<area shape="poly" title=" " alt="" coords="359,29,384,66,379,69,355,32"/>
-<area shape="rect" title=" " alt="" coords="492,86,553,111"/>
-<area shape="poly" title=" " alt="" coords="376,28,486,78,484,83,373,33"/>
-<area shape="rect" title=" " alt="" coords="578,86,643,111"/>
-<area shape="poly" title=" " alt="" coords="398,28,477,49,566,76,573,79,571,84,564,81,476,54,397,33"/>
+<area shape="poly" title=" " alt="" coords="404,31,404,65,399,65,399,31"/>
+<area shape="rect" href="print__val_8h.html" title=" " alt="" coords="492,79,652,119"/>
+<area shape="poly" title=" " alt="" coords="427,28,519,70,517,75,425,33"/>
+<area shape="rect" title=" " alt="" coords="600,167,661,192"/>
+<area shape="poly" title=" " alt="" coords="456,21,514,28,577,39,631,55,652,65,666,77,674,97,672,118,663,139,652,157,647,154,658,136,667,117,669,98,662,80,649,70,629,60,576,44,514,33,456,26"/>
+<area shape="rect" title=" " alt="" coords="727,86,793,111"/>
+<area shape="poly" title=" " alt="" coords="456,25,573,45,709,76,719,79,717,84,707,81,572,50,455,30"/>
 <area shape="poly" title=" " alt="" coords="153,121,93,161,90,157,150,117"/>
-<area shape="poly" title=" " alt="" coords="207,117,261,156,258,160,204,121"/>
+<area shape="poly" title=" " alt="" coords="210,117,270,157,267,161,207,121"/>
 <area shape="rect" title=" " alt="" coords="144,167,219,192"/>
 <area shape="poly" title=" " alt="" coords="183,119,184,153,178,153,178,119"/>
+<area shape="poly" title=" " alt="" coords="507,121,344,168,342,162,505,116"/>
+<area shape="poly" title=" " alt="" coords="588,117,616,154,611,157,584,120"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -185,13 +190,16 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="tag__manager_8c_ad5772dac2622697b5f563da0dbfaede3_icgraph.png" border="0" usemap="#atag__manager_8c_ad5772dac2622697b5f563da0dbfaede3_icgraph" loading="lazy" alt=""/></div>
 <map name="atag__manager_8c_ad5772dac2622697b5f563da0dbfaede3_icgraph" id="atag__manager_8c_ad5772dac2622697b5f563da0dbfaede3_icgraph">
-<area shape="rect" title="même chose que la fonction précédente, mais en ignorant le bit déjà pris pour la première partie." alt="" coords="361,5,521,45"/>
-<area shape="rect" href="tag__manager_8c.html#a7dd7e8cfc97d378d44e7c63bd9f49931" title="crée un nouveau tag." alt="" coords="248,13,313,38"/>
-<area shape="poly" title=" " alt="" coords="348,28,314,28,314,23,348,23"/>
-<area shape="rect" href="scripts_2main_8c.html#ae9bbb2f5bb69f73e92c761f83223285a" title="effectue les divers tests affin de vérifier que tout fonctionne bien. les résultat sont présenté dans..." alt="" coords="104,13,200,38"/>
-<area shape="poly" title=" " alt="" coords="234,28,200,28,200,23,234,23"/>
-<area shape="rect" href="scripts_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,13,56,38"/>
-<area shape="poly" title=" " alt="" coords="90,28,56,28,56,23,90,23"/>
+<area shape="rect" title="même chose que la fonction précédente, mais en ignorant le bit déjà pris pour la première partie." alt="" coords="361,23,521,63"/>
+<area shape="rect" href="tag__manager_8c.html#a7dd7e8cfc97d378d44e7c63bd9f49931" title="crée un nouveau tag." alt="" coords="248,31,313,56"/>
+<area shape="poly" title=" " alt="" coords="348,46,314,46,314,41,348,41"/>
+<area shape="rect" href="scripts_2main_8c.html#ae9bbb2f5bb69f73e92c761f83223285a" title="effectue les divers tests affin de vérifier que tout fonctionne bien. les résultat sont présenté dans..." alt="" coords="104,5,200,31"/>
+<area shape="poly" title=" " alt="" coords="234,37,200,30,201,25,235,32"/>
+<area shape="rect" href="scripts_2main_8c.html#a9c4bb6f6d00e76eae45e966a4c628178" title=" " alt="" coords="114,55,190,80"/>
+<area shape="poly" title=" " alt="" coords="235,55,191,63,190,58,234,49"/>
+<area shape="rect" href="scripts_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,31,56,56"/>
+<area shape="poly" title=" " alt="" coords="91,33,57,41,56,36,90,28"/>
+<area shape="poly" title=" " alt="" coords="100,60,56,51,57,46,101,55"/>
 </map>
 </div>
 
@@ -229,13 +237,16 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="tag__manager_8c_a5f1ce2cac9791e6b46be230dcce3f804_icgraph.png" border="0" usemap="#atag__manager_8c_a5f1ce2cac9791e6b46be230dcce3f804_icgraph" loading="lazy" alt=""/></div>
 <map name="atag__manager_8c_a5f1ce2cac9791e6b46be230dcce3f804_icgraph" id="atag__manager_8c_a5f1ce2cac9791e6b46be230dcce3f804_icgraph">
-<area shape="rect" title="trouve le premier bytes qui contien suffissament d&#39;espace libre pour contenir la taille demander." alt="" coords="361,5,515,45"/>
-<area shape="rect" href="tag__manager_8c.html#a7dd7e8cfc97d378d44e7c63bd9f49931" title="crée un nouveau tag." alt="" coords="248,13,313,38"/>
-<area shape="poly" title=" " alt="" coords="348,28,313,28,313,23,348,23"/>
-<area shape="rect" href="scripts_2main_8c.html#ae9bbb2f5bb69f73e92c761f83223285a" title="effectue les divers tests affin de vérifier que tout fonctionne bien. les résultat sont présenté dans..." alt="" coords="104,13,200,38"/>
-<area shape="poly" title=" " alt="" coords="234,28,200,28,200,23,234,23"/>
-<area shape="rect" href="scripts_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,13,56,38"/>
-<area shape="poly" title=" " alt="" coords="90,28,56,28,56,23,90,23"/>
+<area shape="rect" title="trouve le premier bytes qui contien suffissament d&#39;espace libre pour contenir la taille demander." alt="" coords="361,23,515,63"/>
+<area shape="rect" href="tag__manager_8c.html#a7dd7e8cfc97d378d44e7c63bd9f49931" title="crée un nouveau tag." alt="" coords="248,31,313,56"/>
+<area shape="poly" title=" " alt="" coords="348,46,313,46,313,41,348,41"/>
+<area shape="rect" href="scripts_2main_8c.html#ae9bbb2f5bb69f73e92c761f83223285a" title="effectue les divers tests affin de vérifier que tout fonctionne bien. les résultat sont présenté dans..." alt="" coords="104,5,200,31"/>
+<area shape="poly" title=" " alt="" coords="234,37,200,30,201,25,235,32"/>
+<area shape="rect" href="scripts_2main_8c.html#a9c4bb6f6d00e76eae45e966a4c628178" title=" " alt="" coords="114,55,190,80"/>
+<area shape="poly" title=" " alt="" coords="235,55,191,63,190,58,234,49"/>
+<area shape="rect" href="scripts_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,31,56,56"/>
+<area shape="poly" title=" " alt="" coords="91,33,57,41,56,36,90,28"/>
+<area shape="poly" title=" " alt="" coords="100,60,56,51,57,46,101,55"/>
 </map>
 </div>
 
@@ -290,10 +301,13 @@ Voici le graphe des appelants de cette fonction :</div>
 <area shape="rect" href="tag__manager_8c.html#a7dd7e8cfc97d378d44e7c63bd9f49931" title="crée un nouveau tag." alt="" coords="248,31,313,56"/>
 <area shape="poly" title=" " alt="" coords="543,46,313,46,313,41,543,41"/>
 <area shape="poly" title=" " alt="" coords="348,35,314,41,313,35,347,30"/>
-<area shape="rect" href="scripts_2main_8c.html#ae9bbb2f5bb69f73e92c761f83223285a" title="effectue les divers tests affin de vérifier que tout fonctionne bien. les résultat sont présenté dans..." alt="" coords="104,31,200,56"/>
-<area shape="poly" title=" " alt="" coords="234,46,200,46,200,41,234,41"/>
+<area shape="rect" href="scripts_2main_8c.html#ae9bbb2f5bb69f73e92c761f83223285a" title="effectue les divers tests affin de vérifier que tout fonctionne bien. les résultat sont présenté dans..." alt="" coords="104,5,200,31"/>
+<area shape="poly" title=" " alt="" coords="234,37,200,30,201,25,235,32"/>
+<area shape="rect" href="scripts_2main_8c.html#a9c4bb6f6d00e76eae45e966a4c628178" title=" " alt="" coords="114,55,190,80"/>
+<area shape="poly" title=" " alt="" coords="235,55,191,63,190,58,234,49"/>
 <area shape="rect" href="scripts_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,31,56,56"/>
-<area shape="poly" title=" " alt="" coords="90,46,56,46,56,41,90,41"/>
+<area shape="poly" title=" " alt="" coords="91,33,57,41,56,36,90,28"/>
+<area shape="poly" title=" " alt="" coords="100,60,56,51,57,46,101,55"/>
 </map>
 </div>
 
@@ -324,10 +338,13 @@ Voici le graphe des appelants de cette fonction :</div>
 <area shape="rect" href="tag__manager_8c.html#a7dd7e8cfc97d378d44e7c63bd9f49931" title="crée un nouveau tag." alt="" coords="248,31,313,56"/>
 <area shape="poly" title=" " alt="" coords="543,46,314,46,314,41,543,41"/>
 <area shape="poly" title=" " alt="" coords="348,35,314,41,313,35,347,30"/>
-<area shape="rect" href="scripts_2main_8c.html#ae9bbb2f5bb69f73e92c761f83223285a" title="effectue les divers tests affin de vérifier que tout fonctionne bien. les résultat sont présenté dans..." alt="" coords="104,31,200,56"/>
-<area shape="poly" title=" " alt="" coords="234,46,200,46,200,41,234,41"/>
+<area shape="rect" href="scripts_2main_8c.html#ae9bbb2f5bb69f73e92c761f83223285a" title="effectue les divers tests affin de vérifier que tout fonctionne bien. les résultat sont présenté dans..." alt="" coords="104,5,200,31"/>
+<area shape="poly" title=" " alt="" coords="234,37,200,30,201,25,235,32"/>
+<area shape="rect" href="scripts_2main_8c.html#a9c4bb6f6d00e76eae45e966a4c628178" title=" " alt="" coords="114,55,190,80"/>
+<area shape="poly" title=" " alt="" coords="235,55,191,63,190,58,234,49"/>
 <area shape="rect" href="scripts_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,31,56,56"/>
-<area shape="poly" title=" " alt="" coords="90,46,56,46,56,41,90,41"/>
+<area shape="poly" title=" " alt="" coords="91,33,57,41,56,36,90,28"/>
+<area shape="poly" title=" " alt="" coords="100,60,56,51,57,46,101,55"/>
 </map>
 </div>
 
@@ -362,19 +379,26 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="tag__manager_8c_a5737e741608851f8e3822cf07261da44_icgraph.png" border="0" usemap="#atag__manager_8c_a5737e741608851f8e3822cf07261da44_icgraph" loading="lazy" alt=""/></div>
 <map name="atag__manager_8c_a5737e741608851f8e3822cf07261da44_icgraph" id="atag__manager_8c_a5737e741608851f8e3822cf07261da44_icgraph">
-<area shape="rect" title="recherche le tag et retourne la référence de la structure du tags corespondent au nom." alt="" coords="372,55,461,80"/>
-<area shape="rect" href="data__container_8c.html#a66cbaaa79a2ba3c2c7912514c1dc805f" title="obtien la valeur désigner par le tag." alt="" coords="248,5,324,31"/>
-<area shape="poly" title=" " alt="" coords="369,52,320,33,322,28,371,47"/>
-<area shape="rect" href="tag__manager_8c.html#a7dd7e8cfc97d378d44e7c63bd9f49931" title="crée un nouveau tag." alt="" coords="253,55,319,80"/>
-<area shape="poly" title=" " alt="" coords="359,70,319,70,319,65,359,65"/>
-<area shape="rect" href="data__container_8c.html#aa84538f1ab0c319056787e9674157405" title="change la valeur relier au tag." alt="" coords="248,104,324,129"/>
-<area shape="poly" title=" " alt="" coords="371,87,322,106,320,101,369,82"/>
-<area shape="rect" href="scripts_2main_8c.html#ae9bbb2f5bb69f73e92c761f83223285a" title="effectue les divers tests affin de vérifier que tout fonctionne bien. les résultat sont présenté dans..." alt="" coords="104,55,200,80"/>
-<area shape="poly" title=" " alt="" coords="239,38,188,57,187,52,237,33"/>
-<area shape="rect" href="scripts_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,55,56,80"/>
-<area shape="poly" title=" " alt="" coords="90,70,56,70,56,65,90,65"/>
-<area shape="poly" title=" " alt="" coords="240,70,200,70,200,65,240,65"/>
-<area shape="poly" title=" " alt="" coords="237,102,187,83,188,78,239,97"/>
+<area shape="rect" title="recherche le tag et retourne la référence de la structure du tags corespondent au nom." alt="" coords="499,83,588,108"/>
+<area shape="rect" href="data__container_8c.html#a66cbaaa79a2ba3c2c7912514c1dc805f" title="obtien la valeur désigner par le tag." alt="" coords="375,33,451,59"/>
+<area shape="poly" title=" " alt="" coords="496,80,446,61,448,56,497,75"/>
+<area shape="rect" href="tag__manager_8c.html#a7dd7e8cfc97d378d44e7c63bd9f49931" title="crée un nouveau tag." alt="" coords="380,83,445,108"/>
+<area shape="poly" title=" " alt="" coords="485,98,446,98,446,93,485,93"/>
+<area shape="rect" href="data__container_8c.html#ae30fab9c73b624e37f064c836fefb7de" title="change la valeur relier au tag." alt="" coords="375,132,451,157"/>
+<area shape="poly" title=" " alt="" coords="497,115,448,134,446,129,496,110"/>
+<area shape="rect" href="print__val_8c.html#a6904e40665dc664fc6611bfe2d913773" title=" " alt="" coords="228,5,327,31"/>
+<area shape="poly" title=" " alt="" coords="361,38,326,31,327,26,362,33"/>
+<area shape="rect" href="scripts_2main_8c.html#ae9bbb2f5bb69f73e92c761f83223285a" title="effectue les divers tests affin de vérifier que tout fonctionne bien. les résultat sont présenté dans..." alt="" coords="229,107,325,132"/>
+<area shape="poly" title=" " alt="" coords="377,68,303,109,301,104,375,63"/>
+<area shape="rect" href="scripts_2main_8c.html#a9c4bb6f6d00e76eae45e966a4c628178" title=" " alt="" coords="104,56,180,81"/>
+<area shape="poly" title=" " alt="" coords="231,38,178,58,176,53,229,33"/>
+<area shape="rect" href="scripts_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,81,56,107"/>
+<area shape="poly" title=" " alt="" coords="91,83,57,91,56,86,90,78"/>
+<area shape="poly" title=" " alt="" coords="215,116,56,99,57,94,215,110"/>
+<area shape="poly" title=" " alt="" coords="366,93,180,75,180,70,366,88"/>
+<area shape="poly" title=" " alt="" coords="367,106,326,113,325,108,366,101"/>
+<area shape="poly" title=" " alt="" coords="361,157,296,160,261,156,227,147,203,134,181,117,151,83,154,80,185,113,206,130,229,142,262,151,297,155,361,151"/>
+<area shape="poly" title=" " alt="" coords="361,138,325,131,326,126,362,132"/>
 </map>
 </div>
 
@@ -402,12 +426,16 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="tag__manager_8c_aab50a8f567be72e656120fd71f3fb435_icgraph.png" border="0" usemap="#atag__manager_8c_aab50a8f567be72e656120fd71f3fb435_icgraph" loading="lazy" alt=""/></div>
 <map name="atag__manager_8c_aab50a8f567be72e656120fd71f3fb435_icgraph" id="atag__manager_8c_aab50a8f567be72e656120fd71f3fb435_icgraph">
-<area shape="rect" title="Initialise/réinitialise le gestionnaire de tags." alt="" coords="248,5,369,31"/>
-<area shape="rect" href="scripts_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,5,56,31"/>
-<area shape="poly" title=" " alt="" coords="235,21,56,21,56,15,235,15"/>
-<area shape="rect" href="scripts_2main_8c.html#ae9bbb2f5bb69f73e92c761f83223285a" title="effectue les divers tests affin de vérifier que tout fonctionne bien. les résultat sont présenté dans..." alt="" coords="104,31,200,56"/>
-<area shape="poly" title=" " alt="" coords="235,33,201,38,200,33,234,27"/>
-<area shape="poly" title=" " alt="" coords="90,33,56,26,57,21,91,28"/>
+<area shape="rect" title="Initialise/réinitialise le gestionnaire de tags." alt="" coords="283,55,404,80"/>
+<area shape="rect" href="scripts_2main_8c.html#ae9bbb2f5bb69f73e92c761f83223285a" title="effectue les divers tests affin de vérifier que tout fonctionne bien. les résultat sont présenté dans..." alt="" coords="121,5,217,31"/>
+<area shape="poly" title=" " alt="" coords="284,53,214,33,216,28,286,48"/>
+<area shape="rect" href="scripts_2main_8c.html#a4f26f5b24d899127d66338ba3bfd7f1b" title=" " alt="" coords="104,55,235,80"/>
+<area shape="poly" title=" " alt="" coords="269,70,235,70,235,65,269,65"/>
+<area shape="rect" href="scripts_2main_8c.html#a9c4bb6f6d00e76eae45e966a4c628178" title=" " alt="" coords="131,104,207,129"/>
+<area shape="poly" title=" " alt="" coords="286,86,208,109,207,103,284,81"/>
+<area shape="rect" href="scripts_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,55,56,80"/>
+<area shape="poly" title=" " alt="" coords="121,38,57,61,55,56,119,33"/>
+<area shape="poly" title=" " alt="" coords="119,102,55,79,57,74,121,97"/>
 </map>
 </div>
 
@@ -454,10 +482,13 @@ Voici le graphe des appelants de cette fonction :</div>
 <area shape="rect" href="tag__manager_8c.html#a7dd7e8cfc97d378d44e7c63bd9f49931" title="crée un nouveau tag." alt="" coords="248,31,313,56"/>
 <area shape="poly" title=" " alt="" coords="543,46,313,46,313,41,543,41"/>
 <area shape="poly" title=" " alt="" coords="348,35,314,41,313,35,347,30"/>
-<area shape="rect" href="scripts_2main_8c.html#ae9bbb2f5bb69f73e92c761f83223285a" title="effectue les divers tests affin de vérifier que tout fonctionne bien. les résultat sont présenté dans..." alt="" coords="104,31,200,56"/>
-<area shape="poly" title=" " alt="" coords="234,46,200,46,200,41,234,41"/>
+<area shape="rect" href="scripts_2main_8c.html#ae9bbb2f5bb69f73e92c761f83223285a" title="effectue les divers tests affin de vérifier que tout fonctionne bien. les résultat sont présenté dans..." alt="" coords="104,5,200,31"/>
+<area shape="poly" title=" " alt="" coords="234,37,200,30,201,25,235,32"/>
+<area shape="rect" href="scripts_2main_8c.html#a9c4bb6f6d00e76eae45e966a4c628178" title=" " alt="" coords="114,55,190,80"/>
+<area shape="poly" title=" " alt="" coords="235,55,191,63,190,58,234,49"/>
 <area shape="rect" href="scripts_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,31,56,56"/>
-<area shape="poly" title=" " alt="" coords="90,46,56,46,56,41,90,41"/>
+<area shape="poly" title=" " alt="" coords="91,33,57,41,56,36,90,28"/>
+<area shape="poly" title=" " alt="" coords="100,60,56,51,57,46,101,55"/>
 </map>
 </div>
 
@@ -510,13 +541,16 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="tag__manager_8c_a30325d29d4baf058d75e6f3c269341af_icgraph.png" border="0" usemap="#atag__manager_8c_a30325d29d4baf058d75e6f3c269341af_icgraph" loading="lazy" alt=""/></div>
 <map name="atag__manager_8c_a30325d29d4baf058d75e6f3c269341af_icgraph" id="atag__manager_8c_a30325d29d4baf058d75e6f3c269341af_icgraph">
-<area shape="rect" title=" " alt="" coords="361,5,509,31"/>
-<area shape="rect" href="tag__manager_8c.html#a7dd7e8cfc97d378d44e7c63bd9f49931" title="crée un nouveau tag." alt="" coords="248,5,313,31"/>
-<area shape="poly" title=" " alt="" coords="348,21,313,21,313,15,348,15"/>
+<area shape="rect" title=" " alt="" coords="361,31,509,56"/>
+<area shape="rect" href="tag__manager_8c.html#a7dd7e8cfc97d378d44e7c63bd9f49931" title="crée un nouveau tag." alt="" coords="248,31,313,56"/>
+<area shape="poly" title=" " alt="" coords="348,46,313,46,313,41,348,41"/>
 <area shape="rect" href="scripts_2main_8c.html#ae9bbb2f5bb69f73e92c761f83223285a" title="effectue les divers tests affin de vérifier que tout fonctionne bien. les résultat sont présenté dans..." alt="" coords="104,5,200,31"/>
-<area shape="poly" title=" " alt="" coords="234,21,200,21,200,15,234,15"/>
-<area shape="rect" href="scripts_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,5,56,31"/>
-<area shape="poly" title=" " alt="" coords="90,21,56,21,56,15,90,15"/>
+<area shape="poly" title=" " alt="" coords="234,37,200,30,201,25,235,32"/>
+<area shape="rect" href="scripts_2main_8c.html#a9c4bb6f6d00e76eae45e966a4c628178" title=" " alt="" coords="114,55,190,80"/>
+<area shape="poly" title=" " alt="" coords="235,55,191,63,190,58,234,49"/>
+<area shape="rect" href="scripts_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,31,56,56"/>
+<area shape="poly" title=" " alt="" coords="91,33,57,41,56,36,90,28"/>
+<area shape="poly" title=" " alt="" coords="100,60,56,51,57,46,101,55"/>
 </map>
 </div>
 
@@ -579,11 +613,14 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><img src="tag__manager_8c_a7dd7e8cfc97d378d44e7c63bd9f49931_icgraph.png" border="0" usemap="#atag__manager_8c_a7dd7e8cfc97d378d44e7c63bd9f49931_icgraph" loading="lazy" alt=""/></div>
 <map name="atag__manager_8c_a7dd7e8cfc97d378d44e7c63bd9f49931_icgraph" id="atag__manager_8c_a7dd7e8cfc97d378d44e7c63bd9f49931_icgraph">
-<area shape="rect" title="crée un nouveau tag." alt="" coords="248,5,313,31"/>
+<area shape="rect" title="crée un nouveau tag." alt="" coords="248,31,313,56"/>
 <area shape="rect" href="scripts_2main_8c.html#ae9bbb2f5bb69f73e92c761f83223285a" title="effectue les divers tests affin de vérifier que tout fonctionne bien. les résultat sont présenté dans..." alt="" coords="104,5,200,31"/>
-<area shape="poly" title=" " alt="" coords="234,21,200,21,200,15,234,15"/>
-<area shape="rect" href="scripts_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,5,56,31"/>
-<area shape="poly" title=" " alt="" coords="90,21,56,21,56,15,90,15"/>
+<area shape="poly" title=" " alt="" coords="234,37,200,30,201,25,235,32"/>
+<area shape="rect" href="scripts_2main_8c.html#a9c4bb6f6d00e76eae45e966a4c628178" title=" " alt="" coords="114,55,190,80"/>
+<area shape="poly" title=" " alt="" coords="235,55,191,63,190,58,234,49"/>
+<area shape="rect" href="scripts_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,31,56,56"/>
+<area shape="poly" title=" " alt="" coords="91,33,57,41,56,36,90,28"/>
+<area shape="poly" title=" " alt="" coords="100,60,56,51,57,46,101,55"/>
 </map>
 </div>
 

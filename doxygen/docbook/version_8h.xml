@@ -3,18 +3,11 @@
 <title>Référence du fichier version.h</title>
 <indexterm><primary>version.h</primary></indexterm>
 <simplesect>
-    <title>Espaces de nommage    </title>
-        <itemizedlist>
-            <listitem><para>namespace <link linkend="_namespace_auto_version">AutoVersion</link></para>
-</listitem>
-        </itemizedlist>
-</simplesect>
-<simplesect>
     <title>Macros    </title>
         <itemizedlist>
-            <listitem><para>#define <link linkend="_version_8h_1a0e86d046ea87587e402d375c6b0927c6">RC_FILEVERSION</link>&#160;&#160;&#160;9,0,0,0</para>
+            <listitem><para>#define <link linkend="_version_8h_1a0e86d046ea87587e402d375c6b0927c6">RC_FILEVERSION</link>&#160;&#160;&#160;9,0,24,114</para>
 </listitem>
-            <listitem><para>#define <link linkend="_version_8h_1a4763e81d3c29ec0fab79225d3ec3f1a2">RC_FILEVERSION_STRING</link>&#160;&#160;&#160;&quot;9, 0, 0, 0\0&quot;</para>
+            <listitem><para>#define <link linkend="_version_8h_1a4763e81d3c29ec0fab79225d3ec3f1a2">RC_FILEVERSION_STRING</link>&#160;&#160;&#160;&quot;9, 0, 24, 114\0&quot;</para>
 </listitem>
         </itemizedlist>
 </simplesect>
@@ -24,11 +17,11 @@
     <title>RC_FILEVERSION</title>
 <indexterm><primary>RC_FILEVERSION</primary><secondary>version.h</secondary></indexterm>
 <indexterm><primary>version.h</primary><secondary>RC_FILEVERSION</secondary></indexterm>
-<para><computeroutput>#define RC_FILEVERSION&#160;&#160;&#160;9,0,0,0</computeroutput></para></section>
+<para><computeroutput>#define RC_FILEVERSION&#160;&#160;&#160;9,0,24,114</computeroutput></para></section>
 <anchor xml:id="_version_8h_1a4763e81d3c29ec0fab79225d3ec3f1a2"/><section>
     <title>RC_FILEVERSION_STRING</title>
 <indexterm><primary>RC_FILEVERSION_STRING</primary><secondary>version.h</secondary></indexterm>
 <indexterm><primary>version.h</primary><secondary>RC_FILEVERSION_STRING</secondary></indexterm>
-<para><computeroutput>#define RC_FILEVERSION_STRING&#160;&#160;&#160;&quot;9, 0, 0, 0\0&quot;</computeroutput></para></section>
+<para><computeroutput>#define RC_FILEVERSION_STRING&#160;&#160;&#160;&quot;9, 0, 24, 114\0&quot;</computeroutput></para></section>
 </section>
 </section>
