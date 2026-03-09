@@ -1,6 +1,12 @@
+#ifndef PRINT_VAL_H
 #include "../../include/sub_include/print_val.h"
+#endif // PRINT_VAL_H
+#ifndef TAG_MANAGER_H
 #include "../../include/sub_include/tag_manager.h"
+#endif // TAG_MANAGER_H
+#ifndef DATA_CONTAINER_H
 #include "../../include/sub_include/data_container.h"
+#endif // DATA_CONTAINER_H
 #include <stdio.h>
 #include <stdint.h>
 #include <string.h>

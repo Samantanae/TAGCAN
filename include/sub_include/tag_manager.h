@@ -1,7 +1,9 @@
 #ifndef TAG_MANAGER_H
 #define TAG_MANAGER_H
 
+#ifndef CONFIG_VALUE_H
 #include "../config_value.h"
+#endif // CONFIG_VALUE_H
 #include <stdint.h>
 #include <stdbool.h>
 

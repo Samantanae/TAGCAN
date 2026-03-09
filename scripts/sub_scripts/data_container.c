@@ -1,6 +1,12 @@
+#ifndef DATA_CONTAINER_H
 #include "../../include/sub_include/data_container.h"
+#endif // DATA_CONTAINER_H
+#ifndef CONFIG_VALUE_H
 #include "../../include/config_value.h"
+#endif // CONFIG_VALUE_H
+#ifndef PRINT_VAL_H
 #include "../../include/sub_include/print_val.h"
+#endif // PRINT_VAL_H
 #include <stdio.h>
 
 uint8_t TxData[N_BYTES];

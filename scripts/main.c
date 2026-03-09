@@ -1,10 +1,19 @@
 #include <stdio.h>
 #include <assert.h>
 #include <stdbool.h>
+#ifndef CONFIG_VALUE_H
 #include "../include/config_value.h"
+#endif // CONFIG_VALUE_H
+#ifndef DATA_CONTAINER_H
 #include "../include/sub_include/data_container.h"
+#endif // DATA_CONTAINER_H
+#ifndef GESTION_TAG_H
 #include "../include/gestion_tag.h"
+#endif // GESTION_TAG_H
+#ifndef PRINT_VAL_H
 #include "../include/sub_include/print_val.h"
+#endif // PRINT_VAL_H
+
 int passed_tests = 0; /**< le nombre total de test réussi */
 int total_tests = 0; /**< le nombre total de test effectué */
 
