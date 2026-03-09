@@ -1,0 +1,163 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_data__container_8c_source" xml:lang="en-US">
+<title>data_container.c</title>
+<indexterm><primary>data_container.c</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_data__container_8c_source_1l00001"/>00001 <emphasis role="preprocessor">#ifndef&#32;DATA_CONTAINER_H</emphasis>
+<anchor xml:id="_data__container_8c_source_1l00002"/>00002 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_data__container_8h">../../include/sub_include/data_container.h</link>&quot;</emphasis>
+<anchor xml:id="_data__container_8c_source_1l00003"/>00003 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;DATA_CONTAINER_H</emphasis>
+<anchor xml:id="_data__container_8c_source_1l00004"/>00004 <emphasis role="preprocessor">#ifndef&#32;CONFIG_VALUE_H</emphasis>
+<anchor xml:id="_data__container_8c_source_1l00005"/>00005 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_config__value_8h">../../include/config_value.h</link>&quot;</emphasis>
+<anchor xml:id="_data__container_8c_source_1l00006"/>00006 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;CONFIG_VALUE_H</emphasis>
+<anchor xml:id="_data__container_8c_source_1l00007"/>00007 <emphasis role="preprocessor">#ifndef&#32;PRINT_VAL_H</emphasis>
+<anchor xml:id="_data__container_8c_source_1l00008"/>00008 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_print__val_8h">../../include/sub_include/print_val.h</link>&quot;</emphasis>
+<anchor xml:id="_data__container_8c_source_1l00009"/>00009 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;PRINT_VAL_H</emphasis>
+<anchor xml:id="_data__container_8c_source_1l00010"/>00010 <emphasis role="preprocessor">#include&#32;&lt;stdio.h&gt;</emphasis>
+<anchor xml:id="_data__container_8c_source_1l00011"/>00011 
+<anchor xml:id="_data__container_8c_source_1l00012"/><link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">00012</link> uint8_t&#32;<link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">TxData</link>[<link linkend="_config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1">N_BYTES</link>];
+<anchor xml:id="_data__container_8c_source_1l00013"/>00013 
+<anchor xml:id="_data__container_8c_source_1l00014"/><link linkend="_data__container_8h_1a129f017feb0712be1dcf7932e6035aa0">00014</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_data__container_8c_1a129f017feb0712be1dcf7932e6035aa0">init_data_container</link>(<emphasis role="keywordtype">void</emphasis>)
+<anchor xml:id="_data__container_8c_source_1l00015"/>00015 {
+<anchor xml:id="_data__container_8c_source_1l00016"/>00016 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;<link linkend="_config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1">N_BYTES</link>;&#32;i++)
+<anchor xml:id="_data__container_8c_source_1l00017"/>00017 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_data__container_8c_source_1l00018"/>00018 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">TxData</link>[i]&#32;=&#32;0;
+<anchor xml:id="_data__container_8c_source_1l00019"/>00019 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_data__container_8c_source_1l00020"/>00020 }
+<anchor xml:id="_data__container_8c_source_1l00021"/>00021 
+<anchor xml:id="_data__container_8c_source_1l00022"/>00022 
+<anchor xml:id="_data__container_8c_source_1l00023"/>00023 
+<anchor xml:id="_data__container_8c_source_1l00024"/><link linkend="_data__container_8h_1a45840c759151338fe992664f4a21c4f7">00024</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_data__container_8c_1a45840c759151338fe992664f4a21c4f7">set_val_TxData</link>(uint8_t&#32;*TxDataArray){
+<anchor xml:id="_data__container_8c_source_1l00025"/>00025 <emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;<link linkend="_config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1">N_BYTES</link>;&#32;i++){
+<anchor xml:id="_data__container_8c_source_1l00026"/>00026 &#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">TxData</link>[i]&#32;=&#32;TxDataArray[i];
+<anchor xml:id="_data__container_8c_source_1l00027"/>00027 }
+<anchor xml:id="_data__container_8c_source_1l00028"/>00028 }
+<anchor xml:id="_data__container_8c_source_1l00029"/><link linkend="_data__container_8h_1a66768c162c3a8352b7d5397e90206085">00029</link> uint8_t&#32;<link linkend="_data__container_8c_1a66768c162c3a8352b7d5397e90206085">prep_mask</link>(uint8_t&#32;p_bit,&#32;uint8_t&#32;n_bit)
+<anchor xml:id="_data__container_8c_source_1l00030"/>00030 {
+<anchor xml:id="_data__container_8c_source_1l00031"/>00031 <emphasis role="comment">//&#32;Preparation&#32;du&#32;masque</emphasis>
+<anchor xml:id="_data__container_8c_source_1l00032"/>00032 &#32;&#32;&#32;&#32;uint8_t&#32;mask_val&#32;=&#32;0b1;
+<anchor xml:id="_data__container_8c_source_1l00033"/>00033 &#32;&#32;&#32;&#32;uint8_t&#32;mask_temp&#32;=&#32;0b1;
+<anchor xml:id="_data__container_8c_source_1l00034"/>00034 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Construit&#32;n_bit&#32;bits&#32;a&#32;1</emphasis>
+<anchor xml:id="_data__container_8c_source_1l00035"/>00035 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;(n_bit&#32;-&#32;1);&#32;i++)
+<anchor xml:id="_data__container_8c_source_1l00036"/>00036 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_data__container_8c_source_1l00037"/>00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;mask_val&#32;=&#32;mask_val&#32;&lt;&lt;&#32;1;
+<anchor xml:id="_data__container_8c_source_1l00038"/>00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;mask_val&#32;|=&#32;mask_temp;
+<anchor xml:id="_data__container_8c_source_1l00039"/>00039 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_data__container_8c_source_1l00040"/>00040 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Aligne&#32;le&#32;masque&#32;sur&#32;la&#32;position&#32;cible&#32;dans&#32;le&#32;byte</emphasis>
+<anchor xml:id="_data__container_8c_source_1l00041"/>00041 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;mask_val&#32;&lt;&lt;&#32;(8&#32;-&#32;p_bit&#32;-&#32;n_bit);
+<anchor xml:id="_data__container_8c_source_1l00042"/>00042 }
+<anchor xml:id="_data__container_8c_source_1l00043"/>00043 
+<anchor xml:id="_data__container_8c_source_1l00044"/><link linkend="_data__container_8h_1aa84538f1ab0c319056787e9674157405">00044</link> <link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947f">CAN_TG_STATUE</link>&#32;<link linkend="_data__container_8c_1ae30fab9c73b624e37f064c836fefb7de">set_value</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;tag_name,&#32;uint32_t&#32;value)
+<anchor xml:id="_data__container_8c_source_1l00045"/>00045 {
+<anchor xml:id="_data__container_8c_source_1l00046"/>00046 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_tag_def">TagDef</link>*&#32;tag&#32;=&#32;<link linkend="_tag__manager_8h_1a5737e741608851f8e3822cf07261da44">get_tag_def</link>(tag_name);
+<anchor xml:id="_data__container_8c_source_1l00047"/>00047 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!tag)&#32;<emphasis role="keywordflow">return</emphasis>&#32;-3;&#32;<emphasis role="comment">//&#32;Tag&#32;non&#32;trouve</emphasis>
+<anchor xml:id="_data__container_8c_source_1l00048"/>00048 
+<anchor xml:id="_data__container_8c_source_1l00049"/>00049 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;uint8_t&#32;n_bits&#32;=&#32;tag-&gt;<link linkend="_struct_tag_def_1a894ffee63faf79f0877a12c871a18b3a">n_bits</link>;
+<anchor xml:id="_data__container_8c_source_1l00050"/>00050 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;uint8_t&#32;bit_pos_a&#32;=&#32;tag-&gt;<link linkend="_struct_tag_def_1ab2ab707c2832eb3cd8776c3134b29b1d">bit_pos_a</link>;
+<anchor xml:id="_data__container_8c_source_1l00051"/>00051 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;uint8_t&#32;bit_pos_b&#32;=&#32;tag-&gt;<link linkend="_struct_tag_def_1a315b71fd9f91bd21c82164e006859ede">bit_pos_b</link>;
+<anchor xml:id="_data__container_8c_source_1l00052"/>00052 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;int8_t&#32;byte_idx_a&#32;=&#32;tag-&gt;<link linkend="_struct_tag_def_1a985f815d0edbf8a411fbf325a30baec8">byte_idx_a</link>;
+<anchor xml:id="_data__container_8c_source_1l00053"/>00053 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;int8_t&#32;byte_idx_b&#32;=&#32;tag-&gt;<link linkend="_struct_tag_def_1a1368f5414ba506dc1626d65a1083dc92">byte_idx_b</link>;
+<anchor xml:id="_data__container_8c_source_1l00054"/>00054 
+<anchor xml:id="_data__container_8c_source_1l00055"/>00055 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Verification&#32;du&#32;depassement&#32;de&#32;la&#32;valeur&#32;selon&#32;n_bits</emphasis>
+<anchor xml:id="_data__container_8c_source_1l00056"/>00056 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(tag-&gt;<link linkend="_struct_tag_def_1a894ffee63faf79f0877a12c871a18b3a">n_bits</link>&#32;&lt;&#32;32&#32;&amp;&amp;&#32;value&#32;&gt;=&#32;(1ULL&#32;&lt;&lt;&#32;tag-&gt;<link linkend="_struct_tag_def_1a894ffee63faf79f0877a12c871a18b3a">n_bits</link>))
+<anchor xml:id="_data__container_8c_source_1l00057"/>00057 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_data__container_8c_source_1l00058"/>00058 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;[ERREUR]&#32;Valeur&#32;٪u&#32;trop&#32;grande&#32;pour&#32;le&#32;tag&#32;٪s&#32;(٪u&#32;bits)\n&quot;</emphasis>,&#32;value,&#32;tag_name,&#32;tag-&gt;<link linkend="_struct_tag_def_1a894ffee63faf79f0877a12c871a18b3a">n_bits</link>);
+<anchor xml:id="_data__container_8c_source_1l00059"/>00059 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947fab1cfc87a8731dfcbc6e986a1b81115ac">CAN_TG_ERROR_VALUE_TO_BIG</link>;
+<anchor xml:id="_data__container_8c_source_1l00060"/>00060 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_data__container_8c_source_1l00061"/>00061 
+<anchor xml:id="_data__container_8c_source_1l00062"/>00062 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Cas&#32;des&#32;valeurs&#32;sur&#32;plus&#32;de&#32;8&#32;bits:&#32;repartition&#32;entre&#32;partie&#32;A&#32;et&#32;partie&#32;B.</emphasis>
+<anchor xml:id="_data__container_8c_source_1l00063"/>00063 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(n_bits&#32;&gt;&#32;8){
+<anchor xml:id="_data__container_8c_source_1l00064"/>00064 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;data_b&#32;=&#32;(value&#32;&amp;&#32;0xFF00)&#32;&gt;&gt;&#32;8;
+<anchor xml:id="_data__container_8c_source_1l00065"/>00065 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;data_a&#32;=&#32;(value&#32;&amp;&#32;0x00FF);
+<anchor xml:id="_data__container_8c_source_1l00066"/>00066 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">TxData</link>[byte_idx_a]&#32;=&#32;data_a;
+<anchor xml:id="_data__container_8c_source_1l00067"/>00067 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Cas&#32;16&#32;bits:&#32;la&#32;partie&#32;B&#32;occupe&#32;tout&#32;le&#32;byte.</emphasis>
+<anchor xml:id="_data__container_8c_source_1l00068"/>00068 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(n_bits&#32;==&#32;16){<link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">TxData</link>[tag-&gt;<link linkend="_struct_tag_def_1a1368f5414ba506dc1626d65a1083dc92">byte_idx_b</link>]&#32;=&#32;data_b;}
+<anchor xml:id="_data__container_8c_source_1l00069"/>00069 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>{
+<anchor xml:id="_data__container_8c_source_1l00070"/>00070 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Cas&#32;9..15&#32;bits:&#32;insertion&#32;partielle&#32;dans&#32;le&#32;byte&#32;B.</emphasis>
+<anchor xml:id="_data__container_8c_source_1l00071"/>00071 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Creation&#32;du&#32;masque&#32;binaire</emphasis>
+<anchor xml:id="_data__container_8c_source_1l00072"/>00072 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;mask&#32;=&#32;<link linkend="_data__container_8c_1a66768c162c3a8352b7d5397e90206085">prep_mask</link>(bit_pos_b,&#32;n_bits&#32;-&#32;8);
+<anchor xml:id="_data__container_8c_source_1l00073"/>00073 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Alignement&#32;de&#32;la&#32;deuxieme&#32;partie</emphasis>
+<anchor xml:id="_data__container_8c_source_1l00074"/>00074 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;data_b&#32;=&#32;data_b&#32;&lt;&lt;&#32;(8&#32;-&#32;bit_pos_b&#32;-&#32;n_bits);
+<anchor xml:id="_data__container_8c_source_1l00075"/>00075 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Mise&#32;a&#32;jour&#32;selective&#32;des&#32;bits&#32;de&#32;la&#32;partie&#32;B.</emphasis>
+<anchor xml:id="_data__container_8c_source_1l00076"/>00076 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">TxData</link>[byte_idx_b]&#32;&amp;=&#32;~mask;
+<anchor xml:id="_data__container_8c_source_1l00077"/>00077 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">TxData</link>[byte_idx_b]&#32;|=&#32;data_b;
+<anchor xml:id="_data__container_8c_source_1l00078"/>00078 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3">CAN_TG_SUCCESS</link>;
+<anchor xml:id="_data__container_8c_source_1l00079"/>00079 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_data__container_8c_source_1l00080"/>00080 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_data__container_8c_source_1l00081"/>00081 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>(tag-&gt;<link linkend="_struct_tag_def_1a894ffee63faf79f0877a12c871a18b3a">n_bits</link>&#32;==&#32;8)
+<anchor xml:id="_data__container_8c_source_1l00082"/>00082 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_data__container_8c_source_1l00083"/>00083 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;data_a&#32;=&#32;(value&#32;&amp;&#32;0x00FF);
+<anchor xml:id="_data__container_8c_source_1l00084"/>00084 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">TxData</link>[tag-&gt;<link linkend="_struct_tag_def_1a985f815d0edbf8a411fbf325a30baec8">byte_idx_a</link>]&#32;=&#32;data_a;
+<anchor xml:id="_data__container_8c_source_1l00085"/>00085 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3">CAN_TG_SUCCESS</link>;
+<anchor xml:id="_data__container_8c_source_1l00086"/>00086 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_data__container_8c_source_1l00087"/>00087 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>{
+<anchor xml:id="_data__container_8c_source_1l00088"/>00088 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Valeur&#32;&lt;=&#32;8&#32;bits&#32;(entre&#32;1&#32;et&#32;7&#32;bits&#32;inclusivement)</emphasis>
+<anchor xml:id="_data__container_8c_source_1l00089"/>00089 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Creation&#32;du&#32;masque&#32;binaire&#32;aligne&#32;sur&#32;la&#32;zone&#32;cible</emphasis>
+<anchor xml:id="_data__container_8c_source_1l00090"/>00090 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;mask&#32;=&#32;<link linkend="_data__container_8c_1a66768c162c3a8352b7d5397e90206085">prep_mask</link>(bit_pos_a,&#32;n_bits);
+<anchor xml:id="_data__container_8c_source_1l00091"/>00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;vrai_val&#32;=&#32;value;
+<anchor xml:id="_data__container_8c_source_1l00092"/>00092 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Alignement&#32;de&#32;la&#32;valeur&#32;dans&#32;le&#32;byte</emphasis>
+<anchor xml:id="_data__container_8c_source_1l00093"/>00093 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;vrai_val&#32;=&#32;vrai_val&#32;&lt;&lt;&#32;(8&#32;-&#32;bit_pos_a&#32;-&#32;n_bits);
+<anchor xml:id="_data__container_8c_source_1l00094"/>00094 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">TxData</link>[byte_idx_a]&#32;&amp;=&#32;~mask;
+<anchor xml:id="_data__container_8c_source_1l00095"/>00095 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">TxData</link>[byte_idx_a]&#32;|=&#32;vrai_val;
+<anchor xml:id="_data__container_8c_source_1l00096"/>00096 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_data__container_8c_source_1l00097"/>00097 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3">CAN_TG_SUCCESS</link>;
+<anchor xml:id="_data__container_8c_source_1l00098"/>00098 }
+<anchor xml:id="_data__container_8c_source_1l00099"/>00099 
+<anchor xml:id="_data__container_8c_source_1l00100"/><link linkend="_data__container_8c_1a31a64ddfd601eb4d0beaadf21ddc5793">00100</link> uint16_t&#32;<link linkend="_data__container_8c_1a31a64ddfd601eb4d0beaadf21ddc5793">convert_8_to_16bit</link>(uint8_t&#32;ba,&#32;uint8_t&#32;bb){
+<anchor xml:id="_data__container_8c_source_1l00101"/>00101 &#32;&#32;&#32;&#32;uint16_t&#32;r;
+<anchor xml:id="_data__container_8c_source_1l00102"/>00102 &#32;&#32;&#32;&#32;r&#32;=&#32;ba&#32;|&#32;(bb&#32;&lt;&lt;&#32;8);&#32;&#32;&#32;<emphasis role="comment">//&#32;Recompose&#32;un&#32;entier&#32;16&#32;bits&#32;depuis&#32;2&#32;octets.</emphasis>
+<anchor xml:id="_data__container_8c_source_1l00103"/>00103 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;r;
+<anchor xml:id="_data__container_8c_source_1l00104"/>00104 }
+<anchor xml:id="_data__container_8c_source_1l00105"/>00105 
+<anchor xml:id="_data__container_8c_source_1l00106"/><link linkend="_data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f">00106</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_data__container_8c_1a66cbaaa79a2ba3c2c7912514c1dc805f">get_value</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;tag_name,&#32;uint32_t*&#32;out_value)
+<anchor xml:id="_data__container_8c_source_1l00107"/>00107 {
+<anchor xml:id="_data__container_8c_source_1l00108"/>00108 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_tag_def">TagDef</link>*&#32;tag&#32;=&#32;<link linkend="_tag__manager_8h_1a5737e741608851f8e3822cf07261da44">get_tag_def</link>(tag_name);
+<anchor xml:id="_data__container_8c_source_1l00109"/>00109 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!tag)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947faefecc0d5f9f8d279aeeac67967a54040">CAN_TG_ERROR_TAG_NOT_FOUND_</link>;&#32;<emphasis role="comment">//&#32;Tag&#32;non&#32;trouve</emphasis>
+<anchor xml:id="_data__container_8c_source_1l00110"/>00110 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Copie&#32;locale&#32;des&#32;metadonnees&#32;du&#32;tag&#32;pour&#32;simplifier&#32;les&#32;calculs.</emphasis>
+<anchor xml:id="_data__container_8c_source_1l00111"/>00111 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;uint8_t&#32;n_bits&#32;=&#32;tag-&gt;<link linkend="_struct_tag_def_1a894ffee63faf79f0877a12c871a18b3a">n_bits</link>;
+<anchor xml:id="_data__container_8c_source_1l00112"/>00112 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;uint8_t&#32;bpa&#32;=&#32;tag-&gt;<link linkend="_struct_tag_def_1ab2ab707c2832eb3cd8776c3134b29b1d">bit_pos_a</link>;
+<anchor xml:id="_data__container_8c_source_1l00113"/>00113 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;uint8_t&#32;bpb&#32;=&#32;tag-&gt;<link linkend="_struct_tag_def_1a315b71fd9f91bd21c82164e006859ede">bit_pos_b</link>;
+<anchor xml:id="_data__container_8c_source_1l00114"/>00114 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;int8_t&#32;byta&#32;=&#32;tag-&gt;<link linkend="_struct_tag_def_1a985f815d0edbf8a411fbf325a30baec8">byte_idx_a</link>;
+<anchor xml:id="_data__container_8c_source_1l00115"/>00115 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;int8_t&#32;bytb&#32;=&#32;tag-&gt;<link linkend="_struct_tag_def_1a1368f5414ba506dc1626d65a1083dc92">byte_idx_b</link>;
+<anchor xml:id="_data__container_8c_source_1l00116"/>00116 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(tag-&gt;<link linkend="_struct_tag_def_1a1368f5414ba506dc1626d65a1083dc92">byte_idx_b</link>&#32;&gt;&#32;-1){
+<anchor xml:id="_data__container_8c_source_1l00117"/>00117 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Declaration&#32;conditionnelle&#32;conservee&#32;pour&#32;debug/historique.</emphasis>
+<anchor xml:id="_data__container_8c_source_1l00118"/>00118 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;int8_t&#32;byte_indx_b&#32;=&#32;tag-&gt;<link linkend="_struct_tag_def_1a1368f5414ba506dc1626d65a1083dc92">byte_idx_b</link>;
+<anchor xml:id="_data__container_8c_source_1l00119"/>00119 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_data__container_8c_source_1l00120"/>00120 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(tag-&gt;<link linkend="_struct_tag_def_1a894ffee63faf79f0877a12c871a18b3a">n_bits</link>&#32;==&#32;16)&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;cas&#32;de&#32;16&#32;bits&#32;exactement</emphasis>
+<anchor xml:id="_data__container_8c_source_1l00121"/>00121 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_data__container_8c_source_1l00122"/>00122 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;ba&#32;=&#32;<link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">TxData</link>[byta];
+<anchor xml:id="_data__container_8c_source_1l00123"/>00123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;bb&#32;=&#32;<link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">TxData</link>[bytb];
+<anchor xml:id="_data__container_8c_source_1l00124"/>00124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;*out_value&#32;=&#32;ba&#32;|&#32;(bb&#32;&lt;&lt;&#32;8);&#32;&#32;&#32;<emphasis role="comment">//&#32;Recomposition&#32;16&#32;bits&#32;complete.</emphasis>
+<anchor xml:id="_data__container_8c_source_1l00125"/>00125 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_data__container_8c_source_1l00126"/>00126 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>((n_bits&#32;&lt;&#32;16)&#32;&amp;&amp;&#32;(n_bits&#32;&gt;&#32;8)){<emphasis role="comment">//&#32;cas&#32;d&apos;entre&#32;8&#32;et&#32;16&#32;bits.</emphasis>
+<anchor xml:id="_data__container_8c_source_1l00127"/>00127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;ba&#32;=&#32;<link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">TxData</link>[byta];
+<anchor xml:id="_data__container_8c_source_1l00128"/>00128 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;bb;
+<anchor xml:id="_data__container_8c_source_1l00129"/>00129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Creation&#32;d&apos;un&#32;masque&#32;pour&#32;extraire&#32;la&#32;partie&#32;B.</emphasis>
+<anchor xml:id="_data__container_8c_source_1l00130"/>00130 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;mask&#32;=&#32;<link linkend="_data__container_8c_1a66768c162c3a8352b7d5397e90206085">prep_mask</link>(bpb,&#32;n_bits&#32;-&#32;8);
+<anchor xml:id="_data__container_8c_source_1l00131"/>00131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;data_temp&#32;=&#32;<link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">TxData</link>[bytb]&#32;&amp;&#32;mask;
+<anchor xml:id="_data__container_8c_source_1l00132"/>00132 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;bb&#32;=&#32;data_temp&#32;&gt;&gt;&#32;(8&#32;-&#32;bpa&#32;-&#32;n_bits);
+<anchor xml:id="_data__container_8c_source_1l00133"/>00133 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;*out_value&#32;=&#32;ba&#32;|&#32;(bb&#32;&lt;&lt;&#32;8);&#32;&#32;&#32;<emphasis role="comment">//&#32;Recomposition&#32;avec&#32;partie&#32;B&#32;partielle.</emphasis>
+<anchor xml:id="_data__container_8c_source_1l00134"/>00134 
+<anchor xml:id="_data__container_8c_source_1l00135"/>00135 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_data__container_8c_source_1l00136"/>00136 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="_data__container_8c_source_1l00137"/>00137 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_data__container_8c_source_1l00141"/>00141 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Creation&#32;du&#32;masque&#32;d&apos;extraction&#32;(&lt;=&#32;8&#32;bits)</emphasis>
+<anchor xml:id="_data__container_8c_source_1l00142"/>00142 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;mask&#32;=&#32;<link linkend="_data__container_8c_1a66768c162c3a8352b7d5397e90206085">prep_mask</link>(bpa,&#32;n_bits);
+<anchor xml:id="_data__container_8c_source_1l00143"/>00143 
+<anchor xml:id="_data__container_8c_source_1l00144"/>00144 
+<anchor xml:id="_data__container_8c_source_1l00145"/>00145 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//uint8_t&#32;mask&#32;=&#32;((1&#32;&lt;&lt;&#32;n_bits)&#32;-&#32;1)&#32;&lt;&lt;&#32;shift;</emphasis>
+<anchor xml:id="_data__container_8c_source_1l00146"/>00146 
+<anchor xml:id="_data__container_8c_source_1l00152"/>00152 
+<anchor xml:id="_data__container_8c_source_1l00153"/>00153 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;data_temp&#32;=&#32;<link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">TxData</link>[byta]&#32;&amp;&#32;mask;
+<anchor xml:id="_data__container_8c_source_1l00154"/>00154 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;*out_value&#32;=&#32;data_temp&#32;&gt;&gt;&#32;(8&#32;-&#32;bpa&#32;-&#32;n_bits);
+<anchor xml:id="_data__container_8c_source_1l00155"/>00155 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_data__container_8c_source_1l00156"/>00156 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3">CAN_TG_SUCCESS</link>;
+<anchor xml:id="_data__container_8c_source_1l00157"/>00157 }
+<anchor xml:id="_data__container_8c_source_1l00158"/>00158 
+<anchor xml:id="_data__container_8c_source_1l00159"/>00159 
+<anchor xml:id="_data__container_8c_source_1l00165"/><link linkend="_data__container_8h_1ae1649807202241b28239e8cb212a18b6">00165</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_data__container_8c_1ae1649807202241b28239e8cb212a18b6">can_simulate_send_receive</link>(uint8_t*&#32;tx_buffer,&#32;uint8_t*&#32;rx_buffer)
+<anchor xml:id="_data__container_8c_source_1l00166"/>00166 {
+<anchor xml:id="_data__container_8c_source_1l00167"/>00167 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;<link linkend="_config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1">N_BYTES</link>;&#32;i++)
+<anchor xml:id="_data__container_8c_source_1l00168"/>00168 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_data__container_8c_source_1l00169"/>00169 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;rx_buffer[i]&#32;=&#32;tx_buffer[i];
+<anchor xml:id="_data__container_8c_source_1l00170"/>00170 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_data__container_8c_source_1l00171"/>00171 }
+</programlisting></section>

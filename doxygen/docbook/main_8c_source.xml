@@ -1,0 +1,325 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_main_8c_source" xml:lang="en-US">
+<title>main.c</title>
+<indexterm><primary>main.c</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_main_8c_source_1l00001"/>00001 <emphasis role="preprocessor">#include&#32;&lt;stdio.h&gt;</emphasis>
+<anchor xml:id="_main_8c_source_1l00002"/>00002 <emphasis role="preprocessor">#include&#32;&lt;assert.h&gt;</emphasis>
+<anchor xml:id="_main_8c_source_1l00003"/>00003 <emphasis role="preprocessor">#include&#32;&lt;stdbool.h&gt;</emphasis>
+<anchor xml:id="_main_8c_source_1l00004"/>00004 <emphasis role="preprocessor">#ifndef&#32;CONFIG_VALUE_H</emphasis>
+<anchor xml:id="_main_8c_source_1l00005"/>00005 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_config__value_8h">../include/config_value.h</link>&quot;</emphasis>
+<anchor xml:id="_main_8c_source_1l00006"/>00006 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;CONFIG_VALUE_H</emphasis>
+<anchor xml:id="_main_8c_source_1l00007"/>00007 <emphasis role="preprocessor">#ifndef&#32;DATA_CONTAINER_H</emphasis>
+<anchor xml:id="_main_8c_source_1l00008"/>00008 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_data__container_8h">../include/sub_include/data_container.h</link>&quot;</emphasis>
+<anchor xml:id="_main_8c_source_1l00009"/>00009 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;DATA_CONTAINER_H</emphasis>
+<anchor xml:id="_main_8c_source_1l00010"/>00010 <emphasis role="preprocessor">#ifndef&#32;GESTION_TAG_H</emphasis>
+<anchor xml:id="_main_8c_source_1l00011"/>00011 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_gestion__tag_8h">../include/gestion_tag.h</link>&quot;</emphasis>
+<anchor xml:id="_main_8c_source_1l00012"/>00012 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;GESTION_TAG_H</emphasis>
+<anchor xml:id="_main_8c_source_1l00013"/>00013 <emphasis role="preprocessor">#ifndef&#32;PRINT_VAL_H</emphasis>
+<anchor xml:id="_main_8c_source_1l00014"/>00014 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_print__val_8h">../include/sub_include/print_val.h</link>&quot;</emphasis>
+<anchor xml:id="_main_8c_source_1l00015"/>00015 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;PRINT_VAL_H</emphasis>
+<anchor xml:id="_main_8c_source_1l00016"/>00016 
+<anchor xml:id="_main_8c_source_1l00017"/><link linkend="_main_8c_1a51c2b99b66f63ee9064347f9151e99ba">00017</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_main_8c_1a51c2b99b66f63ee9064347f9151e99ba">passed_tests</link>&#32;=&#32;0;&#32;
+<anchor xml:id="_main_8c_source_1l00018"/><link linkend="_main_8c_1ab7324491948254cde8946b74d8bca3bc">00018</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_main_8c_1ab7324491948254cde8946b74d8bca3bc">total_tests</link>&#32;=&#32;0;&#32;
+<anchor xml:id="_main_8c_source_1l00019"/>00019 
+<anchor xml:id="_main_8c_source_1l00026"/><link linkend="_main_8c_1aa193df92133f441f2a0efd722c3962f9">00026</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_main_8c_1aa193df92133f441f2a0efd722c3962f9">TEST</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;name,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;condition)
+<anchor xml:id="_main_8c_source_1l00027"/>00027 {
+<anchor xml:id="_main_8c_source_1l00028"/>00028 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(condition)
+<anchor xml:id="_main_8c_source_1l00029"/>00029 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_main_8c_source_1l00030"/>00030 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;success\t\t\t%s\n&quot;</emphasis>,&#32;name);
+<anchor xml:id="_main_8c_source_1l00031"/>00031 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_main_8c_1a51c2b99b66f63ee9064347f9151e99ba">passed_tests</link>++;
+<anchor xml:id="_main_8c_source_1l00032"/>00032 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8c_source_1l00033"/>00033 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="_main_8c_source_1l00034"/>00034 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_main_8c_source_1l00035"/>00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;fail\t\t\t%s\n&quot;</emphasis>,&#32;name);
+<anchor xml:id="_main_8c_source_1l00036"/>00036 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8c_source_1l00037"/>00037 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1ab7324491948254cde8946b74d8bca3bc">total_tests</link>++;
+<anchor xml:id="_main_8c_source_1l00038"/>00038 }
+<anchor xml:id="_main_8c_source_1l00046"/><link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">00046</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;name,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;val_1,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;val_2)
+<anchor xml:id="_main_8c_source_1l00047"/>00047 {
+<anchor xml:id="_main_8c_source_1l00048"/>00048 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;condition&#32;=&#32;val_1&#32;==&#32;val_2;
+<anchor xml:id="_main_8c_source_1l00049"/>00049 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(condition)
+<anchor xml:id="_main_8c_source_1l00050"/>00050 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_main_8c_source_1l00051"/>00051 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;success\t\t\t%s\n&quot;</emphasis>,&#32;name);
+<anchor xml:id="_main_8c_source_1l00052"/>00052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_main_8c_1a51c2b99b66f63ee9064347f9151e99ba">passed_tests</link>++;
+<anchor xml:id="_main_8c_source_1l00053"/>00053 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8c_source_1l00054"/>00054 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="_main_8c_source_1l00055"/>00055 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_main_8c_source_1l00056"/>00056 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;fail\t\t\t%s&quot;</emphasis>,&#32;name);
+<anchor xml:id="_main_8c_source_1l00057"/>00057 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;\t%d&#32;!=&#32;&quot;</emphasis>,&#32;val_1);
+<anchor xml:id="_main_8c_source_1l00058"/>00058 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;%d\n&quot;</emphasis>,&#32;val_2);
+<anchor xml:id="_main_8c_source_1l00059"/>00059 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8c_source_1l00060"/>00060 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1ab7324491948254cde8946b74d8bca3bc">total_tests</link>++;
+<anchor xml:id="_main_8c_source_1l00061"/>00061 }
+<anchor xml:id="_main_8c_source_1l00062"/>00062 
+<anchor xml:id="_main_8c_source_1l00063"/>00063 
+<anchor xml:id="_main_8c_source_1l00064"/>00064 
+<anchor xml:id="_main_8c_source_1l00065"/>00065 
+<anchor xml:id="_main_8c_source_1l00066"/>00066 
+<anchor xml:id="_main_8c_source_1l00067"/>00067 
+<anchor xml:id="_main_8c_source_1l00068"/>00068 
+<anchor xml:id="_main_8c_source_1l00072"/><link linkend="_main_8c_1a9c4bb6f6d00e76eae45e966a4c628178">00072</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_main_8c_1a9c4bb6f6d00e76eae45e966a4c628178">test_print</link>(<emphasis role="keywordtype">void</emphasis>){
+<anchor xml:id="_main_8c_source_1l00073"/>00073 printf(<emphasis role="stringliteral">&quot;test&#32;des&#32;fonction&#32;d&apos;impression.\n&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00074"/>00074 <emphasis role="comment">//&#32;prepa&#32;du&#32;gt</emphasis>
+<anchor xml:id="_main_8c_source_1l00075"/>00075 <link linkend="_data__container_8h_1a129f017feb0712be1dcf7932e6035aa0">init_data_container</link>();
+<anchor xml:id="_main_8c_source_1l00076"/>00076 <link linkend="_gestion__tag_8h_1aab50a8f567be72e656120fd71f3fb435">init_tag_manager</link>();
+<anchor xml:id="_main_8c_source_1l00077"/>00077 
+<anchor xml:id="_main_8c_source_1l00078"/>00078 <emphasis role="comment">//&#32;set&#32;the&#32;tags</emphasis>
+<anchor xml:id="_main_8c_source_1l00079"/>00079 <link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(<emphasis role="stringliteral">&quot;a1&quot;</emphasis>,2);
+<anchor xml:id="_main_8c_source_1l00080"/>00080 <link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(<emphasis role="stringliteral">&quot;agh5&quot;</emphasis>,5);
+<anchor xml:id="_main_8c_source_1l00081"/>00081 <link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(<emphasis role="stringliteral">&quot;patap&quot;</emphasis>,16);
+<anchor xml:id="_main_8c_source_1l00082"/>00082 <link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(<emphasis role="stringliteral">&quot;patat&quot;</emphasis>,12);
+<anchor xml:id="_main_8c_source_1l00083"/>00083 <link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(<emphasis role="stringliteral">&quot;uni1&quot;</emphasis>,1);
+<anchor xml:id="_main_8c_source_1l00084"/>00084 <link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(<emphasis role="stringliteral">&quot;triot&quot;</emphasis>,&#32;3);
+<anchor xml:id="_main_8c_source_1l00085"/>00085 
+<anchor xml:id="_main_8c_source_1l00086"/>00086 <emphasis role="comment">//&#32;set&#32;the&#32;value</emphasis>
+<anchor xml:id="_main_8c_source_1l00087"/>00087 <link linkend="_data__container_8h_1aa84538f1ab0c319056787e9674157405">set_value</link>(<emphasis role="stringliteral">&quot;a1&quot;</emphasis>,3);
+<anchor xml:id="_main_8c_source_1l00088"/>00088 <link linkend="_data__container_8h_1aa84538f1ab0c319056787e9674157405">set_value</link>(<emphasis role="stringliteral">&quot;agh5&quot;</emphasis>,42);
+<anchor xml:id="_main_8c_source_1l00089"/>00089 <link linkend="_data__container_8h_1aa84538f1ab0c319056787e9674157405">set_value</link>(<emphasis role="stringliteral">&quot;patap&quot;</emphasis>,45);
+<anchor xml:id="_main_8c_source_1l00090"/>00090 <link linkend="_data__container_8h_1aa84538f1ab0c319056787e9674157405">set_value</link>(<emphasis role="stringliteral">&quot;patat&quot;</emphasis>,12);
+<anchor xml:id="_main_8c_source_1l00091"/>00091 <link linkend="_data__container_8h_1aa84538f1ab0c319056787e9674157405">set_value</link>(<emphasis role="stringliteral">&quot;uni1&quot;</emphasis>,1);
+<anchor xml:id="_main_8c_source_1l00092"/>00092 <link linkend="_data__container_8h_1aa84538f1ab0c319056787e9674157405">set_value</link>(<emphasis role="stringliteral">&quot;triot&quot;</emphasis>,&#32;3);
+<anchor xml:id="_main_8c_source_1l00093"/>00093 
+<anchor xml:id="_main_8c_source_1l00094"/>00094 <link linkend="_print__val_8h_1a2b276a5dd504a1eb4d6f216b8f9d7fdb">print_all_tag_set</link>();
+<anchor xml:id="_main_8c_source_1l00095"/>00095 <link linkend="_print__val_8h_1a6904e40665dc664fc6611bfe2d913773">print_all_data</link>();
+<anchor xml:id="_main_8c_source_1l00096"/>00096 <link linkend="_print__val_8h_1a8ee4bb928c2cca54d191cf23edea60ec">print_repartition_bit</link>();
+<anchor xml:id="_main_8c_source_1l00097"/>00097 }
+<anchor xml:id="_main_8c_source_1l00098"/>00098 
+<anchor xml:id="_main_8c_source_1l00099"/>00099 
+<anchor xml:id="_main_8c_source_1l00100"/>00100 
+<anchor xml:id="_main_8c_source_1l00101"/>00101 
+<anchor xml:id="_main_8c_source_1l00104"/><link linkend="_main_8c_1a4f26f5b24d899127d66338ba3bfd7f1b">00104</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_main_8c_1a4f26f5b24d899127d66338ba3bfd7f1b">somme_other_test</link>(<emphasis role="keywordtype">void</emphasis>){
+<anchor xml:id="_main_8c_source_1l00105"/>00105 printf(<emphasis role="stringliteral">&quot;----------------------test&#32;mask&#32;------------------------\n&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00106"/>00106 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;\t(0,8):&#32;&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00107"/>00107 &#32;&#32;&#32;&#32;<link linkend="_print__val_8h_1a9e9dc5564a1158a2c1381b3de0c6d20e">print_bin_8</link>(<link linkend="_data__container_8h_1a66768c162c3a8352b7d5397e90206085">prep_mask</link>(0,&#32;8));
+<anchor xml:id="_main_8c_source_1l00108"/>00108 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;\n&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00109"/>00109 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;\t(4,4):&#32;&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00110"/>00110 &#32;&#32;&#32;&#32;<link linkend="_print__val_8h_1a9e9dc5564a1158a2c1381b3de0c6d20e">print_bin_8</link>(<link linkend="_data__container_8h_1a66768c162c3a8352b7d5397e90206085">prep_mask</link>(4,&#32;4));
+<anchor xml:id="_main_8c_source_1l00111"/>00111 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;\n&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00112"/>00112 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;\t(4,3):&#32;&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00113"/>00113 &#32;&#32;&#32;&#32;<link linkend="_print__val_8h_1a9e9dc5564a1158a2c1381b3de0c6d20e">print_bin_8</link>(<link linkend="_data__container_8h_1a66768c162c3a8352b7d5397e90206085">prep_mask</link>(4,&#32;3));
+<anchor xml:id="_main_8c_source_1l00114"/>00114 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;\n&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00115"/>00115 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;\t(1,4):&#32;&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00116"/>00116 &#32;&#32;&#32;&#32;<link linkend="_print__val_8h_1a9e9dc5564a1158a2c1381b3de0c6d20e">print_bin_8</link>(<link linkend="_data__container_8h_1a66768c162c3a8352b7d5397e90206085">prep_mask</link>(1,&#32;4));
+<anchor xml:id="_main_8c_source_1l00117"/>00117 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;\n&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00118"/>00118 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;\t(5,1):&#32;&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00119"/>00119 &#32;&#32;&#32;&#32;<link linkend="_print__val_8h_1a9e9dc5564a1158a2c1381b3de0c6d20e">print_bin_8</link>(<link linkend="_data__container_8h_1a66768c162c3a8352b7d5397e90206085">prep_mask</link>(5,&#32;1));
+<anchor xml:id="_main_8c_source_1l00120"/>00120 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;\n&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00121"/>00121 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;------------------------------test&#32;shift----------------------\n&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00122"/>00122 &#32;&#32;&#32;&#32;uint8_t&#32;val1&#32;=&#32;0b01110000;
+<anchor xml:id="_main_8c_source_1l00123"/>00123 &#32;&#32;&#32;&#32;uint8_t&#32;bi&#32;=&#32;0b01110100;
+<anchor xml:id="_main_8c_source_1l00124"/>00124 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;val1:&#32;&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00125"/>00125 &#32;&#32;&#32;&#32;<link linkend="_print__val_8h_1a9e9dc5564a1158a2c1381b3de0c6d20e">print_bin_8</link>(val1);
+<anchor xml:id="_main_8c_source_1l00126"/>00126 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;\n&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00127"/>00127 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;p_bit&#32;=&#32;4;
+<anchor xml:id="_main_8c_source_1l00128"/>00128 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;n_bit&#32;=&#32;4;
+<anchor xml:id="_main_8c_source_1l00129"/>00129 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;eq&#32;logic&#32;pour&#32;la&#32;prise&#32;de&#32;la&#32;valeur</emphasis>
+<anchor xml:id="_main_8c_source_1l00130"/>00130 &#32;&#32;&#32;&#32;uint8_t&#32;vrai_val&#32;=&#32;val1&#32;&gt;&gt;&#32;(8&#32;-&#32;p_bit&#32;-&#32;n_bit);
+<anchor xml:id="_main_8c_source_1l00131"/>00131 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;prepa&#32;du&#32;mask</emphasis>
+<anchor xml:id="_main_8c_source_1l00132"/>00132 &#32;&#32;&#32;&#32;uint8_t&#32;mask_val&#32;=&#32;0b1;
+<anchor xml:id="_main_8c_source_1l00133"/>00133 &#32;&#32;&#32;&#32;uint8_t&#32;mask_temp&#32;=&#32;0b1;
+<anchor xml:id="_main_8c_source_1l00134"/>00134 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;mask&#32;des&#32;bits&#32;de&#32;la&#32;valeurs</emphasis>
+<anchor xml:id="_main_8c_source_1l00135"/>00135 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;(n_bit&#32;-&#32;1);&#32;i++)
+<anchor xml:id="_main_8c_source_1l00136"/>00136 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_main_8c_source_1l00137"/>00137 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;mask_val&#32;=&#32;mask_val&#32;&lt;&lt;&#32;1;
+<anchor xml:id="_main_8c_source_1l00138"/>00138 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;mask_val&#32;|=&#32;mask_temp;
+<anchor xml:id="_main_8c_source_1l00139"/>00139 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8c_source_1l00140"/>00140 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;mask&#32;pour&#32;conserver&#32;uniquement&#32;la&#32;valeurs&#32;dans&#32;le&#32;bytes</emphasis>
+<anchor xml:id="_main_8c_source_1l00141"/>00141 &#32;&#32;&#32;&#32;uint8_t&#32;mask_val_p&#32;=&#32;mask_val&#32;&lt;&lt;&#32;(8&#32;-&#32;p_bit&#32;-&#32;n_bit);
+<anchor xml:id="_main_8c_source_1l00142"/>00142 
+<anchor xml:id="_main_8c_source_1l00143"/>00143 &#32;&#32;&#32;&#32;uint8_t&#32;byte_sans_val&#32;=&#32;bi;
+<anchor xml:id="_main_8c_source_1l00144"/>00144 &#32;&#32;&#32;&#32;byte_sans_val&#32;&amp;=&#32;~mask_val_p;
+<anchor xml:id="_main_8c_source_1l00145"/>00145 
+<anchor xml:id="_main_8c_source_1l00146"/>00146 
+<anchor xml:id="_main_8c_source_1l00147"/>00147 &#32;&#32;&#32;&#32;<emphasis role="comment">//mask_val&#32;=&#32;mask_val&#32;&gt;&gt;&#32;(8&#32;-&#32;n_bit);</emphasis>
+<anchor xml:id="_main_8c_source_1l00148"/>00148 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;vrai_val:&#32;&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00149"/>00149 &#32;&#32;&#32;&#32;<link linkend="_print__val_8h_1a9e9dc5564a1158a2c1381b3de0c6d20e">print_bin_8</link>(vrai_val);
+<anchor xml:id="_main_8c_source_1l00150"/>00150 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;\n&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00151"/>00151 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;mask:&#32;&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00152"/>00152 &#32;&#32;&#32;&#32;<link linkend="_print__val_8h_1a9e9dc5564a1158a2c1381b3de0c6d20e">print_bin_8</link>(mask_val);
+<anchor xml:id="_main_8c_source_1l00153"/>00153 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;\n&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00154"/>00154 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;mask2:&#32;&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00155"/>00155 &#32;&#32;&#32;&#32;<link linkend="_print__val_8h_1a9e9dc5564a1158a2c1381b3de0c6d20e">print_bin_8</link>(mask_val_p);
+<anchor xml:id="_main_8c_source_1l00156"/>00156 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;\n&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00157"/>00157 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;byte&#32;avant:&#32;&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00158"/>00158 &#32;&#32;&#32;&#32;<link linkend="_print__val_8h_1a9e9dc5564a1158a2c1381b3de0c6d20e">print_bin_8</link>(bi);
+<anchor xml:id="_main_8c_source_1l00159"/>00159 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;\n&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00160"/>00160 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;byte&#32;sans&#32;val:&#32;&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00161"/>00161 &#32;&#32;&#32;&#32;<link linkend="_print__val_8h_1a9e9dc5564a1158a2c1381b3de0c6d20e">print_bin_8</link>(byte_sans_val);
+<anchor xml:id="_main_8c_source_1l00162"/>00162 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;\n&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00163"/>00163 
+<anchor xml:id="_main_8c_source_1l00164"/>00164 
+<anchor xml:id="_main_8c_source_1l00165"/>00165 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;test&#32;final\n&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00166"/>00166 
+<anchor xml:id="_main_8c_source_1l00167"/>00167 &#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1a129f017feb0712be1dcf7932e6035aa0">init_data_container</link>();
+<anchor xml:id="_main_8c_source_1l00168"/>00168 &#32;&#32;&#32;&#32;<link linkend="_gestion__tag_8h_1aab50a8f567be72e656120fd71f3fb435">init_tag_manager</link>();
+<anchor xml:id="_main_8c_source_1l00169"/>00169 
+<anchor xml:id="_main_8c_source_1l00170"/>00170 }
+<anchor xml:id="_main_8c_source_1l00171"/>00171 
+<anchor xml:id="_main_8c_source_1l00176"/>00176 
+<anchor xml:id="_main_8c_source_1l00177"/><link linkend="_main_8c_1ae9bbb2f5bb69f73e92c761f83223285a">00177</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_main_8c_1ae9bbb2f5bb69f73e92c761f83223285a">run_all_tests</link>(<emphasis role="keywordtype">void</emphasis>)
+<anchor xml:id="_main_8c_source_1l00178"/>00178 {
+<anchor xml:id="_main_8c_source_1l00179"/>00179 &#32;&#32;&#32;&#32;uint32_t&#32;val&#32;=&#32;0;
+<anchor xml:id="_main_8c_source_1l00180"/>00180 
+<anchor xml:id="_main_8c_source_1l00181"/>00181 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;===&#32;Lancement&#32;des&#32;tests&#32;unitaires&#32;===\n&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00182"/>00182 
+<anchor xml:id="_main_8c_source_1l00183"/>00183 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;---------------------------------------------------------</emphasis>
+<anchor xml:id="_main_8c_source_1l00184"/>00184 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;TEST&#32;1&#32;:&#32;Cas&#32;d&apos;erreurs&#32;de&#32;set_tag</emphasis>
+<anchor xml:id="_main_8c_source_1l00185"/>00185 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;---------------------------------------------------------</emphasis>
+<anchor xml:id="_main_8c_source_1l00186"/>00186 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;Test&#32;1:&#32;Erreurs&#32;de&#32;set_tag...&#32;&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00187"/>00187 &#32;&#32;&#32;&#32;<link linkend="_gestion__tag_8h_1aab50a8f567be72e656120fd71f3fb435">init_tag_manager</link>();&#32;<emphasis role="comment">//&#32;On&#32;part&#32;d&apos;un&#32;état&#32;propre</emphasis>
+<anchor xml:id="_main_8c_source_1l00188"/>00188 
+<anchor xml:id="_main_8c_source_1l00189"/>00189 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Tailles&#32;invalides&#32;(ex:&#32;0&#32;retourne&#32;CAN_TG_ERROR_SIZE_VALUE_INVALIDE)</emphasis>
+<anchor xml:id="_main_8c_source_1l00190"/>00190 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;\tTailles&#32;invalides\n&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00191"/>00191 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link>(<emphasis role="stringliteral">&quot;0&quot;</emphasis>,<link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(<emphasis role="stringliteral">&quot;inv1&quot;</emphasis>,&#32;0),&#32;<link linkend="_config__value_8h_1a73337c3ada0009e763ea5af164e25d70">CAN_TG_ERROR_SIZE_VALUE_INVALIDE</link>);
+<anchor xml:id="_main_8c_source_1l00192"/>00192 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link>(<emphasis role="stringliteral">&quot;2&quot;</emphasis>,<link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(<emphasis role="stringliteral">&quot;inv2&quot;</emphasis>,&#32;2),&#32;<link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3">CAN_TG_SUCCESS</link>);
+<anchor xml:id="_main_8c_source_1l00193"/>00193 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link>(<emphasis role="stringliteral">&quot;5&quot;</emphasis>,<link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(<emphasis role="stringliteral">&quot;inv5&quot;</emphasis>,&#32;5),&#32;<link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3">CAN_TG_SUCCESS</link>);
+<anchor xml:id="_main_8c_source_1l00194"/>00194 
+<anchor xml:id="_main_8c_source_1l00195"/>00195 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Tag&#32;en&#32;double&#32;(retour&#32;attendu:&#32;CAN_TG_ERROR_NAME_ALREADY_USE)</emphasis>
+<anchor xml:id="_main_8c_source_1l00196"/>00196 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;\tTag&#32;en&#32;double\n&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00197"/>00197 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link>(<emphasis role="stringliteral">&quot;première&#32;insertion&quot;</emphasis>,<link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(<emphasis role="stringliteral">&quot;TAG_A&quot;</emphasis>,&#32;4),&#32;<link linkend="_config__value_8h_1af9a28b199e843773aefbb1e1bcf50559">SUCCES_TO_SET</link>);&#32;<emphasis role="comment">//&#32;Succès</emphasis>
+<anchor xml:id="_main_8c_source_1l00198"/>00198 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link>(<emphasis role="stringliteral">&quot;duplica&#32;détection&quot;</emphasis>,<link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(<emphasis role="stringliteral">&quot;TAG_A&quot;</emphasis>,&#32;3),&#32;<link linkend="_config__value_8h_1a18061c1ca5fc2e5ab20fa7bc8dbe81d6">CAN_TG_ERROR_NAME_ALREADY_USE</link>);&#32;<emphasis role="comment">//&#32;Erreur&#32;:&#32;existe&#32;déjà</emphasis>
+<anchor xml:id="_main_8c_source_1l00199"/>00199 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;OK\n&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00200"/>00200 
+<anchor xml:id="_main_8c_source_1l00201"/>00201 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;---------------------------------------------------------</emphasis>
+<anchor xml:id="_main_8c_source_1l00202"/>00202 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;TEST&#32;2&#32;:&#32;Dépassement&#32;de&#32;l&apos;espace&#32;mémoire&#32;(8&#32;octets&#32;max)</emphasis>
+<anchor xml:id="_main_8c_source_1l00203"/>00203 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;---------------------------------------------------------</emphasis>
+<anchor xml:id="_main_8c_source_1l00204"/>00204 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;Test&#32;2:&#32;Remplissage&#32;memoire&#32;(8&#32;bytes&#32;max)...&#32;&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00205"/>00205 &#32;&#32;&#32;&#32;<link linkend="_gestion__tag_8h_1aab50a8f567be72e656120fd71f3fb435">init_tag_manager</link>();
+<anchor xml:id="_main_8c_source_1l00206"/>00206 
+<anchor xml:id="_main_8c_source_1l00207"/>00207 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;On&#32;ajoute&#32;4&#32;tags&#32;de&#32;16&#32;bits&#32;(4&#32;*&#32;2&#32;=&#32;8&#32;octets&#32;complets)</emphasis>
+<anchor xml:id="_main_8c_source_1l00208"/>00208 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;\tpreparation&#32;du&#32;GT\n&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00209"/>00209 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link>(<emphasis role="stringliteral">&quot;ajout&#32;de&#32;valeurs&#32;16&#32;bit&#32;(1/4)&quot;</emphasis>,<link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(<emphasis role="stringliteral">&quot;T1&quot;</emphasis>,&#32;16),&#32;<link linkend="_config__value_8h_1af9a28b199e843773aefbb1e1bcf50559">SUCCES_TO_SET</link>);
+<anchor xml:id="_main_8c_source_1l00210"/>00210 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link>(<emphasis role="stringliteral">&quot;ajout&#32;de&#32;valeurs&#32;16&#32;bit&#32;(2/4)&quot;</emphasis>,<link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(<emphasis role="stringliteral">&quot;T2&quot;</emphasis>,&#32;16),&#32;<link linkend="_config__value_8h_1af9a28b199e843773aefbb1e1bcf50559">SUCCES_TO_SET</link>);
+<anchor xml:id="_main_8c_source_1l00211"/>00211 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link>(<emphasis role="stringliteral">&quot;ajout&#32;de&#32;valeurs&#32;16&#32;bit&#32;(3/4)&quot;</emphasis>,<link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(<emphasis role="stringliteral">&quot;T3&quot;</emphasis>,&#32;16),&#32;<link linkend="_config__value_8h_1af9a28b199e843773aefbb1e1bcf50559">SUCCES_TO_SET</link>);
+<anchor xml:id="_main_8c_source_1l00212"/>00212 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link>(<emphasis role="stringliteral">&quot;ajout&#32;de&#32;valeurs&#32;16&#32;bit&#32;(4/4)&quot;</emphasis>,<link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(<emphasis role="stringliteral">&quot;T4&quot;</emphasis>,&#32;16),&#32;<link linkend="_config__value_8h_1af9a28b199e843773aefbb1e1bcf50559">SUCCES_TO_SET</link>);
+<anchor xml:id="_main_8c_source_1l00213"/>00213 
+<anchor xml:id="_main_8c_source_1l00214"/>00214 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Le&#32;prochain&#32;tag&#32;doit&#32;etre&#32;refuse&#32;faute&#32;d&apos;espace&#32;libre.</emphasis>
+<anchor xml:id="_main_8c_source_1l00215"/>00215 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;\ttest&#32;de&#32;Dépassement&#32;de&#32;l&apos;espace&#32;mémoire&#32;(8&#32;octets&#32;max)\n&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00216"/>00216 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link>(<emphasis role="stringliteral">&quot;avec&#32;1&#32;bit&quot;</emphasis>,<link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(<emphasis role="stringliteral">&quot;T5&quot;</emphasis>,&#32;1),&#32;<link linkend="_config__value_8h_1a6ac7074ca0f94196368735678d92c7b8">CAN_TG_ERROR_NOT_ENOUNG_SPACE</link>);
+<anchor xml:id="_main_8c_source_1l00217"/>00217 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link>(<emphasis role="stringliteral">&quot;avec&#32;16&#32;bits&quot;</emphasis>,<link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(<emphasis role="stringliteral">&quot;T6&quot;</emphasis>,&#32;16),&#32;<link linkend="_config__value_8h_1a6ac7074ca0f94196368735678d92c7b8">CAN_TG_ERROR_NOT_ENOUNG_SPACE</link>);
+<anchor xml:id="_main_8c_source_1l00218"/>00218 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;OK\n&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00219"/>00219 
+<anchor xml:id="_main_8c_source_1l00220"/>00220 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;---------------------------------------------------------</emphasis>
+<anchor xml:id="_main_8c_source_1l00221"/>00221 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;TEST&#32;3&#32;:&#32;Cas&#32;d&apos;erreurs&#32;de&#32;set_value&#32;et&#32;get_value</emphasis>
+<anchor xml:id="_main_8c_source_1l00222"/>00222 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;---------------------------------------------------------</emphasis>
+<anchor xml:id="_main_8c_source_1l00223"/>00223 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;Test&#32;3:&#32;Erreurs&#32;et&#32;depassements&#32;de&#32;valeurs...&#32;&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00224"/>00224 &#32;&#32;&#32;&#32;<link linkend="_gestion__tag_8h_1aab50a8f567be72e656120fd71f3fb435">init_tag_manager</link>();
+<anchor xml:id="_main_8c_source_1l00225"/>00225 &#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1a129f017feb0712be1dcf7932e6035aa0">init_data_container</link>();
+<anchor xml:id="_main_8c_source_1l00226"/>00226 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;\tpreparation&#32;du&#32;GT\n&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00227"/>00227 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link>(<emphasis role="stringliteral">&quot;prepa...&#32;&quot;</emphasis>,<link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(<emphasis role="stringliteral">&quot;BIT_1&quot;</emphasis>,&#32;1),&#32;<link linkend="_config__value_8h_1afb042b80a35ed7a692f9001589ddf8c6">SUCCES</link>);
+<anchor xml:id="_main_8c_source_1l00228"/>00228 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link>(<emphasis role="stringliteral">&quot;prepa...&#32;&quot;</emphasis>,<link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(<emphasis role="stringliteral">&quot;BIT_3&quot;</emphasis>,&#32;3),&#32;<link linkend="_config__value_8h_1afb042b80a35ed7a692f9001589ddf8c6">SUCCES</link>);
+<anchor xml:id="_main_8c_source_1l00229"/>00229 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link>(<emphasis role="stringliteral">&quot;prepa...&#32;&quot;</emphasis>,<link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(<emphasis role="stringliteral">&quot;BIT_4&quot;</emphasis>,&#32;4),&#32;<link linkend="_config__value_8h_1afb042b80a35ed7a692f9001589ddf8c6">SUCCES</link>);
+<anchor xml:id="_main_8c_source_1l00230"/>00230 
+<anchor xml:id="_main_8c_source_1l00231"/>00231 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Tag&#32;inexistant&#32;(retour&#32;attendu:&#32;-3)</emphasis>
+<anchor xml:id="_main_8c_source_1l00232"/>00232 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;\tTag&#32;inexistant\n&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00233"/>00233 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link>(<emphasis role="stringliteral">&quot;test&#32;set&quot;</emphasis>,<link linkend="_data__container_8h_1aa84538f1ab0c319056787e9674157405">set_value</link>(<emphasis role="stringliteral">&quot;FANTOME&quot;</emphasis>,&#32;5),&#32;-3);
+<anchor xml:id="_main_8c_source_1l00234"/>00234 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link>(<emphasis role="stringliteral">&quot;test&#32;get&quot;</emphasis>,<link linkend="_data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f">get_value</link>(<emphasis role="stringliteral">&quot;FANTOME&quot;</emphasis>,&#32;&amp;val),&#32;-3);
+<anchor xml:id="_main_8c_source_1l00235"/>00235 
+<anchor xml:id="_main_8c_source_1l00236"/>00236 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Depassement&#32;de&#32;capacite:</emphasis>
+<anchor xml:id="_main_8c_source_1l00237"/>00237 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;NOTE:&#32;l&apos;implementation&#32;actuelle&#32;renvoie&#32;CAN_TG_ERROR_VALUE_TO_BIG&#32;(-10),</emphasis>
+<anchor xml:id="_main_8c_source_1l00238"/>00238 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;mais&#32;ces&#32;assertions&#32;historiques&#32;verifient&#32;encore&#32;-4.</emphasis>
+<anchor xml:id="_main_8c_source_1l00239"/>00239 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;\tDépassement&#32;de&#32;capacité\n&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00240"/>00240 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;-&#32;Un&#32;tag&#32;de&#32;1&#32;bit&#32;ne&#32;peut&#32;contenir&#32;que&#32;0&#32;ou&#32;1</emphasis>
+<anchor xml:id="_main_8c_source_1l00241"/>00241 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link>(<emphasis role="stringliteral">&quot;Un&#32;tag&#32;de&#32;1&#32;bits[0&#32;ou&#32;1]&quot;</emphasis>,<link linkend="_data__container_8h_1aa84538f1ab0c319056787e9674157405">set_value</link>(<emphasis role="stringliteral">&quot;BIT_1&quot;</emphasis>,&#32;2),&#32;-4);
+<anchor xml:id="_main_8c_source_1l00242"/>00242 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;-&#32;Un&#32;tag&#32;de&#32;3&#32;bits&#32;ne&#32;peut&#32;contenir&#32;que&#32;de&#32;0&#32;à&#32;7</emphasis>
+<anchor xml:id="_main_8c_source_1l00243"/>00243 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link>(<emphasis role="stringliteral">&quot;Un&#32;tag&#32;de&#32;3&#32;bits&#32;[0&#32;à&#32;7]&quot;</emphasis>,<link linkend="_data__container_8h_1aa84538f1ab0c319056787e9674157405">set_value</link>(<emphasis role="stringliteral">&quot;BIT_3&quot;</emphasis>,&#32;8),&#32;-4);
+<anchor xml:id="_main_8c_source_1l00244"/>00244 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;-&#32;Un&#32;tag&#32;de&#32;4&#32;bits&#32;ne&#32;peut&#32;contenir&#32;que&#32;de&#32;0&#32;à&#32;15</emphasis>
+<anchor xml:id="_main_8c_source_1l00245"/>00245 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link>(<emphasis role="stringliteral">&quot;Un&#32;tag&#32;de&#32;4&#32;bits&#32;[0&#32;à&#32;15]&quot;</emphasis>,&#32;<link linkend="_data__container_8h_1aa84538f1ab0c319056787e9674157405">set_value</link>(<emphasis role="stringliteral">&quot;BIT_4&quot;</emphasis>,&#32;16),&#32;-4);
+<anchor xml:id="_main_8c_source_1l00246"/>00246 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;OK\n&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00247"/>00247 
+<anchor xml:id="_main_8c_source_1l00248"/>00248 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;---------------------------------------------------------</emphasis>
+<anchor xml:id="_main_8c_source_1l00249"/>00249 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;TEST&#32;4&#32;:&#32;Indépendance&#32;des&#32;écritures&#32;(Masquage&#32;binaire)</emphasis>
+<anchor xml:id="_main_8c_source_1l00250"/>00250 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;---------------------------------------------------------</emphasis>
+<anchor xml:id="_main_8c_source_1l00251"/>00251 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;Test&#32;4:&#32;Indépendance&#32;des&#32;bits&#32;contigus...&#32;&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00252"/>00252 &#32;&#32;&#32;&#32;<link linkend="_gestion__tag_8h_1aab50a8f567be72e656120fd71f3fb435">init_tag_manager</link>();
+<anchor xml:id="_main_8c_source_1l00253"/>00253 &#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1a129f017feb0712be1dcf7932e6035aa0">init_data_container</link>();
+<anchor xml:id="_main_8c_source_1l00254"/>00254 
+<anchor xml:id="_main_8c_source_1l00255"/>00255 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;On&#32;crée&#32;une&#32;configuration&#32;qui&#32;remplit&#32;exactement&#32;1&#32;octet&#32;(1&#32;+&#32;3&#32;+&#32;4&#32;=&#32;8&#32;bits)</emphasis>
+<anchor xml:id="_main_8c_source_1l00256"/>00256 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;\tpreparation&#32;du&#32;GT\n&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00257"/>00257 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link>(<emphasis role="stringliteral">&quot;preparation&#32;[set_tag]&#32;(1/3)&quot;</emphasis>,<link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(<emphasis role="stringliteral">&quot;T_1&quot;</emphasis>,&#32;1),&#32;<link linkend="_config__value_8h_1afb042b80a35ed7a692f9001589ddf8c6">SUCCES</link>);
+<anchor xml:id="_main_8c_source_1l00258"/>00258 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link>(<emphasis role="stringliteral">&quot;preparation&#32;[set_tag]&#32;(2/3)&quot;</emphasis>,<link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(<emphasis role="stringliteral">&quot;T_3&quot;</emphasis>,&#32;3),&#32;<link linkend="_config__value_8h_1afb042b80a35ed7a692f9001589ddf8c6">SUCCES</link>);
+<anchor xml:id="_main_8c_source_1l00259"/>00259 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link>(<emphasis role="stringliteral">&quot;preparation&#32;[set_tag]&#32;(3/3)&quot;</emphasis>,<link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(<emphasis role="stringliteral">&quot;T_4&quot;</emphasis>,&#32;4),&#32;<link linkend="_config__value_8h_1afb042b80a35ed7a692f9001589ddf8c6">SUCCES</link>);
+<anchor xml:id="_main_8c_source_1l00260"/>00260 
+<anchor xml:id="_main_8c_source_1l00261"/>00261 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;On&#32;assigne&#32;les&#32;valeurs&#32;maximales&#32;à&#32;chaque&#32;tag</emphasis>
+<anchor xml:id="_main_8c_source_1l00262"/>00262 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;\tpreparation&#32;du&#32;GT&#32;(partie&#32;2)\n&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00263"/>00263 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link>(<emphasis role="stringliteral">&quot;preparation&#32;[set_tag]&#32;(1)&#32;1&#32;bits&#32;(1/3)&quot;</emphasis>,<link linkend="_data__container_8h_1aa84538f1ab0c319056787e9674157405">set_value</link>(<emphasis role="stringliteral">&quot;T_1&quot;</emphasis>,&#32;1),&#32;<link linkend="_config__value_8h_1afb042b80a35ed7a692f9001589ddf8c6">SUCCES</link>);
+<anchor xml:id="_main_8c_source_1l00264"/>00264 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link>(<emphasis role="stringliteral">&quot;preparation&#32;[set_tag]&#32;(7)&#32;3&#32;bits&#32;(2/3)&quot;</emphasis>,<link linkend="_data__container_8h_1aa84538f1ab0c319056787e9674157405">set_value</link>(<emphasis role="stringliteral">&quot;T_3&quot;</emphasis>,&#32;7),&#32;<link linkend="_config__value_8h_1afb042b80a35ed7a692f9001589ddf8c6">SUCCES</link>);
+<anchor xml:id="_main_8c_source_1l00265"/>00265 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link>(<emphasis role="stringliteral">&quot;preparation&#32;[set_tag]&#32;(15)&#32;4&#32;bits&#32;(3/3)&quot;</emphasis>,<link linkend="_data__container_8h_1aa84538f1ab0c319056787e9674157405">set_value</link>(<emphasis role="stringliteral">&quot;T_4&quot;</emphasis>,&#32;15),&#32;<link linkend="_config__value_8h_1afb042b80a35ed7a692f9001589ddf8c6">SUCCES</link>);
+<anchor xml:id="_main_8c_source_1l00266"/>00266 
+<anchor xml:id="_main_8c_source_1l00267"/>00267 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;On&#32;vérifie&#32;qu&apos;elles&#32;sont&#32;bien&#32;mémorisées</emphasis>
+<anchor xml:id="_main_8c_source_1l00268"/>00268 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;\t\n&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00269"/>00269 &#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f">get_value</link>(<emphasis role="stringliteral">&quot;T_1&quot;</emphasis>,&#32;&amp;val);
+<anchor xml:id="_main_8c_source_1l00270"/>00270 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link>(<emphasis role="stringliteral">&quot;get&#32;value&#32;T_1&quot;</emphasis>,val,&#32;1);
+<anchor xml:id="_main_8c_source_1l00271"/>00271 &#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f">get_value</link>(<emphasis role="stringliteral">&quot;T_3&quot;</emphasis>,&#32;&amp;val);
+<anchor xml:id="_main_8c_source_1l00272"/>00272 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link>(<emphasis role="stringliteral">&quot;get&#32;value&#32;T_3&quot;</emphasis>,val,&#32;7);
+<anchor xml:id="_main_8c_source_1l00273"/>00273 &#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f">get_value</link>(<emphasis role="stringliteral">&quot;T_4&quot;</emphasis>,&#32;&amp;val);
+<anchor xml:id="_main_8c_source_1l00274"/>00274 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link>(<emphasis role="stringliteral">&quot;get&#32;value&#32;T_4&quot;</emphasis>,val,&#32;15);
+<anchor xml:id="_main_8c_source_1l00275"/>00275 
+<anchor xml:id="_main_8c_source_1l00276"/>00276 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;On&#32;modifie&#32;T_3&#32;sans&#32;toucher&#32;aux&#32;autres</emphasis>
+<anchor xml:id="_main_8c_source_1l00277"/>00277 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;\tmodification&#32;de&#32;T_3&#32;sans&#32;toucher&#32;aux&#32;autres\n&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00278"/>00278 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link>(<emphasis role="stringliteral">&quot;&quot;</emphasis>,<link linkend="_data__container_8h_1aa84538f1ab0c319056787e9674157405">set_value</link>(<emphasis role="stringliteral">&quot;T_3&quot;</emphasis>,&#32;2),&#32;1);
+<anchor xml:id="_main_8c_source_1l00279"/>00279 
+<anchor xml:id="_main_8c_source_1l00280"/>00280 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;On&#32;vérifie&#32;que&#32;T_1&#32;et&#32;T_4&#32;n&apos;ont&#32;pas&#32;bougé</emphasis>
+<anchor xml:id="_main_8c_source_1l00281"/>00281 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;\t\n&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00282"/>00282 &#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f">get_value</link>(<emphasis role="stringliteral">&quot;T_1&quot;</emphasis>,&#32;&amp;val);
+<anchor xml:id="_main_8c_source_1l00283"/>00283 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link>(<emphasis role="stringliteral">&quot;verif&#32;valeur&#32;[encien]&quot;</emphasis>,val,&#32;1);
+<anchor xml:id="_main_8c_source_1l00284"/>00284 &#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f">get_value</link>(<emphasis role="stringliteral">&quot;T_3&quot;</emphasis>,&#32;&amp;val);
+<anchor xml:id="_main_8c_source_1l00285"/>00285 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link>(<emphasis role="stringliteral">&quot;verif&#32;valeur&#32;[nouvel]&quot;</emphasis>,val,&#32;2);&#32;<emphasis role="comment">//&#32;Nouvelle&#32;valeur</emphasis>
+<anchor xml:id="_main_8c_source_1l00286"/>00286 &#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f">get_value</link>(<emphasis role="stringliteral">&quot;T_4&quot;</emphasis>,&#32;&amp;val);
+<anchor xml:id="_main_8c_source_1l00287"/>00287 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link>(<emphasis role="stringliteral">&quot;verif&#32;valeur&#32;[encien]&quot;</emphasis>,val,&#32;15);
+<anchor xml:id="_main_8c_source_1l00288"/>00288 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;OK\n&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00289"/>00289 
+<anchor xml:id="_main_8c_source_1l00290"/>00290 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;---------------------------------------------------------</emphasis>
+<anchor xml:id="_main_8c_source_1l00291"/>00291 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;TEST&#32;5&#32;:&#32;Variables&#32;de&#32;8&#32;bits</emphasis>
+<anchor xml:id="_main_8c_source_1l00292"/>00292 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;---------------------------------------------------------</emphasis>
+<anchor xml:id="_main_8c_source_1l00293"/>00293 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;Test&#32;5:&#32;Variables&#32;8&#32;bits...&#32;&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00294"/>00294 &#32;&#32;&#32;&#32;<link linkend="_gestion__tag_8h_1aab50a8f567be72e656120fd71f3fb435">init_tag_manager</link>();
+<anchor xml:id="_main_8c_source_1l00295"/>00295 &#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1a129f017feb0712be1dcf7932e6035aa0">init_data_container</link>();
+<anchor xml:id="_main_8c_source_1l00296"/>00296 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;\t\n&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00297"/>00297 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link>(<emphasis role="stringliteral">&quot;prapa&#32;de&#32;la&#32;valeur&quot;</emphasis>,<link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(<emphasis role="stringliteral">&quot;V8&quot;</emphasis>,&#32;8),&#32;<link linkend="_config__value_8h_1afb042b80a35ed7a692f9001589ddf8c6">SUCCES</link>);
+<anchor xml:id="_main_8c_source_1l00298"/>00298 
+<anchor xml:id="_main_8c_source_1l00299"/>00299 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Test&#32;des&#32;bornes&#32;0&#32;et&#32;255</emphasis>
+<anchor xml:id="_main_8c_source_1l00300"/>00300 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;\tTest&#32;des&#32;bornes&#32;0&#32;et&#32;255\n&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00301"/>00301 &#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1aa84538f1ab0c319056787e9674157405">set_value</link>(<emphasis role="stringliteral">&quot;V8&quot;</emphasis>,&#32;0);
+<anchor xml:id="_main_8c_source_1l00302"/>00302 &#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f">get_value</link>(<emphasis role="stringliteral">&quot;V8&quot;</emphasis>,&#32;&amp;val);
+<anchor xml:id="_main_8c_source_1l00303"/>00303 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link>(<emphasis role="stringliteral">&quot;val&#32;=&#32;0&quot;</emphasis>,val,&#32;0);
+<anchor xml:id="_main_8c_source_1l00304"/>00304 &#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1aa84538f1ab0c319056787e9674157405">set_value</link>(<emphasis role="stringliteral">&quot;V8&quot;</emphasis>,&#32;255);
+<anchor xml:id="_main_8c_source_1l00305"/>00305 &#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f">get_value</link>(<emphasis role="stringliteral">&quot;V8&quot;</emphasis>,&#32;&amp;val);
+<anchor xml:id="_main_8c_source_1l00306"/>00306 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link>(<emphasis role="stringliteral">&quot;val&#32;=&#32;255&quot;</emphasis>,val,&#32;255);
+<anchor xml:id="_main_8c_source_1l00307"/>00307 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;\tErreur&#32;dépassement\n&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00308"/>00308 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link>(<emphasis role="stringliteral">&quot;val:&#32;[256]&quot;</emphasis>,<link linkend="_data__container_8h_1aa84538f1ab0c319056787e9674157405">set_value</link>(<emphasis role="stringliteral">&quot;V8&quot;</emphasis>,&#32;256),&#32;-4);&#32;<emphasis role="comment">//&#32;Assertion&#32;historique,&#32;a&#32;realigner&#32;avec&#32;-10</emphasis>
+<anchor xml:id="_main_8c_source_1l00309"/>00309 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;OK\n&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00310"/>00310 
+<anchor xml:id="_main_8c_source_1l00311"/>00311 &#32;&#32;&#32;&#32;<emphasis role="comment">//--------------------------------------</emphasis>
+<anchor xml:id="_main_8c_source_1l00312"/>00312 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;TEST&#32;6:&#32;Tout&#32;les&#32;test&#32;de&#32;4&#32;bits</emphasis>
+<anchor xml:id="_main_8c_source_1l00313"/>00313 &#32;&#32;&#32;&#32;<emphasis role="comment">//--------------------------------------</emphasis>
+<anchor xml:id="_main_8c_source_1l00314"/>00314 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;\ttest&#32;de&#32;tags&#32;à&#32;4&#32;bits&#32;(tout&#32;les&#32;type&#32;possible)\n&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00315"/>00315 &#32;&#32;&#32;&#32;<link linkend="_gestion__tag_8h_1aab50a8f567be72e656120fd71f3fb435">init_tag_manager</link>();
+<anchor xml:id="_main_8c_source_1l00316"/>00316 &#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1a129f017feb0712be1dcf7932e6035aa0">init_data_container</link>();
+<anchor xml:id="_main_8c_source_1l00317"/>00317 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;test&#32;d&apos;inserssion&#32;des&#32;tags\n&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00318"/>00318 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link>(<emphasis role="stringliteral">&quot;ajout&#32;1&#32;tags&#32;à&#32;4&#32;bits&#32;&quot;</emphasis>,&#32;<link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(<emphasis role="stringliteral">&quot;ma_val1&quot;</emphasis>,&#32;4),<link linkend="_config__value_8h_1afb042b80a35ed7a692f9001589ddf8c6">SUCCES</link>);
+<anchor xml:id="_main_8c_source_1l00319"/>00319 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link>(<emphasis role="stringliteral">&quot;ajout&#32;1&#32;tags&#32;après&#32;4&#32;bits&#32;&quot;</emphasis>,&#32;<link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(<emphasis role="stringliteral">&quot;ma_2&quot;</emphasis>,&#32;4),<link linkend="_config__value_8h_1afb042b80a35ed7a692f9001589ddf8c6">SUCCES</link>);
+<anchor xml:id="_main_8c_source_1l00320"/>00320 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;le&#32;dernier&#32;cas&#32;n&apos;ais&#32;pas&#32;encore&#32;testé!!!!\n&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00321"/>00321 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;test&#32;&#32;d&apos;ajout&#32;de&#32;valeurs\n&quot;</emphasis>);
+<anchor xml:id="_main_8c_source_1l00322"/>00322 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link>(<emphasis role="stringliteral">&quot;set&#32;val&quot;</emphasis>,<link linkend="_data__container_8h_1aa84538f1ab0c319056787e9674157405">set_value</link>(<emphasis role="stringliteral">&quot;ma_val1&quot;</emphasis>,&#32;3),1);
+<anchor xml:id="_main_8c_source_1l00323"/>00323 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link>(<emphasis role="stringliteral">&quot;set&#32;val&#32;2&quot;</emphasis>,<link linkend="_data__container_8h_1aa84538f1ab0c319056787e9674157405">set_value</link>(<emphasis role="stringliteral">&quot;ma_2&quot;</emphasis>,&#32;9),1);
+<anchor xml:id="_main_8c_source_1l00324"/>00324 &#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f">get_value</link>(<emphasis role="stringliteral">&quot;ma_val1&quot;</emphasis>,&#32;&amp;val);
+<anchor xml:id="_main_8c_source_1l00325"/>00325 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link>(<emphasis role="stringliteral">&quot;get&#32;val&#32;1&quot;</emphasis>,val,3);;
+<anchor xml:id="_main_8c_source_1l00326"/>00326 &#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f">get_value</link>(<emphasis role="stringliteral">&quot;ma_2&quot;</emphasis>,&#32;&amp;val);
+<anchor xml:id="_main_8c_source_1l00327"/>00327 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link>(<emphasis role="stringliteral">&quot;get&#32;val&#32;2&quot;</emphasis>,val,9);;
+<anchor xml:id="_main_8c_source_1l00328"/>00328 &#32;&#32;&#32;&#32;<emphasis role="comment">//printf(&quot;===&#32;TOUS&#32;LES&#32;TESTS&#32;SONT&#32;PASSES&#32;AVEC&#32;SUCCES&#32;!&#32;===\n\n&quot;);</emphasis>
+<anchor xml:id="_main_8c_source_1l00329"/>00329 }
+<anchor xml:id="_main_8c_source_1l00330"/>00330 
+<anchor xml:id="_main_8c_source_1l00331"/><link linkend="_main_8c_1a840291bc02cba5474a4cb46a9b9566fe">00331</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_main_8c_1a840291bc02cba5474a4cb46a9b9566fe">main</link>(<emphasis role="keywordtype">void</emphasis>)
+<anchor xml:id="_main_8c_source_1l00332"/>00332 {
+<anchor xml:id="_main_8c_source_1l00333"/>00333 
+<anchor xml:id="_main_8c_source_1l00334"/>00334 
+<anchor xml:id="_main_8c_source_1l00335"/>00335 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Il&#32;suffit&#32;d&apos;appeler&#32;la&#32;fonction&#32;de&#32;test&#32;au&#32;début&#32;de&#32;votre&#32;main</emphasis>
+<anchor xml:id="_main_8c_source_1l00336"/>00336 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1ae9bbb2f5bb69f73e92c761f83223285a">run_all_tests</link>();
+<anchor xml:id="_main_8c_source_1l00337"/>00337 &#32;&#32;&#32;&#32;<link linkend="_main_8c_1a9c4bb6f6d00e76eae45e966a4c628178">test_print</link>();
+<anchor xml:id="_main_8c_source_1l00338"/>00338 
+<anchor xml:id="_main_8c_source_1l00339"/>00339 
+<anchor xml:id="_main_8c_source_1l00340"/>00340 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;...&#32;suite&#32;de&#32;votre&#32;code&#32;(simulation&#32;CAN,&#32;etc.)&#32;...</emphasis>
+<anchor xml:id="_main_8c_source_1l00341"/>00341 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="_main_8c_source_1l00342"/>00342 }
+</programlisting></section>

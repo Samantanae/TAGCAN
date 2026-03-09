@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.0" xml:lang="en-US">
+  <compounddef id="_t_a_g_c_a_n_8h" kind="file" language="C++">
+    <compoundname>TAGCAN.h</compoundname>
+    <includes refid="config__value_8h" local="yes">include/config_value.h</includes>
+    <includes refid="gestion__tag_8h" local="yes">include/gestion_tag.h</includes>
+    <includes refid="data__container_8h" local="yes">include/sub_include/data_container.h</includes>
+    <includes refid="tag__manager_8h" local="yes">include/sub_include/tag_manager.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>TAGCAN.h</label>
+        <link refid="_t_a_g_c_a_n_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>include/config_value.h</label>
+        <link refid="config__value_8h"/>
+      </node>
+      <node id="3">
+        <label>include/gestion_tag.h</label>
+        <link refid="gestion__tag_8h"/>
+      </node>
+      <node id="4">
+        <label>include/sub_include/data_container.h</label>
+        <link refid="data__container_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>tag_manager.h</label>
+        <link refid="tag__manager_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>stdbool.h</label>
+      </node>
+      <node id="5">
+        <label>stdint.h</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>TAGCAN_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TAGCAN_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="config__value_8h" kindref="compound">include/config_value.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gestion__tag_8h" kindref="compound">include/gestion_tag.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="data__container_8h" kindref="compound">include/sub_include/data_container.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="tag__manager_8h" kindref="compound">include/sub_include/tag_manager.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>TAGCAN_H<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/TAGCAN.h"/>
+  </compounddef>
+</doxygen>

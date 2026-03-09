@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.0" xml:lang="en-US">
+  <compounddef id="_a_p_i___r_e_f_e_r_e_n_c_e_8md" kind="file" language="Markdown">
+    <compoundname>API_REFERENCE.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>API<sp/>Reference<sp/>(Etat<sp/>actuel)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Vue<sp/>d&apos;ensemble</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">TAGCAN<sp/>gere<sp/>un<sp/>payload<sp/>CAN<sp/>de<sp/>8<sp/>octets<sp/>(`TxData`)<sp/>et<sp/>permet:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>de<sp/>declarer<sp/>des<sp/>tags<sp/>(`set_tag`)<sp/>avec<sp/>une<sp/>taille<sp/>en<sp/>bits,</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>d&apos;ecrire<sp/>une<sp/>valeur<sp/>dans<sp/>`TxData`<sp/>via<sp/>un<sp/>tag<sp/>(`set_value`),</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>de<sp/>relire<sp/>une<sp/>valeur<sp/>via<sp/>un<sp/>tag<sp/>(`get_value`).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Modules</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>`include/config_value.h`<sp/>+<sp/>`scripts/config_value.c`:<sp/>constantes<sp/>et<sp/>codes<sp/>de<sp/>retour.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`include/gestion_tag.h`<sp/>+<sp/>`scripts/sub_scripts/tag_manager.c`:<sp/>creation/gestion<sp/>des<sp/>tags.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`include/sub_include/data_container.h`<sp/>+<sp/>`scripts/sub_scripts/data_container.c`:<sp/>stockage<sp/>et<sp/>acces<sp/>aux<sp/>valeurs.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`include/sub_include/tag_manager.h`:<sp/>structure<sp/>`TagDef`<sp/>et<sp/>variables<sp/>globales<sp/>du<sp/>gestionnaire.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`include/sub_include/print_val.h`<sp/>+<sp/>`scripts/sub_scripts/print_val.c`:<sp/>affichage/debug.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Structures<sp/>et<sp/>etat<sp/>global</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>`TagDef`<sp/>(`include/sub_include/tag_manager.h`)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>`name[MAX_TAG_NAME_LEN]`:<sp/>nom<sp/>logique<sp/>du<sp/>tag.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`n_bits`:<sp/>taille<sp/>du<sp/>tag<sp/>en<sp/>bits.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`byte_idx_a`,<sp/>`byte_idx_b`:<sp/>index<sp/>des<sp/>octets<sp/>utilises<sp/>dans<sp/>`TxData`.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`bit_pos_a`,<sp/>`bit_pos_b`:<sp/>position<sp/>des<sp/>bits<sp/>dans<sp/>les<sp/>octets.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Variables<sp/>globales</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>`TagDef<sp/>g_tags[MAX_TAGS]`:<sp/>table<sp/>des<sp/>tags.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`uint8_t<sp/>g_tag_count`:<sp/>nombre<sp/>de<sp/>tags<sp/>actifs.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`uint8_t<sp/>g_bytes_used[N_BYTES]`:<sp/>occupation<sp/>des<sp/>octets.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`uint8_t<sp/>TxData[N_BYTES]`:<sp/>buffer<sp/>CAN<sp/>(8<sp/>octets).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Fonctions<sp/>principales</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Gestion<sp/>des<sp/>tags</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>`void<sp/>init_tag_manager(void)`</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>Reinitialise<sp/>`g_tags`,<sp/>`g_tag_count`<sp/>et<sp/>`g_bytes_used`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>`int<sp/>set_tag(const<sp/>char*<sp/>tag_name,<sp/>uint8_t<sp/>n_bit)`</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>Declare<sp/>un<sp/>tag<sp/>et<sp/>lui<sp/>alloue<sp/>une<sp/>zone<sp/>dans<sp/>`TxData`.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>Implementation<sp/>observee:<sp/>accepte<sp/>les<sp/>tailles<sp/>`1..16`<sp/>(pas<sp/>seulement<sp/>`1,<sp/>3,<sp/>4,<sp/>8,<sp/>16`).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>Retourne<sp/>un<sp/>code<sp/>`CAN_TG_STATUE`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>`const<sp/>TagDef*<sp/>get_tag_def(const<sp/>char*<sp/>tag_name)`</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>Recherche<sp/>un<sp/>tag<sp/>par<sp/>nom.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>Retourne<sp/>`NULL`<sp/>si<sp/>absent.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Valeurs<sp/>(payload)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>`void<sp/>init_data_container(void)`</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>Met<sp/>`TxData`<sp/>a<sp/>zero.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>`int<sp/>set_value(const<sp/>char*<sp/>tag_name,<sp/>uint32_t<sp/>value)`</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>Ecrit<sp/>la<sp/>valeur<sp/>dans<sp/>`TxData`<sp/>selon<sp/>la<sp/>definition<sp/>du<sp/>tag.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>Debordement<sp/>detecte<sp/>via<sp/>`value<sp/>&gt;=<sp/>(1ULL<sp/>&lt;&lt;<sp/>tag-&gt;n_bits)`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>`int<sp/>get_value(const<sp/>char*<sp/>tag_name,<sp/>uint32_t*<sp/>out_value)`</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>Lit<sp/>la<sp/>valeur<sp/>d&apos;un<sp/>tag<sp/>depuis<sp/>`TxData`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>`uint8_t<sp/>prep_mask(uint8_t<sp/>p_bit,<sp/>uint8_t<sp/>n_bit)`</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>Fonction<sp/>utilitaire<sp/>de<sp/>masque<sp/>binaire.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>`void<sp/>can_simulate_send_receive(uint8_t*<sp/>tx_buffer,<sp/>uint8_t*<sp/>rx_buffer)`</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>Copie<sp/>`tx_buffer`<sp/>vers<sp/>`rx_buffer`<sp/>(simulation<sp/>simple).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>`void<sp/>set_val_TxData(uint8_t<sp/>*TxDataArray)`</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>Copie<sp/>un<sp/>tableau<sp/>externe<sp/>vers<sp/>`TxData`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Debug<sp/>/<sp/>affichage</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>`print_bin_8`,<sp/>`print_all_data_bin`,<sp/>`print_all_with_title`.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`print_all_tag_set`,<sp/>`print_all_data`,<sp/>`print_repartition_bit`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Codes<sp/>de<sp/>retour</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Enum<sp/>`CAN_TG_STATUE`<sp/>(`include/config_value.h`)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>`CAN_TG_SUCCESS<sp/>=<sp/>1`</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`CAN_TG_ERROR_NOT_ENOUNG_SPACE_<sp/>=<sp/>-2`</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`CAN_TG_ERROR_TAG_NOT_FOUND_<sp/>=<sp/>-3`</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`CAN_TG_ERROR_TAG_NAME_TO_BIGS_<sp/>=<sp/>-4`</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`CAN_TG_ERROR_TOO_MAY_TAGS_<sp/>=<sp/>-5`</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`CAN_TG_ERROR_SIZE_VALUE_INVALIDE_<sp/>=<sp/>-6`</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`CAN_TG_ERROR_NAME_ALREADY_USE_<sp/>=<sp/>-7`</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`CAN_TG_ERROR_SUBDIVISION_FAIL_<sp/>=<sp/>-8`</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`CAN_TG_ERROR_TAG_NAME_INVALIDE_<sp/>=<sp/>-9`</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`CAN_TG_ERROR_VALUE_TO_BIG<sp/>=<sp/>-10`</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`CAN_TG_ERROR_TRY_TO_FIND_END_CARACTER_<sp/>=<sp/>-21`</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`CAN_TG_ERROR_INTERNAL_CORUPTION_<sp/>=<sp/>-30`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Constantes<sp/>globales<sp/>(`scripts/config_value.c`)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Les<sp/>constantes<sp/>`CAN_TG_ERROR_*`<sp/>existent<sp/>aussi<sp/>en<sp/>variables<sp/>globales.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Attention:<sp/>`CAN_TG_ERROR_NULL_POINTOR`<sp/>vaut<sp/>`-20`<sp/>(constante),<sp/>alors<sp/>que<sp/>`CAN_TG_ERROR_NULL_POINTOR_`<sp/>vaut<sp/>`-2`<sp/>(enum).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Notes<sp/>importantes<sp/>de<sp/>comportement</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Validation<sp/>longueur<sp/>nom<sp/>de<sp/>tag:<sp/>implementation<sp/>actuelle<sp/>utilise<sp/>`sizeof(tag_name)`<sp/>(taille<sp/>pointeur),<sp/>pas<sp/>`strlen(tag_name)`.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Gestion<sp/>debordement<sp/>`set_value`:<sp/>retourne<sp/>`CAN_TG_ERROR_VALUE_TO_BIG`<sp/>(`-10`).</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Les<sp/>tests<sp/>de<sp/>`scripts/main.c`<sp/>attendent<sp/>parfois<sp/>`-4`<sp/>pour<sp/>des<sp/>debordements<sp/>de<sp/>valeur,<sp/>ce<sp/>qui<sp/>diverge<sp/>du<sp/>code<sp/>courant.</highlight></codeline>
+    </programlisting>
+    <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/documentation/API_REFERENCE.md"/>
+  </compounddef>
+</doxygen>

@@ -44,6 +44,7 @@
 			<Option target="Debug" />
 			<Option target="Release" />
 		</UnitsGlob>
+		<Unit filename="TAGCAN.h" />
 		<Unit filename="etape_utilisation.txt" />
 		<Unit filename="include/TAGCAN_fonction.h">
 			<Option glob="299603298" />
@@ -51,20 +52,11 @@
 		<Unit filename="include/config_value.h">
 			<Option glob="299603298" />
 		</Unit>
-		<Unit filename="include/gestion_tag.h">
-			<Option glob="299603298" />
-		</Unit>
 		<Unit filename="include/sub_include/data_container.h">
-			<Option glob="299603298" />
-		</Unit>
-		<Unit filename="include/sub_include/print_val.h">
 			<Option glob="299603298" />
 		</Unit>
 		<Unit filename="include/sub_include/tag_manager.h">
 			<Option glob="299603298" />
-		</Unit>
-		<Unit filename="main.c">
-			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="scripts/config_value.c">
 			<Option compilerVar="CC" />
@@ -74,15 +66,7 @@
 			<Option compilerVar="CC" />
 			<Option glob="530276766" />
 		</Unit>
-		<Unit filename="scripts/main_func.c">
-			<Option compilerVar="CC" />
-			<Option glob="530276766" />
-		</Unit>
 		<Unit filename="scripts/sub_scripts/data_container.c">
-			<Option compilerVar="CC" />
-			<Option glob="530276766" />
-		</Unit>
-		<Unit filename="scripts/sub_scripts/print_val.c">
 			<Option compilerVar="CC" />
 			<Option glob="530276766" />
 		</Unit>

@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_data__container_8h_source" xml:lang="en-US">
+<title>data_container.h</title>
+<indexterm><primary>data_container.h</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_data__container_8h_source_1l00001"/>00001 <emphasis role="preprocessor">#ifndef&#32;DATA_CONTAINER_H</emphasis>
+<anchor xml:id="_data__container_8h_source_1l00002"/>00002 
+<anchor xml:id="_data__container_8h_source_1l00003"/>00003 <emphasis role="preprocessor">#include&#32;&lt;stdint.h&gt;</emphasis>
+<anchor xml:id="_data__container_8h_source_1l00004"/>00004 
+<anchor xml:id="_data__container_8h_source_1l00005"/>00005 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_tag__manager_8h">tag_manager.h</link>&quot;</emphasis>
+<anchor xml:id="_data__container_8h_source_1l00006"/>00006 
+<anchor xml:id="_data__container_8h_source_1l00007"/><link linkend="_data__container_8h_1ab1e0c45daf869a5ff0a8c836629d657f">00007</link> <emphasis role="preprocessor">#define&#32;DATA_CONTAINER_H</emphasis>
+<anchor xml:id="_data__container_8h_source_1l00008"/>00008 
+<anchor xml:id="_data__container_8h_source_1l00009"/>00009 <emphasis role="comment">//&#32;Buffer&#32;de&#32;donnees&#32;CAN&#32;(payload&#32;de&#32;8&#32;octets)</emphasis>
+<anchor xml:id="_data__container_8h_source_1l00010"/>00010 <emphasis role="keyword">extern</emphasis>&#32;uint8_t&#32;<link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">TxData</link>[<link linkend="_config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1">N_BYTES</link>];&#32;&#32;&#32;&#32;
+<anchor xml:id="_data__container_8h_source_1l00011"/>00011 
+<anchor xml:id="_data__container_8h_source_1l00015"/>00015 
+<anchor xml:id="_data__container_8h_source_1l00016"/>00016 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_data__container_8h_1a129f017feb0712be1dcf7932e6035aa0">init_data_container</link>(<emphasis role="keywordtype">void</emphasis>);
+<anchor xml:id="_data__container_8h_source_1l00017"/>00017 
+<anchor xml:id="_data__container_8h_source_1l00018"/>00018 <emphasis role="comment">//&#32;Fonctions&#32;principales&#32;(set/get)</emphasis>
+<anchor xml:id="_data__container_8h_source_1l00026"/>00026 
+<anchor xml:id="_data__container_8h_source_1l00027"/>00027 <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_data__container_8h_1aa84538f1ab0c319056787e9674157405">set_value</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;tag_name,&#32;uint32_t&#32;value);
+<anchor xml:id="_data__container_8h_source_1l00028"/>00028 
+<anchor xml:id="_data__container_8h_source_1l00036"/>00036 <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f">get_value</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;tag_name,&#32;uint32_t*&#32;out_value);
+<anchor xml:id="_data__container_8h_source_1l00037"/>00037 
+<anchor xml:id="_data__container_8h_source_1l00038"/>00038 
+<anchor xml:id="_data__container_8h_source_1l00046"/>00046 uint8_t&#32;<link linkend="_data__container_8h_1a66768c162c3a8352b7d5397e90206085">prep_mask</link>(uint8_t&#32;p_bit,&#32;uint8_t&#32;n_bit);
+<anchor xml:id="_data__container_8h_source_1l00051"/>00051 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_data__container_8h_1ae1649807202241b28239e8cb212a18b6">can_simulate_send_receive</link>(uint8_t*&#32;tx_buffer,&#32;uint8_t*&#32;rx_buffer);
+<anchor xml:id="_data__container_8h_source_1l00052"/>00052 
+<anchor xml:id="_data__container_8h_source_1l00053"/>00053 <emphasis role="comment">//int&#32;CAN_RECEVE</emphasis>
+<anchor xml:id="_data__container_8h_source_1l00054"/>00054 
+<anchor xml:id="_data__container_8h_source_1l00058"/>00058 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_data__container_8h_1a45840c759151338fe992664f4a21c4f7">set_val_TxData</link>(uint8_t&#32;*TxDataArray);
+<anchor xml:id="_data__container_8h_source_1l00059"/>00059 
+<anchor xml:id="_data__container_8h_source_1l00060"/>00060 
+<anchor xml:id="_data__container_8h_source_1l00061"/>00061 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;DATA_CONTAINER_H</emphasis>
+</programlisting></section>

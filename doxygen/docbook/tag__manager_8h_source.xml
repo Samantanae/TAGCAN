@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_tag__manager_8h_source" xml:lang="en-US">
+<title>tag_manager.h</title>
+<indexterm><primary>tag_manager.h</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_tag__manager_8h_source_1l00001"/>00001 <emphasis role="preprocessor">#ifndef&#32;TAG_MANAGER_H</emphasis>
+<anchor xml:id="_tag__manager_8h_source_1l00002"/>00002 <emphasis role="preprocessor">#define&#32;TAG_MANAGER_H</emphasis>
+<anchor xml:id="_tag__manager_8h_source_1l00003"/>00003 
+<anchor xml:id="_tag__manager_8h_source_1l00004"/>00004 <emphasis role="preprocessor">#ifndef&#32;CONFIG_VALUE_H</emphasis>
+<anchor xml:id="_tag__manager_8h_source_1l00005"/>00005 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_config__value_8h">../config_value.h</link>&quot;</emphasis>
+<anchor xml:id="_tag__manager_8h_source_1l00006"/>00006 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;CONFIG_VALUE_H</emphasis>
+<anchor xml:id="_tag__manager_8h_source_1l00007"/>00007 <emphasis role="preprocessor">#include&#32;&lt;stdint.h&gt;</emphasis>
+<anchor xml:id="_tag__manager_8h_source_1l00008"/>00008 <emphasis role="preprocessor">#include&#32;&lt;stdbool.h&gt;</emphasis>
+<anchor xml:id="_tag__manager_8h_source_1l00009"/>00009 
+<anchor xml:id="_tag__manager_8h_source_1l00010"/>00010 
+<anchor xml:id="_tag__manager_8h_source_1l00014"/><link linkend="_struct_tag_def">00014</link> <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">struct</emphasis>
+<anchor xml:id="_tag__manager_8h_source_1l00015"/>00015 {
+<anchor xml:id="_tag__manager_8h_source_1l00016"/><link linkend="_struct_tag_def_1a5365d3ceaa5fb559687e0d26268ca709">00016</link> &#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;<link linkend="_struct_tag_def_1a5365d3ceaa5fb559687e0d26268ca709">name</link>[<link linkend="_config__value_8h_1ada71b9f258860d58a86ab220bfce6bf4">MAX_TAG_NAME_LEN</link>];&#32;&#32;&#32;&#32;
+<anchor xml:id="_tag__manager_8h_source_1l00017"/><link linkend="_struct_tag_def_1a894ffee63faf79f0877a12c871a18b3a">00017</link> &#32;&#32;&#32;&#32;uint8_t&#32;<link linkend="_struct_tag_def_1a894ffee63faf79f0877a12c871a18b3a">n_bits</link>;&#32;&#32;&#32;&#32;
+<anchor xml:id="_tag__manager_8h_source_1l00018"/><link linkend="_struct_tag_def_1a985f815d0edbf8a411fbf325a30baec8">00018</link> &#32;&#32;&#32;&#32;int8_t&#32;<link linkend="_struct_tag_def_1a985f815d0edbf8a411fbf325a30baec8">byte_idx_a</link>;&#32;&#32;&#32;&#32;
+<anchor xml:id="_tag__manager_8h_source_1l00019"/><link linkend="_struct_tag_def_1a1368f5414ba506dc1626d65a1083dc92">00019</link> &#32;&#32;&#32;&#32;int8_t&#32;<link linkend="_struct_tag_def_1a1368f5414ba506dc1626d65a1083dc92">byte_idx_b</link>;&#32;&#32;&#32;&#32;
+<anchor xml:id="_tag__manager_8h_source_1l00020"/><link linkend="_struct_tag_def_1ab2ab707c2832eb3cd8776c3134b29b1d">00020</link> &#32;&#32;&#32;&#32;uint8_t&#32;<link linkend="_struct_tag_def_1ab2ab707c2832eb3cd8776c3134b29b1d">bit_pos_a</link>;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_tag__manager_8h_source_1l00021"/><link linkend="_struct_tag_def_1a315b71fd9f91bd21c82164e006859ede">00021</link> &#32;&#32;&#32;&#32;uint8_t&#32;<link linkend="_struct_tag_def_1a315b71fd9f91bd21c82164e006859ede">bit_pos_b</link>;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_tag__manager_8h_source_1l00022"/>00022 }&#32;<link linkend="_struct_tag_def">TagDef</link>;
+<anchor xml:id="_tag__manager_8h_source_1l00023"/>00023 
+<anchor xml:id="_tag__manager_8h_source_1l00024"/>00024 <emphasis role="comment">//&#32;Etat&#32;global&#32;du&#32;gestionnaire&#32;de&#32;tags</emphasis>
+<anchor xml:id="_tag__manager_8h_source_1l00025"/>00025 
+<anchor xml:id="_tag__manager_8h_source_1l00026"/>00026 <emphasis role="keyword">extern</emphasis>&#32;<link linkend="_struct_tag_def">TagDef</link>&#32;<link linkend="_tag__manager_8h_1ace5be789d004e0752b6b2dec9d845864">g_tags</link>[<link linkend="_config__value_8h_1aa653c0eca99802a09fd9560f28a9b1c1">MAX_TAGS</link>];&#32;&#32;&#32;&#32;
+<anchor xml:id="_tag__manager_8h_source_1l00027"/>00027 <emphasis role="keyword">extern</emphasis>&#32;uint8_t&#32;<link linkend="_tag__manager_8h_1ab7cad863197c93abe397155a1946c0d0">g_tag_count</link>;&#32;&#32;&#32;&#32;
+<anchor xml:id="_tag__manager_8h_source_1l00028"/>00028 <emphasis role="comment">//&#32;Nombre&#32;de&#32;bits&#32;deja&#32;utilises&#32;dans&#32;chaque&#32;byte&#32;(0..7)</emphasis>
+<anchor xml:id="_tag__manager_8h_source_1l00029"/>00029 <emphasis role="keyword">extern</emphasis>&#32;uint8_t&#32;<link linkend="_tag__manager_8h_1af12845c0234390db7498ec51e94f7d58">g_bytes_used</link>[<link linkend="_config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1">N_BYTES</link>];&#32;&#32;&#32;&#32;
+<anchor xml:id="_tag__manager_8h_source_1l00030"/>00030 
+<anchor xml:id="_tag__manager_8h_source_1l00031"/>00031 <emphasis role="comment">//&#32;structure&#32;de&#32;multi&#32;gestionnaire&#32;de&#32;tags&#32;(en&#32;dévelopement)</emphasis>
+<anchor xml:id="_tag__manager_8h_source_1l00032"/>00032 
+<anchor xml:id="_tag__manager_8h_source_1l00033"/>00033 <emphasis role="comment">/*typedef&#32;struct&#32;{</emphasis>
+<anchor xml:id="_tag__manager_8h_source_1l00034"/>00034 <emphasis role="comment"></emphasis>
+<anchor xml:id="_tag__manager_8h_source_1l00035"/>00035 <emphasis role="comment"></emphasis>
+<anchor xml:id="_tag__manager_8h_source_1l00036"/>00036 <emphasis role="comment">}*/</emphasis>
+<anchor xml:id="_tag__manager_8h_source_1l00037"/>00037 
+<anchor xml:id="_tag__manager_8h_source_1l00038"/>00038 <emphasis role="comment">//--------------------------------fonctions&#32;d&apos;acces&#32;generales&#32;------------------------</emphasis>
+<anchor xml:id="_tag__manager_8h_source_1l00044"/>00044 <emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_tag_def">TagDef</link>*&#32;<link linkend="_tag__manager_8h_1a5737e741608851f8e3822cf07261da44">get_tag_def</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;tag_name);
+<anchor xml:id="_tag__manager_8h_source_1l00045"/>00045 
+<anchor xml:id="_tag__manager_8h_source_1l00046"/>00046 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;TAG_MANAGER_H</emphasis>
+</programlisting></section>

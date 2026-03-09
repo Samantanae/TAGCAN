@@ -1,0 +1,260 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_main_8c" xml:lang="en-US">
+<title>main.c File Reference</title>
+<indexterm><primary>main.c</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;stdio.h&gt;<?linebreak?>#include &lt;assert.h&gt;<?linebreak?>#include &lt;stdbool.h&gt;<?linebreak?>#include &quot;../include/config_value.h&quot;<?linebreak?>#include &quot;../include/sub_include/data_container.h&quot;<?linebreak?>#include &quot;../include/gestion_tag.h&quot;<?linebreak?>#include &quot;../include/sub_include/print_val.h&quot;<?linebreak?></programlisting>Include dependency graph for main.c:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="main_8c__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_main_8c_1aa193df92133f441f2a0efd722c3962f9">TEST</link> (const char *name, const bool condition)</para>
+
+<para>Affiche un resultat de test avec format uniforme. </para>
+</listitem>
+            <listitem><para>void <link linkend="_main_8c_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link> (const char *name, const int val_1, const int val_2)</para>
+
+<para>Affiche un test d&apos;egalite entre deux entiers. </para>
+</listitem>
+            <listitem><para>void <link linkend="_main_8c_1a9c4bb6f6d00e76eae45e966a4c628178">test_print</link> (void)</para>
+
+<para>Execute un scenario de demonstration des fonctions d&apos;impression. </para>
+</listitem>
+            <listitem><para>void <link linkend="_main_8c_1a4f26f5b24d899127d66338ba3bfd7f1b">somme_other_test</link> (void)</para>
+
+<para>Scenario de test manuel des operations de masque/shift. </para>
+</listitem>
+            <listitem><para>void <link linkend="_main_8c_1ae9bbb2f5bb69f73e92c761f83223285a">run_all_tests</link> (void)</para>
+
+<para>Execute les tests unitaires du module. Les resultats sont affiches dans le terminal. </para>
+</listitem>
+            <listitem><para>int <link linkend="_main_8c_1a840291bc02cba5474a4cb46a9b9566fe">main</link> (void)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para>int <link linkend="_main_8c_1a51c2b99b66f63ee9064347f9151e99ba">passed_tests</link> = 0</para>
+</listitem>
+            <listitem><para>int <link linkend="_main_8c_1ab7324491948254cde8946b74d8bca3bc">total_tests</link> = 0</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_main_8c_1a840291bc02cba5474a4cb46a9b9566fe"/><section>
+    <title>main()</title>
+<indexterm><primary>main</primary><secondary>main.c</secondary></indexterm>
+<indexterm><primary>main.c</primary><secondary>main</secondary></indexterm>
+<para><computeroutput>int main (void )</computeroutput></para><para>
+Definition at line <link linkend="_main_8c_source_1l00331">331</link> of file <link linkend="_main_8c_source">main.c</link>.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="main_8c_a840291bc02cba5474a4cb46a9b9566fe_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_main_8c_1ae9bbb2f5bb69f73e92c761f83223285a"/><section>
+    <title>run_all_tests()</title>
+<indexterm><primary>run_all_tests</primary><secondary>main.c</secondary></indexterm>
+<indexterm><primary>main.c</primary><secondary>run_all_tests</secondary></indexterm>
+<para><computeroutput>void run_all_tests (void )</computeroutput></para><para>
+
+<para>Execute les tests unitaires du module. Les resultats sont affiches dans le terminal. </para>
+</para>
+<para>
+Definition at line <link linkend="_main_8c_source_1l00177">177</link> of file <link linkend="_main_8c_source">main.c</link>.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="main_8c_ae9bbb2f5bb69f73e92c761f83223285a_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="main_8c_ae9bbb2f5bb69f73e92c761f83223285a_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_main_8c_1a4f26f5b24d899127d66338ba3bfd7f1b"/><section>
+    <title>somme_other_test()</title>
+<indexterm><primary>somme_other_test</primary><secondary>main.c</secondary></indexterm>
+<indexterm><primary>main.c</primary><secondary>somme_other_test</secondary></indexterm>
+<para><computeroutput>void somme_other_test (void )</computeroutput></para><para>
+
+<para>Scenario de test manuel des operations de masque/shift. </para>
+</para>
+<para>
+Definition at line <link linkend="_main_8c_source_1l00104">104</link> of file <link linkend="_main_8c_source">main.c</link>.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="main_8c_a4f26f5b24d899127d66338ba3bfd7f1b_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_main_8c_1aa193df92133f441f2a0efd722c3962f9"/><section>
+    <title>TEST()</title>
+<indexterm><primary>TEST</primary><secondary>main.c</secondary></indexterm>
+<indexterm><primary>main.c</primary><secondary>TEST</secondary></indexterm>
+<para><computeroutput>void TEST (const char * name, const bool condition)</computeroutput></para><para>
+
+<para>Affiche un resultat de test avec format uniforme. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>name</entry><entry>
+<para>Le nom du test (peut aussi servir de description courte). </para>
+</entry>
+                            </row>
+                            <row>
+<entry>condition</entry><entry>
+<para>Resultat du test (true si reussi, false sinon). </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_main_8c_source_1l00026">26</link> of file <link linkend="_main_8c_source">main.c</link>.</para>
+</section>
+<anchor xml:id="_main_8c_1a67a63463b204713946cce11511fc9231"/><section>
+    <title>TEST_EQ_INT()</title>
+<indexterm><primary>TEST_EQ_INT</primary><secondary>main.c</secondary></indexterm>
+<indexterm><primary>main.c</primary><secondary>TEST_EQ_INT</secondary></indexterm>
+<para><computeroutput>void TEST_EQ_INT (const char * name, const int val_1, const int val_2)</computeroutput></para><para>
+
+<para>Affiche un test d&apos;egalite entre deux entiers. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>name</entry><entry>
+<para>Meme usage que TEST. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>val_1</entry><entry>
+<para>Premiere valeur a comparer. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>val_2</entry><entry>
+<para>Deuxieme valeur a comparer. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_main_8c_source_1l00046">46</link> of file <link linkend="_main_8c_source">main.c</link>.</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="main_8c_a67a63463b204713946cce11511fc9231_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_main_8c_1a9c4bb6f6d00e76eae45e966a4c628178"/><section>
+    <title>test_print()</title>
+<indexterm><primary>test_print</primary><secondary>main.c</secondary></indexterm>
+<indexterm><primary>main.c</primary><secondary>test_print</secondary></indexterm>
+<para><computeroutput>void test_print (void )</computeroutput></para><para>
+
+<para>Execute un scenario de demonstration des fonctions d&apos;impression. </para>
+</para>
+
+<para>Initialise des tags/valeurs puis affiche metadonnees et repartition. </para>
+<para>
+Definition at line <link linkend="_main_8c_source_1l00072">72</link> of file <link linkend="_main_8c_source">main.c</link>.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="main_8c_a9c4bb6f6d00e76eae45e966a4c628178_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="main_8c_a9c4bb6f6d00e76eae45e966a4c628178_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+</section>
+<section>
+<title>Variable Documentation</title>
+<anchor xml:id="_main_8c_1a51c2b99b66f63ee9064347f9151e99ba"/><section>
+    <title>passed_tests</title>
+<indexterm><primary>passed_tests</primary><secondary>main.c</secondary></indexterm>
+<indexterm><primary>main.c</primary><secondary>passed_tests</secondary></indexterm>
+<para><computeroutput>int passed_tests = 0</computeroutput></para>
+<para>le nombre total de test réussi </para>
+<para>
+Definition at line <link linkend="_main_8c_source_1l00017">17</link> of file <link linkend="_main_8c_source">main.c</link>.</para>
+</section>
+<anchor xml:id="_main_8c_1ab7324491948254cde8946b74d8bca3bc"/><section>
+    <title>total_tests</title>
+<indexterm><primary>total_tests</primary><secondary>main.c</secondary></indexterm>
+<indexterm><primary>main.c</primary><secondary>total_tests</secondary></indexterm>
+<para><computeroutput>int total_tests = 0</computeroutput></para>
+<para>le nombre total de test effectué </para>
+<para>
+Definition at line <link linkend="_main_8c_source_1l00018">18</link> of file <link linkend="_main_8c_source">main.c</link>.</para>
+</section>
+</section>
+</section>

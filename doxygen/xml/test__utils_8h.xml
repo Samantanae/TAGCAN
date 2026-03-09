@@ -1,0 +1,202 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.0" xml:lang="en-US">
+  <compounddef id="test__utils_8h" kind="file" language="C++">
+    <compoundname>test_utils.h</compoundname>
+    <includes local="no">stdio.h</includes>
+    <includes local="no">stdbool.h</includes>
+    <includedby refid="test__utils_8c" local="yes">test_utils.c</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>test_utils.h</label>
+        <link refid="test__utils_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>stdbool.h</label>
+      </node>
+      <node id="2">
+        <label>stdio.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>test_utils.c</label>
+        <link refid="test__utils_8c"/>
+      </node>
+      <node id="1">
+        <label>test_utils.h</label>
+        <link refid="test__utils_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="test__utils_8h_1ab7324491948254cde8946b74d8bca3bc" prot="public" static="no" extern="yes" mutable="no">
+        <type>int</type>
+        <definition>int total_tests</definition>
+        <argsstring></argsstring>
+        <name>total_tests</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>le nombre total de test effectué </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/tests/test_utils.h" line="6" column="12" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/main.c" bodystart="18" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/tests/test_utils.h" declline="6" declcolumn="12"/>
+        <referencedby refid="main_8c_1aa193df92133f441f2a0efd722c3962f9" compoundref="main_8c" startline="26" endline="38">TEST</referencedby>
+        <referencedby refid="main_8c_1a67a63463b204713946cce11511fc9231" compoundref="main_8c" startline="46" endline="61">TEST_EQ_INT</referencedby>
+        <referencedby refid="test__utils_8c_1ad232e9e8300208f8e732e9a9426dab3e" compoundref="test__utils_8c" startline="11" endline="22">TEST_EQ_INT_</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="test__utils_8h_1a51c2b99b66f63ee9064347f9151e99ba" prot="public" static="no" extern="yes" mutable="no">
+        <type>int</type>
+        <definition>int passed_tests</definition>
+        <argsstring></argsstring>
+        <name>passed_tests</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>le nombre total de test réussi </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/tests/test_utils.h" line="7" column="12" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/main.c" bodystart="17" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/tests/test_utils.h" declline="7" declcolumn="12"/>
+        <referencedby refid="main_8c_1aa193df92133f441f2a0efd722c3962f9" compoundref="main_8c" startline="26" endline="38">TEST</referencedby>
+        <referencedby refid="main_8c_1a67a63463b204713946cce11511fc9231" compoundref="main_8c" startline="46" endline="61">TEST_EQ_INT</referencedby>
+        <referencedby refid="test__utils_8c_1ad232e9e8300208f8e732e9a9426dab3e" compoundref="test__utils_8c" startline="11" endline="22">TEST_EQ_INT_</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="test__utils_8h_1aa193df92133f441f2a0efd722c3962f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void TEST</definition>
+        <argsstring>(const char *name, const bool condition)</argsstring>
+        <name>TEST</name>
+        <param>
+          <type>const char *</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const bool</type>
+          <declname>condition</declname>
+        </param>
+        <briefdescription>
+<para>Affiche un resultat de test avec format uniforme. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Le nom du test (peut aussi servir de description courte). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>condition</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Resultat du test (true si reussi, false sinon). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/tests/test_utils.h" line="20" column="6" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/main.c" bodystart="26" bodyend="38" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/tests/test_utils.h" declline="20" declcolumn="6"/>
+        <references refid="main_8c_1a51c2b99b66f63ee9064347f9151e99ba" compoundref="main_8c" startline="17">passed_tests</references>
+        <references refid="main_8c_1ab7324491948254cde8946b74d8bca3bc" compoundref="main_8c" startline="18">total_tests</references>
+      </memberdef>
+      <memberdef kind="function" id="test__utils_8h_1a67a63463b204713946cce11511fc9231" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void TEST_EQ_INT</definition>
+        <argsstring>(const char *name, const int val_1, const int val_2)</argsstring>
+        <name>TEST_EQ_INT</name>
+        <param>
+          <type>const char *</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>val_1</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>val_2</declname>
+        </param>
+        <briefdescription>
+<para>Affiche un test d&apos;egalite entre deux entiers. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Meme usage que TEST. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>val_1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Premiere valeur a comparer. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>val_2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Deuxieme valeur a comparer. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/tests/test_utils.h" line="21" column="6" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/main.c" bodystart="46" bodyend="61" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/tests/test_utils.h" declline="21" declcolumn="6"/>
+        <references refid="main_8c_1a51c2b99b66f63ee9064347f9151e99ba" compoundref="main_8c" startline="17">passed_tests</references>
+        <references refid="main_8c_1ab7324491948254cde8946b74d8bca3bc" compoundref="main_8c" startline="18">total_tests</references>
+        <referencedby refid="main_8c_1ae9bbb2f5bb69f73e92c761f83223285a" compoundref="main_8c" startline="177" endline="329">run_all_tests</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>TEST_UTILS_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TEST_UTILS_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdbool.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="main_8c_1ab7324491948254cde8946b74d8bca3bc" kindref="member">total_tests</ref>;</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="main_8c_1a51c2b99b66f63ee9064347f9151e99ba" kindref="member">passed_tests</ref>;</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//#define<sp/>TEST(name,<sp/>condition)<sp/>\</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">//<sp/><sp/><sp/><sp/>do<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>total_tests++;<sp/>\</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(condition)<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(&quot;\tsuccess\t%s\n&quot;,<sp/>name);<sp/>\</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>passed_tests++;<sp/>\</highlight></codeline>
+<codeline lineno="15"><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="16"><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(&quot;\tfail\t%s\n&quot;,<sp/>name);<sp/>\</highlight></codeline>
+<codeline lineno="17"><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline lineno="18"><highlight class="comment">//<sp/><sp/><sp/><sp/>}<sp/>while(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="test__utils_8h_1aa193df92133f441f2a0efd722c3962f9" kindref="member">TEST</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>name,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>condition);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="test__utils_8h_1a67a63463b204713946cce11511fc9231" kindref="member">TEST_EQ_INT</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>name,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>val_1,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>val_2);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/tests/test_utils.h"/>
+  </compounddef>
+</doxygen>

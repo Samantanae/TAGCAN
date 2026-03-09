@@ -54,11 +54,11 @@ typedef enum {
     CAN_TG_ERROR_VALUE_TO_BIG = -10,
 } CAN_TG_STATUE;
 
-/** \brief Modes d'utilisation CAN (envoi/reception). */
+/** \brief modes d'utilisation CAN (envoi/reception). */
 typedef enum {
-    RECEVE_ONLY,    /**< Reception seule: les updates entrantes peuvent modifier la valeur; l'ecriture locale est bloquee. */
-    SEND_ONLY,    /**< Emission seule: la valeur locale est emise, les updates entrantes ne la modifient pas. */
-    SEND_AND_RECEVE,    /**< Emission + reception: ecriture locale et updates entrantes toutes deux autorisees. */
+    RECEVE_ONLY,    /**< Réception seule: les mises à jour entrantes peuvent modifier la valeur; l'écriture locale est bloquée. */
+    SEND_ONLY,    /**< Émission seule: la valeur locale est mise, les mises à jour entrantes ne la modifient pas. */
+    SEND_AND_RECEVE,    /**< Emission + reception: écriture locale et mises à jour entrantes toutes deux autorisées. */
 } CAN_MODE;
 
 #endif // CONFIG_VALUE_H

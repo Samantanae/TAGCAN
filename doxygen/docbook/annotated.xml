@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_annotated" xml:lang="en-US">
+<title>Data Structures</title>
+Here are the data structures with brief descriptions:<link linkend="_struct_tag_def">TagDef</link>
+<para>Structure de definition d&apos;un tag </para>
+<link linkend="_structtsfp">tsfp</link>
+<para>Buffer de rendu pour l&apos;affichage de repartition bit-a-bit </para>
+</section>

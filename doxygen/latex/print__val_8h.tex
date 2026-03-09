@@ -1,0 +1,235 @@
+\doxysection{print\+\_\+val.\+h File Reference}
+\hypertarget{print__val_8h}{}\label{print__val_8h}\index{print\_val.h@{print\_val.h}}
+{\ttfamily \+\#include $<$stdio.\+h$>$}\newline
+{\ttfamily \+\#include $<$stdint.\+h$>$}\newline
+Include dependency graph for print\+\_\+val.\+h:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=194pt]{print__val_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{print__val_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{structtsfp}{tsfp}}
+\begin{DoxyCompactList}\small\item\em Buffer de rendu pour l\textquotesingle{}affichage de repartition bit-\/a-\/bit. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{print__val_8h_a9e9dc5564a1158a2c1381b3de0c6d20e}{print\+\_\+bin\+\_\+8}} (uint8\+\_\+t val)
+\begin{DoxyCompactList}\small\item\em Affiche la representation binaire (8 bits) d\textquotesingle{}une valeur. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{print__val_8h_a7d217b9d9a6575858c03ca9854bb151b}{print\+\_\+all\+\_\+data\+\_\+bin}} (void)
+\begin{DoxyCompactList}\small\item\em Affiche tout le payload Tx\+Data en binaire. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{print__val_8h_aab1b8ef8b5cbbf7a78a88248ae81155c}{print\+\_\+all\+\_\+with\+\_\+title}} (const char \texorpdfstring{$\ast$}{*}title)
+\begin{DoxyCompactList}\small\item\em Affiche Tx\+Data en binaire avec un titre en prefixe. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{print__val_8h_a2b276a5dd504a1eb4d6f216b8f9d7fdb}{print\+\_\+all\+\_\+tag\+\_\+set}} (void)
+\begin{DoxyCompactList}\small\item\em Affiche la table des tags declares et leurs metadonnees. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{print__val_8h_a6904e40665dc664fc6611bfe2d913773}{print\+\_\+all\+\_\+data}} (void)
+\begin{DoxyCompactList}\small\item\em Affiche toutes les valeurs logiques relues via get\+\_\+value. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{print__val_8h_a8ee4bb928c2cca54d191cf23edea60ec}{print\+\_\+repartition\+\_\+bit}} (void)
+\begin{DoxyCompactList}\small\item\em Affiche la repartition des bits utilises dans la trame CAN. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{structtsfp}{tsfp}} \doxymbox{\hyperlink{print__val_8h_a020a2713730c98f7c2ef2ee76d4fead7}{gbc2}} \+[9]\+
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{print__val_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{print__val_8h_a6904e40665dc664fc6611bfe2d913773}\index{print\_val.h@{print\_val.h}!print\_all\_data@{print\_all\_data}}
+\index{print\_all\_data@{print\_all\_data}!print\_val.h@{print\_val.h}}
+\doxysubsubsection{\texorpdfstring{print\_all\_data()}{print\_all\_data()}}
+{\footnotesize\ttfamily \label{print__val_8h_a6904e40665dc664fc6611bfe2d913773} 
+void print\+\_\+all\+\_\+data (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Affiche toutes les valeurs logiques relues via get\+\_\+value. 
+
+Affiche toutes les valeurs logiques relues via get\+\_\+value.
+
+Chaque valeur est relue via get\+\_\+value puis imprimee. 
+
+Definition at line \doxymbox{\hyperlink{print__val_8c_source_l00043}{43}} of file \doxymbox{\hyperlink{print__val_8c_source}{print\+\_\+val.\+c}}.
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{print__val_8h_a6904e40665dc664fc6611bfe2d913773_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=321pt]{print__val_8h_a6904e40665dc664fc6611bfe2d913773_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{print__val_8h_a7d217b9d9a6575858c03ca9854bb151b}\index{print\_val.h@{print\_val.h}!print\_all\_data\_bin@{print\_all\_data\_bin}}
+\index{print\_all\_data\_bin@{print\_all\_data\_bin}!print\_val.h@{print\_val.h}}
+\doxysubsubsection{\texorpdfstring{print\_all\_data\_bin()}{print\_all\_data\_bin()}}
+{\footnotesize\ttfamily \label{print__val_8h_a7d217b9d9a6575858c03ca9854bb151b} 
+void print\+\_\+all\+\_\+data\+\_\+bin (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Affiche tout le payload Tx\+Data en binaire. 
+
+Chaque octet est affiche sur 8 bits, dans l\textquotesingle{}ordre du buffer.
+
+Affiche tout le payload Tx\+Data en binaire.
+
+Prints the binary representation of each byte in the {\ttfamily \doxylink{data__container_8h_a0b96d44a8da73070e470c7bf30523ca1}{Tx\+Data}} array. 
+
+Definition at line \doxymbox{\hyperlink{print__val_8c_source_l00148}{148}} of file \doxymbox{\hyperlink{print__val_8c_source}{print\+\_\+val.\+c}}.
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=272pt]{print__val_8h_a7d217b9d9a6575858c03ca9854bb151b_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{print__val_8h_a2b276a5dd504a1eb4d6f216b8f9d7fdb}\index{print\_val.h@{print\_val.h}!print\_all\_tag\_set@{print\_all\_tag\_set}}
+\index{print\_all\_tag\_set@{print\_all\_tag\_set}!print\_val.h@{print\_val.h}}
+\doxysubsubsection{\texorpdfstring{print\_all\_tag\_set()}{print\_all\_tag\_set()}}
+{\footnotesize\ttfamily \label{print__val_8h_a2b276a5dd504a1eb4d6f216b8f9d7fdb} 
+void print\+\_\+all\+\_\+tag\+\_\+set (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Affiche la table des tags declares et leurs metadonnees. 
+
+Affiche la table des tags declares et leurs metadonnees. 
+
+Definition at line \doxymbox{\hyperlink{print__val_8c_source_l00018}{18}} of file \doxymbox{\hyperlink{print__val_8c_source}{print\+\_\+val.\+c}}.
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=335pt]{print__val_8h_a2b276a5dd504a1eb4d6f216b8f9d7fdb_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{print__val_8h_aab1b8ef8b5cbbf7a78a88248ae81155c}\index{print\_val.h@{print\_val.h}!print\_all\_with\_title@{print\_all\_with\_title}}
+\index{print\_all\_with\_title@{print\_all\_with\_title}!print\_val.h@{print\_val.h}}
+\doxysubsubsection{\texorpdfstring{print\_all\_with\_title()}{print\_all\_with\_title()}}
+{\footnotesize\ttfamily \label{print__val_8h_aab1b8ef8b5cbbf7a78a88248ae81155c} 
+void print\+\_\+all\+\_\+with\+\_\+title (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{title}{}\end{DoxyParamCaption})}
+
+
+
+Affiche Tx\+Data en binaire avec un titre en prefixe. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em title} & Texte affiche avant la ligne binaire.\\
+\hline
+\end{DoxyParams}
+Affiche Tx\+Data en binaire avec un titre en prefixe.
+
+
+\begin{DoxyParams}{Parameters}
+{\em title} & Libelle affiche avant les octets. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{print__val_8c_source_l00162}{162}} of file \doxymbox{\hyperlink{print__val_8c_source}{print\+\_\+val.\+c}}.
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=274pt]{print__val_8h_aab1b8ef8b5cbbf7a78a88248ae81155c_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{print__val_8h_a9e9dc5564a1158a2c1381b3de0c6d20e}\index{print\_val.h@{print\_val.h}!print\_bin\_8@{print\_bin\_8}}
+\index{print\_bin\_8@{print\_bin\_8}!print\_val.h@{print\_val.h}}
+\doxysubsubsection{\texorpdfstring{print\_bin\_8()}{print\_bin\_8()}}
+{\footnotesize\ttfamily \label{print__val_8h_a9e9dc5564a1158a2c1381b3de0c6d20e} 
+void print\+\_\+bin\+\_\+8 (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{val}{}\end{DoxyParamCaption})}
+
+
+
+Affiche la representation binaire (8 bits) d\textquotesingle{}une valeur. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & Valeur a afficher en binaire sur 8 bits.\\
+\hline
+\end{DoxyParams}
+Affiche la representation binaire (8 bits) d\textquotesingle{}une valeur.
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & The {\ttfamily val} \+[from 0 to 255]\+. The function prints the binary representation of this value by iterating over each bit. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{print__val_8c_source_l00134}{134}} of file \doxymbox{\hyperlink{print__val_8c_source}{print\+\_\+val.\+c}}.
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=278pt]{print__val_8h_a9e9dc5564a1158a2c1381b3de0c6d20e_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{print__val_8h_a8ee4bb928c2cca54d191cf23edea60ec}\index{print\_val.h@{print\_val.h}!print\_repartition\_bit@{print\_repartition\_bit}}
+\index{print\_repartition\_bit@{print\_repartition\_bit}!print\_val.h@{print\_val.h}}
+\doxysubsubsection{\texorpdfstring{print\_repartition\_bit()}{print\_repartition\_bit()}}
+{\footnotesize\ttfamily \label{print__val_8h_a8ee4bb928c2cca54d191cf23edea60ec} 
+void print\+\_\+repartition\+\_\+bit (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Affiche la repartition des bits utilises dans la trame CAN. 
+
+Affiche la repartition des bits utilises dans la trame CAN. 
+
+Definition at line \doxymbox{\hyperlink{print__val_8c_source_l00078}{78}} of file \doxymbox{\hyperlink{print__val_8c_source}{print\+\_\+val.\+c}}.
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=346pt]{print__val_8h_a8ee4bb928c2cca54d191cf23edea60ec_icgraph}
+\end{center}
+\end{figure}
+
+
+\label{doc-var-members}
+\Hypertarget{print__val_8h_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{print__val_8h_a020a2713730c98f7c2ef2ee76d4fead7}\index{print\_val.h@{print\_val.h}!gbc2@{gbc2}}
+\index{gbc2@{gbc2}!print\_val.h@{print\_val.h}}
+\doxysubsubsection{\texorpdfstring{gbc2}{gbc2}}
+{\footnotesize\ttfamily \label{print__val_8h_a020a2713730c98f7c2ef2ee76d4fead7} 
+\doxymbox{\hyperlink{structtsfp}{tsfp}} gbc2\+[9]\+\hspace{0.3cm}{\ttfamily [extern]}}
+
+Espace global de rendu utilise par les fonctions d\textquotesingle{}impression de repartition. 
+
+Definition at line \doxymbox{\hyperlink{print__val_8c_source_l00014}{14}} of file \doxymbox{\hyperlink{print__val_8c_source}{print\+\_\+val.\+c}}.
+

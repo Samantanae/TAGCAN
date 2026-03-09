@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2documentation_2_c_o_m_m_e_n_t_a_i_r_e_s___a_u_d_i_t" xml:lang="en-US">
+<title>
+<para>Audit des commentaires </para>
+</title>
+<indexterm><primary>Audit des commentaires</primary></indexterm>
+
+<para><anchor xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2documentation_2_c_o_m_m_e_n_t_a_i_r_e_s___a_u_d_i_t_1autotoc_md23"/></para>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2documentation_2_c_o_m_m_e_n_t_a_i_r_e_s___a_u_d_i_t_1autotoc_md24">
+<title>Resume</title>
+<para>La base contient deja des commentaires utiles, mais la qualite est heterogene et plusieurs commentaires ne correspondent pas au comportement reel du code.</para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2documentation_2_c_o_m_m_e_n_t_a_i_r_e_s___a_u_d_i_t_1autotoc_md25">
+<title>Points verifies (avec references)</title><section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2documentation_2_c_o_m_m_e_n_t_a_i_r_e_s___a_u_d_i_t_1autotoc_md26">
+<title>1) Header duplique et commentaire duplique</title>
+<para><itemizedlist>
+<listitem>
+<para>Fichier: <computeroutput><link linkend="_gestion__tag_8h">include/gestion_tag.h</link>:1</computeroutput>, <computeroutput><link linkend="_gestion__tag_8h">include/gestion_tag.h</link>:20</computeroutput>, <computeroutput><link linkend="_gestion__tag_8h">include/gestion_tag.h</link>:22</computeroutput>, <computeroutput><link linkend="_gestion__tag_8h">include/gestion_tag.h</link>:41</computeroutput></para>
+</listitem><listitem>
+<para>Observation: le fichier contient deux blocs complets <computeroutput>#ifndef GESTION_TAG_H ... #endif</computeroutput>.</para>
+</listitem><listitem>
+<para>Impact: maintenance difficile, confusion sur la version active du commentaire/API.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2documentation_2_c_o_m_m_e_n_t_a_i_r_e_s___a_u_d_i_t_1autotoc_md27">
+<title>2) Contrainte de taille documentee vs code reel</title>
+<para><itemizedlist>
+<listitem>
+<para>Fichier commentaire: <computeroutput><link linkend="_gestion__tag_8h">include/gestion_tag.h</link>:15</computeroutput> et <computeroutput><link linkend="_gestion__tag_8h">include/gestion_tag.h</link>:36</computeroutput></para>
+</listitem><listitem>
+<para>Commentaire: indique que <computeroutput>n_bit</computeroutput> doit etre seulement <computeroutput>1, 3, 4, 8, 16</computeroutput>.</para>
+</listitem><listitem>
+<para>Code reel: <computeroutput><link linkend="_tag__manager_8c">scripts/sub_scripts/tag_manager.c</link>:234</computeroutput> accepte <computeroutput>1..16</computeroutput>.</para>
+</listitem><listitem>
+<para>Impact: documentation utilisateur potentiellement fausse.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2documentation_2_c_o_m_m_e_n_t_a_i_r_e_s___a_u_d_i_t_1autotoc_md28">
+<title>3) Parametres Doxygen incomplets/mal formes</title>
+<para><itemizedlist>
+<listitem>
+<para>Fichier: <computeroutput><link linkend="_data__container_8h">include/sub_include/data_container.h</link>:30</computeroutput>, <computeroutput><link linkend="_data__container_8h">include/sub_include/data_container.h</link>:32</computeroutput>, <computeroutput><link linkend="_data__container_8h">include/sub_include/data_container.h</link>:33</computeroutput></para>
+</listitem><listitem>
+<para>Observation: bloc <computeroutput><link linkend="_data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f">get_value</link></computeroutput> contient <computeroutput>\param</computeroutput> incomplet.</para>
+</listitem><listitem>
+<para>Impact: generation de doc automatique degradee, comprehension reduite.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2documentation_2_c_o_m_m_e_n_t_a_i_r_e_s___a_u_d_i_t_1autotoc_md29">
+<title>4) Commentaire de retour coherent en surface mais code divergent</title>
+<para><itemizedlist>
+<listitem>
+<para>Fichier commentaire: <computeroutput><link linkend="_data__container_8h">include/sub_include/data_container.h</link>:25</computeroutput></para>
+</listitem><listitem>
+<para>Code reel: <computeroutput><link linkend="_data__container_8c">scripts/sub_scripts/data_container.c</link>:59</computeroutput></para>
+</listitem><listitem>
+<para>Observation: <computeroutput><link linkend="_data__container_8h_1aa84538f1ab0c319056787e9674157405">set_value</link></computeroutput> retourne <computeroutput><link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947fab1cfc87a8731dfcbc6e986a1b81115ac">CAN_TG_ERROR_VALUE_TO_BIG</link></computeroutput> (<computeroutput>-10</computeroutput>) pour debordement, tandis que les tests attendent <computeroutput>-4</computeroutput>.</para>
+</listitem><listitem>
+<para>Impact: incoherence entre contrat implicite et verification test.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2documentation_2_c_o_m_m_e_n_t_a_i_r_e_s___a_u_d_i_t_1autotoc_md30">
+<title>5) Documentation debug partiellement invalide</title>
+<para><itemizedlist>
+<listitem>
+<para>Fichier: <computeroutput><link linkend="_print__val_8c">scripts/sub_scripts/print_val.c</link>:118</computeroutput></para>
+</listitem><listitem>
+<para>Observation: <computeroutput>@bref</computeroutput> au lieu de <computeroutput>@brief</computeroutput>.</para>
+</listitem><listitem>
+<para>Impact: Doxygen ignore/abime le commentaire.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2documentation_2_c_o_m_m_e_n_t_a_i_r_e_s___a_u_d_i_t_1autotoc_md31">
+<title>6) Probleme de specificateurs <computeroutput>printf</computeroutput></title>
+<para><itemizedlist>
+<listitem>
+<para>Fichier: <computeroutput><link linkend="_print__val_8c">scripts/sub_scripts/print_val.c</link>:26</computeroutput>, <computeroutput><link linkend="_print__val_8c">scripts/sub_scripts/print_val.c</link>:27</computeroutput>, <computeroutput><link linkend="_print__val_8c">scripts/sub_scripts/print_val.c</link>:127</computeroutput>, etc.</para>
+</listitem><listitem>
+<para>Observation: usage du caractere arabe <computeroutput>٪</computeroutput> au lieu de <computeroutput>%</computeroutput>.</para>
+</listitem><listitem>
+<para>Impact: affichage/formatage incorrect a l&apos;execution.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2documentation_2_c_o_m_m_e_n_t_a_i_r_e_s___a_u_d_i_t_1autotoc_md32">
+<title>7) Boucle avec point-virgule parasite</title>
+<para><itemizedlist>
+<listitem>
+<para>Fichier: <computeroutput><link linkend="_print__val_8c">scripts/sub_scripts/print_val.c</link>:149</computeroutput></para>
+</listitem><listitem>
+<para>Observation: <computeroutput>for (...) ;</computeroutput> dans <computeroutput><link linkend="_print__val_8h_1aab1b8ef8b5cbbf7a78a88248ae81155c">print_all_with_title</link></computeroutput>.</para>
+</listitem><listitem>
+<para>Impact: comportement non conforme au commentaire de la fonction.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2documentation_2_c_o_m_m_e_n_t_a_i_r_e_s___a_u_d_i_t_1autotoc_md33">
+<title>Evaluation globale</title>
+<para><itemizedlist>
+<listitem>
+<para>Qualite commentaires API: moyenne.</para>
+</listitem><listitem>
+<para>Qualite commentaires implementation: faible a moyenne.</para>
+</listitem><listitem>
+<para>Fiabilite pour generation auto (Doxygen): faible dans l&apos;etat actuel.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2documentation_2_c_o_m_m_e_n_t_a_i_r_e_s___a_u_d_i_t_1autotoc_md34">
+<title>Actions prioritaires recommandees</title>
+<para><orderedlist>
+<listitem>
+<para>Corriger <computeroutput><link linkend="_gestion__tag_8h">include/gestion_tag.h</link></computeroutput> (supprimer duplication, garder un seul bloc propre).</para>
+</listitem><listitem>
+<para>Aligner commentaire de <computeroutput><link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link></computeroutput> avec la regle reelle (ou inversement corriger le code).</para>
+</listitem><listitem>
+<para>Corriger les balises Doxygen (<computeroutput>@brief</computeroutput>, <computeroutput>\param</computeroutput>).</para>
+</listitem><listitem>
+<para>Corriger <computeroutput>printf</computeroutput> (<computeroutput>%</computeroutput>) et la boucle <computeroutput>for</computeroutput> de <computeroutput><link linkend="_print__val_8h_1aab1b8ef8b5cbbf7a78a88248ae81155c">print_all_with_title</link></computeroutput>.</para>
+</listitem><listitem>
+<para>Aligner retours <computeroutput><link linkend="_data__container_8h_1aa84538f1ab0c319056787e9674157405">set_value</link></computeroutput> et attentes des tests. </para>
+</listitem></orderedlist>
+</para>
+</section>
+</section>

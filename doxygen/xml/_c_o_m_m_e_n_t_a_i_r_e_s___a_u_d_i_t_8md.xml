@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.0" xml:lang="en-US">
+  <compounddef id="_c_o_m_m_e_n_t_a_i_r_e_s___a_u_d_i_t_8md" kind="file" language="Markdown">
+    <compoundname>COMMENTAIRES_AUDIT.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>Audit<sp/>des<sp/>commentaires</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Resume</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">La<sp/>base<sp/>contient<sp/>deja<sp/>des<sp/>commentaires<sp/>utiles,<sp/>mais<sp/>la<sp/>qualite<sp/>est<sp/>heterogene<sp/>et<sp/>plusieurs<sp/>commentaires<sp/>ne<sp/>correspondent<sp/>pas<sp/>au<sp/>comportement<sp/>reel<sp/>du<sp/>code.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Points<sp/>verifies<sp/>(avec<sp/>references)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>1)<sp/>Header<sp/>duplique<sp/>et<sp/>commentaire<sp/>duplique</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Fichier:<sp/>`include/gestion_tag.h:1`,<sp/>`include/gestion_tag.h:20`,<sp/>`include/gestion_tag.h:22`,<sp/>`include/gestion_tag.h:41`</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Observation:<sp/>le<sp/>fichier<sp/>contient<sp/>deux<sp/>blocs<sp/>complets<sp/>`#ifndef<sp/>GESTION_TAG_H<sp/>...<sp/>#endif`.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Impact:<sp/>maintenance<sp/>difficile,<sp/>confusion<sp/>sur<sp/>la<sp/>version<sp/>active<sp/>du<sp/>commentaire/API.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>2)<sp/>Contrainte<sp/>de<sp/>taille<sp/>documentee<sp/>vs<sp/>code<sp/>reel</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Fichier<sp/>commentaire:<sp/>`include/gestion_tag.h:15`<sp/>et<sp/>`include/gestion_tag.h:36`</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Commentaire:<sp/>indique<sp/>que<sp/>`n_bit`<sp/>doit<sp/>etre<sp/>seulement<sp/>`1,<sp/>3,<sp/>4,<sp/>8,<sp/>16`.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Code<sp/>reel:<sp/>`scripts/sub_scripts/tag_manager.c:234`<sp/>accepte<sp/>`1..16`.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Impact:<sp/>documentation<sp/>utilisateur<sp/>potentiellement<sp/>fausse.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>3)<sp/>Parametres<sp/>Doxygen<sp/>incomplets/mal<sp/>formes</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Fichier:<sp/>`include/sub_include/data_container.h:30`,<sp/>`include/sub_include/data_container.h:32`,<sp/>`include/sub_include/data_container.h:33`</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Observation:<sp/>bloc<sp/>`get_value`<sp/>contient<sp/>`\param`<sp/>incomplet.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Impact:<sp/>generation<sp/>de<sp/>doc<sp/>automatique<sp/>degradee,<sp/>comprehension<sp/>reduite.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>4)<sp/>Commentaire<sp/>de<sp/>retour<sp/>coherent<sp/>en<sp/>surface<sp/>mais<sp/>code<sp/>divergent</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Fichier<sp/>commentaire:<sp/>`include/sub_include/data_container.h:25`</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Code<sp/>reel:<sp/>`scripts/sub_scripts/data_container.c:59`</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Observation:<sp/>`set_value`<sp/>retourne<sp/>`CAN_TG_ERROR_VALUE_TO_BIG`<sp/>(`-10`)<sp/>pour<sp/>debordement,<sp/>tandis<sp/>que<sp/>les<sp/>tests<sp/>attendent<sp/>`-4`.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Impact:<sp/>incoherence<sp/>entre<sp/>contrat<sp/>implicite<sp/>et<sp/>verification<sp/>test.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>5)<sp/>Documentation<sp/>debug<sp/>partiellement<sp/>invalide</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Fichier:<sp/>`scripts/sub_scripts/print_val.c:118`</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Observation:<sp/>`@bref`<sp/>au<sp/>lieu<sp/>de<sp/>`@brief`.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Impact:<sp/>Doxygen<sp/>ignore/abime<sp/>le<sp/>commentaire.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>6)<sp/>Probleme<sp/>de<sp/>specificateurs<sp/>`printf`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Fichier:<sp/>`scripts/sub_scripts/print_val.c:26`,<sp/>`scripts/sub_scripts/print_val.c:27`,<sp/>`scripts/sub_scripts/print_val.c:127`,<sp/>etc.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Observation:<sp/>usage<sp/>du<sp/>caractere<sp/>arabe<sp/>`٪`<sp/>au<sp/>lieu<sp/>de<sp/>`%`.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Impact:<sp/>affichage/formatage<sp/>incorrect<sp/>a<sp/>l&apos;execution.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>7)<sp/>Boucle<sp/>avec<sp/>point-virgule<sp/>parasite</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Fichier:<sp/>`scripts/sub_scripts/print_val.c:149`</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Observation:<sp/>`for<sp/>(...)<sp/>;`<sp/>dans<sp/>`print_all_with_title`.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Impact:<sp/>comportement<sp/>non<sp/>conforme<sp/>au<sp/>commentaire<sp/>de<sp/>la<sp/>fonction.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Evaluation<sp/>globale</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Qualite<sp/>commentaires<sp/>API:<sp/>moyenne.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Qualite<sp/>commentaires<sp/>implementation:<sp/>faible<sp/>a<sp/>moyenne.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Fiabilite<sp/>pour<sp/>generation<sp/>auto<sp/>(Doxygen):<sp/>faible<sp/>dans<sp/>l&apos;etat<sp/>actuel.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Actions<sp/>prioritaires<sp/>recommandees</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">1.<sp/>Corriger<sp/>`include/gestion_tag.h`<sp/>(supprimer<sp/>duplication,<sp/>garder<sp/>un<sp/>seul<sp/>bloc<sp/>propre).</highlight></codeline>
+<codeline><highlight class="normal">2.<sp/>Aligner<sp/>commentaire<sp/>de<sp/>`set_tag`<sp/>avec<sp/>la<sp/>regle<sp/>reelle<sp/>(ou<sp/>inversement<sp/>corriger<sp/>le<sp/>code).</highlight></codeline>
+<codeline><highlight class="normal">3.<sp/>Corriger<sp/>les<sp/>balises<sp/>Doxygen<sp/>(`@brief`,<sp/>`\param`).</highlight></codeline>
+<codeline><highlight class="normal">4.<sp/>Corriger<sp/>`printf`<sp/>(`%`)<sp/>et<sp/>la<sp/>boucle<sp/>`for`<sp/>de<sp/>`print_all_with_title`.</highlight></codeline>
+<codeline><highlight class="normal">5.<sp/>Aligner<sp/>retours<sp/>`set_value`<sp/>et<sp/>attentes<sp/>des<sp/>tests.</highlight></codeline>
+    </programlisting>
+    <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/documentation/COMMENTAIRES_AUDIT.md"/>
+  </compounddef>
+</doxygen>

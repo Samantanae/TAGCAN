@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.0" xml:lang="en-US">
+  <compounddef id="_c_o_h_e_r_e_n_c_e_8md" kind="file" language="Markdown">
+    <compoundname>COHERENCE.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>Verification<sp/>de<sp/>coherence</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Methode</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">La<sp/>coherence<sp/>a<sp/>ete<sp/>verifiee<sp/>sur<sp/>3<sp/>axes:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Axe<sp/>A:<sp/>commentaires<sp/>vs<sp/>implementation<sp/>(`include/`<sp/>+<sp/>`scripts/`).</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Axe<sp/>B:<sp/>implementation<sp/>vs<sp/>tests<sp/>(`scripts/main.c`,<sp/>`tests/`).</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Axe<sp/>C:<sp/>nouvelle<sp/>documentation<sp/>`documentation/`<sp/>vs<sp/>code<sp/>actuel.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Resultats</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Axe<sp/>A<sp/>-<sp/>Commentaires<sp/>vs<sp/>implementation</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Statut<sp/>global:<sp/>Partiellement<sp/>coherent.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Coherent:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>`init_tag_manager`<sp/>et<sp/>`init_data_container`<sp/>correspondent<sp/>globalement<sp/>a<sp/>leur<sp/>role.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Non<sp/>coherent:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>Regle<sp/>de<sp/>tailles<sp/>`set_tag`:<sp/>commentaire<sp/>restreint,<sp/>code<sp/>permissif<sp/>(`1..16`).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>Validation<sp/>longueur<sp/>nom:<sp/>commentaire<sp/>suggere<sp/>une<sp/>vraie<sp/>limite,<sp/>code<sp/>utilise<sp/>`sizeof(pointer)`.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>Plusieurs<sp/>blocs<sp/>Doxygen<sp/>invalides<sp/>ou<sp/>incomplets.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Axe<sp/>B<sp/>-<sp/>Implementation<sp/>vs<sp/>tests</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Statut<sp/>global:<sp/>Non<sp/>coherent<sp/>sur<sp/>des<sp/>retours<sp/>d&apos;erreur.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Exemple<sp/>cle:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>Tests<sp/>attendent<sp/>`-4`<sp/>pour<sp/>debordement<sp/>de<sp/>valeur<sp/>(`scripts/main.c:234`,<sp/>`scripts/main.c:236`,<sp/>`scripts/main.c:238`,<sp/>`scripts/main.c:301`).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>Code<sp/>renvoie<sp/>`-10`<sp/>(`scripts/sub_scripts/data_container.c:59`).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Axe<sp/>C<sp/>-<sp/>Documentation<sp/>creee<sp/>vs<sp/>code</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Statut<sp/>global:<sp/>Coherent<sp/>avec<sp/>le<sp/>comportement<sp/>observe.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Principe<sp/>applique:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>la<sp/>documentation<sp/>decrit<sp/>l&apos;etat<sp/>reel<sp/>du<sp/>code<sp/>(meme<sp/>quand<sp/>il<sp/>est<sp/>defectueux),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>les<sp/>anomalies<sp/>sont<sp/>marquees<sp/>explicitement<sp/>comme<sp/>ecarts.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Matrice<sp/>rapide</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>Point<sp/>|<sp/>Commentaire<sp/>existant<sp/>|<sp/>Code<sp/>actuel<sp/>|<sp/>Coherence<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|---|---|---|---|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>Tailles<sp/>`set_tag`<sp/>|<sp/>1,3,4,8,16<sp/>|<sp/>1..16<sp/>|<sp/>Non<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>Debordement<sp/>`set_value`<sp/>|<sp/>ambigu<sp/>|<sp/>`-10`<sp/>|<sp/>Partiel<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>Nom<sp/>tag<sp/>trop<sp/>long<sp/>|<sp/>controle<sp/>annonce<sp/>|<sp/>controle<sp/>non<sp/>fiable<sp/>(`sizeof`)<sp/>|<sp/>Non<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>Affichage<sp/>debug<sp/>|<sp/>decrit<sp/>un<sp/>affichage<sp/>valide<sp/>|<sp/>`%`<sp/>remplace<sp/>par<sp/>`٪`<sp/>+<sp/>bug<sp/>de<sp/>boucle<sp/>|<sp/>Non<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>Init<sp/>manager/container<sp/>|<sp/>intention<sp/>claire<sp/>|<sp/>comportement<sp/>coherent<sp/>|<sp/>Oui<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Conclusion</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">La<sp/>documentation<sp/>ajoutee<sp/>dans<sp/>`documentation/`<sp/>est<sp/>coherente<sp/>avec<sp/>le<sp/>code<sp/>actuel,<sp/>mais<sp/>le<sp/>projet<sp/>global<sp/>n&apos;est<sp/>pas<sp/>completement<sp/>coherent<sp/>entre<sp/>commentaires<sp/>historiques,<sp/>implementation<sp/>et<sp/>tests.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Priorites<sp/>de<sp/>remediation</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">1.<sp/>Normaliser<sp/>les<sp/>codes<sp/>d&apos;erreur<sp/>(source<sp/>unique<sp/>+<sp/>tests<sp/>alignes).</highlight></codeline>
+<codeline><highlight class="normal">2.<sp/>Corriger<sp/>`set_tag`<sp/>(longueur<sp/>nom<sp/>et<sp/>regle<sp/>de<sp/>tailles).</highlight></codeline>
+<codeline><highlight class="normal">3.<sp/>Corriger<sp/>les<sp/>erreurs<sp/>de<sp/>formatage<sp/>dans<sp/>`print_val.c`.</highlight></codeline>
+<codeline><highlight class="normal">4.<sp/>Nettoyer<sp/>les<sp/>commentaires<sp/>Doxygen<sp/>pour<sp/>relancer<sp/>une<sp/>doc<sp/>auto<sp/>fiable.</highlight></codeline>
+    </programlisting>
+    <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/documentation/COHERENCE.md"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.0" xml:lang="en-US">
+  <compounddef id="gestion__tag_8h" kind="file" language="C++">
+    <compoundname>gestion_tag.h</compoundname>
+    <includedby refid="_t_a_g_c_a_n_8h" local="yes">TAGCAN.h</includedby>
+    <includedby refid="main_8c" local="yes">main.c</includedby>
+    <includedby refid="tag__manager_8c" local="yes">tag_manager.c</includedby>
+    <invincdepgraph>
+      <node id="2">
+        <label>TAGCAN.h</label>
+        <link refid="_t_a_g_c_a_n_8h"/>
+      </node>
+      <node id="1">
+        <label>gestion_tag.h</label>
+        <link refid="gestion__tag_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>main.c</label>
+        <link refid="main_8c"/>
+      </node>
+      <node id="4">
+        <label>tag_manager.c</label>
+        <link refid="tag__manager_8c"/>
+      </node>
+    </invincdepgraph>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="gestion__tag_8h_1aab50a8f567be72e656120fd71f3fb435" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void init_tag_manager</definition>
+        <argsstring>(void)</argsstring>
+        <name>init_tag_manager</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Initialise/reinitialise le gestionnaire de tags. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Apres cet appel, l&apos;ensemble des tags doit etre redefini via <computeroutput><ref refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" kindref="member">set_tag</ref></computeroutput>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/gestion_tag.h" line="9" column="6" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/sub_scripts/tag_manager.c" bodystart="21" bodyend="36" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/gestion_tag.h" declline="9" declcolumn="6"/>
+        <references refid="tag__manager_8h_1af12845c0234390db7498ec51e94f7d58" compoundref="tag__manager_8c" startline="19" endline="19">g_bytes_used</references>
+        <references refid="tag__manager_8h_1ab7cad863197c93abe397155a1946c0d0" compoundref="tag__manager_8c" startline="18">g_tag_count</references>
+        <references refid="tag__manager_8h_1ace5be789d004e0752b6b2dec9d845864" compoundref="tag__manager_8c" startline="17">g_tags</references>
+        <references refid="config__value_8h_1aa653c0eca99802a09fd9560f28a9b1c1" compoundref="config__value_8h" startline="5">MAX_TAGS</references>
+        <referencedby refid="main_8c_1ae9bbb2f5bb69f73e92c761f83223285a" compoundref="main_8c" startline="177" endline="329">run_all_tests</referencedby>
+        <referencedby refid="main_8c_1a4f26f5b24d899127d66338ba3bfd7f1b" compoundref="main_8c" startline="104" endline="170">somme_other_test</referencedby>
+        <referencedby refid="main_8c_1a9c4bb6f6d00e76eae45e966a4c628178" compoundref="main_8c" startline="72" endline="97">test_print</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int set_tag</definition>
+        <argsstring>(const char *tag_name, uint8_t n_bit)</argsstring>
+        <name>set_tag</name>
+        <param>
+          <type>const char *</type>
+          <declname>tag_name</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>n_bit</declname>
+          <defname>siz</defname>
+        </param>
+        <briefdescription>
+<para>Cree un nouveau tag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tag_name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Le nom (id) relie a la valeur. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_bit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>La taille de la valeur (implementation actuelle: 1..16 bits). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Un code de succes ou d&apos;erreur.</para>
+</simplesect>
+Cree un nouveau tag.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tag_name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Nom logique du tag. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>siz</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Taille de la valeur en bits (implementation actuelle: 1..16). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Code de succes ou code d&apos;erreur <ref refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947f" kindref="member">CAN_TG_STATUE</ref>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/gestion_tag.h" line="17" column="5" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/sub_scripts/tag_manager.c" bodystart="232" bodyend="282" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/gestion_tag.h" declline="17" declcolumn="5"/>
+        <references refid="config__value_8h_1a18061c1ca5fc2e5ab20fa7bc8dbe81d6" compoundref="config__value_8c" startline="10">CAN_TG_ERROR_NAME_ALREADY_USE</references>
+        <references refid="config__value_8h_1a73337c3ada0009e763ea5af164e25d70" compoundref="config__value_8c" startline="9">CAN_TG_ERROR_SIZE_VALUE_INVALIDE</references>
+        <references refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947fa1f64facc77e1738f2ed16fae7f38140f" compoundref="config__value_8h" startline="47">CAN_TG_ERROR_SIZE_VALUE_INVALIDE_</references>
+        <references refid="config__value_8h_1a49d547279f99d23ff36998f3874d3c5a" compoundref="config__value_8c" startline="12">CAN_TG_ERROR_TAG_NAME_INVALIDE</references>
+        <references refid="config__value_8h_1af68b72a5b65a0168415d1363dc09a0a6" compoundref="config__value_8c" startline="7">CAN_TG_ERROR_TAG_NAME_TO_BIGS</references>
+        <references refid="config__value_8h_1a1e77443066dccbc42ef0acdd0f597c07" compoundref="config__value_8c" startline="8">CAN_TG_ERROR_TOO_MAY_TAGS</references>
+        <references refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3" compoundref="config__value_8h" startline="43">CAN_TG_SUCCESS</references>
+        <references refid="tag__manager_8c_1ad5772dac2622697b5f563da0dbfaede3" compoundref="tag__manager_8c" startline="188" endline="222">find_byte2_with_enoung_space</references>
+        <references refid="tag__manager_8c_1a5f1ce2cac9791e6b46be230dcce3f804" compoundref="tag__manager_8c" startline="144" endline="176">find_byte_with_enoung_space</references>
+        <references refid="tag__manager_8h_1ab7cad863197c93abe397155a1946c0d0" compoundref="tag__manager_8c" startline="18">g_tag_count</references>
+        <references refid="tag__manager_8c_1ac5f7362c0af4f03bd98573151458442d" compoundref="tag__manager_8c" startline="90" endline="109">general_set_tag</references>
+        <references refid="tag__manager_8c_1a7b7413adbae2eabbe7fcd13e9f91f151" compoundref="tag__manager_8c" startline="42" endline="59">get_first_tags_vide</references>
+        <references refid="tag__manager_8c_1a5737e741608851f8e3822cf07261da44" compoundref="tag__manager_8c" startline="288" endline="298">get_tag_def</references>
+        <references refid="config__value_8h_1ada71b9f258860d58a86ab220bfce6bf4" compoundref="config__value_8h" startline="7">MAX_TAG_NAME_LEN</references>
+        <references refid="config__value_8h_1aa653c0eca99802a09fd9560f28a9b1c1" compoundref="config__value_8h" startline="5">MAX_TAGS</references>
+        <references refid="tag__manager_8c_1a30325d29d4baf058d75e6f3c269341af" compoundref="tag__manager_8c" startline="119" endline="135">set_new_tag_9_to_16</references>
+        <referencedby refid="main_8c_1ae9bbb2f5bb69f73e92c761f83223285a" compoundref="main_8c" startline="177" endline="329">run_all_tests</referencedby>
+        <referencedby refid="main_8c_1a9c4bb6f6d00e76eae45e966a4c628178" compoundref="main_8c" startline="72" endline="97">test_print</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>GESTION_TAG_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>GESTION_TAG_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//<sp/>fonction<sp/>qui<sp/>gere<sp/>les<sp/>tags</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="gestion__tag_8h_1aab50a8f567be72e656120fd71f3fb435" kindref="member">init_tag_manager</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" kindref="member">set_tag</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag_name,<sp/>uint8_t<sp/>n_bit);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>GESTION_TAG_H<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>GESTION_TAG_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>GESTION_TAG_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/>fonction<sp/>qui<sp/>gere<sp/>les<sp/>tags</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="gestion__tag_8h_1aab50a8f567be72e656120fd71f3fb435" kindref="member">init_tag_manager</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" kindref="member">set_tag</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag_name,<sp/>uint8_t<sp/>n_bit);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>GESTION_TAG_H<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/gestion_tag.h"/>
+  </compounddef>
+</doxygen>

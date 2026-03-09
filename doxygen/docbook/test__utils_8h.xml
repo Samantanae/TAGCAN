@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_test__utils_8h" xml:lang="en-US">
+<title>test_utils.h File Reference</title>
+<indexterm><primary>test_utils.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;stdio.h&gt;<?linebreak?>#include &lt;stdbool.h&gt;<?linebreak?></programlisting>Include dependency graph for test_utils.h:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="test__utils_8h__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+This graph shows which files directly or indirectly include this file:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="test__utils_8h__dep__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_test__utils_8h_1aa193df92133f441f2a0efd722c3962f9">TEST</link> (const char *name, const bool condition)</para>
+
+<para>Affiche un resultat de test avec format uniforme. </para>
+</listitem>
+            <listitem><para>void <link linkend="_test__utils_8h_1a67a63463b204713946cce11511fc9231">TEST_EQ_INT</link> (const char *name, const int val_1, const int val_2)</para>
+
+<para>Affiche un test d&apos;egalite entre deux entiers. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para>int <link linkend="_test__utils_8h_1ab7324491948254cde8946b74d8bca3bc">total_tests</link></para>
+</listitem>
+            <listitem><para>int <link linkend="_test__utils_8h_1a51c2b99b66f63ee9064347f9151e99ba">passed_tests</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_test__utils_8h_1aa193df92133f441f2a0efd722c3962f9"/><section>
+    <title>TEST()</title>
+<indexterm><primary>TEST</primary><secondary>test_utils.h</secondary></indexterm>
+<indexterm><primary>test_utils.h</primary><secondary>TEST</secondary></indexterm>
+<para><computeroutput>void TEST (const char * name, const bool condition)</computeroutput></para><para>
+
+<para>Affiche un resultat de test avec format uniforme. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>name</entry><entry>
+<para>Le nom du test (peut aussi servir de description courte). </para>
+</entry>
+                            </row>
+                            <row>
+<entry>condition</entry><entry>
+<para>Resultat du test (true si reussi, false sinon). </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_main_8c_source_1l00026">26</link> of file <link linkend="_main_8c_source">main.c</link>.</para>
+</section>
+<anchor xml:id="_test__utils_8h_1a67a63463b204713946cce11511fc9231"/><section>
+    <title>TEST_EQ_INT()</title>
+<indexterm><primary>TEST_EQ_INT</primary><secondary>test_utils.h</secondary></indexterm>
+<indexterm><primary>test_utils.h</primary><secondary>TEST_EQ_INT</secondary></indexterm>
+<para><computeroutput>void TEST_EQ_INT (const char * name, const int val_1, const int val_2)</computeroutput></para><para>
+
+<para>Affiche un test d&apos;egalite entre deux entiers. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>name</entry><entry>
+<para>Meme usage que TEST. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>val_1</entry><entry>
+<para>Premiere valeur a comparer. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>val_2</entry><entry>
+<para>Deuxieme valeur a comparer. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_main_8c_source_1l00046">46</link> of file <link linkend="_main_8c_source">main.c</link>.</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="test__utils_8h_a67a63463b204713946cce11511fc9231_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+</section>
+<section>
+<title>Variable Documentation</title>
+<anchor xml:id="_test__utils_8h_1a51c2b99b66f63ee9064347f9151e99ba"/><section>
+    <title>passed_tests</title>
+<indexterm><primary>passed_tests</primary><secondary>test_utils.h</secondary></indexterm>
+<indexterm><primary>test_utils.h</primary><secondary>passed_tests</secondary></indexterm>
+<para><computeroutput>int passed_tests<computeroutput>[extern]</computeroutput></computeroutput></para>
+<para>le nombre total de test réussi </para>
+<para>
+Definition at line <link linkend="_main_8c_source_1l00017">17</link> of file <link linkend="_main_8c_source">main.c</link>.</para>
+</section>
+<anchor xml:id="_test__utils_8h_1ab7324491948254cde8946b74d8bca3bc"/><section>
+    <title>total_tests</title>
+<indexterm><primary>total_tests</primary><secondary>test_utils.h</secondary></indexterm>
+<indexterm><primary>test_utils.h</primary><secondary>total_tests</secondary></indexterm>
+<para><computeroutput>int total_tests<computeroutput>[extern]</computeroutput></computeroutput></para>
+<para>le nombre total de test effectué </para>
+<para>
+Definition at line <link linkend="_main_8c_source_1l00018">18</link> of file <link linkend="_main_8c_source">main.c</link>.</para>
+</section>
+</section>
+</section>

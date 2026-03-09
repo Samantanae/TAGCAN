@@ -1,0 +1,281 @@
+\doxysection{data\+\_\+container.\+h File Reference}
+\hypertarget{data__container_8h}{}\label{data__container_8h}\index{data\_container.h@{data\_container.h}}
+{\ttfamily \+\#include $<$stdint.\+h$>$}\newline
+{\ttfamily \+\#include "{}tag\+\_\+manager.\+h"{}}\newline
+Include dependency graph for data\+\_\+container.\+h:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=308pt]{data__container_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{data__container_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{data__container_8h_ab1e0c45daf869a5ff0a8c836629d657f}{DATA\+\_\+\+CONTAINER\+\_\+H}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{data__container_8h_a129f017feb0712be1dcf7932e6035aa0}{init\+\_\+data\+\_\+container}} (void)
+\begin{DoxyCompactList}\small\item\em Reinitialise le payload Tx\+Data a zero. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{data__container_8h_aa84538f1ab0c319056787e9674157405}{set\+\_\+value}} (const char \texorpdfstring{$\ast$}{*}tag\+\_\+name, uint32\+\_\+t value)
+\begin{DoxyCompactList}\small\item\em Ecrit une valeur dans Tx\+Data a partir d\textquotesingle{}un tag. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{data__container_8h_a66cbaaa79a2ba3c2c7912514c1dc805f}{get\+\_\+value}} (const char \texorpdfstring{$\ast$}{*}tag\+\_\+name, uint32\+\_\+t \texorpdfstring{$\ast$}{*}out\+\_\+value)
+\begin{DoxyCompactList}\small\item\em Lit la valeur associee a un tag. \end{DoxyCompactList}\item 
+uint8\+\_\+t \doxymbox{\hyperlink{data__container_8h_a66768c162c3a8352b7d5397e90206085}{prep\+\_\+mask}} (uint8\+\_\+t p\+\_\+bit, uint8\+\_\+t n\+\_\+bit)
+\begin{DoxyCompactList}\small\item\em \+[FONCTION INTERNE]\+ Prepare un masque binaire pour set/\+get. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{data__container_8h_ae1649807202241b28239e8cb212a18b6}{can\+\_\+simulate\+\_\+send\+\_\+receive}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}tx\+\_\+buffer, uint8\+\_\+t \texorpdfstring{$\ast$}{*}rx\+\_\+buffer)
+\begin{DoxyCompactList}\small\item\em Simule un envoi/\+reception CAN par copie buffer-\/a-\/buffer. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{data__container_8h_a45840c759151338fe992664f4a21c4f7}{set\+\_\+val\+\_\+\+Tx\+Data}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}Tx\+Data\+Array)
+\begin{DoxyCompactList}\small\item\em Copie un tableau externe dans le buffer global Tx\+Data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \doxymbox{\hyperlink{data__container_8h_a0b96d44a8da73070e470c7bf30523ca1}{Tx\+Data}} \+[\doxymbox{\hyperlink{config__value_8h_a470399f7b67e59b1cd04ab17e03c96d1}{N\+\_\+\+BYTES}}]\+
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{data__container_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{data__container_8h_ab1e0c45daf869a5ff0a8c836629d657f}\index{data\_container.h@{data\_container.h}!DATA\_CONTAINER\_H@{DATA\_CONTAINER\_H}}
+\index{DATA\_CONTAINER\_H@{DATA\_CONTAINER\_H}!data\_container.h@{data\_container.h}}
+\doxysubsubsection{\texorpdfstring{DATA\_CONTAINER\_H}{DATA\_CONTAINER\_H}}
+{\footnotesize\ttfamily \label{data__container_8h_ab1e0c45daf869a5ff0a8c836629d657f} 
+\+\#define DATA\+\_\+\+CONTAINER\+\_\+H}
+
+
+
+Definition at line \doxymbox{\hyperlink{data__container_8h_source_l00007}{7}} of file \doxymbox{\hyperlink{data__container_8h_source}{data\+\_\+container.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{data__container_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{data__container_8h_ae1649807202241b28239e8cb212a18b6}\index{data\_container.h@{data\_container.h}!can\_simulate\_send\_receive@{can\_simulate\_send\_receive}}
+\index{can\_simulate\_send\_receive@{can\_simulate\_send\_receive}!data\_container.h@{data\_container.h}}
+\doxysubsubsection{\texorpdfstring{can\_simulate\_send\_receive()}{can\_simulate\_send\_receive()}}
+{\footnotesize\ttfamily \label{data__container_8h_ae1649807202241b28239e8cb212a18b6} 
+void can\+\_\+simulate\+\_\+send\+\_\+receive (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{tx\+\_\+buffer}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{rx\+\_\+buffer}{}\end{DoxyParamCaption})}
+
+
+
+Simule un envoi/\+reception CAN par copie buffer-\/a-\/buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tx\+\_\+buffer} & Buffer source (emission). \\
+\hline
+{\em rx\+\_\+buffer} & Buffer destination (reception).\\
+\hline
+\end{DoxyParams}
+Simule un envoi/\+reception CAN par copie buffer-\/a-\/buffer.
+
+Copie simplement tx\+\_\+buffer dans rx\+\_\+buffer. 
+\begin{DoxyParams}{Parameters}
+{\em tx\+\_\+buffer} & Buffer d\textquotesingle{}emission. \\
+\hline
+{\em rx\+\_\+buffer} & Buffer de reception. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{data__container_8c_source_l00165}{165}} of file \doxymbox{\hyperlink{data__container_8c_source}{data\+\_\+container.\+c}}.
+
+\Hypertarget{data__container_8h_a66cbaaa79a2ba3c2c7912514c1dc805f}\index{data\_container.h@{data\_container.h}!get\_value@{get\_value}}
+\index{get\_value@{get\_value}!data\_container.h@{data\_container.h}}
+\doxysubsubsection{\texorpdfstring{get\_value()}{get\_value()}}
+{\footnotesize\ttfamily \label{data__container_8h_a66cbaaa79a2ba3c2c7912514c1dc805f} 
+int get\+\_\+value (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{tag\+\_\+name}{, }\item[{uint32\+\_\+t \texorpdfstring{$\ast$}{*}}]{out\+\_\+value}{}\end{DoxyParamCaption})}
+
+
+
+Lit la valeur associee a un tag. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tag\+\_\+name} & Nom du tag a lire. \\
+\hline
+{\em out\+\_\+value} & Adresse de sortie qui recoit la valeur extraite. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+CAN\+\_\+\+TG\+\_\+\+SUCCESS en cas de succes, sinon un code d\textquotesingle{}erreur negatif. 
+\end{DoxyReturn}
+Copie un buffer externe dans Tx\+Data. 
+\begin{DoxyParams}{Parameters}
+{\em Tx\+Data\+Array} & Tableau source de N\+\_\+\+BYTES octets.\\
+\hline
+\end{DoxyParams}
+Recompose un entier 16 bits depuis deux octets. 
+\begin{DoxyParams}{Parameters}
+{\em ba} & Octet de poids faible. \\
+\hline
+{\em bb} & Octet de poids fort. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Valeur 16 bits combinee.
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{data__container_8c_source_l00106}{106}} of file \doxymbox{\hyperlink{data__container_8c_source}{data\+\_\+container.\+c}}.
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=240pt]{data__container_8h_a66cbaaa79a2ba3c2c7912514c1dc805f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{data__container_8h_a66cbaaa79a2ba3c2c7912514c1dc805f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{data__container_8h_a129f017feb0712be1dcf7932e6035aa0}\index{data\_container.h@{data\_container.h}!init\_data\_container@{init\_data\_container}}
+\index{init\_data\_container@{init\_data\_container}!data\_container.h@{data\_container.h}}
+\doxysubsubsection{\texorpdfstring{init\_data\_container()}{init\_data\_container()}}
+{\footnotesize\ttfamily \label{data__container_8h_a129f017feb0712be1dcf7932e6035aa0} 
+void init\+\_\+data\+\_\+container (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Reinitialise le payload Tx\+Data a zero. 
+
+Si reexecutee, la fonction efface les donnees precedemment ecrites. 
+
+Definition at line \doxymbox{\hyperlink{data__container_8c_source_l00014}{14}} of file \doxymbox{\hyperlink{data__container_8c_source}{data\+\_\+container.\+c}}.
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{data__container_8h_a129f017feb0712be1dcf7932e6035aa0_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{data__container_8h_a66768c162c3a8352b7d5397e90206085}\index{data\_container.h@{data\_container.h}!prep\_mask@{prep\_mask}}
+\index{prep\_mask@{prep\_mask}!data\_container.h@{data\_container.h}}
+\doxysubsubsection{\texorpdfstring{prep\_mask()}{prep\_mask()}}
+{\footnotesize\ttfamily \label{data__container_8h_a66768c162c3a8352b7d5397e90206085} 
+uint8\+\_\+t prep\+\_\+mask (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{p\+\_\+bit}{, }\item[{uint8\+\_\+t}]{n\+\_\+bit}{}\end{DoxyParamCaption})}
+
+
+
+\+[FONCTION INTERNE]\+ Prepare un masque binaire pour set/\+get. 
+
+Utilise principalement pour les valeurs strictement inferieures a 8 bits. 
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+bit} & Position du premier bit (de gauche a droite). \\
+\hline
+{\em n\+\_\+bit} & Nombre de bits de la valeur. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Masque binaire aligne sur la position cible. 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{data__container_8c_source_l00029}{29}} of file \doxymbox{\hyperlink{data__container_8c_source}{data\+\_\+container.\+c}}.
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{data__container_8h_a66768c162c3a8352b7d5397e90206085_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{data__container_8h_a45840c759151338fe992664f4a21c4f7}\index{data\_container.h@{data\_container.h}!set\_val\_TxData@{set\_val\_TxData}}
+\index{set\_val\_TxData@{set\_val\_TxData}!data\_container.h@{data\_container.h}}
+\doxysubsubsection{\texorpdfstring{set\_val\_TxData()}{set\_val\_TxData()}}
+{\footnotesize\ttfamily \label{data__container_8h_a45840c759151338fe992664f4a21c4f7} 
+void set\+\_\+val\+\_\+\+Tx\+Data (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{Tx\+Data\+Array}{}\end{DoxyParamCaption})}
+
+
+
+Copie un tableau externe dans le buffer global Tx\+Data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Tx\+Data\+Array} & Tableau source de N\+\_\+\+BYTES octets. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{data__container_8c_source_l00024}{24}} of file \doxymbox{\hyperlink{data__container_8c_source}{data\+\_\+container.\+c}}.
+
+\Hypertarget{data__container_8h_aa84538f1ab0c319056787e9674157405}\index{data\_container.h@{data\_container.h}!set\_value@{set\_value}}
+\index{set\_value@{set\_value}!data\_container.h@{data\_container.h}}
+\doxysubsubsection{\texorpdfstring{set\_value()}{set\_value()}}
+{\footnotesize\ttfamily \label{data__container_8h_aa84538f1ab0c319056787e9674157405} 
+int set\+\_\+value (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{tag\+\_\+name}{, }\item[{uint32\+\_\+t}]{value}{}\end{DoxyParamCaption})}
+
+
+
+Ecrit une valeur dans Tx\+Data a partir d\textquotesingle{}un tag. 
+
+\begin{DoxyWarning}{Warning}
+La valeur doit tenir dans la taille du tag.
+\end{DoxyWarning}
+En cas de depassement, l\textquotesingle{}implementation retourne CAN\+\_\+\+TG\+\_\+\+ERROR\+\_\+\+VALUE\+\_\+\+TO\+\_\+\+BIG. 
+\begin{DoxyParams}{Parameters}
+{\em tag\+\_\+name} & Nom du tag cible. \\
+\hline
+{\em value} & Nouvelle valeur a ecrire. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Code de succes ou code d\textquotesingle{}erreur. 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{data__container_8c_source_l00044}{44}} of file \doxymbox{\hyperlink{data__container_8c_source}{data\+\_\+container.\+c}}.
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=240pt]{data__container_8h_aa84538f1ab0c319056787e9674157405_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=319pt]{data__container_8h_aa84538f1ab0c319056787e9674157405_icgraph}
+\end{center}
+\end{figure}
+
+
+\label{doc-var-members}
+\Hypertarget{data__container_8h_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{data__container_8h_a0b96d44a8da73070e470c7bf30523ca1}\index{data\_container.h@{data\_container.h}!TxData@{TxData}}
+\index{TxData@{TxData}!data\_container.h@{data\_container.h}}
+\doxysubsubsection{\texorpdfstring{TxData}{TxData}}
+{\footnotesize\ttfamily \label{data__container_8h_a0b96d44a8da73070e470c7bf30523ca1} 
+uint8\+\_\+t Tx\+Data\+[\doxymbox{\hyperlink{config__value_8h_a470399f7b67e59b1cd04ab17e03c96d1}{N\+\_\+\+BYTES}}]\+\hspace{0.3cm}{\ttfamily [extern]}}
+
+Buffer de donnees CAN (payload de 8 octets). 
+
+Definition at line \doxymbox{\hyperlink{data__container_8c_source_l00012}{12}} of file \doxymbox{\hyperlink{data__container_8c_source}{data\+\_\+container.\+c}}.
+

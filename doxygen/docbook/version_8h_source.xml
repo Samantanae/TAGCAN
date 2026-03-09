@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_version_8h_source" xml:lang="en-US">
+<title>version.h</title>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_version_8h_source_1l00001"/>00001 <emphasis role="preprocessor">#ifndef&#32;VERSION_H</emphasis>
+<anchor xml:id="_version_8h_source_1l00002"/>00002 <emphasis role="preprocessor">#define&#32;VERSION_H</emphasis>
+<anchor xml:id="_version_8h_source_1l00003"/>00003 
+<anchor xml:id="_version_8h_source_1l00004"/>00004 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//Date&#32;Version&#32;Types</emphasis>
+<anchor xml:id="_version_8h_source_1l00005"/>00005 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;DATE[]&#32;=&#32;<emphasis role="stringliteral">&quot;03&quot;</emphasis>;
+<anchor xml:id="_version_8h_source_1l00006"/>00006 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;MONTH[]&#32;=&#32;<emphasis role="stringliteral">&quot;03&quot;</emphasis>;
+<anchor xml:id="_version_8h_source_1l00007"/>00007 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;YEAR[]&#32;=&#32;<emphasis role="stringliteral">&quot;2026&quot;</emphasis>;
+<anchor xml:id="_version_8h_source_1l00008"/>00008 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;UBUNTU_VERSION_STYLE[]&#32;=&#32;&#32;<emphasis role="stringliteral">&quot;26.03&quot;</emphasis>;
+<anchor xml:id="_version_8h_source_1l00009"/>00009 
+<anchor xml:id="_version_8h_source_1l00010"/>00010 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//Software&#32;Status</emphasis>
+<anchor xml:id="_version_8h_source_1l00011"/>00011 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;STATUS[]&#32;=&#32;&#32;<emphasis role="stringliteral">&quot;Alpha&quot;</emphasis>;
+<anchor xml:id="_version_8h_source_1l00012"/>00012 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;STATUS_SHORT[]&#32;=&#32;&#32;<emphasis role="stringliteral">&quot;a&quot;</emphasis>;
+<anchor xml:id="_version_8h_source_1l00013"/>00013 
+<anchor xml:id="_version_8h_source_1l00014"/>00014 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//Standard&#32;Version&#32;Type</emphasis>
+<anchor xml:id="_version_8h_source_1l00015"/>00015 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;MAJOR&#32;&#32;=&#32;9;
+<anchor xml:id="_version_8h_source_1l00016"/>00016 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;MINOR&#32;&#32;=&#32;0;
+<anchor xml:id="_version_8h_source_1l00017"/>00017 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;BUILD&#32;&#32;=&#32;24;
+<anchor xml:id="_version_8h_source_1l00018"/>00018 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;REVISION&#32;&#32;=&#32;114;
+<anchor xml:id="_version_8h_source_1l00019"/>00019 
+<anchor xml:id="_version_8h_source_1l00020"/>00020 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//Miscellaneous&#32;Version&#32;Types</emphasis>
+<anchor xml:id="_version_8h_source_1l00021"/>00021 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;BUILDS_COUNT&#32;&#32;=&#32;135;
+<anchor xml:id="_version_8h_source_1l00022"/><link linkend="_version_8h_1a0e86d046ea87587e402d375c6b0927c6">00022</link> <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#define&#32;RC_FILEVERSION&#32;9,0,24,114</emphasis>
+<anchor xml:id="_version_8h_source_1l00023"/><link linkend="_version_8h_1a4763e81d3c29ec0fab79225d3ec3f1a2">00023</link> <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#define&#32;RC_FILEVERSION_STRING&#32;&quot;9,&#32;0,&#32;24,&#32;114\0&quot;</emphasis>
+<anchor xml:id="_version_8h_source_1l00024"/>00024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;FULLVERSION_STRING&#32;[]&#32;=&#32;<emphasis role="stringliteral">&quot;9.0.24.114&quot;</emphasis>;
+<anchor xml:id="_version_8h_source_1l00025"/>00025 
+<anchor xml:id="_version_8h_source_1l00026"/>00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//These&#32;values&#32;are&#32;to&#32;keep&#32;track&#32;of&#32;your&#32;versioning&#32;state,&#32;don&apos;t&#32;modify&#32;them.</emphasis>
+<anchor xml:id="_version_8h_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;BUILD_HISTORY&#32;&#32;=&#32;24;
+<anchor xml:id="_version_8h_source_1l00028"/>00028 
+<anchor xml:id="_version_8h_source_1l00029"/>00029 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//VERSION_H</emphasis>
+</programlisting></section>

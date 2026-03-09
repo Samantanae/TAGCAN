@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_struct_tag_def" xml:lang="en-US">
+<title>TagDef Struct Reference</title>
+<indexterm><primary>TagDef</primary></indexterm>
+<para>
+
+<para>Structure de definition d&apos;un tag. </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;tag_manager.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Data Fields    </title>
+        <itemizedlist>
+            <listitem><para>char <link linkend="_struct_tag_def_1a5365d3ceaa5fb559687e0d26268ca709">name</link> [<link linkend="_config__value_8h_1ada71b9f258860d58a86ab220bfce6bf4">MAX_TAG_NAME_LEN</link>]</para>
+</listitem>
+            <listitem><para>uint8_t <link linkend="_struct_tag_def_1a894ffee63faf79f0877a12c871a18b3a">n_bits</link></para>
+</listitem>
+            <listitem><para>int8_t <link linkend="_struct_tag_def_1a985f815d0edbf8a411fbf325a30baec8">byte_idx_a</link></para>
+</listitem>
+            <listitem><para>int8_t <link linkend="_struct_tag_def_1a1368f5414ba506dc1626d65a1083dc92">byte_idx_b</link></para>
+</listitem>
+            <listitem><para>uint8_t <link linkend="_struct_tag_def_1ab2ab707c2832eb3cd8776c3134b29b1d">bit_pos_a</link></para>
+</listitem>
+            <listitem><para>uint8_t <link linkend="_struct_tag_def_1a315b71fd9f91bd21c82164e006859ede">bit_pos_b</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Structure de definition d&apos;un tag. </para>
+<para>
+Definition at line <link linkend="_tag__manager_8h_source_1l00014">14</link> of file <link linkend="_tag__manager_8h_source">tag_manager.h</link>.</para>
+</section>
+<section>
+<title>Field Documentation</title>
+<anchor xml:id="_struct_tag_def_1ab2ab707c2832eb3cd8776c3134b29b1d"/><section>
+    <title>bit_pos_a</title>
+<indexterm><primary>bit_pos_a</primary><secondary>TagDef</secondary></indexterm>
+<indexterm><primary>TagDef</primary><secondary>bit_pos_a</secondary></indexterm>
+<para><computeroutput>uint8_t bit_pos_a</computeroutput></para>
+<para>Position de debut dans le byte A (de gauche a droite). </para>
+<para>
+Definition at line <link linkend="_tag__manager_8h_source_1l00020">20</link> of file <link linkend="_tag__manager_8h_source">tag_manager.h</link>.</para>
+</section>
+<anchor xml:id="_struct_tag_def_1a315b71fd9f91bd21c82164e006859ede"/><section>
+    <title>bit_pos_b</title>
+<indexterm><primary>bit_pos_b</primary><secondary>TagDef</secondary></indexterm>
+<indexterm><primary>TagDef</primary><secondary>bit_pos_b</secondary></indexterm>
+<para><computeroutput>uint8_t bit_pos_b</computeroutput></para>
+<para>Position de debut dans le byte B pour les tags &gt; 8 bits, 0 sinon. </para>
+<para>
+Definition at line <link linkend="_tag__manager_8h_source_1l00021">21</link> of file <link linkend="_tag__manager_8h_source">tag_manager.h</link>.</para>
+</section>
+<anchor xml:id="_struct_tag_def_1a985f815d0edbf8a411fbf325a30baec8"/><section>
+    <title>byte_idx_a</title>
+<indexterm><primary>byte_idx_a</primary><secondary>TagDef</secondary></indexterm>
+<indexterm><primary>TagDef</primary><secondary>byte_idx_a</secondary></indexterm>
+<para><computeroutput>int8_t byte_idx_a</computeroutput></para>
+<para>Index du byte de la partie A (0..7), -1 si non utilise. </para>
+<para>
+Definition at line <link linkend="_tag__manager_8h_source_1l00018">18</link> of file <link linkend="_tag__manager_8h_source">tag_manager.h</link>.</para>
+</section>
+<anchor xml:id="_struct_tag_def_1a1368f5414ba506dc1626d65a1083dc92"/><section>
+    <title>byte_idx_b</title>
+<indexterm><primary>byte_idx_b</primary><secondary>TagDef</secondary></indexterm>
+<indexterm><primary>TagDef</primary><secondary>byte_idx_b</secondary></indexterm>
+<para><computeroutput>int8_t byte_idx_b</computeroutput></para>
+<para>Index du byte de la partie B (tags &gt; 8 bits), sinon -1. </para>
+<para>
+Definition at line <link linkend="_tag__manager_8h_source_1l00019">19</link> of file <link linkend="_tag__manager_8h_source">tag_manager.h</link>.</para>
+</section>
+<anchor xml:id="_struct_tag_def_1a894ffee63faf79f0877a12c871a18b3a"/><section>
+    <title>n_bits</title>
+<indexterm><primary>n_bits</primary><secondary>TagDef</secondary></indexterm>
+<indexterm><primary>TagDef</primary><secondary>n_bits</secondary></indexterm>
+<para><computeroutput>uint8_t n_bits</computeroutput></para>
+<para>Taille en bits (implementation actuelle: 1..16, 0 si slot inutilise). </para>
+<para>
+Definition at line <link linkend="_tag__manager_8h_source_1l00017">17</link> of file <link linkend="_tag__manager_8h_source">tag_manager.h</link>.</para>
+</section>
+<anchor xml:id="_struct_tag_def_1a5365d3ceaa5fb559687e0d26268ca709"/><section>
+    <title>name</title>
+<indexterm><primary>name</primary><secondary>TagDef</secondary></indexterm>
+<indexterm><primary>TagDef</primary><secondary>name</secondary></indexterm>
+<para><computeroutput>char name[<link linkend="_config__value_8h_1ada71b9f258860d58a86ab220bfce6bf4">MAX_TAG_NAME_LEN</link>]</computeroutput></para>
+<para>Nom logique du tag. Doit etre unique. </para>
+<para>
+Definition at line <link linkend="_tag__manager_8h_source_1l00016">16</link> of file <link linkend="_tag__manager_8h_source">tag_manager.h</link>.</para>
+</section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+<link linkend="_tag__manager_8h">tag_manager.h</link></section>
+</section>

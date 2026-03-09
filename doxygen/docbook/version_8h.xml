@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_version_8h" xml:lang="en-US">
+<title>version.h File Reference</title>
+<indexterm><primary>version.h</primary></indexterm>
+<simplesect>
+    <title>Macros    </title>
+        <itemizedlist>
+            <listitem><para>#define <link linkend="_version_8h_1a0e86d046ea87587e402d375c6b0927c6">RC_FILEVERSION</link>&#160;&#160;&#160;9,0,24,114</para>
+</listitem>
+            <listitem><para>#define <link linkend="_version_8h_1a4763e81d3c29ec0fab79225d3ec3f1a2">RC_FILEVERSION_STRING</link>&#160;&#160;&#160;&quot;9, 0, 24, 114\0&quot;</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Macro Definition Documentation</title>
+<anchor xml:id="_version_8h_1a0e86d046ea87587e402d375c6b0927c6"/><section>
+    <title>RC_FILEVERSION</title>
+<indexterm><primary>RC_FILEVERSION</primary><secondary>version.h</secondary></indexterm>
+<indexterm><primary>version.h</primary><secondary>RC_FILEVERSION</secondary></indexterm>
+<para><computeroutput>#define RC_FILEVERSION&#160;&#160;&#160;9,0,24,114</computeroutput></para><para>
+Definition at line <link linkend="_version_8h_source_1l00022">22</link> of file <link linkend="_version_8h_source">version.h</link>.</para>
+</section>
+<anchor xml:id="_version_8h_1a4763e81d3c29ec0fab79225d3ec3f1a2"/><section>
+    <title>RC_FILEVERSION_STRING</title>
+<indexterm><primary>RC_FILEVERSION_STRING</primary><secondary>version.h</secondary></indexterm>
+<indexterm><primary>version.h</primary><secondary>RC_FILEVERSION_STRING</secondary></indexterm>
+<para><computeroutput>#define RC_FILEVERSION_STRING&#160;&#160;&#160;&quot;9, 0, 24, 114\0&quot;</computeroutput></para><para>
+Definition at line <link linkend="_version_8h_source_1l00023">23</link> of file <link linkend="_version_8h_source">version.h</link>.</para>
+</section>
+</section>
+</section>

@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_test__utils_8c" xml:lang="en-US">
+<title>test_utils.c File Reference</title>
+<indexterm><primary>test_utils.c</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;test_utils.h&quot;<?linebreak?>#include &lt;stdbool.h&gt;<?linebreak?>#include &lt;stdio.h&gt;<?linebreak?></programlisting>Include dependency graph for test_utils.c:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="test__utils_8c__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_test__utils_8c_1aa8146fc4ef1bddae797d44b5daba7f97">TEST_</link> (const char *name, const bool condition)</para>
+</listitem>
+            <listitem><para>void <link linkend="_test__utils_8c_1ad232e9e8300208f8e732e9a9426dab3e">TEST_EQ_INT_</link> (const char *name, const int val_1, const int val_2)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para>int <link linkend="_test__utils_8c_1ab7324491948254cde8946b74d8bca3bc">total_tests</link></para>
+</listitem>
+            <listitem><para>int <link linkend="_test__utils_8c_1a51c2b99b66f63ee9064347f9151e99ba">passed_tests</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_test__utils_8c_1aa8146fc4ef1bddae797d44b5daba7f97"/><section>
+    <title>TEST_()</title>
+<indexterm><primary>TEST_</primary><secondary>test_utils.c</secondary></indexterm>
+<indexterm><primary>test_utils.c</primary><secondary>TEST_</secondary></indexterm>
+<para><computeroutput>void TEST_ (const char * name, const bool condition)</computeroutput></para><para>
+Definition at line <link linkend="_test__utils_8c_source_1l00007">7</link> of file <link linkend="_test__utils_8c_source">test_utils.c</link>.</para>
+</section>
+<anchor xml:id="_test__utils_8c_1ad232e9e8300208f8e732e9a9426dab3e"/><section>
+    <title>TEST_EQ_INT_()</title>
+<indexterm><primary>TEST_EQ_INT_</primary><secondary>test_utils.c</secondary></indexterm>
+<indexterm><primary>test_utils.c</primary><secondary>TEST_EQ_INT_</secondary></indexterm>
+<para><computeroutput>void TEST_EQ_INT_ (const char * name, const int val_1, const int val_2)</computeroutput></para><para>
+Definition at line <link linkend="_test__utils_8c_source_1l00011">11</link> of file <link linkend="_test__utils_8c_source">test_utils.c</link>.</para>
+</section>
+</section>
+<section>
+<title>Variable Documentation</title>
+<anchor xml:id="_test__utils_8c_1a51c2b99b66f63ee9064347f9151e99ba"/><section>
+    <title>passed_tests</title>
+<indexterm><primary>passed_tests</primary><secondary>test_utils.c</secondary></indexterm>
+<indexterm><primary>test_utils.c</primary><secondary>passed_tests</secondary></indexterm>
+<para><computeroutput>int passed_tests<computeroutput>[extern]</computeroutput></computeroutput></para>
+<para>le nombre total de test réussi </para>
+<para>
+Definition at line <link linkend="_main_8c_source_1l00017">17</link> of file <link linkend="_main_8c_source">main.c</link>.</para>
+</section>
+<anchor xml:id="_test__utils_8c_1ab7324491948254cde8946b74d8bca3bc"/><section>
+    <title>total_tests</title>
+<indexterm><primary>total_tests</primary><secondary>test_utils.c</secondary></indexterm>
+<indexterm><primary>test_utils.c</primary><secondary>total_tests</secondary></indexterm>
+<para><computeroutput>int total_tests<computeroutput>[extern]</computeroutput></computeroutput></para>
+<para>le nombre total de test effectué </para>
+<para>
+Definition at line <link linkend="_main_8c_source_1l00018">18</link> of file <link linkend="_main_8c_source">main.c</link>.</para>
+</section>
+</section>
+</section>

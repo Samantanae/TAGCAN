@@ -1,0 +1,68 @@
+.TH "TagDef" 3 "TAGCAN" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TagDef \- Structure de definition d'un tag\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <tag_manager\&.h>\fP
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "char \fBname\fP [\fBMAX_TAG_NAME_LEN\fP]"
+.br
+.ti -1c
+.RI "uint8_t \fBn_bits\fP"
+.br
+.ti -1c
+.RI "int8_t \fBbyte_idx_a\fP"
+.br
+.ti -1c
+.RI "int8_t \fBbyte_idx_b\fP"
+.br
+.ti -1c
+.RI "uint8_t \fBbit_pos_a\fP"
+.br
+.ti -1c
+.RI "uint8_t \fBbit_pos_b\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Structure de definition d'un tag\&. 
+.PP
+Definition at line \fB14\fP of file \fBtag_manager\&.h\fP\&.
+.SH "Field Documentation"
+.PP 
+.SS "uint8_t bit_pos_a"
+Position de debut dans le byte A (de gauche a droite)\&. 
+.PP
+Definition at line \fB20\fP of file \fBtag_manager\&.h\fP\&.
+.SS "uint8_t bit_pos_b"
+Position de debut dans le byte B pour les tags > 8 bits, 0 sinon\&. 
+.PP
+Definition at line \fB21\fP of file \fBtag_manager\&.h\fP\&.
+.SS "int8_t byte_idx_a"
+Index du byte de la partie A (0\&.\&.7), -1 si non utilise\&. 
+.PP
+Definition at line \fB18\fP of file \fBtag_manager\&.h\fP\&.
+.SS "int8_t byte_idx_b"
+Index du byte de la partie B (tags > 8 bits), sinon -1\&. 
+.PP
+Definition at line \fB19\fP of file \fBtag_manager\&.h\fP\&.
+.SS "uint8_t n_bits"
+Taille en bits (implementation actuelle: 1\&.\&.16, 0 si slot inutilise)\&. 
+.PP
+Definition at line \fB17\fP of file \fBtag_manager\&.h\fP\&.
+.SS "char name[\fBMAX_TAG_NAME_LEN\fP]"
+Nom logique du tag\&. Doit etre unique\&. 
+.PP
+Definition at line \fB16\fP of file \fBtag_manager\&.h\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for TAGCAN from the source code\&.

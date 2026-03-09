@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structtsfp" xml:lang="en-US">
+<title>tsfp Struct Reference</title>
+<indexterm><primary>tsfp</primary></indexterm>
+<para>
+
+<para>Buffer de rendu pour l&apos;affichage de repartition bit-a-bit. </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;print_val.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Data Fields    </title>
+        <itemizedlist>
+            <listitem><para>char <link linkend="_structtsfp_1a2d723190f449137a272d5b64518761dd">bi</link> [8]</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Buffer de rendu pour l&apos;affichage de repartition bit-a-bit. </para>
+<para>
+Definition at line <link linkend="_print__val_8h_source_1l00039">39</link> of file <link linkend="_print__val_8h_source">print_val.h</link>.</para>
+</section>
+<section>
+<title>Field Documentation</title>
+<anchor xml:id="_structtsfp_1a2d723190f449137a272d5b64518761dd"/><section>
+    <title>bi</title>
+<indexterm><primary>bi</primary><secondary>tsfp</secondary></indexterm>
+<indexterm><primary>tsfp</primary><secondary>bi</secondary></indexterm>
+<para><computeroutput>char bi[8]</computeroutput></para><para>
+Definition at line <link linkend="_print__val_8h_source_1l00040">40</link> of file <link linkend="_print__val_8h_source">print_val.h</link>.</para>
+</section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+<link linkend="_print__val_8h">print_val.h</link></section>
+</section>

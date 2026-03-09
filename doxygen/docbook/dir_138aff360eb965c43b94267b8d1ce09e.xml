@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_138aff360eb965c43b94267b8d1ce09e" xml:lang="en-US">
+<title>documentation Directory Reference</title>
+<indexterm><primary>documentation Directory Reference</primary></indexterm>
+<section>
+<title>Detailed Description</title>
+<section xml:id="_dir_138aff360eb965c43b94267b8d1ce09e_1autotoc_md35">
+<title>Documentation TAGCAN</title>
+<para>Ce dossier contient une documentation manuelle (separee du code source) basee sur l&apos;etat actuel du projet.</para>
+</section>
+<section xml:id="_dir_138aff360eb965c43b94267b8d1ce09e_1autotoc_md36">
+<title>Contenu</title>
+<para><itemizedlist>
+<listitem>
+<para><computeroutput><link linkend="__a_p_i___r_e_f_e_r_e_n_c_e_8md">documentation/API_REFERENCE.md</link></computeroutput>: reference des modules, structures, fonctions et codes de retour.</para>
+</listitem><listitem>
+<para><computeroutput><link linkend="__c_o_m_m_e_n_t_a_i_r_e_s___a_u_d_i_t_8md">documentation/COMMENTAIRES_AUDIT.md</link></computeroutput>: verification des commentaires existants (qualite + ecarts).</para>
+</listitem><listitem>
+<para><computeroutput><link linkend="__c_o_h_e_r_e_n_c_e_8md">documentation/COHERENCE.md</link></computeroutput>: verification de coherence entre code, commentaires et tests.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+<section xml:id="_dir_138aff360eb965c43b94267b8d1ce09e_1autotoc_md37">
+<title>Perimetre</title>
+<para><itemizedlist>
+<listitem>
+<para>Sources analysees: <computeroutput>include/</computeroutput>, <computeroutput>scripts/</computeroutput>, <computeroutput>tests/</computeroutput>.</para>
+</listitem><listitem>
+<para>Date de verification: 2026-03-09.</para>
+</listitem><listitem>
+<para>Objectif: documenter le comportement reel observe, puis signaler les incoherences. </para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>
+</section>

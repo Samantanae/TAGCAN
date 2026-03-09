@@ -1,0 +1,250 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.0" xml:lang="en-US">
+  <compounddef id="version_8h" kind="file" language="C++">
+    <compoundname>version.h</compoundname>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="version_8h_1a0e86d046ea87587e402d375c6b0927c6" prot="public" static="no">
+        <name>RC_FILEVERSION</name>
+        <initializer>9,0,24,114</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/version.h" line="22" column="10" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/version.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="version_8h_1a4763e81d3c29ec0fab79225d3ec3f1a2" prot="public" static="no">
+        <name>RC_FILEVERSION_STRING</name>
+        <initializer>&quot;9, 0, 24, 114\0&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/version.h" line="23" column="10" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/version.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="version_8h_1af5afeaef242e0d7f8de39b140cd0c7b4" prot="public" static="yes" mutable="no">
+        <type>const char</type>
+        <definition>const char DATE[]</definition>
+        <argsstring>[]</argsstring>
+        <name>DATE</name>
+        <initializer>= &quot;03&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/version.h" line="5" column="19" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/version.h" bodystart="5" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="version_8h_1a6f62397b1e6d16b924ec1907b837da1d" prot="public" static="yes" mutable="no">
+        <type>const char</type>
+        <definition>const char MONTH[]</definition>
+        <argsstring>[]</argsstring>
+        <name>MONTH</name>
+        <initializer>= &quot;03&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/version.h" line="6" column="19" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/version.h" bodystart="6" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="version_8h_1ad1bbd4c47f4333cd6a0970f27ac77a0c" prot="public" static="yes" mutable="no">
+        <type>const char</type>
+        <definition>const char YEAR[]</definition>
+        <argsstring>[]</argsstring>
+        <name>YEAR</name>
+        <initializer>= &quot;2026&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/version.h" line="7" column="19" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/version.h" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="version_8h_1a0161f4aac9b7eaed7e709d0b90c50ab7" prot="public" static="yes" mutable="no">
+        <type>const char</type>
+        <definition>const char UBUNTU_VERSION_STYLE[]</definition>
+        <argsstring>[]</argsstring>
+        <name>UBUNTU_VERSION_STYLE</name>
+        <initializer>=  &quot;26.03&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/version.h" line="8" column="19" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/version.h" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="version_8h_1ab34af9c61605bcba941d2b631b70b12f" prot="public" static="yes" mutable="no">
+        <type>const char</type>
+        <definition>const char STATUS[]</definition>
+        <argsstring>[]</argsstring>
+        <name>STATUS</name>
+        <initializer>=  &quot;Alpha&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/version.h" line="11" column="19" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/version.h" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="version_8h_1a17b33583e38312d7347b7c9f0ded508c" prot="public" static="yes" mutable="no">
+        <type>const char</type>
+        <definition>const char STATUS_SHORT[]</definition>
+        <argsstring>[]</argsstring>
+        <name>STATUS_SHORT</name>
+        <initializer>=  &quot;a&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/version.h" line="12" column="19" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/version.h" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="version_8h_1a7d40d5371dc102f540077612a9066acd" prot="public" static="yes" mutable="no">
+        <type>const long</type>
+        <definition>const long MAJOR</definition>
+        <argsstring></argsstring>
+        <name>MAJOR</name>
+        <initializer>= 9</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/version.h" line="15" column="19" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/version.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="version_8h_1a57f7312aa146d14f5604ec9bbe169bce" prot="public" static="yes" mutable="no">
+        <type>const long</type>
+        <definition>const long MINOR</definition>
+        <argsstring></argsstring>
+        <name>MINOR</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/version.h" line="16" column="19" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/version.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="version_8h_1a3e5c7a5cbcef47cda4d0b0ec4c199697" prot="public" static="yes" mutable="no">
+        <type>const long</type>
+        <definition>const long BUILD</definition>
+        <argsstring></argsstring>
+        <name>BUILD</name>
+        <initializer>= 24</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/version.h" line="17" column="19" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/version.h" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="version_8h_1a11b2e7a114b7192ea8a564491c83d32f" prot="public" static="yes" mutable="no">
+        <type>const long</type>
+        <definition>const long REVISION</definition>
+        <argsstring></argsstring>
+        <name>REVISION</name>
+        <initializer>= 114</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/version.h" line="18" column="19" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/version.h" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="version_8h_1a61b6922482946e07d1d21fea09ba0941" prot="public" static="yes" mutable="no">
+        <type>const long</type>
+        <definition>const long BUILDS_COUNT</definition>
+        <argsstring></argsstring>
+        <name>BUILDS_COUNT</name>
+        <initializer>= 135</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/version.h" line="21" column="19" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/version.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="version_8h_1aa74b9762dc0de665efce4c807b3a3a30" prot="public" static="yes" mutable="no">
+        <type>const char</type>
+        <definition>const char FULLVERSION_STRING[]</definition>
+        <argsstring>[]</argsstring>
+        <name>FULLVERSION_STRING</name>
+        <initializer>= &quot;9.0.24.114&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/version.h" line="24" column="19" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/version.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="version_8h_1a8c576921d513513b04e78e5cc8ccd0a4" prot="public" static="yes" mutable="no">
+        <type>const long</type>
+        <definition>const long BUILD_HISTORY</definition>
+        <argsstring></argsstring>
+        <name>BUILD_HISTORY</name>
+        <initializer>= 24</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/version.h" line="27" column="19" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/version.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>VERSION_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VERSION_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Date<sp/>Version<sp/>Types</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>DATE[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;03&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>MONTH[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;03&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>YEAR[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;2026&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>UBUNTU_VERSION_STYLE[]<sp/>=<sp/><sp/></highlight><highlight class="stringliteral">&quot;26.03&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Software<sp/>Status</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>STATUS[]<sp/>=<sp/><sp/></highlight><highlight class="stringliteral">&quot;Alpha&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>STATUS_SHORT[]<sp/>=<sp/><sp/></highlight><highlight class="stringliteral">&quot;a&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Standard<sp/>Version<sp/>Type</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>MAJOR<sp/><sp/>=<sp/>9;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>MINOR<sp/><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>BUILD<sp/><sp/>=<sp/>24;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>REVISION<sp/><sp/>=<sp/>114;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Miscellaneous<sp/>Version<sp/>Types</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>BUILDS_COUNT<sp/><sp/>=<sp/>135;</highlight></codeline>
+<codeline lineno="22" refid="version_8h_1a0e86d046ea87587e402d375c6b0927c6" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#define<sp/>RC_FILEVERSION<sp/>9,0,24,114</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="version_8h_1a4763e81d3c29ec0fab79225d3ec3f1a2" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#define<sp/>RC_FILEVERSION_STRING<sp/>&quot;9,<sp/>0,<sp/>24,<sp/>114\0&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>FULLVERSION_STRING<sp/>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;9.0.24.114&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//These<sp/>values<sp/>are<sp/>to<sp/>keep<sp/>track<sp/>of<sp/>your<sp/>versioning<sp/>state,<sp/>don&apos;t<sp/>modify<sp/>them.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>BUILD_HISTORY<sp/><sp/>=<sp/>24;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//VERSION_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/version.h"/>
+  </compounddef>
+</doxygen>

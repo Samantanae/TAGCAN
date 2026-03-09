@@ -1,0 +1,441 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.0" xml:lang="en-US">
+  <compounddef id="data__container_8h" kind="file" language="C++">
+    <compoundname>data_container.h</compoundname>
+    <includes local="no">stdint.h</includes>
+    <includes refid="tag__manager_8h" local="yes">tag_manager.h</includes>
+    <includedby refid="_t_a_g_c_a_n_8h" local="yes">TAGCAN.h</includedby>
+    <includedby refid="data__container_8c" local="yes">data_container.c</includedby>
+    <includedby refid="main_8c" local="yes">main.c</includedby>
+    <includedby refid="print__val_8c" local="yes">print_val.c</includedby>
+    <incdepgraph>
+      <node id="4">
+        <label>../config_value.h</label>
+        <link refid="config__value_8h"/>
+      </node>
+      <node id="1">
+        <label>data_container.h</label>
+        <link refid="data__container_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>tag_manager.h</label>
+        <link refid="tag__manager_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>stdbool.h</label>
+      </node>
+      <node id="2">
+        <label>stdint.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>TAGCAN.h</label>
+        <link refid="_t_a_g_c_a_n_8h"/>
+      </node>
+      <node id="1">
+        <label>data_container.h</label>
+        <link refid="data__container_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>main.c</label>
+        <link refid="main_8c"/>
+      </node>
+      <node id="3">
+        <label>data_container.c</label>
+        <link refid="data__container_8c"/>
+      </node>
+      <node id="5">
+        <label>print_val.c</label>
+        <link refid="print__val_8c"/>
+      </node>
+    </invincdepgraph>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="data__container_8h_1ab1e0c45daf869a5ff0a8c836629d657f" prot="public" static="no">
+        <name>DATA_CONTAINER_H</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/data_container.h" line="7" column="9" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/data_container.h" bodystart="7" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1" prot="public" static="no" extern="yes" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t TxData[N_BYTES]</definition>
+        <argsstring>[N_BYTES]</argsstring>
+        <name>TxData</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Buffer de donnees CAN (payload de 8 octets). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/data_container.h" line="10" column="16" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/sub_scripts/data_container.c" bodystart="12" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/data_container.h" declline="10" declcolumn="16"/>
+        <referencedby refid="data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f" compoundref="data__container_8c" startline="106" endline="157">get_value</referencedby>
+        <referencedby refid="data__container_8h_1a129f017feb0712be1dcf7932e6035aa0" compoundref="data__container_8c" startline="14" endline="20">init_data_container</referencedby>
+        <referencedby refid="print__val_8h_1a7d217b9d9a6575858c03ca9854bb151b" compoundref="print__val_8c" startline="148" endline="157">print_all_data_bin</referencedby>
+        <referencedby refid="print__val_8h_1aab1b8ef8b5cbbf7a78a88248ae81155c" compoundref="print__val_8c" startline="162" endline="171">print_all_with_title</referencedby>
+        <referencedby refid="data__container_8h_1a45840c759151338fe992664f4a21c4f7" compoundref="data__container_8c" startline="24" endline="28">set_val_TxData</referencedby>
+        <referencedby refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" compoundref="data__container_8c" startline="44" endline="98">set_value</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="data__container_8h_1a129f017feb0712be1dcf7932e6035aa0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void init_data_container</definition>
+        <argsstring>(void)</argsstring>
+        <name>init_data_container</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Reinitialise le payload TxData a zero. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Si reexecutee, la fonction efface les donnees precedemment ecrites. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/data_container.h" line="16" column="6" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/sub_scripts/data_container.c" bodystart="14" bodyend="20" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/data_container.h" declline="16" declcolumn="6"/>
+        <references refid="config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1" compoundref="config__value_8h" startline="9">N_BYTES</references>
+        <references refid="data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1" compoundref="data__container_8c" startline="12">TxData</references>
+        <referencedby refid="main_8c_1ae9bbb2f5bb69f73e92c761f83223285a" compoundref="main_8c" startline="177" endline="329">run_all_tests</referencedby>
+        <referencedby refid="main_8c_1a4f26f5b24d899127d66338ba3bfd7f1b" compoundref="main_8c" startline="104" endline="170">somme_other_test</referencedby>
+        <referencedby refid="main_8c_1a9c4bb6f6d00e76eae45e966a4c628178" compoundref="main_8c" startline="72" endline="97">test_print</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="data__container_8h_1aa84538f1ab0c319056787e9674157405" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int set_value</definition>
+        <argsstring>(const char *tag_name, uint32_t value)</argsstring>
+        <name>set_value</name>
+        <param>
+          <type>const char *</type>
+          <declname>tag_name</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Ecrit une valeur dans TxData a partir d&apos;un tag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="warning"><para>La valeur doit tenir dans la taille du tag.</para>
+</simplesect>
+En cas de depassement, l&apos;implementation retourne CAN_TG_ERROR_VALUE_TO_BIG. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tag_name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Nom du tag cible. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Nouvelle valeur a ecrire. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Code de succes ou code d&apos;erreur. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/data_container.h" line="27" column="5" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/sub_scripts/data_container.c" bodystart="44" bodyend="98" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/data_container.h" declline="27" declcolumn="5"/>
+        <references refid="struct_tag_def_1ab2ab707c2832eb3cd8776c3134b29b1d" compoundref="tag__manager_8h" startline="20">TagDef::bit_pos_a</references>
+        <references refid="struct_tag_def_1a315b71fd9f91bd21c82164e006859ede" compoundref="tag__manager_8h" startline="21">TagDef::bit_pos_b</references>
+        <references refid="struct_tag_def_1a985f815d0edbf8a411fbf325a30baec8" compoundref="tag__manager_8h" startline="18">TagDef::byte_idx_a</references>
+        <references refid="struct_tag_def_1a1368f5414ba506dc1626d65a1083dc92" compoundref="tag__manager_8h" startline="19">TagDef::byte_idx_b</references>
+        <references refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947fab1cfc87a8731dfcbc6e986a1b81115ac" compoundref="config__value_8h" startline="54">CAN_TG_ERROR_VALUE_TO_BIG</references>
+        <references refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3" compoundref="config__value_8h" startline="43">CAN_TG_SUCCESS</references>
+        <references refid="tag__manager_8h_1a5737e741608851f8e3822cf07261da44" compoundref="tag__manager_8c" startline="288" endline="298">get_tag_def</references>
+        <references refid="struct_tag_def_1a894ffee63faf79f0877a12c871a18b3a" compoundref="tag__manager_8h" startline="17">TagDef::n_bits</references>
+        <references refid="data__container_8c_1a66768c162c3a8352b7d5397e90206085" compoundref="data__container_8c" startline="29" endline="42">prep_mask</references>
+        <references refid="data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1" compoundref="data__container_8c" startline="12">TxData</references>
+        <referencedby refid="main_8c_1ae9bbb2f5bb69f73e92c761f83223285a" compoundref="main_8c" startline="177" endline="329">run_all_tests</referencedby>
+        <referencedby refid="main_8c_1a9c4bb6f6d00e76eae45e966a4c628178" compoundref="main_8c" startline="72" endline="97">test_print</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int get_value</definition>
+        <argsstring>(const char *tag_name, uint32_t *out_value)</argsstring>
+        <name>get_value</name>
+        <param>
+          <type>const char *</type>
+          <declname>tag_name</declname>
+        </param>
+        <param>
+          <type>uint32_t *</type>
+          <declname>out_value</declname>
+        </param>
+        <briefdescription>
+<para>Lit la valeur associee a un tag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tag_name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Nom du tag a lire. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>out_value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Adresse de sortie qui recoit la valeur extraite. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>CAN_TG_SUCCESS en cas de succes, sinon un code d&apos;erreur negatif. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+<para>Copie un buffer externe dans TxData. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>TxDataArray</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Tableau source de N_BYTES octets.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Recompose un entier 16 bits depuis deux octets. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ba</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Octet de poids faible. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Octet de poids fort. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Valeur 16 bits combinee.</para>
+</simplesect>
+</para>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/data_container.h" line="36" column="5" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/sub_scripts/data_container.c" bodystart="106" bodyend="157" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/data_container.h" declline="36" declcolumn="5"/>
+        <references refid="struct_tag_def_1ab2ab707c2832eb3cd8776c3134b29b1d" compoundref="tag__manager_8h" startline="20">TagDef::bit_pos_a</references>
+        <references refid="struct_tag_def_1a315b71fd9f91bd21c82164e006859ede" compoundref="tag__manager_8h" startline="21">TagDef::bit_pos_b</references>
+        <references refid="struct_tag_def_1a985f815d0edbf8a411fbf325a30baec8" compoundref="tag__manager_8h" startline="18">TagDef::byte_idx_a</references>
+        <references refid="struct_tag_def_1a1368f5414ba506dc1626d65a1083dc92" compoundref="tag__manager_8h" startline="19">TagDef::byte_idx_b</references>
+        <references refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947faefecc0d5f9f8d279aeeac67967a54040" compoundref="config__value_8h" startline="44">CAN_TG_ERROR_TAG_NOT_FOUND_</references>
+        <references refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3" compoundref="config__value_8h" startline="43">CAN_TG_SUCCESS</references>
+        <references refid="tag__manager_8h_1a5737e741608851f8e3822cf07261da44" compoundref="tag__manager_8c" startline="288" endline="298">get_tag_def</references>
+        <references refid="struct_tag_def_1a894ffee63faf79f0877a12c871a18b3a" compoundref="tag__manager_8h" startline="17">TagDef::n_bits</references>
+        <references refid="data__container_8c_1a66768c162c3a8352b7d5397e90206085" compoundref="data__container_8c" startline="29" endline="42">prep_mask</references>
+        <references refid="data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1" compoundref="data__container_8c" startline="12">TxData</references>
+        <referencedby refid="print__val_8h_1a6904e40665dc664fc6611bfe2d913773" compoundref="print__val_8c" startline="43" endline="56">print_all_data</referencedby>
+        <referencedby refid="main_8c_1ae9bbb2f5bb69f73e92c761f83223285a" compoundref="main_8c" startline="177" endline="329">run_all_tests</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="data__container_8h_1a66768c162c3a8352b7d5397e90206085" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t prep_mask</definition>
+        <argsstring>(uint8_t p_bit, uint8_t n_bit)</argsstring>
+        <name>prep_mask</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>p_bit</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>n_bit</declname>
+        </param>
+        <briefdescription>
+<para>[FONCTION INTERNE] Prepare un masque binaire pour set/get. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Utilise principalement pour les valeurs strictement inferieures a 8 bits. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>p_bit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Position du premier bit (de gauche a droite). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_bit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Nombre de bits de la valeur. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Masque binaire aligne sur la position cible. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/data_container.h" line="46" column="9" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/sub_scripts/data_container.c" bodystart="29" bodyend="42" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/data_container.h" declline="46" declcolumn="9"/>
+        <referencedby refid="data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f" compoundref="data__container_8c" startline="106" endline="157">get_value</referencedby>
+        <referencedby refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" compoundref="data__container_8c" startline="44" endline="98">set_value</referencedby>
+        <referencedby refid="main_8c_1a4f26f5b24d899127d66338ba3bfd7f1b" compoundref="main_8c" startline="104" endline="170">somme_other_test</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="data__container_8h_1ae1649807202241b28239e8cb212a18b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void can_simulate_send_receive</definition>
+        <argsstring>(uint8_t *tx_buffer, uint8_t *rx_buffer)</argsstring>
+        <name>can_simulate_send_receive</name>
+        <param>
+          <type>uint8_t *</type>
+          <declname>tx_buffer</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>rx_buffer</declname>
+        </param>
+        <briefdescription>
+<para>Simule un envoi/reception CAN par copie buffer-a-buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tx_buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer source (emission). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rx_buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer destination (reception).</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Simule un envoi/reception CAN par copie buffer-a-buffer.</para>
+<para>Copie simplement tx_buffer dans rx_buffer. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tx_buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer d&apos;emission. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rx_buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer de reception. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/data_container.h" line="51" column="6" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/sub_scripts/data_container.c" bodystart="165" bodyend="171" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/data_container.h" declline="51" declcolumn="6"/>
+        <references refid="config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1" compoundref="config__value_8h" startline="9">N_BYTES</references>
+      </memberdef>
+      <memberdef kind="function" id="data__container_8h_1a45840c759151338fe992664f4a21c4f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void set_val_TxData</definition>
+        <argsstring>(uint8_t *TxDataArray)</argsstring>
+        <name>set_val_TxData</name>
+        <param>
+          <type>uint8_t *</type>
+          <declname>TxDataArray</declname>
+        </param>
+        <briefdescription>
+<para>Copie un tableau externe dans le buffer global TxData. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>TxDataArray</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Tableau source de N_BYTES octets. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/data_container.h" line="58" column="6" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/sub_scripts/data_container.c" bodystart="24" bodyend="28" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/data_container.h" declline="58" declcolumn="6"/>
+        <references refid="config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1" compoundref="config__value_8h" startline="9">N_BYTES</references>
+        <references refid="data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1" compoundref="data__container_8c" startline="12">TxData</references>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>DATA_CONTAINER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="tag__manager_8h" kindref="compound">tag_manager.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7" refid="data__container_8h_1ab1e0c45daf869a5ff0a8c836629d657f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DATA_CONTAINER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Buffer<sp/>de<sp/>donnees<sp/>CAN<sp/>(payload<sp/>de<sp/>8<sp/>octets)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1" kindref="member">TxData</ref>[<ref refid="config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1" kindref="member">N_BYTES</ref>];<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="data__container_8h_1a129f017feb0712be1dcf7932e6035aa0" kindref="member">init_data_container</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Fonctions<sp/>principales<sp/>(set/get)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" kindref="member">set_value</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag_name,<sp/>uint32_t<sp/>value);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f" kindref="member">get_value</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag_name,<sp/>uint32_t*<sp/>out_value);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal">uint8_t<sp/><ref refid="data__container_8h_1a66768c162c3a8352b7d5397e90206085" kindref="member">prep_mask</ref>(uint8_t<sp/>p_bit,<sp/>uint8_t<sp/>n_bit);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="data__container_8h_1ae1649807202241b28239e8cb212a18b6" kindref="member">can_simulate_send_receive</ref>(uint8_t*<sp/>tx_buffer,<sp/>uint8_t*<sp/>rx_buffer);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment">//int<sp/>CAN_RECEVE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="data__container_8h_1a45840c759151338fe992664f4a21c4f7" kindref="member">set_val_TxData</ref>(uint8_t<sp/>*TxDataArray);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>DATA_CONTAINER_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/data_container.h"/>
+  </compounddef>
+</doxygen>

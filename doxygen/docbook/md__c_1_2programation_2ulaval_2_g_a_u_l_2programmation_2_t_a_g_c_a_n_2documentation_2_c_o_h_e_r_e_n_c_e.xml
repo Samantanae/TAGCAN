@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2documentation_2_c_o_h_e_r_e_n_c_e" xml:lang="en-US">
+<title>
+<para>Verification de coherence </para>
+</title>
+<indexterm><primary>Verification de coherence</primary></indexterm>
+
+<para><anchor xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2documentation_2_c_o_h_e_r_e_n_c_e_1autotoc_md14"/></para>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2documentation_2_c_o_h_e_r_e_n_c_e_1autotoc_md15">
+<title>Methode</title>
+<para>La coherence a ete verifiee sur 3 axes:</para>
+
+<para><itemizedlist>
+<listitem>
+<para>Axe A: commentaires vs implementation (<computeroutput>include/</computeroutput> + <computeroutput>scripts/</computeroutput>).</para>
+</listitem><listitem>
+<para>Axe B: implementation vs tests (<computeroutput><link linkend="_main_8c">scripts/main.c</link></computeroutput>, <computeroutput>tests/</computeroutput>).</para>
+</listitem><listitem>
+<para>Axe C: nouvelle documentation <computeroutput>documentation/</computeroutput> vs code actuel.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2documentation_2_c_o_h_e_r_e_n_c_e_1autotoc_md16">
+<title>Resultats</title><section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2documentation_2_c_o_h_e_r_e_n_c_e_1autotoc_md17">
+<title>Axe A - Commentaires vs implementation</title>
+<para><itemizedlist>
+<listitem>
+<para>Statut global: Partiellement coherent.</para>
+</listitem><listitem>
+<para>Coherent:<itemizedlist>
+<listitem>
+<para><computeroutput><link linkend="_gestion__tag_8h_1aab50a8f567be72e656120fd71f3fb435">init_tag_manager</link></computeroutput> et <computeroutput><link linkend="_data__container_8h_1a129f017feb0712be1dcf7932e6035aa0">init_data_container</link></computeroutput> correspondent globalement a leur role.</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem>
+<para>Non coherent:<itemizedlist>
+<listitem>
+<para>Regle de tailles <computeroutput><link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link></computeroutput>: commentaire restreint, code permissif (<computeroutput>1..16</computeroutput>).</para>
+</listitem><listitem>
+<para>Validation longueur nom: commentaire suggere une vraie limite, code utilise <computeroutput>sizeof(pointer)</computeroutput>.</para>
+</listitem><listitem>
+<para>Plusieurs blocs Doxygen invalides ou incomplets.</para>
+</listitem></itemizedlist>
+</para>
+</listitem></itemizedlist>
+</para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2documentation_2_c_o_h_e_r_e_n_c_e_1autotoc_md18">
+<title>Axe B - Implementation vs tests</title>
+<para><itemizedlist>
+<listitem>
+<para>Statut global: Non coherent sur des retours d&apos;erreur.</para>
+</listitem><listitem>
+<para>Exemple cle:<itemizedlist>
+<listitem>
+<para>Tests attendent <computeroutput>-4</computeroutput> pour debordement de valeur (<computeroutput><link linkend="_main_8c">scripts/main.c</link>:234</computeroutput>, <computeroutput><link linkend="_main_8c">scripts/main.c</link>:236</computeroutput>, <computeroutput><link linkend="_main_8c">scripts/main.c</link>:238</computeroutput>, <computeroutput><link linkend="_main_8c">scripts/main.c</link>:301</computeroutput>).</para>
+</listitem><listitem>
+<para>Code renvoie <computeroutput>-10</computeroutput> (<computeroutput><link linkend="_data__container_8c">scripts/sub_scripts/data_container.c</link>:59</computeroutput>).</para>
+</listitem></itemizedlist>
+</para>
+</listitem></itemizedlist>
+</para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2documentation_2_c_o_h_e_r_e_n_c_e_1autotoc_md19">
+<title>Axe C - Documentation creee vs code</title>
+<para><itemizedlist>
+<listitem>
+<para>Statut global: Coherent avec le comportement observe.</para>
+</listitem><listitem>
+<para>Principe applique:<itemizedlist>
+<listitem>
+<para>la documentation decrit l&apos;etat reel du code (meme quand il est defectueux),</para>
+</listitem><listitem>
+<para>les anomalies sont marquees explicitement comme ecarts.</para>
+</listitem></itemizedlist>
+</para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2documentation_2_c_o_h_e_r_e_n_c_e_1autotoc_md20">
+<title>Matrice rapide</title>
+<para><informaltable frame="all">
+    <tgroup cols="4" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+      <colspec colname='c3'/>
+      <colspec colname='c4'/>
+<thead>
+      <row  class='markdownTableHead'>
+<entry>
+<para>Point  </para>
+</entry><entry>
+<para>Commentaire existant  </para>
+</entry><entry>
+<para>Code actuel  </para>
+</entry><entry>
+<para>Coherence  </para>
+</entry></row>
+</thead><tbody>
+      <row  class='markdownTableRowOdd'>
+<entry>
+<para>Tailles <computeroutput><link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link></computeroutput>  </para>
+</entry><entry>
+<para>1,3,4,8,16  </para>
+</entry><entry>
+<para>1..16  </para>
+</entry><entry>
+<para>Non  </para>
+</entry></row>
+      <row  class='markdownTableRowEven'>
+<entry>
+<para>Debordement <computeroutput><link linkend="_data__container_8h_1aa84538f1ab0c319056787e9674157405">set_value</link></computeroutput>  </para>
+</entry><entry>
+<para>ambigu  </para>
+</entry><entry>
+<para><computeroutput>-10</computeroutput>  </para>
+</entry><entry>
+<para>Partiel  </para>
+</entry></row>
+      <row  class='markdownTableRowOdd'>
+<entry>
+<para>Nom tag trop long  </para>
+</entry><entry>
+<para>controle annonce  </para>
+</entry><entry>
+<para>controle non fiable (<computeroutput>sizeof</computeroutput>)  </para>
+</entry><entry>
+<para>Non  </para>
+</entry></row>
+      <row  class='markdownTableRowEven'>
+<entry>
+<para>Affichage debug  </para>
+</entry><entry>
+<para>decrit un affichage valide  </para>
+</entry><entry>
+<para><computeroutput>%</computeroutput> remplace par <computeroutput>٪</computeroutput> + bug de boucle  </para>
+</entry><entry>
+<para>Non  </para>
+</entry></row>
+      <row  class='markdownTableRowOdd'>
+<entry>
+<para>Init manager/container  </para>
+</entry><entry>
+<para>intention claire  </para>
+</entry><entry>
+<para>comportement coherent  </para>
+</entry><entry>
+<para>Oui  </para>
+</entry></row>
+    </tbody>
+    </tgroup>
+</informaltable>
+</para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2documentation_2_c_o_h_e_r_e_n_c_e_1autotoc_md21">
+<title>Conclusion</title>
+<para>La documentation ajoutee dans <computeroutput>documentation/</computeroutput> est coherente avec le code actuel, mais le projet global n&apos;est pas completement coherent entre commentaires historiques, implementation et tests.</para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2documentation_2_c_o_h_e_r_e_n_c_e_1autotoc_md22">
+<title>Priorites de remediation</title>
+<para><orderedlist>
+<listitem>
+<para>Normaliser les codes d&apos;erreur (source unique + tests alignes).</para>
+</listitem><listitem>
+<para>Corriger <computeroutput><link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link></computeroutput> (longueur nom et regle de tailles).</para>
+</listitem><listitem>
+<para>Corriger les erreurs de formatage dans <computeroutput><link linkend="_print__val_8c">print_val.c</link></computeroutput>.</para>
+</listitem><listitem>
+<para>Nettoyer les commentaires Doxygen pour relancer une doc auto fiable. </para>
+</listitem></orderedlist>
+</para>
+</section>
+</section>

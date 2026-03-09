@@ -1,0 +1,258 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_tag__manager_8c_source" xml:lang="en-US">
+<title>tag_manager.c</title>
+<indexterm><primary>tag_manager.c</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_tag__manager_8c_source_1l00001"/>00001 
+<anchor xml:id="_tag__manager_8c_source_1l00002"/>00002 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_tag__manager_8h">../../include/sub_include/tag_manager.h</link>&quot;</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00003"/>00003 <emphasis role="preprocessor">#ifndef&#32;CONFIG_VALUE_H</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00004"/>00004 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_config__value_8h">../../include/config_value.h</link>&quot;</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00005"/>00005 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;CONFIG_VALUE_H</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00006"/>00006 <emphasis role="preprocessor">#ifndef&#32;GESTION_TAG_H</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00007"/>00007 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_gestion__tag_8h">../../include/gestion_tag.h</link>&quot;</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00008"/>00008 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;GESTION_TAG_H</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00009"/>00009 <emphasis role="preprocessor">#ifndef&#32;PRINT_VAL_H</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00010"/>00010 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_print__val_8h">../../include/sub_include/print_val.h</link>&quot;</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00011"/>00011 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;PRINT_VAL_H</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00012"/>00012 <emphasis role="preprocessor">#include&#32;&lt;stdio.h&gt;</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00013"/>00013 <emphasis role="preprocessor">#include&#32;&lt;string.h&gt;</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00014"/>00014 <emphasis role="preprocessor">#include&#32;&lt;stdint.h&gt;</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00015"/>00015 
+<anchor xml:id="_tag__manager_8c_source_1l00016"/>00016 <emphasis role="comment">//&#32;Etat&#32;global&#32;du&#32;gestionnaire&#32;de&#32;tags</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00017"/><link linkend="_tag__manager_8h_1ace5be789d004e0752b6b2dec9d845864">00017</link> <link linkend="_struct_tag_def">TagDef</link>&#32;<link linkend="_tag__manager_8h_1ace5be789d004e0752b6b2dec9d845864">g_tags</link>[<link linkend="_config__value_8h_1aa653c0eca99802a09fd9560f28a9b1c1">MAX_TAGS</link>];
+<anchor xml:id="_tag__manager_8c_source_1l00018"/><link linkend="_tag__manager_8h_1ab7cad863197c93abe397155a1946c0d0">00018</link> uint8_t&#32;<link linkend="_tag__manager_8h_1ab7cad863197c93abe397155a1946c0d0">g_tag_count</link>&#32;=&#32;0;
+<anchor xml:id="_tag__manager_8c_source_1l00019"/><link linkend="_tag__manager_8h_1af12845c0234390db7498ec51e94f7d58">00019</link> uint8_t&#32;<link linkend="_tag__manager_8h_1af12845c0234390db7498ec51e94f7d58">g_bytes_used</link>[<link linkend="_config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1">N_BYTES</link>]&#32;=&#32;{0};
+<anchor xml:id="_tag__manager_8c_source_1l00020"/>00020 
+<anchor xml:id="_tag__manager_8c_source_1l00021"/><link linkend="_gestion__tag_8h_1aab50a8f567be72e656120fd71f3fb435">00021</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_tag__manager_8c_1aab50a8f567be72e656120fd71f3fb435">init_tag_manager</link>(<emphasis role="keywordtype">void</emphasis>)
+<anchor xml:id="_tag__manager_8c_source_1l00022"/>00022 {
+<anchor xml:id="_tag__manager_8c_source_1l00023"/>00023 &#32;&#32;&#32;&#32;<link linkend="_tag__manager_8h_1ab7cad863197c93abe397155a1946c0d0">g_tag_count</link>&#32;=&#32;0;
+<anchor xml:id="_tag__manager_8c_source_1l00024"/>00024 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Remise&#32;a&#32;zero&#32;de&#32;l&apos;occupation&#32;des&#32;bytes.</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00025"/>00025 &#32;&#32;&#32;&#32;memset(<link linkend="_tag__manager_8h_1af12845c0234390db7498ec51e94f7d58">g_bytes_used</link>,&#32;0,&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="_tag__manager_8h_1af12845c0234390db7498ec51e94f7d58">g_bytes_used</link>));
+<anchor xml:id="_tag__manager_8c_source_1l00026"/>00026 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Reinitialisation&#32;complete&#32;de&#32;tous&#32;les&#32;slots&#32;de&#32;tags.</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00027"/>00027 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;<link linkend="_config__value_8h_1aa653c0eca99802a09fd9560f28a9b1c1">MAX_TAGS</link>;&#32;i++)
+<anchor xml:id="_tag__manager_8c_source_1l00028"/>00028 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_tag__manager_8c_source_1l00029"/>00029 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_tag__manager_8h_1ace5be789d004e0752b6b2dec9d845864">g_tags</link>[i].name[0]&#32;=&#32;<emphasis role="charliteral">&apos;\0&apos;</emphasis>;&#32;&#32;&#32;<emphasis role="comment">//&#32;Slot&#32;considere&#32;vide&#32;quand&#32;name[0]&#32;==&#32;&apos;\0&apos;.</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00030"/>00030 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_tag__manager_8h_1ace5be789d004e0752b6b2dec9d845864">g_tags</link>[i].n_bits&#32;=&#32;0;
+<anchor xml:id="_tag__manager_8c_source_1l00031"/>00031 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_tag__manager_8h_1ace5be789d004e0752b6b2dec9d845864">g_tags</link>[i].byte_idx_a&#32;=&#32;-1;
+<anchor xml:id="_tag__manager_8c_source_1l00032"/>00032 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_tag__manager_8h_1ace5be789d004e0752b6b2dec9d845864">g_tags</link>[i].byte_idx_b&#32;=&#32;-1;
+<anchor xml:id="_tag__manager_8c_source_1l00033"/>00033 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_tag__manager_8h_1ace5be789d004e0752b6b2dec9d845864">g_tags</link>[i].bit_pos_a&#32;=&#32;0;
+<anchor xml:id="_tag__manager_8c_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_tag__manager_8h_1ace5be789d004e0752b6b2dec9d845864">g_tags</link>[i].bit_pos_b&#32;=&#32;0;
+<anchor xml:id="_tag__manager_8c_source_1l00035"/>00035 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_tag__manager_8c_source_1l00036"/>00036 }
+<anchor xml:id="_tag__manager_8c_source_1l00037"/>00037 
+<anchor xml:id="_tag__manager_8c_source_1l00042"/><link linkend="_tag__manager_8c_1a7b7413adbae2eabbe7fcd13e9f91f151">00042</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_tag__manager_8c_1a7b7413adbae2eabbe7fcd13e9f91f151">get_first_tags_vide</link>(<emphasis role="keywordtype">void</emphasis>)
+<anchor xml:id="_tag__manager_8c_source_1l00043"/>00043 {
+<anchor xml:id="_tag__manager_8c_source_1l00044"/>00044 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;<link linkend="_config__value_8h_1aa653c0eca99802a09fd9560f28a9b1c1">MAX_TAGS</link>;&#32;i++)
+<anchor xml:id="_tag__manager_8c_source_1l00045"/>00045 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_tag__manager_8c_source_1l00046"/>00046 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Cas&#32;defensif:&#32;un&#32;nom&#32;NULL&#32;est&#32;traite&#32;comme&#32;slot&#32;libre.</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00047"/>00047 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_tag__manager_8h_1ace5be789d004e0752b6b2dec9d845864">g_tags</link>[i].name&#32;==&#32;NULL)
+<anchor xml:id="_tag__manager_8c_source_1l00048"/>00048 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_tag__manager_8c_source_1l00049"/>00049 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;i;
+<anchor xml:id="_tag__manager_8c_source_1l00050"/>00050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_tag__manager_8c_source_1l00051"/>00051 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Premier&#32;slot&#32;libre:&#32;nom&#32;vide.</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00052"/>00052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_tag__manager_8h_1ace5be789d004e0752b6b2dec9d845864">g_tags</link>[i].name[0]&#32;==&#32;<emphasis role="charliteral">&apos;\0&apos;</emphasis>)
+<anchor xml:id="_tag__manager_8c_source_1l00053"/>00053 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_tag__manager_8c_source_1l00054"/>00054 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;i;
+<anchor xml:id="_tag__manager_8c_source_1l00055"/>00055 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_tag__manager_8c_source_1l00056"/>00056 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_tag__manager_8c_source_1l00057"/>00057 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Cas&#32;de&#32;garde:&#32;aucun&#32;slot&#32;libre&#32;detecte.</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00058"/>00058 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_config__value_8h_1a1e77443066dccbc42ef0acdd0f597c07">CAN_TG_ERROR_TOO_MAY_TAGS</link>;
+<anchor xml:id="_tag__manager_8c_source_1l00059"/>00059 }
+<anchor xml:id="_tag__manager_8c_source_1l00060"/>00060 
+<anchor xml:id="_tag__manager_8c_source_1l00067"/>00067 
+<anchor xml:id="_tag__manager_8c_source_1l00068"/><link linkend="_tag__manager_8c_1a9963af2c23a14e289a3ff39769ea4eeb">00068</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_tag__manager_8c_1a9963af2c23a14e289a3ff39769ea4eeb">set_name_tag</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;n_tag,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;tag_name)
+<anchor xml:id="_tag__manager_8c_source_1l00069"/>00069 {
+<anchor xml:id="_tag__manager_8c_source_1l00070"/>00070 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Nettoie&#32;le&#32;buffer&#32;avant&#32;copie&#32;du&#32;nom.</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00071"/>00071 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;<link linkend="_config__value_8h_1ada71b9f258860d58a86ab220bfce6bf4">MAX_TAG_NAME_LEN</link>&#32;-&#32;2;&#32;i++)
+<anchor xml:id="_tag__manager_8c_source_1l00072"/>00072 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_tag__manager_8c_source_1l00073"/>00073 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_tag__manager_8h_1ace5be789d004e0752b6b2dec9d845864">g_tags</link>[n_tag].name[i]=<emphasis role="charliteral">&apos;&#32;&apos;</emphasis>;
+<anchor xml:id="_tag__manager_8c_source_1l00074"/>00074 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_tag__manager_8c_source_1l00075"/>00075 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Copie&#32;du&#32;nom&#32;dans&#32;la&#32;structure.</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00076"/>00076 &#32;&#32;&#32;&#32;strncpy(<link linkend="_tag__manager_8h_1ace5be789d004e0752b6b2dec9d845864">g_tags</link>[n_tag].name,&#32;tag_name,&#32;<link linkend="_config__value_8h_1ada71b9f258860d58a86ab220bfce6bf4">MAX_TAG_NAME_LEN</link>&#32;-&#32;1);
+<anchor xml:id="_tag__manager_8c_source_1l00077"/>00077 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Termine&#32;explicitement&#32;la&#32;chaine.</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00078"/>00078 &#32;&#32;&#32;&#32;<link linkend="_tag__manager_8h_1ace5be789d004e0752b6b2dec9d845864">g_tags</link>[n_tag].name[<link linkend="_config__value_8h_1ada71b9f258860d58a86ab220bfce6bf4">MAX_TAG_NAME_LEN</link>&#32;-&#32;1]&#32;=&#32;<emphasis role="charliteral">&apos;\0&apos;</emphasis>;
+<anchor xml:id="_tag__manager_8c_source_1l00079"/>00079 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Debug&#32;optionnel:</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00080"/>00080 &#32;&#32;&#32;&#32;<emphasis role="comment">//printf(&quot;le&#32;nom&#32;du&#32;tag&#32;est:&#32;[%s]\n&quot;,&#32;g_tags[n_tag].name);</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00081"/>00081 }
+<anchor xml:id="_tag__manager_8c_source_1l00082"/>00082 
+<anchor xml:id="_tag__manager_8c_source_1l00083"/>00083 <emphasis role="comment">//&#32;Initialise&#32;les&#32;champs&#32;communs&#32;d&apos;un&#32;tag&#32;et&#32;met&#32;a&#32;jour&#32;l&apos;occupation&#32;memoire.</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00090"/><link linkend="_tag__manager_8c_1ac5f7362c0af4f03bd98573151458442d">00090</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_tag__manager_8c_1ac5f7362c0af4f03bd98573151458442d">general_set_tag</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;n_tag,<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;tag_name,
+<anchor xml:id="_tag__manager_8c_source_1l00091"/>00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;n_bits,&#32;int8_t&#32;byte_idx_a)
+<anchor xml:id="_tag__manager_8c_source_1l00092"/>00092 {
+<anchor xml:id="_tag__manager_8c_source_1l00093"/>00093 &#32;&#32;&#32;&#32;<link linkend="_tag__manager_8c_1a9963af2c23a14e289a3ff39769ea4eeb">set_name_tag</link>(n_tag,&#32;tag_name);
+<anchor xml:id="_tag__manager_8c_source_1l00094"/>00094 &#32;&#32;&#32;&#32;<link linkend="_tag__manager_8h_1ace5be789d004e0752b6b2dec9d845864">g_tags</link>[n_tag].n_bits&#32;=&#32;n_bits;
+<anchor xml:id="_tag__manager_8c_source_1l00095"/>00095 
+<anchor xml:id="_tag__manager_8c_source_1l00096"/>00096 &#32;&#32;&#32;&#32;<link linkend="_tag__manager_8h_1ace5be789d004e0752b6b2dec9d845864">g_tags</link>[n_tag].byte_idx_a&#32;=&#32;byte_idx_a;
+<anchor xml:id="_tag__manager_8c_source_1l00097"/>00097 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Le&#32;tag&#32;est&#32;desormais&#32;actif.</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00098"/>00098 &#32;&#32;&#32;&#32;<link linkend="_tag__manager_8h_1ab7cad863197c93abe397155a1946c0d0">g_tag_count</link>++;
+<anchor xml:id="_tag__manager_8c_source_1l00099"/>00099 
+<anchor xml:id="_tag__manager_8c_source_1l00100"/>00100 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Mise&#32;a&#32;jour&#32;de&#32;l&apos;occupation&#32;des&#32;bits&#32;dans&#32;le&#32;byte&#32;principal.</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00101"/>00101 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(n_bits&#32;&gt;=&#32;8)
+<anchor xml:id="_tag__manager_8c_source_1l00102"/>00102 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_tag__manager_8c_source_1l00103"/>00103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_tag__manager_8h_1af12845c0234390db7498ec51e94f7d58">g_bytes_used</link>[byte_idx_a]&#32;=&#32;8;
+<anchor xml:id="_tag__manager_8c_source_1l00104"/>00104 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_tag__manager_8c_source_1l00105"/>00105 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00106"/>00106 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_tag__manager_8c_source_1l00107"/>00107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_tag__manager_8h_1af12845c0234390db7498ec51e94f7d58">g_bytes_used</link>[byte_idx_a]&#32;+=&#32;n_bits;
+<anchor xml:id="_tag__manager_8c_source_1l00108"/>00108 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_tag__manager_8c_source_1l00109"/>00109 }
+<anchor xml:id="_tag__manager_8c_source_1l00110"/>00110 
+<anchor xml:id="_tag__manager_8c_source_1l00111"/>00111 <emphasis role="comment">//&#32;[INTERNE]&#32;Creation&#32;d&apos;un&#32;tag&#32;sur&#32;9..16&#32;bits&#32;(2&#32;bytes&#32;potentiels).</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00112"/>00112 <emphasis role="comment">//&#32;n_bits_total:&#32;taille&#32;totale&#32;de&#32;la&#32;valeur&#32;(8..16).</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00119"/><link linkend="_tag__manager_8c_1a30325d29d4baf058d75e6f3c269341af">00119</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_tag__manager_8c_1a30325d29d4baf058d75e6f3c269341af">set_new_tag_9_to_16</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;tag_name,&#32;<emphasis role="keyword">const</emphasis>&#32;int8_t&#32;byte_idx_a,&#32;<emphasis role="keyword">const</emphasis>&#32;int8_t&#32;byte_idx_b,&#32;uint8_t&#32;n_bits_total)
+<anchor xml:id="_tag__manager_8c_source_1l00120"/>00120 {
+<anchor xml:id="_tag__manager_8c_source_1l00121"/>00121 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Recherche&#32;d&apos;un&#32;slot&#32;libre.</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00122"/>00122 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;n_tag&#32;=&#32;<link linkend="_tag__manager_8c_1a7b7413adbae2eabbe7fcd13e9f91f151">get_first_tags_vide</link>();
+<anchor xml:id="_tag__manager_8c_source_1l00123"/>00123 &#32;&#32;&#32;&#32;<link linkend="_tag__manager_8c_1ac5f7362c0af4f03bd98573151458442d">general_set_tag</link>(n_tag,&#32;tag_name,&#32;n_bits_total,&#32;byte_idx_a);&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Initialisation&#32;commune.</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00124"/>00124 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Pour&#32;&gt;&#32;8&#32;bits,&#32;une&#32;partie&#32;B&#32;est&#32;utilisee.</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00125"/>00125 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(n_bits_total&#32;&gt;&#32;8)
+<anchor xml:id="_tag__manager_8c_source_1l00126"/>00126 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_tag__manager_8c_source_1l00127"/>00127 
+<anchor xml:id="_tag__manager_8c_source_1l00128"/>00128 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_tag__manager_8h_1ace5be789d004e0752b6b2dec9d845864">g_tags</link>[n_tag].byte_idx_b&#32;=&#32;byte_idx_b;
+<anchor xml:id="_tag__manager_8c_source_1l00129"/>00129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_tag__manager_8h_1ace5be789d004e0752b6b2dec9d845864">g_tags</link>[n_tag].bit_pos_b&#32;=&#32;<link linkend="_tag__manager_8h_1af12845c0234390db7498ec51e94f7d58">g_bytes_used</link>[byte_idx_b];
+<anchor xml:id="_tag__manager_8c_source_1l00130"/>00130 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_tag__manager_8h_1af12845c0234390db7498ec51e94f7d58">g_bytes_used</link>[byte_idx_b]&#32;+=&#32;n_bits_total&#32;-&#32;8;
+<anchor xml:id="_tag__manager_8c_source_1l00131"/>00131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_tag__manager_8h_1ace5be789d004e0752b6b2dec9d845864">g_tags</link>[n_tag].bit_pos_a&#32;=&#32;0;
+<anchor xml:id="_tag__manager_8c_source_1l00132"/>00132 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;A&#32;ce&#32;stade,&#32;la&#32;repartition&#32;est&#32;validee:&#32;on&#32;peut&#32;finaliser</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00133"/>00133 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;l&apos;occupation&#32;et&#32;les&#32;positions&#32;des&#32;bits&#32;pour&#32;A&#32;et&#32;B.&#32;*/</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00134"/>00134 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_tag__manager_8c_source_1l00135"/>00135 }
+<anchor xml:id="_tag__manager_8c_source_1l00136"/>00136 
+<anchor xml:id="_tag__manager_8c_source_1l00144"/><link linkend="_tag__manager_8c_1a5f1ce2cac9791e6b46be230dcce3f804">00144</link> <link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947f">CAN_TG_STATUE</link>&#32;<link linkend="_tag__manager_8c_1a5f1ce2cac9791e6b46be230dcce3f804">find_byte_with_enoung_space</link>(uint8_t&#32;siz,&#32;int8_t*&#32;retur_var)
+<anchor xml:id="_tag__manager_8c_source_1l00145"/>00145 {
+<anchor xml:id="_tag__manager_8c_source_1l00146"/>00146 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Pour&#32;&gt;&#32;8&#32;bits,&#32;la&#32;1re&#32;recherche&#32;se&#32;limite&#32;a&#32;un&#32;bloc&#32;de&#32;8&#32;bits.</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00147"/>00147 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(siz&#32;&gt;&#32;8)
+<anchor xml:id="_tag__manager_8c_source_1l00148"/>00148 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_tag__manager_8c_source_1l00149"/>00149 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;siz&#32;=&#32;8;
+<anchor xml:id="_tag__manager_8c_source_1l00150"/>00150 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_tag__manager_8c_source_1l00151"/>00151 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Pour&#32;les&#32;tailles&#32;impaires:&#32;priorite&#32;aux&#32;bytes&#32;a&#32;place&#32;impaire&#32;restante.</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00152"/>00152 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(siz%2&#32;&gt;&#32;0)
+<anchor xml:id="_tag__manager_8c_source_1l00153"/>00153 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_tag__manager_8c_source_1l00154"/>00154 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Heuristique&#32;de&#32;placement.</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00155"/>00155 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(int8_t&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;<link linkend="_config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1">N_BYTES</link>;&#32;i++)
+<anchor xml:id="_tag__manager_8c_source_1l00156"/>00156 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_tag__manager_8c_source_1l00157"/>00157 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_tag__manager_8c_source_1l00158"/>00158 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(((8&#32;-&#32;<link linkend="_tag__manager_8h_1af12845c0234390db7498ec51e94f7d58">g_bytes_used</link>[i])%2&#32;&gt;&#32;0)&#32;&amp;&amp;&#32;((8&#32;-&#32;<link linkend="_tag__manager_8h_1af12845c0234390db7498ec51e94f7d58">g_bytes_used</link>[i])&#32;&gt;=&#32;siz))
+<anchor xml:id="_tag__manager_8c_source_1l00159"/>00159 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_tag__manager_8c_source_1l00160"/>00160 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;*retur_var=i;
+<anchor xml:id="_tag__manager_8c_source_1l00161"/>00161 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3">CAN_TG_SUCCESS</link>;
+<anchor xml:id="_tag__manager_8c_source_1l00162"/>00162 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_tag__manager_8c_source_1l00163"/>00163 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_tag__manager_8c_source_1l00164"/>00164 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_tag__manager_8c_source_1l00165"/>00165 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_tag__manager_8c_source_1l00166"/>00166 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Sinon,&#32;recherche&#32;sequentielle&#32;standard.</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00167"/>00167 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(int8_t&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;<link linkend="_config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1">N_BYTES</link>;&#32;i++)
+<anchor xml:id="_tag__manager_8c_source_1l00168"/>00168 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_tag__manager_8c_source_1l00169"/>00169 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>((8&#32;-&#32;<link linkend="_tag__manager_8h_1af12845c0234390db7498ec51e94f7d58">g_bytes_used</link>[i])&#32;&gt;=&#32;siz)
+<anchor xml:id="_tag__manager_8c_source_1l00170"/>00170 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_tag__manager_8c_source_1l00171"/>00171 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;*retur_var=i;
+<anchor xml:id="_tag__manager_8c_source_1l00172"/>00172 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3">CAN_TG_SUCCESS</link>;
+<anchor xml:id="_tag__manager_8c_source_1l00173"/>00173 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_tag__manager_8c_source_1l00174"/>00174 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_tag__manager_8c_source_1l00175"/>00175 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947fa4add2030061ed8081fd69bbc7961b88e">CAN_TG_ERROR_NOT_ENOUNG_SPACE_</link>;
+<anchor xml:id="_tag__manager_8c_source_1l00176"/>00176 }
+<anchor xml:id="_tag__manager_8c_source_1l00177"/>00177 
+<anchor xml:id="_tag__manager_8c_source_1l00178"/>00178 
+<anchor xml:id="_tag__manager_8c_source_1l00187"/>00187 
+<anchor xml:id="_tag__manager_8c_source_1l00188"/><link linkend="_tag__manager_8c_1ad5772dac2622697b5f563da0dbfaede3">00188</link> <link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947f">CAN_TG_STATUE</link>&#32;<link linkend="_tag__manager_8c_1ad5772dac2622697b5f563da0dbfaede3">find_byte2_with_enoung_space</link>(uint8_t&#32;siz_total,&#32;int8_t&#32;posi_premier_bit,int8_t*&#32;retur_var)
+<anchor xml:id="_tag__manager_8c_source_1l00189"/>00189 {
+<anchor xml:id="_tag__manager_8c_source_1l00190"/>00190 &#32;&#32;&#32;&#32;uint8_t&#32;siz&#32;=&#32;siz_total&#32;-&#32;8;
+<anchor xml:id="_tag__manager_8c_source_1l00191"/>00191 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Meme&#32;heuristique&#32;que&#32;find_byte_with_enoung_space.</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00192"/>00192 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(siz%2&#32;&gt;&#32;0)
+<anchor xml:id="_tag__manager_8c_source_1l00193"/>00193 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_tag__manager_8c_source_1l00194"/>00194 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Priorite&#32;aux&#32;bytes&#32;dont&#32;l&apos;espace&#32;restant&#32;est&#32;impair.</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00195"/>00195 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(int8_t&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;<link linkend="_config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1">N_BYTES</link>;&#32;i++)
+<anchor xml:id="_tag__manager_8c_source_1l00196"/>00196 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_tag__manager_8c_source_1l00197"/>00197 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(posi_premier_bit&#32;==&#32;i)
+<anchor xml:id="_tag__manager_8c_source_1l00198"/>00198 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_tag__manager_8c_source_1l00199"/>00199 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">continue</emphasis>;
+<anchor xml:id="_tag__manager_8c_source_1l00200"/>00200 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_tag__manager_8c_source_1l00201"/>00201 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(((8&#32;-&#32;<link linkend="_tag__manager_8h_1af12845c0234390db7498ec51e94f7d58">g_bytes_used</link>[i])%2&#32;&gt;&#32;0)&#32;&amp;&amp;&#32;((8&#32;-&#32;<link linkend="_tag__manager_8h_1af12845c0234390db7498ec51e94f7d58">g_bytes_used</link>[i])&#32;&gt;=&#32;siz))
+<anchor xml:id="_tag__manager_8c_source_1l00202"/>00202 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_tag__manager_8c_source_1l00203"/>00203 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;*retur_var=i;
+<anchor xml:id="_tag__manager_8c_source_1l00204"/>00204 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3">CAN_TG_SUCCESS</link>;
+<anchor xml:id="_tag__manager_8c_source_1l00205"/>00205 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_tag__manager_8c_source_1l00206"/>00206 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_tag__manager_8c_source_1l00207"/>00207 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_tag__manager_8c_source_1l00208"/>00208 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Sinon,&#32;recherche&#32;sequentielle&#32;standard.</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00209"/>00209 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(uint8_t&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;<link linkend="_config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1">N_BYTES</link>;&#32;i++)
+<anchor xml:id="_tag__manager_8c_source_1l00210"/>00210 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_tag__manager_8c_source_1l00211"/>00211 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(posi_premier_bit&#32;==&#32;i)
+<anchor xml:id="_tag__manager_8c_source_1l00212"/>00212 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_tag__manager_8c_source_1l00213"/>00213 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">continue</emphasis>;
+<anchor xml:id="_tag__manager_8c_source_1l00214"/>00214 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_tag__manager_8c_source_1l00215"/>00215 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>((8&#32;-&#32;<link linkend="_tag__manager_8h_1af12845c0234390db7498ec51e94f7d58">g_bytes_used</link>[i])&#32;&gt;=&#32;siz)
+<anchor xml:id="_tag__manager_8c_source_1l00216"/>00216 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_tag__manager_8c_source_1l00217"/>00217 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;*retur_var=i;
+<anchor xml:id="_tag__manager_8c_source_1l00218"/>00218 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3">CAN_TG_SUCCESS</link>;
+<anchor xml:id="_tag__manager_8c_source_1l00219"/>00219 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_tag__manager_8c_source_1l00220"/>00220 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_tag__manager_8c_source_1l00221"/>00221 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947fa4add2030061ed8081fd69bbc7961b88e">CAN_TG_ERROR_NOT_ENOUNG_SPACE_</link>;
+<anchor xml:id="_tag__manager_8c_source_1l00222"/>00222 }
+<anchor xml:id="_tag__manager_8c_source_1l00223"/>00223 
+<anchor xml:id="_tag__manager_8c_source_1l00224"/>00224 
+<anchor xml:id="_tag__manager_8c_source_1l00225"/>00225 
+<anchor xml:id="_tag__manager_8c_source_1l00226"/>00226 <emphasis role="comment">//&#32;API&#32;publique:&#32;declaration&#32;de&#32;tag.</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00232"/><link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">00232</link> <link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947f">CAN_TG_STATUE</link>&#32;<link linkend="_tag__manager_8c_1a7dd7e8cfc97d378d44e7c63bd9f49931">set_tag</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;tag_name,&#32;uint8_t&#32;siz){
+<anchor xml:id="_tag__manager_8c_source_1l00233"/>00233 &#32;&#32;&#32;&#32;<link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947f">CAN_TG_STATUE</link>&#32;statue_actuel;
+<anchor xml:id="_tag__manager_8c_source_1l00234"/>00234 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Limite&#32;du&#32;nombre&#32;de&#32;tags.</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00235"/>00235 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_tag__manager_8h_1ab7cad863197c93abe397155a1946c0d0">g_tag_count</link>&#32;&gt;=&#32;<link linkend="_config__value_8h_1aa653c0eca99802a09fd9560f28a9b1c1">MAX_TAGS</link>){
+<anchor xml:id="_tag__manager_8c_source_1l00236"/>00236 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_config__value_8h_1a1e77443066dccbc42ef0acdd0f597c07">CAN_TG_ERROR_TOO_MAY_TAGS</link>;
+<anchor xml:id="_tag__manager_8c_source_1l00237"/>00237 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_tag__manager_8c_source_1l00238"/>00238 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Validation&#32;longueur&#32;nom&#32;(implementation&#32;actuelle&#32;basee&#32;sur&#32;sizeof(pointer)).</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00239"/>00239 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<emphasis role="keyword">sizeof</emphasis>(tag_name)&#32;&gt;=&#32;<link linkend="_config__value_8h_1ada71b9f258860d58a86ab220bfce6bf4">MAX_TAG_NAME_LEN</link>){
+<anchor xml:id="_tag__manager_8c_source_1l00240"/>00240 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_config__value_8h_1af68b72a5b65a0168415d1363dc09a0a6">CAN_TG_ERROR_TAG_NAME_TO_BIGS</link>;
+<anchor xml:id="_tag__manager_8c_source_1l00241"/>00241 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_tag__manager_8c_source_1l00242"/>00242 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Interdit&#32;les&#32;doublons&#32;de&#32;nom.</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00243"/>00243 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_tag__manager_8c_1a5737e741608851f8e3822cf07261da44">get_tag_def</link>(tag_name)&#32;!=&#32;NULL){
+<anchor xml:id="_tag__manager_8c_source_1l00244"/>00244 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_config__value_8h_1a18061c1ca5fc2e5ab20fa7bc8dbe81d6">CAN_TG_ERROR_NAME_ALREADY_USE</link>;
+<anchor xml:id="_tag__manager_8c_source_1l00245"/>00245 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_tag__manager_8c_source_1l00246"/>00246 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Nom&#32;vide&#32;invalide.</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00247"/>00247 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(tag_name[0]==<emphasis role="charliteral">&apos;\0&apos;</emphasis>){
+<anchor xml:id="_tag__manager_8c_source_1l00248"/>00248 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_config__value_8h_1a49d547279f99d23ff36998f3874d3c5a">CAN_TG_ERROR_TAG_NAME_INVALIDE</link>;
+<anchor xml:id="_tag__manager_8c_source_1l00249"/>00249 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_tag__manager_8c_source_1l00250"/>00250 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Tailles&#32;acceptees:&#32;1..16.</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00251"/>00251 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(siz&#32;&lt;=&#32;0&#32;||&#32;siz&#32;&gt;&#32;16){<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_config__value_8h_1a73337c3ada0009e763ea5af164e25d70">CAN_TG_ERROR_SIZE_VALUE_INVALIDE</link>;}
+<anchor xml:id="_tag__manager_8c_source_1l00252"/>00252 
+<anchor xml:id="_tag__manager_8c_source_1l00253"/>00253 &#32;&#32;&#32;&#32;<emphasis role="comment">//-------------------------&#32;algo&#32;de&#32;placement&#32;memoire.</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00254"/>00254 
+<anchor xml:id="_tag__manager_8c_source_1l00255"/>00255 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(siz&gt;8){
+<anchor xml:id="_tag__manager_8c_source_1l00256"/>00256 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Garde&#32;defensive&#32;(deja&#32;couverte&#32;plus&#32;haut).</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00257"/>00257 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(siz&gt;16){
+<anchor xml:id="_tag__manager_8c_source_1l00258"/>00258 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947fa1f64facc77e1738f2ed16fae7f38140f">CAN_TG_ERROR_SIZE_VALUE_INVALIDE_</link>;
+<anchor xml:id="_tag__manager_8c_source_1l00259"/>00259 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_tag__manager_8c_source_1l00260"/>00260 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>{
+<anchor xml:id="_tag__manager_8c_source_1l00261"/>00261 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;bytea,&#32;byteb;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Index&#32;des&#32;bytes&#32;reserves.</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00262"/>00262 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;statue_actuel&#32;=&#32;<link linkend="_tag__manager_8c_1a5f1ce2cac9791e6b46be230dcce3f804">find_byte_with_enoung_space</link>(siz,&#32;&amp;bytea);
+<anchor xml:id="_tag__manager_8c_source_1l00263"/>00263 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(statue_actuel&#32;!=&#32;<link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3">CAN_TG_SUCCESS</link>){<emphasis role="keywordflow">return</emphasis>&#32;statue_actuel;}<emphasis role="comment">//&#32;propagation&#32;du&#32;statut</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00264"/>00264 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;statue_actuel&#32;=&#32;<link linkend="_tag__manager_8c_1ad5772dac2622697b5f563da0dbfaede3">find_byte2_with_enoung_space</link>(siz,&#32;bytea,&#32;&amp;byteb);
+<anchor xml:id="_tag__manager_8c_source_1l00265"/>00265 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(statue_actuel&#32;!=&#32;<link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3">CAN_TG_SUCCESS</link>){
+<anchor xml:id="_tag__manager_8c_source_1l00266"/>00266 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;statue_actuel;&#32;&#32;&#32;<emphasis role="comment">//&#32;propagation&#32;du&#32;statut</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00267"/>00267 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_tag__manager_8c_source_1l00268"/>00268 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_tag__manager_8c_1a30325d29d4baf058d75e6f3c269341af">set_new_tag_9_to_16</link>(tag_name,&#32;bytea,&#32;byteb,&#32;siz);
+<anchor xml:id="_tag__manager_8c_source_1l00269"/>00269 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3">CAN_TG_SUCCESS</link>;
+<anchor xml:id="_tag__manager_8c_source_1l00270"/>00270 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_tag__manager_8c_source_1l00271"/>00271 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_tag__manager_8c_source_1l00272"/>00272 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>{
+<anchor xml:id="_tag__manager_8c_source_1l00273"/>00273 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;bytea;
+<anchor xml:id="_tag__manager_8c_source_1l00274"/>00274 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;statue_actuel&#32;=&#32;<link linkend="_tag__manager_8c_1a5f1ce2cac9791e6b46be230dcce3f804">find_byte_with_enoung_space</link>(siz,&#32;&amp;bytea);
+<anchor xml:id="_tag__manager_8c_source_1l00275"/>00275 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(statue_actuel&#32;!=&#32;<link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3">CAN_TG_SUCCESS</link>){<emphasis role="keywordflow">return</emphasis>&#32;statue_actuel;}<emphasis role="comment">//&#32;propagation&#32;du&#32;statut</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00276"/>00276 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;n_tag&#32;=&#32;<link linkend="_tag__manager_8c_1a7b7413adbae2eabbe7fcd13e9f91f151">get_first_tags_vide</link>();
+<anchor xml:id="_tag__manager_8c_source_1l00277"/>00277 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_tag__manager_8c_1ac5f7362c0af4f03bd98573151458442d">general_set_tag</link>(n_tag,&#32;tag_name,&#32;siz,&#32;bytea);
+<anchor xml:id="_tag__manager_8c_source_1l00278"/>00278 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3">CAN_TG_SUCCESS</link>;
+<anchor xml:id="_tag__manager_8c_source_1l00279"/>00279 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_tag__manager_8c_source_1l00280"/>00280 
+<anchor xml:id="_tag__manager_8c_source_1l00281"/>00281 
+<anchor xml:id="_tag__manager_8c_source_1l00282"/>00282 };
+<anchor xml:id="_tag__manager_8c_source_1l00283"/>00283 
+<anchor xml:id="_tag__manager_8c_source_1l00288"/><link linkend="_tag__manager_8h_1a5737e741608851f8e3822cf07261da44">00288</link> <emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_tag_def">TagDef</link>*&#32;<link linkend="_tag__manager_8c_1a5737e741608851f8e3822cf07261da44">get_tag_def</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;tag_name)
+<anchor xml:id="_tag__manager_8c_source_1l00289"/>00289 {
+<anchor xml:id="_tag__manager_8c_source_1l00290"/>00290 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;<link linkend="_tag__manager_8h_1ab7cad863197c93abe397155a1946c0d0">g_tag_count</link>;&#32;i++)
+<anchor xml:id="_tag__manager_8c_source_1l00291"/>00291 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_tag__manager_8c_source_1l00292"/>00292 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(strncmp(<link linkend="_tag__manager_8h_1ace5be789d004e0752b6b2dec9d845864">g_tags</link>[i].name,&#32;tag_name,&#32;<link linkend="_config__value_8h_1ada71b9f258860d58a86ab220bfce6bf4">MAX_TAG_NAME_LEN</link>)&#32;==&#32;0)
+<anchor xml:id="_tag__manager_8c_source_1l00293"/>00293 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_tag__manager_8c_source_1l00294"/>00294 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;&amp;<link linkend="_tag__manager_8h_1ace5be789d004e0752b6b2dec9d845864">g_tags</link>[i];
+<anchor xml:id="_tag__manager_8c_source_1l00295"/>00295 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_tag__manager_8c_source_1l00296"/>00296 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_tag__manager_8c_source_1l00297"/>00297 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;NULL;&#32;<emphasis role="comment">//&#32;Tag&#32;non&#32;trouve</emphasis>
+<anchor xml:id="_tag__manager_8c_source_1l00298"/>00298 };
+<anchor xml:id="_tag__manager_8c_source_1l00299"/>00299 
+</programlisting></section>

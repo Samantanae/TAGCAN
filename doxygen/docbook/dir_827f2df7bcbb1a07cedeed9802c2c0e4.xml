@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_827f2df7bcbb1a07cedeed9802c2c0e4" xml:lang="en-US">
+<title>sub_scripts Directory Reference</title>
+<indexterm><primary>sub_scripts Directory Reference</primary></indexterm>
+Directory dependency graph for sub_scripts:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="dir_827f2df7bcbb1a07cedeed9802c2c0e4_dep.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Files    </title>
+        <itemizedlist>
+            <listitem><para>file <link linkend="_data__container_8c">data_container.c</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_print__val_8c">print_val.c</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_tag__manager_8c">tag_manager.c</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

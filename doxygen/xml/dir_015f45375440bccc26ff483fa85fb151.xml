@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.0" xml:lang="en-US">
+  <compounddef id="dir_015f45375440bccc26ff483fa85fb151" kind="dir">
+    <compoundname>test_file</compoundname>
+    <innerfile refid="test__safty__func_8c">test_safty_func.c</innerfile>
+    <innerfile refid="test__safty__func_8h">test_safty_func.h</innerfile>
+    <innerfile refid="test__send__receve_8c">test_send_receve.c</innerfile>
+    <innerfile refid="test__send__receve_8h">test_send_receve.h</innerfile>
+    <innerfile refid="test__set__tag_8c">test_set_tag.c</innerfile>
+    <innerfile refid="test__set__tag_8h">test_set_tag.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/tests/test_file/"/>
+  </compounddef>
+</doxygen>

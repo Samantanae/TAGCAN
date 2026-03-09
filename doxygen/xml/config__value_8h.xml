@@ -1,0 +1,543 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.0" xml:lang="en-US">
+  <compounddef id="config__value_8h" kind="file" language="C++">
+    <compoundname>config_value.h</compoundname>
+    <includedby refid="_t_a_g_c_a_n_8h" local="yes">TAGCAN.h</includedby>
+    <includedby refid="config__value_8c" local="yes">config_value.c</includedby>
+    <includedby refid="data__container_8c" local="yes">data_container.c</includedby>
+    <includedby refid="main_8c" local="yes">main.c</includedby>
+    <includedby refid="tag__manager_8c" local="yes">tag_manager.c</includedby>
+    <includedby refid="tag__manager_8h" local="yes">tag_manager.h</includedby>
+    <invincdepgraph>
+      <node id="2">
+        <label>TAGCAN.h</label>
+        <link refid="_t_a_g_c_a_n_8h"/>
+      </node>
+      <node id="1">
+        <label>config_value.h</label>
+        <link refid="config__value_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>data_container.h</label>
+        <link refid="data__container_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>tag_manager.h</label>
+        <link refid="tag__manager_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>config_value.c</label>
+        <link refid="config__value_8c"/>
+      </node>
+      <node id="5">
+        <label>main.c</label>
+        <link refid="main_8c"/>
+      </node>
+      <node id="4">
+        <label>data_container.c</label>
+        <link refid="data__container_8c"/>
+      </node>
+      <node id="9">
+        <label>print_val.c</label>
+        <link refid="print__val_8c"/>
+      </node>
+      <node id="6">
+        <label>tag_manager.c</label>
+        <link refid="tag__manager_8c"/>
+      </node>
+    </invincdepgraph>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="config__value_8h_1aa653c0eca99802a09fd9560f28a9b1c1" prot="public" static="no">
+        <name>MAX_TAGS</name>
+        <initializer>32</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Nombre maximal de tags geres simultanement. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" line="5" column="9" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" bodystart="5" bodyend="-1"/>
+        <referencedby refid="tag__manager_8c_1a7b7413adbae2eabbe7fcd13e9f91f151" compoundref="tag__manager_8c" startline="42" endline="59">get_first_tags_vide</referencedby>
+        <referencedby refid="gestion__tag_8h_1aab50a8f567be72e656120fd71f3fb435" compoundref="tag__manager_8c" startline="21" endline="36">init_tag_manager</referencedby>
+        <referencedby refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="232" endline="282">set_tag</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config__value_8h_1ada71b9f258860d58a86ab220bfce6bf4" prot="public" static="no">
+        <name>MAX_TAG_NAME_LEN</name>
+        <initializer>16</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Longueur maximale d&apos;un nom de tag (incluant le &apos;\0&apos;). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" line="7" column="9" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" bodystart="7" bodyend="-1"/>
+        <referencedby refid="tag__manager_8h_1a5737e741608851f8e3822cf07261da44" compoundref="tag__manager_8c" startline="288" endline="298">get_tag_def</referencedby>
+        <referencedby refid="tag__manager_8c_1a9963af2c23a14e289a3ff39769ea4eeb" compoundref="tag__manager_8c" startline="68" endline="81">set_name_tag</referencedby>
+        <referencedby refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="232" endline="282">set_tag</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1" prot="public" static="no">
+        <name>N_BYTES</name>
+        <initializer>8</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Taille du payload CAN en octets. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" line="9" column="9" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" bodystart="9" bodyend="-1"/>
+        <referencedby refid="data__container_8h_1ae1649807202241b28239e8cb212a18b6" compoundref="data__container_8c" startline="165" endline="171">can_simulate_send_receive</referencedby>
+        <referencedby refid="tag__manager_8c_1ad5772dac2622697b5f563da0dbfaede3" compoundref="tag__manager_8c" startline="188" endline="222">find_byte2_with_enoung_space</referencedby>
+        <referencedby refid="tag__manager_8c_1a5f1ce2cac9791e6b46be230dcce3f804" compoundref="tag__manager_8c" startline="144" endline="176">find_byte_with_enoung_space</referencedby>
+        <referencedby refid="data__container_8h_1a129f017feb0712be1dcf7932e6035aa0" compoundref="data__container_8c" startline="14" endline="20">init_data_container</referencedby>
+        <referencedby refid="print__val_8h_1a7d217b9d9a6575858c03ca9854bb151b" compoundref="print__val_8c" startline="148" endline="157">print_all_data_bin</referencedby>
+        <referencedby refid="print__val_8h_1aab1b8ef8b5cbbf7a78a88248ae81155c" compoundref="print__val_8c" startline="162" endline="171">print_all_with_title</referencedby>
+        <referencedby refid="print__val_8h_1a8ee4bb928c2cca54d191cf23edea60ec" compoundref="print__val_8c" startline="78" endline="126">print_repartition_bit</referencedby>
+        <referencedby refid="data__container_8h_1a45840c759151338fe992664f4a21c4f7" compoundref="data__container_8c" startline="24" endline="28">set_val_TxData</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="config__value_8h_1a486663aa90115780beab9f9d39fa8973" prot="public" static="no">
+        <name>MAX_N_GT</name>
+        <initializer>3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Nombre maximal de gestionnaires (reserve/extension). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" line="11" column="9" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" bodystart="11" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="config__value_8h_1af59c8e96bb2966b590726fc2d285947f" prot="public" static="no" strong="no">
+        <type></type>
+        <name>CAN_TG_STATUE</name>
+        <enumvalue id="config__value_8h_1af59c8e96bb2966b590726fc2d285947fa4add2030061ed8081fd69bbc7961b88e" prot="public">
+          <name>CAN_TG_ERROR_NOT_ENOUNG_SPACE_</name>
+          <initializer>= -2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="config__value_8h_1af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3" prot="public">
+          <name>CAN_TG_SUCCESS</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="config__value_8h_1af59c8e96bb2966b590726fc2d285947faefecc0d5f9f8d279aeeac67967a54040" prot="public">
+          <name>CAN_TG_ERROR_TAG_NOT_FOUND_</name>
+          <initializer>= -3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="config__value_8h_1af59c8e96bb2966b590726fc2d285947fa0766008cbf1754ab42a2e4995b18e1d2" prot="public">
+          <name>CAN_TG_ERROR_TAG_NAME_TO_BIGS_</name>
+          <initializer>= -4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="config__value_8h_1af59c8e96bb2966b590726fc2d285947fa2d5a4a6abf40a9b845d30b4927cc8321" prot="public">
+          <name>CAN_TG_ERROR_TOO_MAY_TAGS_</name>
+          <initializer>= -5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="config__value_8h_1af59c8e96bb2966b590726fc2d285947fa1f64facc77e1738f2ed16fae7f38140f" prot="public">
+          <name>CAN_TG_ERROR_SIZE_VALUE_INVALIDE_</name>
+          <initializer>= -6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="config__value_8h_1af59c8e96bb2966b590726fc2d285947fadb8a1b35ff867562e04d179242c150f2" prot="public">
+          <name>CAN_TG_ERROR_NAME_ALREADY_USE_</name>
+          <initializer>= -7</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="config__value_8h_1af59c8e96bb2966b590726fc2d285947faf1069aa607410cd4bdeb9609f6b03a6b" prot="public">
+          <name>CAN_TG_ERROR_SUBDIVISION_FAIL_</name>
+          <initializer>= -8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="config__value_8h_1af59c8e96bb2966b590726fc2d285947faa30bc0e8a501b29dbf6d3b5c3e4fe6f9" prot="public">
+          <name>CAN_TG_ERROR_TAG_NAME_INVALIDE_</name>
+          <initializer>=-9</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="config__value_8h_1af59c8e96bb2966b590726fc2d285947fa8f8b6e84f2b232e0ed2995b7afbd0c44" prot="public">
+          <name>CAN_TG_ERROR_NULL_POINTOR_</name>
+          <initializer>= -2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="config__value_8h_1af59c8e96bb2966b590726fc2d285947fab194d19ed0940cb65b5c625b913aaa40" prot="public">
+          <name>CAN_TG_ERROR_TRY_TO_FIND_END_CARACTER_</name>
+          <initializer>= -21</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="config__value_8h_1af59c8e96bb2966b590726fc2d285947fa4ec6d89f60bf1ee862d7b94bed822768" prot="public">
+          <name>CAN_TG_ERROR_INTERNAL_CORUPTION_</name>
+          <initializer>= -30</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="config__value_8h_1af59c8e96bb2966b590726fc2d285947fab1cfc87a8731dfcbc6e986a1b81115ac" prot="public">
+          <name>CAN_TG_ERROR_VALUE_TO_BIG</name>
+          <initializer>= -10</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Codes de retour du module TAGCAN. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" line="41" column="1" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" bodystart="41" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="enum" id="config__value_8h_1ac0d6cdda2cf4abb51116b86bc99acf99" prot="public" static="no" strong="no">
+        <type></type>
+        <name>CAN_MODE</name>
+        <enumvalue id="config__value_8h_1ac0d6cdda2cf4abb51116b86bc99acf99a7d47d78204fba2e07bda4e65594ff332" prot="public">
+          <name>RECEVE_ONLY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Reception seule: les updates entrantes peuvent modifier la valeur; l&apos;ecriture locale est bloquee. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="config__value_8h_1ac0d6cdda2cf4abb51116b86bc99acf99ad5ec70c56183ea13f8a0c16a3708a23e" prot="public">
+          <name>SEND_ONLY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Emission seule: la valeur locale est emise, les updates entrantes ne la modifient pas. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="config__value_8h_1ac0d6cdda2cf4abb51116b86bc99acf99ac4e66207fce47c294e4aaab76000c9ce" prot="public">
+          <name>SEND_AND_RECEVE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Emission + reception: ecriture locale et updates entrantes toutes deux autorisees. </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Modes d&apos;utilisation CAN (envoi/reception). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" line="58" column="1" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" bodystart="58" bodyend="62"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="config__value_8h_1a7f995285b1ed198ba4c10528ef66b8fe" prot="public" static="no" extern="yes" mutable="no">
+        <type>const int</type>
+        <definition>const int CAN_TG_ERROR_INTERNAL_CORUPTION</definition>
+        <argsstring></argsstring>
+        <name>CAN_TG_ERROR_INTERNAL_CORUPTION</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Code d&apos;erreur: corruption interne detectee. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" line="14" column="18" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/config_value.c" bodystart="15" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" declline="14" declcolumn="18"/>
+      </memberdef>
+      <memberdef kind="variable" id="config__value_8h_1af68b72a5b65a0168415d1363dc09a0a6" prot="public" static="no" extern="yes" mutable="no">
+        <type>const int</type>
+        <definition>const int CAN_TG_ERROR_TAG_NAME_TO_BIGS</definition>
+        <argsstring></argsstring>
+        <name>CAN_TG_ERROR_TAG_NAME_TO_BIGS</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Code d&apos;erreur: nom de tag trop long. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" line="16" column="18" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/config_value.c" bodystart="7" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" declline="16" declcolumn="18"/>
+        <referencedby refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="232" endline="282">set_tag</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="config__value_8h_1a49d547279f99d23ff36998f3874d3c5a" prot="public" static="no" extern="yes" mutable="no">
+        <type>const int</type>
+        <definition>const int CAN_TG_ERROR_TAG_NAME_INVALIDE</definition>
+        <argsstring></argsstring>
+        <name>CAN_TG_ERROR_TAG_NAME_INVALIDE</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Code d&apos;erreur: nom de tag invalide. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" line="18" column="18" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/config_value.c" bodystart="12" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" declline="18" declcolumn="18"/>
+        <referencedby refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="232" endline="282">set_tag</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="config__value_8h_1ab0c8b9c7e93d137cd8956e4c391a0f4c" prot="public" static="no" extern="yes" mutable="no">
+        <type>const int</type>
+        <definition>const int CAN_TG_ERROR_TAG_NOT_FOUND</definition>
+        <argsstring></argsstring>
+        <name>CAN_TG_ERROR_TAG_NOT_FOUND</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Code d&apos;erreur: tag introuvable. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" line="20" column="18" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/config_value.c" bodystart="6" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" declline="20" declcolumn="18"/>
+      </memberdef>
+      <memberdef kind="variable" id="config__value_8h_1a6ac7074ca0f94196368735678d92c7b8" prot="public" static="no" extern="yes" mutable="no">
+        <type>const int</type>
+        <definition>const int CAN_TG_ERROR_NOT_ENOUNG_SPACE</definition>
+        <argsstring></argsstring>
+        <name>CAN_TG_ERROR_NOT_ENOUNG_SPACE</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Code d&apos;erreur: espace memoire insuffisant. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" line="22" column="18" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/config_value.c" bodystart="5" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" declline="22" declcolumn="18"/>
+        <referencedby refid="main_8c_1ae9bbb2f5bb69f73e92c761f83223285a" compoundref="main_8c" startline="177" endline="329">run_all_tests</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="config__value_8h_1ada864c858133fa1c52368562add7d64e" prot="public" static="no" extern="yes" mutable="no">
+        <type>const int</type>
+        <definition>const int CAN_TG_ERROR_NULL_POINTOR</definition>
+        <argsstring></argsstring>
+        <name>CAN_TG_ERROR_NULL_POINTOR</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Code d&apos;erreur: pointeur NULL recu. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" line="24" column="18" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/config_value.c" bodystart="13" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" declline="24" declcolumn="18"/>
+      </memberdef>
+      <memberdef kind="variable" id="config__value_8h_1a3cf459060e0c412c5908438afc160d9f" prot="public" static="no" extern="yes" mutable="no">
+        <type>const int</type>
+        <definition>const int CAN_TG_ERROR_TRY_TO_FIND_END_CARACTER</definition>
+        <argsstring></argsstring>
+        <name>CAN_TG_ERROR_TRY_TO_FIND_END_CARACTER</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Code d&apos;erreur: fin de chaine non trouvee. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" line="26" column="18" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/config_value.c" bodystart="14" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" declline="26" declcolumn="18"/>
+      </memberdef>
+      <memberdef kind="variable" id="config__value_8h_1a73337c3ada0009e763ea5af164e25d70" prot="public" static="no" extern="yes" mutable="no">
+        <type>const int</type>
+        <definition>const int CAN_TG_ERROR_SIZE_VALUE_INVALIDE</definition>
+        <argsstring></argsstring>
+        <name>CAN_TG_ERROR_SIZE_VALUE_INVALIDE</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Code d&apos;erreur: taille de valeur invalide. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" line="28" column="18" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/config_value.c" bodystart="9" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" declline="28" declcolumn="18"/>
+        <referencedby refid="main_8c_1ae9bbb2f5bb69f73e92c761f83223285a" compoundref="main_8c" startline="177" endline="329">run_all_tests</referencedby>
+        <referencedby refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="232" endline="282">set_tag</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="config__value_8h_1acb2aafd99394462e0f83f05673be52a9" prot="public" static="no" extern="yes" mutable="no">
+        <type>const int</type>
+        <definition>const int CAN_TG_ERROR_SUBDIVISION_FAIL</definition>
+        <argsstring></argsstring>
+        <name>CAN_TG_ERROR_SUBDIVISION_FAIL</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Code d&apos;erreur: echec de subdivision/allocation. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" line="30" column="18" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/config_value.c" bodystart="11" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" declline="30" declcolumn="18"/>
+      </memberdef>
+      <memberdef kind="variable" id="config__value_8h_1a1e77443066dccbc42ef0acdd0f597c07" prot="public" static="no" extern="yes" mutable="no">
+        <type>const int</type>
+        <definition>const int CAN_TG_ERROR_TOO_MAY_TAGS</definition>
+        <argsstring></argsstring>
+        <name>CAN_TG_ERROR_TOO_MAY_TAGS</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Code d&apos;erreur: trop de tags declares. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" line="32" column="18" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/config_value.c" bodystart="8" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" declline="32" declcolumn="18"/>
+        <referencedby refid="tag__manager_8c_1a7b7413adbae2eabbe7fcd13e9f91f151" compoundref="tag__manager_8c" startline="42" endline="59">get_first_tags_vide</referencedby>
+        <referencedby refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="232" endline="282">set_tag</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="config__value_8h_1a18061c1ca5fc2e5ab20fa7bc8dbe81d6" prot="public" static="no" extern="yes" mutable="no">
+        <type>const int</type>
+        <definition>const int CAN_TG_ERROR_NAME_ALREADY_USE</definition>
+        <argsstring></argsstring>
+        <name>CAN_TG_ERROR_NAME_ALREADY_USE</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Code d&apos;erreur: nom de tag deja utilise. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" line="34" column="18" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/config_value.c" bodystart="10" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" declline="34" declcolumn="18"/>
+        <referencedby refid="main_8c_1ae9bbb2f5bb69f73e92c761f83223285a" compoundref="main_8c" startline="177" endline="329">run_all_tests</referencedby>
+        <referencedby refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="232" endline="282">set_tag</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="config__value_8h_1af9a28b199e843773aefbb1e1bcf50559" prot="public" static="no" extern="yes" mutable="no">
+        <type>const int</type>
+        <definition>const int SUCCES_TO_SET</definition>
+        <argsstring></argsstring>
+        <name>SUCCES_TO_SET</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Code de succes historique pour set_tag/set_value. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" line="36" column="18" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/config_value.c" bodystart="16" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" declline="36" declcolumn="18"/>
+        <referencedby refid="main_8c_1ae9bbb2f5bb69f73e92c761f83223285a" compoundref="main_8c" startline="177" endline="329">run_all_tests</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="config__value_8h_1afb042b80a35ed7a692f9001589ddf8c6" prot="public" static="no" extern="yes" mutable="no">
+        <type>const int</type>
+        <definition>const int SUCCES</definition>
+        <argsstring></argsstring>
+        <name>SUCCES</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Code de succes generique historique. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" line="38" column="18" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/config_value.c" bodystart="17" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h" declline="38" declcolumn="18"/>
+        <referencedby refid="main_8c_1ae9bbb2f5bb69f73e92c761f83223285a" compoundref="main_8c" startline="177" endline="329">run_all_tests</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>CONFIG_VALUE_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CONFIG_VALUE_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5" refid="config__value_8h_1aa653c0eca99802a09fd9560f28a9b1c1" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MAX_TAGS<sp/>32</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7" refid="config__value_8h_1ada71b9f258860d58a86ab220bfce6bf4" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MAX_TAG_NAME_LEN<sp/>16</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>N_BYTES<sp/>8</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="config__value_8h_1a486663aa90115780beab9f9d39fa8973" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MAX_N_GT<sp/>3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="config__value_8h_1a7f995285b1ed198ba4c10528ef66b8fe" kindref="member">CAN_TG_ERROR_INTERNAL_CORUPTION</ref>;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="config__value_8h_1af68b72a5b65a0168415d1363dc09a0a6" kindref="member">CAN_TG_ERROR_TAG_NAME_TO_BIGS</ref>;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="config__value_8h_1a49d547279f99d23ff36998f3874d3c5a" kindref="member">CAN_TG_ERROR_TAG_NAME_INVALIDE</ref>;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="config__value_8h_1ab0c8b9c7e93d137cd8956e4c391a0f4c" kindref="member">CAN_TG_ERROR_TAG_NOT_FOUND</ref>;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="config__value_8h_1a6ac7074ca0f94196368735678d92c7b8" kindref="member">CAN_TG_ERROR_NOT_ENOUNG_SPACE</ref>;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="config__value_8h_1ada864c858133fa1c52368562add7d64e" kindref="member">CAN_TG_ERROR_NULL_POINTOR</ref>;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="config__value_8h_1a3cf459060e0c412c5908438afc160d9f" kindref="member">CAN_TG_ERROR_TRY_TO_FIND_END_CARACTER</ref>;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="config__value_8h_1a73337c3ada0009e763ea5af164e25d70" kindref="member">CAN_TG_ERROR_SIZE_VALUE_INVALIDE</ref>;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="config__value_8h_1acb2aafd99394462e0f83f05673be52a9" kindref="member">CAN_TG_ERROR_SUBDIVISION_FAIL</ref>;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="config__value_8h_1a1e77443066dccbc42ef0acdd0f597c07" kindref="member">CAN_TG_ERROR_TOO_MAY_TAGS</ref>;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="config__value_8h_1a18061c1ca5fc2e5ab20fa7bc8dbe81d6" kindref="member">CAN_TG_ERROR_NAME_ALREADY_USE</ref>;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="config__value_8h_1af9a28b199e843773aefbb1e1bcf50559" kindref="member">SUCCES_TO_SET</ref>;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="config__value_8h_1afb042b80a35ed7a692f9001589ddf8c6" kindref="member">SUCCES</ref>;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Codes<sp/>de<sp/>retour<sp/>utilises<sp/>par<sp/>l&apos;API<sp/>TAGCAN</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="42" refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947fa4add2030061ed8081fd69bbc7961b88e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947fa4add2030061ed8081fd69bbc7961b88e" kindref="member">CAN_TG_ERROR_NOT_ENOUNG_SPACE_</ref><sp/>=<sp/>-2,</highlight></codeline>
+<codeline lineno="43" refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3" kindref="member">CAN_TG_SUCCESS</ref><sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="44" refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947faefecc0d5f9f8d279aeeac67967a54040" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947faefecc0d5f9f8d279aeeac67967a54040" kindref="member">CAN_TG_ERROR_TAG_NOT_FOUND_</ref><sp/>=<sp/>-3,</highlight></codeline>
+<codeline lineno="45" refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947fa0766008cbf1754ab42a2e4995b18e1d2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947fa0766008cbf1754ab42a2e4995b18e1d2" kindref="member">CAN_TG_ERROR_TAG_NAME_TO_BIGS_</ref><sp/>=<sp/>-4,</highlight></codeline>
+<codeline lineno="46" refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947fa2d5a4a6abf40a9b845d30b4927cc8321" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947fa2d5a4a6abf40a9b845d30b4927cc8321" kindref="member">CAN_TG_ERROR_TOO_MAY_TAGS_</ref><sp/>=<sp/>-5,</highlight></codeline>
+<codeline lineno="47" refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947fa1f64facc77e1738f2ed16fae7f38140f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947fa1f64facc77e1738f2ed16fae7f38140f" kindref="member">CAN_TG_ERROR_SIZE_VALUE_INVALIDE_</ref><sp/>=<sp/>-6,</highlight></codeline>
+<codeline lineno="48" refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947fadb8a1b35ff867562e04d179242c150f2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947fadb8a1b35ff867562e04d179242c150f2" kindref="member">CAN_TG_ERROR_NAME_ALREADY_USE_</ref><sp/>=<sp/>-7,</highlight></codeline>
+<codeline lineno="49" refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947faf1069aa607410cd4bdeb9609f6b03a6b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947faf1069aa607410cd4bdeb9609f6b03a6b" kindref="member">CAN_TG_ERROR_SUBDIVISION_FAIL_</ref><sp/>=<sp/>-8,</highlight></codeline>
+<codeline lineno="50" refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947faa30bc0e8a501b29dbf6d3b5c3e4fe6f9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947faa30bc0e8a501b29dbf6d3b5c3e4fe6f9" kindref="member">CAN_TG_ERROR_TAG_NAME_INVALIDE_</ref>=-9,</highlight></codeline>
+<codeline lineno="51" refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947fa8f8b6e84f2b232e0ed2995b7afbd0c44" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947fa8f8b6e84f2b232e0ed2995b7afbd0c44" kindref="member">CAN_TG_ERROR_NULL_POINTOR_</ref><sp/>=<sp/>-2,</highlight></codeline>
+<codeline lineno="52" refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947fab194d19ed0940cb65b5c625b913aaa40" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947fab194d19ed0940cb65b5c625b913aaa40" kindref="member">CAN_TG_ERROR_TRY_TO_FIND_END_CARACTER_</ref><sp/>=<sp/>-21,</highlight></codeline>
+<codeline lineno="53" refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947fa4ec6d89f60bf1ee862d7b94bed822768" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947fa4ec6d89f60bf1ee862d7b94bed822768" kindref="member">CAN_TG_ERROR_INTERNAL_CORUPTION_</ref><sp/>=<sp/>-30,</highlight></codeline>
+<codeline lineno="54" refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947fab1cfc87a8731dfcbc6e986a1b81115ac" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947fab1cfc87a8731dfcbc6e986a1b81115ac" kindref="member">CAN_TG_ERROR_VALUE_TO_BIG</ref><sp/>=<sp/>-10,</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">}<sp/><ref refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947f" kindref="member">CAN_TG_STATUE</ref>;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="config__value_8h_1ac0d6cdda2cf4abb51116b86bc99acf99" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="59" refid="config__value_8h_1ac0d6cdda2cf4abb51116b86bc99acf99a7d47d78204fba2e07bda4e65594ff332" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="config__value_8h_1ac0d6cdda2cf4abb51116b86bc99acf99a7d47d78204fba2e07bda4e65594ff332" kindref="member">RECEVE_ONLY</ref>,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="60" refid="config__value_8h_1ac0d6cdda2cf4abb51116b86bc99acf99ad5ec70c56183ea13f8a0c16a3708a23e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="config__value_8h_1ac0d6cdda2cf4abb51116b86bc99acf99ad5ec70c56183ea13f8a0c16a3708a23e" kindref="member">SEND_ONLY</ref>,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="61" refid="config__value_8h_1ac0d6cdda2cf4abb51116b86bc99acf99ac4e66207fce47c294e4aaab76000c9ce" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="config__value_8h_1ac0d6cdda2cf4abb51116b86bc99acf99ac4e66207fce47c294e4aaab76000c9ce" kindref="member">SEND_AND_RECEVE</ref>,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="62"><highlight class="normal">}<sp/><ref refid="config__value_8h_1ac0d6cdda2cf4abb51116b86bc99acf99" kindref="member">CAN_MODE</ref>;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>CONFIG_VALUE_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/config_value.h"/>
+  </compounddef>
+</doxygen>

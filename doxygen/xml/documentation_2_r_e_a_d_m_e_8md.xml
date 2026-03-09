@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.0" xml:lang="en-US">
+  <compounddef id="documentation_2_r_e_a_d_m_e_8md" kind="file" language="Markdown">
+    <compoundname>documentation/README.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>Documentation<sp/>TAGCAN</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Ce<sp/>dossier<sp/>contient<sp/>une<sp/>documentation<sp/>manuelle<sp/>(separee<sp/>du<sp/>code<sp/>source)<sp/>basee<sp/>sur<sp/>l&apos;etat<sp/>actuel<sp/>du<sp/>projet.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Contenu</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>`documentation/API_REFERENCE.md`:<sp/>reference<sp/>des<sp/>modules,<sp/>structures,<sp/>fonctions<sp/>et<sp/>codes<sp/>de<sp/>retour.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`documentation/COMMENTAIRES_AUDIT.md`:<sp/>verification<sp/>des<sp/>commentaires<sp/>existants<sp/>(qualite<sp/>+<sp/>ecarts).</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`documentation/COHERENCE.md`:<sp/>verification<sp/>de<sp/>coherence<sp/>entre<sp/>code,<sp/>commentaires<sp/>et<sp/>tests.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Perimetre</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Sources<sp/>analysees:<sp/>`include/`,<sp/>`scripts/`,<sp/>`tests/`.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Date<sp/>de<sp/>verification:<sp/>2026-03-09.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Objectif:<sp/>documenter<sp/>le<sp/>comportement<sp/>reel<sp/>observe,<sp/>puis<sp/>signaler<sp/>les<sp/>incoherences.</highlight></codeline>
+    </programlisting>
+    <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/documentation/README.md"/>
+  </compounddef>
+</doxygen>
