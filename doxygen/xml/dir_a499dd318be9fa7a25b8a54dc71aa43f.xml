@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.0" xml:lang="fr">
+  <compounddef id="dir_a499dd318be9fa7a25b8a54dc71aa43f" kind="dir">
+    <compoundname>sub_include</compoundname>
+    <innerfile refid="data__container_8h">data_container.h</innerfile>
+    <innerfile refid="print__val_8h">print_val.h</innerfile>
+    <innerfile refid="tag__manager_8h">tag_manager.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/"/>
+  </compounddef>
+</doxygen>

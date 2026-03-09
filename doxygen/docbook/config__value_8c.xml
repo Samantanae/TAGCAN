@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_config__value_8c" xml:lang="fr">
+<title>Référence du fichier config_value.c</title>
+<indexterm><primary>config_value.c</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;../include/config_value.h&quot;<?linebreak?></programlisting>Graphe des dépendances par inclusion de config_value.c:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="config__value_8c__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para>const int <link linkend="_config__value_8c_1a6ac7074ca0f94196368735678d92c7b8">CAN_TG_ERROR_NOT_ENOUNG_SPACE</link> = -2</para>
+</listitem>
+            <listitem><para>const int <link linkend="_config__value_8c_1ab0c8b9c7e93d137cd8956e4c391a0f4c">CAN_TG_ERROR_TAG_NOT_FOUND</link> = -3</para>
+</listitem>
+            <listitem><para>const int <link linkend="_config__value_8c_1af68b72a5b65a0168415d1363dc09a0a6">CAN_TG_ERROR_TAG_NAME_TO_BIGS</link> = -4</para>
+</listitem>
+            <listitem><para>const int <link linkend="_config__value_8c_1a1e77443066dccbc42ef0acdd0f597c07">CAN_TG_ERROR_TOO_MAY_TAGS</link> = -5</para>
+</listitem>
+            <listitem><para>const int <link linkend="_config__value_8c_1a73337c3ada0009e763ea5af164e25d70">CAN_TG_ERROR_SIZE_VALUE_INVALIDE</link> = -6</para>
+</listitem>
+            <listitem><para>const int <link linkend="_config__value_8c_1a18061c1ca5fc2e5ab20fa7bc8dbe81d6">CAN_TG_ERROR_NAME_ALREADY_USE</link> = -7</para>
+</listitem>
+            <listitem><para>const int <link linkend="_config__value_8c_1acb2aafd99394462e0f83f05673be52a9">CAN_TG_ERROR_SUBDIVISION_FAIL</link> = -8</para>
+</listitem>
+            <listitem><para>const int <link linkend="_config__value_8c_1a49d547279f99d23ff36998f3874d3c5a">CAN_TG_ERROR_TAG_NAME_INVALIDE</link> =-9</para>
+</listitem>
+            <listitem><para>const int <link linkend="_config__value_8c_1ada864c858133fa1c52368562add7d64e">CAN_TG_ERROR_NULL_POINTOR</link> = -20</para>
+</listitem>
+            <listitem><para>const int <link linkend="_config__value_8c_1a3cf459060e0c412c5908438afc160d9f">CAN_TG_ERROR_TRY_TO_FIND_END_CARACTER</link> = -21</para>
+</listitem>
+            <listitem><para>const int <link linkend="_config__value_8c_1a7f995285b1ed198ba4c10528ef66b8fe">CAN_TG_ERROR_INTERNAL_CORUPTION</link> = -30</para>
+</listitem>
+            <listitem><para>const int <link linkend="_config__value_8c_1af9a28b199e843773aefbb1e1bcf50559">SUCCES_TO_SET</link> = 1</para>
+</listitem>
+            <listitem><para>const int <link linkend="_config__value_8c_1afb042b80a35ed7a692f9001589ddf8c6">SUCCES</link> = 1</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Documentation des variables</title>
+<anchor xml:id="_config__value_8c_1a7f995285b1ed198ba4c10528ef66b8fe"/><section>
+    <title>CAN_TG_ERROR_INTERNAL_CORUPTION</title>
+<indexterm><primary>CAN_TG_ERROR_INTERNAL_CORUPTION</primary><secondary>config_value.c</secondary></indexterm>
+<indexterm><primary>config_value.c</primary><secondary>CAN_TG_ERROR_INTERNAL_CORUPTION</secondary></indexterm>
+<para><computeroutput>const int CAN_TG_ERROR_INTERNAL_CORUPTION = -30</computeroutput></para></section>
+<anchor xml:id="_config__value_8c_1a18061c1ca5fc2e5ab20fa7bc8dbe81d6"/><section>
+    <title>CAN_TG_ERROR_NAME_ALREADY_USE</title>
+<indexterm><primary>CAN_TG_ERROR_NAME_ALREADY_USE</primary><secondary>config_value.c</secondary></indexterm>
+<indexterm><primary>config_value.c</primary><secondary>CAN_TG_ERROR_NAME_ALREADY_USE</secondary></indexterm>
+<para><computeroutput>const int CAN_TG_ERROR_NAME_ALREADY_USE = -7</computeroutput></para></section>
+<anchor xml:id="_config__value_8c_1a6ac7074ca0f94196368735678d92c7b8"/><section>
+    <title>CAN_TG_ERROR_NOT_ENOUNG_SPACE</title>
+<indexterm><primary>CAN_TG_ERROR_NOT_ENOUNG_SPACE</primary><secondary>config_value.c</secondary></indexterm>
+<indexterm><primary>config_value.c</primary><secondary>CAN_TG_ERROR_NOT_ENOUNG_SPACE</secondary></indexterm>
+<para><computeroutput>const int CAN_TG_ERROR_NOT_ENOUNG_SPACE = -2</computeroutput></para></section>
+<anchor xml:id="_config__value_8c_1ada864c858133fa1c52368562add7d64e"/><section>
+    <title>CAN_TG_ERROR_NULL_POINTOR</title>
+<indexterm><primary>CAN_TG_ERROR_NULL_POINTOR</primary><secondary>config_value.c</secondary></indexterm>
+<indexterm><primary>config_value.c</primary><secondary>CAN_TG_ERROR_NULL_POINTOR</secondary></indexterm>
+<para><computeroutput>const int CAN_TG_ERROR_NULL_POINTOR = -20</computeroutput></para></section>
+<anchor xml:id="_config__value_8c_1a73337c3ada0009e763ea5af164e25d70"/><section>
+    <title>CAN_TG_ERROR_SIZE_VALUE_INVALIDE</title>
+<indexterm><primary>CAN_TG_ERROR_SIZE_VALUE_INVALIDE</primary><secondary>config_value.c</secondary></indexterm>
+<indexterm><primary>config_value.c</primary><secondary>CAN_TG_ERROR_SIZE_VALUE_INVALIDE</secondary></indexterm>
+<para><computeroutput>const int CAN_TG_ERROR_SIZE_VALUE_INVALIDE = -6</computeroutput></para></section>
+<anchor xml:id="_config__value_8c_1acb2aafd99394462e0f83f05673be52a9"/><section>
+    <title>CAN_TG_ERROR_SUBDIVISION_FAIL</title>
+<indexterm><primary>CAN_TG_ERROR_SUBDIVISION_FAIL</primary><secondary>config_value.c</secondary></indexterm>
+<indexterm><primary>config_value.c</primary><secondary>CAN_TG_ERROR_SUBDIVISION_FAIL</secondary></indexterm>
+<para><computeroutput>const int CAN_TG_ERROR_SUBDIVISION_FAIL = -8</computeroutput></para></section>
+<anchor xml:id="_config__value_8c_1a49d547279f99d23ff36998f3874d3c5a"/><section>
+    <title>CAN_TG_ERROR_TAG_NAME_INVALIDE</title>
+<indexterm><primary>CAN_TG_ERROR_TAG_NAME_INVALIDE</primary><secondary>config_value.c</secondary></indexterm>
+<indexterm><primary>config_value.c</primary><secondary>CAN_TG_ERROR_TAG_NAME_INVALIDE</secondary></indexterm>
+<para><computeroutput>const int CAN_TG_ERROR_TAG_NAME_INVALIDE =-9</computeroutput></para></section>
+<anchor xml:id="_config__value_8c_1af68b72a5b65a0168415d1363dc09a0a6"/><section>
+    <title>CAN_TG_ERROR_TAG_NAME_TO_BIGS</title>
+<indexterm><primary>CAN_TG_ERROR_TAG_NAME_TO_BIGS</primary><secondary>config_value.c</secondary></indexterm>
+<indexterm><primary>config_value.c</primary><secondary>CAN_TG_ERROR_TAG_NAME_TO_BIGS</secondary></indexterm>
+<para><computeroutput>const int CAN_TG_ERROR_TAG_NAME_TO_BIGS = -4</computeroutput></para></section>
+<anchor xml:id="_config__value_8c_1ab0c8b9c7e93d137cd8956e4c391a0f4c"/><section>
+    <title>CAN_TG_ERROR_TAG_NOT_FOUND</title>
+<indexterm><primary>CAN_TG_ERROR_TAG_NOT_FOUND</primary><secondary>config_value.c</secondary></indexterm>
+<indexterm><primary>config_value.c</primary><secondary>CAN_TG_ERROR_TAG_NOT_FOUND</secondary></indexterm>
+<para><computeroutput>const int CAN_TG_ERROR_TAG_NOT_FOUND = -3</computeroutput></para></section>
+<anchor xml:id="_config__value_8c_1a1e77443066dccbc42ef0acdd0f597c07"/><section>
+    <title>CAN_TG_ERROR_TOO_MAY_TAGS</title>
+<indexterm><primary>CAN_TG_ERROR_TOO_MAY_TAGS</primary><secondary>config_value.c</secondary></indexterm>
+<indexterm><primary>config_value.c</primary><secondary>CAN_TG_ERROR_TOO_MAY_TAGS</secondary></indexterm>
+<para><computeroutput>const int CAN_TG_ERROR_TOO_MAY_TAGS = -5</computeroutput></para></section>
+<anchor xml:id="_config__value_8c_1a3cf459060e0c412c5908438afc160d9f"/><section>
+    <title>CAN_TG_ERROR_TRY_TO_FIND_END_CARACTER</title>
+<indexterm><primary>CAN_TG_ERROR_TRY_TO_FIND_END_CARACTER</primary><secondary>config_value.c</secondary></indexterm>
+<indexterm><primary>config_value.c</primary><secondary>CAN_TG_ERROR_TRY_TO_FIND_END_CARACTER</secondary></indexterm>
+<para><computeroutput>const int CAN_TG_ERROR_TRY_TO_FIND_END_CARACTER = -21</computeroutput></para></section>
+<anchor xml:id="_config__value_8c_1afb042b80a35ed7a692f9001589ddf8c6"/><section>
+    <title>SUCCES</title>
+<indexterm><primary>SUCCES</primary><secondary>config_value.c</secondary></indexterm>
+<indexterm><primary>config_value.c</primary><secondary>SUCCES</secondary></indexterm>
+<para><computeroutput>const int SUCCES = 1</computeroutput></para></section>
+<anchor xml:id="_config__value_8c_1af9a28b199e843773aefbb1e1bcf50559"/><section>
+    <title>SUCCES_TO_SET</title>
+<indexterm><primary>SUCCES_TO_SET</primary><secondary>config_value.c</secondary></indexterm>
+<indexterm><primary>config_value.c</primary><secondary>SUCCES_TO_SET</secondary></indexterm>
+<para><computeroutput>const int SUCCES_TO_SET = 1</computeroutput></para></section>
+</section>
+</section>

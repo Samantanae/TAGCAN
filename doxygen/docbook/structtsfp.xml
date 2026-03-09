@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structtsfp" xml:lang="fr">
+<title>Référence de la structure tsfp</title>
+<indexterm><primary>tsfp</primary></indexterm>
+<para>
+<computeroutput>#include &lt;print_val.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Champs de données    </title>
+        <itemizedlist>
+            <listitem><para>char <link linkend="_structtsfp_1a2d723190f449137a272d5b64518761dd">bi</link> [8]</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Documentation des champs</title>
+<anchor xml:id="_structtsfp_1a2d723190f449137a272d5b64518761dd"/><section>
+    <title>bi</title>
+<indexterm><primary>bi</primary><secondary>tsfp</secondary></indexterm>
+<indexterm><primary>tsfp</primary><secondary>bi</secondary></indexterm>
+<para><computeroutput>char bi[8]</computeroutput></para></section>
+<para>
+La documentation de cette structure a été générée à partir du fichier suivant :</para>
+<link linkend="_print__val_8h">print_val.h</link></section>
+</section>
