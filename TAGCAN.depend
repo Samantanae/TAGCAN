@@ -14,7 +14,7 @@
 1772317016 source:c:\programation\ulaval\gaul\programmation\tagcan\scripts\tag_struct.c
 	<stdio.h>
 
-1772999261 source:c:\programation\ulaval\gaul\programmation\tagcan\scripts\config_value.c
+1773021422 source:c:\programation\ulaval\gaul\programmation\tagcan\scripts\config_value.c
 	"../include/config_value.h"
 
 1772999250 c:\programation\ulaval\gaul\programmation\tagcan\include\config_value.h
@@ -30,7 +30,7 @@
 	<stdint.h>
 	<stdbool.h>
 
-1772998922 source:c:\programation\ulaval\gaul\programmation\tagcan\scripts\main.c
+1773021592 source:c:\programation\ulaval\gaul\programmation\tagcan\scripts\main.c
 	<stdio.h>
 	<assert.h>
 	<stdbool.h>
@@ -43,22 +43,22 @@
 	<stdint.h>
 	"tag_manager.h"
 
-1772998922 source:c:\programation\ulaval\gaul\programmation\tagcan\scripts\sub_scripts\data_container.c
+1773024476 source:c:\programation\ulaval\gaul\programmation\tagcan\scripts\sub_scripts\data_container.c
 	"../../include/sub_include/data_container.h"
 	"../../include/config_value.h"
 	"../../include/sub_include/print_val.h"
 	<stdio.h>
 
-1772998922 c:\programation\ulaval\gaul\programmation\tagcan\include\sub_include\data_container.h
+1773024432 c:\programation\ulaval\gaul\programmation\tagcan\include\sub_include\data_container.h
 	<stdint.h>
 	"tag_manager.h"
 
-1772998922 c:\programation\ulaval\gaul\programmation\tagcan\include\sub_include\tag_manager.h
+1773021627 c:\programation\ulaval\gaul\programmation\tagcan\include\sub_include\tag_manager.h
 	"../config_value.h"
 	<stdint.h>
 	<stdbool.h>
 
-1772998922 source:c:\programation\ulaval\gaul\programmation\tagcan\scripts\sub_scripts\tag_manager.c
+1773021527 source:c:\programation\ulaval\gaul\programmation\tagcan\scripts\sub_scripts\tag_manager.c
 	"../../include/sub_include/tag_manager.h"
 	"../../include/config_value.h"
 	"../../include/gestion_tag.h"
@@ -78,7 +78,7 @@
 	<stdio.h>
 	<stdint.h>
 
-1772998922 source:c:\programation\ulaval\gaul\programmation\tagcan\scripts\sub_scripts\print_val.c
+1773021670 source:c:\programation\ulaval\gaul\programmation\tagcan\scripts\sub_scripts\print_val.c
 	"../../include/sub_include/print_val.h"
 	"../../include/sub_include/tag_manager.h"
 	"../../include/sub_include/data_container.h"
@@ -101,9 +101,7 @@
 	<stdio.h>
 	<stdbool.h>
 
-1772998922 source:c:\programation\ulaval\gaul\programmation\tagcan\scripts\can_utils.c
-	"../include/CAN_utils.h"
-	<stdint.h>
+1773024476 source:c:\programation\ulaval\gaul\programmation\tagcan\scripts\can_utils.c
 
 1772998922 c:\programation\ulaval\gaul\programmation\tagcan\include\can_utils.h
 

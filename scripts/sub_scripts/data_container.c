@@ -21,7 +21,11 @@ void init_data_container(void)
 
 
 
-
+void set_val_TxData(uint8_t *TxDataArray){
+for (int i = 0; i < N_BYTES; i++){
+    TxData[i] = TxDataArray[i];
+}
+}
 uint8_t prep_mask(uint8_t p_bit, uint8_t n_bit)
 {
 // prepa du mask
