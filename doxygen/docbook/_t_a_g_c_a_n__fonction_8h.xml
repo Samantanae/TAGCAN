@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__t_a_g_c_a_n__fonction_8h" xml:lang="fr">
+<title>Référence du fichier TAGCAN_fonction.h</title>
+<indexterm><primary>TAGCAN_fonction.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;sub_include/data_container.h&quot;<?linebreak?>#include &quot;sub_include/tag_manager.h&quot;<?linebreak?></programlisting>Graphe des dépendances par inclusion de TAGCAN_fonction.h:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="_t_a_g_c_a_n__fonction_8h__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>

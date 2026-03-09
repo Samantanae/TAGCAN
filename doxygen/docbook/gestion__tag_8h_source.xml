@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_gestion__tag_8h_source" xml:lang="fr">
+<title>gestion_tag.h</title>
+<indexterm><primary>gestion_tag.h</primary></indexterm>
+Aller à la documentation de ce fichier.<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;GESTION_TAG_H</emphasis>
+2 <emphasis role="preprocessor">#define&#32;GESTION_TAG_H</emphasis>
+3 
+4 <emphasis role="comment">//&#32;fonction&#32;qui&#32;gère&#32;les&#32;tags</emphasis>
+8 
+9 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_gestion__tag_8h_1aab50a8f567be72e656120fd71f3fb435">init_tag_manager</link>(<emphasis role="keywordtype">void</emphasis>);
+10 
+18 <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;tag_name,&#32;uint8_t&#32;n_bit);
+19 
+20 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">/*&#32;GESTION_TAG_H&#32;*/</emphasis><emphasis role="preprocessor"></emphasis>
+</programlisting></section>

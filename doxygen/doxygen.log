@@ -1,0 +1,8 @@
+C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/data_container.h:31: warning: unexpected token TK_COMMAND_AT in comment block while parsing the argument of command param
+C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/sub_scripts/print_val.c:114: warning: Found unknown command '@bref'
+C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/sub_scripts/print_val.c:112: warning: argument val from the argument list of print_bin_8 has multiple @param documentation sections
+C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/main.c:13: warning: argument 'Le' of command @param is not found in the argument list of TEST(const char *name, const bool condition)
+C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/sub_scripts/print_val.c:112: warning: Found unknown command '@bref'
+C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/sub_scripts/tag_manager.c:163: warning: unexpected token TK_COMMAND_AT in comment block while parsing the argument of command param
+C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/sub_scripts/tag_manager.c:122: warning: The following parameter of find_byte_with_enoung_space(uint8_t siz, int8_t *retur_var) is not documented:
+  parameter 'retur_var'

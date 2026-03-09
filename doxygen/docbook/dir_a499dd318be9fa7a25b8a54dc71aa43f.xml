@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_a499dd318be9fa7a25b8a54dc71aa43f" xml:lang="fr">
+<title>Répertoire de référence de sub_include</title>
+<indexterm><primary>Répertoire de référence de sub_include</primary></indexterm>
+Graphe des dépendances de répertoires pour sub_include:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="dir_a499dd318be9fa7a25b8a54dc71aa43f_dep.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Fichiers    </title>
+        <itemizedlist>
+            <listitem><para>fichier <link linkend="_data__container_8h">data_container.h</link></para>
+</listitem>
+            <listitem><para>fichier <link linkend="_print__val_8h">print_val.h</link></para>
+</listitem>
+            <listitem><para>fichier <link linkend="_tag__manager_8h">tag_manager.h</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

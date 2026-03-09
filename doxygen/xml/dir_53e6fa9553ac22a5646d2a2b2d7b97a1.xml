@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.0" xml:lang="fr">
+  <compounddef id="dir_53e6fa9553ac22a5646d2a2b2d7b97a1" kind="dir">
+    <compoundname>scripts</compoundname>
+    <innerdir refid="dir_827f2df7bcbb1a07cedeed9802c2c0e4">sub_scripts</innerdir>
+    <innerfile refid="config__value_8c">config_value.c</innerfile>
+    <innerfile refid="scripts_2main_8c">scripts/main.c</innerfile>
+    <innerfile refid="main__func_8c">main_func.c</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/"/>
+  </compounddef>
+</doxygen>

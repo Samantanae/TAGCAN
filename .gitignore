@@ -1,2 +1,10 @@
-archive/python_version.zip
-archive/scripts_.zip
+
+/archive
+/.venv
+/.vscode
+/output
+/obj
+**/.vs
+/.vscode
+/.vscode
+/archive

@@ -4,11 +4,11 @@
 extern int total_tests;
 extern int passed_tests;
 
-void TEST(const char* name, const bool condition){
+void TEST_(const char* name, const bool condition){
     if(condition){printf("\tsuccess\t%s\n", name);}
     else{printf("\tfail\t%s\n", name);}
 }
-void TEST_EQ_INT(const char* name, const int val_1, const int val_2){
+void TEST_EQ_INT_(const char* name, const int val_1, const int val_2){
     bool condition = val_1 == val_2;
     if(condition){
         printf("\tsuccess\t%s\n", name);

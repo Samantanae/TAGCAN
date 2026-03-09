@@ -44,19 +44,23 @@
 			<Option target="Debug" />
 			<Option target="Release" />
 		</UnitsGlob>
+		<Unit filename="etape_utilisation.txt" />
+		<Unit filename="include/TAGCAN_fonction.h">
+			<Option glob="299603298" />
+		</Unit>
 		<Unit filename="include/config_value.h">
 			<Option glob="299603298" />
 		</Unit>
-		<Unit filename="include/data_container.h">
+		<Unit filename="include/gestion_tag.h">
 			<Option glob="299603298" />
 		</Unit>
-		<Unit filename="include/empty_tags_value.h">
+		<Unit filename="include/sub_include/data_container.h">
 			<Option glob="299603298" />
 		</Unit>
-		<Unit filename="include/tag_manager.h">
+		<Unit filename="include/sub_include/print_val.h">
 			<Option glob="299603298" />
 		</Unit>
-		<Unit filename="include/tag_struct.h">
+		<Unit filename="include/sub_include/tag_manager.h">
 			<Option glob="299603298" />
 		</Unit>
 		<Unit filename="main.c">
@@ -66,23 +70,23 @@
 			<Option compilerVar="CC" />
 			<Option glob="530276766" />
 		</Unit>
-		<Unit filename="scripts/data_container.c">
-			<Option compilerVar="CC" />
-			<Option glob="530276766" />
-		</Unit>
-		<Unit filename="scripts/empty_tags_value.c">
-			<Option compilerVar="CC" />
-			<Option glob="530276766" />
-		</Unit>
 		<Unit filename="scripts/main.c">
 			<Option compilerVar="CC" />
 			<Option glob="530276766" />
 		</Unit>
-		<Unit filename="scripts/tag_manager.c">
+		<Unit filename="scripts/main_func.c">
 			<Option compilerVar="CC" />
 			<Option glob="530276766" />
 		</Unit>
-		<Unit filename="scripts/tag_struct.c">
+		<Unit filename="scripts/sub_scripts/data_container.c">
+			<Option compilerVar="CC" />
+			<Option glob="530276766" />
+		</Unit>
+		<Unit filename="scripts/sub_scripts/print_val.c">
+			<Option compilerVar="CC" />
+			<Option glob="530276766" />
+		</Unit>
+		<Unit filename="scripts/sub_scripts/tag_manager.c">
 			<Option compilerVar="CC" />
 			<Option glob="530276766" />
 		</Unit>
@@ -94,6 +98,15 @@
 				<Changes_Log show_changes_editor="0" app_title="released version %M.%m.%b of %p" changeslog_path="ChangesLog.txt" />
 				<Code header_guard="VERSION_H" namespace="AutoVersion" prefix="" />
 			</AutoVersioning>
+			<DoxyBlocks>
+				<comment_style block="0" line="0" />
+				<doxyfile_project />
+				<doxyfile_build />
+				<doxyfile_warnings />
+				<doxyfile_output />
+				<doxyfile_dot />
+				<general />
+			</DoxyBlocks>
 			<wxsmith version="1">
 				<resources>
 					<wxDialog wxs="wxsmith/NewDialog.wxs" src="NewDialog.cpp" hdr="NewDialog.h" fwddecl="0" i18n="1" name="NewDialog" language="CPP" />
