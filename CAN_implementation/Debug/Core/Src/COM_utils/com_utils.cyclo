@@ -1,0 +1,13 @@
+../Core/Src/COM_utils/com_utils.c:39:6:init_com	2
+../Core/Src/COM_utils/com_utils.c:54:6:CAN_init_TAGCAN	1
+../Core/Src/COM_utils/com_utils.c:59:6:CAN_setup_DF	1
+../Core/Src/COM_utils/com_utils.c:69:6:CAN_setup_TAG	1
+../Core/Src/COM_utils/com_utils.c:84:20:CAN_setup_Filter	1
+../Core/Src/COM_utils/com_utils.c:112:6:main_loop	1
+../Core/Src/COM_utils/com_utils.c:117:6:update_TagData	2
+../Core/Src/COM_utils/com_utils.c:123:6:CAN_send_msg	2
+../Core/Src/COM_utils/com_utils.c:129:6:CAN_change_val	1
+../Core/Src/COM_utils/com_utils.c:133:6:update_val	1
+../Core/Src/COM_utils/com_utils.c:137:6:update_all_val_send	1
+../Core/Src/COM_utils/com_utils.c:152:6:update_all_val_receve	1
+../Core/Src/COM_utils/com_utils.c:169:6:HAL_CAN_RxFifo0MsgPendingCallback	4

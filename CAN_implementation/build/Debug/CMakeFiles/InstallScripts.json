@@ -1,0 +1,8 @@
+{
+	"InstallScripts" : 
+	[
+		"C:/programation/ulaval/GAUL/Cetautomatix/Software/STM32CubeIDE/CAN_integration/CAN_implementation/build/Debug/cmake_install.cmake",
+		"C:/programation/ulaval/GAUL/Cetautomatix/Software/STM32CubeIDE/CAN_integration/CAN_implementation/build/Debug/cmake/stm32cubemx/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
