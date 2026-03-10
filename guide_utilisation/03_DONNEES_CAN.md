@@ -237,7 +237,7 @@ TxData[0] = (TxData[0] & 0xF0) | 0x05;  // Garder les 4 bits hauts, définir bas
 | **Mélanger accès direct et tags** | Écrire un octet directement, puis utiliser `get_value()` peut être confus | Soyez cohérent: ou tags, ou accès brut |
 | **Oublier le `memcpy()`** | Recevoir `RxData`, mais essayer de lire avec `get_value()` sans copier | Toujours copier `RxData` -> `TxData` avant `get_value()` |
 | **Buffer réutilisé** | Si `set_value()` change l'ordre de allocation des tags | Pas vraiment un piège, mais attention si tags réordonnés |
-| **Débordement de bits** | Écrire un octet directement sans respecter le schéma de tags | Documentez votre layout de tags ! |
+| **Débordement de bits** | Écrire un octet directement sans respecter le schéma de tags | Utilisez `print_repartition_bit()` (déclarée dans `include/sub_include/print_val.h`) pour visualiser exactement le layout des tags. |
 
 ---
 
@@ -321,3 +321,4 @@ int main(void) {
 Voir aussi :
 - [02_GESTION_TAGS.md](02_GESTION_TAGS.md) - Tags et variables nommées
 - [04_FILTRAGE_CAN.md](04_FILTRAGE_CAN.md) - Filtrage des messages reçus
+- [06_VISUALISATION.md](06_VISUALISATION.md) - Outils de visualisation et debug

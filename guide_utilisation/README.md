@@ -11,6 +11,7 @@ Ce guide pratique vous aidera à utiliser **TAGCAN**, une bibliothèque de gesti
 - **[03_DONNEES_CAN.md](03_DONNEES_CAN.md)** - Manipulation du buffer de données CAN
 - **[04_FILTRAGE_CAN.md](04_FILTRAGE_CAN.md)** - Configuration des filtres CAN
 - **[05_EXEMPLES_COMPLETS.md](05_EXEMPLES_COMPLETS.md)** - Exemples pratiques et cas d'usage
+- **[06_VISUALISATION.md](06_VISUALISATION.md)** - Fonctions de visualisation et outils de debug
 
 ## Points clés
 
