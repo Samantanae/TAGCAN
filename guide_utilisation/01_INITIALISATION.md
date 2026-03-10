@@ -1,29 +1,29 @@
-# 01 — Initialisation de TAGCAN
+# 01 - Initialisation de TAGCAN
 
-## 🎯 Objectif
+##  Objectif
 
 Configurer le système TAGCAN et le bus CAN pour pouvoir communiquer avec d'autres nœuds CAN.
 
-## 📝 Vue d'ensemble du processus
+##  Vue d'ensemble du processus
 
 L'initialisation suit ces étapes :
 
 ```
 1. init_com() (point d'appel unique)
    ├─ CAN_init_TAGCAN()
-   │  ├─ init_data_container()     → Efface le buffer TxData
-   │  └─ init_tag_manager()        → Initialise la gestion des tags
+   │  ├─ init_data_container()     -> Efface le buffer TxData
+   │  └─ init_tag_manager()        -> Initialise la gestion des tags
    │
-   ├─ CAN_setup_TAG()              → Crée les tags applicatifs
+   ├─ CAN_setup_TAG()              -> Crée les tags applicatifs
    │  (set_tag pour chaque variable)
    │
-   ├─ CAN_setup_DF()               → Configure le header CAN
+   ├─ CAN_setup_DF()               -> Configure le header CAN
    │  (ID, type de frame, DLC)
    │
-   └─ HAL_CAN_ActivateNotification → Active les interruptions RX
+   └─ HAL_CAN_ActivateNotification -> Active les interruptions RX
 ```
 
-## 🔍 Détail de chaque étape
+##  Détail de chaque étape
 
 ### Étape 1 : init_data_container()
 
@@ -35,7 +35,7 @@ void init_data_container(void);
 
 | Paramètre | Type | Description |
 |-----------|------|-------------|
-| — | — | (aucun) |
+| - | - | (aucun) |
 
 **Effet** :
 - Vide complètement le buffer `TxData[8]`
@@ -107,10 +107,10 @@ void CAN_setup_DF(int32_t std_id) {
 ```
 
 **Points importants** :
-- `IDE = CAN_ID_STD` → utilise les IDs standards (11 bits)
-- `RTR = CAN_RTR_DATA` → frame de données (pas une requête)
-- `DLC = 8` → longueur fixe du payload (8 octets)
-- `StdId` → l'identifiant unique du message CAN
+- `IDE = CAN_ID_STD` -> utilise les IDs standards (11 bits)
+- `RTR = CAN_RTR_DATA` -> frame de données (pas une requête)
+- `DLC = 8` -> longueur fixe du payload (8 octets)
+- `StdId` -> l'identifiant unique du message CAN
 
 ---
 
@@ -124,12 +124,12 @@ if(HAL_CAN_ActivateNotification(&hcan, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK) {
 
 **Explications** :
 - Permet de recevoir les messages CAN par interruption (plutôt que polling)
-- `CAN_IT_RX_FIFO0_MSG_PENDING` → déclenche une IRQ à la réception d'un message dans FIFO0
+- `CAN_IT_RX_FIFO0_MSG_PENDING` -> déclenche une IRQ à la réception d'un message dans FIFO0
 - Nécessite l'implémentation du callback : `void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)`
 
 ---
 
-## 📌 Code complet d'initialisation
+##  Code complet d'initialisation
 
 ```c
 #include "com_utils.h"
@@ -150,7 +150,7 @@ void init_com(void) {
         Error_Handler();
     }
 
-    // ✅ Système TAGCAN prêt !
+    //  Système TAGCAN prêt !
 }
 
 // À appeler une seule fois dans main() au démarrage
@@ -169,11 +169,11 @@ int main(void) {
 
 ---
 
-## ⚠️ Points d'attention
+##  Points d'attention
 
-| ⚠️ Point | Détail |
+|  Point | Détail |
 |---------|--------|
-| **Ordre d'appel** | Toujours : `init_data_container()` → `init_tag_manager()` → `set_tag()` |
+| **Ordre d'appel** | Toujours : `init_data_container()` -> `init_tag_manager()` -> `set_tag()` |
 | **Appel unique** | `init_com()` doit être appelée **une seule fois** au démarrage |
 | **Réinitialisation** | Si vous appelez `init_tag_manager()` à nouveau, tous les tags doivent être recréés |
 | **Configuration matérielle** | Le module CAN STM32 (HAL) doit être initialisé **avant** TAGCAN |
@@ -181,17 +181,17 @@ int main(void) {
 
 ---
 
-## ✅ Vérification
+##  Vérification
 
 Après initialisation :
-- ✓ `TxData[8]` est rempli de zéros
-- ✓ Les tags sont créés et prêts à l'emploi
-- ✓ Le header `TxHeader` est configuré avec votre ID CAN
-- ✓ Les interruptions CAN sont actives
-- ✓ Prêt pour `set_value()` et `get_value()`
+-  `TxData[8]` est rempli de zéros
+-  Les tags sont créés et prêts à l'emploi
+-  Le header `TxHeader` est configuré avec votre ID CAN
+-  Les interruptions CAN sont actives
+-  Prêt pour `set_value()` et `get_value()`
 
 ---
 
 Voir aussi :
-- [02_GESTION_TAGS.md](02_GESTION_TAGS.md) — Utiliser les tags
-- [03_DONNEES_CAN.md](03_DONNEES_CAN.md) — Gérer les données CAN
+- [02_GESTION_TAGS.md](02_GESTION_TAGS.md) - Utiliser les tags
+- [03_DONNEES_CAN.md](03_DONNEES_CAN.md) - Gérer les données CAN

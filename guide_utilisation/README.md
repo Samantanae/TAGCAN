@@ -6,20 +6,20 @@ Ce guide pratique vous aidera à utiliser **TAGCAN**, une bibliothèque de gesti
 
 ## Structure du guide
 
-- **[01_INITIALISATION.md](01_INITIALISATION.md)** — Mise en place du système TAGCAN et du bus CAN
-- **[02_GESTION_TAGS.md](02_GESTION_TAGS.md)** — Création et gestion des tags (variables nommées)
-- **[03_DONNEES_CAN.md](03_DONNEES_CAN.md)** — Manipulation du buffer de données CAN
-- **[04_FILTRAGE_CAN.md](04_FILTRAGE_CAN.md)** — Configuration des filtres CAN
-- **[05_EXEMPLES_COMPLETS.md](05_EXEMPLES_COMPLETS.md)** — Exemples pratiques et cas d'usage
+- **[01_INITIALISATION.md](01_INITIALISATION.md)** - Mise en place du système TAGCAN et du bus CAN
+- **[02_GESTION_TAGS.md](02_GESTION_TAGS.md)** - Création et gestion des tags (variables nommées)
+- **[03_DONNEES_CAN.md](03_DONNEES_CAN.md)** - Manipulation du buffer de données CAN
+- **[04_FILTRAGE_CAN.md](04_FILTRAGE_CAN.md)** - Configuration des filtres CAN
+- **[05_EXEMPLES_COMPLETS.md](05_EXEMPLES_COMPLETS.md)** - Exemples pratiques et cas d'usage
 
 ## Points clés
 
 ### Qu'est-ce qu'un tag ?
 
 Un **tag** est une variable nommée associée à une plage de bits dans le buffer CAN. Par exemple :
-- `"SEQ"` → 3 bits (numéro de séquence)
-- `"HB"` → 1 bit (heartbeat/watchdog)
-- `"N2OPS"` → 16 bits (capteur de pression N2O)
+- `"SEQ"` -> 3 bits (numéro de séquence)
+- `"HB"` -> 1 bit (heartbeat/watchdog)
+- `"N2OPS"` -> 16 bits (capteur de pression N2O)
 
 ### Architecture générale
 
@@ -60,11 +60,11 @@ HAL_CAN_AddTxMessage(&hcan, &TxHeader, TxData, &TxMailbox);
 
 Pour plus de détails sur l'API : voir [API_REFERENCE.md](../documentation/API_REFERENCE.md)
 
-## 🔧 Fichiers sources associés
+##  Fichiers sources associés
 
-- `exemple_utilisation/com_utils.c` — Code d'exemple d'intégration
-- `exemple_utilisation/com_utils.h` — Headers d'exemple
-- `TAGCAN.h` — Point d'entrée principal
+- `exemple_utilisation/com_utils.c` - Code d'exemple d'intégration
+- `exemple_utilisation/com_utils.h` - Headers d'exemple
+- `TAGCAN.h` - Point d'entrée principal
 
 ---
 

@@ -1,6 +1,6 @@
-# 02 — Gestion des Tags
+# 02 - Gestion des Tags
 
-## 🎯 Qu'est-ce qu'un tag ?
+##  Qu'est-ce qu'un tag ?
 
 Un **tag** est une variable nommée qui occupe une plage de bits dans le buffer CAN (TxData). C'est l'interface principale pour lire et écrire des données.
 
@@ -9,7 +9,7 @@ Un **tag** est une variable nommée qui occupe une plage de bits dans le buffer 
 
 ---
 
-## 🔧 Créer un tag : set_tag()
+##  Créer un tag : set_tag()
 
 ### Prototype
 
@@ -44,7 +44,7 @@ void CAN_setup_TAG(void) {
 
 ---
 
-## 📝 Écrire une valeur : set_value()
+##  Écrire une valeur : set_value()
 
 ### Prototype
 
@@ -61,19 +61,19 @@ int set_value(const char* tag_name, uint32_t value);
 
 ### Valeur de retour
 
-- **CAN_TG_SUCCESS** (0) — Succès
-- **CAN_TG_ERROR_VALUE_TO_BIG** — La valeur dépasse les `n_bit` bits du tag
-- Autres codes d'erreur — Tag non trouvé, etc.
+- **CAN_TG_SUCCESS** (0) - Succès
+- **CAN_TG_ERROR_VALUE_TO_BIG** - La valeur dépasse les `n_bit` bits du tag
+- Autres codes d'erreur - Tag non trouvé, etc.
 
 ### Comportement important
 
-⚠️ **La valeur est tronquée si elle dépasse la capacité du tag.**
+ **La valeur est tronquée si elle dépasse la capacité du tag.**
 
 Par exemple :
 ```c
-set_tag("SEQ", 3);      // 3 bits → plage 0 à 7
-set_value("SEQ", 10);   // ❌ Erreur : 10 > 2^3 - 1 = 7
-set_value("SEQ", 5);    // ✅ Ok : écrit 0b101
+set_tag("SEQ", 3);      // 3 bits -> plage 0 à 7
+set_value("SEQ", 10);   //  Erreur : 10 > 2^3 - 1 = 7
+set_value("SEQ", 5);    //  Ok : écrit 0b101
 ```
 
 ### Exemples d'utilisation
@@ -109,7 +109,7 @@ void update_telemetry(void) {
 
 ---
 
-## 🔍 Lire une valeur : get_value()
+##  Lire une valeur : get_value()
 
 ### Prototype
 
@@ -126,8 +126,8 @@ int get_value(const char* tag_name, uint32_t* out_value);
 
 ### Valeur de retour
 
-- **CAN_TG_SUCCESS** (0) — Succès, `*out_value` est valide
-- Négatif — Code d'erreur
+- **CAN_TG_SUCCESS** (0) - Succès, `*out_value` est valide
+- Négatif - Code d'erreur
 
 ### Exemples
 
@@ -219,9 +219,9 @@ int main(void) {
 
 ---
 
-## 🎯 Bonnes pratiques
+##  Bonnes pratiques
 
-| ✅ À faire | ❌ À éviter |
+|  À faire |  À éviter |
 |-----------|-----------|
 | Vérifier la valeur de retour de `set_value()` | Ignorer les codes d'erreur |
 | Vérifier la valeur de retour de `get_value()` | Utiliser `out_value` sans vérification |
@@ -232,7 +232,7 @@ int main(void) {
 
 ---
 
-## 📊 Schéma de tags recommandé
+##  Schéma de tags recommandé
 
 Pour un système similaire à l'exemple, structurez les tags comme ceci en commentaire :
 
@@ -253,5 +253,5 @@ Pour un système similaire à l'exemple, structurez les tags comme ceci en comme
 ---
 
 Voir aussi :
-- [03_DONNEES_CAN.md](03_DONNEES_CAN.md) — Utilisation avancée du buffer
-- [05_EXEMPLES_COMPLETS.md](05_EXEMPLES_COMPLETS.md) — Exemples concrets
+- [03_DONNEES_CAN.md](03_DONNEES_CAN.md) - Utilisation avancée du buffer
+- [05_EXEMPLES_COMPLETS.md](05_EXEMPLES_COMPLETS.md) - Exemples concrets

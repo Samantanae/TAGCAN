@@ -1,12 +1,12 @@
-# 05 — Exemples Complets
+# 05 - Exemples Complets
 
-## 📘 Exemples d'intégration pratiques
+##  Exemples d'intégration pratiques
 
 Vous trouverez ici des exemples réalistes exploitant l'ensemble du système TAGCAN.
 
 ---
 
-## 📌 Exemple 1 : Système de télémétrie simple
+##  Exemple 1 : Système de télémétrie simple
 
 ### Scénario
 
@@ -185,7 +185,7 @@ int main(void) {
 
 ---
 
-## 📌 Exemple 2 : Système de commande avec réponse
+##  Exemple 2 : Système de commande avec réponse
 
 ### Scénario
 
@@ -350,7 +350,7 @@ int main(void) {
 
 ---
 
-## 📌 Exemple 3 : Test en boucle locale (sans matériel CAN)
+##  Exemple 3 : Test en boucle locale (sans matériel CAN)
 
 ### Scénario
 
@@ -379,7 +379,7 @@ void test_local_loop(void) {
     set_tag("SENSOR_A", 8);
     set_tag("SENSOR_B", 12);
 
-    printf("✓ Initialisé\n\n");
+    printf(" Initialisé\n\n");
 
     // Étape 2: Écrire les données
     printf("Écriture des données...\n");
@@ -394,7 +394,7 @@ void test_local_loop(void) {
     }
     printf("\n\n");
 
-    // Étape 3: Simuler envoi → réception
+    // Étape 3: Simuler envoi -> réception
     printf("Simulation envoi/réception...\n");
     can_simulate_send_receive(TxData, RxData);
 
@@ -420,9 +420,9 @@ void test_local_loop(void) {
 
     // Vérifier
     if(seq == 5 && sens_a == 42 && sens_b == 1000) {
-        printf("\n✅ TEST RÉUSSI!\n");
+        printf("\n TEST RÉUSSI!\n");
     } else {
-        printf("\n❌ TEST ÉCHOUÉ!\n");
+        printf("\n TEST ÉCHOUÉ!\n");
     }
 }
 
@@ -436,7 +436,7 @@ int main(void) {
 ```
 === TEST BOUCLE LOCALE TAGCAN ===
 
-✓ Initialisé
+ Initialisé
 
 Écriture des données...
 Buffer TxData: XX XX XX XX XX XX XX XX
@@ -449,12 +449,12 @@ SEQ = 5
 SENSOR_A = 42
 SENSOR_B = 1000
 
-✅ TEST RÉUSSI!
+ TEST RÉUSSI!
 ```
 
 ---
 
-## 📌 Exemple 4 : Debug / Monitoring CAN
+##  Exemple 4 : Debug / Monitoring CAN
 
 ### Scénario
 
@@ -574,7 +574,7 @@ int main(void) {
 
 ---
 
-## 🔗 Checklist d'implémentation
+##  Checklist d'implémentation
 
 - [ ] Inclure `TAGCAN.h`
 - [ ] Appeler `init_data_container()`

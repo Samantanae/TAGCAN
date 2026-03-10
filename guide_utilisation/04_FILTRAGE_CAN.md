@@ -1,12 +1,12 @@
-# 04 — Filtrage CAN
+# 04 - Filtrage CAN
 
-## 🎯 Objectif
+##  Objectif
 
 Configurer les filtres CAN pour recevoir **uniquement** les messages pertinents et ignorer le reste du trafic.
 
 ---
 
-## 📚 Contexte
+##  Contexte
 
 Le bus CAN est partagé. Un nœud peut recevoir des messages destinés à d'autres nœuds. Les **filtres CAN** permettent :
 
@@ -16,7 +16,7 @@ Le bus CAN est partagé. Un nœud peut recevoir des messages destinés à d'autr
 
 ---
 
-## 🔧 Fonction de filtrage
+##  Fonction de filtrage
 
 ### Prototype
 
@@ -38,7 +38,7 @@ Pointeur vers la structure `CAN_FilterTypeDef` configurée.
 
 ---
 
-## 📋 Comment ça marche ?
+##  Comment ça marche ?
 
 ### Le filtre masque (IDMASK)
 
@@ -57,7 +57,7 @@ Résultat :    Accepter si bits importants Match
 
 ---
 
-## 🔨 Exemple de configuration
+##  Exemple de configuration
 
 ### Cas 1 : Accepter une plage d'IDs (0x100 à 0x120)
 
@@ -82,7 +82,7 @@ CAN_FilterTypeDef* filter3 = CAN_setup_Filter(0x000, 0x7FF, 2);
 
 ---
 
-## ⚙️ Détails de la configuration interne
+##  Détails de la configuration interne
 
 Voici ce que fait `CAN_setup_Filter()` en détail :
 
@@ -124,7 +124,7 @@ CAN_FilterTypeDef* CAN_setup_Filter(int32_t minimum_id, int32_t maximum_id, int 
 
 ---
 
-## 🔌 Exemple d'intégration complet
+##  Exemple d'intégration complet
 
 ### Initialisation avec filtrage
 
@@ -185,7 +185,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) {
 
 ---
 
-## 🧮 Limitation des bancs de filtrage
+##  Limitation des bancs de filtrage
 
 Le STM32F1 propose :
 
@@ -201,7 +201,7 @@ Chaque filtre peut gérer :
 
 ---
 
-## 🎯 Stratégies de filtrage recommandées
+##  Stratégies de filtrage recommandées
 
 ### Stratégie 1 : Filtrage par catégorie (Recommandé)
 
@@ -247,20 +247,20 @@ CAN_setup_Filter(0x202, 0x202, 2);
 
 ---
 
-## ⚠️ Points d'attention
+##  Points d'attention
 
-| ⚠️ Point | Détail |
+|  Point | Détail |
 |---------|--------|
 | **Ordre d'application** | Les filtres doivent être configurés AVANT d'activer les interruptions |
 | **Limite de bancs** | 14 filtres max pour CAN1. Bien planifier! |
 | **FIFO0 vs FIFO1** | `CAN_setup_Filter()` utilise FIFO0. À adapter si vous utilisez FIFO1 |
 | **Pas de filtre = tout accepter** | Si aucun filtre n'est configuré, tous les messages passent |
 | **Mode IDLIST vs IDMASK** | La fonction utilise IDMASK (plages). Pour listes, modifier le code |
-| **Décalage des bits (<<5)** | Note: `maximum_id << 5` → convertit l'ID de 11 bits au format STM32 |
+| **Décalage des bits (<<5)** | Note: `maximum_id << 5` -> convertit l'ID de 11 bits au format STM32 |
 
 ---
 
-## 🐛 Débuggage des filtres
+##  Débuggage des filtres
 
 ```c
 // Vérifier quels messages arrivent
@@ -279,25 +279,25 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) {
 ```
 
 Si vous ne voyez **aucun message** malgré l'activité CAN :
-- ✓ Vérifier que les filtres acceptent l'ID envoyé
-- ✓ Vérifier que les interruptions sont activées
-- ✓ Vérifier que le module CAN est initialisé
+-  Vérifier que les filtres acceptent l'ID envoyé
+-  Vérifier que les interruptions sont activées
+-  Vérifier que le module CAN est initialisé
 
 Si vous voyez **trop de messages** :
-- ✓ Ajouter des filtres plus restrictifs
-- ✓ Vérifier que les filtres ne sont pas inversés (min > max)
+-  Ajouter des filtres plus restrictifs
+-  Vérifier que les filtres ne sont pas inversés (min > max)
 
 ---
 
-## 📋 Comparaison : Avec/Sans filtres
+##  Comparaison : Avec/Sans filtres
 
 ### Sans filtres (accepte tout)
 
 ```c
 // Aucun CAN_setup_Filter() appelé
 while(1) {
-    // ❌ Reçoit TOUS les messages du bus
-    // → CPU chargé, latence mauvaise
+    //  Reçoit TOUS les messages du bus
+    // -> CPU chargé, latence mauvaise
 }
 ```
 
@@ -309,13 +309,13 @@ CAN_setup_Filter(0x200, 0x20F, 0);  // Capteurs
 CAN_setup_Filter(0x100, 0x10F, 1);  // Commandes
 
 while(1) {
-    // ✅ Reçoit UNIQUEMENT les messages 0x200-0x20F et 0x100-0x10F
-    // → CPU libre, latence optimale
+    //  Reçoit UNIQUEMENT les messages 0x200-0x20F et 0x100-0x10F
+    // -> CPU libre, latence optimale
 }
 ```
 
 ---
 
 Voir aussi :
-- [03_DONNEES_CAN.md](03_DONNEES_CAN.md) — Buffer de données
-- [05_EXEMPLES_COMPLETS.md](05_EXEMPLES_COMPLETS.md) — Système complet
+- [03_DONNEES_CAN.md](03_DONNEES_CAN.md) - Buffer de données
+- [05_EXEMPLES_COMPLETS.md](05_EXEMPLES_COMPLETS.md) - Système complet

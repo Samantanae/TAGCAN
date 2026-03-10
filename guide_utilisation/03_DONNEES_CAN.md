@@ -1,12 +1,12 @@
-# 03 — Manipulation du Buffer de Données CAN
+# 03 - Manipulation du Buffer de Données CAN
 
-## 🎯 Objectif
+##  Objectif
 
 Comprendre comment gérer le buffer de données CAN (`TxData` et `RxData`) au-delà de la simple interface des tags.
 
 ---
 
-## 📦 Structure du buffer CAN
+##  Structure du buffer CAN
 
 ### Taille et format
 
@@ -28,9 +28,9 @@ Le buffer CAN est toujours de **8 octets** (64 bits) pour un frame standard CAN.
 
 ---
 
-## 🔧 Fonctions de gestion du buffer
+##  Fonctions de gestion du buffer
 
-### 1️⃣ init_data_container()
+### 1 init_data_container()
 
 Réinitialise le buffer à zéro.
 
@@ -39,7 +39,7 @@ void init_data_container(void);
 ```
 
 **Effet** :
-- Tous les octets de `TxData[8]` → 0
+- Tous les octets de `TxData[8]` -> 0
 - Appelé manuellement si vous voulez "effacer" les données
 
 **Exemple** :
@@ -51,7 +51,7 @@ init_data_container();
 
 ---
 
-### 2️⃣ set_val_TxData()
+### 2 set_val_TxData()
 
 Copie un tableau **externe** dans le buffer global `TxData`.
 
@@ -67,20 +67,20 @@ void set_val_TxData(uint8_t *TxDataArray);
 **Exemple** :
 ```c
 uint8_t raw_data[8] = {0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x00, 0x11};
-set_val_TxData(raw_data);  // Copie raw_data → TxData
+set_val_TxData(raw_data);  // Copie raw_data -> TxData
 
 // Après cet appel:
 // TxData[0] = 0xAA
 // TxData[1] = 0xBB
 // ... et cetera
 
-// ⚠️ Les tags ne voient PAS cette modification directement
+//  Les tags ne voient PAS cette modification directement
 // Vous travaillez maintenant "en dehors" du système de tags
 ```
 
 ---
 
-### 3️⃣ can_simulate_send_receive()
+### 3 can_simulate_send_receive()
 
 Simule un envoi/réception CAN par copie buffer-à-buffer.
 
@@ -109,7 +109,7 @@ memcpy(rx, TxData, 8);  // Équivalent à:
 
 ---
 
-## 🔄 Workflow complet : Écriture → Envoi → Réception
+##  Workflow complet : Écriture -> Envoi -> Réception
 
 ### Émission (Tx)
 
@@ -192,7 +192,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) {
     }
 
     // Ou utiliser les fonctions TAGCAN si vous avez copié RxData dans TxData:
-    memcpy(TxData, RxData, 8);  // Copier RxData → TxData
+    memcpy(TxData, RxData, 8);  // Copier RxData -> TxData
     if(get_value("SEQ", &seq) == CAN_TG_SUCCESS) {
         printf("Numéro de séquence distant: %u\n", seq);
     }
@@ -201,7 +201,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) {
 
 ---
 
-## ⚡ Directement lire/écrire les octets
+##  Directement lire/écrire les octets
 
 ### Lecture directe
 
@@ -230,18 +230,18 @@ TxData[0] = (TxData[0] & 0xF0) | 0x05;  // Garder les 4 bits hauts, définir bas
 
 ---
 
-## ⚠️ Pièges courants
+##  Pièges courants
 
-| ⚠️ Piège | Description | Solution |
+|  Piège | Description | Solution |
 |---------|-------------|----------|
 | **Mélanger accès direct et tags** | Écrire un octet directement, puis utiliser `get_value()` peut être confus | Soyez cohérent: ou tags, ou accès brut |
-| **Oublier le `memcpy()`** | Recevoir `RxData`, mais essayer de lire avec `get_value()` sans copier | Toujours copier `RxData` → `TxData` avant `get_value()` |
+| **Oublier le `memcpy()`** | Recevoir `RxData`, mais essayer de lire avec `get_value()` sans copier | Toujours copier `RxData` -> `TxData` avant `get_value()` |
 | **Buffer réutilisé** | Si `set_value()` change l'ordre de allocation des tags | Pas vraiment un piège, mais attention si tags réordonnés |
 | **Débordement de bits** | Écrire un octet directement sans respecter le schéma de tags | Documentez votre layout de tags ! |
 
 ---
 
-## 📋 Tableau d'aide : Qui fait quoi ?
+##  Tableau d'aide : Qui fait quoi ?
 
 | Tâche | Fonction | Détails |
 |------|----------|---------|
@@ -255,7 +255,7 @@ TxData[0] = (TxData[0] & 0xF0) | 0x05;  // Garder les 4 bits hauts, définir bas
 
 ---
 
-## 📍 Exemple : Envoi → Réception → Traitement
+##  Exemple : Envoi -> Réception -> Traitement
 
 ```c
 #include "TAGCAN.h"
@@ -319,5 +319,5 @@ int main(void) {
 ---
 
 Voir aussi :
-- [02_GESTION_TAGS.md](02_GESTION_TAGS.md) — Tags et variables nommées
-- [04_FILTRAGE_CAN.md](04_FILTRAGE_CAN.md) — Filtrage des messages reçus
+- [02_GESTION_TAGS.md](02_GESTION_TAGS.md) - Tags et variables nommées
+- [04_FILTRAGE_CAN.md](04_FILTRAGE_CAN.md) - Filtrage des messages reçus
