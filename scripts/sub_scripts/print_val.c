@@ -25,13 +25,13 @@ void print_all_tag_set(void){
     printf("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n");
     printf("\tid\tname\tnb\tbia\tbib\tbpa\tbpb\n");
     for(int i = 0; i <= g_tag_count - 1; i++){
-        printf("\t٪d\t",i);
-        printf("٪s\t",g_tags[i].name);
-        printf("٪d\t",g_tags[i].n_bits);
-        printf("٪d\t",g_tags[i].byte_idx_a);
-        printf("٪d\t",g_tags[i].byte_idx_b);
-        printf("٪d\t",g_tags[i].bit_pos_a);
-        printf("٪d\t",g_tags[i].bit_pos_b);
+        printf("\t%d\t",i);
+        printf("%s\t",g_tags[i].name);
+        printf("%d\t",g_tags[i].n_bits);
+        printf("%d\t",g_tags[i].byte_idx_a);
+        printf("%d\t",g_tags[i].byte_idx_b);
+        printf("%d\t",g_tags[i].bit_pos_a);
+        printf("%d\t",g_tags[i].bit_pos_b);
         printf("\n");
     }
     printf("---------------------------------------------------------------------\n");
@@ -45,11 +45,11 @@ void print_all_data(void){
     printf("format: tag[n.bits]:\tvaleur\n");
     int32_t result_val;
     for(int i = 0; i <= g_tag_count - 1; i++){
-        printf("\t٪d",i);
-        printf("٪s\t",g_tags[i].name);
+        printf("\t%d",i);
+        printf("%s\t",g_tags[i].name);
         get_value(g_tags[i].name,&result_val);
-        printf("[٪d]:\t",g_tags[i].n_bits);
-        printf("٪d", result_val);
+        printf("[%d]:\t",g_tags[i].n_bits);
+        printf("%d", result_val);
         printf("\n");
     }
     printf("-------------------[END view of all data]---------------------------\n");
@@ -76,53 +76,55 @@ void modif_vt(int8_t bia, int8_t bib, uint8_t bpa, uint8_t bpb, uint8_t nb,
 /** \brief Affiche une vue textuelle de l'occupation des bits de la trame.
  */
 void print_repartition_bit(void){
-    int max_byte_toucher = 0;
-    // Reinitialise la structure d'affichage
-    for(int i = 0; i < 8 ; i++){
-        for(int i2 = 0; i2 < 8 ; i2++){gbc2[i].bi[i2]=' ';}
-    gbc2[i].bi[8] = '\0';
-    }
+    // Grille de remplissage: bit_grid[byte_idx][bit_pos] = caractere du tag
+    char bit_grid[N_BYTES][8];
+    memset(bit_grid, '.', sizeof(bit_grid));
 
-
-    printf("legend (des bits de la trame):\n");
+    // Affichage de la legende
+    printf("=== REPARTITION DES BITS DANS LA TRAME CAN ===\n\n");
+    printf("Legende des tags:\n");
     char possible_id[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    //char* vt1[8],vt2[8],vt3[8],vt4[8],vt5[8],vt6[8],vt7[8], vt8[8];
-    uint8_t gbu[N_BYTES] = {0};
-    memset(gbu, 0, sizeof(gbu));
+
+    // Remplir la grille avec les tags
     for(int i = 0; i <= g_tag_count - 1; i++){
-        printf("٪s :\t",g_tags[i].name);
-        printf("[٪c]\n", possible_id[i]);
+        printf("  %s : [%c]\n", g_tags[i].name, possible_id[i]);
+
         if(g_tags[i].n_bits > 8){
-            // Partie A: occupe 8 bits pleins.
-            for(int i2=0; i2<8;i2++){
-                gbc2[g_tags[i].bit_pos_a].bi[i2] = possible_id[i];
+            // Le tag s'etend sur deux bytes
+            // Partie A: de byte_idx_a, bits bit_pos_a a 7
+            for(int j = g_tags[i].bit_pos_a; j < 8; j++){
+                bit_grid[g_tags[i].byte_idx_a][j] = possible_id[i];
             }
-            gbu[g_tags[i].bit_pos_a] += 8;
-            int i2=gbu[g_tags[i].bit_pos_b];
-            int condi_fin = gbu[g_tags[i].bit_pos_b]+(g_tags[i].n_bits - 8);
-            for(i2; i2<condi_fin;i2++){
-                gbc2[g_tags[i].bit_pos_b].bi[i2] = possible_id[i];
+            // Partie B: de byte_idx_b, bits 0 a (remaining_bits - 1)
+            int remaining_bits = g_tags[i].n_bits - (8 - g_tags[i].bit_pos_a);
+            for(int j = 0; j < remaining_bits && j < 8; j++){
+                bit_grid[g_tags[i].byte_idx_b][j] = possible_id[i];
             }
-            gbu[g_tags[i].bit_pos_b] += (g_tags[i].n_bits - 8);
-            if(g_tags[i].bit_pos_b>max_byte_toucher){max_byte_toucher=g_tags[i].bit_pos_b;}
-            if(g_tags[i].bit_pos_a>max_byte_toucher){max_byte_toucher=g_tags[i].bit_pos_a;}
         }
-        else{
-            gbu[g_tags[i].bit_pos_a] += 8;
-            int i2=gbu[g_tags[i].bit_pos_a];
-            int condi_fin = gbu[g_tags[i].bit_pos_a]+(g_tags[i].n_bits - 8);
-            for(i2; i2<condi_fin;i2++){
-                gbc2[g_tags[i].bit_pos_a].bi[i2] = possible_id[i];
+        else {
+            // Le tag tient dans un seul byte: de bit_pos_a a (bit_pos_a + n_bits - 1)
+            for(int j = 0; j < g_tags[i].n_bits; j++){
+                if(g_tags[i].bit_pos_a + j < 8){
+                    bit_grid[g_tags[i].byte_idx_a][g_tags[i].bit_pos_a + j] = possible_id[i];
+                }
             }
-            gbu[g_tags[i].bit_pos_b] += (g_tags[i].n_bits - 8);
-            if(g_tags[i].bit_pos_a>max_byte_toucher){max_byte_toucher=g_tags[i].bit_pos_a;}
         }
     }
-    printf("---------------------------------------------\n\t");
-    for(int i = 0; i < max_byte_toucher ; i++){
-        printf("٪s\t",gbc2[i]);
+
+    // Affichage de la grille
+    printf("\n");
+    printf("========================================\n");
+    printf("Byte | Bit 7 6 5 4 3 2 1 0\n");
+    printf("-----|---------+--------\n");
+
+    for(int byte = 0; byte < N_BYTES; byte++){
+        printf(" [%d] | ", byte);
+        for(int bit = 7; bit >= 0; bit--){
+            printf("%c ", bit_grid[byte][bit]);
+        }
+        printf("\n");
     }
-    printf("\n----------------------------------------------\n");
+    printf("========================================\n");
 }
 
 /**
@@ -135,7 +137,7 @@ void print_bin_8(uint8_t val)
 {
     for(int i = 7; i >= 0 ; i--)
     {
-        printf("٪c", (val & (1 << i)) ? '1' : '0');
+        printf("%c", (val & (1 << i)) ? '1' : '0');
     }
 }
 
@@ -160,13 +162,13 @@ void print_all_data_bin(void)
  * \param title Libelle affiche avant les octets.
  */
 void print_all_with_title(const char* title){
-    printf("٪s\t",title);
+    printf("%s\t",title);
     int i;
-    for (int i = 0; i < N_BYTES; i++);
+    for (int i = 0; i < N_BYTES; i++)
     {
         print_bin_8(TxData[i]);
         printf("\t");
-    };
+    }
     printf("\n");
 }
 
