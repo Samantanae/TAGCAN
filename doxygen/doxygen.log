@@ -1,15 +1,47 @@
+warning: source '..\include\config_value.h' is not a readable file or directory... skipping.
+warning: source '..\scripts\sub_scripts\data_container.c' is not a readable file or directory... skipping.
+warning: source '..\TAGCAN.h' is not a readable file or directory... skipping.
+warning: source '..\scripts\config_value.c' is not a readable file or directory... skipping.
+warning: source '..\include\sub_include\tag_manager.h' is not a readable file or directory... skipping.
 warning: source '..\include\TAGCAN_fonction.h' is not a readable file or directory... skipping.
-C:/programation/ulaval/GAUL/programmation/TAGCAN/README.md:1: warning: No matching directory found for command \dir C:/programation/ulaval/GAUL/programmation/TAGCAN/
-C:/programation/ulaval/GAUL/programmation/TAGCAN/include/gestion_tag.h:11: warning: argument 'n_bit' of command @param is not found in the argument list of set_tag(const char *tag_name, uint8_t siz)
-C:/programation/ulaval/GAUL/programmation/TAGCAN/include/gestion_tag.h:11: warning: argument tag_name from the argument list of set_tag has multiple @param documentation sections
-C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/data_container.h:47: warning: argument tx_buffer from the argument list of can_simulate_send_receive has multiple @param documentation sections
-C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/data_container.h:47: warning: argument rx_buffer from the argument list of can_simulate_send_receive has multiple @param documentation sections
-C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/data_container.h:31: warning: argument 'TxDataArray' of command @param is not found in the argument list of get_value(const char *tag_name, uint32_t *out_value)
-C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/data_container.h:31: warning: argument 'ba' of command @param is not found in the argument list of get_value(const char *tag_name, uint32_t *out_value)
-C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/data_container.h:31: warning: argument 'bb' of command @param is not found in the argument list of get_value(const char *tag_name, uint32_t *out_value)
-C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/data_container.h:31: warning: The following parameters of get_value(const char *tag_name, uint32_t *out_value) are not documented:
+warning: source '..\scripts\main.c' is not a readable file or directory... skipping.
+warning: source '..\scripts\sub_scripts\tag_manager.c' is not a readable file or directory... skipping.
+warning: source '..\include\sub_include\data_container.h' is not a readable file or directory... skipping.
+/workspaces/TAGCAN/include/gestion_tag.h:11: warning: argument 'n_bit' of command @param is not found in the argument list of set_tag(const char *tag_name, uint8_t siz)
+/workspaces/TAGCAN/include/gestion_tag.h:11: warning: argument 'tag_name' from the argument list of set_tag has multiple @param documentation sections
+/workspaces/TAGCAN/include/sub_include/data_container.h:47: warning: argument 'tx_buffer' from the argument list of can_simulate_send_receive has multiple @param documentation sections
+/workspaces/TAGCAN/include/sub_include/data_container.h:47: warning: argument 'rx_buffer' from the argument list of can_simulate_send_receive has multiple @param documentation sections
+/workspaces/TAGCAN/include/sub_include/data_container.h:31: warning: argument 'TxDataArray' of command @param is not found in the argument list of get_value(const char *tag_name, uint32_t *out_value)
+/workspaces/TAGCAN/include/sub_include/data_container.h:31: warning: argument 'ba' of command @param is not found in the argument list of get_value(const char *tag_name, uint32_t *out_value)
+/workspaces/TAGCAN/include/sub_include/data_container.h:31: warning: argument 'bb' of command @param is not found in the argument list of get_value(const char *tag_name, uint32_t *out_value)
+/workspaces/TAGCAN/include/sub_include/data_container.h:31: warning: The following parameters of get_value(const char *tag_name, uint32_t *out_value) are not documented:
   parameter 'tag_name'
   parameter 'out_value'
-C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/print_val.h:21: warning: argument title from the argument list of print_all_with_title has multiple @param documentation sections
-C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/print_val.h:9: warning: argument val from the argument list of print_bin_8 has multiple @param documentation sections
-C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/tag_manager.h:39: warning: argument tag_name from the argument list of get_tag_def has multiple @param documentation sections
+/workspaces/TAGCAN/include/sub_include/print_val.h:21: warning: argument 'title' from the argument list of print_all_with_title has multiple @param documentation sections
+/workspaces/TAGCAN/include/sub_include/print_val.h:9: warning: argument 'val' from the argument list of print_bin_8 has multiple @param documentation sections
+/workspaces/TAGCAN/include/sub_include/tag_manager.h:39: warning: argument 'tag_name' from the argument list of get_tag_def has multiple @param documentation sections
+/workspaces/TAGCAN/include/sub_include/data_container.h:31: warning: argument 'TxDataArray' of command @param is not found in the argument list of get_value(const char *tag_name, uint32_t *out_value)
+/workspaces/TAGCAN/include/sub_include/data_container.h:31: warning: argument 'ba' of command @param is not found in the argument list of get_value(const char *tag_name, uint32_t *out_value)
+/workspaces/TAGCAN/include/sub_include/data_container.h:31: warning: argument 'bb' of command @param is not found in the argument list of get_value(const char *tag_name, uint32_t *out_value)
+/workspaces/TAGCAN/include/sub_include/data_container.h:31: warning: The following parameters of get_value(const char *tag_name, uint32_t *out_value) are not documented:
+  parameter 'tag_name'
+  parameter 'out_value'
+/workspaces/TAGCAN/include/gestion_tag.h:11: warning: argument 'n_bit' of command @param is not found in the argument list of set_tag(const char *tag_name, uint8_t siz)
+/workspaces/TAGCAN/include/gestion_tag.h:11: warning: argument 'tag_name' from the argument list of set_tag has multiple @param documentation sections
+/workspaces/TAGCAN/include/sub_include/data_container.h:31: warning: argument 'TxDataArray' of command @param is not found in the argument list of get_value(const char *tag_name, uint32_t *out_value)
+/workspaces/TAGCAN/include/sub_include/data_container.h:31: warning: argument 'ba' of command @param is not found in the argument list of get_value(const char *tag_name, uint32_t *out_value)
+/workspaces/TAGCAN/include/sub_include/data_container.h:31: warning: argument 'bb' of command @param is not found in the argument list of get_value(const char *tag_name, uint32_t *out_value)
+/workspaces/TAGCAN/include/sub_include/data_container.h:31: warning: The following parameters of get_value(const char *tag_name, uint32_t *out_value) are not documented:
+  parameter 'tag_name'
+  parameter 'out_value'
+/workspaces/TAGCAN/include/sub_include/data_container.h:47: warning: argument 'tx_buffer' from the argument list of can_simulate_send_receive has multiple @param documentation sections
+/workspaces/TAGCAN/include/sub_include/data_container.h:47: warning: argument 'rx_buffer' from the argument list of can_simulate_send_receive has multiple @param documentation sections
+/workspaces/TAGCAN/include/sub_include/print_val.h:9: warning: argument 'val' from the argument list of print_bin_8 has multiple @param documentation sections
+/workspaces/TAGCAN/include/sub_include/print_val.h:21: warning: argument 'title' from the argument list of print_all_with_title has multiple @param documentation sections
+/workspaces/TAGCAN/include/sub_include/tag_manager.h:39: warning: argument 'tag_name' from the argument list of get_tag_def has multiple @param documentation sections
+/workspaces/TAGCAN/include/sub_include/data_container.h:31: warning: argument 'TxDataArray' of command @param is not found in the argument list of get_value(const char *tag_name, uint32_t *out_value)
+/workspaces/TAGCAN/include/sub_include/data_container.h:31: warning: argument 'ba' of command @param is not found in the argument list of get_value(const char *tag_name, uint32_t *out_value)
+/workspaces/TAGCAN/include/sub_include/data_container.h:31: warning: argument 'bb' of command @param is not found in the argument list of get_value(const char *tag_name, uint32_t *out_value)
+/workspaces/TAGCAN/include/sub_include/data_container.h:31: warning: The following parameters of get_value(const char *tag_name, uint32_t *out_value) are not documented:
+  parameter 'tag_name'
+  parameter 'out_value'
