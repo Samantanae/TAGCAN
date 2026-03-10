@@ -1,0 +1,343 @@
+\chapter{04 -\/ Filtrage CAN }
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n}{}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n}\index{04 -\/ Filtrage CAN@{04 -\/ Filtrage CAN}}
+\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md96}%
+\Hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md96}%
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md97}{}\doxysection{\texorpdfstring{Objectif}{Objectif}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md97}
+Configurer les filtres CAN pour recevoir {\bfseries{uniquement}} les messages pertinents et ignorer le reste du trafic.
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md99}{}\doxysection{\texorpdfstring{Contexte}{Contexte}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md99}
+Le bus CAN est partagé. Un nœud peut recevoir des messages destinés à d\textquotesingle{}autres nœuds. Les {\bfseries{filtres CAN}} permettent :\+
+
+
+\begin{DoxyItemize}
+\item Réduire la charge CPU (moins d\textquotesingle{}interruptions inutiles)
+\item Améliorer la latence (traiter uniquement les messages pertinents)
+\item Séparer logiquement le trafic
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md101}{}\doxysection{\texorpdfstring{Fonction de filtrage}{Fonction de filtrage}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md101}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md102}{}\doxysubsection{\texorpdfstring{Prototype}{Prototype}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md102}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{CAN\_FilterTypeDef*\ \doxymbox{\hyperlink{com__utils_8c_adfa3f55b53f7a0c8e6a7ffbf37fe2545}{CAN\_setup\_Filter}}(int32\_t\ minimum\_id,\ int32\_t\ maximum\_id,\ \textcolor{keywordtype}{int}\ filterBank);}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md103}{}\doxysubsection{\texorpdfstring{Paramètres}{Paramètres}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md103}
+
+\begin{DoxyTable}{3}{}{}{1}
+\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Paramètre  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Type  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Description  \\
+{\ttfamily minimum\+\_\+id}  &{\ttfamily int32\+\_\+t}  &ID CAN minimum à accepter  \\
+{\ttfamily maximum\+\_\+id}  &{\ttfamily int32\+\_\+t}  &ID CAN maximum à accepter  \\
+{\ttfamily filter\+Bank}  &{\ttfamily int}  &Numéro de banc de filtre (0-\/27 disponibles)  \\
+\end{DoxyTable}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md104}{}\doxysubsection{\texorpdfstring{Valeur de retour}{Valeur de retour}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md104}
+Pointeur vers la structure {\ttfamily CAN\+\_\+\+Filter\+Type\+Def} configurée.
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md106}{}\doxysection{\texorpdfstring{Comment ça marche ?}{Comment ça marche ?}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md106}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md107}{}\doxysubsection{\texorpdfstring{Le filtre masque (IDMASK)}{Le filtre masque (IDMASK)}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md107}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{CAN\_FilterTypeDef\ canfilterconfig;}
+\DoxyCodeLine{canfilterconfig.FilterMode\ =\ CAN\_FILTERMODE\_IDMASK;\ \ \textcolor{comment}{//\ Mode\ masque}}
+
+\end{DoxyCode}
+
+
+{\bfseries{Mode masque}} :\+ Les bits du filtre agissent comme un masque binaire.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ID\ reçu\ :\ \ \ \ \ 0011\ 0101}
+\DoxyCodeLine{Filtre\ :\ \ \ \ \ \ 1111\ 1111\ \ (masque)}
+\DoxyCodeLine{Résultat\ :\ \ \ \ Accepter\ si\ bits\ importants\ Match}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md109}{}\doxysection{\texorpdfstring{Exemple de configuration}{Exemple de configuration}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md109}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md110}{}\doxysubsection{\texorpdfstring{Cas 1 :\+ Accepter une plage d\textquotesingle{}IDs (0x100 à 0x120)}{Cas 1 :\+ Accepter une plage d\textquotesingle{}IDs (0x100 à 0x120)}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md110}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{CAN\_FilterTypeDef*\ filter1\ =\ \doxymbox{\hyperlink{com__utils_8c_adfa3f55b53f7a0c8e6a7ffbf37fe2545}{CAN\_setup\_Filter}}(0x100,\ 0x120,\ 0);}
+\DoxyCodeLine{\textcolor{comment}{//\ Accepte\ les\ IDs:\ 0x100,\ 0x101,\ 0x102,\ ...,\ 0x120}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md111}{}\doxysubsection{\texorpdfstring{Cas 2 :\+ Accepter un ID exact (0x123)}{Cas 2 :\+ Accepter un ID exact (0x123)}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md111}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{CAN\_FilterTypeDef*\ filter2\ =\ \doxymbox{\hyperlink{com__utils_8c_adfa3f55b53f7a0c8e6a7ffbf37fe2545}{CAN\_setup\_Filter}}(0x123,\ 0x123,\ 1);}
+\DoxyCodeLine{\textcolor{comment}{//\ Accepte\ UNIQUEMENT:\ 0x123}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md112}{}\doxysubsection{\texorpdfstring{Cas 3 :\+ Accepter tous les messages}{Cas 3 :\+ Accepter tous les messages}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md112}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{CAN\_FilterTypeDef*\ filter3\ =\ \doxymbox{\hyperlink{com__utils_8c_adfa3f55b53f7a0c8e6a7ffbf37fe2545}{CAN\_setup\_Filter}}(0x000,\ 0x7FF,\ 2);}
+\DoxyCodeLine{\textcolor{comment}{//\ Accepte\ les\ IDs:\ 0x000\ à\ 0x7FF\ (tous\ les\ IDs\ standards\ 11\ bits)}}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md114}{}\doxysection{\texorpdfstring{Détails de la configuration interne}{Détails de la configuration interne}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md114}
+Voici ce que fait {\ttfamily \doxylink{com__utils_8c_adfa3f55b53f7a0c8e6a7ffbf37fe2545}{CAN\+\_\+setup\+\_\+\+Filter()}} en détail :\+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{CAN\_FilterTypeDef*\ \doxymbox{\hyperlink{com__utils_8c_adfa3f55b53f7a0c8e6a7ffbf37fe2545}{CAN\_setup\_Filter}}(int32\_t\ minimum\_id,\ int32\_t\ maximum\_id,\ \textcolor{keywordtype}{int}\ filterBank)\ \{}
+\DoxyCodeLine{\ \ \ \ CAN\_FilterTypeDef\ canfilterconfig;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Activer\ le\ filtre}}
+\DoxyCodeLine{\ \ \ \ canfilterconfig.FilterActivation\ =\ CAN\_FILTER\_ENABLE;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Sélectionner\ le\ numéro\ de\ banc\ (0-\/27)}}
+\DoxyCodeLine{\ \ \ \ canfilterconfig.FilterBank\ =\ filterBank;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Affecter\ à\ FIFO0\ (interrupt\ CAN\_IT\_RX\_FIFO0\_MSG\_PENDING)}}
+\DoxyCodeLine{\ \ \ \ canfilterconfig.FilterFIFOAssignment\ =\ CAN\_FILTER\_FIFO0;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Configurer\ les\ seuils\ ID\ haut\ et\ bas}}
+\DoxyCodeLine{\ \ \ \ canfilterconfig.FilterIdHigh\ =\ maximum\_id\ <<\ 5;\ \ \ \ \textcolor{comment}{//\ Maximum}}
+\DoxyCodeLine{\ \ \ \ canfilterconfig.FilterMaskIdHigh\ =\ maximum\_id\ <<\ 5;\ \textcolor{comment}{//\ Masque}}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ canfilterconfig.FilterIdLow\ =\ minimum\_id;\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Minimum}}
+\DoxyCodeLine{\ \ \ \ canfilterconfig.FilterMaskIdLow\ =\ minimum\_id;\ \ \ \ \ \ \ \textcolor{comment}{//\ Masque}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Mode\ de\ filtrage\ (masque\ binaire)}}
+\DoxyCodeLine{\ \ \ \ canfilterconfig.FilterMode\ =\ CAN\_FILTERMODE\_IDMASK;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Résolution:\ 32\ bits\ (combinaison\ High\ +\ Low)}}
+\DoxyCodeLine{\ \ \ \ canfilterconfig.FilterScale\ =\ CAN\_FILTERSCALE\_32BIT;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Assigner\ les\ bancs\ de\ filtrage\ au\ CAN1\ (non\ CAN2)}}
+\DoxyCodeLine{\ \ \ \ canfilterconfig.SlaveStartFilterBank\ =\ 20;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Appliquer\ la\ configuration\ matérielle}}
+\DoxyCodeLine{\ \ \ \ HAL\_CAN\_ConfigFilter(\&\doxymbox{\hyperlink{com__utils_8h_ae21c10daa2f8cbd18a0e66bb28a19d2d}{hcan}},\ \&canfilterconfig);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ \&canfilterconfig;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md116}{}\doxysection{\texorpdfstring{Exemple d\textquotesingle{}intégration complet}{Exemple d\textquotesingle{}intégration complet}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md116}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md117}{}\doxysubsection{\texorpdfstring{Initialisation avec filtrage}{Initialisation avec filtrage}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md117}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_t_a_g_c_a_n_8h}{TAGCAN.h}}"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}stm32f1xx\_hal.h"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{extern}\ CAN\_HandleTypeDef\ \doxymbox{\hyperlink{com__utils_8h_ae21c10daa2f8cbd18a0e66bb28a19d2d}{hcan}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{com__utils_8c_adf9124e89f799fae0f55cc9ed0a94189}{init\_com}}(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ 1.\ Initialiser\ TAGCAN}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{com__utils_8c_a13d9a1dcda040041c99ca70ab03192d0}{CAN\_init\_TAGCAN}}();}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{com__utils_8c_a91524acc09c84cf5aa22222e3eee50f5}{CAN\_setup\_TAG}}();}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{com__utils_8c_a041f556ab8d1bfd3c0891c94b0f0d8c5}{CAN\_setup\_DF}}(0x123);\ \ \textcolor{comment}{//\ Mon\ ID\ CAN}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ 2.\ Configurer\ les\ filtres}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Filtre\ 1:\ Accepter\ les\ messages\ du\ capteur\ de\ pression\ (0x200)}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{com__utils_8c_adfa3f55b53f7a0c8e6a7ffbf37fe2545}{CAN\_setup\_Filter}}(0x200,\ 0x200,\ 0);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Filtre\ 2:\ Accepter\ les\ messages\ de\ commande\ (0x100\ à\ 0x110)}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{com__utils_8c_adfa3f55b53f7a0c8e6a7ffbf37fe2545}{CAN\_setup\_Filter}}(0x100,\ 0x110,\ 1);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Filtre\ 3:\ Messages\ d'urgence\ (0x050)}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{com__utils_8c_adfa3f55b53f7a0c8e6a7ffbf37fe2545}{CAN\_setup\_Filter}}(0x050,\ 0x050,\ 2);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ 3.\ Activer\ les\ interruptions}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}(HAL\_CAN\_ActivateNotification(\&\doxymbox{\hyperlink{com__utils_8h_ae21c10daa2f8cbd18a0e66bb28a19d2d}{hcan}},\ CAN\_IT\_RX\_FIFO0\_MSG\_PENDING)\ !=\ HAL\_OK)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Error\_Handler();}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{com__utils_8c_a7368d39e78009c017d6f81ccf33b9b2c}{HAL\_CAN\_RxFifo0MsgPendingCallback}}(CAN\_HandleTypeDef\ *\doxymbox{\hyperlink{com__utils_8h_ae21c10daa2f8cbd18a0e66bb28a19d2d}{hcan}})\ \{}
+\DoxyCodeLine{\ \ \ \ CAN\_RxHeaderTypeDef\ \doxymbox{\hyperlink{com__utils_8c_a6ee6e13063b860648180eea65852cc71}{RxHeader}};}
+\DoxyCodeLine{\ \ \ \ uint8\_t\ \doxymbox{\hyperlink{com__utils_8c_a14629afcc7f0b2d62c2b617b07d98184}{RxData}}[8];}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ HAL\_CAN\_GetRxMessage(\doxymbox{\hyperlink{com__utils_8h_ae21c10daa2f8cbd18a0e66bb28a19d2d}{hcan}},\ CAN\_RX\_FIFO0,\ \&\doxymbox{\hyperlink{com__utils_8c_a6ee6e13063b860648180eea65852cc71}{RxHeader}},\ \doxymbox{\hyperlink{com__utils_8c_a14629afcc7f0b2d62c2b617b07d98184}{RxData}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Traiter\ selon\ l'ID\ reçu}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{switch}(\doxymbox{\hyperlink{com__utils_8c_a6ee6e13063b860648180eea65852cc71}{RxHeader}}.StdId)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 0x200:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ handle\_pressure\_sensor(\doxymbox{\hyperlink{com__utils_8c_a14629afcc7f0b2d62c2b617b07d98184}{RxData}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 0x100:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 0x101:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 0x102:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ ...\ jusqu'à\ 0x110}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ handle\_command(\doxymbox{\hyperlink{com__utils_8c_a14629afcc7f0b2d62c2b617b07d98184}{RxData}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 0x050:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ handle\_emergency(\doxymbox{\hyperlink{com__utils_8c_a14629afcc7f0b2d62c2b617b07d98184}{RxData}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Ne\ devrait\ jamais\ arriver\ ici\ grâce\ aux\ filtres}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md119}{}\doxysection{\texorpdfstring{Limitation des bancs de filtrage}{Limitation des bancs de filtrage}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md119}
+Le STM32\+F1 propose :\+
+
+
+\begin{DoxyTable}{2}{}{}{1}
+\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Ressource  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Limite  \\
+Bancs de filtrage disponibles  &28 (0-\/27)  \\
+Bancs réservés à CAN1  &14 (0-\/13)  \\
+Bancs réservés à CAN2  &14 (14-\/27)  \\
+\end{DoxyTable}
+
+
+Chaque filtre peut gérer :\+
+\begin{DoxyItemize}
+\item {\bfseries{1 ID exact}} (Filter\+Mode = IDMASK)
+\item {\bfseries{Une plage d\textquotesingle{}IDs}} (Filter\+Mode = IDLIST)
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md121}{}\doxysection{\texorpdfstring{Stratégies de filtrage recommandées}{Stratégies de filtrage recommandées}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md121}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md122}{}\doxysubsection{\texorpdfstring{Stratégie 1 :\+ Filtrage par catégorie (Recommandé)}{Stratégie 1 :\+ Filtrage par catégorie (Recommandé)}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md122}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Tous\ les\ capteurs:\ 0x200-\/0x20F\ (1\ filtre)}}
+\DoxyCodeLine{\doxymbox{\hyperlink{com__utils_8c_adfa3f55b53f7a0c8e6a7ffbf37fe2545}{CAN\_setup\_Filter}}(0x200,\ 0x20F,\ 0);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Toutes\ les\ commandes:\ 0x100-\/0x10F\ (1\ filtre)}}
+\DoxyCodeLine{\doxymbox{\hyperlink{com__utils_8c_adfa3f55b53f7a0c8e6a7ffbf37fe2545}{CAN\_setup\_Filter}}(0x100,\ 0x10F,\ 1);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Tout\ le\ diagnostic:\ 0x300-\/0x3FF\ (1\ filtre)}}
+\DoxyCodeLine{\doxymbox{\hyperlink{com__utils_8c_adfa3f55b53f7a0c8e6a7ffbf37fe2545}{CAN\_setup\_Filter}}(0x300,\ 0x3FF,\ 2);}
+
+\end{DoxyCode}
+
+
+{\bfseries{Avantages}} :\+
+\begin{DoxyItemize}
+\item Utilise peu de filtres
+\item Facile à maintenir
+\item Extensible
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md124}{}\doxysubsection{\texorpdfstring{Stratégie 2 :\+ Un filtre par source}{Stratégie 2 :\+ Un filtre par source}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md124}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Capteur\ 1:\ 0x200}}
+\DoxyCodeLine{\doxymbox{\hyperlink{com__utils_8c_adfa3f55b53f7a0c8e6a7ffbf37fe2545}{CAN\_setup\_Filter}}(0x200,\ 0x200,\ 0);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Capteur\ 2:\ 0x201}}
+\DoxyCodeLine{\doxymbox{\hyperlink{com__utils_8c_adfa3f55b53f7a0c8e6a7ffbf37fe2545}{CAN\_setup\_Filter}}(0x201,\ 0x201,\ 1);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Capteur\ 3:\ 0x202}}
+\DoxyCodeLine{\doxymbox{\hyperlink{com__utils_8c_adfa3f55b53f7a0c8e6a7ffbf37fe2545}{CAN\_setup\_Filter}}(0x202,\ 0x202,\ 2);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ ...\ etc}}
+
+\end{DoxyCode}
+
+
+{\bfseries{Avantages}} :\+
+\begin{DoxyItemize}
+\item Granularité fine
+\item Gestion précise
+\end{DoxyItemize}
+
+{\bfseries{Inconvénients}} :\+
+\begin{DoxyItemize}
+\item Consomme rapidement les bancs de filtrage
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md126}{}\doxysection{\texorpdfstring{Points d\textquotesingle{}attention}{Points d\textquotesingle{}attention}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md126}
+
+\begin{DoxyTable}{2}{}{}{1}
+\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Point  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Détail  \\
+{\bfseries{Ordre d\textquotesingle{}application}}  &Les filtres doivent être configurés AVANT d\textquotesingle{}activer les interruptions  \\
+{\bfseries{Limite de bancs}}  &14 filtres max pour CAN1. Bien planifier!  \\
+{\bfseries{FIFO0 vs FIFO1}}  &{\ttfamily \doxylink{com__utils_8c_adfa3f55b53f7a0c8e6a7ffbf37fe2545}{CAN\+\_\+setup\+\_\+\+Filter()}} utilise FIFO0. À adapter si vous utilisez FIFO1  \\
+{\bfseries{Pas de filtre = tout accepter}}  &Si aucun filtre n\textquotesingle{}est configuré, tous les messages passent  \\
+{\bfseries{Mode IDLIST vs IDMASK}}  &La fonction utilise IDMASK (plages). Pour listes, modifier le code  \\
+{\bfseries{Décalage des bits (\texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}5)}}  &Note:\+ {\ttfamily maximum\+\_\+id \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 5} -\/\texorpdfstring{$>$}{>} convertit l\textquotesingle{}ID de 11 bits au format STM32  \\
+\end{DoxyTable}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md128}{}\doxysection{\texorpdfstring{Débuggage des filtres}{Débuggage des filtres}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md128}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Vérifier\ quels\ messages\ arrivent}}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{com__utils_8c_a7368d39e78009c017d6f81ccf33b9b2c}{HAL\_CAN\_RxFifo0MsgPendingCallback}}(CAN\_HandleTypeDef\ *\doxymbox{\hyperlink{com__utils_8h_ae21c10daa2f8cbd18a0e66bb28a19d2d}{hcan}})\ \{}
+\DoxyCodeLine{\ \ \ \ CAN\_RxHeaderTypeDef\ \doxymbox{\hyperlink{com__utils_8c_a6ee6e13063b860648180eea65852cc71}{RxHeader}};}
+\DoxyCodeLine{\ \ \ \ uint8\_t\ \doxymbox{\hyperlink{com__utils_8c_a14629afcc7f0b2d62c2b617b07d98184}{RxData}}[8];}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ HAL\_CAN\_GetRxMessage(\doxymbox{\hyperlink{com__utils_8h_ae21c10daa2f8cbd18a0e66bb28a19d2d}{hcan}},\ CAN\_RX\_FIFO0,\ \&\doxymbox{\hyperlink{com__utils_8c_a6ee6e13063b860648180eea65852cc71}{RxHeader}},\ \doxymbox{\hyperlink{com__utils_8c_a14629afcc7f0b2d62c2b617b07d98184}{RxData}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Afficher\ le\ message\ reçu}}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}ID:\ 0x\%03X,\ DLC:\ \%u\(\backslash\)n"{}},\ \doxymbox{\hyperlink{com__utils_8c_a6ee6e13063b860648180eea65852cc71}{RxHeader}}.StdId,\ \doxymbox{\hyperlink{com__utils_8c_a6ee6e13063b860648180eea65852cc71}{RxHeader}}.DLC);}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \doxymbox{\hyperlink{com__utils_8c_a6ee6e13063b860648180eea65852cc71}{RxHeader}}.DLC;\ i++)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\ \ Data[\%d]\ =\ 0x\%02X\(\backslash\)n"{}},\ i,\ \doxymbox{\hyperlink{com__utils_8c_a14629afcc7f0b2d62c2b617b07d98184}{RxData}}[i]);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Si vous ne voyez {\bfseries{aucun message}} malgré l\textquotesingle{}activité CAN :\+
+\begin{DoxyItemize}
+\item Vérifier que les filtres acceptent l\textquotesingle{}ID envoyé
+\item Vérifier que les interruptions sont activées
+\item Vérifier que le module CAN est initialisé
+\end{DoxyItemize}
+
+Si vous voyez {\bfseries{trop de messages}} :\+
+\begin{DoxyItemize}
+\item Ajouter des filtres plus restrictifs
+\item Vérifier que les filtres ne sont pas inversés (min \texorpdfstring{$>$}{>} max)
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md130}{}\doxysection{\texorpdfstring{Comparaison :\+ Avec/\+\+Sans filtres}{Comparaison :\+ Avec/\+\+Sans filtres}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md130}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md131}{}\doxysubsection{\texorpdfstring{Sans filtres (accepte tout)}{Sans filtres (accepte tout)}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md131}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Aucun\ CAN\_setup\_Filter()\ appelé}}
+\DoxyCodeLine{\textcolor{keywordflow}{while}(1)\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ \ Reçoit\ TOUS\ les\ messages\ du\ bus}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ -\/>\ CPU\ chargé,\ latence\ mauvaise}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md132}{}\doxysubsection{\texorpdfstring{Avec filtres (recommandé)}{Avec filtres (recommandé)}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_autotoc_md132}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Dans\ init\_com()}}
+\DoxyCodeLine{\doxymbox{\hyperlink{com__utils_8c_adfa3f55b53f7a0c8e6a7ffbf37fe2545}{CAN\_setup\_Filter}}(0x200,\ 0x20F,\ 0);\ \ \textcolor{comment}{//\ Capteurs}}
+\DoxyCodeLine{\doxymbox{\hyperlink{com__utils_8c_adfa3f55b53f7a0c8e6a7ffbf37fe2545}{CAN\_setup\_Filter}}(0x100,\ 0x10F,\ 1);\ \ \textcolor{comment}{//\ Commandes}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordflow}{while}(1)\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ \ Reçoit\ UNIQUEMENT\ les\ messages\ 0x200-\/0x20F\ et\ 0x100-\/0x10F}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ -\/>\ CPU\ libre,\ latence\ optimale}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+
+
+Voir aussi :\+
+\begin{DoxyItemize}
+\item \doxysectlink{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_203___d_o_n_n_e_e_s___c_a_n}{03\+\_\+\+DONNEES\+\_\+\+CAN.md}{0} -\/ Buffer de données
+\item \doxysectlink{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33}{05\+\_\+\+EXEMPLES\+\_\+\+COMPLETS.md}{0} -\/ Système complet 
+\end{DoxyItemize}

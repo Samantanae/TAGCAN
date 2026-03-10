@@ -464,7 +464,7 @@ Here is the caller graph for this function:<para>
 <para>Declare un nouveau tag et reserve son espace dans TxData. </para>
 </para>
 
-<para>Cree un nouveau tag.</para>
+<para>créé un nouveau tag.</para>
 
 <para>
                 <formalpara>

@@ -1,0 +1,661 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33" xml:lang="en-US">
+<title>
+<para>05 - Exemples Complets </para>
+</title>
+<indexterm><primary>05 - Exemples Complets</primary></indexterm>
+
+<para><anchor xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33_1autotoc_md134"/></para>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33_1autotoc_md135">
+<title>Exemples d&apos;intégration pratiques</title>
+<para>Vous trouverez ici des exemples réalistes exploitant l&apos;ensemble du système TAGCAN.</para>
+
+<para><informaltable frame='bottom'><tgroup cols='1'><colspec align='center'/><tbody><row><entry align='center'>
+</entry></row></tbody></tgroup></informaltable>
+</para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33_1autotoc_md137">
+<title>Exemple 1 : Système de télémétrie simple</title><section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33_1autotoc_md138">
+<title>Scénario</title>
+<para>Un véhicule envoie périodiquement :<itemizedlist>
+<listitem>
+<para>Son numéro de séquence (3 bits)</para>
+</listitem><listitem>
+<para>Son état (heartbeat, 1 bit)</para>
+</listitem><listitem>
+<para>Le % de batterie (7 bits)</para>
+</listitem><listitem>
+<para>La pression du réservoir (16 bits)</para>
+</listitem><listitem>
+<para>Un timestamp (16 bits)</para>
+</listitem></itemizedlist>
+</para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33_1autotoc_md139">
+<title>Code complet</title>
+<para><literallayout><computeroutput>//&#32;=============================================================================
+//&#32;telemetrie.h
+//&#32;=============================================================================
+
+#ifndef&#32;TELEMETRIE_H_
+#define&#32;TELEMETRIE_H_
+
+#include&#32;&quot;TAGCAN.h&quot;
+#include&#32;&lt;stdint.h&gt;
+
+typedef&#32;struct&#32;{
+&#32;&#32;&#32;&#32;uint8_t&#32;seq;
+&#32;&#32;&#32;&#32;uint8_t&#32;heartbeat;
+&#32;&#32;&#32;&#32;uint8_t&#32;battery_percent;
+&#32;&#32;&#32;&#32;uint16_t&#32;reservoir_pressure;
+&#32;&#32;&#32;&#32;uint16_t&#32;timestamp_ms;
+}&#32;telemetry_data_t;
+
+//&#32;Initialiser&#32;le&#32;système&#32;de&#32;télémétrie
+void&#32;telemetry_init(void);
+
+//&#32;Envoyer&#32;un&#32;paquet&#32;de&#32;télémétrie
+void&#32;telemetry_send(const&#32;telemetry_data_t&#32;*data);
+
+//&#32;Traiter&#32;un&#32;paquet&#32;reçu
+void&#32;telemetry_handle_rx(const&#32;uint8_t&#32;rx_data[8]);
+
+#endif&#32;/*&#32;TELEMETRIE_H_&#32;*/
+
+
+//&#32;=============================================================================
+//&#32;telemetrie.c
+//&#32;=============================================================================
+
+#include&#32;&quot;telemetrie.h&quot;
+#include&#32;&quot;stm32f1xx_hal.h&quot;
+
+extern&#32;CAN_HandleTypeDef&#32;hcan;
+extern&#32;uint8_t&#32;TxData[8],&#32;RxData[8];
+extern&#32;CAN_TxHeaderTypeDef&#32;TxHeader;
+extern&#32;int32_t&#32;TxMailbox;
+
+#define&#32;TELEMETRY_CAN_ID&#32;0x100
+
+void&#32;telemetry_init(void)&#32;{
+&#32;&#32;&#32;&#32;//&#32;Initialiser&#32;TAGCAN
+&#32;&#32;&#32;&#32;init_data_container();
+&#32;&#32;&#32;&#32;init_tag_manager();
+
+&#32;&#32;&#32;&#32;//&#32;Créer&#32;les&#32;tags
+&#32;&#32;&#32;&#32;set_tag(&quot;SEQ&quot;,&#32;3);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;Numéro&#32;de&#32;séquence&#32;(0-7)
+&#32;&#32;&#32;&#32;set_tag(&quot;HB&quot;,&#32;1);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;Heartbeat&#32;(0&#32;ou&#32;1)
+&#32;&#32;&#32;&#32;set_tag(&quot;BATTERY&quot;,&#32;7);&#32;&#32;&#32;&#32;&#32;&#32;//&#32;%&#32;batterie&#32;(0-100)
+&#32;&#32;&#32;&#32;set_tag(&quot;PRESSURE&quot;,&#32;16);&#32;&#32;&#32;&#32;//&#32;Pression&#32;réservoir&#32;(0-65535&#32;Pa)
+&#32;&#32;&#32;&#32;set_tag(&quot;TIME&quot;,&#32;16);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;Timestamp&#32;(0-65535&#32;ms)
+
+&#32;&#32;&#32;&#32;//&#32;Configurer&#32;le&#32;header&#32;CAN
+&#32;&#32;&#32;&#32;TxHeader.IDE&#32;=&#32;CAN_ID_STD;
+&#32;&#32;&#32;&#32;TxHeader.StdId&#32;=&#32;TELEMETRY_CAN_ID;
+&#32;&#32;&#32;&#32;TxHeader.RTR&#32;=&#32;CAN_RTR_DATA;
+&#32;&#32;&#32;&#32;TxHeader.DLC&#32;=&#32;8;
+
+&#32;&#32;&#32;&#32;//&#32;Configurer&#32;le&#32;filtre&#32;pour&#32;recevoir&#32;les&#32;télémétries&#32;des&#32;autres&#32;(ex:&#32;0x101-0x10F)
+&#32;&#32;&#32;&#32;CAN_setup_Filter(0x101,&#32;0x10F,&#32;0);
+
+&#32;&#32;&#32;&#32;//&#32;Activer&#32;les&#32;interruptions
+&#32;&#32;&#32;&#32;if(HAL_CAN_ActivateNotification(&amp;hcan,&#32;CAN_IT_RX_FIFO0_MSG_PENDING)&#32;!=&#32;HAL_OK)&#32;{
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Error_Handler();
+&#32;&#32;&#32;&#32;}
+
+&#32;&#32;&#32;&#32;printf(&quot;[Telemetry]&#32;Initialized&#32;on&#32;CAN&#32;ID&#32;0x%03X\n&quot;,&#32;TELEMETRY_CAN_ID);
+}
+
+void&#32;telemetry_send(const&#32;telemetry_data_t&#32;*data)&#32;{
+&#32;&#32;&#32;&#32;//&#32;Réinitialiser&#32;le&#32;buffer
+&#32;&#32;&#32;&#32;init_data_container();
+
+&#32;&#32;&#32;&#32;//&#32;Écrire&#32;les&#32;données
+&#32;&#32;&#32;&#32;set_value(&quot;SEQ&quot;,&#32;data-&gt;seq);
+&#32;&#32;&#32;&#32;set_value(&quot;HB&quot;,&#32;data-&gt;heartbeat);
+&#32;&#32;&#32;&#32;set_value(&quot;BATTERY&quot;,&#32;data-&gt;battery_percent);
+&#32;&#32;&#32;&#32;set_value(&quot;PRESSURE&quot;,&#32;data-&gt;reservoir_pressure);
+&#32;&#32;&#32;&#32;set_value(&quot;TIME&quot;,&#32;data-&gt;timestamp_ms);
+
+&#32;&#32;&#32;&#32;//&#32;Envoyer&#32;sur&#32;le&#32;bus
+&#32;&#32;&#32;&#32;if(HAL_CAN_AddTxMessage(&amp;hcan,&#32;&amp;TxHeader,&#32;TxData,&#32;&amp;TxMailbox)&#32;!=&#32;HAL_OK)&#32;{
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(&quot;[Telemetry]&#32;ERROR:&#32;Failed&#32;to&#32;send&#32;CAN&#32;message\n&quot;);
+&#32;&#32;&#32;&#32;}&#32;else&#32;{
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(&quot;[Telemetry]&#32;TX:&#32;SEQ=%u,&#32;BAT=%u%%,&#32;PRESSURE=%u&#32;Pa\n&quot;,
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;data-&gt;seq,&#32;data-&gt;battery_percent,&#32;data-&gt;reservoir_pressure);
+&#32;&#32;&#32;&#32;}
+}
+
+void&#32;telemetry_handle_rx(const&#32;uint8_t&#32;rx_data[8])&#32;{
+&#32;&#32;&#32;&#32;//&#32;Copier&#32;les&#32;données&#32;reçues&#32;dans&#32;TxData&#32;pour&#32;utiliser&#32;TAGCAN
+&#32;&#32;&#32;&#32;memcpy(TxData,&#32;rx_data,&#32;8);
+
+&#32;&#32;&#32;&#32;//&#32;Lire&#32;via&#32;les&#32;tags
+&#32;&#32;&#32;&#32;uint32_t&#32;seq,&#32;hb,&#32;battery,&#32;pressure,&#32;timestamp;
+&#32;&#32;&#32;&#32;get_value(&quot;SEQ&quot;,&#32;&amp;seq);
+&#32;&#32;&#32;&#32;get_value(&quot;HB&quot;,&#32;&amp;hb);
+&#32;&#32;&#32;&#32;get_value(&quot;BATTERY&quot;,&#32;&amp;battery);
+&#32;&#32;&#32;&#32;get_value(&quot;PRESSURE&quot;,&#32;&amp;pressure);
+&#32;&#32;&#32;&#32;get_value(&quot;TIME&quot;,&#32;&amp;timestamp);
+
+&#32;&#32;&#32;&#32;printf(&quot;[Telemetry]&#32;RX:&#32;SEQ=%u,&#32;HB=%u,&#32;BAT=%u%%,&#32;PRESSURE=%u&#32;Pa,&#32;TIME=%u&#32;ms\n&quot;,
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(uint8_t)seq,&#32;(uint8_t)hb,&#32;(uint8_t)battery,&#32;(uint16_t)pressure,&#32;(uint16_t)timestamp);
+}
+
+//&#32;=============================================================================
+//&#32;Callback&#32;d&apos;interruption&#32;CAN
+//&#32;=============================================================================
+
+void&#32;HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef&#32;*hcan)&#32;{
+&#32;&#32;&#32;&#32;CAN_RxHeaderTypeDef&#32;RxHeader;
+&#32;&#32;&#32;&#32;uint8_t&#32;RxDataLocal[8];
+
+&#32;&#32;&#32;&#32;if(HAL_CAN_GetRxMessage(hcan,&#32;CAN_RX_FIFO0,&#32;&amp;RxHeader,&#32;RxDataLocal)&#32;==&#32;HAL_OK)&#32;{
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;Traiter&#32;selon&#32;l&apos;ID&#32;CAN&#32;reçu
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;if((RxHeader.StdId&#32;&gt;=&#32;0x101)&#32;&amp;&amp;&#32;(RxHeader.StdId&#32;&lt;=&#32;0x10F))&#32;{
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;telemetry_handle_rx(RxDataLocal);
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+&#32;&#32;&#32;&#32;}
+}
+
+//&#32;=============================================================================
+//&#32;main.c&#32;-&#32;Boucle&#32;principale
+//&#32;=============================================================================
+
+//&#32;Tâche&#32;d&apos;émission&#32;(10&#32;ms)
+void&#32;task_telemetry_10ms(void)&#32;{
+&#32;&#32;&#32;&#32;static&#32;uint8_t&#32;seq&#32;=&#32;0;
+&#32;&#32;&#32;&#32;static&#32;uint32_t&#32;last_time&#32;=&#32;0;
+
+&#32;&#32;&#32;&#32;telemetry_data_t&#32;data&#32;=&#32;{
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;.seq&#32;=&#32;(seq++)&#32;%&#32;8,
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;.heartbeat&#32;=&#32;1,
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;.battery_percent&#32;=&#32;read_adc_battery(),
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;.reservoir_pressure&#32;=&#32;read_sensor_pressure(),
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;.timestamp_ms&#32;=&#32;HAL_GetTick()&#32;&amp;&#32;0xFFFF
+&#32;&#32;&#32;&#32;};
+
+&#32;&#32;&#32;&#32;if((HAL_GetTick()&#32;-&#32;last_time)&#32;&gt;=&#32;10)&#32;{
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;telemetry_send(&amp;data);
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;last_time&#32;=&#32;HAL_GetTick();
+&#32;&#32;&#32;&#32;}
+}
+
+int&#32;main(void)&#32;{
+&#32;&#32;&#32;&#32;HAL_Init();
+&#32;&#32;&#32;&#32;MX_CAN_Init();
+&#32;&#32;&#32;&#32;
+&#32;&#32;&#32;&#32;telemetry_init();
+
+&#32;&#32;&#32;&#32;//&#32;Timer&#32;pour&#32;appeler&#32;task_telemetry_10ms()&#32;tous&#32;les&#32;10ms
+&#32;&#32;&#32;&#32;//&#32;...
+
+&#32;&#32;&#32;&#32;while(1)&#32;{
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;task_telemetry_10ms();
+&#32;&#32;&#32;&#32;}
+}
+</computeroutput></literallayout></para>
+
+<para><informaltable frame='bottom'><tgroup cols='1'><colspec align='center'/><tbody><row><entry align='center'>
+</entry></row></tbody></tgroup></informaltable>
+</para>
+</section>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33_1autotoc_md141">
+<title>Exemple 2 : Système de commande avec réponse</title><section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33_1autotoc_md142">
+<title>Scénario</title>
+<para><itemizedlist>
+<listitem>
+<para><emphasis role="bold">Maître envoie commandes</emphasis> sur ID 0x200 (allumer/éteindre servos)</para>
+</listitem><listitem>
+<para><emphasis role="bold">Esclaves répondent</emphasis> sur ID 0x201-0x203 (confirmation + état)</para>
+</listitem></itemizedlist>
+</para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33_1autotoc_md143">
+<title>Code complet</title>
+<para><literallayout><computeroutput>//&#32;=============================================================================
+//&#32;commandes.h
+//&#32;=============================================================================
+
+#ifndef&#32;COMMANDES_H_
+#define&#32;COMMANDES_H_
+
+#include&#32;&quot;TAGCAN.h&quot;
+#include&#32;&lt;stdint.h&gt;
+
+//&#32;IDs&#32;CAN
+#define&#32;CMD_CAN_ID_TX&#32;&#32;&#32;&#32;&#32;&#32;&#32;0x200
+#define&#32;CMD_CAN_ID_RX_BASE&#32;&#32;0x201
+
+//&#32;Commandes&#32;possibles
+typedef&#32;enum&#32;{
+&#32;&#32;&#32;&#32;CMD_SERVO_OFF&#32;=&#32;0,
+&#32;&#32;&#32;&#32;CMD_SERVO_ON&#32;=&#32;1,
+&#32;&#32;&#32;&#32;CMD_SERVO_PULSE&#32;=&#32;2
+}&#32;cmd_type_t;
+
+typedef&#32;struct&#32;{
+&#32;&#32;&#32;&#32;uint8_t&#32;device_id;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;Quel&#32;servomoteur&#32;?&#32;(1-3)
+&#32;&#32;&#32;&#32;cmd_type_t&#32;command;&#32;&#32;&#32;&#32;&#32;//&#32;Quelle&#32;commande&#32;?
+&#32;&#32;&#32;&#32;uint8_t&#32;parameter;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;Paramètre&#32;optionnel&#32;(ex:&#32;pulse&#32;width)
+}&#32;command_t;
+
+typedef&#32;struct&#32;{
+&#32;&#32;&#32;&#32;uint8_t&#32;device_id;
+&#32;&#32;&#32;&#32;uint8_t&#32;status;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;0=erreur,&#32;1=ok
+&#32;&#32;&#32;&#32;uint8_t&#32;feedback;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;Retour&#32;d&apos;état
+}&#32;response_t;
+
+void&#32;commands_init(void);
+void&#32;commands_send(const&#32;command_t&#32;*cmd);
+void&#32;commands_handle_response(uint8_t&#32;device_id,&#32;const&#32;uint8_t&#32;rx_data[8]);
+
+#endif
+
+
+//&#32;=============================================================================
+//&#32;commandes.c
+//&#32;=============================================================================
+
+#include&#32;&quot;commandes.h&quot;
+#include&#32;&quot;stm32f1xx_hal.h&quot;
+
+extern&#32;CAN_HandleTypeDef&#32;hcan;
+extern&#32;uint8_t&#32;TxData[8];
+extern&#32;CAN_TxHeaderTypeDef&#32;TxHeader;
+extern&#32;int32_t&#32;TxMailbox;
+
+void&#32;commands_init(void)&#32;{
+&#32;&#32;&#32;&#32;//&#32;Initialiser&#32;TAGCAN
+&#32;&#32;&#32;&#32;init_data_container();
+&#32;&#32;&#32;&#32;init_tag_manager();
+
+&#32;&#32;&#32;&#32;//&#32;Tags&#32;pour&#32;les&#32;commandes&#32;ENVOYÉES
+&#32;&#32;&#32;&#32;set_tag(&quot;DEV_ID&quot;,&#32;2);&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;ID&#32;du&#32;périphérique&#32;(0-3)
+&#32;&#32;&#32;&#32;set_tag(&quot;CMD_TYPE&quot;,&#32;2);&#32;&#32;&#32;&#32;&#32;//&#32;Type&#32;de&#32;commande&#32;(0-3)
+&#32;&#32;&#32;&#32;set_tag(&quot;PARAM&quot;,&#32;8);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;Paramètre&#32;(0-255)
+
+&#32;&#32;&#32;&#32;//&#32;Configuration&#32;du&#32;header&#32;TX
+&#32;&#32;&#32;&#32;TxHeader.IDE&#32;=&#32;CAN_ID_STD;
+&#32;&#32;&#32;&#32;TxHeader.StdId&#32;=&#32;CMD_CAN_ID_TX;
+&#32;&#32;&#32;&#32;TxHeader.RTR&#32;=&#32;CAN_RTR_DATA;
+&#32;&#32;&#32;&#32;TxHeader.DLC&#32;=&#32;8;
+
+&#32;&#32;&#32;&#32;//&#32;Filtre&#32;pour&#32;les&#32;réponses&#32;des&#32;esclaves&#32;(0x201-0x203)
+&#32;&#32;&#32;&#32;CAN_setup_Filter(0x201,&#32;0x203,&#32;0);
+
+&#32;&#32;&#32;&#32;//&#32;Interruptions
+&#32;&#32;&#32;&#32;if(HAL_CAN_ActivateNotification(&amp;hcan,&#32;CAN_IT_RX_FIFO0_MSG_PENDING)&#32;!=&#32;HAL_OK)&#32;{
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Error_Handler();
+&#32;&#32;&#32;&#32;}
+
+&#32;&#32;&#32;&#32;printf(&quot;[Commands]&#32;Initialized\n&quot;);
+}
+
+void&#32;commands_send(const&#32;command_t&#32;*cmd)&#32;{
+&#32;&#32;&#32;&#32;init_data_container();
+
+&#32;&#32;&#32;&#32;set_value(&quot;DEV_ID&quot;,&#32;cmd-&gt;device_id);
+&#32;&#32;&#32;&#32;set_value(&quot;CMD_TYPE&quot;,&#32;cmd-&gt;command);
+&#32;&#32;&#32;&#32;set_value(&quot;PARAM&quot;,&#32;cmd-&gt;parameter);
+
+&#32;&#32;&#32;&#32;if(HAL_CAN_AddTxMessage(&amp;hcan,&#32;&amp;TxHeader,&#32;TxData,&#32;&amp;TxMailbox)&#32;!=&#32;HAL_OK)&#32;{
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(&quot;[Commands]&#32;ERROR:&#32;Send&#32;failed\n&quot;);
+&#32;&#32;&#32;&#32;}&#32;else&#32;{
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(&quot;[Commands]&#32;TX:&#32;Device=%u,&#32;Command=%u,&#32;Param=%u\n&quot;,
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;cmd-&gt;device_id,&#32;cmd-&gt;command,&#32;cmd-&gt;parameter);
+&#32;&#32;&#32;&#32;}
+}
+
+void&#32;commands_handle_response(uint8_t&#32;device_id,&#32;const&#32;uint8_t&#32;rx_data[8])&#32;{
+&#32;&#32;&#32;&#32;memcpy(TxData,&#32;rx_data,&#32;8);
+
+&#32;&#32;&#32;&#32;uint32_t&#32;status,&#32;feedback;
+&#32;&#32;&#32;&#32;get_value(&quot;DEV_ID&quot;,&#32;NULL);&#32;&#32;//&#32;Ou&#32;extraire&#32;directement
+&#32;&#32;&#32;&#32;get_value(&quot;STATUS&quot;,&#32;&amp;status);
+&#32;&#32;&#32;&#32;get_value(&quot;FEEDBACK&quot;,&#32;&amp;feedback);
+
+&#32;&#32;&#32;&#32;printf(&quot;[Commands]&#32;RX&#32;Response&#32;from&#32;Device&#32;%u:&#32;Status=%u,&#32;Feedback=%u\n&quot;,
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;device_id,&#32;(uint8_t)status,&#32;(uint8_t)feedback);
+}
+
+void&#32;HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef&#32;*hcan)&#32;{
+&#32;&#32;&#32;&#32;CAN_RxHeaderTypeDef&#32;RxHeader;
+&#32;&#32;&#32;&#32;uint8_t&#32;RxDataLocal[8];
+
+&#32;&#32;&#32;&#32;if(HAL_CAN_GetRxMessage(hcan,&#32;CAN_RX_FIFO0,&#32;&amp;RxHeader,&#32;RxDataLocal)&#32;==&#32;HAL_OK)&#32;{
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;device_id&#32;=&#32;RxHeader.StdId&#32;-&#32;CMD_CAN_ID_RX_BASE&#32;+&#32;1;
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;if((RxHeader.StdId&#32;&gt;=&#32;0x201)&#32;&amp;&amp;&#32;(RxHeader.StdId&#32;&lt;=&#32;0x203))&#32;{
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;commands_handle_response(device_id,&#32;RxDataLocal);
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+&#32;&#32;&#32;&#32;}
+}
+
+//&#32;=============================================================================
+//&#32;main.c&#32;-&#32;Exemple&#32;d&apos;utilisation
+//&#32;=============================================================================
+
+int&#32;main(void)&#32;{
+&#32;&#32;&#32;&#32;HAL_Init();
+&#32;&#32;&#32;&#32;MX_CAN_Init();
+
+&#32;&#32;&#32;&#32;commands_init();
+
+&#32;&#32;&#32;&#32;//&#32;Envoyer&#32;la&#32;commande&#32;&quot;Allumer&#32;servomoteur&#32;1&quot;
+&#32;&#32;&#32;&#32;command_t&#32;cmd1&#32;=&#32;{
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;.device_id&#32;=&#32;1,
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;.command&#32;=&#32;CMD_SERVO_ON,
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;.parameter&#32;=&#32;0
+&#32;&#32;&#32;&#32;};
+&#32;&#32;&#32;&#32;commands_send(&amp;cmd1);
+
+&#32;&#32;&#32;&#32;//&#32;Attendre&#32;la&#32;réponse&#32;(via&#32;callback&#32;HAL_CAN_RxFifo0MsgPendingCallback)
+&#32;&#32;&#32;&#32;HAL_Delay(100);
+
+&#32;&#32;&#32;&#32;//&#32;Envoyer&#32;la&#32;commande&#32;&quot;Servomoteur&#32;2,&#32;position&#32;pulse&#32;100&quot;
+&#32;&#32;&#32;&#32;command_t&#32;cmd2&#32;=&#32;{
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;.device_id&#32;=&#32;2,
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;.command&#32;=&#32;CMD_SERVO_PULSE,
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;.parameter&#32;=&#32;100
+&#32;&#32;&#32;&#32;};
+&#32;&#32;&#32;&#32;commands_send(&amp;cmd2);
+
+&#32;&#32;&#32;&#32;while(1)&#32;{
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;Boucle&#32;principale
+&#32;&#32;&#32;&#32;}
+}
+</computeroutput></literallayout></para>
+
+<para><informaltable frame='bottom'><tgroup cols='1'><colspec align='center'/><tbody><row><entry align='center'>
+</entry></row></tbody></tgroup></informaltable>
+</para>
+</section>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33_1autotoc_md145">
+<title>Exemple 3 : Test en boucle locale (sans matériel CAN)</title><section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33_1autotoc_md146">
+<title>Scénario</title>
+<para>Tester la logique TAGCAN <emphasis role="bold">sans</emphasis> bus CAN physique.</para>
+
+<para><literallayout><computeroutput>//&#32;=============================================================================
+//&#32;test_tagcan_local.c
+//&#32;=============================================================================
+
+#include&#32;&quot;TAGCAN.h&quot;
+#include&#32;&lt;stdio.h&gt;
+#include&#32;&lt;string.h&gt;
+
+uint8_t&#32;TxData[8]&#32;=&#32;{0};
+uint8_t&#32;RxData[8]&#32;=&#32;{0};
+
+void&#32;test_local_loop(void)&#32;{
+&#32;&#32;&#32;&#32;printf(&quot;===&#32;TEST&#32;BOUCLE&#32;LOCALE&#32;TAGCAN&#32;===\n\n&quot;);
+
+&#32;&#32;&#32;&#32;//&#32;Étape&#32;1:&#32;Initialiser
+&#32;&#32;&#32;&#32;init_data_container();
+&#32;&#32;&#32;&#32;init_tag_manager();
+
+&#32;&#32;&#32;&#32;set_tag(&quot;SEQ&quot;,&#32;3);
+&#32;&#32;&#32;&#32;set_tag(&quot;SENSOR_A&quot;,&#32;8);
+&#32;&#32;&#32;&#32;set_tag(&quot;SENSOR_B&quot;,&#32;12);
+
+&#32;&#32;&#32;&#32;printf(&quot;&#32;Initialisé\n\n&quot;);
+
+&#32;&#32;&#32;&#32;//&#32;Étape&#32;2:&#32;Écrire&#32;les&#32;données
+&#32;&#32;&#32;&#32;printf(&quot;Écriture&#32;des&#32;données...\n&quot;);
+&#32;&#32;&#32;&#32;set_value(&quot;SEQ&quot;,&#32;5);
+&#32;&#32;&#32;&#32;set_value(&quot;SENSOR_A&quot;,&#32;42);
+&#32;&#32;&#32;&#32;set_value(&quot;SENSOR_B&quot;,&#32;1000);
+
+&#32;&#32;&#32;&#32;//&#32;Afficher&#32;le&#32;buffer&#32;brut
+&#32;&#32;&#32;&#32;printf(&quot;Buffer&#32;TxData:&#32;&quot;);
+&#32;&#32;&#32;&#32;for(int&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;8;&#32;i++)&#32;{
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(&quot;%02X&#32;&quot;,&#32;TxData[i]);
+&#32;&#32;&#32;&#32;}
+&#32;&#32;&#32;&#32;printf(&quot;\n\n&quot;);
+
+&#32;&#32;&#32;&#32;//&#32;Étape&#32;3:&#32;Simuler&#32;envoi&#32;-&gt;&#32;réception
+&#32;&#32;&#32;&#32;printf(&quot;Simulation&#32;envoi/réception...\n&quot;);
+&#32;&#32;&#32;&#32;can_simulate_send_receive(TxData,&#32;RxData);
+
+&#32;&#32;&#32;&#32;//&#32;Vérifier
+&#32;&#32;&#32;&#32;printf(&quot;Buffer&#32;RxData:&#32;&quot;);
+&#32;&#32;&#32;&#32;for(int&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;8;&#32;i++)&#32;{
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(&quot;%02X&#32;&quot;,&#32;RxData[i]);
+&#32;&#32;&#32;&#32;}
+&#32;&#32;&#32;&#32;printf(&quot;\n\n&quot;);
+
+&#32;&#32;&#32;&#32;//&#32;Étape&#32;4:&#32;Lire&#32;les&#32;données&#32;reçues
+&#32;&#32;&#32;&#32;printf(&quot;Lecture&#32;des&#32;données&#32;reçues...\n&quot;);
+&#32;&#32;&#32;&#32;memcpy(TxData,&#32;RxData,&#32;8);&#32;&#32;//&#32;Copier&#32;pour&#32;lecture
+
+&#32;&#32;&#32;&#32;uint32_t&#32;seq,&#32;sens_a,&#32;sens_b;
+&#32;&#32;&#32;&#32;get_value(&quot;SEQ&quot;,&#32;&amp;seq);
+&#32;&#32;&#32;&#32;get_value(&quot;SENSOR_A&quot;,&#32;&amp;sens_a);
+&#32;&#32;&#32;&#32;get_value(&quot;SENSOR_B&quot;,&#32;&amp;sens_b);
+
+&#32;&#32;&#32;&#32;printf(&quot;SEQ&#32;=&#32;%u\n&quot;,&#32;(uint8_t)seq);
+&#32;&#32;&#32;&#32;printf(&quot;SENSOR_A&#32;=&#32;%u\n&quot;,&#32;(uint8_t)sens_a);
+&#32;&#32;&#32;&#32;printf(&quot;SENSOR_B&#32;=&#32;%u\n&quot;,&#32;(uint16_t)sens_b);
+
+&#32;&#32;&#32;&#32;//&#32;Vérifier
+&#32;&#32;&#32;&#32;if(seq&#32;==&#32;5&#32;&amp;&amp;&#32;sens_a&#32;==&#32;42&#32;&amp;&amp;&#32;sens_b&#32;==&#32;1000)&#32;{
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(&quot;\n&#32;TEST&#32;RÉUSSI!\n&quot;);
+&#32;&#32;&#32;&#32;}&#32;else&#32;{
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(&quot;\n&#32;TEST&#32;ÉCHOUÉ!\n&quot;);
+&#32;&#32;&#32;&#32;}
+}
+
+int&#32;main(void)&#32;{
+&#32;&#32;&#32;&#32;test_local_loop();
+&#32;&#32;&#32;&#32;return&#32;0;
+}
+</computeroutput></literallayout></para>
+
+<para><emphasis role="bold">Sortie attendue</emphasis> : <literallayout><computeroutput>===&#32;TEST&#32;BOUCLE&#32;LOCALE&#32;TAGCAN&#32;===
+
+&#32;Initialisé
+
+Écriture&#32;des&#32;données...
+Buffer&#32;TxData:&#32;XX&#32;XX&#32;XX&#32;XX&#32;XX&#32;XX&#32;XX&#32;XX
+
+Simulation&#32;envoi/réception...
+Buffer&#32;RxData:&#32;XX&#32;XX&#32;XX&#32;XX&#32;XX&#32;XX&#32;XX&#32;XX
+
+Lecture&#32;des&#32;données&#32;reçues...
+SEQ&#32;=&#32;5
+SENSOR_A&#32;=&#32;42
+SENSOR_B&#32;=&#32;1000
+
+&#32;TEST&#32;RÉUSSI!
+</computeroutput></literallayout></para>
+
+<para><informaltable frame='bottom'><tgroup cols='1'><colspec align='center'/><tbody><row><entry align='center'>
+</entry></row></tbody></tgroup></informaltable>
+</para>
+</section>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33_1autotoc_md148">
+<title>Exemple 4 : Debug / Monitoring CAN</title><section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33_1autotoc_md149">
+<title>Scénario</title>
+<para>Logger tous les messages CAN reçus pour du monitoring.</para>
+
+<para><literallayout><computeroutput>//&#32;=============================================================================
+//&#32;can_monitor.h
+//&#32;=============================================================================
+
+#ifndef&#32;CAN_MONITOR_H_
+#define&#32;CAN_MONITOR_H_
+
+#include&#32;&lt;stdint.h&gt;
+
+typedef&#32;struct&#32;{
+&#32;&#32;&#32;&#32;uint32_t&#32;id;
+&#32;&#32;&#32;&#32;uint8_t&#32;dlc;
+&#32;&#32;&#32;&#32;uint8_t&#32;data[8];
+&#32;&#32;&#32;&#32;uint32_t&#32;timestamp_ms;
+}&#32;can_frame_t;
+
+#define&#32;CAN_MONITOR_BUFFER_SIZE&#32;100
+
+void&#32;can_monitor_init(void);
+void&#32;can_monitor_log(const&#32;can_frame_t&#32;*frame);
+void&#32;can_monitor_dump(void);
+
+#endif
+
+
+//&#32;=============================================================================
+//&#32;can_monitor.c
+//&#32;=============================================================================
+
+#include&#32;&quot;can_monitor.h&quot;
+#include&#32;&quot;stm32f1xx_hal.h&quot;
+#include&#32;&lt;stdio.h&gt;
+#include&#32;&lt;string.h&gt;
+
+static&#32;can_frame_t&#32;monitor_buffer[CAN_MONITOR_BUFFER_SIZE];
+static&#32;uint32_t&#32;monitor_index&#32;=&#32;0;
+
+void&#32;can_monitor_init(void)&#32;{
+&#32;&#32;&#32;&#32;monitor_index&#32;=&#32;0;
+&#32;&#32;&#32;&#32;memset(monitor_buffer,&#32;0,&#32;sizeof(monitor_buffer));
+&#32;&#32;&#32;&#32;printf(&quot;[Monitor]&#32;Initialized\n&quot;);
+}
+
+void&#32;can_monitor_log(const&#32;can_frame_t&#32;*frame)&#32;{
+&#32;&#32;&#32;&#32;if(monitor_index&#32;&gt;=&#32;CAN_MONITOR_BUFFER_SIZE)&#32;{
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;monitor_index&#32;=&#32;0;&#32;&#32;//&#32;Circulaire
+&#32;&#32;&#32;&#32;}
+
+&#32;&#32;&#32;&#32;memcpy(&amp;monitor_buffer[monitor_index],&#32;frame,&#32;sizeof(can_frame_t));
+&#32;&#32;&#32;&#32;monitor_index++;
+}
+
+void&#32;can_monitor_dump(void)&#32;{
+&#32;&#32;&#32;&#32;printf(&quot;\n===&#32;CAN&#32;FRAME&#32;LOG&#32;===\n&quot;);
+&#32;&#32;&#32;&#32;printf(&quot;|&#32;Index&#32;|&#32;ID&#32;&#32;&#32;&#32;|&#32;DLC&#32;|&#32;Data&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;|&#32;Timestamp&#32;|\n&quot;);
+&#32;&#32;&#32;&#32;printf(&quot;|-------|-------|-----|----------------------|-----------|\n&quot;);
+
+&#32;&#32;&#32;&#32;for(uint32_t&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;monitor_index&#32;&amp;&amp;&#32;i&#32;&lt;&#32;CAN_MONITOR_BUFFER_SIZE;&#32;i++)&#32;{
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;const&#32;can_frame_t&#32;*frame&#32;=&#32;&amp;monitor_buffer[i];
+
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(&quot;|&#32;%5u&#32;|&#32;0x%03X&#32;|&#32;%u&#32;&#32;&#32;|&#32;&quot;,&#32;i,&#32;(unsigned)frame-&gt;id,&#32;frame-&gt;dlc);
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;for(int&#32;j&#32;=&#32;0;&#32;j&#32;&lt;&#32;8;&#32;j++)&#32;{
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(&quot;%02X&#32;&quot;,&#32;frame-&gt;data[j]);
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(&quot;|&#32;%9u&#32;|\n&quot;,&#32;(unsigned)frame-&gt;timestamp_ms);
+&#32;&#32;&#32;&#32;}
+&#32;&#32;&#32;&#32;printf(&quot;\n&quot;);
+}
+
+//&#32;=============================================================================
+//&#32;Utilisation&#32;dans&#32;le&#32;callback&#32;CAN
+//&#32;=============================================================================
+
+void&#32;HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef&#32;*hcan)&#32;{
+&#32;&#32;&#32;&#32;CAN_RxHeaderTypeDef&#32;RxHeader;
+&#32;&#32;&#32;&#32;uint8_t&#32;RxDataLocal[8];
+
+&#32;&#32;&#32;&#32;if(HAL_CAN_GetRxMessage(hcan,&#32;CAN_RX_FIFO0,&#32;&amp;RxHeader,&#32;RxDataLocal)&#32;==&#32;HAL_OK)&#32;{
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;can_frame_t&#32;frame&#32;=&#32;{
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;.id&#32;=&#32;RxHeader.StdId,
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;.dlc&#32;=&#32;RxHeader.DLC,
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;.timestamp_ms&#32;=&#32;HAL_GetTick()
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;memcpy(frame.data,&#32;RxDataLocal,&#32;8);
+
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;can_monitor_log(&amp;frame);
+&#32;&#32;&#32;&#32;}
+}
+
+//&#32;=============================================================================
+//&#32;main.c
+//&#32;=============================================================================
+
+int&#32;main(void)&#32;{
+&#32;&#32;&#32;&#32;HAL_Init();
+&#32;&#32;&#32;&#32;MX_CAN_Init();
+
+&#32;&#32;&#32;&#32;can_monitor_init();
+
+&#32;&#32;&#32;&#32;//&#32;...&#32;votre&#32;logique&#32;CAN&#32;...
+
+&#32;&#32;&#32;&#32;//&#32;Afficher&#32;le&#32;log&#32;après&#32;10&#32;secondes
+&#32;&#32;&#32;&#32;HAL_Delay(10000);
+&#32;&#32;&#32;&#32;can_monitor_dump();
+
+&#32;&#32;&#32;&#32;while(1)&#32;{
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;...
+&#32;&#32;&#32;&#32;}
+}
+</computeroutput></literallayout></para>
+
+<para><informaltable frame='bottom'><tgroup cols='1'><colspec align='center'/><tbody><row><entry align='center'>
+</entry></row></tbody></tgroup></informaltable>
+</para>
+</section>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33_1autotoc_md151">
+<title>Checklist d&apos;implémentation</title>
+<para><itemizedlist>
+<listitem override="unchecked">
+<para>Inclure <computeroutput><link linkend="__t_a_g_c_a_n_8h">TAGCAN.h</link></computeroutput></para>
+</listitem></itemizedlist>
+<itemizedlist>
+<listitem override="unchecked">
+<para>Appeler <computeroutput><link linkend="_data__container_8h_1a129f017feb0712be1dcf7932e6035aa0">init_data_container()</link></computeroutput></para>
+</listitem></itemizedlist>
+<itemizedlist>
+<listitem override="unchecked">
+<para>Appeler <computeroutput><link linkend="_gestion__tag_8h_1aab50a8f567be72e656120fd71f3fb435">init_tag_manager()</link></computeroutput></para>
+</listitem></itemizedlist>
+<itemizedlist>
+<listitem override="unchecked">
+<para>Créer les tags via <computeroutput><link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag()</link></computeroutput></para>
+</listitem></itemizedlist>
+<itemizedlist>
+<listitem override="unchecked">
+<para>Configurer le header CAN via <computeroutput><link linkend="_com__utils_8c_1a041f556ab8d1bfd3c0891c94b0f0d8c5">CAN_setup_DF()</link></computeroutput></para>
+</listitem></itemizedlist>
+<itemizedlist>
+<listitem override="unchecked">
+<para>Configurer les filtres via <computeroutput><link linkend="_com__utils_8c_1adfa3f55b53f7a0c8e6a7ffbf37fe2545">CAN_setup_Filter()</link></computeroutput></para>
+</listitem></itemizedlist>
+<itemizedlist>
+<listitem override="unchecked">
+<para>Activer les interruptions</para>
+</listitem></itemizedlist>
+<itemizedlist>
+<listitem override="unchecked">
+<para>Implémenter <computeroutput><link linkend="_com__utils_8c_1a7368d39e78009c017d6f81ccf33b9b2c">HAL_CAN_RxFifo0MsgPendingCallback()</link></computeroutput></para>
+</listitem></itemizedlist>
+<itemizedlist>
+<listitem override="unchecked">
+<para>Utiliser <computeroutput><link linkend="_data__container_8h_1aa84538f1ab0c319056787e9674157405">set_value()</link></computeroutput> pour écrire</para>
+</listitem></itemizedlist>
+<itemizedlist>
+<listitem override="unchecked">
+<para>Utiliser <computeroutput><link linkend="_data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f">get_value()</link></computeroutput> pour lire</para>
+</listitem></itemizedlist>
+<itemizedlist>
+<listitem override="unchecked">
+<para>Envoyer via <computeroutput>HAL_CAN_AddTxMessage()</computeroutput></para>
+</listitem></itemizedlist>
+<itemizedlist>
+<listitem override="unchecked">
+<para>Recevoir via <computeroutput>HAL_CAN_GetRxMessage()</computeroutput></para>
+</listitem></itemizedlist>
+<itemizedlist>
+<listitem override="unchecked">
+<para>Tester en boucle locale (optionnel mais recommandé)</para>
+</listitem></itemizedlist>
+</para>
+
+<para><informaltable frame='bottom'><tgroup cols='1'><colspec align='center'/><tbody><row><entry align='center'>
+</entry></row></tbody></tgroup></informaltable>
+</para>
+
+<para>Besoin d&apos;aide ? Retour au <link linkend="_dir_7a7edcf529884078f481081b33ab25c5">README.md</link> </para>
+</section>
+</section>

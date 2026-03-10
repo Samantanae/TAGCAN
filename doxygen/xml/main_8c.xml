@@ -232,7 +232,7 @@
         <references refid="gestion__tag_8h_1aab50a8f567be72e656120fd71f3fb435" compoundref="tag__manager_8c" startline="21" endline="36">init_tag_manager</references>
         <references refid="print__val_8h_1a6904e40665dc664fc6611bfe2d913773" compoundref="print__val_8c" startline="43" endline="56">print_all_data</references>
         <references refid="print__val_8h_1a2b276a5dd504a1eb4d6f216b8f9d7fdb" compoundref="print__val_8c" startline="18" endline="38">print_all_tag_set</references>
-        <references refid="print__val_8h_1a8ee4bb928c2cca54d191cf23edea60ec" compoundref="print__val_8c" startline="78" endline="126">print_repartition_bit</references>
+        <references refid="print__val_8h_1a8ee4bb928c2cca54d191cf23edea60ec" compoundref="print__val_8c" startline="78" endline="128">print_repartition_bit</references>
         <references refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="232" endline="282">set_tag</references>
         <references refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" compoundref="data__container_8c" startline="44" endline="98">set_value</references>
         <referencedby refid="main_8c_1a840291bc02cba5474a4cb46a9b9566fe" compoundref="main_8c" startline="331" endline="342">main</referencedby>
@@ -256,7 +256,7 @@
         <references refid="data__container_8h_1a129f017feb0712be1dcf7932e6035aa0" compoundref="data__container_8c" startline="14" endline="20">init_data_container</references>
         <references refid="gestion__tag_8h_1aab50a8f567be72e656120fd71f3fb435" compoundref="tag__manager_8c" startline="21" endline="36">init_tag_manager</references>
         <references refid="data__container_8h_1a66768c162c3a8352b7d5397e90206085" compoundref="data__container_8c" startline="29" endline="42">prep_mask</references>
-        <references refid="print__val_8h_1a9e9dc5564a1158a2c1381b3de0c6d20e" compoundref="print__val_8c" startline="134" endline="140">print_bin_8</references>
+        <references refid="print__val_8h_1a9e9dc5564a1158a2c1381b3de0c6d20e" compoundref="print__val_8c" startline="136" endline="142">print_bin_8</references>
       </memberdef>
       <memberdef kind="function" id="main_8c_1ae9bbb2f5bb69f73e92c761f83223285a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>

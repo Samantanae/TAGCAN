@@ -1,0 +1,608 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.0" xml:lang="en-US">
+  <compounddef id="05___e_x_e_m_p_l_e_s___c_o_m_p_l_e_t_s_8md" kind="file" language="Markdown">
+    <compoundname>05_EXEMPLES_COMPLETS.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>05<sp/>-<sp/>Exemples<sp/>Complets</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/><sp/>Exemples<sp/>d&apos;intégration<sp/>pratiques</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Vous<sp/>trouverez<sp/>ici<sp/>des<sp/>exemples<sp/>réalistes<sp/>exploitant<sp/>l&apos;ensemble<sp/>du<sp/>système<sp/>TAGCAN.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/><sp/>Exemple<sp/>1<sp/>:<sp/>Système<sp/>de<sp/>télémétrie<sp/>simple</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Scénario</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Un<sp/>véhicule<sp/>envoie<sp/>périodiquement<sp/>:</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Son<sp/>numéro<sp/>de<sp/>séquence<sp/>(3<sp/>bits)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Son<sp/>état<sp/>(heartbeat,<sp/>1<sp/>bit)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Le<sp/>%<sp/>de<sp/>batterie<sp/>(7<sp/>bits)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>La<sp/>pression<sp/>du<sp/>réservoir<sp/>(16<sp/>bits)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Un<sp/>timestamp<sp/>(16<sp/>bits)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Code<sp/>complet</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>=============================================================================</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>telemetrie.h</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>=============================================================================</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#ifndef<sp/>TELEMETRIE_H_</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>TELEMETRIE_H_</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;TAGCAN.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;stdint.h&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">typedef<sp/>struct<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>seq;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>heartbeat;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>battery_percent;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>reservoir_pressure;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>timestamp_ms;</highlight></codeline>
+<codeline><highlight class="normal">}<sp/>telemetry_data_t;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Initialiser<sp/>le<sp/>système<sp/>de<sp/>télémétrie</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>telemetry_init(void);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Envoyer<sp/>un<sp/>paquet<sp/>de<sp/>télémétrie</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>telemetry_send(const<sp/>telemetry_data_t<sp/>*data);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Traiter<sp/>un<sp/>paquet<sp/>reçu</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>telemetry_handle_rx(const<sp/>uint8_t<sp/>rx_data[8]);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#endif<sp/>/*<sp/>TELEMETRIE_H_<sp/>*/</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>=============================================================================</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>telemetrie.c</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>=============================================================================</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;telemetrie.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;stm32f1xx_hal.h&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">extern<sp/>CAN_HandleTypeDef<sp/>hcan;</highlight></codeline>
+<codeline><highlight class="normal">extern<sp/>uint8_t<sp/>TxData[8],<sp/>RxData[8];</highlight></codeline>
+<codeline><highlight class="normal">extern<sp/>CAN_TxHeaderTypeDef<sp/>TxHeader;</highlight></codeline>
+<codeline><highlight class="normal">extern<sp/>int32_t<sp/>TxMailbox;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>TELEMETRY_CAN_ID<sp/>0x100</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>telemetry_init(void)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Initialiser<sp/>TAGCAN</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>init_data_container();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>init_tag_manager();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Créer<sp/>les<sp/>tags</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_tag(&quot;SEQ&quot;,<sp/>3);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Numéro<sp/>de<sp/>séquence<sp/>(0-7)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_tag(&quot;HB&quot;,<sp/>1);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Heartbeat<sp/>(0<sp/>ou<sp/>1)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_tag(&quot;BATTERY&quot;,<sp/>7);<sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>%<sp/>batterie<sp/>(0-100)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_tag(&quot;PRESSURE&quot;,<sp/>16);<sp/><sp/><sp/><sp/>//<sp/>Pression<sp/>réservoir<sp/>(0-65535<sp/>Pa)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_tag(&quot;TIME&quot;,<sp/>16);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Timestamp<sp/>(0-65535<sp/>ms)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Configurer<sp/>le<sp/>header<sp/>CAN</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TxHeader.IDE<sp/>=<sp/>CAN_ID_STD;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TxHeader.StdId<sp/>=<sp/>TELEMETRY_CAN_ID;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TxHeader.RTR<sp/>=<sp/>CAN_RTR_DATA;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TxHeader.DLC<sp/>=<sp/>8;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Configurer<sp/>le<sp/>filtre<sp/>pour<sp/>recevoir<sp/>les<sp/>télémétries<sp/>des<sp/>autres<sp/>(ex:<sp/>0x101-0x10F)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>CAN_setup_Filter(0x101,<sp/>0x10F,<sp/>0);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Activer<sp/>les<sp/>interruptions</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(HAL_CAN_ActivateNotification(&amp;hcan,<sp/>CAN_IT_RX_FIFO0_MSG_PENDING)<sp/>!=<sp/>HAL_OK)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Error_Handler();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;[Telemetry]<sp/>Initialized<sp/>on<sp/>CAN<sp/>ID<sp/>0x%03X\n&quot;,<sp/>TELEMETRY_CAN_ID);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>telemetry_send(const<sp/>telemetry_data_t<sp/>*data)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Réinitialiser<sp/>le<sp/>buffer</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>init_data_container();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Écrire<sp/>les<sp/>données</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_value(&quot;SEQ&quot;,<sp/>data-&gt;seq);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_value(&quot;HB&quot;,<sp/>data-&gt;heartbeat);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_value(&quot;BATTERY&quot;,<sp/>data-&gt;battery_percent);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_value(&quot;PRESSURE&quot;,<sp/>data-&gt;reservoir_pressure);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_value(&quot;TIME&quot;,<sp/>data-&gt;timestamp_ms);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Envoyer<sp/>sur<sp/>le<sp/>bus</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(HAL_CAN_AddTxMessage(&amp;hcan,<sp/>&amp;TxHeader,<sp/>TxData,<sp/>&amp;TxMailbox)<sp/>!=<sp/>HAL_OK)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(&quot;[Telemetry]<sp/>ERROR:<sp/>Failed<sp/>to<sp/>send<sp/>CAN<sp/>message\n&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(&quot;[Telemetry]<sp/>TX:<sp/>SEQ=%u,<sp/>BAT=%u%%,<sp/>PRESSURE=%u<sp/>Pa\n&quot;,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data-&gt;seq,<sp/>data-&gt;battery_percent,<sp/>data-&gt;reservoir_pressure);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>telemetry_handle_rx(const<sp/>uint8_t<sp/>rx_data[8])<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Copier<sp/>les<sp/>données<sp/>reçues<sp/>dans<sp/>TxData<sp/>pour<sp/>utiliser<sp/>TAGCAN</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>memcpy(TxData,<sp/>rx_data,<sp/>8);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Lire<sp/>via<sp/>les<sp/>tags</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>seq,<sp/>hb,<sp/>battery,<sp/>pressure,<sp/>timestamp;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>get_value(&quot;SEQ&quot;,<sp/>&amp;seq);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>get_value(&quot;HB&quot;,<sp/>&amp;hb);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>get_value(&quot;BATTERY&quot;,<sp/>&amp;battery);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>get_value(&quot;PRESSURE&quot;,<sp/>&amp;pressure);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>get_value(&quot;TIME&quot;,<sp/>&amp;timestamp);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;[Telemetry]<sp/>RX:<sp/>SEQ=%u,<sp/>HB=%u,<sp/>BAT=%u%%,<sp/>PRESSURE=%u<sp/>Pa,<sp/>TIME=%u<sp/>ms\n&quot;,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(uint8_t)seq,<sp/>(uint8_t)hb,<sp/>(uint8_t)battery,<sp/>(uint16_t)pressure,<sp/>(uint16_t)timestamp);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>=============================================================================</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Callback<sp/>d&apos;interruption<sp/>CAN</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>=============================================================================</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef<sp/>*hcan)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>CAN_RxHeaderTypeDef<sp/>RxHeader;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>RxDataLocal[8];</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(HAL_CAN_GetRxMessage(hcan,<sp/>CAN_RX_FIFO0,<sp/>&amp;RxHeader,<sp/>RxDataLocal)<sp/>==<sp/>HAL_OK)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Traiter<sp/>selon<sp/>l&apos;ID<sp/>CAN<sp/>reçu</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if((RxHeader.StdId<sp/>&gt;=<sp/>0x101)<sp/>&amp;&amp;<sp/>(RxHeader.StdId<sp/>&lt;=<sp/>0x10F))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>telemetry_handle_rx(RxDataLocal);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>=============================================================================</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>main.c<sp/>-<sp/>Boucle<sp/>principale</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>=============================================================================</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Tâche<sp/>d&apos;émission<sp/>(10<sp/>ms)</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>task_telemetry_10ms(void)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/>uint8_t<sp/>seq<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/>uint32_t<sp/>last_time<sp/>=<sp/>0;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>telemetry_data_t<sp/>data<sp/>=<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.seq<sp/>=<sp/>(seq++)<sp/>%<sp/>8,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.heartbeat<sp/>=<sp/>1,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.battery_percent<sp/>=<sp/>read_adc_battery(),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.reservoir_pressure<sp/>=<sp/>read_sensor_pressure(),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.timestamp_ms<sp/>=<sp/>HAL_GetTick()<sp/>&amp;<sp/>0xFFFF</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if((HAL_GetTick()<sp/>-<sp/>last_time)<sp/>&gt;=<sp/>10)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>telemetry_send(&amp;data);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>last_time<sp/>=<sp/>HAL_GetTick();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">int<sp/>main(void)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_Init();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MX_CAN_Init();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>telemetry_init();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Timer<sp/>pour<sp/>appeler<sp/>task_telemetry_10ms()<sp/>tous<sp/>les<sp/>10ms</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>...</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while(1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>task_telemetry_10ms();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/><sp/>Exemple<sp/>2<sp/>:<sp/>Système<sp/>de<sp/>commande<sp/>avec<sp/>réponse</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Scénario</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>**Maître<sp/>envoie<sp/>commandes**<sp/>sur<sp/>ID<sp/>0x200<sp/>(allumer/éteindre<sp/>servos)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Esclaves<sp/>répondent**<sp/>sur<sp/>ID<sp/>0x201-0x203<sp/>(confirmation<sp/>+<sp/>état)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Code<sp/>complet</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>=============================================================================</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>commandes.h</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>=============================================================================</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#ifndef<sp/>COMMANDES_H_</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>COMMANDES_H_</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;TAGCAN.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;stdint.h&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>IDs<sp/>CAN</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>CMD_CAN_ID_TX<sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x200</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>CMD_CAN_ID_RX_BASE<sp/><sp/>0x201</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Commandes<sp/>possibles</highlight></codeline>
+<codeline><highlight class="normal">typedef<sp/>enum<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>CMD_SERVO_OFF<sp/>=<sp/>0,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>CMD_SERVO_ON<sp/>=<sp/>1,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>CMD_SERVO_PULSE<sp/>=<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">}<sp/>cmd_type_t;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">typedef<sp/>struct<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>device_id;<sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Quel<sp/>servomoteur<sp/>?<sp/>(1-3)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cmd_type_t<sp/>command;<sp/><sp/><sp/><sp/><sp/>//<sp/>Quelle<sp/>commande<sp/>?</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>parameter;<sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Paramètre<sp/>optionnel<sp/>(ex:<sp/>pulse<sp/>width)</highlight></codeline>
+<codeline><highlight class="normal">}<sp/>command_t;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">typedef<sp/>struct<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>device_id;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>status;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>0=erreur,<sp/>1=ok</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>feedback;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Retour<sp/>d&apos;état</highlight></codeline>
+<codeline><highlight class="normal">}<sp/>response_t;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>commands_init(void);</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>commands_send(const<sp/>command_t<sp/>*cmd);</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>commands_handle_response(uint8_t<sp/>device_id,<sp/>const<sp/>uint8_t<sp/>rx_data[8]);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#endif</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>=============================================================================</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>commandes.c</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>=============================================================================</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;commandes.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;stm32f1xx_hal.h&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">extern<sp/>CAN_HandleTypeDef<sp/>hcan;</highlight></codeline>
+<codeline><highlight class="normal">extern<sp/>uint8_t<sp/>TxData[8];</highlight></codeline>
+<codeline><highlight class="normal">extern<sp/>CAN_TxHeaderTypeDef<sp/>TxHeader;</highlight></codeline>
+<codeline><highlight class="normal">extern<sp/>int32_t<sp/>TxMailbox;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>commands_init(void)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Initialiser<sp/>TAGCAN</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>init_data_container();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>init_tag_manager();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Tags<sp/>pour<sp/>les<sp/>commandes<sp/>ENVOYÉES</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_tag(&quot;DEV_ID&quot;,<sp/>2);<sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>ID<sp/>du<sp/>périphérique<sp/>(0-3)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_tag(&quot;CMD_TYPE&quot;,<sp/>2);<sp/><sp/><sp/><sp/><sp/>//<sp/>Type<sp/>de<sp/>commande<sp/>(0-3)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_tag(&quot;PARAM&quot;,<sp/>8);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Paramètre<sp/>(0-255)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Configuration<sp/>du<sp/>header<sp/>TX</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TxHeader.IDE<sp/>=<sp/>CAN_ID_STD;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TxHeader.StdId<sp/>=<sp/>CMD_CAN_ID_TX;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TxHeader.RTR<sp/>=<sp/>CAN_RTR_DATA;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TxHeader.DLC<sp/>=<sp/>8;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Filtre<sp/>pour<sp/>les<sp/>réponses<sp/>des<sp/>esclaves<sp/>(0x201-0x203)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>CAN_setup_Filter(0x201,<sp/>0x203,<sp/>0);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Interruptions</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(HAL_CAN_ActivateNotification(&amp;hcan,<sp/>CAN_IT_RX_FIFO0_MSG_PENDING)<sp/>!=<sp/>HAL_OK)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Error_Handler();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;[Commands]<sp/>Initialized\n&quot;);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>commands_send(const<sp/>command_t<sp/>*cmd)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>init_data_container();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_value(&quot;DEV_ID&quot;,<sp/>cmd-&gt;device_id);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_value(&quot;CMD_TYPE&quot;,<sp/>cmd-&gt;command);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_value(&quot;PARAM&quot;,<sp/>cmd-&gt;parameter);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(HAL_CAN_AddTxMessage(&amp;hcan,<sp/>&amp;TxHeader,<sp/>TxData,<sp/>&amp;TxMailbox)<sp/>!=<sp/>HAL_OK)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(&quot;[Commands]<sp/>ERROR:<sp/>Send<sp/>failed\n&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(&quot;[Commands]<sp/>TX:<sp/>Device=%u,<sp/>Command=%u,<sp/>Param=%u\n&quot;,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cmd-&gt;device_id,<sp/>cmd-&gt;command,<sp/>cmd-&gt;parameter);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>commands_handle_response(uint8_t<sp/>device_id,<sp/>const<sp/>uint8_t<sp/>rx_data[8])<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>memcpy(TxData,<sp/>rx_data,<sp/>8);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>status,<sp/>feedback;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>get_value(&quot;DEV_ID&quot;,<sp/>NULL);<sp/><sp/>//<sp/>Ou<sp/>extraire<sp/>directement</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>get_value(&quot;STATUS&quot;,<sp/>&amp;status);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>get_value(&quot;FEEDBACK&quot;,<sp/>&amp;feedback);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;[Commands]<sp/>RX<sp/>Response<sp/>from<sp/>Device<sp/>%u:<sp/>Status=%u,<sp/>Feedback=%u\n&quot;,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>device_id,<sp/>(uint8_t)status,<sp/>(uint8_t)feedback);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef<sp/>*hcan)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>CAN_RxHeaderTypeDef<sp/>RxHeader;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>RxDataLocal[8];</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(HAL_CAN_GetRxMessage(hcan,<sp/>CAN_RX_FIFO0,<sp/>&amp;RxHeader,<sp/>RxDataLocal)<sp/>==<sp/>HAL_OK)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>device_id<sp/>=<sp/>RxHeader.StdId<sp/>-<sp/>CMD_CAN_ID_RX_BASE<sp/>+<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if((RxHeader.StdId<sp/>&gt;=<sp/>0x201)<sp/>&amp;&amp;<sp/>(RxHeader.StdId<sp/>&lt;=<sp/>0x203))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>commands_handle_response(device_id,<sp/>RxDataLocal);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>=============================================================================</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>main.c<sp/>-<sp/>Exemple<sp/>d&apos;utilisation</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>=============================================================================</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">int<sp/>main(void)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_Init();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MX_CAN_Init();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>commands_init();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Envoyer<sp/>la<sp/>commande<sp/>&quot;Allumer<sp/>servomoteur<sp/>1&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>command_t<sp/>cmd1<sp/>=<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.device_id<sp/>=<sp/>1,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.command<sp/>=<sp/>CMD_SERVO_ON,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.parameter<sp/>=<sp/>0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>commands_send(&amp;cmd1);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Attendre<sp/>la<sp/>réponse<sp/>(via<sp/>callback<sp/>HAL_CAN_RxFifo0MsgPendingCallback)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_Delay(100);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Envoyer<sp/>la<sp/>commande<sp/>&quot;Servomoteur<sp/>2,<sp/>position<sp/>pulse<sp/>100&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>command_t<sp/>cmd2<sp/>=<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.device_id<sp/>=<sp/>2,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.command<sp/>=<sp/>CMD_SERVO_PULSE,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.parameter<sp/>=<sp/>100</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>commands_send(&amp;cmd2);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while(1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Boucle<sp/>principale</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/><sp/>Exemple<sp/>3<sp/>:<sp/>Test<sp/>en<sp/>boucle<sp/>locale<sp/>(sans<sp/>matériel<sp/>CAN)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Scénario</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Tester<sp/>la<sp/>logique<sp/>TAGCAN<sp/>**sans**<sp/>bus<sp/>CAN<sp/>physique.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>=============================================================================</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>test_tagcan_local.c</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>=============================================================================</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;TAGCAN.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;stdio.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;string.h&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">uint8_t<sp/>TxData[8]<sp/>=<sp/>{0};</highlight></codeline>
+<codeline><highlight class="normal">uint8_t<sp/>RxData[8]<sp/>=<sp/>{0};</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>test_local_loop(void)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;===<sp/>TEST<sp/>BOUCLE<sp/>LOCALE<sp/>TAGCAN<sp/>===\n\n&quot;);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Étape<sp/>1:<sp/>Initialiser</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>init_data_container();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>init_tag_manager();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_tag(&quot;SEQ&quot;,<sp/>3);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_tag(&quot;SENSOR_A&quot;,<sp/>8);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_tag(&quot;SENSOR_B&quot;,<sp/>12);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;<sp/>Initialisé\n\n&quot;);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Étape<sp/>2:<sp/>Écrire<sp/>les<sp/>données</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Écriture<sp/>des<sp/>données...\n&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_value(&quot;SEQ&quot;,<sp/>5);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_value(&quot;SENSOR_A&quot;,<sp/>42);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_value(&quot;SENSOR_B&quot;,<sp/>1000);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Afficher<sp/>le<sp/>buffer<sp/>brut</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Buffer<sp/>TxData:<sp/>&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>for(int<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>8;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(&quot;%02X<sp/>&quot;,<sp/>TxData[i]);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;\n\n&quot;);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Étape<sp/>3:<sp/>Simuler<sp/>envoi<sp/>-&gt;<sp/>réception</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Simulation<sp/>envoi/réception...\n&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>can_simulate_send_receive(TxData,<sp/>RxData);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Vérifier</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Buffer<sp/>RxData:<sp/>&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>for(int<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>8;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(&quot;%02X<sp/>&quot;,<sp/>RxData[i]);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;\n\n&quot;);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Étape<sp/>4:<sp/>Lire<sp/>les<sp/>données<sp/>reçues</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Lecture<sp/>des<sp/>données<sp/>reçues...\n&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>memcpy(TxData,<sp/>RxData,<sp/>8);<sp/><sp/>//<sp/>Copier<sp/>pour<sp/>lecture</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>seq,<sp/>sens_a,<sp/>sens_b;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>get_value(&quot;SEQ&quot;,<sp/>&amp;seq);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>get_value(&quot;SENSOR_A&quot;,<sp/>&amp;sens_a);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>get_value(&quot;SENSOR_B&quot;,<sp/>&amp;sens_b);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;SEQ<sp/>=<sp/>%u\n&quot;,<sp/>(uint8_t)seq);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;SENSOR_A<sp/>=<sp/>%u\n&quot;,<sp/>(uint8_t)sens_a);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;SENSOR_B<sp/>=<sp/>%u\n&quot;,<sp/>(uint16_t)sens_b);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Vérifier</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(seq<sp/>==<sp/>5<sp/>&amp;&amp;<sp/>sens_a<sp/>==<sp/>42<sp/>&amp;&amp;<sp/>sens_b<sp/>==<sp/>1000)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(&quot;\n<sp/>TEST<sp/>RÉUSSI!\n&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(&quot;\n<sp/>TEST<sp/>ÉCHOUÉ!\n&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">int<sp/>main(void)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>test_local_loop();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Sortie<sp/>attendue**<sp/>:</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">===<sp/>TEST<sp/>BOUCLE<sp/>LOCALE<sp/>TAGCAN<sp/>===</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/>Initialisé</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Écriture<sp/>des<sp/>données...</highlight></codeline>
+<codeline><highlight class="normal">Buffer<sp/>TxData:<sp/>XX<sp/>XX<sp/>XX<sp/>XX<sp/>XX<sp/>XX<sp/>XX<sp/>XX</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Simulation<sp/>envoi/réception...</highlight></codeline>
+<codeline><highlight class="normal">Buffer<sp/>RxData:<sp/>XX<sp/>XX<sp/>XX<sp/>XX<sp/>XX<sp/>XX<sp/>XX<sp/>XX</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Lecture<sp/>des<sp/>données<sp/>reçues...</highlight></codeline>
+<codeline><highlight class="normal">SEQ<sp/>=<sp/>5</highlight></codeline>
+<codeline><highlight class="normal">SENSOR_A<sp/>=<sp/>42</highlight></codeline>
+<codeline><highlight class="normal">SENSOR_B<sp/>=<sp/>1000</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/>TEST<sp/>RÉUSSI!</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/><sp/>Exemple<sp/>4<sp/>:<sp/>Debug<sp/>/<sp/>Monitoring<sp/>CAN</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Scénario</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Logger<sp/>tous<sp/>les<sp/>messages<sp/>CAN<sp/>reçus<sp/>pour<sp/>du<sp/>monitoring.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>=============================================================================</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>can_monitor.h</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>=============================================================================</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#ifndef<sp/>CAN_MONITOR_H_</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>CAN_MONITOR_H_</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;stdint.h&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">typedef<sp/>struct<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>id;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>dlc;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>data[8];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>timestamp_ms;</highlight></codeline>
+<codeline><highlight class="normal">}<sp/>can_frame_t;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#define<sp/>CAN_MONITOR_BUFFER_SIZE<sp/>100</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>can_monitor_init(void);</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>can_monitor_log(const<sp/>can_frame_t<sp/>*frame);</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>can_monitor_dump(void);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#endif</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>=============================================================================</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>can_monitor.c</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>=============================================================================</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;can_monitor.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;stm32f1xx_hal.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;stdio.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;string.h&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">static<sp/>can_frame_t<sp/>monitor_buffer[CAN_MONITOR_BUFFER_SIZE];</highlight></codeline>
+<codeline><highlight class="normal">static<sp/>uint32_t<sp/>monitor_index<sp/>=<sp/>0;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>can_monitor_init(void)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>monitor_index<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>memset(monitor_buffer,<sp/>0,<sp/>sizeof(monitor_buffer));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;[Monitor]<sp/>Initialized\n&quot;);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>can_monitor_log(const<sp/>can_frame_t<sp/>*frame)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(monitor_index<sp/>&gt;=<sp/>CAN_MONITOR_BUFFER_SIZE)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>monitor_index<sp/>=<sp/>0;<sp/><sp/>//<sp/>Circulaire</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>memcpy(&amp;monitor_buffer[monitor_index],<sp/>frame,<sp/>sizeof(can_frame_t));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>monitor_index++;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>can_monitor_dump(void)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;\n===<sp/>CAN<sp/>FRAME<sp/>LOG<sp/>===\n&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;|<sp/>Index<sp/>|<sp/>ID<sp/><sp/><sp/><sp/>|<sp/>DLC<sp/>|<sp/>Data<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Timestamp<sp/>|\n&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;|-------|-------|-----|----------------------|-----------|\n&quot;);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>for(uint32_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>monitor_index<sp/>&amp;&amp;<sp/>i<sp/>&lt;<sp/>CAN_MONITOR_BUFFER_SIZE;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>can_frame_t<sp/>*frame<sp/>=<sp/>&amp;monitor_buffer[i];</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(&quot;|<sp/>%5u<sp/>|<sp/>0x%03X<sp/>|<sp/>%u<sp/><sp/><sp/>|<sp/>&quot;,<sp/>i,<sp/>(unsigned)frame-&gt;id,<sp/>frame-&gt;dlc);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for(int<sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>8;<sp/>j++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(&quot;%02X<sp/>&quot;,<sp/>frame-&gt;data[j]);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(&quot;|<sp/>%9u<sp/>|\n&quot;,<sp/>(unsigned)frame-&gt;timestamp_ms);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;\n&quot;);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>=============================================================================</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Utilisation<sp/>dans<sp/>le<sp/>callback<sp/>CAN</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>=============================================================================</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef<sp/>*hcan)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>CAN_RxHeaderTypeDef<sp/>RxHeader;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>RxDataLocal[8];</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(HAL_CAN_GetRxMessage(hcan,<sp/>CAN_RX_FIFO0,<sp/>&amp;RxHeader,<sp/>RxDataLocal)<sp/>==<sp/>HAL_OK)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>can_frame_t<sp/>frame<sp/>=<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.id<sp/>=<sp/>RxHeader.StdId,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.dlc<sp/>=<sp/>RxHeader.DLC,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.timestamp_ms<sp/>=<sp/>HAL_GetTick()</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memcpy(frame.data,<sp/>RxDataLocal,<sp/>8);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>can_monitor_log(&amp;frame);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>=============================================================================</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>main.c</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>=============================================================================</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">int<sp/>main(void)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_Init();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MX_CAN_Init();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>can_monitor_init();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>...<sp/>votre<sp/>logique<sp/>CAN<sp/>...</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Afficher<sp/>le<sp/>log<sp/>après<sp/>10<sp/>secondes</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_Delay(10000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>can_monitor_dump();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while(1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/><sp/>Checklist<sp/>d&apos;implémentation</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>[<sp/>]<sp/>Inclure<sp/>`TAGCAN.h`</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[<sp/>]<sp/>Appeler<sp/>`init_data_container()`</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[<sp/>]<sp/>Appeler<sp/>`init_tag_manager()`</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[<sp/>]<sp/>Créer<sp/>les<sp/>tags<sp/>via<sp/>`set_tag()`</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[<sp/>]<sp/>Configurer<sp/>le<sp/>header<sp/>CAN<sp/>via<sp/>`CAN_setup_DF()`</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[<sp/>]<sp/>Configurer<sp/>les<sp/>filtres<sp/>via<sp/>`CAN_setup_Filter()`</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[<sp/>]<sp/>Activer<sp/>les<sp/>interruptions</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[<sp/>]<sp/>Implémenter<sp/>`HAL_CAN_RxFifo0MsgPendingCallback()`</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[<sp/>]<sp/>Utiliser<sp/>`set_value()`<sp/>pour<sp/>écrire</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[<sp/>]<sp/>Utiliser<sp/>`get_value()`<sp/>pour<sp/>lire</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[<sp/>]<sp/>Envoyer<sp/>via<sp/>`HAL_CAN_AddTxMessage()`</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[<sp/>]<sp/>Recevoir<sp/>via<sp/>`HAL_CAN_GetRxMessage()`</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[<sp/>]<sp/>Tester<sp/>en<sp/>boucle<sp/>locale<sp/>(optionnel<sp/>mais<sp/>recommandé)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Besoin<sp/>d&apos;aide<sp/>?<sp/>Retour<sp/>au<sp/>[README.md](README.md)</highlight></codeline>
+    </programlisting>
+    <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/guide_utilisation/05_EXEMPLES_COMPLETS.md"/>
+  </compounddef>
+</doxygen>

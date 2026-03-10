@@ -49,7 +49,7 @@ This graph shows which files directly or indirectly include this file:<para>
 , <link linkend="_config__value_8h_1ac0d6cdda2cf4abb51116b86bc99acf99ac4e66207fce47c294e4aaab76000c9ce">SEND_AND_RECEVE</link>
  }</para>
 
-<para>Modes d&apos;utilisation CAN (envoi/reception). </para>
+<para>modes d&apos;utilisation CAN (envoi/reception). </para>
 </listitem>
         </itemizedlist>
 </simplesect>
@@ -131,7 +131,7 @@ Definition at line <link linkend="_config__value_8h_source_1l00009">9</link> of 
 <indexterm><primary>config_value.h</primary><secondary>CAN_MODE</secondary></indexterm>
 <para><computeroutput>enum <link linkend="_config__value_8h_1ac0d6cdda2cf4abb51116b86bc99acf99">CAN_MODE</link></computeroutput></para><para>
 
-<para>Modes d&apos;utilisation CAN (envoi/reception). </para>
+<para>modes d&apos;utilisation CAN (envoi/reception). </para>
 </para>
 <informaltable frame="all">
 <title>Enumerator</title>
@@ -142,15 +142,15 @@ Definition at line <link linkend="_config__value_8h_source_1l00009">9</link> of 
 <row><entry><indexterm><primary>RECEVE_ONLY</primary><secondary>config_value.h</secondary></indexterm>
 <indexterm><primary>config_value.h</primary><secondary>RECEVE_ONLY</secondary></indexterm>
 <anchor xml:id="_config__value_8h_1ac0d6cdda2cf4abb51116b86bc99acf99a7d47d78204fba2e07bda4e65594ff332"/>RECEVE_ONLY</entry><entry>
-<para>Reception seule: les updates entrantes peuvent modifier la valeur; l&apos;ecriture locale est bloquee. </para>
+<para>Réception seule: les mises à jour entrantes peuvent modifier la valeur; l&apos;écriture locale est bloquée. </para>
 </entry></row><row><entry><indexterm><primary>SEND_ONLY</primary><secondary>config_value.h</secondary></indexterm>
 <indexterm><primary>config_value.h</primary><secondary>SEND_ONLY</secondary></indexterm>
 <anchor xml:id="_config__value_8h_1ac0d6cdda2cf4abb51116b86bc99acf99ad5ec70c56183ea13f8a0c16a3708a23e"/>SEND_ONLY</entry><entry>
-<para>Emission seule: la valeur locale est emise, les updates entrantes ne la modifient pas. </para>
+<para>Émission seule: la valeur locale est mise, les mises à jour entrantes ne la modifient pas. </para>
 </entry></row><row><entry><indexterm><primary>SEND_AND_RECEVE</primary><secondary>config_value.h</secondary></indexterm>
 <indexterm><primary>config_value.h</primary><secondary>SEND_AND_RECEVE</secondary></indexterm>
 <anchor xml:id="_config__value_8h_1ac0d6cdda2cf4abb51116b86bc99acf99ac4e66207fce47c294e4aaab76000c9ce"/>SEND_AND_RECEVE</entry><entry>
-<para>Emission + reception: ecriture locale et updates entrantes toutes deux autorisees. </para>
+<para>Emission + reception: écriture locale et mises à jour entrantes toutes deux autorisées. </para>
 </entry></row>    </tbody>
     </tgroup>
 </informaltable>

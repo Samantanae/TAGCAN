@@ -2,6 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.0" xml:lang="en-US">
   <compounddef id="dir_015f45375440bccc26ff483fa85fb151" kind="dir">
     <compoundname>test_file</compoundname>
+    <innerfile refid="test__print__repartition__bit_8c">test_print_repartition_bit.c</innerfile>
     <innerfile refid="test__safty__func_8c">test_safty_func.c</innerfile>
     <innerfile refid="test__safty__func_8h">test_safty_func.h</innerfile>
     <innerfile refid="test__send__receve_8c">test_send_receve.c</innerfile>

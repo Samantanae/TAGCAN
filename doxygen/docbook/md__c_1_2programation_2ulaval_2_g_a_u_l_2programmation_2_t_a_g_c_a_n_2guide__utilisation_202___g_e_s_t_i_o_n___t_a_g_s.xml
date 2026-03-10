@@ -1,0 +1,420 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s" xml:lang="en-US">
+<title>
+<para>02 - Gestion des Tags </para>
+</title>
+<indexterm><primary>02 - Gestion des Tags</primary></indexterm>
+
+<para><anchor xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_1autotoc_md37"/></para>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_1autotoc_md38">
+<title>Qu&apos;est-ce qu&apos;un tag ?</title>
+<para>Un <emphasis role="bold">tag</emphasis> est une variable nommée qui occupe une plage de bits dans le buffer CAN (TxData). C&apos;est l&apos;interface principale pour lire et écrire des données.</para>
+
+<para><emphasis role="bold">Analogie</emphasis> : C&apos;est comme des variables struct, mais mappées directement dans un buffer binaire.</para>
+
+<para><informaltable frame='bottom'><tgroup cols='1'><colspec align='center'/><tbody><row><entry align='center'>
+</entry></row></tbody></tgroup></informaltable>
+</para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_1autotoc_md40">
+<title>Créer un tag : set_tag()</title><section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_1autotoc_md41">
+<title>Prototype</title>
+<para><literallayout><computeroutput>int&#32;set_tag(const&#32;char*&#32;tag_name,&#32;uint8_t&#32;n_bit);
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_1autotoc_md42">
+<title>Paramètres</title>
+<para><informaltable frame="all">
+    <tgroup cols="3" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+      <colspec colname='c3'/>
+<thead>
+      <row  class='markdownTableHead'>
+<entry>
+<para>Paramètre  </para>
+</entry><entry>
+<para>Type  </para>
+</entry><entry>
+<para>Description  </para>
+</entry></row>
+</thead><tbody>
+      <row  class='markdownTableRowOdd'>
+<entry>
+<para><computeroutput>tag_name</computeroutput>  </para>
+</entry><entry>
+<para><computeroutput>const char*</computeroutput>  </para>
+</entry><entry>
+<para>Nom unique du tag (ex. &quot;SEQ&quot;, &quot;HB&quot;)  </para>
+</entry></row>
+      <row  class='markdownTableRowEven'>
+<entry>
+<para><computeroutput>n_bit</computeroutput>  </para>
+</entry><entry>
+<para><computeroutput>uint8_t</computeroutput>  </para>
+</entry><entry>
+<para>Nombre de bits occupés (1 à 16)  </para>
+</entry></row>
+    </tbody>
+    </tgroup>
+</informaltable>
+</para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_1autotoc_md43">
+<title>Valeur de retour</title>
+<para>Consulter <computeroutput><link linkend="__a_p_i___r_e_f_e_r_e_n_c_e_8md">documentation/API_REFERENCE.md</link></computeroutput> pour les codes d&apos;erreur.</para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_1autotoc_md44">
+<title>Exemples</title>
+<para><literallayout><computeroutput>//&#32;Initialisation&#32;des&#32;tags&#32;(dans&#32;CAN_setup_TAG())
+void&#32;CAN_setup_TAG(void)&#32;{
+&#32;&#32;&#32;&#32;set_tag(&quot;SEQ&quot;,&#32;3);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;3&#32;bits&#32;pour&#32;numéro&#32;séquence
+&#32;&#32;&#32;&#32;set_tag(&quot;HB&quot;,&#32;1);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;1&#32;bit&#32;pour&#32;watchdog
+&#32;&#32;&#32;&#32;set_tag(&quot;CI&quot;,&#32;2);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;2&#32;bits&#32;pour&#32;continuité
+&#32;&#32;&#32;&#32;set_tag(&quot;AB&quot;,&#32;7);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;7&#32;bits&#32;pour&#32;batterie&#32;(0-100%)
+&#32;&#32;&#32;&#32;set_tag(&quot;N2OPS&quot;,&#32;16);&#32;&#32;&#32;&#32;&#32;//&#32;16&#32;bits&#32;pour&#32;pression&#32;(0-65535&#32;Pa)
+&#32;&#32;&#32;&#32;set_tag(&quot;TIME&quot;,&#32;16);&#32;&#32;&#32;&#32;&#32;&#32;//&#32;16&#32;bits&#32;pour&#32;timestamp&#32;(0-65535&#32;ms)
+}
+</computeroutput></literallayout></para>
+
+<para><informaltable frame='bottom'><tgroup cols='1'><colspec align='center'/><tbody><row><entry align='center'>
+</entry></row></tbody></tgroup></informaltable>
+</para>
+</section>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_1autotoc_md46">
+<title>Écrire une valeur : set_value()</title><section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_1autotoc_md47">
+<title>Prototype</title>
+<para><literallayout><computeroutput>int&#32;set_value(const&#32;char*&#32;tag_name,&#32;uint32_t&#32;value);
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_1autotoc_md48">
+<title>Paramètres</title>
+<para><informaltable frame="all">
+    <tgroup cols="3" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+      <colspec colname='c3'/>
+<thead>
+      <row  class='markdownTableHead'>
+<entry>
+<para>Paramètre  </para>
+</entry><entry>
+<para>Type  </para>
+</entry><entry>
+<para>Description  </para>
+</entry></row>
+</thead><tbody>
+      <row  class='markdownTableRowOdd'>
+<entry>
+<para><computeroutput>tag_name</computeroutput>  </para>
+</entry><entry>
+<para><computeroutput>const char*</computeroutput>  </para>
+</entry><entry>
+<para>Nom du tag à modifier  </para>
+</entry></row>
+      <row  class='markdownTableRowEven'>
+<entry>
+<para><computeroutput>value</computeroutput>  </para>
+</entry><entry>
+<para><computeroutput>uint32_t</computeroutput>  </para>
+</entry><entry>
+<para>Nouvelle valeur à écrire  </para>
+</entry></row>
+    </tbody>
+    </tgroup>
+</informaltable>
+</para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_1autotoc_md49">
+<title>Valeur de retour</title>
+<para><itemizedlist>
+<listitem>
+<para><emphasis role="bold">CAN_TG_SUCCESS</emphasis> (0) - Succès</para>
+</listitem><listitem>
+<para><emphasis role="bold">CAN_TG_ERROR_VALUE_TO_BIG</emphasis> - La valeur dépasse les <computeroutput>n_bit</computeroutput> bits du tag</para>
+</listitem><listitem>
+<para>Autres codes d&apos;erreur - Tag non trouvé, etc.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_1autotoc_md50">
+<title>Comportement important</title>
+<para><emphasis role="bold">La valeur est tronquée si elle dépasse la capacité du tag.</emphasis></para>
+
+<para>Par exemple : <literallayout><computeroutput>set_tag(&quot;SEQ&quot;,&#32;3);&#32;&#32;&#32;&#32;&#32;&#32;//&#32;3&#32;bits&#32;-&gt;&#32;plage&#32;0&#32;à&#32;7
+set_value(&quot;SEQ&quot;,&#32;10);&#32;&#32;&#32;//&#32;&#32;Erreur&#32;:&#32;10&#32;&gt;&#32;2^3&#32;-&#32;1&#32;=&#32;7
+set_value(&quot;SEQ&quot;,&#32;5);&#32;&#32;&#32;&#32;//&#32;&#32;Ok&#32;:&#32;écrit&#32;0b101
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_1autotoc_md51">
+<title>Exemples d&apos;utilisation</title>
+<para><literallayout><computeroutput>//&#32;Dans&#32;la&#32;boucle&#32;principale&#32;ou&#32;handler
+static&#32;int&#32;seq_counter&#32;=&#32;0;
+
+void&#32;update_telemetry(void)&#32;{
+&#32;&#32;&#32;&#32;//&#32;Incrémenter&#32;et&#32;envoyer&#32;le&#32;numéro&#32;de&#32;séquence
+&#32;&#32;&#32;&#32;seq_counter&#32;=&#32;(seq_counter&#32;+&#32;1)&#32;%&#32;8;&#32;&#32;//&#32;Cycle&#32;avec&#32;3&#32;bits&#32;(0-7)
+&#32;&#32;&#32;&#32;if(set_value(&quot;SEQ&quot;,&#32;seq_counter)&#32;!=&#32;CAN_TG_SUCCESS)&#32;{
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;Erreur...
+&#32;&#32;&#32;&#32;}
+
+&#32;&#32;&#32;&#32;//&#32;Envoyer&#32;le&#32;statut&#32;batterie
+&#32;&#32;&#32;&#32;uint8_t&#32;battery_percent&#32;=&#32;read_battery();&#32;&#32;//&#32;0-100
+&#32;&#32;&#32;&#32;if(set_value(&quot;AB&quot;,&#32;battery_percent)&#32;!=&#32;CAN_TG_SUCCESS)&#32;{
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;Erreur...
+&#32;&#32;&#32;&#32;}
+
+&#32;&#32;&#32;&#32;//&#32;Envoyer&#32;une&#32;pression
+&#32;&#32;&#32;&#32;uint16_t&#32;pressure&#32;=&#32;read_sensor();&#32;&#32;//&#32;0-65535
+&#32;&#32;&#32;&#32;if(set_value(&quot;N2OPS&quot;,&#32;pressure)&#32;!=&#32;CAN_TG_SUCCESS)&#32;{
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;Erreur...
+&#32;&#32;&#32;&#32;}
+
+&#32;&#32;&#32;&#32;//&#32;Envoyer&#32;le&#32;timestamp
+&#32;&#32;&#32;&#32;uint16_t&#32;time_ms&#32;=&#32;get_timestamp();
+&#32;&#32;&#32;&#32;set_value(&quot;TIME&quot;,&#32;time_ms);
+}
+</computeroutput></literallayout></para>
+
+<para><informaltable frame='bottom'><tgroup cols='1'><colspec align='center'/><tbody><row><entry align='center'>
+</entry></row></tbody></tgroup></informaltable>
+</para>
+</section>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_1autotoc_md53">
+<title>Lire une valeur : get_value()</title><section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_1autotoc_md54">
+<title>Prototype</title>
+<para><literallayout><computeroutput>int&#32;get_value(const&#32;char*&#32;tag_name,&#32;uint32_t*&#32;out_value);
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_1autotoc_md55">
+<title>Paramètres</title>
+<para><informaltable frame="all">
+    <tgroup cols="3" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+      <colspec colname='c3'/>
+<thead>
+      <row  class='markdownTableHead'>
+<entry>
+<para>Paramètre  </para>
+</entry><entry>
+<para>Type  </para>
+</entry><entry>
+<para>Description  </para>
+</entry></row>
+</thead><tbody>
+      <row  class='markdownTableRowOdd'>
+<entry>
+<para><computeroutput>tag_name</computeroutput>  </para>
+</entry><entry>
+<para><computeroutput>const char*</computeroutput>  </para>
+</entry><entry>
+<para>Nom du tag à lire  </para>
+</entry></row>
+      <row  class='markdownTableRowEven'>
+<entry>
+<para><computeroutput>out_value</computeroutput>  </para>
+</entry><entry>
+<para><computeroutput>uint32_t*</computeroutput>  </para>
+</entry><entry>
+<para>Pointeur vers variable de sortie  </para>
+</entry></row>
+    </tbody>
+    </tgroup>
+</informaltable>
+</para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_1autotoc_md56">
+<title>Valeur de retour</title>
+<para><itemizedlist>
+<listitem>
+<para><emphasis role="bold">CAN_TG_SUCCESS</emphasis> (0) - Succès, <computeroutput>*out_value</computeroutput> est valide</para>
+</listitem><listitem>
+<para>Négatif - Code d&apos;erreur</para>
+</listitem></itemizedlist>
+</para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_1autotoc_md57">
+<title>Exemples</title>
+<para><literallayout><computeroutput>uint32_t&#32;val_seq;
+if(get_value(&quot;SEQ&quot;,&#32;&amp;val_seq)&#32;==&#32;CAN_TG_SUCCESS)&#32;{
+&#32;&#32;&#32;&#32;printf(&quot;Séquence:&#32;%u\n&quot;,&#32;val_seq);
+}
+
+uint32_t&#32;val_battery;
+if(get_value(&quot;AB&quot;,&#32;&amp;val_battery)&#32;==&#32;CAN_TG_SUCCESS)&#32;{
+&#32;&#32;&#32;&#32;printf(&quot;Batterie:&#32;%u&#32;%%\n&quot;,&#32;val_battery);
+}
+
+uint32_t&#32;val_pressure;
+if(get_value(&quot;N2OPS&quot;,&#32;&amp;val_pressure)&#32;==&#32;CAN_TG_SUCCESS)&#32;{
+&#32;&#32;&#32;&#32;printf(&quot;Pression&#32;N2O:&#32;%u&#32;Pa\n&quot;,&#32;val_pressure);
+}
+</computeroutput></literallayout></para>
+
+<para><informaltable frame='bottom'><tgroup cols='1'><colspec align='center'/><tbody><row><entry align='center'>
+</entry></row></tbody></tgroup></informaltable>
+</para>
+</section>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_1autotoc_md59">
+<title>Workflow complet : set / get / send</title><section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_1autotoc_md60">
+<title>Scénario d&apos;exemple</title>
+<para><literallayout><computeroutput>#include&#32;&quot;TAGCAN.h&quot;
+#include&#32;&quot;stm32f1xx_hal.h&quot;
+
+CAN_HandleTypeDef&#32;hcan;
+uint8_t&#32;TxData[8];
+CAN_TxHeaderTypeDef&#32;TxHeader;
+int32_t&#32;TxMailbox;
+
+//&#32;Étape&#32;1:&#32;Initialisation&#32;(une&#32;fois&#32;au&#32;démarrage)
+void&#32;init_system(void)&#32;{
+&#32;&#32;&#32;&#32;init_com();&#32;&#32;//&#32;Appelle&#32;init_data_container(),&#32;init_tag_manager(),&#32;set_tag(),&#32;etc.
+}
+
+//&#32;Étape&#32;2:&#32;Boucle&#32;de&#32;mise&#32;à&#32;jour&#32;périodique
+void&#32;periodic_10ms_task(void)&#32;{
+&#32;&#32;&#32;&#32;static&#32;uint8_t&#32;seq&#32;=&#32;0;
+&#32;&#32;&#32;&#32;
+&#32;&#32;&#32;&#32;//&#32;Préparer&#32;les&#32;données
+&#32;&#32;&#32;&#32;seq&#32;=&#32;(seq&#32;+&#32;1)&#32;%&#32;8;
+&#32;&#32;&#32;&#32;set_value(&quot;SEQ&quot;,&#32;seq);
+&#32;&#32;&#32;&#32;set_value(&quot;HB&quot;,&#32;1);&#32;&#32;//&#32;Heartbeat&#32;actif
+&#32;&#32;&#32;&#32;set_value(&quot;AB&quot;,&#32;read_adc_battery());
+&#32;&#32;&#32;&#32;set_value(&quot;EDC&quot;,&#32;get_command_state());
+&#32;&#32;&#32;&#32;set_value(&quot;TIME&quot;,&#32;HAL_GetTick());
+
+&#32;&#32;&#32;&#32;//&#32;Envoyer&#32;le&#32;frame&#32;CAN
+&#32;&#32;&#32;&#32;if(HAL_CAN_AddTxMessage(&amp;hcan,&#32;&amp;TxHeader,&#32;TxData,&#32;&amp;TxMailbox)&#32;!=&#32;HAL_OK)&#32;{
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;Erreur&#32;d&apos;envoi...
+&#32;&#32;&#32;&#32;}
+}
+
+//&#32;Étape&#32;3:&#32;Callback&#32;de&#32;réception&#32;(déclenchée&#32;par&#32;interruption)
+void&#32;HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef&#32;*hcan)&#32;{
+&#32;&#32;&#32;&#32;CAN_RxHeaderTypeDef&#32;RxHeader;
+&#32;&#32;&#32;&#32;uint8_t&#32;RxData[8];
+
+&#32;&#32;&#32;&#32;//&#32;Recevoir&#32;le&#32;mensaje
+&#32;&#32;&#32;&#32;if(HAL_CAN_GetRxMessage(hcan,&#32;CAN_RX_FIFO0,&#32;&amp;RxHeader,&#32;RxData)&#32;==&#32;HAL_OK)&#32;{
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;Copier&#32;dans&#32;le&#32;buffer&#32;de&#32;TAGCAN
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;can_simulate_send_receive(RxData,&#32;NULL);&#32;&#32;//&#32;ou&#32;autre&#32;traitement
+
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;Lire&#32;les&#32;valeurs&#32;reçues
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint32_t&#32;remote_seq,&#32;remote_battery;
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;get_value(&quot;SEQ&quot;,&#32;&amp;remote_seq);
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;get_value(&quot;AB&quot;,&#32;&amp;remote_battery);
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(&quot;Nœud&#32;distant:&#32;SEQ=%u,&#32;Batterie=%u%%\n&quot;,&#32;remote_seq,&#32;remote_battery);
+&#32;&#32;&#32;&#32;}
+}
+
+int&#32;main(void)&#32;{
+&#32;&#32;&#32;&#32;HAL_Init();
+&#32;&#32;&#32;&#32;MX_CAN_Init();
+&#32;&#32;&#32;&#32;init_system();
+
+&#32;&#32;&#32;&#32;while(1)&#32;{
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;periodic_10ms_task();
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;...
+&#32;&#32;&#32;&#32;}
+}
+</computeroutput></literallayout></para>
+
+<para><informaltable frame='bottom'><tgroup cols='1'><colspec align='center'/><tbody><row><entry align='center'>
+</entry></row></tbody></tgroup></informaltable>
+</para>
+</section>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_1autotoc_md62">
+<title>Bonnes pratiques</title>
+<para><informaltable frame="all">
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<thead>
+      <row  class='markdownTableHead'>
+<entry>
+<para>À faire  </para>
+</entry><entry>
+<para>À éviter  </para>
+</entry></row>
+</thead><tbody>
+      <row  class='markdownTableRowOdd'>
+<entry>
+<para>Vérifier la valeur de retour de <computeroutput><link linkend="_data__container_8h_1aa84538f1ab0c319056787e9674157405">set_value()</link></computeroutput>  </para>
+</entry><entry>
+<para>Ignorer les codes d&apos;erreur  </para>
+</entry></row>
+      <row  class='markdownTableRowEven'>
+<entry>
+<para>Vérifier la valeur de retour de <computeroutput><link linkend="_data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f">get_value()</link></computeroutput>  </para>
+</entry><entry>
+<para>Utiliser <computeroutput>out_value</computeroutput> sans vérification  </para>
+</entry></row>
+      <row  class='markdownTableRowOdd'>
+<entry>
+<para>Nommer les tags de façon explicite  </para>
+</entry><entry>
+<para>Utiliser des noms génériques (&quot;VAL1&quot;, &quot;VAL2&quot;)  </para>
+</entry></row>
+      <row  class='markdownTableRowEven'>
+<entry>
+<para>Dimensionner les tags selon les besoins  </para>
+</entry><entry>
+<para>Allouer trop de bits (gaspillage)  </para>
+</entry></row>
+      <row  class='markdownTableRowOdd'>
+<entry>
+<para>Prévoir le cycle des valeurs (ex: seq 0-7 avec 3 bits)  </para>
+</entry><entry>
+<para>Dépasser la limite d&apos;un tag sans gérer  </para>
+</entry></row>
+      <row  class='markdownTableRowEven'>
+<entry>
+<para>Documenter votre schéma de tags  </para>
+</entry><entry>
+<para>Laisser du code sans commentaires  </para>
+</entry></row>
+    </tbody>
+    </tgroup>
+</informaltable>
+</para>
+
+<para><informaltable frame='bottom'><tgroup cols='1'><colspec align='center'/><tbody><row><entry align='center'>
+</entry></row></tbody></tgroup></informaltable>
+</para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_1autotoc_md64">
+<title>Schéma de tags recommandé</title>
+<para>Pour un système similaire à l&apos;exemple, structurez les tags comme ceci en commentaire :</para>
+
+<para><literallayout><computeroutput>/*
+&#32;*&#32;SCHÉMA&#32;DE&#32;TAGS&#32;CAN&#32;(ID&#32;0x123)
+&#32;*&#32;══════════════════════════════════════════════════════════════
+&#32;*&#32;Byte&#32;0:&#32;[HB(1)&#32;|&#32;SEQ(3)&#32;|&#32;CI(2)&#32;|&#32;XX(2)]
+&#32;*&#32;Byte&#32;1:&#32;[AB(7)&#32;|&#32;YY(1)]
+&#32;*&#32;Byte&#32;2-3:&#32;[EDC(4)&#32;|&#32;PADDING(12)]
+&#32;*&#32;Byte&#32;4-5:&#32;[N2OPS(16)]&#32;&#32;&#32;&#32;&#32;&#32;&#32;--&#32;Pression&#32;N2O&#32;(Pa)
+&#32;*&#32;Byte&#32;6-7:&#32;[TLC(12)&#32;|&#32;N2ODVS(1)&#32;|&#32;N2OIV(1)&#32;|&#32;N2OMV(1)&#32;|&#32;XX(1)]
+&#32;*
+&#32;*&#32;Total:&#32;15&#32;bits&#32;utilisés,&#32;reste&#32;pour&#32;extension
+&#32;*/
+</computeroutput></literallayout></para>
+
+<para><informaltable frame='bottom'><tgroup cols='1'><colspec align='center'/><tbody><row><entry align='center'>
+</entry></row></tbody></tgroup></informaltable>
+</para>
+
+<para>Voir aussi :<itemizedlist>
+<listitem>
+<para><link linkend="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_203___d_o_n_n_e_e_s___c_a_n">03_DONNEES_CAN.md</link> - Utilisation avancée du buffer</para>
+</listitem><listitem>
+<para><link linkend="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33">05_EXEMPLES_COMPLETS.md</link> - Exemples concrets </para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>

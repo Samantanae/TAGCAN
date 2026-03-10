@@ -1,0 +1,336 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.0" xml:lang="en-US">
+  <compounddef id="03___d_o_n_n_e_e_s___c_a_n_8md" kind="file" language="Markdown">
+    <compoundname>03_DONNEES_CAN.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>03<sp/>-<sp/>Manipulation<sp/>du<sp/>Buffer<sp/>de<sp/>Données<sp/>CAN</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/><sp/>Objectif</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Comprendre<sp/>comment<sp/>gérer<sp/>le<sp/>buffer<sp/>de<sp/>données<sp/>CAN<sp/>(`TxData`<sp/>et<sp/>`RxData`)<sp/>au-delà<sp/>de<sp/>la<sp/>simple<sp/>interface<sp/>des<sp/>tags.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/><sp/>Structure<sp/>du<sp/>buffer<sp/>CAN</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Taille<sp/>et<sp/>format</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">uint8_t<sp/>TxData[8];<sp/><sp/><sp/><sp/>//<sp/>Buffer<sp/>de<sp/>transmission<sp/>(8<sp/>octets<sp/>=<sp/>CAN<sp/>standard)</highlight></codeline>
+<codeline><highlight class="normal">uint8_t<sp/>RxData[8];<sp/><sp/><sp/><sp/>//<sp/>Buffer<sp/>de<sp/>réception<sp/>(8<sp/>octets)</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Le<sp/>buffer<sp/>CAN<sp/>est<sp/>toujours<sp/>de<sp/>**8<sp/>octets**<sp/>(64<sp/>bits)<sp/>pour<sp/>un<sp/>frame<sp/>standard<sp/>CAN.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Hiérarchie</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>Niveau<sp/>|<sp/>Composant<sp/>|<sp/>Responsabilité<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|--------|-----------|-----------------|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>**Haut**<sp/>|<sp/>Application<sp/>|<sp/>Appelle<sp/>`set_value()`,<sp/>`get_value()`<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>**Moyen**<sp/>|<sp/>Data<sp/>Container<sp/>(TAGCAN)<sp/>|<sp/>Mappe<sp/>les<sp/>tags<sp/>dans<sp/>le<sp/>buffer<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>**Bas**<sp/>|<sp/>Buffer<sp/>`TxData[8]`<sp/>/<sp/>`RxData[8]`<sp/>|<sp/>Storiage<sp/>binaire<sp/>brut<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>**Très<sp/>bas**<sp/>|<sp/>HAL<sp/>CAN<sp/>STM32<sp/>|<sp/>Envoi/réception<sp/>matérielle<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/><sp/>Fonctions<sp/>de<sp/>gestion<sp/>du<sp/>buffer</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>1<sp/>init_data_container()</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Réinitialise<sp/>le<sp/>buffer<sp/>à<sp/>zéro.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>init_data_container(void);</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Effet**<sp/>:</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Tous<sp/>les<sp/>octets<sp/>de<sp/>`TxData[8]`<sp/>-&gt;<sp/>0</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Appelé<sp/>manuellement<sp/>si<sp/>vous<sp/>voulez<sp/>&quot;effacer&quot;<sp/>les<sp/>données</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Exemple**<sp/>:</highlight></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Avant:<sp/><sp/>TxData<sp/>=<sp/>{0x12,<sp/>0x34,<sp/>0x56,<sp/>...}</highlight></codeline>
+<codeline><highlight class="normal">init_data_container();</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Après:<sp/><sp/>TxData<sp/>=<sp/>{0x00,<sp/>0x00,<sp/>0x00,<sp/>...}</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>2<sp/>set_val_TxData()</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Copie<sp/>un<sp/>tableau<sp/>**externe**<sp/>dans<sp/>le<sp/>buffer<sp/>global<sp/>`TxData`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>set_val_TxData(uint8_t<sp/>*TxDataArray);</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Utile<sp/>pour**<sp/>:</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Charger<sp/>des<sp/>données<sp/>pré-formatées</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Importer<sp/>des<sp/>données<sp/>d&apos;une<sp/>autre<sp/>source</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Tester<sp/>sans<sp/>passer<sp/>par<sp/>les<sp/>tags</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Exemple**<sp/>:</highlight></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">uint8_t<sp/>raw_data[8]<sp/>=<sp/>{0xAA,<sp/>0xBB,<sp/>0xCC,<sp/>0xDD,<sp/>0xEE,<sp/>0xFF,<sp/>0x00,<sp/>0x11};</highlight></codeline>
+<codeline><highlight class="normal">set_val_TxData(raw_data);<sp/><sp/>//<sp/>Copie<sp/>raw_data<sp/>-&gt;<sp/>TxData</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Après<sp/>cet<sp/>appel:</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>TxData[0]<sp/>=<sp/>0xAA</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>TxData[1]<sp/>=<sp/>0xBB</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>...<sp/>et<sp/>cetera</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/><sp/>Les<sp/>tags<sp/>ne<sp/>voient<sp/>PAS<sp/>cette<sp/>modification<sp/>directement</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Vous<sp/>travaillez<sp/>maintenant<sp/>&quot;en<sp/>dehors&quot;<sp/>du<sp/>système<sp/>de<sp/>tags</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>3<sp/>can_simulate_send_receive()</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Simule<sp/>un<sp/>envoi/réception<sp/>CAN<sp/>par<sp/>copie<sp/>buffer-à-buffer.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>can_simulate_send_receive(uint8_t*<sp/>tx_buffer,<sp/>uint8_t*<sp/>rx_buffer);</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Cas<sp/>d&apos;usage**<sp/>:</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Tests<sp/>de<sp/>la<sp/>logique<sp/>sans<sp/>matériel<sp/>CAN</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Vérifier<sp/>que<sp/>les<sp/>données<sp/>écrites<sp/>sont<sp/>bien<sp/>formatées</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Boucle<sp/>locale<sp/>pour<sp/>déboguer</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Exemple**<sp/>:</highlight></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">uint8_t<sp/>tx[8]<sp/>=<sp/>{0x00,<sp/>0x00,<sp/>0x00,<sp/>0x00,<sp/>0x00,<sp/>0x00,<sp/>0x00,<sp/>0x00};</highlight></codeline>
+<codeline><highlight class="normal">uint8_t<sp/>rx[8];</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Écrire<sp/>des<sp/>données<sp/>dans<sp/>tx</highlight></codeline>
+<codeline><highlight class="normal">set_value(&quot;SEQ&quot;,<sp/>3);</highlight></codeline>
+<codeline><highlight class="normal">can_simulate_send_receive(TxData,<sp/>rx);<sp/><sp/>//<sp/>Simule<sp/>envoi/réception</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>rx<sp/>contient<sp/>maintenant<sp/>une<sp/>copie<sp/>de<sp/>TxData</highlight></codeline>
+<codeline><highlight class="normal">memcpy(rx,<sp/>TxData,<sp/>8);<sp/><sp/>//<sp/>Équivalent<sp/>à:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>can_simulate_send_receive(TxData,<sp/>rx);</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/><sp/>Workflow<sp/>complet<sp/>:<sp/>Écriture<sp/>-&gt;<sp/>Envoi<sp/>-&gt;<sp/>Réception</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Émission<sp/>(Tx)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">Votre<sp/>application</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>↓</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_value(&quot;SEQ&quot;,<sp/>5)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_value(&quot;AB&quot;,<sp/>75)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>↓</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>TxData[8]<sp/>(rempli<sp/>par<sp/>TAGCAN)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>↓</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>Transmission<sp/>CAN<sp/>(HAL)</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Code<sp/>d&apos;émission</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;TAGCAN.h&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">extern<sp/>CAN_HandleTypeDef<sp/>hcan;</highlight></codeline>
+<codeline><highlight class="normal">extern<sp/>uint8_t<sp/>TxData[8];</highlight></codeline>
+<codeline><highlight class="normal">extern<sp/>CAN_TxHeaderTypeDef<sp/>TxHeader;</highlight></codeline>
+<codeline><highlight class="normal">extern<sp/>int32_t<sp/>TxMailbox;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>send_can_frame(void)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Étape<sp/>1:<sp/>Réinitialiser<sp/>le<sp/>buffer<sp/>(optionnel)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>init_data_container();<sp/><sp/>//<sp/>Si<sp/>vous<sp/>voulez<sp/>un<sp/>buffer<sp/>vierge</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Étape<sp/>2:<sp/>Écrire<sp/>les<sp/>données<sp/>via<sp/>les<sp/>tags</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_value(&quot;SEQ&quot;,<sp/>5);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_value(&quot;HB&quot;,<sp/>1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_value(&quot;AB&quot;,<sp/>75);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_value(&quot;N2OPS&quot;,<sp/>2500);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Étape<sp/>3:<sp/>Envoyer<sp/>via<sp/>CAN</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_Status<sp/>=<sp/>HAL_CAN_AddTxMessage(&amp;hcan,<sp/>&amp;TxHeader,<sp/>TxData,<sp/>&amp;TxMailbox);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(HAL_Status<sp/>!=<sp/>HAL_OK)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(&quot;Erreur<sp/>d&apos;envoi<sp/>CAN\n&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Réception<sp/>(Rx)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bus<sp/>CAN</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>↓</highlight></codeline>
+<codeline><highlight class="normal"><sp/>Réception<sp/>CAN<sp/>(HAL)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>↓</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>RxData[8]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>↓</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Votre<sp/>application<sp/>récupère<sp/>les<sp/>données</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>via<sp/>get_value()<sp/>ou<sp/>directement<sp/>dans<sp/>RxData[8]</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Code<sp/>de<sp/>réception</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef<sp/>*hcan)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>CAN_RxHeaderTypeDef<sp/>RxHeader;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>RxData[8];</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Étape<sp/>1:<sp/>Recevoir<sp/>le<sp/>message<sp/>via<sp/>HAL</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(HAL_CAN_GetRxMessage(hcan,<sp/>CAN_RX_FIFO0,<sp/>&amp;RxHeader,<sp/>RxData)<sp/>!=<sp/>HAL_OK)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return;<sp/><sp/>//<sp/>Erreur</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Étape<sp/>2a:<sp/>Utiliser<sp/>les<sp/>données<sp/>directement<sp/>(acccès<sp/>brut)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Octet<sp/>0:<sp/>0x%02X\n&quot;,<sp/>RxData[0]);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Octet<sp/>1:<sp/>0x%02X\n&quot;,<sp/>RxData[1]);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>OU</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Étape<sp/>2b:<sp/>Interpréter<sp/>via<sp/>les<sp/>tags</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>(si<sp/>vous<sp/>avez<sp/>le<sp/>même<sp/>schéma<sp/>de<sp/>tags<sp/>côté<sp/>récepteur)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>seq,<sp/>battery;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(RxData[0]<sp/>&amp;<sp/>0x38)<sp/>{<sp/><sp/>//<sp/>Bits<sp/>3-5<sp/>contiennent<sp/>possibly<sp/>SEQ</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Extraire<sp/>manuellement...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Ou<sp/>utiliser<sp/>les<sp/>fonctions<sp/>TAGCAN<sp/>si<sp/>vous<sp/>avez<sp/>copié<sp/>RxData<sp/>dans<sp/>TxData:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>memcpy(TxData,<sp/>RxData,<sp/>8);<sp/><sp/>//<sp/>Copier<sp/>RxData<sp/>-&gt;<sp/>TxData</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(get_value(&quot;SEQ&quot;,<sp/>&amp;seq)<sp/>==<sp/>CAN_TG_SUCCESS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(&quot;Numéro<sp/>de<sp/>séquence<sp/>distant:<sp/>%u\n&quot;,<sp/>seq);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/><sp/>Directement<sp/>lire/écrire<sp/>les<sp/>octets</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Lecture<sp/>directe</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Accéder<sp/>directement<sp/>à<sp/>un<sp/>octet</highlight></codeline>
+<codeline><highlight class="normal">uint8_t<sp/>byte0<sp/>=<sp/>TxData[0];<sp/><sp/>//<sp/>Premier<sp/>octet</highlight></codeline>
+<codeline><highlight class="normal">uint8_t<sp/>byte7<sp/>=<sp/>TxData[7];<sp/><sp/>//<sp/>Dernier<sp/>octet</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Accéder<sp/>à<sp/>un<sp/>bit<sp/>spécifique</highlight></codeline>
+<codeline><highlight class="normal">uint8_t<sp/>bit3<sp/>=<sp/>(TxData[0]<sp/>&gt;&gt;<sp/>3)<sp/>&amp;<sp/>1;<sp/><sp/>//<sp/>Bit<sp/>3<sp/>de<sp/>l&apos;octet<sp/>0</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Écriture<sp/>directe</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Écrire<sp/>un<sp/>octet<sp/>entier</highlight></codeline>
+<codeline><highlight class="normal">TxData[0]<sp/>=<sp/>0xA5;<sp/><sp/>//<sp/>Écrit<sp/>0b10100101</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Modifier<sp/>un<sp/>bit<sp/>spécifique</highlight></codeline>
+<codeline><highlight class="normal">TxData[0]<sp/>|=<sp/>(1<sp/>&lt;&lt;<sp/>3);<sp/><sp/><sp/>//<sp/>Mettre<sp/>à<sp/>1<sp/>le<sp/>bit<sp/>3</highlight></codeline>
+<codeline><highlight class="normal">TxData[0]<sp/>&amp;=<sp/>~(1<sp/>&lt;&lt;<sp/>3);<sp/><sp/>//<sp/>Mettre<sp/>à<sp/>0<sp/>le<sp/>bit<sp/>3</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Bitmask<sp/>pour<sp/>plusieurs<sp/>bits</highlight></codeline>
+<codeline><highlight class="normal">TxData[0]<sp/>=<sp/>(TxData[0]<sp/>&amp;<sp/>0xF0)<sp/>|<sp/>0x05;<sp/><sp/>//<sp/>Garder<sp/>les<sp/>4<sp/>bits<sp/>hauts,<sp/>définir<sp/>bas<sp/>à<sp/>0x05</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/><sp/>Pièges<sp/>courants</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/><sp/>Piège<sp/>|<sp/>Description<sp/>|<sp/>Solution<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|---------|-------------|----------|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>**Mélanger<sp/>accès<sp/>direct<sp/>et<sp/>tags**<sp/>|<sp/>Écrire<sp/>un<sp/>octet<sp/>directement,<sp/>puis<sp/>utiliser<sp/>`get_value()`<sp/>peut<sp/>être<sp/>confus<sp/>|<sp/>Soyez<sp/>cohérent:<sp/>ou<sp/>tags,<sp/>ou<sp/>accès<sp/>brut<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>**Oublier<sp/>le<sp/>`memcpy()`**<sp/>|<sp/>Recevoir<sp/>`RxData`,<sp/>mais<sp/>essayer<sp/>de<sp/>lire<sp/>avec<sp/>`get_value()`<sp/>sans<sp/>copier<sp/>|<sp/>Toujours<sp/>copier<sp/>`RxData`<sp/>-&gt;<sp/>`TxData`<sp/>avant<sp/>`get_value()`<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>**Buffer<sp/>réutilisé**<sp/>|<sp/>Si<sp/>`set_value()`<sp/>change<sp/>l&apos;ordre<sp/>de<sp/>allocation<sp/>des<sp/>tags<sp/>|<sp/>Pas<sp/>vraiment<sp/>un<sp/>piège,<sp/>mais<sp/>attention<sp/>si<sp/>tags<sp/>réordonnés<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>**Débordement<sp/>de<sp/>bits**<sp/>|<sp/>Écrire<sp/>un<sp/>octet<sp/>directement<sp/>sans<sp/>respecter<sp/>le<sp/>schéma<sp/>de<sp/>tags<sp/>|<sp/>Documentez<sp/>votre<sp/>layout<sp/>de<sp/>tags<sp/>!<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/><sp/>Tableau<sp/>d&apos;aide<sp/>:<sp/>Qui<sp/>fait<sp/>quoi<sp/>?</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>Tâche<sp/>|<sp/>Fonction<sp/>|<sp/>Détails<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|------|----------|---------|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>Vider<sp/>le<sp/>buffer<sp/>|<sp/>`init_data_container()`<sp/>|<sp/>Remplace<sp/>TxData<sp/>par<sp/>des<sp/>zéros<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>Écrire<sp/>une<sp/>valeur<sp/>nommée<sp/>|<sp/>`set_value(tag,<sp/>val)`<sp/>|<sp/>Via<sp/>l&apos;interface<sp/>des<sp/>tags<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>Lire<sp/>une<sp/>valeur<sp/>nommée<sp/>|<sp/>`get_value(tag,<sp/>&amp;val)`<sp/>|<sp/>Via<sp/>l&apos;interface<sp/>des<sp/>tags<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>Charger<sp/>des<sp/>données<sp/>brutes<sp/>|<sp/>`set_val_TxData(arr)`<sp/>|<sp/>Copie<sp/>un<sp/>tableau<sp/>externe<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>Tester<sp/>localement<sp/>|<sp/>`can_simulate_send_receive()`<sp/>|<sp/>Simule<sp/>une<sp/>boucle<sp/>locale<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>Envoyer<sp/>sur<sp/>le<sp/>bus<sp/>|<sp/>`HAL_CAN_AddTxMessage()`<sp/>|<sp/>Transport<sp/>matériel<sp/>(HAL<sp/>STM32)<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>Recevoir<sp/>du<sp/>bus<sp/>|<sp/>`HAL_CAN_GetRxMessage()`<sp/>|<sp/>Transport<sp/>matériel<sp/>(HAL<sp/>STM32)<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/><sp/>Exemple<sp/>:<sp/>Envoi<sp/>-&gt;<sp/>Réception<sp/>-&gt;<sp/>Traitement</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;TAGCAN.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;stm32f1xx_hal.h&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">extern<sp/>CAN_HandleTypeDef<sp/>hcan;</highlight></codeline>
+<codeline><highlight class="normal">extern<sp/>uint8_t<sp/>TxData[8],<sp/>RxData[8];</highlight></codeline>
+<codeline><highlight class="normal">extern<sp/>CAN_TxHeaderTypeDef<sp/>TxHeader;</highlight></codeline>
+<codeline><highlight class="normal">extern<sp/>int32_t<sp/>TxMailbox;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Tâche<sp/>d&apos;émission<sp/>(toutes<sp/>les<sp/>10ms)</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>task_tx_10ms(void)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/>uint8_t<sp/>seq<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>seq<sp/>=<sp/>(seq<sp/>+<sp/>1)<sp/>%<sp/>8;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Écrire<sp/>les<sp/>données</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_value(&quot;SEQ&quot;,<sp/>seq);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_value(&quot;HB&quot;,<sp/>1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_value(&quot;AB&quot;,<sp/>read_battery_percent());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Envoyer</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_CAN_AddTxMessage(&amp;hcan,<sp/>&amp;TxHeader,<sp/>TxData,<sp/>&amp;TxMailbox);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Callback<sp/>de<sp/>réception<sp/>(IRQ)</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef<sp/>*hcan)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>CAN_RxHeaderTypeDef<sp/>RxHeader;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>RxDataLocal[8];</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_CAN_GetRxMessage(hcan,<sp/>CAN_RX_FIFO0,<sp/>&amp;RxHeader,<sp/>RxDataLocal);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Voir<sp/>directement<sp/>les<sp/>octets<sp/>reçus</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Reçu:<sp/>&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>for(int<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>8;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(&quot;%02X<sp/>&quot;,<sp/>RxDataLocal[i]);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;\n&quot;);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Si<sp/>le<sp/>même<sp/>schéma<sp/>de<sp/>tags<sp/>:<sp/>interpréter<sp/>via<sp/>TAGCAN</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>memcpy(TxData,<sp/>RxDataLocal,<sp/>8);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>remote_seq,<sp/>remote_battery;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>get_value(&quot;SEQ&quot;,<sp/>&amp;remote_seq);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>get_value(&quot;AB&quot;,<sp/>&amp;remote_battery);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Séquence:<sp/>%u,<sp/>Batterie:<sp/>%u%%\n&quot;,<sp/>remote_seq,<sp/>remote_battery);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">int<sp/>main(void)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_Init();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MX_CAN_Init();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>init_com();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Timer<sp/>pour<sp/>task_tx_10ms()</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>...</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while(1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Boucle<sp/>principale</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Voir<sp/>aussi<sp/>:</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[02_GESTION_TAGS.md](02_GESTION_TAGS.md)<sp/>-<sp/>Tags<sp/>et<sp/>variables<sp/>nommées</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[04_FILTRAGE_CAN.md](04_FILTRAGE_CAN.md)<sp/>-<sp/>Filtrage<sp/>des<sp/>messages<sp/>reçus</highlight></codeline>
+    </programlisting>
+    <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/guide_utilisation/03_DONNEES_CAN.md"/>
+  </compounddef>
+</doxygen>

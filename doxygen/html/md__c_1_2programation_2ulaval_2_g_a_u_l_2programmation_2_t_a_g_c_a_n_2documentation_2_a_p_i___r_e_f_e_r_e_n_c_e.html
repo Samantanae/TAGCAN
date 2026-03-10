@@ -94,10 +94,10 @@ $(function(){initNavTree('md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation
 <div class="textblock"><p><a class="anchor" id="autotoc_md0"></a></p>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md1"></a>
 Vue d'ensemble</h1>
-<p>TAGCAN gere un payload CAN de 8 octets (<span class="tt"><a class="el" href="data__container_8h.html#a0b96d44a8da73070e470c7bf30523ca1">TxData</a></span>) et permet:</p>
+<p>TAGCAN gere un payload CAN de 8 octets (<span class="tt"><a class="el" href="com__utils_8h.html#af553c31425b32bd9c020380c942ed3bd">TxData</a></span>) et permet:</p>
 <ul>
-<li>de declarer des tags (<span class="tt"><a class="el" href="gestion__tag_8h.html#a7301f247665ed1c0504f27602b3cf012" title="Cree un nouveau tag.">set_tag</a></span>) avec une taille en bits,</li>
-<li>d'ecrire une valeur dans <span class="tt"><a class="el" href="data__container_8h.html#a0b96d44a8da73070e470c7bf30523ca1">TxData</a></span> via un tag (<span class="tt"><a class="el" href="data__container_8h.html#aa84538f1ab0c319056787e9674157405" title="Ecrit une valeur dans TxData a partir d&#39;un tag.">set_value</a></span>),</li>
+<li>de declarer des tags (<span class="tt"><a class="el" href="gestion__tag_8h.html#a7301f247665ed1c0504f27602b3cf012" title="créé un nouveau tag.">set_tag</a></span>) avec une taille en bits,</li>
+<li>d'ecrire une valeur dans <span class="tt"><a class="el" href="com__utils_8h.html#af553c31425b32bd9c020380c942ed3bd">TxData</a></span> via un tag (<span class="tt"><a class="el" href="data__container_8h.html#aa84538f1ab0c319056787e9674157405" title="Ecrit une valeur dans TxData a partir d&#39;un tag.">set_value</a></span>),</li>
 <li>de relire une valeur via un tag (<span class="tt"><a class="el" href="data__container_8h.html#a66cbaaa79a2ba3c2c7912514c1dc805f" title="Lit la valeur associee a un tag.">get_value</a></span>).</li>
 </ul>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md2"></a>
@@ -116,7 +116,7 @@ Structures et etat global</h1>
 <ul>
 <li><span class="tt">name[<a class="el" href="config__value_8h.html#ada71b9f258860d58a86ab220bfce6bf4">MAX_TAG_NAME_LEN</a>]</span>: nom logique du tag.</li>
 <li><span class="tt">n_bits</span>: taille du tag en bits.</li>
-<li><span class="tt">byte_idx_a</span>, <span class="tt">byte_idx_b</span>: index des octets utilises dans <span class="tt"><a class="el" href="data__container_8h.html#a0b96d44a8da73070e470c7bf30523ca1">TxData</a></span>.</li>
+<li><span class="tt">byte_idx_a</span>, <span class="tt">byte_idx_b</span>: index des octets utilises dans <span class="tt"><a class="el" href="com__utils_8h.html#af553c31425b32bd9c020380c942ed3bd">TxData</a></span>.</li>
 <li><span class="tt">bit_pos_a</span>, <span class="tt">bit_pos_b</span>: position des bits dans les octets.</li>
 </ul>
 <h2 class="doxsection"><a class="anchor" id="autotoc_md5"></a>
@@ -125,7 +125,7 @@ Variables globales</h2>
 <li><span class="tt"><a class="el" href="struct_tag_def.html" title="Structure de definition d&#39;un tag.">TagDef</a> <a class="el" href="tag__manager_8h.html#ace5be789d004e0752b6b2dec9d845864">g_tags</a>[<a class="el" href="config__value_8h.html#aa653c0eca99802a09fd9560f28a9b1c1">MAX_TAGS</a>]</span>: table des tags.</li>
 <li><span class="tt">uint8_t <a class="el" href="tag__manager_8h.html#ab7cad863197c93abe397155a1946c0d0">g_tag_count</a></span>: nombre de tags actifs.</li>
 <li><span class="tt">uint8_t <a class="el" href="tag__manager_8h.html#af12845c0234390db7498ec51e94f7d58">g_bytes_used</a>[<a class="el" href="config__value_8h.html#a470399f7b67e59b1cd04ab17e03c96d1">N_BYTES</a>]</span>: occupation des octets.</li>
-<li><span class="tt">uint8_t <a class="el" href="data__container_8h.html#a0b96d44a8da73070e470c7bf30523ca1">TxData</a>[<a class="el" href="config__value_8h.html#a470399f7b67e59b1cd04ab17e03c96d1">N_BYTES</a>]</span>: buffer CAN (8 octets).</li>
+<li><span class="tt">uint8_t <a class="el" href="com__utils_8h.html#af553c31425b32bd9c020380c942ed3bd">TxData</a>[<a class="el" href="config__value_8h.html#a470399f7b67e59b1cd04ab17e03c96d1">N_BYTES</a>]</span>: buffer CAN (8 octets).</li>
 </ul>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md6"></a>
 Fonctions principales</h1>
@@ -136,8 +136,8 @@ Gestion des tags</h2>
 <li>Reinitialise <span class="tt"><a class="el" href="tag__manager_8h.html#ace5be789d004e0752b6b2dec9d845864">g_tags</a></span>, <span class="tt"><a class="el" href="tag__manager_8h.html#ab7cad863197c93abe397155a1946c0d0">g_tag_count</a></span> et <span class="tt"><a class="el" href="tag__manager_8h.html#af12845c0234390db7498ec51e94f7d58">g_bytes_used</a></span>.</li>
 </ul>
 </li>
-<li><span class="tt">int <a class="el" href="gestion__tag_8h.html#a7301f247665ed1c0504f27602b3cf012" title="Cree un nouveau tag.">set_tag(const char* tag_name, uint8_t n_bit)</a></span><ul>
-<li>Declare un tag et lui alloue une zone dans <span class="tt"><a class="el" href="data__container_8h.html#a0b96d44a8da73070e470c7bf30523ca1">TxData</a></span>.</li>
+<li><span class="tt">int <a class="el" href="gestion__tag_8h.html#a7301f247665ed1c0504f27602b3cf012" title="créé un nouveau tag.">set_tag(const char* tag_name, uint8_t n_bit)</a></span><ul>
+<li>Declare un tag et lui alloue une zone dans <span class="tt"><a class="el" href="com__utils_8h.html#af553c31425b32bd9c020380c942ed3bd">TxData</a></span>.</li>
 <li>Implementation observee: accepte les tailles <span class="tt">1..16</span> (pas seulement <span class="tt">1, 3, 4, 8, 16</span>).</li>
 <li>Retourne un code <span class="tt"><a class="el" href="config__value_8h.html#af59c8e96bb2966b590726fc2d285947f" title="Codes de retour du module TAGCAN.">CAN_TG_STATUE</a></span>.</li>
 </ul>
@@ -152,16 +152,16 @@ Gestion des tags</h2>
 Valeurs (payload)</h2>
 <ul>
 <li><span class="tt">void <a class="el" href="data__container_8h.html#a129f017feb0712be1dcf7932e6035aa0" title="Reinitialise le payload TxData a zero.">init_data_container(void)</a></span><ul>
-<li>Met <span class="tt"><a class="el" href="data__container_8h.html#a0b96d44a8da73070e470c7bf30523ca1">TxData</a></span> a zero.</li>
+<li>Met <span class="tt"><a class="el" href="com__utils_8h.html#af553c31425b32bd9c020380c942ed3bd">TxData</a></span> a zero.</li>
 </ul>
 </li>
 <li><span class="tt">int <a class="el" href="data__container_8h.html#aa84538f1ab0c319056787e9674157405" title="Ecrit une valeur dans TxData a partir d&#39;un tag.">set_value(const char* tag_name, uint32_t value)</a></span><ul>
-<li>Ecrit la valeur dans <span class="tt"><a class="el" href="data__container_8h.html#a0b96d44a8da73070e470c7bf30523ca1">TxData</a></span> selon la definition du tag.</li>
+<li>Ecrit la valeur dans <span class="tt"><a class="el" href="com__utils_8h.html#af553c31425b32bd9c020380c942ed3bd">TxData</a></span> selon la definition du tag.</li>
 <li>Debordement detecte via <span class="tt">value &gt;= (1ULL &lt;&lt; tag-&gt;n_bits)</span>.</li>
 </ul>
 </li>
 <li><span class="tt">int <a class="el" href="data__container_8h.html#a66cbaaa79a2ba3c2c7912514c1dc805f" title="Lit la valeur associee a un tag.">get_value(const char* tag_name, uint32_t* out_value)</a></span><ul>
-<li>Lit la valeur d'un tag depuis <span class="tt"><a class="el" href="data__container_8h.html#a0b96d44a8da73070e470c7bf30523ca1">TxData</a></span>.</li>
+<li>Lit la valeur d'un tag depuis <span class="tt"><a class="el" href="com__utils_8h.html#af553c31425b32bd9c020380c942ed3bd">TxData</a></span>.</li>
 </ul>
 </li>
 <li><span class="tt">uint8_t <a class="el" href="data__container_8h.html#a66768c162c3a8352b7d5397e90206085" title="[FONCTION INTERNE] Prepare un masque binaire pour set/get.">prep_mask(uint8_t p_bit, uint8_t n_bit)</a></span><ul>
@@ -173,7 +173,7 @@ Valeurs (payload)</h2>
 </ul>
 </li>
 <li><span class="tt">void <a class="el" href="data__container_8h.html#a45840c759151338fe992664f4a21c4f7" title="Copie un tableau externe dans le buffer global TxData.">set_val_TxData(uint8_t *TxDataArray)</a></span><ul>
-<li>Copie un tableau externe vers <span class="tt"><a class="el" href="data__container_8h.html#a0b96d44a8da73070e470c7bf30523ca1">TxData</a></span>.</li>
+<li>Copie un tableau externe vers <span class="tt"><a class="el" href="com__utils_8h.html#af553c31425b32bd9c020380c942ed3bd">TxData</a></span>.</li>
 </ul>
 </li>
 </ul>

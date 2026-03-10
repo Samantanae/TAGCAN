@@ -1,0 +1,256 @@
+.TH "com_utils.c" 3 "TAGCAN" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+com_utils.c
+.SH SYNOPSIS
+.br
+.PP
+\fR#include 'com_utils\&.h'\fP
+.br
+\fR#include '\&.\&./\&.\&./TAGCAN/include/sub_include/data_container\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBinit_com\fP (void)"
+.br
+.ti -1c
+.RI "void \fBCAN_init_TAGCAN\fP (void)"
+.br
+.ti -1c
+.RI "void \fBCAN_setup_DF\fP (int32_t std_id)"
+.br
+.ti -1c
+.RI "void \fBCAN_setup_TAG\fP (void)"
+.br
+.ti -1c
+.RI "CAN_FilterTypeDef * \fBCAN_setup_Filter\fP (int32_t minimum_id, int32_t maximum_id, int filterBank)"
+.br
+.ti -1c
+.RI "void \fBmain_loop\fP (void)"
+.br
+.ti -1c
+.RI "void \fBupdate_TagData\fP (void)"
+.br
+.ti -1c
+.RI "void \fBCAN_send_msg\fP (void)"
+.br
+.ti -1c
+.RI "void \fBCAN_change_val\fP (void)"
+.br
+.ti -1c
+.RI "void \fBupdate_val\fP (const char *nom_du_tag, int32_t val)"
+.br
+.ti -1c
+.RI "void \fBupdate_all_val_send\fP (void)"
+.br
+.ti -1c
+.RI "void \fBupdate_all_val_receve\fP (void)"
+.br
+.ti -1c
+.RI "void \fBHAL_CAN_RxFifo0MsgPendingCallback\fP (CAN_HandleTypeDef *\fBhcan\fP)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "CAN_TxHeaderTypeDef \fBTxHeader\fP"
+.br
+.ti -1c
+.RI "CAN_RxHeaderTypeDef \fBRxHeader\fP"
+.br
+.ti -1c
+.RI "uint8_t \fBRxData\fP [8]"
+.br
+.ti -1c
+.RI "int8_t \fBval_SEQ\fP = 0"
+.br
+.ti -1c
+.RI "int8_t \fBval_HB\fP = 0"
+.br
+.ti -1c
+.RI "int8_t \fBval_CI\fP = 0"
+.br
+.ti -1c
+.RI "int8_t \fBval_AB\fP = 0"
+.br
+.ti -1c
+.RI "int8_t \fBval_EDC\fP = 0"
+.br
+.ti -1c
+.RI "int16_t \fBval_N2OPS\fP = 0"
+.br
+.ti -1c
+.RI "int16_t \fBval_TLC\fP = 0"
+.br
+.ti -1c
+.RI "int8_t \fBval_N2ODVS\fP = 0"
+.br
+.ti -1c
+.RI "int8_t \fBval_N2OIV\fP = 0"
+.br
+.ti -1c
+.RI "int8_t \fBval_N2OMV\fP = 0"
+.br
+.ti -1c
+.RI "int16_t \fBval_TIME\fP = 0"
+.br
+.ti -1c
+.RI "int8_t \fBout_Rx\fP [8] = {0,0,0,0,0,0,0,0}"
+.br
+.ti -1c
+.RI "int \fBdatacheck\fP = 0"
+.br
+.ti -1c
+.RI "int8_t \fBTxData_moteur\fP [8] = {0,0,0,0,0,0,0,0}"
+.br
+.ti -1c
+.RI "int8_t \fBRxData_moteur\fP [8] = {0,0,0,0,0,0,0,0}"
+.br
+.ti -1c
+.RI "int32_t \fBTxMailbox\fP"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void CAN_change_val (void )"
+
+.PP
+Definition at line \fB129\fP of file \fBcom_utils\&.c\fP\&.
+.SS "void CAN_init_TAGCAN (void )"
+
+.PP
+Definition at line \fB54\fP of file \fBcom_utils\&.c\fP\&.
+.SS "void CAN_send_msg (void )"
+
+.PP
+Definition at line \fB123\fP of file \fBcom_utils\&.c\fP\&.
+.SS "void CAN_setup_DF (int32_t std_id)"
+
+.PP
+Definition at line \fB59\fP of file \fBcom_utils\&.c\fP\&.
+.SS "CAN_FilterTypeDef * CAN_setup_Filter (int32_t minimum_id, int32_t maximum_id, int filterBank)"
+
+.PP
+Definition at line \fB84\fP of file \fBcom_utils\&.c\fP\&.
+.SS "void CAN_setup_TAG (void )"
+
+.PP
+Definition at line \fB69\fP of file \fBcom_utils\&.c\fP\&.
+.SS "void HAL_CAN_RxFifo0MsgPendingCallback (CAN_HandleTypeDef * hcan)"
+
+.PP
+Definition at line \fB169\fP of file \fBcom_utils\&.c\fP\&.
+.SS "void init_com (void )"
+
+.IP "\(bu" 2
+initialise tout les fonction de communication\&. (point d'appel unique: main) */ 
+.PP
+
+.PP
+Definition at line \fB39\fP of file \fBcom_utils\&.c\fP\&.
+.SS "void main_loop (void )"
+
+.PP
+Definition at line \fB112\fP of file \fBcom_utils\&.c\fP\&.
+.SS "void update_all_val_receve (void )"
+
+.PP
+Definition at line \fB152\fP of file \fBcom_utils\&.c\fP\&.
+.SS "void update_all_val_send (void )"
+
+.PP
+Definition at line \fB137\fP of file \fBcom_utils\&.c\fP\&.
+.SS "void update_TagData (void )"
+
+.PP
+Definition at line \fB117\fP of file \fBcom_utils\&.c\fP\&.
+.SS "void update_val (const char * nom_du_tag, int32_t val)"
+
+.PP
+Definition at line \fB133\fP of file \fBcom_utils\&.c\fP\&.
+.SH "Variable Documentation"
+.PP 
+.SS "int datacheck = 0"
+
+.PP
+Definition at line \fB30\fP of file \fBcom_utils\&.c\fP\&.
+.SS "int8_t out_Rx[8] = {0,0,0,0,0,0,0,0}"
+
+.PP
+Definition at line \fB27\fP of file \fBcom_utils\&.c\fP\&.
+.SS "uint8_t RxData[8]"
+
+.PP
+Definition at line \fB13\fP of file \fBcom_utils\&.c\fP\&.
+.SS "int8_t RxData_moteur[8] = {0,0,0,0,0,0,0,0}"
+
+.PP
+Definition at line \fB35\fP of file \fBcom_utils\&.c\fP\&.
+.SS "CAN_RxHeaderTypeDef RxHeader"
+
+.PP
+Definition at line \fB10\fP of file \fBcom_utils\&.c\fP\&.
+.SS "int8_t TxData_moteur[8] = {0,0,0,0,0,0,0,0}"
+
+.PP
+Definition at line \fB34\fP of file \fBcom_utils\&.c\fP\&.
+.SS "CAN_TxHeaderTypeDef TxHeader"
+
+.PP
+Definition at line \fB9\fP of file \fBcom_utils\&.c\fP\&.
+.SS "int32_t TxMailbox"
+
+.PP
+Definition at line \fB36\fP of file \fBcom_utils\&.c\fP\&.
+.SS "int8_t val_AB = 0"
+
+.PP
+Definition at line \fB19\fP of file \fBcom_utils\&.c\fP\&.
+.SS "int8_t val_CI = 0"
+
+.PP
+Definition at line \fB18\fP of file \fBcom_utils\&.c\fP\&.
+.SS "int8_t val_EDC = 0"
+
+.PP
+Definition at line \fB20\fP of file \fBcom_utils\&.c\fP\&.
+.SS "int8_t val_HB = 0"
+
+.PP
+Definition at line \fB17\fP of file \fBcom_utils\&.c\fP\&.
+.SS "int8_t val_N2ODVS = 0"
+
+.PP
+Definition at line \fB23\fP of file \fBcom_utils\&.c\fP\&.
+.SS "int8_t val_N2OIV = 0"
+
+.PP
+Definition at line \fB24\fP of file \fBcom_utils\&.c\fP\&.
+.SS "int8_t val_N2OMV = 0"
+
+.PP
+Definition at line \fB25\fP of file \fBcom_utils\&.c\fP\&.
+.SS "int16_t val_N2OPS = 0"
+
+.PP
+Definition at line \fB21\fP of file \fBcom_utils\&.c\fP\&.
+.SS "int8_t val_SEQ = 0"
+
+.PP
+Definition at line \fB16\fP of file \fBcom_utils\&.c\fP\&.
+.SS "int16_t val_TIME = 0"
+
+.PP
+Definition at line \fB26\fP of file \fBcom_utils\&.c\fP\&.
+.SS "int16_t val_TLC = 0"
+
+.PP
+Definition at line \fB22\fP of file \fBcom_utils\&.c\fP\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for TAGCAN from the source code\&.

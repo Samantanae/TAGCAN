@@ -1,0 +1,448 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.0" xml:lang="en-US">
+  <compounddef id="com__utils_8h" kind="file" language="C++">
+    <compoundname>com_utils.h</compoundname>
+    <includes refid="_t_a_g_c_a_n_8h" local="yes">../../TAGCAN/TAGCAN.h</includes>
+    <includes refid="data__container_8h" local="yes">../../TAGCAN/include/sub_include/data_container.h</includes>
+    <includes local="no">cmsis_gcc.h</includes>
+    <includes local="no">stm32f103xb.h</includes>
+    <includes local="no">stm32f1xx.h</includes>
+    <includes local="no">stm32f1xx_hal_can.h</includes>
+    <includes local="no">stm32f1xx_hal_def.h</includes>
+    <includes local="no">stm32f1xx_hal_flash.h</includes>
+    <includes local="no">stm32f1xx_hal_rcc.h</includes>
+    <includes local="no">stm32f1xx_hal_rcc_ex.h</includes>
+    <includes local="no">sys/_stdint.h</includes>
+    <includedby refid="com__utils_8c" local="yes">com_utils.c</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>../../TAGCAN/TAGCAN.h</label>
+        <link refid="_t_a_g_c_a_n_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>com_utils.h</label>
+        <link refid="com__utils_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>include/config_value.h</label>
+        <link refid="config__value_8h"/>
+      </node>
+      <node id="4">
+        <label>include/gestion_tag.h</label>
+        <link refid="gestion__tag_8h"/>
+      </node>
+      <node id="5">
+        <label>include/sub_include/data_container.h</label>
+        <link refid="data__container_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>tag_manager.h</label>
+        <link refid="tag__manager_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>cmsis_gcc.h</label>
+      </node>
+      <node id="8">
+        <label>stdbool.h</label>
+      </node>
+      <node id="6">
+        <label>stdint.h</label>
+      </node>
+      <node id="10">
+        <label>stm32f103xb.h</label>
+      </node>
+      <node id="11">
+        <label>stm32f1xx.h</label>
+      </node>
+      <node id="12">
+        <label>stm32f1xx_hal_can.h</label>
+      </node>
+      <node id="13">
+        <label>stm32f1xx_hal_def.h</label>
+      </node>
+      <node id="14">
+        <label>stm32f1xx_hal_flash.h</label>
+      </node>
+      <node id="15">
+        <label>stm32f1xx_hal_rcc.h</label>
+      </node>
+      <node id="16">
+        <label>stm32f1xx_hal_rcc_ex.h</label>
+      </node>
+      <node id="17">
+        <label>sys/_stdint.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>com_utils.c</label>
+        <link refid="com__utils_8c"/>
+      </node>
+      <node id="1">
+        <label>com_utils.h</label>
+        <link refid="com__utils_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" prot="public" static="no" extern="yes" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t TxData[8]</definition>
+        <argsstring>[8]</argsstring>
+        <name>TxData</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.h" line="23" column="16" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/sub_scripts/data_container.c" bodystart="12" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.h" declline="23" declcolumn="16"/>
+        <referencedby refid="com__utils_8c_1a8d08a1d9a28114044f9beb2adb97ee7a" compoundref="com__utils_8c" startline="123" endline="127">CAN_send_msg</referencedby>
+        <referencedby refid="data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f" compoundref="data__container_8c" startline="106" endline="157">get_value</referencedby>
+        <referencedby refid="data__container_8h_1a129f017feb0712be1dcf7932e6035aa0" compoundref="data__container_8c" startline="14" endline="20">init_data_container</referencedby>
+        <referencedby refid="print__val_8h_1a7d217b9d9a6575858c03ca9854bb151b" compoundref="print__val_8c" startline="150" endline="159">print_all_data_bin</referencedby>
+        <referencedby refid="print__val_8h_1aab1b8ef8b5cbbf7a78a88248ae81155c" compoundref="print__val_8c" startline="164" endline="173">print_all_with_title</referencedby>
+        <referencedby refid="data__container_8h_1a45840c759151338fe992664f4a21c4f7" compoundref="data__container_8c" startline="24" endline="28">set_val_TxData</referencedby>
+        <referencedby refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" compoundref="data__container_8c" startline="44" endline="98">set_value</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="com__utils_8h_1a14629afcc7f0b2d62c2b617b07d98184" prot="public" static="no" extern="yes" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t RxData[8]</definition>
+        <argsstring>[8]</argsstring>
+        <name>RxData</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.h" line="24" column="16" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="13" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.h" declline="24" declcolumn="16"/>
+        <referencedby refid="com__utils_8c_1a7368d39e78009c017d6f81ccf33b9b2c" compoundref="com__utils_8c" startline="169" endline="186">HAL_CAN_RxFifo0MsgPendingCallback</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="com__utils_8h_1a3e35a666d459f2ac92fc7c35334ff0ff" prot="public" static="no" extern="yes" mutable="no">
+        <type>CAN_TxHeaderTypeDef</type>
+        <definition>CAN_TxHeaderTypeDef TxHeader</definition>
+        <argsstring></argsstring>
+        <name>TxHeader</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.h" line="25" column="28" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="9" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.h" declline="25" declcolumn="28"/>
+        <referencedby refid="com__utils_8c_1a8d08a1d9a28114044f9beb2adb97ee7a" compoundref="com__utils_8c" startline="123" endline="127">CAN_send_msg</referencedby>
+        <referencedby refid="com__utils_8c_1a041f556ab8d1bfd3c0891c94b0f0d8c5" compoundref="com__utils_8c" startline="59" endline="65">CAN_setup_DF</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="com__utils_8h_1a6ee6e13063b860648180eea65852cc71" prot="public" static="no" extern="yes" mutable="no">
+        <type>CAN_RxHeaderTypeDef</type>
+        <definition>CAN_RxHeaderTypeDef RxHeader</definition>
+        <argsstring></argsstring>
+        <name>RxHeader</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.h" line="26" column="28" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="10" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.h" declline="26" declcolumn="28"/>
+        <referencedby refid="com__utils_8c_1a7368d39e78009c017d6f81ccf33b9b2c" compoundref="com__utils_8c" startline="169" endline="186">HAL_CAN_RxFifo0MsgPendingCallback</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="com__utils_8h_1ae21c10daa2f8cbd18a0e66bb28a19d2d" prot="public" static="no" extern="yes" mutable="no">
+        <type>CAN_HandleTypeDef</type>
+        <definition>CAN_HandleTypeDef hcan</definition>
+        <argsstring></argsstring>
+        <name>hcan</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.h" line="27" column="26" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.h" declline="27" declcolumn="26"/>
+        <referencedby refid="com__utils_8c_1a8d08a1d9a28114044f9beb2adb97ee7a" compoundref="com__utils_8c" startline="123" endline="127">CAN_send_msg</referencedby>
+        <referencedby refid="com__utils_8c_1adfa3f55b53f7a0c8e6a7ffbf37fe2545" compoundref="com__utils_8c" startline="84" endline="100">CAN_setup_Filter</referencedby>
+        <referencedby refid="com__utils_8c_1a7368d39e78009c017d6f81ccf33b9b2c" compoundref="com__utils_8c" startline="169" endline="186">HAL_CAN_RxFifo0MsgPendingCallback</referencedby>
+        <referencedby refid="com__utils_8c_1adf9124e89f799fae0f55cc9ed0a94189" compoundref="com__utils_8c" startline="39" endline="51">init_com</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="com__utils_8h_1afd0a914dd50d7aa3607d092452037cc1" prot="public" static="no" extern="yes" mutable="no">
+        <type>int32_t</type>
+        <definition>int32_t TxMailbox</definition>
+        <argsstring></argsstring>
+        <name>TxMailbox</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.h" line="28" column="16" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="36" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.h" declline="28" declcolumn="16"/>
+        <referencedby refid="com__utils_8c_1a8d08a1d9a28114044f9beb2adb97ee7a" compoundref="com__utils_8c" startline="123" endline="127">CAN_send_msg</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="com__utils_8h_1a2bf70f5aaf32f6470e208580dc8bed7b" prot="public" static="no" extern="yes" mutable="no">
+        <type>int8_t</type>
+        <definition>int8_t val_SEQ</definition>
+        <argsstring></argsstring>
+        <name>val_SEQ</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.h" line="30" column="15" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="16" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.h" declline="30" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="variable" id="com__utils_8h_1ad007767ce463586424d87bdafe0ae84a" prot="public" static="no" extern="yes" mutable="no">
+        <type>int8_t</type>
+        <definition>int8_t val_HB</definition>
+        <argsstring></argsstring>
+        <name>val_HB</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.h" line="31" column="15" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="17" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.h" declline="31" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="variable" id="com__utils_8h_1a6ad8282033ebc654142cd71d2633ab3a" prot="public" static="no" extern="yes" mutable="no">
+        <type>int8_t</type>
+        <definition>int8_t val_CI</definition>
+        <argsstring></argsstring>
+        <name>val_CI</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.h" line="32" column="15" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="18" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.h" declline="32" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="variable" id="com__utils_8h_1a563c97929d53dfd65c6722da474e57de" prot="public" static="no" extern="yes" mutable="no">
+        <type>int8_t</type>
+        <definition>int8_t val_AB</definition>
+        <argsstring></argsstring>
+        <name>val_AB</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.h" line="33" column="15" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="19" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.h" declline="33" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="variable" id="com__utils_8h_1a0d03ea68010339af49c95b45d72f1584" prot="public" static="no" extern="yes" mutable="no">
+        <type>int8_t</type>
+        <definition>int8_t val_EDC</definition>
+        <argsstring></argsstring>
+        <name>val_EDC</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.h" line="34" column="15" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="20" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.h" declline="34" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="variable" id="com__utils_8h_1aa2826abd1636498ecf600da3165d5a5a" prot="public" static="no" extern="yes" mutable="no">
+        <type>int8_t</type>
+        <definition>int8_t val_N2ODVS</definition>
+        <argsstring></argsstring>
+        <name>val_N2ODVS</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.h" line="36" column="15" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="23" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.h" declline="36" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="variable" id="com__utils_8h_1a686cd636907dfc59d7490e9a1289d63e" prot="public" static="no" extern="yes" mutable="no">
+        <type>int8_t</type>
+        <definition>int8_t val_N2OIV</definition>
+        <argsstring></argsstring>
+        <name>val_N2OIV</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.h" line="37" column="15" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="24" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.h" declline="37" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="variable" id="com__utils_8h_1aa862edfd1ccb9792c7450773c3a8acdc" prot="public" static="no" extern="yes" mutable="no">
+        <type>int8_t</type>
+        <definition>int8_t val_N2OMV</definition>
+        <argsstring></argsstring>
+        <name>val_N2OMV</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.h" line="38" column="15" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="25" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.h" declline="38" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="variable" id="com__utils_8h_1a52e20247890d4a078c8bf6e27a7d9cdb" prot="public" static="no" extern="yes" mutable="no">
+        <type>int16_t</type>
+        <definition>int16_t val_N2OPS</definition>
+        <argsstring></argsstring>
+        <name>val_N2OPS</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.h" line="39" column="16" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="21" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.h" declline="39" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="variable" id="com__utils_8h_1a6e3f5faa7238533e87c3c5d782104de7" prot="public" static="no" extern="yes" mutable="no">
+        <type>int16_t</type>
+        <definition>int16_t val_TIME</definition>
+        <argsstring></argsstring>
+        <name>val_TIME</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.h" line="41" column="16" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="26" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.h" declline="41" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="variable" id="com__utils_8h_1af54835c185cf3ea1e1fd9db7a178d5b4" prot="public" static="no" extern="yes" mutable="no">
+        <type>int16_t</type>
+        <definition>int16_t val_TLC</definition>
+        <argsstring></argsstring>
+        <name>val_TLC</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.h" line="42" column="16" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="22" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.h" declline="42" declcolumn="16"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="com__utils_8h_1adf9124e89f799fae0f55cc9ed0a94189" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void init_com</definition>
+        <argsstring>(void)</argsstring>
+        <name>init_com</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para>initialise tout les fonction de communication. (point d&apos;appel unique: main) *<zwj/>/ </para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.h" line="44" column="6" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="39" bodyend="51" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.h" declline="44" declcolumn="6"/>
+        <references refid="com__utils_8c_1a13d9a1dcda040041c99ca70ab03192d0" compoundref="com__utils_8c" startline="54" endline="57">CAN_init_TAGCAN</references>
+        <references refid="com__utils_8c_1a041f556ab8d1bfd3c0891c94b0f0d8c5" compoundref="com__utils_8c" startline="59" endline="65">CAN_setup_DF</references>
+        <references refid="com__utils_8c_1a91524acc09c84cf5aa22222e3eee50f5" compoundref="com__utils_8c" startline="69" endline="81">CAN_setup_TAG</references>
+        <references refid="com__utils_8h_1ae21c10daa2f8cbd18a0e66bb28a19d2d">hcan</references>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>com_logic.h</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/><sp/>Created<sp/>on:<sp/>4<sp/>Mar<sp/>2026</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>Author:<sp/>Samuel</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>INC_COM_UTILS_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>INC_COM_UTILS_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_t_a_g_c_a_n_8h" kindref="compound">../../TAGCAN/TAGCAN.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="data__container_8h" kindref="compound">../../TAGCAN/include/sub_include/data_container.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cmsis_gcc.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stm32f103xb.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stm32f1xx.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stm32f1xx_hal_can.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stm32f1xx_hal_def.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stm32f1xx_hal_flash.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stm32f1xx_hal_rcc.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stm32f1xx_hal_rcc_ex.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/_stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref>[8];</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="com__utils_8c_1a14629afcc7f0b2d62c2b617b07d98184" kindref="member">RxData</ref>[8];</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>CAN_TxHeaderTypeDef<sp/><ref refid="com__utils_8c_1a3e35a666d459f2ac92fc7c35334ff0ff" kindref="member">TxHeader</ref>;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>CAN_RxHeaderTypeDef<sp/><ref refid="com__utils_8c_1a6ee6e13063b860648180eea65852cc71" kindref="member">RxHeader</ref>;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>CAN_HandleTypeDef<sp/><ref refid="com__utils_8h_1ae21c10daa2f8cbd18a0e66bb28a19d2d" kindref="member">hcan</ref>;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/><ref refid="com__utils_8c_1afd0a914dd50d7aa3607d092452037cc1" kindref="member">TxMailbox</ref>;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int8_t<sp/><ref refid="com__utils_8c_1a2bf70f5aaf32f6470e208580dc8bed7b" kindref="member">val_SEQ</ref>;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int8_t<sp/><ref refid="com__utils_8c_1ad007767ce463586424d87bdafe0ae84a" kindref="member">val_HB</ref>;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int8_t<sp/><ref refid="com__utils_8c_1a6ad8282033ebc654142cd71d2633ab3a" kindref="member">val_CI</ref>;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int8_t<sp/><ref refid="com__utils_8c_1a563c97929d53dfd65c6722da474e57de" kindref="member">val_AB</ref>;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int8_t<sp/><ref refid="com__utils_8c_1a0d03ea68010339af49c95b45d72f1584" kindref="member">val_EDC</ref>;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int8_t<sp/><ref refid="com__utils_8c_1aa2826abd1636498ecf600da3165d5a5a" kindref="member">val_N2ODVS</ref>;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int8_t<sp/><ref refid="com__utils_8c_1a686cd636907dfc59d7490e9a1289d63e" kindref="member">val_N2OIV</ref>;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int8_t<sp/><ref refid="com__utils_8c_1aa862edfd1ccb9792c7450773c3a8acdc" kindref="member">val_N2OMV</ref>;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int16_t<sp/><ref refid="com__utils_8c_1a52e20247890d4a078c8bf6e27a7d9cdb" kindref="member">val_N2OPS</ref>;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int16_t<sp/><ref refid="com__utils_8c_1a6e3f5faa7238533e87c3c5d782104de7" kindref="member">val_TIME</ref>;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int16_t<sp/><ref refid="com__utils_8c_1af54835c185cf3ea1e1fd9db7a178d5b4" kindref="member">val_TLC</ref>;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="com__utils_8h_1adf9124e89f799fae0f55cc9ed0a94189" kindref="member">init_com</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>INC_COM_UTILS_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.h"/>
+  </compounddef>
+</doxygen>

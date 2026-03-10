@@ -5,28 +5,47 @@
     <includedby refid="_t_a_g_c_a_n_8h" local="yes">TAGCAN.h</includedby>
     <includedby refid="main_8c" local="yes">main.c</includedby>
     <includedby refid="tag__manager_8c" local="yes">tag_manager.c</includedby>
+    <includedby refid="test__print__repartition__bit_8c" local="yes">test_print_repartition_bit.c</includedby>
     <invincdepgraph>
       <node id="2">
         <label>TAGCAN.h</label>
         <link refid="_t_a_g_c_a_n_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>com_utils.c</label>
+        <link refid="com__utils_8c"/>
+      </node>
+      <node id="3">
+        <label>com_utils.h</label>
+        <link refid="com__utils_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
       </node>
       <node id="1">
         <label>gestion_tag.h</label>
         <link refid="gestion__tag_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="3" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="4" relation="include">
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="3">
+      <node id="5">
         <label>main.c</label>
         <link refid="main_8c"/>
       </node>
-      <node id="4">
+      <node id="6">
         <label>tag_manager.c</label>
         <link refid="tag__manager_8c"/>
+      </node>
+      <node id="7">
+        <label>test_print_repartition_bit.c</label>
+        <link refid="test__print__repartition__bit_8c"/>
       </node>
     </invincdepgraph>
     <sectiondef kind="func">
@@ -53,6 +72,7 @@
         <references refid="tag__manager_8h_1ab7cad863197c93abe397155a1946c0d0" compoundref="tag__manager_8c" startline="18">g_tag_count</references>
         <references refid="tag__manager_8h_1ace5be789d004e0752b6b2dec9d845864" compoundref="tag__manager_8c" startline="17">g_tags</references>
         <references refid="config__value_8h_1aa653c0eca99802a09fd9560f28a9b1c1" compoundref="config__value_8h" startline="5">MAX_TAGS</references>
+        <referencedby refid="com__utils_8c_1a13d9a1dcda040041c99ca70ab03192d0" compoundref="com__utils_8c" startline="54" endline="57">CAN_init_TAGCAN</referencedby>
         <referencedby refid="main_8c_1ae9bbb2f5bb69f73e92c761f83223285a" compoundref="main_8c" startline="177" endline="329">run_all_tests</referencedby>
         <referencedby refid="main_8c_1a4f26f5b24d899127d66338ba3bfd7f1b" compoundref="main_8c" startline="104" endline="170">somme_other_test</referencedby>
         <referencedby refid="main_8c_1a9c4bb6f6d00e76eae45e966a4c628178" compoundref="main_8c" startline="72" endline="97">test_print</referencedby>
@@ -72,7 +92,7 @@
           <defname>siz</defname>
         </param>
         <briefdescription>
-<para>Cree un nouveau tag. </para>
+<para>créé un nouveau tag. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -80,7 +100,7 @@
 <parametername>tag_name</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Le nom (id) relie a la valeur. </para>
+<para>le nom (id) relié a la valeur. </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -88,13 +108,13 @@
 <parametername>n_bit</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>La taille de la valeur (implementation actuelle: 1..16 bits). </para>
+<para>La taille de la valeur (implémentation actuelle: 1 à 16 bits). </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>Un code de succes ou d&apos;erreur.</para>
+<simplesect kind="return"><para>un code de succès ou d&apos;erreur.</para>
 </simplesect>
-Cree un nouveau tag.</para>
+créé un nouveau tag.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>tag_name</parametername>
@@ -135,8 +155,10 @@ Cree un nouveau tag.</para>
         <references refid="config__value_8h_1ada71b9f258860d58a86ab220bfce6bf4" compoundref="config__value_8h" startline="7">MAX_TAG_NAME_LEN</references>
         <references refid="config__value_8h_1aa653c0eca99802a09fd9560f28a9b1c1" compoundref="config__value_8h" startline="5">MAX_TAGS</references>
         <references refid="tag__manager_8c_1a30325d29d4baf058d75e6f3c269341af" compoundref="tag__manager_8c" startline="119" endline="135">set_new_tag_9_to_16</references>
+        <referencedby refid="com__utils_8c_1a91524acc09c84cf5aa22222e3eee50f5" compoundref="com__utils_8c" startline="69" endline="81">CAN_setup_TAG</referencedby>
         <referencedby refid="main_8c_1ae9bbb2f5bb69f73e92c761f83223285a" compoundref="main_8c" startline="177" endline="329">run_all_tests</referencedby>
         <referencedby refid="main_8c_1a9c4bb6f6d00e76eae45e966a4c628178" compoundref="main_8c" startline="72" endline="97">test_print</referencedby>
+        <referencedby refid="com__utils_8c_1a429e791d9e107e0be61d4b4c00b13b27" compoundref="com__utils_8c" startline="133" endline="135">update_val</referencedby>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -158,7 +180,7 @@ Cree un nouveau tag.</para>
 <codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>GESTION_TAG_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>GESTION_TAG_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/>fonction<sp/>qui<sp/>gere<sp/>les<sp/>tags</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/>fonction<sp/>qui<sp/>gère<sp/>les<sp/>tags</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="28"><highlight class="normal"></highlight></codeline>
 <codeline lineno="29"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="gestion__tag_8h_1aab50a8f567be72e656120fd71f3fb435" kindref="member">init_tag_manager</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="30"><highlight class="normal"></highlight></codeline>

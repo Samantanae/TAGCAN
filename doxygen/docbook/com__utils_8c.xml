@@ -1,0 +1,423 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_com__utils_8c" xml:lang="en-US">
+<title>com_utils.c File Reference</title>
+<indexterm><primary>com_utils.c</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;com_utils.h&quot;<?linebreak?>#include &quot;../../TAGCAN/include/sub_include/data_container.h&quot;<?linebreak?></programlisting>Include dependency graph for com_utils.c:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="com__utils_8c__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_com__utils_8c_1adf9124e89f799fae0f55cc9ed0a94189">init_com</link> (void)</para>
+</listitem>
+            <listitem><para>void <link linkend="_com__utils_8c_1a13d9a1dcda040041c99ca70ab03192d0">CAN_init_TAGCAN</link> (void)</para>
+</listitem>
+            <listitem><para>void <link linkend="_com__utils_8c_1a041f556ab8d1bfd3c0891c94b0f0d8c5">CAN_setup_DF</link> (int32_t std_id)</para>
+</listitem>
+            <listitem><para>void <link linkend="_com__utils_8c_1a91524acc09c84cf5aa22222e3eee50f5">CAN_setup_TAG</link> (void)</para>
+</listitem>
+            <listitem><para>CAN_FilterTypeDef * <link linkend="_com__utils_8c_1adfa3f55b53f7a0c8e6a7ffbf37fe2545">CAN_setup_Filter</link> (int32_t minimum_id, int32_t maximum_id, int filterBank)</para>
+</listitem>
+            <listitem><para>void <link linkend="_com__utils_8c_1a4aa2d6078cb7f20cad91adb07fdcb5ae">main_loop</link> (void)</para>
+</listitem>
+            <listitem><para>void <link linkend="_com__utils_8c_1ae53b4eae23a605e3ece8f3a026f350bf">update_TagData</link> (void)</para>
+</listitem>
+            <listitem><para>void <link linkend="_com__utils_8c_1a8d08a1d9a28114044f9beb2adb97ee7a">CAN_send_msg</link> (void)</para>
+</listitem>
+            <listitem><para>void <link linkend="_com__utils_8c_1a132e1d3529f22ab57d3e747370302698">CAN_change_val</link> (void)</para>
+</listitem>
+            <listitem><para>void <link linkend="_com__utils_8c_1a429e791d9e107e0be61d4b4c00b13b27">update_val</link> (const char *nom_du_tag, int32_t val)</para>
+</listitem>
+            <listitem><para>void <link linkend="_com__utils_8c_1aed4e7ccb92f34e07bbb0839df8a7278f">update_all_val_send</link> (void)</para>
+</listitem>
+            <listitem><para>void <link linkend="_com__utils_8c_1a357c3638eed11ace8aff46590f52600a">update_all_val_receve</link> (void)</para>
+</listitem>
+            <listitem><para>void <link linkend="_com__utils_8c_1a7368d39e78009c017d6f81ccf33b9b2c">HAL_CAN_RxFifo0MsgPendingCallback</link> (CAN_HandleTypeDef *<link linkend="_com__utils_8h_1ae21c10daa2f8cbd18a0e66bb28a19d2d">hcan</link>)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para>CAN_TxHeaderTypeDef <link linkend="_com__utils_8c_1a3e35a666d459f2ac92fc7c35334ff0ff">TxHeader</link></para>
+</listitem>
+            <listitem><para>CAN_RxHeaderTypeDef <link linkend="_com__utils_8c_1a6ee6e13063b860648180eea65852cc71">RxHeader</link></para>
+</listitem>
+            <listitem><para>uint8_t <link linkend="_com__utils_8c_1a14629afcc7f0b2d62c2b617b07d98184">RxData</link> [8]</para>
+</listitem>
+            <listitem><para>int8_t <link linkend="_com__utils_8c_1a2bf70f5aaf32f6470e208580dc8bed7b">val_SEQ</link> = 0</para>
+</listitem>
+            <listitem><para>int8_t <link linkend="_com__utils_8c_1ad007767ce463586424d87bdafe0ae84a">val_HB</link> = 0</para>
+</listitem>
+            <listitem><para>int8_t <link linkend="_com__utils_8c_1a6ad8282033ebc654142cd71d2633ab3a">val_CI</link> = 0</para>
+</listitem>
+            <listitem><para>int8_t <link linkend="_com__utils_8c_1a563c97929d53dfd65c6722da474e57de">val_AB</link> = 0</para>
+</listitem>
+            <listitem><para>int8_t <link linkend="_com__utils_8c_1a0d03ea68010339af49c95b45d72f1584">val_EDC</link> = 0</para>
+</listitem>
+            <listitem><para>int16_t <link linkend="_com__utils_8c_1a52e20247890d4a078c8bf6e27a7d9cdb">val_N2OPS</link> = 0</para>
+</listitem>
+            <listitem><para>int16_t <link linkend="_com__utils_8c_1af54835c185cf3ea1e1fd9db7a178d5b4">val_TLC</link> = 0</para>
+</listitem>
+            <listitem><para>int8_t <link linkend="_com__utils_8c_1aa2826abd1636498ecf600da3165d5a5a">val_N2ODVS</link> = 0</para>
+</listitem>
+            <listitem><para>int8_t <link linkend="_com__utils_8c_1a686cd636907dfc59d7490e9a1289d63e">val_N2OIV</link> = 0</para>
+</listitem>
+            <listitem><para>int8_t <link linkend="_com__utils_8c_1aa862edfd1ccb9792c7450773c3a8acdc">val_N2OMV</link> = 0</para>
+</listitem>
+            <listitem><para>int16_t <link linkend="_com__utils_8c_1a6e3f5faa7238533e87c3c5d782104de7">val_TIME</link> = 0</para>
+</listitem>
+            <listitem><para>int8_t <link linkend="_com__utils_8c_1a3021d675302697aad2387d68ea92f5a6">out_Rx</link> [8] = {0,0,0,0,0,0,0,0}</para>
+</listitem>
+            <listitem><para>int <link linkend="_com__utils_8c_1a414b5e592b824fe8c753d662b5f0f1f5">datacheck</link> = 0</para>
+</listitem>
+            <listitem><para>int8_t <link linkend="_com__utils_8c_1a113c66c2e8974cce9e7067bcadc1b1ad">TxData_moteur</link> [8] = {0,0,0,0,0,0,0,0}</para>
+</listitem>
+            <listitem><para>int8_t <link linkend="_com__utils_8c_1a399e9e1a8ca7222248c0062b1b6b8a4e">RxData_moteur</link> [8] = {0,0,0,0,0,0,0,0}</para>
+</listitem>
+            <listitem><para>int32_t <link linkend="_com__utils_8c_1afd0a914dd50d7aa3607d092452037cc1">TxMailbox</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_com__utils_8c_1a132e1d3529f22ab57d3e747370302698"/><section>
+    <title>CAN_change_val()</title>
+<indexterm><primary>CAN_change_val</primary><secondary>com_utils.c</secondary></indexterm>
+<indexterm><primary>com_utils.c</primary><secondary>CAN_change_val</secondary></indexterm>
+<para><computeroutput>void CAN_change_val (void )</computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00129">129</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+</section>
+<anchor xml:id="_com__utils_8c_1a13d9a1dcda040041c99ca70ab03192d0"/><section>
+    <title>CAN_init_TAGCAN()</title>
+<indexterm><primary>CAN_init_TAGCAN</primary><secondary>com_utils.c</secondary></indexterm>
+<indexterm><primary>com_utils.c</primary><secondary>CAN_init_TAGCAN</secondary></indexterm>
+<para><computeroutput>void CAN_init_TAGCAN (void )</computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00054">54</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="com__utils_8c_a13d9a1dcda040041c99ca70ab03192d0_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="com__utils_8c_a13d9a1dcda040041c99ca70ab03192d0_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_com__utils_8c_1a8d08a1d9a28114044f9beb2adb97ee7a"/><section>
+    <title>CAN_send_msg()</title>
+<indexterm><primary>CAN_send_msg</primary><secondary>com_utils.c</secondary></indexterm>
+<indexterm><primary>com_utils.c</primary><secondary>CAN_send_msg</secondary></indexterm>
+<para><computeroutput>void CAN_send_msg (void )</computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00123">123</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="com__utils_8c_a8d08a1d9a28114044f9beb2adb97ee7a_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_com__utils_8c_1a041f556ab8d1bfd3c0891c94b0f0d8c5"/><section>
+    <title>CAN_setup_DF()</title>
+<indexterm><primary>CAN_setup_DF</primary><secondary>com_utils.c</secondary></indexterm>
+<indexterm><primary>com_utils.c</primary><secondary>CAN_setup_DF</secondary></indexterm>
+<para><computeroutput>void CAN_setup_DF (int32_t std_id)</computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00059">59</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="com__utils_8c_a041f556ab8d1bfd3c0891c94b0f0d8c5_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_com__utils_8c_1adfa3f55b53f7a0c8e6a7ffbf37fe2545"/><section>
+    <title>CAN_setup_Filter()</title>
+<indexterm><primary>CAN_setup_Filter</primary><secondary>com_utils.c</secondary></indexterm>
+<indexterm><primary>com_utils.c</primary><secondary>CAN_setup_Filter</secondary></indexterm>
+<para><computeroutput>CAN_FilterTypeDef * CAN_setup_Filter (int32_t minimum_id, int32_t maximum_id, int filterBank)</computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00084">84</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+</section>
+<anchor xml:id="_com__utils_8c_1a91524acc09c84cf5aa22222e3eee50f5"/><section>
+    <title>CAN_setup_TAG()</title>
+<indexterm><primary>CAN_setup_TAG</primary><secondary>com_utils.c</secondary></indexterm>
+<indexterm><primary>com_utils.c</primary><secondary>CAN_setup_TAG</secondary></indexterm>
+<para><computeroutput>void CAN_setup_TAG (void )</computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00069">69</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="com__utils_8c_a91524acc09c84cf5aa22222e3eee50f5_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="com__utils_8c_a91524acc09c84cf5aa22222e3eee50f5_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_com__utils_8c_1a7368d39e78009c017d6f81ccf33b9b2c"/><section>
+    <title>HAL_CAN_RxFifo0MsgPendingCallback()</title>
+<indexterm><primary>HAL_CAN_RxFifo0MsgPendingCallback</primary><secondary>com_utils.c</secondary></indexterm>
+<indexterm><primary>com_utils.c</primary><secondary>HAL_CAN_RxFifo0MsgPendingCallback</secondary></indexterm>
+<para><computeroutput>void HAL_CAN_RxFifo0MsgPendingCallback (CAN_HandleTypeDef * hcan)</computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00169">169</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+</section>
+<anchor xml:id="_com__utils_8c_1adf9124e89f799fae0f55cc9ed0a94189"/><section>
+    <title>init_com()</title>
+<indexterm><primary>init_com</primary><secondary>com_utils.c</secondary></indexterm>
+<indexterm><primary>com_utils.c</primary><secondary>init_com</secondary></indexterm>
+<para><computeroutput>void init_com (void )</computeroutput></para>
+<para><itemizedlist>
+<listitem>
+<para>initialise tout les fonction de communication. (point d&apos;appel unique: main) *&#8205;/ </para>
+</listitem></itemizedlist>
+</para>
+<para>
+Definition at line <link linkend="_com__utils_8c_source_1l00039">39</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="com__utils_8c_adf9124e89f799fae0f55cc9ed0a94189_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_com__utils_8c_1a4aa2d6078cb7f20cad91adb07fdcb5ae"/><section>
+    <title>main_loop()</title>
+<indexterm><primary>main_loop</primary><secondary>com_utils.c</secondary></indexterm>
+<indexterm><primary>com_utils.c</primary><secondary>main_loop</secondary></indexterm>
+<para><computeroutput>void main_loop (void )</computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00112">112</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="com__utils_8c_a4aa2d6078cb7f20cad91adb07fdcb5ae_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_com__utils_8c_1a357c3638eed11ace8aff46590f52600a"/><section>
+    <title>update_all_val_receve()</title>
+<indexterm><primary>update_all_val_receve</primary><secondary>com_utils.c</secondary></indexterm>
+<indexterm><primary>com_utils.c</primary><secondary>update_all_val_receve</secondary></indexterm>
+<para><computeroutput>void update_all_val_receve (void )</computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00152">152</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+</section>
+<anchor xml:id="_com__utils_8c_1aed4e7ccb92f34e07bbb0839df8a7278f"/><section>
+    <title>update_all_val_send()</title>
+<indexterm><primary>update_all_val_send</primary><secondary>com_utils.c</secondary></indexterm>
+<indexterm><primary>com_utils.c</primary><secondary>update_all_val_send</secondary></indexterm>
+<para><computeroutput>void update_all_val_send (void )</computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00137">137</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="com__utils_8c_aed4e7ccb92f34e07bbb0839df8a7278f_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="com__utils_8c_aed4e7ccb92f34e07bbb0839df8a7278f_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_com__utils_8c_1ae53b4eae23a605e3ece8f3a026f350bf"/><section>
+    <title>update_TagData()</title>
+<indexterm><primary>update_TagData</primary><secondary>com_utils.c</secondary></indexterm>
+<indexterm><primary>com_utils.c</primary><secondary>update_TagData</secondary></indexterm>
+<para><computeroutput>void update_TagData (void )</computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00117">117</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+</section>
+<anchor xml:id="_com__utils_8c_1a429e791d9e107e0be61d4b4c00b13b27"/><section>
+    <title>update_val()</title>
+<indexterm><primary>update_val</primary><secondary>com_utils.c</secondary></indexterm>
+<indexterm><primary>com_utils.c</primary><secondary>update_val</secondary></indexterm>
+<para><computeroutput>void update_val (const char * nom_du_tag, int32_t val)</computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00133">133</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="com__utils_8c_a429e791d9e107e0be61d4b4c00b13b27_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+</section>
+<section>
+<title>Variable Documentation</title>
+<anchor xml:id="_com__utils_8c_1a414b5e592b824fe8c753d662b5f0f1f5"/><section>
+    <title>datacheck</title>
+<indexterm><primary>datacheck</primary><secondary>com_utils.c</secondary></indexterm>
+<indexterm><primary>com_utils.c</primary><secondary>datacheck</secondary></indexterm>
+<para><computeroutput>int datacheck = 0</computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00030">30</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+</section>
+<anchor xml:id="_com__utils_8c_1a3021d675302697aad2387d68ea92f5a6"/><section>
+    <title>out_Rx</title>
+<indexterm><primary>out_Rx</primary><secondary>com_utils.c</secondary></indexterm>
+<indexterm><primary>com_utils.c</primary><secondary>out_Rx</secondary></indexterm>
+<para><computeroutput>int8_t out_Rx[8] = {0,0,0,0,0,0,0,0}</computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00027">27</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+</section>
+<anchor xml:id="_com__utils_8c_1a14629afcc7f0b2d62c2b617b07d98184"/><section>
+    <title>RxData</title>
+<indexterm><primary>RxData</primary><secondary>com_utils.c</secondary></indexterm>
+<indexterm><primary>com_utils.c</primary><secondary>RxData</secondary></indexterm>
+<para><computeroutput>uint8_t RxData[8]</computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00013">13</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+</section>
+<anchor xml:id="_com__utils_8c_1a399e9e1a8ca7222248c0062b1b6b8a4e"/><section>
+    <title>RxData_moteur</title>
+<indexterm><primary>RxData_moteur</primary><secondary>com_utils.c</secondary></indexterm>
+<indexterm><primary>com_utils.c</primary><secondary>RxData_moteur</secondary></indexterm>
+<para><computeroutput>int8_t RxData_moteur[8] = {0,0,0,0,0,0,0,0}</computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00035">35</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+</section>
+<anchor xml:id="_com__utils_8c_1a6ee6e13063b860648180eea65852cc71"/><section>
+    <title>RxHeader</title>
+<indexterm><primary>RxHeader</primary><secondary>com_utils.c</secondary></indexterm>
+<indexterm><primary>com_utils.c</primary><secondary>RxHeader</secondary></indexterm>
+<para><computeroutput>CAN_RxHeaderTypeDef RxHeader</computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00010">10</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+</section>
+<anchor xml:id="_com__utils_8c_1a113c66c2e8974cce9e7067bcadc1b1ad"/><section>
+    <title>TxData_moteur</title>
+<indexterm><primary>TxData_moteur</primary><secondary>com_utils.c</secondary></indexterm>
+<indexterm><primary>com_utils.c</primary><secondary>TxData_moteur</secondary></indexterm>
+<para><computeroutput>int8_t TxData_moteur[8] = {0,0,0,0,0,0,0,0}</computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00034">34</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+</section>
+<anchor xml:id="_com__utils_8c_1a3e35a666d459f2ac92fc7c35334ff0ff"/><section>
+    <title>TxHeader</title>
+<indexterm><primary>TxHeader</primary><secondary>com_utils.c</secondary></indexterm>
+<indexterm><primary>com_utils.c</primary><secondary>TxHeader</secondary></indexterm>
+<para><computeroutput>CAN_TxHeaderTypeDef TxHeader</computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00009">9</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+</section>
+<anchor xml:id="_com__utils_8c_1afd0a914dd50d7aa3607d092452037cc1"/><section>
+    <title>TxMailbox</title>
+<indexterm><primary>TxMailbox</primary><secondary>com_utils.c</secondary></indexterm>
+<indexterm><primary>com_utils.c</primary><secondary>TxMailbox</secondary></indexterm>
+<para><computeroutput>int32_t TxMailbox</computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00036">36</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+</section>
+<anchor xml:id="_com__utils_8c_1a563c97929d53dfd65c6722da474e57de"/><section>
+    <title>val_AB</title>
+<indexterm><primary>val_AB</primary><secondary>com_utils.c</secondary></indexterm>
+<indexterm><primary>com_utils.c</primary><secondary>val_AB</secondary></indexterm>
+<para><computeroutput>int8_t val_AB = 0</computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00019">19</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+</section>
+<anchor xml:id="_com__utils_8c_1a6ad8282033ebc654142cd71d2633ab3a"/><section>
+    <title>val_CI</title>
+<indexterm><primary>val_CI</primary><secondary>com_utils.c</secondary></indexterm>
+<indexterm><primary>com_utils.c</primary><secondary>val_CI</secondary></indexterm>
+<para><computeroutput>int8_t val_CI = 0</computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00018">18</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+</section>
+<anchor xml:id="_com__utils_8c_1a0d03ea68010339af49c95b45d72f1584"/><section>
+    <title>val_EDC</title>
+<indexterm><primary>val_EDC</primary><secondary>com_utils.c</secondary></indexterm>
+<indexterm><primary>com_utils.c</primary><secondary>val_EDC</secondary></indexterm>
+<para><computeroutput>int8_t val_EDC = 0</computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00020">20</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+</section>
+<anchor xml:id="_com__utils_8c_1ad007767ce463586424d87bdafe0ae84a"/><section>
+    <title>val_HB</title>
+<indexterm><primary>val_HB</primary><secondary>com_utils.c</secondary></indexterm>
+<indexterm><primary>com_utils.c</primary><secondary>val_HB</secondary></indexterm>
+<para><computeroutput>int8_t val_HB = 0</computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00017">17</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+</section>
+<anchor xml:id="_com__utils_8c_1aa2826abd1636498ecf600da3165d5a5a"/><section>
+    <title>val_N2ODVS</title>
+<indexterm><primary>val_N2ODVS</primary><secondary>com_utils.c</secondary></indexterm>
+<indexterm><primary>com_utils.c</primary><secondary>val_N2ODVS</secondary></indexterm>
+<para><computeroutput>int8_t val_N2ODVS = 0</computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00023">23</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+</section>
+<anchor xml:id="_com__utils_8c_1a686cd636907dfc59d7490e9a1289d63e"/><section>
+    <title>val_N2OIV</title>
+<indexterm><primary>val_N2OIV</primary><secondary>com_utils.c</secondary></indexterm>
+<indexterm><primary>com_utils.c</primary><secondary>val_N2OIV</secondary></indexterm>
+<para><computeroutput>int8_t val_N2OIV = 0</computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00024">24</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+</section>
+<anchor xml:id="_com__utils_8c_1aa862edfd1ccb9792c7450773c3a8acdc"/><section>
+    <title>val_N2OMV</title>
+<indexterm><primary>val_N2OMV</primary><secondary>com_utils.c</secondary></indexterm>
+<indexterm><primary>com_utils.c</primary><secondary>val_N2OMV</secondary></indexterm>
+<para><computeroutput>int8_t val_N2OMV = 0</computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00025">25</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+</section>
+<anchor xml:id="_com__utils_8c_1a52e20247890d4a078c8bf6e27a7d9cdb"/><section>
+    <title>val_N2OPS</title>
+<indexterm><primary>val_N2OPS</primary><secondary>com_utils.c</secondary></indexterm>
+<indexterm><primary>com_utils.c</primary><secondary>val_N2OPS</secondary></indexterm>
+<para><computeroutput>int16_t val_N2OPS = 0</computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00021">21</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+</section>
+<anchor xml:id="_com__utils_8c_1a2bf70f5aaf32f6470e208580dc8bed7b"/><section>
+    <title>val_SEQ</title>
+<indexterm><primary>val_SEQ</primary><secondary>com_utils.c</secondary></indexterm>
+<indexterm><primary>com_utils.c</primary><secondary>val_SEQ</secondary></indexterm>
+<para><computeroutput>int8_t val_SEQ = 0</computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00016">16</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+</section>
+<anchor xml:id="_com__utils_8c_1a6e3f5faa7238533e87c3c5d782104de7"/><section>
+    <title>val_TIME</title>
+<indexterm><primary>val_TIME</primary><secondary>com_utils.c</secondary></indexterm>
+<indexterm><primary>com_utils.c</primary><secondary>val_TIME</secondary></indexterm>
+<para><computeroutput>int16_t val_TIME = 0</computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00026">26</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+</section>
+<anchor xml:id="_com__utils_8c_1af54835c185cf3ea1e1fd9db7a178d5b4"/><section>
+    <title>val_TLC</title>
+<indexterm><primary>val_TLC</primary><secondary>com_utils.c</secondary></indexterm>
+<indexterm><primary>com_utils.c</primary><secondary>val_TLC</secondary></indexterm>
+<para><computeroutput>int16_t val_TLC = 0</computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00022">22</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+</section>
+</section>
+</section>

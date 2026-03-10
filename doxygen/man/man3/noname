@@ -2,7 +2,9 @@
 .ad l
 .nh
 .SH NAME
-documentation include sub_include data_container\&.h print_val\&.h tag_manager\&.h 
+documentation exemple_utilisation com_utils\&.c com_utils\&.h 
+.PP
+guide_utilisation include sub_include data_container\&.h print_val\&.h tag_manager\&.h 
 .PP
 config_value\&.h gestion_tag\&.h 
 .PP
@@ -14,9 +16,9 @@ sub_include data_container\&.h print_val\&.h tag_manager\&.h
 .PP
 sub_scripts data_container\&.c print_val\&.c tag_manager\&.c 
 .PP
-test_file test_safty_func\&.c test_safty_func\&.h test_send_receve\&.c test_send_receve\&.h test_set_tag\&.c test_set_tag\&.h 
+test_file test_print_repartition_bit\&.c test_safty_func\&.c test_safty_func\&.h test_send_receve\&.c test_send_receve\&.h test_set_tag\&.c test_set_tag\&.h 
 .PP
-tests test_file test_safty_func\&.c test_safty_func\&.h test_send_receve\&.c test_send_receve\&.h test_set_tag\&.c test_set_tag\&.h 
+tests test_file test_print_repartition_bit\&.c test_safty_func\&.c test_safty_func\&.h test_send_receve\&.c test_send_receve\&.h test_set_tag\&.c test_set_tag\&.h 
 .PP
 test_utils\&.c test_utils\&.h 
 .PP

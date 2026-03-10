@@ -10,7 +10,7 @@
 <area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="58,178,89,209,131,241,142,247,139,252,128,246,86,213,54,182"/>
 <area shape="rect" id="Node000009" href="$print__val_8c.html#a8ee4bb928c2cca54d191cf23edea60ec" title="Affiche la repartition des bits utilises dans la trame CAN." alt="" coords="129,304,261,329"/>
 <area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="52,179,81,233,104,264,131,291,138,296,135,300,128,295,100,267,77,236,48,182"/>
-<area shape="rect" id="Node000010" href="$tag__manager_8c.html#a7dd7e8cfc97d378d44e7c63bd9f49931" title="Cree un nouveau tag." alt="" coords="163,205,228,231"/>
+<area shape="rect" id="Node000010" href="$tag__manager_8c.html#a7dd7e8cfc97d378d44e7c63bd9f49931" title="créé un nouveau tag." alt="" coords="163,205,228,231"/>
 <area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="82,177,151,200,149,205,81,182"/>
 <area shape="rect" id="Node000017" href="$data__container_8c.html#ae30fab9c73b624e37f064c836fefb7de" title="Ecrit une valeur dans TxData a partir d&#39;un tag." alt="" coords="351,65,427,91"/>
 <area shape="poly" id="edge19_Node000001_Node000017" title=" " alt="" coords="81,166,165,161,213,153,260,140,284,125,308,108,339,93,341,98,311,112,287,129,262,144,215,158,166,166,82,171"/>

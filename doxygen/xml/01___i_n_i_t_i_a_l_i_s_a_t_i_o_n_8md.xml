@@ -1,0 +1,210 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.0" xml:lang="en-US">
+  <compounddef id="01___i_n_i_t_i_a_l_i_s_a_t_i_o_n_8md" kind="file" language="Markdown">
+    <compoundname>01_INITIALISATION.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>01<sp/>-<sp/>Initialisation<sp/>de<sp/>TAGCAN</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/><sp/>Objectif</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Configurer<sp/>le<sp/>système<sp/>TAGCAN<sp/>et<sp/>le<sp/>bus<sp/>CAN<sp/>pour<sp/>pouvoir<sp/>communiquer<sp/>avec<sp/>d&apos;autres<sp/>nœuds<sp/>CAN.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/><sp/>Vue<sp/>d&apos;ensemble<sp/>du<sp/>processus</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">L&apos;initialisation<sp/>suit<sp/>ces<sp/>étapes<sp/>:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">1.<sp/>init_com()<sp/>(point<sp/>d&apos;appel<sp/>unique)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>├─<sp/>CAN_init_TAGCAN()</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>│<sp/><sp/>├─<sp/>init_data_container()<sp/><sp/><sp/><sp/><sp/>-&gt;<sp/>Efface<sp/>le<sp/>buffer<sp/>TxData</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>│<sp/><sp/>└─<sp/>init_tag_manager()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-&gt;<sp/>Initialise<sp/>la<sp/>gestion<sp/>des<sp/>tags</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>│</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>├─<sp/>CAN_setup_TAG()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-&gt;<sp/>Crée<sp/>les<sp/>tags<sp/>applicatifs</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>│<sp/><sp/>(set_tag<sp/>pour<sp/>chaque<sp/>variable)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>│</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>├─<sp/>CAN_setup_DF()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-&gt;<sp/>Configure<sp/>le<sp/>header<sp/>CAN</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>│<sp/><sp/>(ID,<sp/>type<sp/>de<sp/>frame,<sp/>DLC)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>│</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>└─<sp/>HAL_CAN_ActivateNotification<sp/>-&gt;<sp/>Active<sp/>les<sp/>interruptions<sp/>RX</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/><sp/>Détail<sp/>de<sp/>chaque<sp/>étape</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Étape<sp/>1<sp/>:<sp/>init_data_container()</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Réinitialise<sp/>le<sp/>buffer<sp/>de<sp/>données<sp/>CAN<sp/>à<sp/>zéro.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>init_data_container(void);</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>Paramètre<sp/>|<sp/>Type<sp/>|<sp/>Description<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|-----------|------|-------------|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>-<sp/>|<sp/>-<sp/>|<sp/>(aucun)<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Effet**<sp/>:</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Vide<sp/>complètement<sp/>le<sp/>buffer<sp/>`TxData[8]`</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Doit<sp/>être<sp/>appelé<sp/>(au<sp/>moins<sp/>une<sp/>fois)<sp/>lors<sp/>du<sp/>démarrage</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Atention:<sp/>un<sp/>appel<sp/>en<sp/>cours<sp/>d&apos;exécution<sp/>réinitialiseras<sp/>les<sp/>valeurs<sp/>à<sp/>0.</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Étape<sp/>2<sp/>:<sp/>init_tag_manager()</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Initialise<sp/>le<sp/>gestionnaire<sp/>de<sp/>tags<sp/>et<sp/>efface<sp/>tous<sp/>les<sp/>tags<sp/>existants.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>init_tag_manager(void);</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Note**<sp/>:<sp/>Après<sp/>cet<sp/>appel,<sp/>tous<sp/>les<sp/>tags<sp/>doivent<sp/>être<sp/>redéfinis<sp/>avec<sp/>`set_tag()`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Étape<sp/>3<sp/>:<sp/>CAN_setup_TAG()</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Crée<sp/>les<sp/>tags<sp/>applicatifs<sp/>en<sp/>fonction<sp/>de<sp/>vos<sp/>besoins.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>CAN_setup_TAG(void)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_tag(&quot;SEQ&quot;,<sp/>3);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Compteur<sp/>de<sp/>séquences<sp/>(3<sp/>bits)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_tag(&quot;HB&quot;,<sp/>1);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Watchdog<sp/>HeartBeat<sp/>(1<sp/>bit)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_tag(&quot;CI&quot;,<sp/>2);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Continuité<sp/>igniter<sp/>(2<sp/>bits)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_tag(&quot;AB&quot;,<sp/>7);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Alim.<sp/>Batterie<sp/>en<sp/>%<sp/>(7<sp/>bits)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_tag(&quot;EDC&quot;,<sp/>4);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>États<sp/>des<sp/>commandes<sp/>(4<sp/>bits)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_tag(&quot;N2OPS&quot;,<sp/>16);<sp/><sp/><sp/><sp/><sp/>//<sp/>Capteur<sp/>pression<sp/>N2O<sp/>(16<sp/>bits)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_tag(&quot;TLC&quot;,<sp/>12);<sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Thrust<sp/>Load<sp/>Cell<sp/>(12<sp/>bits)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_tag(&quot;N2ODVS&quot;,<sp/>1);<sp/><sp/><sp/><sp/><sp/>//<sp/>État<sp/>soupape<sp/>Dump<sp/>N2O<sp/>(1<sp/>bit)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_tag(&quot;N2OIV&quot;,<sp/>1);<sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Valve<sp/>igniter<sp/>N2O<sp/>(1<sp/>bit)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_tag(&quot;N2OMV&quot;,<sp/>1);<sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Soupape<sp/>principale<sp/>N2O<sp/>(1<sp/>bit)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_tag(&quot;TIME&quot;,<sp/>16);<sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Timestamp<sp/>en<sp/>ms<sp/>(16<sp/>bits)</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Paramètres<sp/>de<sp/>set_tag()**<sp/>:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">int<sp/>set_tag(const<sp/>char*<sp/>tag_name,<sp/>uint8_t<sp/>n_bit);</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>Paramètre<sp/>|<sp/>Type<sp/>|<sp/>Description<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|-----------|------|-------------|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`tag_name`<sp/>|<sp/>`const<sp/>char*`<sp/>|<sp/>Nom<sp/>unique<sp/>du<sp/>tag<sp/>(ex.<sp/>&quot;SEQ&quot;)<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`n_bit`<sp/>|<sp/>`uint8_t`<sp/>|<sp/>Nombre<sp/>de<sp/>bits<sp/>(1<sp/>à<sp/>16)<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Valeur<sp/>de<sp/>retour**<sp/>:</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Code<sp/>de<sp/>succès<sp/>ou<sp/>code<sp/>d&apos;erreur</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>À<sp/>consulter<sp/>pour<sp/>débugger<sp/>(voir<sp/>`documentation/API_REFERENCE.md`)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Étape<sp/>4<sp/>:<sp/>CAN_setup_DF()</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Configure<sp/>le<sp/>header<sp/>de<sp/>transmission<sp/>CAN<sp/>(ID,<sp/>type<sp/>de<sp/>frame,<sp/>etc.).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>CAN_setup_DF(int32_t<sp/>std_id)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std_id<sp/>&amp;=<sp/>0x7FFU;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Masque<sp/>pour<sp/>ID<sp/>standard<sp/>11<sp/>bits</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TxHeader.IDE<sp/>=<sp/>CAN_ID_STD;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Utiliser<sp/>ID<sp/>standard<sp/>(non<sp/>étendu)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TxHeader.StdId<sp/>=<sp/>std_id;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Assigner<sp/>l&apos;ID<sp/>CAN</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TxHeader.RTR<sp/>=<sp/>CAN_RTR_DATA;<sp/><sp/><sp/><sp/><sp/>//<sp/>Mode<sp/>données<sp/>(non<sp/>RTR)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TxHeader.DLC<sp/>=<sp/>8;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Longueur<sp/>=<sp/>8<sp/>octets</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Points<sp/>importants**<sp/>:</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`IDE<sp/>=<sp/>CAN_ID_STD`<sp/>-&gt;<sp/>utilise<sp/>les<sp/>IDs<sp/>standards<sp/>(11<sp/>bits)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`RTR<sp/>=<sp/>CAN_RTR_DATA`<sp/>-&gt;<sp/>frame<sp/>de<sp/>données<sp/>(pas<sp/>une<sp/>requête)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`DLC<sp/>=<sp/>8`<sp/>-&gt;<sp/>longueur<sp/>fixe<sp/>du<sp/>payload<sp/>(8<sp/>octets)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`StdId`<sp/>-&gt;<sp/>l&apos;identifiant<sp/>unique<sp/>du<sp/>message<sp/>CAN</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Étape<sp/>5<sp/>:<sp/>Activer<sp/>les<sp/>interruptions</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">if(HAL_CAN_ActivateNotification(&amp;hcan,<sp/>CAN_IT_RX_FIFO0_MSG_PENDING)<sp/>!=<sp/>HAL_OK)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Error_Handler();</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Explications**<sp/>:</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Permet<sp/>de<sp/>recevoir<sp/>les<sp/>messages<sp/>CAN<sp/>par<sp/>interruption<sp/>(plutôt<sp/>que<sp/>polling)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`CAN_IT_RX_FIFO0_MSG_PENDING`<sp/>-&gt;<sp/>déclenche<sp/>une<sp/>IRQ<sp/>à<sp/>la<sp/>réception<sp/>d&apos;un<sp/>message<sp/>dans<sp/>FIFO0</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Nécessite<sp/>l&apos;implémentation<sp/>du<sp/>callback<sp/>:<sp/>`void<sp/>HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef<sp/>*hcan)`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/><sp/>Code<sp/>complet<sp/>d&apos;initialisation</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;com_utils.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;TAGCAN.h&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>init_com(void)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Étape<sp/>1<sp/>:<sp/>Initialiser<sp/>les<sp/>conteneurs<sp/>de<sp/>données</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>CAN_init_TAGCAN();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Étape<sp/>2<sp/>:<sp/>Créer<sp/>les<sp/>tags<sp/>applicatifs</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>CAN_setup_TAG();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Étape<sp/>3<sp/>:<sp/>Configurer<sp/>le<sp/>header<sp/>CAN</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>CAN_setup_DF(0x123);<sp/><sp/>//<sp/>ID<sp/>CAN<sp/>=<sp/>0x123</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Étape<sp/>4<sp/>:<sp/>Activer<sp/>la<sp/>réception<sp/>par<sp/>interruption</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(HAL_CAN_ActivateNotification(&amp;hcan,<sp/>CAN_IT_RX_FIFO0_MSG_PENDING)<sp/>!=<sp/>HAL_OK)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Error_Handler();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/><sp/>Système<sp/>TAGCAN<sp/>prêt<sp/>!</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>À<sp/>appeler<sp/>une<sp/>seule<sp/>fois<sp/>dans<sp/>main()<sp/>au<sp/>démarrage</highlight></codeline>
+<codeline><highlight class="normal">int<sp/>main(void)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_Init();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MX_CAN_Init();<sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Initialisation<sp/>du<sp/>module<sp/>CAN<sp/>matériel</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>init_com();<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Initialisation<sp/>TAGCAN</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Boucle<sp/>principale...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while(1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Votre<sp/>code</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/><sp/>Points<sp/>d&apos;attention</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/><sp/>Point<sp/>|<sp/>Détail<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|---------|--------|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>**Ordre<sp/>d&apos;appel**<sp/>|<sp/>Toujours<sp/>:<sp/>`init_data_container()`<sp/>-&gt;<sp/>`init_tag_manager()`<sp/>-&gt;<sp/>`set_tag()`<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>**Appel<sp/>unique**<sp/>|<sp/>`init_com()`<sp/>doit<sp/>être<sp/>appelée<sp/>**une<sp/>seule<sp/>fois**<sp/>au<sp/>démarrage<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>**Réinitialisation**<sp/>|<sp/>Si<sp/>vous<sp/>appelez<sp/>`init_tag_manager()`<sp/>à<sp/>nouveau,<sp/>tous<sp/>les<sp/>tags<sp/>doivent<sp/>être<sp/>recréés<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>**Configuration<sp/>matérielle**<sp/>|<sp/>Le<sp/>module<sp/>CAN<sp/>STM32<sp/>(HAL)<sp/>doit<sp/>être<sp/>initialisé<sp/>**avant**<sp/>TAGCAN<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>**ID<sp/>CAN<sp/>unique**<sp/>|<sp/>Chaque<sp/>nœud<sp/>du<sp/>réseau<sp/>doit<sp/>avoir<sp/>un<sp/>ID<sp/>CAN<sp/>unique<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/><sp/>Vérification</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Après<sp/>initialisation<sp/>:</highlight></codeline>
+<codeline><highlight class="normal">-<sp/><sp/>`TxData[8]`<sp/>est<sp/>rempli<sp/>de<sp/>zéros</highlight></codeline>
+<codeline><highlight class="normal">-<sp/><sp/>Les<sp/>tags<sp/>sont<sp/>créés<sp/>et<sp/>prêts<sp/>à<sp/>l&apos;emploi</highlight></codeline>
+<codeline><highlight class="normal">-<sp/><sp/>Le<sp/>header<sp/>`TxHeader`<sp/>est<sp/>configuré<sp/>avec<sp/>votre<sp/>ID<sp/>CAN</highlight></codeline>
+<codeline><highlight class="normal">-<sp/><sp/>Les<sp/>interruptions<sp/>CAN<sp/>sont<sp/>actives</highlight></codeline>
+<codeline><highlight class="normal">-<sp/><sp/>Prêt<sp/>pour<sp/>`set_value()`<sp/>et<sp/>`get_value()`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Voir<sp/>aussi<sp/>:</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[02_GESTION_TAGS.md](02_GESTION_TAGS.md)<sp/>-<sp/>Utiliser<sp/>les<sp/>tags</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[03_DONNEES_CAN.md](03_DONNEES_CAN.md)<sp/>-<sp/>Gérer<sp/>les<sp/>données<sp/>CAN</highlight></codeline>
+    </programlisting>
+    <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/guide_utilisation/01_INITIALISATION.md"/>
+  </compounddef>
+</doxygen>

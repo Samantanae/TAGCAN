@@ -6,6 +6,7 @@
     <includes refid="gestion__tag_8h" local="yes">include/gestion_tag.h</includes>
     <includes refid="data__container_8h" local="yes">include/sub_include/data_container.h</includes>
     <includes refid="tag__manager_8h" local="yes">include/sub_include/tag_manager.h</includes>
+    <includedby refid="com__utils_8h" local="yes">com_utils.h</includedby>
     <incdepgraph>
       <node id="1">
         <label>TAGCAN.h</label>
@@ -52,6 +53,24 @@
         <label>stdint.h</label>
       </node>
     </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>TAGCAN.h</label>
+        <link refid="_t_a_g_c_a_n_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>com_utils.c</label>
+        <link refid="com__utils_8c"/>
+      </node>
+      <node id="2">
+        <label>com_utils.h</label>
+        <link refid="com__utils_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

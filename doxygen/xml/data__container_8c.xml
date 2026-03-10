@@ -73,10 +73,11 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/sub_scripts/data_container.c" line="12" column="9" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/sub_scripts/data_container.c" bodystart="12" bodyend="-1"/>
+        <referencedby refid="com__utils_8c_1a8d08a1d9a28114044f9beb2adb97ee7a" compoundref="com__utils_8c" startline="123" endline="127">CAN_send_msg</referencedby>
         <referencedby refid="data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f" compoundref="data__container_8c" startline="106" endline="157">get_value</referencedby>
         <referencedby refid="data__container_8h_1a129f017feb0712be1dcf7932e6035aa0" compoundref="data__container_8c" startline="14" endline="20">init_data_container</referencedby>
-        <referencedby refid="print__val_8h_1a7d217b9d9a6575858c03ca9854bb151b" compoundref="print__val_8c" startline="148" endline="157">print_all_data_bin</referencedby>
-        <referencedby refid="print__val_8h_1aab1b8ef8b5cbbf7a78a88248ae81155c" compoundref="print__val_8c" startline="162" endline="171">print_all_with_title</referencedby>
+        <referencedby refid="print__val_8h_1a7d217b9d9a6575858c03ca9854bb151b" compoundref="print__val_8c" startline="150" endline="159">print_all_data_bin</referencedby>
+        <referencedby refid="print__val_8h_1aab1b8ef8b5cbbf7a78a88248ae81155c" compoundref="print__val_8c" startline="164" endline="173">print_all_with_title</referencedby>
         <referencedby refid="data__container_8h_1a45840c759151338fe992664f4a21c4f7" compoundref="data__container_8c" startline="24" endline="28">set_val_TxData</referencedby>
         <referencedby refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" compoundref="data__container_8c" startline="44" endline="98">set_value</referencedby>
       </memberdef>
@@ -100,7 +101,8 @@
         </inbodydescription>
         <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/sub_scripts/data_container.c" line="14" column="6" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/sub_scripts/data_container.c" bodystart="14" bodyend="20"/>
         <references refid="config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1" compoundref="config__value_8h" startline="9">N_BYTES</references>
-        <references refid="data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1" compoundref="data__container_8c" startline="12">TxData</references>
+        <references refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" compoundref="data__container_8c" startline="12">TxData</references>
+        <referencedby refid="com__utils_8c_1a13d9a1dcda040041c99ca70ab03192d0" compoundref="com__utils_8c" startline="54" endline="57">CAN_init_TAGCAN</referencedby>
         <referencedby refid="main_8c_1ae9bbb2f5bb69f73e92c761f83223285a" compoundref="main_8c" startline="177" endline="329">run_all_tests</referencedby>
         <referencedby refid="main_8c_1a4f26f5b24d899127d66338ba3bfd7f1b" compoundref="main_8c" startline="104" endline="170">somme_other_test</referencedby>
         <referencedby refid="main_8c_1a9c4bb6f6d00e76eae45e966a4c628178" compoundref="main_8c" startline="72" endline="97">test_print</referencedby>
@@ -133,7 +135,7 @@
         </inbodydescription>
         <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/sub_scripts/data_container.c" line="24" column="6" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/sub_scripts/data_container.c" bodystart="24" bodyend="28"/>
         <references refid="config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1" compoundref="config__value_8h" startline="9">N_BYTES</references>
-        <references refid="data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1" compoundref="data__container_8c" startline="12">TxData</references>
+        <references refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" compoundref="data__container_8c" startline="12">TxData</references>
       </memberdef>
       <memberdef kind="function" id="data__container_8c_1a66768c162c3a8352b7d5397e90206085" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint8_t</type>
@@ -232,9 +234,10 @@ En cas de depassement, l&apos;implementation retourne CAN_TG_ERROR_VALUE_TO_BIG.
         <references refid="tag__manager_8h_1a5737e741608851f8e3822cf07261da44" compoundref="tag__manager_8c" startline="288" endline="298">get_tag_def</references>
         <references refid="struct_tag_def_1a894ffee63faf79f0877a12c871a18b3a" compoundref="tag__manager_8h" startline="17">TagDef::n_bits</references>
         <references refid="data__container_8c_1a66768c162c3a8352b7d5397e90206085" compoundref="data__container_8c" startline="29" endline="42">prep_mask</references>
-        <references refid="data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1" compoundref="data__container_8c" startline="12">TxData</references>
+        <references refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" compoundref="data__container_8c" startline="12">TxData</references>
         <referencedby refid="main_8c_1ae9bbb2f5bb69f73e92c761f83223285a" compoundref="main_8c" startline="177" endline="329">run_all_tests</referencedby>
         <referencedby refid="main_8c_1a9c4bb6f6d00e76eae45e966a4c628178" compoundref="main_8c" startline="72" endline="97">test_print</referencedby>
+        <referencedby refid="com__utils_8c_1aed4e7ccb92f34e07bbb0839df8a7278f" compoundref="com__utils_8c" startline="137" endline="149">update_all_val_send</referencedby>
       </memberdef>
       <memberdef kind="function" id="data__container_8c_1a31a64ddfd601eb4d0beaadf21ddc5793" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint16_t</type>
@@ -336,7 +339,7 @@ Recompose un entier 16 bits depuis deux octets. <parameterlist kind="param"><par
         <references refid="tag__manager_8h_1a5737e741608851f8e3822cf07261da44" compoundref="tag__manager_8c" startline="288" endline="298">get_tag_def</references>
         <references refid="struct_tag_def_1a894ffee63faf79f0877a12c871a18b3a" compoundref="tag__manager_8h" startline="17">TagDef::n_bits</references>
         <references refid="data__container_8c_1a66768c162c3a8352b7d5397e90206085" compoundref="data__container_8c" startline="29" endline="42">prep_mask</references>
-        <references refid="data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1" compoundref="data__container_8c" startline="12">TxData</references>
+        <references refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" compoundref="data__container_8c" startline="12">TxData</references>
         <referencedby refid="print__val_8h_1a6904e40665dc664fc6611bfe2d913773" compoundref="print__val_8c" startline="43" endline="56">print_all_data</referencedby>
         <referencedby refid="main_8c_1ae9bbb2f5bb69f73e92c761f83223285a" compoundref="main_8c" startline="177" endline="329">run_all_tests</referencedby>
       </memberdef>
@@ -399,13 +402,13 @@ Recompose un entier 16 bits depuis deux octets. <parameterlist kind="param"><par
 <codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>PRINT_VAL_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="11"><highlight class="normal"></highlight></codeline>
-<codeline lineno="12" refid="data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1" refkind="member"><highlight class="normal">uint8_t<sp/><ref refid="data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1" kindref="member">TxData</ref>[<ref refid="config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1" kindref="member">N_BYTES</ref>];</highlight></codeline>
+<codeline lineno="12" refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" refkind="member"><highlight class="normal">uint8_t<sp/><ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref>[<ref refid="config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1" kindref="member">N_BYTES</ref>];</highlight></codeline>
 <codeline lineno="13"><highlight class="normal"></highlight></codeline>
 <codeline lineno="14" refid="data__container_8h_1a129f017feb0712be1dcf7932e6035aa0" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="data__container_8c_1a129f017feb0712be1dcf7932e6035aa0" kindref="member">init_data_container</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="15"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1" kindref="member">N_BYTES</ref>;<sp/>i++)</highlight></codeline>
 <codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1" kindref="member">TxData</ref>[i]<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref>[i]<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="20"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="21"><highlight class="normal"></highlight></codeline>
@@ -413,7 +416,7 @@ Recompose un entier 16 bits depuis deux octets. <parameterlist kind="param"><par
 <codeline lineno="23"><highlight class="normal"></highlight></codeline>
 <codeline lineno="24" refid="data__container_8h_1a45840c759151338fe992664f4a21c4f7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="data__container_8c_1a45840c759151338fe992664f4a21c4f7" kindref="member">set_val_TxData</ref>(uint8_t<sp/>*TxDataArray){</highlight></codeline>
 <codeline lineno="25"><highlight class="normal"></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1" kindref="member">N_BYTES</ref>;<sp/>i++){</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1" kindref="member">TxData</ref>[i]<sp/>=<sp/>TxDataArray[i];</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref>[i]<sp/>=<sp/>TxDataArray[i];</highlight></codeline>
 <codeline lineno="27"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="28"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="29" refid="data__container_8h_1a66768c162c3a8352b7d5397e90206085" refkind="member"><highlight class="normal">uint8_t<sp/><ref refid="data__container_8c_1a66768c162c3a8352b7d5397e90206085" kindref="member">prep_mask</ref>(uint8_t<sp/>p_bit,<sp/>uint8_t<sp/>n_bit)</highlight></codeline>
@@ -453,9 +456,9 @@ Recompose un entier 16 bits depuis deux octets. <parameterlist kind="param"><par
 <codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(n_bits<sp/>&gt;<sp/>8){</highlight></codeline>
 <codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>data_b<sp/>=<sp/>(value<sp/>&amp;<sp/>0xFF00)<sp/>&gt;&gt;<sp/>8;</highlight></codeline>
 <codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>data_a<sp/>=<sp/>(value<sp/>&amp;<sp/>0x00FF);</highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1" kindref="member">TxData</ref>[byte_idx_a]<sp/>=<sp/>data_a;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref>[byte_idx_a]<sp/>=<sp/>data_a;</highlight></codeline>
 <codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Cas<sp/>16<sp/>bits:<sp/>la<sp/>partie<sp/>B<sp/>occupe<sp/>tout<sp/>le<sp/>byte.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(n_bits<sp/>==<sp/>16){<ref refid="data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1" kindref="member">TxData</ref>[tag-&gt;<ref refid="struct_tag_def_1a1368f5414ba506dc1626d65a1083dc92" kindref="member">byte_idx_b</ref>]<sp/>=<sp/>data_b;}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(n_bits<sp/>==<sp/>16){<ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref>[tag-&gt;<ref refid="struct_tag_def_1a1368f5414ba506dc1626d65a1083dc92" kindref="member">byte_idx_b</ref>]<sp/>=<sp/>data_b;}</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Cas<sp/>9..15<sp/>bits:<sp/>insertion<sp/>partielle<sp/>dans<sp/>le<sp/>byte<sp/>B.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Creation<sp/>du<sp/>masque<sp/>binaire</highlight><highlight class="normal"></highlight></codeline>
@@ -463,15 +466,15 @@ Recompose un entier 16 bits depuis deux octets. <parameterlist kind="param"><par
 <codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Alignement<sp/>de<sp/>la<sp/>deuxieme<sp/>partie</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data_b<sp/>=<sp/>data_b<sp/>&lt;&lt;<sp/>(8<sp/>-<sp/>bit_pos_b<sp/>-<sp/>n_bits);</highlight></codeline>
 <codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Mise<sp/>a<sp/>jour<sp/>selective<sp/>des<sp/>bits<sp/>de<sp/>la<sp/>partie<sp/>B.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1" kindref="member">TxData</ref>[byte_idx_b]<sp/>&amp;=<sp/>~mask;</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1" kindref="member">TxData</ref>[byte_idx_b]<sp/>|=<sp/>data_b;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref>[byte_idx_b]<sp/>&amp;=<sp/>~mask;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref>[byte_idx_b]<sp/>|=<sp/>data_b;</highlight></codeline>
 <codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3" kindref="member">CAN_TG_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(tag-&gt;<ref refid="struct_tag_def_1a894ffee63faf79f0877a12c871a18b3a" kindref="member">n_bits</ref><sp/>==<sp/>8)</highlight></codeline>
 <codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>data_a<sp/>=<sp/>(value<sp/>&amp;<sp/>0x00FF);</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1" kindref="member">TxData</ref>[tag-&gt;<ref refid="struct_tag_def_1a985f815d0edbf8a411fbf325a30baec8" kindref="member">byte_idx_a</ref>]<sp/>=<sp/>data_a;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref>[tag-&gt;<ref refid="struct_tag_def_1a985f815d0edbf8a411fbf325a30baec8" kindref="member">byte_idx_a</ref>]<sp/>=<sp/>data_a;</highlight></codeline>
 <codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3" kindref="member">CAN_TG_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">{</highlight></codeline>
@@ -481,8 +484,8 @@ Recompose un entier 16 bits depuis deux octets. <parameterlist kind="param"><par
 <codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>vrai_val<sp/>=<sp/>value;</highlight></codeline>
 <codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Alignement<sp/>de<sp/>la<sp/>valeur<sp/>dans<sp/>le<sp/>byte</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vrai_val<sp/>=<sp/>vrai_val<sp/>&lt;&lt;<sp/>(8<sp/>-<sp/>bit_pos_a<sp/>-<sp/>n_bits);</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1" kindref="member">TxData</ref>[byte_idx_a]<sp/>&amp;=<sp/>~mask;</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1" kindref="member">TxData</ref>[byte_idx_a]<sp/>|=<sp/>vrai_val;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref>[byte_idx_a]<sp/>&amp;=<sp/>~mask;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref>[byte_idx_a]<sp/>|=<sp/>vrai_val;</highlight></codeline>
 <codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3" kindref="member">CAN_TG_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="98"><highlight class="normal">}</highlight></codeline>
@@ -509,16 +512,16 @@ Recompose un entier 16 bits depuis deux octets. <parameterlist kind="param"><par
 <codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(tag-&gt;<ref refid="struct_tag_def_1a894ffee63faf79f0877a12c871a18b3a" kindref="member">n_bits</ref><sp/>==<sp/>16)<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>cas<sp/>de<sp/>16<sp/>bits<sp/>exactement</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>ba<sp/>=<sp/><ref refid="data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1" kindref="member">TxData</ref>[byta];</highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>bb<sp/>=<sp/><ref refid="data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1" kindref="member">TxData</ref>[bytb];</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>ba<sp/>=<sp/><ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref>[byta];</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>bb<sp/>=<sp/><ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref>[bytb];</highlight></codeline>
 <codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*out_value<sp/>=<sp/>ba<sp/>|<sp/>(bb<sp/>&lt;&lt;<sp/>8);<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Recomposition<sp/>16<sp/>bits<sp/>complete.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">((n_bits<sp/>&lt;<sp/>16)<sp/>&amp;&amp;<sp/>(n_bits<sp/>&gt;<sp/>8)){</highlight><highlight class="comment">//<sp/>cas<sp/>d&apos;entre<sp/>8<sp/>et<sp/>16<sp/>bits.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>ba<sp/>=<sp/><ref refid="data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1" kindref="member">TxData</ref>[byta];</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>ba<sp/>=<sp/><ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref>[byta];</highlight></codeline>
 <codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>bb;</highlight></codeline>
 <codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Creation<sp/>d&apos;un<sp/>masque<sp/>pour<sp/>extraire<sp/>la<sp/>partie<sp/>B.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>mask<sp/>=<sp/><ref refid="data__container_8c_1a66768c162c3a8352b7d5397e90206085" kindref="member">prep_mask</ref>(bpb,<sp/>n_bits<sp/>-<sp/>8);</highlight></codeline>
-<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>data_temp<sp/>=<sp/><ref refid="data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1" kindref="member">TxData</ref>[bytb]<sp/>&amp;<sp/>mask;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>data_temp<sp/>=<sp/><ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref>[bytb]<sp/>&amp;<sp/>mask;</highlight></codeline>
 <codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bb<sp/>=<sp/>data_temp<sp/>&gt;&gt;<sp/>(8<sp/>-<sp/>bpa<sp/>-<sp/>n_bits);</highlight></codeline>
 <codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*out_value<sp/>=<sp/>ba<sp/>|<sp/>(bb<sp/>&lt;&lt;<sp/>8);<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Recomposition<sp/>avec<sp/>partie<sp/>B<sp/>partielle.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="134"><highlight class="normal"></highlight></codeline>
@@ -532,7 +535,7 @@ Recompose un entier 16 bits depuis deux octets. <parameterlist kind="param"><par
 <codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//uint8_t<sp/>mask<sp/>=<sp/>((1<sp/>&lt;&lt;<sp/>n_bits)<sp/>-<sp/>1)<sp/>&lt;&lt;<sp/>shift;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="146"><highlight class="normal"></highlight></codeline>
 <codeline lineno="152"><highlight class="normal"></highlight></codeline>
-<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>data_temp<sp/>=<sp/><ref refid="data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1" kindref="member">TxData</ref>[byta]<sp/>&amp;<sp/>mask;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>data_temp<sp/>=<sp/><ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref>[byta]<sp/>&amp;<sp/>mask;</highlight></codeline>
 <codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*out_value<sp/>=<sp/>data_temp<sp/>&gt;&gt;<sp/>(8<sp/>-<sp/>bpa<sp/>-<sp/>n_bits);</highlight></codeline>
 <codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3" kindref="member">CAN_TG_SUCCESS</ref>;</highlight></codeline>

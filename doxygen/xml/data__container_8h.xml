@@ -5,9 +5,12 @@
     <includes local="no">stdint.h</includes>
     <includes refid="tag__manager_8h" local="yes">tag_manager.h</includes>
     <includedby refid="_t_a_g_c_a_n_8h" local="yes">TAGCAN.h</includedby>
+    <includedby refid="com__utils_8c" local="yes">com_utils.c</includedby>
+    <includedby refid="com__utils_8h" local="yes">com_utils.h</includedby>
     <includedby refid="data__container_8c" local="yes">data_container.c</includedby>
     <includedby refid="main_8c" local="yes">main.c</includedby>
     <includedby refid="print__val_8c" local="yes">print_val.c</includedby>
+    <includedby refid="test__print__repartition__bit_8c" local="yes">test_print_repartition_bit.c</includedby>
     <incdepgraph>
       <node id="4">
         <label>../config_value.h</label>
@@ -42,44 +45,54 @@
       <node id="2">
         <label>TAGCAN.h</label>
         <link refid="_t_a_g_c_a_n_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>com_utils.c</label>
+        <link refid="com__utils_8c"/>
+      </node>
+      <node id="3">
+        <label>com_utils.h</label>
+        <link refid="com__utils_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
       </node>
       <node id="1">
         <label>data_container.h</label>
         <link refid="data__container_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
         <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
       </node>
-      <node id="4">
+      <node id="6">
         <label>main.c</label>
         <link refid="main_8c"/>
       </node>
-      <node id="3">
+      <node id="5">
         <label>data_container.c</label>
         <link refid="data__container_8c"/>
       </node>
-      <node id="5">
+      <node id="7">
         <label>print_val.c</label>
         <link refid="print__val_8c"/>
       </node>
+      <node id="8">
+        <label>test_print_repartition_bit.c</label>
+        <link refid="test__print__repartition__bit_8c"/>
+      </node>
     </invincdepgraph>
-    <sectiondef kind="define">
-      <memberdef kind="define" id="data__container_8h_1ab1e0c45daf869a5ff0a8c836629d657f" prot="public" static="no">
-        <name>DATA_CONTAINER_H</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/data_container.h" line="7" column="9" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/data_container.h" bodystart="7" bodyend="-1"/>
-      </memberdef>
-    </sectiondef>
     <sectiondef kind="var">
       <memberdef kind="variable" id="data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1" prot="public" static="no" extern="yes" mutable="no">
         <type>uint8_t</type>
@@ -94,12 +107,6 @@
         <inbodydescription>
         </inbodydescription>
         <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/data_container.h" line="10" column="16" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/sub_scripts/data_container.c" bodystart="12" bodyend="-1" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/data_container.h" declline="10" declcolumn="16"/>
-        <referencedby refid="data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f" compoundref="data__container_8c" startline="106" endline="157">get_value</referencedby>
-        <referencedby refid="data__container_8h_1a129f017feb0712be1dcf7932e6035aa0" compoundref="data__container_8c" startline="14" endline="20">init_data_container</referencedby>
-        <referencedby refid="print__val_8h_1a7d217b9d9a6575858c03ca9854bb151b" compoundref="print__val_8c" startline="148" endline="157">print_all_data_bin</referencedby>
-        <referencedby refid="print__val_8h_1aab1b8ef8b5cbbf7a78a88248ae81155c" compoundref="print__val_8c" startline="162" endline="171">print_all_with_title</referencedby>
-        <referencedby refid="data__container_8h_1a45840c759151338fe992664f4a21c4f7" compoundref="data__container_8c" startline="24" endline="28">set_val_TxData</referencedby>
-        <referencedby refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" compoundref="data__container_8c" startline="44" endline="98">set_value</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="func">
@@ -121,7 +128,8 @@
         </inbodydescription>
         <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/data_container.h" line="16" column="6" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/sub_scripts/data_container.c" bodystart="14" bodyend="20" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/data_container.h" declline="16" declcolumn="6"/>
         <references refid="config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1" compoundref="config__value_8h" startline="9">N_BYTES</references>
-        <references refid="data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1" compoundref="data__container_8c" startline="12">TxData</references>
+        <references refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" compoundref="data__container_8c" startline="12">TxData</references>
+        <referencedby refid="com__utils_8c_1a13d9a1dcda040041c99ca70ab03192d0" compoundref="com__utils_8c" startline="54" endline="57">CAN_init_TAGCAN</referencedby>
         <referencedby refid="main_8c_1ae9bbb2f5bb69f73e92c761f83223285a" compoundref="main_8c" startline="177" endline="329">run_all_tests</referencedby>
         <referencedby refid="main_8c_1a4f26f5b24d899127d66338ba3bfd7f1b" compoundref="main_8c" startline="104" endline="170">somme_other_test</referencedby>
         <referencedby refid="main_8c_1a9c4bb6f6d00e76eae45e966a4c628178" compoundref="main_8c" startline="72" endline="97">test_print</referencedby>
@@ -178,9 +186,10 @@ En cas de depassement, l&apos;implementation retourne CAN_TG_ERROR_VALUE_TO_BIG.
         <references refid="tag__manager_8h_1a5737e741608851f8e3822cf07261da44" compoundref="tag__manager_8c" startline="288" endline="298">get_tag_def</references>
         <references refid="struct_tag_def_1a894ffee63faf79f0877a12c871a18b3a" compoundref="tag__manager_8h" startline="17">TagDef::n_bits</references>
         <references refid="data__container_8c_1a66768c162c3a8352b7d5397e90206085" compoundref="data__container_8c" startline="29" endline="42">prep_mask</references>
-        <references refid="data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1" compoundref="data__container_8c" startline="12">TxData</references>
+        <references refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" compoundref="data__container_8c" startline="12">TxData</references>
         <referencedby refid="main_8c_1ae9bbb2f5bb69f73e92c761f83223285a" compoundref="main_8c" startline="177" endline="329">run_all_tests</referencedby>
         <referencedby refid="main_8c_1a9c4bb6f6d00e76eae45e966a4c628178" compoundref="main_8c" startline="72" endline="97">test_print</referencedby>
+        <referencedby refid="com__utils_8c_1aed4e7ccb92f34e07bbb0839df8a7278f" compoundref="com__utils_8c" startline="137" endline="149">update_all_val_send</referencedby>
       </memberdef>
       <memberdef kind="function" id="data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -261,7 +270,7 @@ Recompose un entier 16 bits depuis deux octets. <parameterlist kind="param"><par
         <references refid="tag__manager_8h_1a5737e741608851f8e3822cf07261da44" compoundref="tag__manager_8c" startline="288" endline="298">get_tag_def</references>
         <references refid="struct_tag_def_1a894ffee63faf79f0877a12c871a18b3a" compoundref="tag__manager_8h" startline="17">TagDef::n_bits</references>
         <references refid="data__container_8c_1a66768c162c3a8352b7d5397e90206085" compoundref="data__container_8c" startline="29" endline="42">prep_mask</references>
-        <references refid="data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1" compoundref="data__container_8c" startline="12">TxData</references>
+        <references refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" compoundref="data__container_8c" startline="12">TxData</references>
         <referencedby refid="print__val_8h_1a6904e40665dc664fc6611bfe2d913773" compoundref="print__val_8c" startline="43" endline="56">print_all_data</referencedby>
         <referencedby refid="main_8c_1ae9bbb2f5bb69f73e92c761f83223285a" compoundref="main_8c" startline="177" endline="329">run_all_tests</referencedby>
       </memberdef>
@@ -397,7 +406,7 @@ Simule un envoi/reception CAN par copie buffer-a-buffer.</para>
         </inbodydescription>
         <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/data_container.h" line="58" column="6" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/scripts/sub_scripts/data_container.c" bodystart="24" bodyend="28" declfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/include/sub_include/data_container.h" declline="58" declcolumn="6"/>
         <references refid="config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1" compoundref="config__value_8h" startline="9">N_BYTES</references>
-        <references refid="data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1" compoundref="data__container_8c" startline="12">TxData</references>
+        <references refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" compoundref="data__container_8c" startline="12">TxData</references>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -411,10 +420,10 @@ Simule un envoi/reception CAN par copie buffer-a-buffer.</para>
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>
 <codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="tag__manager_8h" kindref="compound">tag_manager.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="6"><highlight class="normal"></highlight></codeline>
-<codeline lineno="7" refid="data__container_8h_1ab1e0c45daf869a5ff0a8c836629d657f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DATA_CONTAINER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DATA_CONTAINER_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="8"><highlight class="normal"></highlight></codeline>
 <codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Buffer<sp/>de<sp/>donnees<sp/>CAN<sp/>(payload<sp/>de<sp/>8<sp/>octets)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1" kindref="member">TxData</ref>[<ref refid="config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1" kindref="member">N_BYTES</ref>];<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref>[<ref refid="config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1" kindref="member">N_BYTES</ref>];<sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="11"><highlight class="normal"></highlight></codeline>
 <codeline lineno="15"><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="data__container_8h_1a129f017feb0712be1dcf7932e6035aa0" kindref="member">init_data_container</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>

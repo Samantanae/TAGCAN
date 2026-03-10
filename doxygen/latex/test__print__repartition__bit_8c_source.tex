@@ -1,0 +1,125 @@
+\doxysection{test\+\_\+print\+\_\+repartition\+\_\+bit.\+c}
+\hypertarget{test__print__repartition__bit_8c_source}{}\label{test__print__repartition__bit_8c_source}\index{test\_print\_repartition\_bit.c@{test\_print\_repartition\_bit.c}}
+\doxymbox{\hyperlink{test__print__repartition__bit_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00001}00001\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <unistd.h>}}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{gestion__tag_8h}{../../include/gestion\_tag.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{data__container_8h}{../../include/sub\_include/data\_container.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{print__val_8h}{../../include/sub\_include/print\_val.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00011}00011\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ contains\_text(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ haystack,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ needle)}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00012}00012\ \{}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00013}00013\ \ \ \ \ \textcolor{keywordflow}{return}\ strstr(haystack,\ needle)\ !=\ NULL;}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00014}00014\ \}}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00016}00016\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ capture\_print\_repartition\_output(\textcolor{keywordtype}{char}*\ out\_buf,\ \textcolor{keywordtype}{size\_t}\ out\_size)}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00017}00017\ \{}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00018}00018\ \ \ \ \ \textcolor{keywordtype}{int}\ pipefd[2];}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00019}00019\ \ \ \ \ \textcolor{keywordflow}{if}\ (pipe(pipefd)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00021}00021\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00023}00023\ \ \ \ \ fflush(stdout);}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00024}00024\ \ \ \ \ \textcolor{keywordtype}{int}\ saved\_stdout\ =\ dup(STDOUT\_FILENO);}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00025}00025\ \ \ \ \ \textcolor{keywordflow}{if}\ (saved\_stdout\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00026}00026\ \ \ \ \ \ \ \ \ close(pipefd[0]);}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00027}00027\ \ \ \ \ \ \ \ \ close(pipefd[1]);}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00029}00029\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00031}00031\ \ \ \ \ \textcolor{keywordflow}{if}\ (dup2(pipefd[1],\ STDOUT\_FILENO)\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00032}00032\ \ \ \ \ \ \ \ \ close(saved\_stdout);}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00033}00033\ \ \ \ \ \ \ \ \ close(pipefd[0]);}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00034}00034\ \ \ \ \ \ \ \ \ close(pipefd[1]);}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00035}00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00036}00036\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00038}00038\ \ \ \ \ close(pipefd[1]);}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00040}00040\ \ \ \ \ \doxymbox{\hyperlink{data__container_8h_a129f017feb0712be1dcf7932e6035aa0}{init\_data\_container}}();}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00041}00041\ \ \ \ \ \doxymbox{\hyperlink{gestion__tag_8h_aab50a8f567be72e656120fd71f3fb435}{init\_tag\_manager}}();}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00043}00043\ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{gestion__tag_8h_a7301f247665ed1c0504f27602b3cf012}{set\_tag}}(\textcolor{stringliteral}{"{}a1"{}},\ 2)\ <=\ 0\ ||}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00044}00044\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{gestion__tag_8h_a7301f247665ed1c0504f27602b3cf012}{set\_tag}}(\textcolor{stringliteral}{"{}agh5"{}},\ 5)\ <=\ 0\ ||}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00045}00045\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{gestion__tag_8h_a7301f247665ed1c0504f27602b3cf012}{set\_tag}}(\textcolor{stringliteral}{"{}patap"{}},\ 16)\ <=\ 0\ ||}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00046}00046\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{gestion__tag_8h_a7301f247665ed1c0504f27602b3cf012}{set\_tag}}(\textcolor{stringliteral}{"{}patat"{}},\ 12)\ <=\ 0\ ||}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00047}00047\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{gestion__tag_8h_a7301f247665ed1c0504f27602b3cf012}{set\_tag}}(\textcolor{stringliteral}{"{}uni1"{}},\ 1)\ <=\ 0\ ||}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00048}00048\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{gestion__tag_8h_a7301f247665ed1c0504f27602b3cf012}{set\_tag}}(\textcolor{stringliteral}{"{}triot"{}},\ 3)\ <=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00049}00049\ \ \ \ \ \ \ \ \ dup2(saved\_stdout,\ STDOUT\_FILENO);}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00050}00050\ \ \ \ \ \ \ \ \ close(saved\_stdout);}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00051}00051\ \ \ \ \ \ \ \ \ close(pipefd[0]);}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00053}00053\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00055}00055\ \ \ \ \ \doxymbox{\hyperlink{print__val_8h_a8ee4bb928c2cca54d191cf23edea60ec}{print\_repartition\_bit}}();}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00056}00056\ \ \ \ \ fflush(stdout);}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00058}00058\ \ \ \ \ \textcolor{keywordflow}{if}\ (dup2(saved\_stdout,\ STDOUT\_FILENO)\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00059}00059\ \ \ \ \ \ \ \ \ close(saved\_stdout);}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00060}00060\ \ \ \ \ \ \ \ \ close(pipefd[0]);}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00061}00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00062}00062\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00063}00063\ \ \ \ \ close(saved\_stdout);}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00065}00065\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ total\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00066}00066\ \ \ \ \ \textcolor{keywordflow}{while}\ (total\ +\ 1\ <\ out\_size)\ \{}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00067}00067\ \ \ \ \ \ \ \ \ ssize\_t\ n\ =\ read(pipefd[0],\ out\_buf\ +\ total,\ out\_size\ -\/\ total\ -\/\ 1);}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (n\ <=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00070}00070\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00071}00071\ \ \ \ \ \ \ \ \ total\ +=\ (size\_t)n;}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00072}00072\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00073}00073\ \ \ \ \ close(pipefd[0]);}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00074}00074\ \ \ \ \ out\_buf[total]\ =\ \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00076}00076\ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keywordtype}{int})total;}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00077}00077\ \}}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00079}\doxymbox{\hyperlink{test__print__repartition__bit_8c_a20f48ba928d5db34200d841b2f438a8a}{00079}}\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{test__print__repartition__bit_8c_a20f48ba928d5db34200d841b2f438a8a}{main\_\_}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00080}00080\ \{}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00081}00081\ \ \ \ \ \textcolor{keywordtype}{char}\ output[8192];}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00082}00082\ \ \ \ \ \textcolor{keywordtype}{int}\ n\ =\ capture\_print\_repartition\_output(output,\ \textcolor{keyword}{sizeof}(output));}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00083}00083\ \ \ \ \ \textcolor{keywordflow}{if}\ (n\ <=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00084}00084\ \ \ \ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}[FAIL]\ capture\ output\ failed\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00085}00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00086}00086\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00088}00088\ \ \ \ \ \textcolor{keywordflow}{if}\ (!contains\_text(output,\ \textcolor{stringliteral}{"{}===\ REPARTITION\ DES\ BITS\ DANS\ LA\ TRAME\ CAN\ ==="{}}))\ \{}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00089}00089\ \ \ \ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}[FAIL]\ header\ missing\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00090}00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00091}00091\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00093}00093\ \ \ \ \ \textcolor{keywordflow}{if}\ (!contains\_text(output,\ \textcolor{stringliteral}{"{}Legende\ des\ tags:"{}}))\ \{}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00094}00094\ \ \ \ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}[FAIL]\ legend\ title\ missing\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00095}00095\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00096}00096\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00098}00098\ \ \ \ \ \textcolor{keywordflow}{if}\ (!contains\_text(output,\ \textcolor{stringliteral}{"{}a1\ :\ [a]"{}})\ ||}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00099}00099\ \ \ \ \ \ \ \ \ !contains\_text(output,\ \textcolor{stringliteral}{"{}agh5\ :\ [b]"{}})\ ||}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00100}00100\ \ \ \ \ \ \ \ \ !contains\_text(output,\ \textcolor{stringliteral}{"{}patap\ :\ [c]"{}})\ ||}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00101}00101\ \ \ \ \ \ \ \ \ !contains\_text(output,\ \textcolor{stringliteral}{"{}patat\ :\ [d]"{}})\ ||}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00102}00102\ \ \ \ \ \ \ \ \ !contains\_text(output,\ \textcolor{stringliteral}{"{}uni1\ :\ [e]"{}})\ ||}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00103}00103\ \ \ \ \ \ \ \ \ !contains\_text(output,\ \textcolor{stringliteral}{"{}triot\ :\ [f]"{}}))\ \{}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00104}00104\ \ \ \ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}[FAIL]\ legend\ entries\ missing\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00105}00105\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00106}00106\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00108}00108\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \doxymbox{\hyperlink{config__value_8h_a470399f7b67e59b1cd04ab17e03c96d1}{N\_BYTES}};\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00109}00109\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ pattern[32];}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00110}00110\ \ \ \ \ \ \ \ \ snprintf(pattern,\ \textcolor{keyword}{sizeof}(pattern),\ \textcolor{stringliteral}{"{}\ [\%d]\ |\ "{}},\ i);}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00111}00111\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!contains\_text(output,\ pattern))\ \{}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}[FAIL]\ missing\ byte\ row:\ \%d\(\backslash\)n"{}},\ i);}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00114}00114\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00115}00115\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00117}00117\ \ \ \ \ printf(\textcolor{stringliteral}{"{}[PASS]\ print\_repartition\_bit:\ structure\ de\ sortie\ valide\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00118}00118\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{test__print__repartition__bit_8c_source_l00119}00119\ \}}
+
+\end{DoxyCode}

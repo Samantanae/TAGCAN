@@ -1,0 +1,258 @@
+\chapter{02 -\/ Gestion des Tags }
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s}{}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s}\index{02 -\/ Gestion des Tags@{02 -\/ Gestion des Tags}}
+\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_autotoc_md37}%
+\Hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_autotoc_md37}%
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_autotoc_md38}{}\doxysection{\texorpdfstring{Qu\textquotesingle{}est-\/ce qu\textquotesingle{}un tag ?}{Qu\textquotesingle{}est-\/ce qu\textquotesingle{}un tag ?}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_autotoc_md38}
+Un {\bfseries{tag}} est une variable nommée qui occupe une plage de bits dans le buffer CAN (Tx\+Data). C\textquotesingle{}est l\textquotesingle{}interface principale pour lire et écrire des données.
+
+{\bfseries{Analogie}} :\+ C\textquotesingle{}est comme des variables struct, mais mappées directement dans un buffer binaire.
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_autotoc_md40}{}\doxysection{\texorpdfstring{Créer un tag :\+ set\+\_\+tag()}{Créer un tag :\+ set\+\_\+tag()}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_autotoc_md40}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_autotoc_md41}{}\doxysubsection{\texorpdfstring{Prototype}{Prototype}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_autotoc_md41}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{gestion__tag_8h_a7301f247665ed1c0504f27602b3cf012}{set\_tag}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ tag\_name,\ uint8\_t\ n\_bit);}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_autotoc_md42}{}\doxysubsection{\texorpdfstring{Paramètres}{Paramètres}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_autotoc_md42}
+
+\begin{DoxyTable}{3}{}{}{1}
+\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Paramètre  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Type  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Description  \\
+{\ttfamily tag\+\_\+name}  &{\ttfamily const char\texorpdfstring{$\ast$}{*}}  &Nom unique du tag (ex. "{}\+SEQ"{}, "{}\+HB"{})  \\
+{\ttfamily n\+\_\+bit}  &{\ttfamily uint8\+\_\+t}  &Nombre de bits occupés (1 à 16)  \\
+\end{DoxyTable}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_autotoc_md43}{}\doxysubsection{\texorpdfstring{Valeur de retour}{Valeur de retour}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_autotoc_md43}
+Consulter {\ttfamily \doxylink{_a_p_i___r_e_f_e_r_e_n_c_e_8md}{documentation/\+\+API\+\_\+\+REFERENCE.\+md}} pour les codes d\textquotesingle{}erreur.\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_autotoc_md44}{}\doxysubsection{\texorpdfstring{Exemples}{Exemples}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_autotoc_md44}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Initialisation\ des\ tags\ (dans\ CAN\_setup\_TAG())}}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{com__utils_8c_a91524acc09c84cf5aa22222e3eee50f5}{CAN\_setup\_TAG}}(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{gestion__tag_8h_a7301f247665ed1c0504f27602b3cf012}{set\_tag}}(\textcolor{stringliteral}{"{}SEQ"{}},\ 3);\ \ \ \ \ \ \ \ \textcolor{comment}{//\ 3\ bits\ pour\ numéro\ séquence}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{gestion__tag_8h_a7301f247665ed1c0504f27602b3cf012}{set\_tag}}(\textcolor{stringliteral}{"{}HB"{}},\ 1);\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 1\ bit\ pour\ watchdog}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{gestion__tag_8h_a7301f247665ed1c0504f27602b3cf012}{set\_tag}}(\textcolor{stringliteral}{"{}CI"{}},\ 2);\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 2\ bits\ pour\ continuité}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{gestion__tag_8h_a7301f247665ed1c0504f27602b3cf012}{set\_tag}}(\textcolor{stringliteral}{"{}AB"{}},\ 7);\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 7\ bits\ pour\ batterie\ (0-\/100\%)}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{gestion__tag_8h_a7301f247665ed1c0504f27602b3cf012}{set\_tag}}(\textcolor{stringliteral}{"{}N2OPS"{}},\ 16);\ \ \ \ \ \textcolor{comment}{//\ 16\ bits\ pour\ pression\ (0-\/65535\ Pa)}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{gestion__tag_8h_a7301f247665ed1c0504f27602b3cf012}{set\_tag}}(\textcolor{stringliteral}{"{}TIME"{}},\ 16);\ \ \ \ \ \ \textcolor{comment}{//\ 16\ bits\ pour\ timestamp\ (0-\/65535\ ms)}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_autotoc_md46}{}\doxysection{\texorpdfstring{Écrire une valeur :\+ set\+\_\+value()}{Écrire une valeur :\+ set\+\_\+value()}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_autotoc_md46}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_autotoc_md47}{}\doxysubsection{\texorpdfstring{Prototype}{Prototype}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_autotoc_md47}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{data__container_8h_aa84538f1ab0c319056787e9674157405}{set\_value}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ tag\_name,\ uint32\_t\ value);}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_autotoc_md48}{}\doxysubsection{\texorpdfstring{Paramètres}{Paramètres}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_autotoc_md48}
+
+\begin{DoxyTable}{3}{}{}{1}
+\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Paramètre  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Type  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Description  \\
+{\ttfamily tag\+\_\+name}  &{\ttfamily const char\texorpdfstring{$\ast$}{*}}  &Nom du tag à modifier  \\
+{\ttfamily value}  &{\ttfamily uint32\+\_\+t}  &Nouvelle valeur à écrire  \\
+\end{DoxyTable}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_autotoc_md49}{}\doxysubsection{\texorpdfstring{Valeur de retour}{Valeur de retour}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_autotoc_md49}
+
+\begin{DoxyItemize}
+\item {\bfseries{CAN\+\_\+\+TG\+\_\+\+SUCCESS}} (0) -\/ Succès
+\item {\bfseries{CAN\+\_\+\+TG\+\_\+\+ERROR\+\_\+\+VALUE\+\_\+\+TO\+\_\+\+BIG}} -\/ La valeur dépasse les {\ttfamily n\+\_\+bit} bits du tag
+\item Autres codes d\textquotesingle{}erreur -\/ Tag non trouvé, etc.
+\end{DoxyItemize}\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_autotoc_md50}{}\doxysubsection{\texorpdfstring{Comportement important}{Comportement important}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_autotoc_md50}
+{\bfseries{La valeur est tronquée si elle dépasse la capacité du tag.}}
+
+Par exemple :\+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\doxymbox{\hyperlink{gestion__tag_8h_a7301f247665ed1c0504f27602b3cf012}{set\_tag}}(\textcolor{stringliteral}{"{}SEQ"{}},\ 3);\ \ \ \ \ \ \textcolor{comment}{//\ 3\ bits\ -\/>\ plage\ 0\ à\ 7}}
+\DoxyCodeLine{\doxymbox{\hyperlink{data__container_8h_aa84538f1ab0c319056787e9674157405}{set\_value}}(\textcolor{stringliteral}{"{}SEQ"{}},\ 10);\ \ \ \textcolor{comment}{//\ \ Erreur\ :\ 10\ >\ 2\string^3\ -\/\ 1\ =\ 7}}
+\DoxyCodeLine{\doxymbox{\hyperlink{data__container_8h_aa84538f1ab0c319056787e9674157405}{set\_value}}(\textcolor{stringliteral}{"{}SEQ"{}},\ 5);\ \ \ \ \textcolor{comment}{//\ \ Ok\ :\ écrit\ 0b101}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_autotoc_md51}{}\doxysubsection{\texorpdfstring{Exemples d\textquotesingle{}utilisation}{Exemples d\textquotesingle{}utilisation}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_autotoc_md51}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Dans\ la\ boucle\ principale\ ou\ handler}}
+\DoxyCodeLine{\textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ seq\_counter\ =\ 0;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ update\_telemetry(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Incrémenter\ et\ envoyer\ le\ numéro\ de\ séquence}}
+\DoxyCodeLine{\ \ \ \ seq\_counter\ =\ (seq\_counter\ +\ 1)\ \%\ 8;\ \ \textcolor{comment}{//\ Cycle\ avec\ 3\ bits\ (0-\/7)}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}(\doxymbox{\hyperlink{data__container_8h_aa84538f1ab0c319056787e9674157405}{set\_value}}(\textcolor{stringliteral}{"{}SEQ"{}},\ seq\_counter)\ !=\ \doxymbox{\hyperlink{config__value_8h_af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3}{CAN\_TG\_SUCCESS}})\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Erreur...}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Envoyer\ le\ statut\ batterie}}
+\DoxyCodeLine{\ \ \ \ uint8\_t\ battery\_percent\ =\ read\_battery();\ \ \textcolor{comment}{//\ 0-\/100}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}(\doxymbox{\hyperlink{data__container_8h_aa84538f1ab0c319056787e9674157405}{set\_value}}(\textcolor{stringliteral}{"{}AB"{}},\ battery\_percent)\ !=\ \doxymbox{\hyperlink{config__value_8h_af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3}{CAN\_TG\_SUCCESS}})\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Erreur...}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Envoyer\ une\ pression}}
+\DoxyCodeLine{\ \ \ \ uint16\_t\ pressure\ =\ read\_sensor();\ \ \textcolor{comment}{//\ 0-\/65535}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}(\doxymbox{\hyperlink{data__container_8h_aa84538f1ab0c319056787e9674157405}{set\_value}}(\textcolor{stringliteral}{"{}N2OPS"{}},\ pressure)\ !=\ \doxymbox{\hyperlink{config__value_8h_af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3}{CAN\_TG\_SUCCESS}})\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Erreur...}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Envoyer\ le\ timestamp}}
+\DoxyCodeLine{\ \ \ \ uint16\_t\ time\_ms\ =\ get\_timestamp();}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{data__container_8h_aa84538f1ab0c319056787e9674157405}{set\_value}}(\textcolor{stringliteral}{"{}TIME"{}},\ time\_ms);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_autotoc_md53}{}\doxysection{\texorpdfstring{Lire une valeur :\+ get\+\_\+value()}{Lire une valeur :\+ get\+\_\+value()}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_autotoc_md53}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_autotoc_md54}{}\doxysubsection{\texorpdfstring{Prototype}{Prototype}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_autotoc_md54}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{data__container_8h_a66cbaaa79a2ba3c2c7912514c1dc805f}{get\_value}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ tag\_name,\ uint32\_t*\ out\_value);}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_autotoc_md55}{}\doxysubsection{\texorpdfstring{Paramètres}{Paramètres}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_autotoc_md55}
+
+\begin{DoxyTable}{3}{}{}{1}
+\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Paramètre  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Type  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Description  \\
+{\ttfamily tag\+\_\+name}  &{\ttfamily const char\texorpdfstring{$\ast$}{*}}  &Nom du tag à lire  \\
+{\ttfamily out\+\_\+value}  &{\ttfamily uint32\+\_\+t\texorpdfstring{$\ast$}{*}}  &Pointeur vers variable de sortie  \\
+\end{DoxyTable}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_autotoc_md56}{}\doxysubsection{\texorpdfstring{Valeur de retour}{Valeur de retour}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_autotoc_md56}
+
+\begin{DoxyItemize}
+\item {\bfseries{CAN\+\_\+\+TG\+\_\+\+SUCCESS}} (0) -\/ Succès, {\ttfamily \texorpdfstring{$\ast$}{*}out\+\_\+value} est valide
+\item Négatif -\/ Code d\textquotesingle{}erreur
+\end{DoxyItemize}\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_autotoc_md57}{}\doxysubsection{\texorpdfstring{Exemples}{Exemples}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_autotoc_md57}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{uint32\_t\ val\_seq;}
+\DoxyCodeLine{\textcolor{keywordflow}{if}(\doxymbox{\hyperlink{data__container_8h_a66cbaaa79a2ba3c2c7912514c1dc805f}{get\_value}}(\textcolor{stringliteral}{"{}SEQ"{}},\ \&val\_seq)\ ==\ \doxymbox{\hyperlink{config__value_8h_af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3}{CAN\_TG\_SUCCESS}})\ \{}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}Séquence:\ \%u\(\backslash\)n"{}},\ val\_seq);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{uint32\_t\ val\_battery;}
+\DoxyCodeLine{\textcolor{keywordflow}{if}(\doxymbox{\hyperlink{data__container_8h_a66cbaaa79a2ba3c2c7912514c1dc805f}{get\_value}}(\textcolor{stringliteral}{"{}AB"{}},\ \&val\_battery)\ ==\ \doxymbox{\hyperlink{config__value_8h_af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3}{CAN\_TG\_SUCCESS}})\ \{}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}Batterie:\ \%u\ \%\%\(\backslash\)n"{}},\ val\_battery);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{uint32\_t\ val\_pressure;}
+\DoxyCodeLine{\textcolor{keywordflow}{if}(\doxymbox{\hyperlink{data__container_8h_a66cbaaa79a2ba3c2c7912514c1dc805f}{get\_value}}(\textcolor{stringliteral}{"{}N2OPS"{}},\ \&val\_pressure)\ ==\ \doxymbox{\hyperlink{config__value_8h_af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3}{CAN\_TG\_SUCCESS}})\ \{}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}Pression\ N2O:\ \%u\ Pa\(\backslash\)n"{}},\ val\_pressure);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_autotoc_md59}{}\doxysection{\texorpdfstring{Workflow complet :\+ set /\+ get /\+ send}{Workflow complet :\+ set /\+ get /\+ send}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_autotoc_md59}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_autotoc_md60}{}\doxysubsection{\texorpdfstring{Scénario d\textquotesingle{}exemple}{Scénario d\textquotesingle{}exemple}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_autotoc_md60}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_t_a_g_c_a_n_8h}{TAGCAN.h}}"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}stm32f1xx\_hal.h"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{CAN\_HandleTypeDef\ \doxymbox{\hyperlink{com__utils_8h_ae21c10daa2f8cbd18a0e66bb28a19d2d}{hcan}};}
+\DoxyCodeLine{uint8\_t\ \doxymbox{\hyperlink{com__utils_8h_af553c31425b32bd9c020380c942ed3bd}{TxData}}[8];}
+\DoxyCodeLine{CAN\_TxHeaderTypeDef\ \doxymbox{\hyperlink{com__utils_8c_a3e35a666d459f2ac92fc7c35334ff0ff}{TxHeader}};}
+\DoxyCodeLine{int32\_t\ \doxymbox{\hyperlink{com__utils_8c_afd0a914dd50d7aa3607d092452037cc1}{TxMailbox}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Étape\ 1:\ Initialisation\ (une\ fois\ au\ démarrage)}}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ init\_system(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{com__utils_8c_adf9124e89f799fae0f55cc9ed0a94189}{init\_com}}();\ \ \textcolor{comment}{//\ Appelle\ init\_data\_container(),\ init\_tag\_manager(),\ set\_tag(),\ etc.}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Étape\ 2:\ Boucle\ de\ mise\ à\ jour\ périodique}}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ periodic\_10ms\_task(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ uint8\_t\ seq\ =\ 0;}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Préparer\ les\ données}}
+\DoxyCodeLine{\ \ \ \ seq\ =\ (seq\ +\ 1)\ \%\ 8;}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{data__container_8h_aa84538f1ab0c319056787e9674157405}{set\_value}}(\textcolor{stringliteral}{"{}SEQ"{}},\ seq);}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{data__container_8h_aa84538f1ab0c319056787e9674157405}{set\_value}}(\textcolor{stringliteral}{"{}HB"{}},\ 1);\ \ \textcolor{comment}{//\ Heartbeat\ actif}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{data__container_8h_aa84538f1ab0c319056787e9674157405}{set\_value}}(\textcolor{stringliteral}{"{}AB"{}},\ read\_adc\_battery());}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{data__container_8h_aa84538f1ab0c319056787e9674157405}{set\_value}}(\textcolor{stringliteral}{"{}EDC"{}},\ get\_command\_state());}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{data__container_8h_aa84538f1ab0c319056787e9674157405}{set\_value}}(\textcolor{stringliteral}{"{}TIME"{}},\ HAL\_GetTick());}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Envoyer\ le\ frame\ CAN}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}(HAL\_CAN\_AddTxMessage(\&\doxymbox{\hyperlink{com__utils_8h_ae21c10daa2f8cbd18a0e66bb28a19d2d}{hcan}},\ \&\doxymbox{\hyperlink{com__utils_8c_a3e35a666d459f2ac92fc7c35334ff0ff}{TxHeader}},\ \doxymbox{\hyperlink{com__utils_8h_af553c31425b32bd9c020380c942ed3bd}{TxData}},\ \&\doxymbox{\hyperlink{com__utils_8c_afd0a914dd50d7aa3607d092452037cc1}{TxMailbox}})\ !=\ HAL\_OK)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Erreur\ d'envoi...}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Étape\ 3:\ Callback\ de\ réception\ (déclenchée\ par\ interruption)}}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{com__utils_8c_a7368d39e78009c017d6f81ccf33b9b2c}{HAL\_CAN\_RxFifo0MsgPendingCallback}}(CAN\_HandleTypeDef\ *\doxymbox{\hyperlink{com__utils_8h_ae21c10daa2f8cbd18a0e66bb28a19d2d}{hcan}})\ \{}
+\DoxyCodeLine{\ \ \ \ CAN\_RxHeaderTypeDef\ \doxymbox{\hyperlink{com__utils_8c_a6ee6e13063b860648180eea65852cc71}{RxHeader}};}
+\DoxyCodeLine{\ \ \ \ uint8\_t\ \doxymbox{\hyperlink{com__utils_8c_a14629afcc7f0b2d62c2b617b07d98184}{RxData}}[8];}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Recevoir\ le\ mensaje}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}(HAL\_CAN\_GetRxMessage(\doxymbox{\hyperlink{com__utils_8h_ae21c10daa2f8cbd18a0e66bb28a19d2d}{hcan}},\ CAN\_RX\_FIFO0,\ \&\doxymbox{\hyperlink{com__utils_8c_a6ee6e13063b860648180eea65852cc71}{RxHeader}},\ \doxymbox{\hyperlink{com__utils_8c_a14629afcc7f0b2d62c2b617b07d98184}{RxData}})\ ==\ HAL\_OK)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Copier\ dans\ le\ buffer\ de\ TAGCAN}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \doxymbox{\hyperlink{data__container_8h_ae1649807202241b28239e8cb212a18b6}{can\_simulate\_send\_receive}}(\doxymbox{\hyperlink{com__utils_8c_a14629afcc7f0b2d62c2b617b07d98184}{RxData}},\ NULL);\ \ \textcolor{comment}{//\ ou\ autre\ traitement}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Lire\ les\ valeurs\ reçues}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ uint32\_t\ remote\_seq,\ remote\_battery;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \doxymbox{\hyperlink{data__container_8h_a66cbaaa79a2ba3c2c7912514c1dc805f}{get\_value}}(\textcolor{stringliteral}{"{}SEQ"{}},\ \&remote\_seq);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \doxymbox{\hyperlink{data__container_8h_a66cbaaa79a2ba3c2c7912514c1dc805f}{get\_value}}(\textcolor{stringliteral}{"{}AB"{}},\ \&remote\_battery);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Nœud\ distant:\ SEQ=\%u,\ Batterie=\%u\%\%\(\backslash\)n"{}},\ remote\_seq,\ remote\_battery);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{main_8c_a840291bc02cba5474a4cb46a9b9566fe}{main}}(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{\ \ \ \ HAL\_Init();}
+\DoxyCodeLine{\ \ \ \ MX\_CAN\_Init();}
+\DoxyCodeLine{\ \ \ \ init\_system();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{while}(1)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ periodic\_10ms\_task();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ ...}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_autotoc_md62}{}\doxysection{\texorpdfstring{Bonnes pratiques}{Bonnes pratiques}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_autotoc_md62}
+
+\begin{DoxyTable}{2}{}{}{1}
+\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}À faire  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}À éviter  \\
+Vérifier la valeur de retour de {\ttfamily \doxylink{data__container_8h_aa84538f1ab0c319056787e9674157405}{set\+\_\+value()}}  &Ignorer les codes d\textquotesingle{}erreur  \\
+Vérifier la valeur de retour de {\ttfamily \doxylink{data__container_8h_a66cbaaa79a2ba3c2c7912514c1dc805f}{get\+\_\+value()}}  &Utiliser {\ttfamily out\+\_\+value} sans vérification  \\
+Nommer les tags de façon explicite  &Utiliser des noms génériques ("{}\+VAL1"{}, "{}\+VAL2"{})  \\
+Dimensionner les tags selon les besoins  &Allouer trop de bits (gaspillage)  \\
+Prévoir le cycle des valeurs (ex:\+ seq 0-\/7 avec 3 bits)  &Dépasser la limite d\textquotesingle{}un tag sans gérer  \\
+Documenter votre schéma de tags  &Laisser du code sans commentaires  \\
+\end{DoxyTable}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_autotoc_md64}{}\doxysection{\texorpdfstring{Schéma de tags recommandé}{Schéma de tags recommandé}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_autotoc_md64}
+Pour un système similaire à l\textquotesingle{}exemple, structurez les tags comme ceci en commentaire :\+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{/*}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ SCHÉMA\ DE\ TAGS\ CAN\ (ID\ 0x123)}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ ══════════════════════════════════════════════════════════════}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Byte\ 0:\ [HB(1)\ |\ SEQ(3)\ |\ CI(2)\ |\ XX(2)]}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Byte\ 1:\ [AB(7)\ |\ YY(1)]}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Byte\ 2-\/3:\ [EDC(4)\ |\ PADDING(12)]}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Byte\ 4-\/5:\ [N2OPS(16)]\ \ \ \ \ \ \ -\/-\/\ Pression\ N2O\ (Pa)}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Byte\ 6-\/7:\ [TLC(12)\ |\ N2ODVS(1)\ |\ N2OIV(1)\ |\ N2OMV(1)\ |\ XX(1)]}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Total:\ 15\ bits\ utilisés,\ reste\ pour\ extension}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+
+
+Voir aussi :\+
+\begin{DoxyItemize}
+\item \doxysectlink{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_203___d_o_n_n_e_e_s___c_a_n}{03\+\_\+\+DONNEES\+\_\+\+CAN.md}{0} -\/ Utilisation avancée du buffer
+\item \doxysectlink{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33}{05\+\_\+\+EXEMPLES\+\_\+\+COMPLETS.md}{0} -\/ Exemples concrets 
+\end{DoxyItemize}

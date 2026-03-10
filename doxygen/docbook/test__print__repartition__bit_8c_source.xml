@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_test__print__repartition__bit_8c_source" xml:lang="en-US">
+<title>test_print_repartition_bit.c</title>
+<indexterm><primary>test_print_repartition_bit.c</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_test__print__repartition__bit_8c_source_1l00001"/>00001 <emphasis role="preprocessor">#include&#32;&lt;stdio.h&gt;</emphasis>
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00002"/>00002 <emphasis role="preprocessor">#include&#32;&lt;stdint.h&gt;</emphasis>
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00003"/>00003 <emphasis role="preprocessor">#include&#32;&lt;stdlib.h&gt;</emphasis>
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00004"/>00004 <emphasis role="preprocessor">#include&#32;&lt;string.h&gt;</emphasis>
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00005"/>00005 <emphasis role="preprocessor">#include&#32;&lt;unistd.h&gt;</emphasis>
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00006"/>00006 
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00007"/>00007 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_gestion__tag_8h">../../include/gestion_tag.h</link>&quot;</emphasis>
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00008"/>00008 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_data__container_8h">../../include/sub_include/data_container.h</link>&quot;</emphasis>
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00009"/>00009 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_print__val_8h">../../include/sub_include/print_val.h</link>&quot;</emphasis>
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00010"/>00010 
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00011"/>00011 <emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;contains_text(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;haystack,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;needle)
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00012"/>00012 {
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00013"/>00013 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;strstr(haystack,&#32;needle)&#32;!=&#32;NULL;
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00014"/>00014 }
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00015"/>00015 
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00016"/>00016 <emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;capture_print_repartition_output(<emphasis role="keywordtype">char</emphasis>*&#32;out_buf,&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;out_size)
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00017"/>00017 {
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00018"/>00018 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;pipefd[2];
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00019"/>00019 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(pipe(pipefd)&#32;!=&#32;0)&#32;{
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00020"/>00020 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;-1;
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00021"/>00021 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00022"/>00022 
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00023"/>00023 &#32;&#32;&#32;&#32;fflush(stdout);
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00024"/>00024 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;saved_stdout&#32;=&#32;dup(STDOUT_FILENO);
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00025"/>00025 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(saved_stdout&#32;&lt;&#32;0)&#32;{
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00026"/>00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;close(pipefd[0]);
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;close(pipefd[1]);
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00028"/>00028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;-1;
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00029"/>00029 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00030"/>00030 
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00031"/>00031 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(dup2(pipefd[1],&#32;STDOUT_FILENO)&#32;&lt;&#32;0)&#32;{
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00032"/>00032 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;close(saved_stdout);
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00033"/>00033 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;close(pipefd[0]);
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;close(pipefd[1]);
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00035"/>00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;-1;
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00036"/>00036 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00037"/>00037 
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00038"/>00038 &#32;&#32;&#32;&#32;close(pipefd[1]);
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00039"/>00039 
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00040"/>00040 &#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1a129f017feb0712be1dcf7932e6035aa0">init_data_container</link>();
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00041"/>00041 &#32;&#32;&#32;&#32;<link linkend="_gestion__tag_8h_1aab50a8f567be72e656120fd71f3fb435">init_tag_manager</link>();
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00042"/>00042 
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00043"/>00043 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(<emphasis role="stringliteral">&quot;a1&quot;</emphasis>,&#32;2)&#32;&lt;=&#32;0&#32;||
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00044"/>00044 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(<emphasis role="stringliteral">&quot;agh5&quot;</emphasis>,&#32;5)&#32;&lt;=&#32;0&#32;||
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00045"/>00045 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(<emphasis role="stringliteral">&quot;patap&quot;</emphasis>,&#32;16)&#32;&lt;=&#32;0&#32;||
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00046"/>00046 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(<emphasis role="stringliteral">&quot;patat&quot;</emphasis>,&#32;12)&#32;&lt;=&#32;0&#32;||
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00047"/>00047 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(<emphasis role="stringliteral">&quot;uni1&quot;</emphasis>,&#32;1)&#32;&lt;=&#32;0&#32;||
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00048"/>00048 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(<emphasis role="stringliteral">&quot;triot&quot;</emphasis>,&#32;3)&#32;&lt;=&#32;0)&#32;{
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00049"/>00049 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;dup2(saved_stdout,&#32;STDOUT_FILENO);
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00050"/>00050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;close(saved_stdout);
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00051"/>00051 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;close(pipefd[0]);
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00052"/>00052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;-1;
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00053"/>00053 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00054"/>00054 
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00055"/>00055 &#32;&#32;&#32;&#32;<link linkend="_print__val_8h_1a8ee4bb928c2cca54d191cf23edea60ec">print_repartition_bit</link>();
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00056"/>00056 &#32;&#32;&#32;&#32;fflush(stdout);
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00057"/>00057 
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00058"/>00058 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(dup2(saved_stdout,&#32;STDOUT_FILENO)&#32;&lt;&#32;0)&#32;{
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00059"/>00059 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;close(saved_stdout);
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00060"/>00060 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;close(pipefd[0]);
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00061"/>00061 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;-1;
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00062"/>00062 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00063"/>00063 &#32;&#32;&#32;&#32;close(saved_stdout);
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00064"/>00064 
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00065"/>00065 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;total&#32;=&#32;0;
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00066"/>00066 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;(total&#32;+&#32;1&#32;&lt;&#32;out_size)&#32;{
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00067"/>00067 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ssize_t&#32;n&#32;=&#32;read(pipefd[0],&#32;out_buf&#32;+&#32;total,&#32;out_size&#32;-&#32;total&#32;-&#32;1);
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00068"/>00068 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(n&#32;&lt;=&#32;0)&#32;{
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00069"/>00069 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00070"/>00070 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00071"/>00071 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;total&#32;+=&#32;(size_t)n;
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00072"/>00072 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00073"/>00073 &#32;&#32;&#32;&#32;close(pipefd[0]);
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00074"/>00074 &#32;&#32;&#32;&#32;out_buf[total]&#32;=&#32;<emphasis role="charliteral">&apos;\0&apos;</emphasis>;
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00075"/>00075 
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00076"/>00076 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>)total;
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00077"/>00077 }
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00078"/>00078 
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00079"/><link linkend="_test__print__repartition__bit_8c_1a20f48ba928d5db34200d841b2f438a8a">00079</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_test__print__repartition__bit_8c_1a20f48ba928d5db34200d841b2f438a8a">main__</link>(<emphasis role="keywordtype">void</emphasis>)
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00080"/>00080 {
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00081"/>00081 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;output[8192];
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00082"/>00082 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;n&#32;=&#32;capture_print_repartition_output(output,&#32;<emphasis role="keyword">sizeof</emphasis>(output));
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00083"/>00083 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(n&#32;&lt;=&#32;0)&#32;{
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00084"/>00084 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fprintf(stderr,&#32;<emphasis role="stringliteral">&quot;[FAIL]&#32;capture&#32;output&#32;failed\n&quot;</emphasis>);
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00085"/>00085 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;1;
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00086"/>00086 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00087"/>00087 
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00088"/>00088 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!contains_text(output,&#32;<emphasis role="stringliteral">&quot;===&#32;REPARTITION&#32;DES&#32;BITS&#32;DANS&#32;LA&#32;TRAME&#32;CAN&#32;===&quot;</emphasis>))&#32;{
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00089"/>00089 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fprintf(stderr,&#32;<emphasis role="stringliteral">&quot;[FAIL]&#32;header&#32;missing\n&quot;</emphasis>);
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00090"/>00090 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;1;
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00091"/>00091 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00092"/>00092 
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00093"/>00093 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!contains_text(output,&#32;<emphasis role="stringliteral">&quot;Legende&#32;des&#32;tags:&quot;</emphasis>))&#32;{
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00094"/>00094 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fprintf(stderr,&#32;<emphasis role="stringliteral">&quot;[FAIL]&#32;legend&#32;title&#32;missing\n&quot;</emphasis>);
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00095"/>00095 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;1;
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00096"/>00096 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00097"/>00097 
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00098"/>00098 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!contains_text(output,&#32;<emphasis role="stringliteral">&quot;a1&#32;:&#32;[a]&quot;</emphasis>)&#32;||
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00099"/>00099 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;!contains_text(output,&#32;<emphasis role="stringliteral">&quot;agh5&#32;:&#32;[b]&quot;</emphasis>)&#32;||
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00100"/>00100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;!contains_text(output,&#32;<emphasis role="stringliteral">&quot;patap&#32;:&#32;[c]&quot;</emphasis>)&#32;||
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00101"/>00101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;!contains_text(output,&#32;<emphasis role="stringliteral">&quot;patat&#32;:&#32;[d]&quot;</emphasis>)&#32;||
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00102"/>00102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;!contains_text(output,&#32;<emphasis role="stringliteral">&quot;uni1&#32;:&#32;[e]&quot;</emphasis>)&#32;||
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00103"/>00103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;!contains_text(output,&#32;<emphasis role="stringliteral">&quot;triot&#32;:&#32;[f]&quot;</emphasis>))&#32;{
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00104"/>00104 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fprintf(stderr,&#32;<emphasis role="stringliteral">&quot;[FAIL]&#32;legend&#32;entries&#32;missing\n&quot;</emphasis>);
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00105"/>00105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;1;
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00106"/>00106 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00107"/>00107 
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00108"/>00108 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;<link linkend="_config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1">N_BYTES</link>;&#32;i++)&#32;{
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00109"/>00109 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;pattern[32];
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00110"/>00110 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;snprintf(pattern,&#32;<emphasis role="keyword">sizeof</emphasis>(pattern),&#32;<emphasis role="stringliteral">&quot;&#32;[%d]&#32;|&#32;&quot;</emphasis>,&#32;i);
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00111"/>00111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!contains_text(output,&#32;pattern))&#32;{
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00112"/>00112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fprintf(stderr,&#32;<emphasis role="stringliteral">&quot;[FAIL]&#32;missing&#32;byte&#32;row:&#32;%d\n&quot;</emphasis>,&#32;i);
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00113"/>00113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;1;
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00114"/>00114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00115"/>00115 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00116"/>00116 
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00117"/>00117 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;[PASS]&#32;print_repartition_bit:&#32;structure&#32;de&#32;sortie&#32;valide\n&quot;</emphasis>);
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00118"/>00118 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="_test__print__repartition__bit_8c_source_1l00119"/>00119 }
+</programlisting></section>

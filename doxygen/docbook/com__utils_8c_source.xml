@@ -1,0 +1,194 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_com__utils_8c_source" xml:lang="en-US">
+<title>com_utils.c</title>
+<indexterm><primary>com_utils.c</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_com__utils_8c_source_1l00001"/>00001 <emphasis role="comment">/*</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00002"/>00002 <emphasis role="comment">&#32;*&#32;com_utils.c</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00003"/>00003 <emphasis role="comment">&#32;*</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00004"/>00004 <emphasis role="comment">&#32;*&#32;&#32;Created&#32;on:&#32;4&#32;Mar&#32;2026</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00005"/>00005 <emphasis role="comment">&#32;*&#32;&#32;&#32;&#32;&#32;&#32;Author:&#32;Samuel</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00006"/>00006 <emphasis role="comment">&#32;*/</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00007"/>00007 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_com__utils_8h">com_utils.h</link>&quot;</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00008"/>00008 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_data__container_8h">../../TAGCAN/include/sub_include/data_container.h</link>&quot;</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00009"/><link linkend="_com__utils_8c_1a3e35a666d459f2ac92fc7c35334ff0ff">00009</link> CAN_TxHeaderTypeDef&#32;<link linkend="_com__utils_8c_1a3e35a666d459f2ac92fc7c35334ff0ff">TxHeader</link>;
+<anchor xml:id="_com__utils_8c_source_1l00010"/><link linkend="_com__utils_8c_1a6ee6e13063b860648180eea65852cc71">00010</link> CAN_RxHeaderTypeDef&#32;<link linkend="_com__utils_8c_1a6ee6e13063b860648180eea65852cc71">RxHeader</link>;
+<anchor xml:id="_com__utils_8c_source_1l00011"/>00011 
+<anchor xml:id="_com__utils_8c_source_1l00012"/>00012 CAN_RxHeaderTypeDef&#32;<link linkend="_com__utils_8c_1a6ee6e13063b860648180eea65852cc71">RxHeader</link>;
+<anchor xml:id="_com__utils_8c_source_1l00013"/><link linkend="_com__utils_8c_1a14629afcc7f0b2d62c2b617b07d98184">00013</link> uint8_t&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_com__utils_8c_1a14629afcc7f0b2d62c2b617b07d98184">RxData</link>[8];
+<anchor xml:id="_com__utils_8c_source_1l00014"/>00014 
+<anchor xml:id="_com__utils_8c_source_1l00015"/>00015 <emphasis role="comment">//&#32;valeurs</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00016"/><link linkend="_com__utils_8c_1a2bf70f5aaf32f6470e208580dc8bed7b">00016</link> int8_t&#32;<link linkend="_com__utils_8c_1a2bf70f5aaf32f6470e208580dc8bed7b">val_SEQ</link>&#32;=&#32;0;
+<anchor xml:id="_com__utils_8c_source_1l00017"/><link linkend="_com__utils_8c_1ad007767ce463586424d87bdafe0ae84a">00017</link> int8_t&#32;<link linkend="_com__utils_8c_1ad007767ce463586424d87bdafe0ae84a">val_HB</link>&#32;=&#32;0;
+<anchor xml:id="_com__utils_8c_source_1l00018"/><link linkend="_com__utils_8c_1a6ad8282033ebc654142cd71d2633ab3a">00018</link> int8_t&#32;<link linkend="_com__utils_8c_1a6ad8282033ebc654142cd71d2633ab3a">val_CI</link>&#32;=&#32;0;
+<anchor xml:id="_com__utils_8c_source_1l00019"/><link linkend="_com__utils_8c_1a563c97929d53dfd65c6722da474e57de">00019</link> int8_t&#32;<link linkend="_com__utils_8c_1a563c97929d53dfd65c6722da474e57de">val_AB</link>&#32;=&#32;0;
+<anchor xml:id="_com__utils_8c_source_1l00020"/><link linkend="_com__utils_8c_1a0d03ea68010339af49c95b45d72f1584">00020</link> int8_t&#32;<link linkend="_com__utils_8c_1a0d03ea68010339af49c95b45d72f1584">val_EDC</link>&#32;=&#32;0;
+<anchor xml:id="_com__utils_8c_source_1l00021"/><link linkend="_com__utils_8c_1a52e20247890d4a078c8bf6e27a7d9cdb">00021</link> int16_t&#32;<link linkend="_com__utils_8c_1a52e20247890d4a078c8bf6e27a7d9cdb">val_N2OPS</link>&#32;=&#32;0;
+<anchor xml:id="_com__utils_8c_source_1l00022"/><link linkend="_com__utils_8c_1af54835c185cf3ea1e1fd9db7a178d5b4">00022</link> int16_t&#32;<link linkend="_com__utils_8c_1af54835c185cf3ea1e1fd9db7a178d5b4">val_TLC</link>&#32;=&#32;0;
+<anchor xml:id="_com__utils_8c_source_1l00023"/><link linkend="_com__utils_8c_1aa2826abd1636498ecf600da3165d5a5a">00023</link> int8_t&#32;<link linkend="_com__utils_8c_1aa2826abd1636498ecf600da3165d5a5a">val_N2ODVS</link>&#32;=&#32;0;
+<anchor xml:id="_com__utils_8c_source_1l00024"/><link linkend="_com__utils_8c_1a686cd636907dfc59d7490e9a1289d63e">00024</link> int8_t&#32;<link linkend="_com__utils_8c_1a686cd636907dfc59d7490e9a1289d63e">val_N2OIV</link>&#32;=&#32;0;
+<anchor xml:id="_com__utils_8c_source_1l00025"/><link linkend="_com__utils_8c_1aa862edfd1ccb9792c7450773c3a8acdc">00025</link> int8_t&#32;<link linkend="_com__utils_8c_1aa862edfd1ccb9792c7450773c3a8acdc">val_N2OMV</link>&#32;=&#32;0;
+<anchor xml:id="_com__utils_8c_source_1l00026"/><link linkend="_com__utils_8c_1a6e3f5faa7238533e87c3c5d782104de7">00026</link> int16_t&#32;<link linkend="_com__utils_8c_1a6e3f5faa7238533e87c3c5d782104de7">val_TIME</link>&#32;=&#32;0;
+<anchor xml:id="_com__utils_8c_source_1l00027"/><link linkend="_com__utils_8c_1a3021d675302697aad2387d68ea92f5a6">00027</link> int8_t&#32;<link linkend="_com__utils_8c_1a3021d675302697aad2387d68ea92f5a6">out_Rx</link>[8]&#32;=&#32;{0,0,0,0,0,0,0,0};
+<anchor xml:id="_com__utils_8c_source_1l00028"/>00028 
+<anchor xml:id="_com__utils_8c_source_1l00029"/>00029 
+<anchor xml:id="_com__utils_8c_source_1l00030"/><link linkend="_com__utils_8c_1a414b5e592b824fe8c753d662b5f0f1f5">00030</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_com__utils_8c_1a414b5e592b824fe8c753d662b5f0f1f5">datacheck</link>&#32;=&#32;0;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;permet&#32;d&apos;update&#32;les&#32;valeurs&#32;uniquement&#32;lors&#32;de&#32;la&#32;reception&#32;de&#32;valeurs</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00031"/>00031 <emphasis role="comment">//&#32;module&#32;pour&#32;CAN</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00032"/>00032 
+<anchor xml:id="_com__utils_8c_source_1l00033"/>00033 <emphasis role="preprocessor">#ifndef&#32;INC_COM_UTILS_H_</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00034"/><link linkend="_com__utils_8c_1a113c66c2e8974cce9e7067bcadc1b1ad">00034</link> int8_t&#32;<link linkend="_com__utils_8c_1a113c66c2e8974cce9e7067bcadc1b1ad">TxData_moteur</link>[8]&#32;=&#32;{0,0,0,0,0,0,0,0};
+<anchor xml:id="_com__utils_8c_source_1l00035"/><link linkend="_com__utils_8c_1a399e9e1a8ca7222248c0062b1b6b8a4e">00035</link> int8_t&#32;<link linkend="_com__utils_8c_1a399e9e1a8ca7222248c0062b1b6b8a4e">RxData_moteur</link>[8]&#32;=&#32;{0,0,0,0,0,0,0,0};
+<anchor xml:id="_com__utils_8c_source_1l00036"/><link linkend="_com__utils_8c_1afd0a914dd50d7aa3607d092452037cc1">00036</link> int32_t&#32;<link linkend="_com__utils_8c_1afd0a914dd50d7aa3607d092452037cc1">TxMailbox</link>;
+<anchor xml:id="_com__utils_8c_source_1l00037"/>00037 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00039"/><link linkend="_com__utils_8c_1adf9124e89f799fae0f55cc9ed0a94189">00039</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_com__utils_8c_1adf9124e89f799fae0f55cc9ed0a94189">init_com</link>(<emphasis role="keywordtype">void</emphasis>){
+<anchor xml:id="_com__utils_8c_source_1l00040"/>00040 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;init&#32;module&#32;extene</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00041"/>00041 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_com__utils_8c_1a13d9a1dcda040041c99ca70ab03192d0">CAN_init_TAGCAN</link>();
+<anchor xml:id="_com__utils_8c_source_1l00042"/>00042 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_com__utils_8c_1a91524acc09c84cf5aa22222e3eee50f5">CAN_setup_TAG</link>();
+<anchor xml:id="_com__utils_8c_source_1l00043"/>00043 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;init&#32;CAN&#32;(interne)</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00044"/>00044 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_com__utils_8c_1a041f556ab8d1bfd3c0891c94b0f0d8c5">CAN_setup_DF</link>();
+<anchor xml:id="_com__utils_8c_source_1l00045"/>00045 
+<anchor xml:id="_com__utils_8c_source_1l00046"/>00046 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;init&#32;msg</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00047"/>00047 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(HAL_CAN_ActivateNotification(&amp;<link linkend="_com__utils_8h_1ae21c10daa2f8cbd18a0e66bb28a19d2d">hcan</link>,&#32;CAN_IT_RX_FIFO0_MSG_PENDING)!=HAL_OK)
+<anchor xml:id="_com__utils_8c_source_1l00048"/>00048 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_com__utils_8c_source_1l00049"/>00049 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Error_Handler();
+<anchor xml:id="_com__utils_8c_source_1l00050"/>00050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_com__utils_8c_source_1l00051"/>00051 }
+<anchor xml:id="_com__utils_8c_source_1l00052"/>00052 
+<anchor xml:id="_com__utils_8c_source_1l00053"/>00053 
+<anchor xml:id="_com__utils_8c_source_1l00054"/><link linkend="_com__utils_8c_1a13d9a1dcda040041c99ca70ab03192d0">00054</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_com__utils_8c_1a13d9a1dcda040041c99ca70ab03192d0">CAN_init_TAGCAN</link>(<emphasis role="keywordtype">void</emphasis>){
+<anchor xml:id="_com__utils_8c_source_1l00055"/>00055 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1a129f017feb0712be1dcf7932e6035aa0">init_data_container</link>();
+<anchor xml:id="_com__utils_8c_source_1l00056"/>00056 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_gestion__tag_8h_1aab50a8f567be72e656120fd71f3fb435">init_tag_manager</link>();
+<anchor xml:id="_com__utils_8c_source_1l00057"/>00057 }
+<anchor xml:id="_com__utils_8c_source_1l00058"/>00058 
+<anchor xml:id="_com__utils_8c_source_1l00059"/><link linkend="_com__utils_8c_1a041f556ab8d1bfd3c0891c94b0f0d8c5">00059</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_com__utils_8c_1a041f556ab8d1bfd3c0891c94b0f0d8c5">CAN_setup_DF</link>(int32_t&#32;std_id){
+<anchor xml:id="_com__utils_8c_source_1l00060"/>00060 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std_id&#32;&amp;=&#32;0x7FFU;
+<anchor xml:id="_com__utils_8c_source_1l00061"/>00061 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_com__utils_8c_1a3e35a666d459f2ac92fc7c35334ff0ff">TxHeader</link>.IDE&#32;=&#32;CAN_ID_STD;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Standard&#32;ID&#32;(11&#32;bits)</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00062"/>00062 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_com__utils_8c_1a3e35a666d459f2ac92fc7c35334ff0ff">TxHeader</link>.StdId&#32;=&#32;std_id;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;id</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00063"/>00063 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_com__utils_8c_1a3e35a666d459f2ac92fc7c35334ff0ff">TxHeader</link>.RTR&#32;=&#32;CAN_RTR_DATA;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;sending&#32;data</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00064"/>00064 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_com__utils_8c_1a3e35a666d459f2ac92fc7c35334ff0ff">TxHeader</link>.DLC&#32;=&#32;8;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;nb&#32;of&#32;bytes</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00065"/>00065 }
+<anchor xml:id="_com__utils_8c_source_1l00066"/>00066 
+<anchor xml:id="_com__utils_8c_source_1l00067"/>00067 
+<anchor xml:id="_com__utils_8c_source_1l00068"/>00068 
+<anchor xml:id="_com__utils_8c_source_1l00069"/><link linkend="_com__utils_8c_1a91524acc09c84cf5aa22222e3eee50f5">00069</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_com__utils_8c_1a91524acc09c84cf5aa22222e3eee50f5">CAN_setup_TAG</link>(<emphasis role="keywordtype">void</emphasis>){
+<anchor xml:id="_com__utils_8c_source_1l00070"/>00070 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(<emphasis role="stringliteral">&quot;SEQ&quot;</emphasis>,&#32;3);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//*&gt;Compteur&#32;de&#32;séquences&#32;&#32;&#32;&#32;&#32;&#32;&#32;*/</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00071"/>00071 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(<emphasis role="stringliteral">&quot;HB&quot;</emphasis>,1);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//*&gt;Watchdog&#32;HeartBeat&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;*/</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00072"/>00072 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(<emphasis role="stringliteral">&quot;CI&quot;</emphasis>,2);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//*&gt;Continuité&#32;igniter&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;*/</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00073"/>00073 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(<emphasis role="stringliteral">&quot;AB&quot;</emphasis>,&#32;7);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//*&gt;Alim.&#32;Batetterie&#32;(%)&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;*/</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00074"/>00074 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(<emphasis role="stringliteral">&quot;EDC&quot;</emphasis>,&#32;4);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//*&gt;États&#32;des&#32;commandes&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;*/</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00075"/>00075 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(<emphasis role="stringliteral">&quot;N2OPS&quot;</emphasis>,16);&#32;&#32;&#32;&#32;<emphasis role="comment">//*&gt;N2O&#32;Pressure&#32;Sensor&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;*/</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00076"/>00076 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(<emphasis role="stringliteral">&quot;TLC&quot;</emphasis>,12);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//*&gt;Thrust&#32;Load&#32;Cell&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;*/</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00077"/>00077 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(<emphasis role="stringliteral">&quot;N2ODVS&quot;</emphasis>,1);&#32;&#32;&#32;&#32;<emphasis role="comment">//*&gt;N2O&#32;Dump&#32;Valve&#32;State&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;*/</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00078"/>00078 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(<emphasis role="stringliteral">&quot;N2OIV&quot;</emphasis>,1);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//*&gt;N2O&#32;Igniter&#32;Valve&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;*/</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00079"/>00079 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(<emphasis role="stringliteral">&quot;N2OMV&quot;</emphasis>,1);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//*&gt;N2O&#32;Main&#32;Valve&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;*/</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00080"/>00080 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(<emphasis role="stringliteral">&quot;TIME&quot;</emphasis>,16);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//*&gt;Timestamp&#32;(ms)&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;*/</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00081"/>00081 }
+<anchor xml:id="_com__utils_8c_source_1l00082"/>00082 
+<anchor xml:id="_com__utils_8c_source_1l00083"/>00083 
+<anchor xml:id="_com__utils_8c_source_1l00084"/><link linkend="_com__utils_8c_1adfa3f55b53f7a0c8e6a7ffbf37fe2545">00084</link> CAN_FilterTypeDef*&#32;<link linkend="_com__utils_8c_1adfa3f55b53f7a0c8e6a7ffbf37fe2545">CAN_setup_Filter</link>(int32_t&#32;minimum_id,&#32;int32_t&#32;maximum_id,&#32;<emphasis role="keywordtype">int</emphasis>&#32;filterBank){
+<anchor xml:id="_com__utils_8c_source_1l00085"/>00085 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;understanding&#32;this&#32;https://youtu.be/JfWlIY0zAIc</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00086"/>00086 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;CAN_FilterTypeDef&#32;canfilterconfig;
+<anchor xml:id="_com__utils_8c_source_1l00087"/>00087 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;canfilterconfig.FilterActivation&#32;=&#32;CAN_FILTER_ENABLE;
+<anchor xml:id="_com__utils_8c_source_1l00088"/>00088 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;canfilterconfig.FilterBank&#32;=&#32;filterBank;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Assign&#32;and&#32;Select&#32;Filter&#32;Banks</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00089"/>00089 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;canfilterconfig.FilterFIFOAssignment&#32;=&#32;CAN_FILTER_FIFO0;
+<anchor xml:id="_com__utils_8c_source_1l00090"/>00090 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;canfilterconfig.FilterIdHigh&#32;=&#32;maximum_id&#32;&lt;&lt;5;
+<anchor xml:id="_com__utils_8c_source_1l00091"/>00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;canfilterconfig.FilterMaskIdHigh&#32;=&#32;maximum_id&#32;&lt;&lt;&#32;5;
+<anchor xml:id="_com__utils_8c_source_1l00092"/>00092 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;canfilterconfig.FilterIdLow&#32;=&#32;minimum_id;
+<anchor xml:id="_com__utils_8c_source_1l00093"/>00093 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;canfilterconfig.FilterMaskIdLow&#32;=&#32;minimum_id;
+<anchor xml:id="_com__utils_8c_source_1l00094"/>00094 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;canfilterconfig.FilterMode&#32;=&#32;CAN_FILTERMODE_IDMASK;
+<anchor xml:id="_com__utils_8c_source_1l00095"/>00095 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;canfilterconfig.FilterScale&#32;=&#32;CAN_FILTERSCALE_32BIT;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;16&#32;ou&#32;32&#32;bits&#32;register</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00096"/>00096 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;canfilterconfig.SlaveStartFilterBank&#32;=&#32;20;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;how&#32;many&#32;filters&#32;to&#32;assign&#32;to&#32;the&#32;CAN1&#32;(master&#32;can)</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00097"/>00097 
+<anchor xml:id="_com__utils_8c_source_1l00098"/>00098 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;HAL_CAN_ConfigFilter(&amp;<link linkend="_com__utils_8h_1ae21c10daa2f8cbd18a0e66bb28a19d2d">hcan</link>,&#32;&amp;canfilterconfig);
+<anchor xml:id="_com__utils_8c_source_1l00099"/>00099 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;&amp;canfilterconfig;
+<anchor xml:id="_com__utils_8c_source_1l00100"/>00100 }
+<anchor xml:id="_com__utils_8c_source_1l00101"/>00101 
+<anchor xml:id="_com__utils_8c_source_1l00102"/>00102 
+<anchor xml:id="_com__utils_8c_source_1l00103"/>00103 
+<anchor xml:id="_com__utils_8c_source_1l00105"/>00105 <emphasis role="comment">//--------------!!!!-DANS&#32;LE&#32;MAIN&#32;LOOP!!!!!--------------------</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00107"/>00107 
+<anchor xml:id="_com__utils_8c_source_1l00108"/>00108 
+<anchor xml:id="_com__utils_8c_source_1l00109"/>00109 
+<anchor xml:id="_com__utils_8c_source_1l00110"/>00110 
+<anchor xml:id="_com__utils_8c_source_1l00111"/>00111 
+<anchor xml:id="_com__utils_8c_source_1l00112"/><link linkend="_com__utils_8c_1a4aa2d6078cb7f20cad91adb07fdcb5ae">00112</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_com__utils_8c_1a4aa2d6078cb7f20cad91adb07fdcb5ae">main_loop</link>(<emphasis role="keywordtype">void</emphasis>){
+<anchor xml:id="_com__utils_8c_source_1l00113"/>00113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_com__utils_8c_1aed4e7ccb92f34e07bbb0839df8a7278f">update_all_val_send</link>();
+<anchor xml:id="_com__utils_8c_source_1l00114"/>00114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_com__utils_8c_1a8d08a1d9a28114044f9beb2adb97ee7a">CAN_send_msg</link>();
+<anchor xml:id="_com__utils_8c_source_1l00115"/>00115 }
+<anchor xml:id="_com__utils_8c_source_1l00116"/>00116 
+<anchor xml:id="_com__utils_8c_source_1l00117"/><link linkend="_com__utils_8c_1ae53b4eae23a605e3ece8f3a026f350bf">00117</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_com__utils_8c_1ae53b4eae23a605e3ece8f3a026f350bf">update_TagData</link>(<emphasis role="keywordtype">void</emphasis>){
+<anchor xml:id="_com__utils_8c_source_1l00118"/>00118 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_com__utils_8c_1a414b5e592b824fe8c753d662b5f0f1f5">datacheck</link>&#32;==&#32;1){
+<anchor xml:id="_com__utils_8c_source_1l00119"/>00119 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;change_val_to_TagData(&amp;<link linkend="_com__utils_8c_1a3021d675302697aad2387d68ea92f5a6">out_Rx</link>);
+<anchor xml:id="_com__utils_8c_source_1l00120"/>00120 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_com__utils_8c_source_1l00121"/>00121 }
+<anchor xml:id="_com__utils_8c_source_1l00122"/>00122 
+<anchor xml:id="_com__utils_8c_source_1l00123"/><link linkend="_com__utils_8c_1a8d08a1d9a28114044f9beb2adb97ee7a">00123</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_com__utils_8c_1a8d08a1d9a28114044f9beb2adb97ee7a">CAN_send_msg</link>(<emphasis role="keywordtype">void</emphasis>){
+<anchor xml:id="_com__utils_8c_source_1l00124"/>00124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(HAL_CAN_AddTxMessage(&amp;<link linkend="_com__utils_8h_1ae21c10daa2f8cbd18a0e66bb28a19d2d">hcan</link>,&#32;&amp;<link linkend="_com__utils_8c_1a3e35a666d459f2ac92fc7c35334ff0ff">TxHeader</link>,&#32;<link linkend="_com__utils_8h_1af553c31425b32bd9c020380c942ed3bd">TxData</link>,&#32;&amp;<link linkend="_com__utils_8c_1afd0a914dd50d7aa3607d092452037cc1">TxMailbox</link>)!=HAL_OK){
+<anchor xml:id="_com__utils_8c_source_1l00125"/>00125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Error_Handler();
+<anchor xml:id="_com__utils_8c_source_1l00126"/>00126 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_com__utils_8c_source_1l00127"/>00127 }
+<anchor xml:id="_com__utils_8c_source_1l00128"/>00128 
+<anchor xml:id="_com__utils_8c_source_1l00129"/><link linkend="_com__utils_8c_1a132e1d3529f22ab57d3e747370302698">00129</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_com__utils_8c_1a132e1d3529f22ab57d3e747370302698">CAN_change_val</link>(<emphasis role="keywordtype">void</emphasis>){
+<anchor xml:id="_com__utils_8c_source_1l00130"/>00130 
+<anchor xml:id="_com__utils_8c_source_1l00131"/>00131 }
+<anchor xml:id="_com__utils_8c_source_1l00132"/>00132 
+<anchor xml:id="_com__utils_8c_source_1l00133"/><link linkend="_com__utils_8c_1a429e791d9e107e0be61d4b4c00b13b27">00133</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_com__utils_8c_1a429e791d9e107e0be61d4b4c00b13b27">update_val</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;nom_du_tag,&#32;int32_t&#32;val){
+<anchor xml:id="_com__utils_8c_source_1l00134"/>00134 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link>(nom_du_tag,&#32;val);
+<anchor xml:id="_com__utils_8c_source_1l00135"/>00135 }
+<anchor xml:id="_com__utils_8c_source_1l00136"/>00136 
+<anchor xml:id="_com__utils_8c_source_1l00137"/><link linkend="_com__utils_8c_1aed4e7ccb92f34e07bbb0839df8a7278f">00137</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_com__utils_8c_1aed4e7ccb92f34e07bbb0839df8a7278f">update_all_val_send</link>(<emphasis role="keywordtype">void</emphasis>){&#32;<emphasis role="comment">//TODO:&#32;changer&#32;toute&#32;les&#32;constantes&#32;ici&#32;par&#32;la&#32;source&#32;actuelle&#32;de&#32;donné&#32;(ou&#32;ne&#32;jamais&#32;appeller&#32;cette&#32;fonction&#32;si&#32;c&apos;est&#32;le&#32;recever)</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00138"/>00138 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1aa84538f1ab0c319056787e9674157405">set_value</link>(<emphasis role="stringliteral">&quot;SEQ&quot;</emphasis>,&#32;3);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//*&gt;Compteur&#32;de&#32;séquences&#32;&#32;&#32;&#32;&#32;&#32;&#32;*/</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00139"/>00139 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1aa84538f1ab0c319056787e9674157405">set_value</link>(<emphasis role="stringliteral">&quot;HB&quot;</emphasis>,&#32;1);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//*&gt;Watchdog&#32;HeartBeat&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;*/</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00140"/>00140 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1aa84538f1ab0c319056787e9674157405">set_value</link>(<emphasis role="stringliteral">&quot;CI&quot;</emphasis>,&#32;2);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//*&gt;Continuité&#32;igniter&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;*/</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00141"/>00141 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1aa84538f1ab0c319056787e9674157405">set_value</link>(<emphasis role="stringliteral">&quot;AB&quot;</emphasis>,&#32;7);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//*&gt;Alim.&#32;Batetterie&#32;(%)&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;*/</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00142"/>00142 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1aa84538f1ab0c319056787e9674157405">set_value</link>(<emphasis role="stringliteral">&quot;EDC&quot;</emphasis>,&#32;4);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//*&gt;États&#32;des&#32;commandes&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;*/</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00143"/>00143 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1aa84538f1ab0c319056787e9674157405">set_value</link>(<emphasis role="stringliteral">&quot;N2OPS&quot;</emphasis>,&#32;16);&#32;<emphasis role="comment">//*&gt;N2O&#32;Pressure&#32;Sensor&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;*/</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00144"/>00144 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1aa84538f1ab0c319056787e9674157405">set_value</link>(<emphasis role="stringliteral">&quot;TLC&quot;</emphasis>,&#32;12);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//*&gt;Thrust&#32;Load&#32;Cell&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;*/</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00145"/>00145 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1aa84538f1ab0c319056787e9674157405">set_value</link>(<emphasis role="stringliteral">&quot;N2ODVS&quot;</emphasis>,&#32;1);&#32;<emphasis role="comment">//*&gt;N2O&#32;Dump&#32;Valve&#32;State&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;*/</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00146"/>00146 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1aa84538f1ab0c319056787e9674157405">set_value</link>(<emphasis role="stringliteral">&quot;N2OIV&quot;</emphasis>,&#32;1);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//*&gt;N2O&#32;Igniter&#32;Valve&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;*/</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00147"/>00147 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1aa84538f1ab0c319056787e9674157405">set_value</link>(<emphasis role="stringliteral">&quot;N2OMV&quot;</emphasis>,&#32;1);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//*&gt;N2O&#32;Main&#32;Valve&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;*/</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00148"/>00148 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1aa84538f1ab0c319056787e9674157405">set_value</link>(<emphasis role="stringliteral">&quot;TIME&quot;</emphasis>,&#32;16);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//*&gt;Timestamp&#32;(ms)&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;*/</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00149"/>00149 }
+<anchor xml:id="_com__utils_8c_source_1l00150"/>00150 
+<anchor xml:id="_com__utils_8c_source_1l00151"/>00151 
+<anchor xml:id="_com__utils_8c_source_1l00152"/><link linkend="_com__utils_8c_1a357c3638eed11ace8aff46590f52600a">00152</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_com__utils_8c_1a357c3638eed11ace8aff46590f52600a">update_all_val_receve</link>(<emphasis role="keywordtype">void</emphasis>){
+<anchor xml:id="_com__utils_8c_source_1l00153"/>00153 
+<anchor xml:id="_com__utils_8c_source_1l00154"/>00154 }
+<anchor xml:id="_com__utils_8c_source_1l00155"/>00155 
+<anchor xml:id="_com__utils_8c_source_1l00156"/>00156 
+<anchor xml:id="_com__utils_8c_source_1l00157"/>00157 
+<anchor xml:id="_com__utils_8c_source_1l00158"/>00158 
+<anchor xml:id="_com__utils_8c_source_1l00159"/>00159 
+<anchor xml:id="_com__utils_8c_source_1l00160"/>00160 
+<anchor xml:id="_com__utils_8c_source_1l00161"/>00161 
+<anchor xml:id="_com__utils_8c_source_1l00162"/>00162 
+<anchor xml:id="_com__utils_8c_source_1l00164"/>00164 <emphasis role="comment">//&#32;événementielle</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00166"/>00166 
+<anchor xml:id="_com__utils_8c_source_1l00167"/>00167 
+<anchor xml:id="_com__utils_8c_source_1l00168"/>00168 
+<anchor xml:id="_com__utils_8c_source_1l00169"/><link linkend="_com__utils_8c_1a7368d39e78009c017d6f81ccf33b9b2c">00169</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_com__utils_8c_1a7368d39e78009c017d6f81ccf33b9b2c">HAL_CAN_RxFifo0MsgPendingCallback</link>(CAN_HandleTypeDef&#32;*<link linkend="_com__utils_8h_1ae21c10daa2f8cbd18a0e66bb28a19d2d">hcan</link>)
+<anchor xml:id="_com__utils_8c_source_1l00170"/>00170 {
+<anchor xml:id="_com__utils_8c_source_1l00171"/>00171 
+<anchor xml:id="_com__utils_8c_source_1l00172"/>00172 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(HAL_CAN_GetRxMessage(<link linkend="_com__utils_8h_1ae21c10daa2f8cbd18a0e66bb28a19d2d">hcan</link>,&#32;CAN_RX_FIFO0,&#32;&amp;<link linkend="_com__utils_8c_1a6ee6e13063b860648180eea65852cc71">RxHeader</link>,&#32;<link linkend="_com__utils_8c_1a14629afcc7f0b2d62c2b617b07d98184">RxData</link>)&#32;!=&#32;HAL_OK)
+<anchor xml:id="_com__utils_8c_source_1l00173"/>00173 &#32;&#32;{
+<anchor xml:id="_com__utils_8c_source_1l00174"/>00174 &#32;&#32;&#32;&#32;Error_Handler();
+<anchor xml:id="_com__utils_8c_source_1l00175"/>00175 &#32;&#32;}
+<anchor xml:id="_com__utils_8c_source_1l00176"/>00176 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;((<link linkend="_com__utils_8c_1a6ee6e13063b860648180eea65852cc71">RxHeader</link>.StdId&#32;==&#32;0x103))&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;suposé&#32;être&#32;l&apos;id&#32;de&#32;l&apos;autre&#32;CAN</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00177"/>00177 &#32;&#32;{
+<anchor xml:id="_com__utils_8c_source_1l00178"/>00178 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_com__utils_8c_1a414b5e592b824fe8c753d662b5f0f1f5">datacheck</link>&#32;=&#32;1;
+<anchor xml:id="_com__utils_8c_source_1l00179"/>00179 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;<link linkend="_config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1">N_BYTES</link>;&#32;i++){
+<anchor xml:id="_com__utils_8c_source_1l00180"/>00180 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_com__utils_8c_1a3021d675302697aad2387d68ea92f5a6">out_Rx</link>[i]&#32;=&#32;<link linkend="_com__utils_8c_1a14629afcc7f0b2d62c2b617b07d98184">RxData</link>[i];
+<anchor xml:id="_com__utils_8c_source_1l00181"/>00181 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_com__utils_8c_source_1l00182"/>00182 
+<anchor xml:id="_com__utils_8c_source_1l00183"/>00183 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;update&#32;du&#32;conteneur&#32;de&#32;donnée.</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00184"/>00184 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//change_val_to_TagData(&amp;RxData);</emphasis>
+<anchor xml:id="_com__utils_8c_source_1l00185"/>00185 &#32;&#32;}
+<anchor xml:id="_com__utils_8c_source_1l00186"/>00186 }
+<anchor xml:id="_com__utils_8c_source_1l00187"/>00187 
+<anchor xml:id="_com__utils_8c_source_1l00188"/>00188 
+<anchor xml:id="_com__utils_8c_source_1l00189"/>00189 
+<anchor xml:id="_com__utils_8c_source_1l00190"/>00190 
+<anchor xml:id="_com__utils_8c_source_1l00191"/>00191 
+<anchor xml:id="_com__utils_8c_source_1l00192"/>00192 
+<anchor xml:id="_com__utils_8c_source_1l00193"/>00193 
+<anchor xml:id="_com__utils_8c_source_1l00194"/>00194 
+</programlisting></section>

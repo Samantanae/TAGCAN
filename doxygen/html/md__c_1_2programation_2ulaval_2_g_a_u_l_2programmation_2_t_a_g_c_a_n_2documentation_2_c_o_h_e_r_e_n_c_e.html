@@ -111,7 +111,7 @@ Axe A - Commentaires vs implementation</h2>
 </ul>
 </li>
 <li>Non coherent:<ul>
-<li>Regle de tailles <span class="tt"><a class="el" href="gestion__tag_8h.html#a7301f247665ed1c0504f27602b3cf012" title="Cree un nouveau tag.">set_tag</a></span>: commentaire restreint, code permissif (<span class="tt">1..16</span>).</li>
+<li>Regle de tailles <span class="tt"><a class="el" href="gestion__tag_8h.html#a7301f247665ed1c0504f27602b3cf012" title="créé un nouveau tag.">set_tag</a></span>: commentaire restreint, code permissif (<span class="tt">1..16</span>).</li>
 <li>Validation longueur nom: commentaire suggere une vraie limite, code utilise <span class="tt">sizeof(pointer)</span>.</li>
 <li>Plusieurs blocs Doxygen invalides ou incomplets.</li>
 </ul>
@@ -143,7 +143,7 @@ Matrice rapide</h1>
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Point  </th><th class="markdownTableHeadNone">Commentaire existant  </th><th class="markdownTableHeadNone">Code actuel  </th><th class="markdownTableHeadNone">Coherence  </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">Tailles <span class="tt"><a class="el" href="gestion__tag_8h.html#a7301f247665ed1c0504f27602b3cf012" title="Cree un nouveau tag.">set_tag</a></span>  </td><td class="markdownTableBodyNone">1,3,4,8,16  </td><td class="markdownTableBodyNone">1..16  </td><td class="markdownTableBodyNone">Non  </td></tr>
+<td class="markdownTableBodyNone">Tailles <span class="tt"><a class="el" href="gestion__tag_8h.html#a7301f247665ed1c0504f27602b3cf012" title="créé un nouveau tag.">set_tag</a></span>  </td><td class="markdownTableBodyNone">1,3,4,8,16  </td><td class="markdownTableBodyNone">1..16  </td><td class="markdownTableBodyNone">Non  </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">Debordement <span class="tt"><a class="el" href="data__container_8h.html#aa84538f1ab0c319056787e9674157405" title="Ecrit une valeur dans TxData a partir d&#39;un tag.">set_value</a></span>  </td><td class="markdownTableBodyNone">ambigu  </td><td class="markdownTableBodyNone"><span class="tt">-10</span>  </td><td class="markdownTableBodyNone">Partiel  </td></tr>
 <tr class="markdownTableRowOdd">
@@ -160,7 +160,7 @@ Conclusion</h1>
 Priorites de remediation</h1>
 <ol type="1">
 <li>Normaliser les codes d'erreur (source unique + tests alignes).</li>
-<li>Corriger <span class="tt"><a class="el" href="gestion__tag_8h.html#a7301f247665ed1c0504f27602b3cf012" title="Cree un nouveau tag.">set_tag</a></span> (longueur nom et regle de tailles).</li>
+<li>Corriger <span class="tt"><a class="el" href="gestion__tag_8h.html#a7301f247665ed1c0504f27602b3cf012" title="créé un nouveau tag.">set_tag</a></span> (longueur nom et regle de tailles).</li>
 <li>Corriger les erreurs de formatage dans <span class="tt"><a class="el" href="print__val_8c.html">print_val.c</a></span>.</li>
 <li>Nettoyer les commentaires Doxygen pour relancer une doc auto fiable. </li>
 </ol>

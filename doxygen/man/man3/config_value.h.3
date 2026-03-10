@@ -32,7 +32,7 @@ config_value.h
 .ti -1c
 .RI "enum \fBCAN_MODE\fP { \fBRECEVE_ONLY\fP, \fBSEND_ONLY\fP, \fBSEND_AND_RECEVE\fP }"
 .br
-.RI "Modes d'utilisation CAN (envoi/reception)\&. "
+.RI "modes d'utilisation CAN (envoi/reception)\&. "
 .in -1c
 .SS "Variables"
 
@@ -100,19 +100,19 @@ Definition at line \fB9\fP of file \fBconfig_value\&.h\fP\&.
 .SS "enum \fBCAN_MODE\fP"
 
 .PP
-Modes d'utilisation CAN (envoi/reception)\&. 
+modes d'utilisation CAN (envoi/reception)\&. 
 .PP
 \fBEnumerator\fP
 .in +1c
 .TP
 \f(BIRECEVE_ONLY \fP
-Reception seule: les updates entrantes peuvent modifier la valeur; l'ecriture locale est bloquee\&. 
+Réception seule: les mises à jour entrantes peuvent modifier la valeur; l'écriture locale est bloquée\&. 
 .TP
 \f(BISEND_ONLY \fP
-Emission seule: la valeur locale est emise, les updates entrantes ne la modifient pas\&. 
+Émission seule: la valeur locale est mise, les mises à jour entrantes ne la modifient pas\&. 
 .TP
 \f(BISEND_AND_RECEVE \fP
-Emission + reception: ecriture locale et updates entrantes toutes deux autorisees\&. 
+Emission + reception: écriture locale et mises à jour entrantes toutes deux autorisées\&. 
 .PP
 Definition at line \fB58\fP of file \fBconfig_value\&.h\fP\&.
 .SS "enum \fBCAN_TG_STATUE\fP"

@@ -102,14 +102,14 @@ $(function(){initNavTree('data__container_8c_source.html','',''); });
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#endif </span><span class="comment">// PRINT_VAL_H</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="data__container_8h.html#a0b96d44a8da73070e470c7bf30523ca1">   12</a></span>uint8_t <a class="code hl_variable" href="data__container_8h.html#a0b96d44a8da73070e470c7bf30523ca1">TxData</a>[<a class="code hl_define" href="config__value_8h.html#a470399f7b67e59b1cd04ab17e03c96d1">N_BYTES</a>];</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="com__utils_8h.html#af553c31425b32bd9c020380c942ed3bd">   12</a></span>uint8_t <a class="code hl_variable" href="com__utils_8h.html#af553c31425b32bd9c020380c942ed3bd">TxData</a>[<a class="code hl_define" href="config__value_8h.html#a470399f7b67e59b1cd04ab17e03c96d1">N_BYTES</a>];</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
 <div class="foldopen" id="foldopen00014" data-start="{" data-end="}">
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="data__container_8h.html#a129f017feb0712be1dcf7932e6035aa0">   14</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="data__container_8c.html#a129f017feb0712be1dcf7932e6035aa0">init_data_container</a>(<span class="keywordtype">void</span>)</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>{</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_define" href="config__value_8h.html#a470399f7b67e59b1cd04ab17e03c96d1">N_BYTES</a>; i++)</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    {</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        <a class="code hl_variable" href="data__container_8h.html#a0b96d44a8da73070e470c7bf30523ca1">TxData</a>[i] = 0;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        <a class="code hl_variable" href="com__utils_8h.html#af553c31425b32bd9c020380c942ed3bd">TxData</a>[i] = 0;</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    }</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>}</div>
 </div>
@@ -119,7 +119,7 @@ $(function(){initNavTree('data__container_8c_source.html','',''); });
 <div class="foldopen" id="foldopen00024" data-start="{" data-end="}">
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="data__container_8h.html#a45840c759151338fe992664f4a21c4f7">   24</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="data__container_8c.html#a45840c759151338fe992664f4a21c4f7">set_val_TxData</a>(uint8_t *TxDataArray){</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_define" href="config__value_8h.html#a470399f7b67e59b1cd04ab17e03c96d1">N_BYTES</a>; i++){</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <a class="code hl_variable" href="data__container_8h.html#a0b96d44a8da73070e470c7bf30523ca1">TxData</a>[i] = TxDataArray[i];</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <a class="code hl_variable" href="com__utils_8h.html#af553c31425b32bd9c020380c942ed3bd">TxData</a>[i] = TxDataArray[i];</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>}</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>}</div>
 </div>
@@ -163,9 +163,9 @@ $(function(){initNavTree('data__container_8c_source.html','',''); });
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keywordflow">if</span>(n_bits &gt; 8){</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        uint8_t data_b = (value &amp; 0xFF00) &gt;&gt; 8;</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        uint8_t data_a = (value &amp; 0x00FF);</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <a class="code hl_variable" href="data__container_8h.html#a0b96d44a8da73070e470c7bf30523ca1">TxData</a>[byte_idx_a] = data_a;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <a class="code hl_variable" href="com__utils_8h.html#af553c31425b32bd9c020380c942ed3bd">TxData</a>[byte_idx_a] = data_a;</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="comment">// Cas 16 bits: la partie B occupe tout le byte.</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keywordflow">if</span>(n_bits == 16){<a class="code hl_variable" href="data__container_8h.html#a0b96d44a8da73070e470c7bf30523ca1">TxData</a>[tag-&gt;<a class="code hl_variable" href="struct_tag_def.html#a1368f5414ba506dc1626d65a1083dc92">byte_idx_b</a>] = data_b;}</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keywordflow">if</span>(n_bits == 16){<a class="code hl_variable" href="com__utils_8h.html#af553c31425b32bd9c020380c942ed3bd">TxData</a>[tag-&gt;<a class="code hl_variable" href="struct_tag_def.html#a1368f5414ba506dc1626d65a1083dc92">byte_idx_b</a>] = data_b;}</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <span class="keywordflow">else</span>{</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            <span class="comment">// Cas 9..15 bits: insertion partielle dans le byte B.</span></div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            <span class="comment">// Creation du masque binaire</span></div>
@@ -173,15 +173,15 @@ $(function(){initNavTree('data__container_8c_source.html','',''); });
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>            <span class="comment">// Alignement de la deuxieme partie</span></div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            data_b = data_b &lt;&lt; (8 - bit_pos_b - n_bits);</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>            <span class="comment">// Mise a jour selective des bits de la partie B.</span></div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>            <a class="code hl_variable" href="data__container_8h.html#a0b96d44a8da73070e470c7bf30523ca1">TxData</a>[byte_idx_b] &amp;= ~mask;</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>            <a class="code hl_variable" href="data__container_8h.html#a0b96d44a8da73070e470c7bf30523ca1">TxData</a>[byte_idx_b] |= data_b;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>            <a class="code hl_variable" href="com__utils_8h.html#af553c31425b32bd9c020380c942ed3bd">TxData</a>[byte_idx_b] &amp;= ~mask;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>            <a class="code hl_variable" href="com__utils_8h.html#af553c31425b32bd9c020380c942ed3bd">TxData</a>[byte_idx_b] |= data_b;</div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>            <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="config__value_8h.html#af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3">CAN_TG_SUCCESS</a>;</div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        }</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    }</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span>(tag-&gt;<a class="code hl_variable" href="struct_tag_def.html#a894ffee63faf79f0877a12c871a18b3a">n_bits</a> == 8)</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    {</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        uint8_t data_a = (value &amp; 0x00FF);</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <a class="code hl_variable" href="data__container_8h.html#a0b96d44a8da73070e470c7bf30523ca1">TxData</a>[tag-&gt;<a class="code hl_variable" href="struct_tag_def.html#a985f815d0edbf8a411fbf325a30baec8">byte_idx_a</a>] = data_a;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <a class="code hl_variable" href="com__utils_8h.html#af553c31425b32bd9c020380c942ed3bd">TxData</a>[tag-&gt;<a class="code hl_variable" href="struct_tag_def.html#a985f815d0edbf8a411fbf325a30baec8">byte_idx_a</a>] = data_a;</div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="config__value_8h.html#af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3">CAN_TG_SUCCESS</a>;</div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    }</div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="keywordflow">else</span>{</div>
@@ -191,8 +191,8 @@ $(function(){initNavTree('data__container_8c_source.html','',''); });
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        uint8_t vrai_val = value;</div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        <span class="comment">// Alignement de la valeur dans le byte</span></div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        vrai_val = vrai_val &lt;&lt; (8 - bit_pos_a - n_bits);</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <a class="code hl_variable" href="data__container_8h.html#a0b96d44a8da73070e470c7bf30523ca1">TxData</a>[byte_idx_a] &amp;= ~mask;</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        <a class="code hl_variable" href="data__container_8h.html#a0b96d44a8da73070e470c7bf30523ca1">TxData</a>[byte_idx_a] |= vrai_val;</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <a class="code hl_variable" href="com__utils_8h.html#af553c31425b32bd9c020380c942ed3bd">TxData</a>[byte_idx_a] &amp;= ~mask;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        <a class="code hl_variable" href="com__utils_8h.html#af553c31425b32bd9c020380c942ed3bd">TxData</a>[byte_idx_a] |= vrai_val;</div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    }</div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="config__value_8h.html#af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3">CAN_TG_SUCCESS</a>;</div>
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>}</div>
@@ -223,16 +223,16 @@ $(function(){initNavTree('data__container_8c_source.html','',''); });
 <div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    }</div>
 <div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keywordflow">if</span> (tag-&gt;<a class="code hl_variable" href="struct_tag_def.html#a894ffee63faf79f0877a12c871a18b3a">n_bits</a> == 16)    <span class="comment">// cas de 16 bits exactement</span></div>
 <div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    {</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        uint8_t ba = <a class="code hl_variable" href="data__container_8h.html#a0b96d44a8da73070e470c7bf30523ca1">TxData</a>[byta];</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        uint8_t bb = <a class="code hl_variable" href="data__container_8h.html#a0b96d44a8da73070e470c7bf30523ca1">TxData</a>[bytb];</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        uint8_t ba = <a class="code hl_variable" href="com__utils_8h.html#af553c31425b32bd9c020380c942ed3bd">TxData</a>[byta];</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        uint8_t bb = <a class="code hl_variable" href="com__utils_8h.html#af553c31425b32bd9c020380c942ed3bd">TxData</a>[bytb];</div>
 <div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        *out_value = ba | (bb &lt;&lt; 8);   <span class="comment">// Recomposition 16 bits complete.</span></div>
 <div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    }</div>
 <div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span>((n_bits &lt; 16) &amp;&amp; (n_bits &gt; 8)){<span class="comment">// cas d&#39;entre 8 et 16 bits.</span></div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        uint8_t ba = <a class="code hl_variable" href="data__container_8h.html#a0b96d44a8da73070e470c7bf30523ca1">TxData</a>[byta];</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        uint8_t ba = <a class="code hl_variable" href="com__utils_8h.html#af553c31425b32bd9c020380c942ed3bd">TxData</a>[byta];</div>
 <div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        uint8_t bb;</div>
 <div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        <span class="comment">// Creation d&#39;un masque pour extraire la partie B.</span></div>
 <div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        uint8_t mask = <a class="code hl_function" href="data__container_8c.html#a66768c162c3a8352b7d5397e90206085">prep_mask</a>(bpb, n_bits - 8);</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        uint8_t data_temp = <a class="code hl_variable" href="data__container_8h.html#a0b96d44a8da73070e470c7bf30523ca1">TxData</a>[bytb] &amp; mask;</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        uint8_t data_temp = <a class="code hl_variable" href="com__utils_8h.html#af553c31425b32bd9c020380c942ed3bd">TxData</a>[bytb] &amp; mask;</div>
 <div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        bb = data_temp &gt;&gt; (8 - bpa - n_bits);</div>
 <div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>        *out_value = ba | (bb &lt;&lt; 8);   <span class="comment">// Recomposition avec partie B partielle.</span></div>
 <div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
@@ -246,7 +246,7 @@ $(function(){initNavTree('data__container_8c_source.html','',''); });
 <div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>        <span class="comment">//uint8_t mask = ((1 &lt;&lt; n_bits) - 1) &lt;&lt; shift;</span></div>
 <div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span></div>
 <div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        uint8_t data_temp = <a class="code hl_variable" href="data__container_8h.html#a0b96d44a8da73070e470c7bf30523ca1">TxData</a>[byta] &amp; mask;</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        uint8_t data_temp = <a class="code hl_variable" href="com__utils_8h.html#af553c31425b32bd9c020380c942ed3bd">TxData</a>[byta] &amp; mask;</div>
 <div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        *out_value = data_temp &gt;&gt; (8 - bpa - n_bits);</div>
 <div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    }</div>
 <div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="config__value_8h.html#af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3">CAN_TG_SUCCESS</a>;</div>
@@ -263,6 +263,7 @@ $(function(){initNavTree('data__container_8c_source.html','',''); });
 <div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    }</div>
 <div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>}</div>
 </div>
+<div class="ttc" id="acom__utils_8h_html_af553c31425b32bd9c020380c942ed3bd"><div class="ttname"><a href="com__utils_8h.html#af553c31425b32bd9c020380c942ed3bd">TxData</a></div><div class="ttdeci">uint8_t TxData[8]</div><div class="ttdef"><b>Definition</b> <a href="#l00012">data_container.c:12</a></div></div>
 <div class="ttc" id="aconfig__value_8h_html"><div class="ttname"><a href="config__value_8h.html">config_value.h</a></div></div>
 <div class="ttc" id="aconfig__value_8h_html_a470399f7b67e59b1cd04ab17e03c96d1"><div class="ttname"><a href="config__value_8h.html#a470399f7b67e59b1cd04ab17e03c96d1">N_BYTES</a></div><div class="ttdeci">#define N_BYTES</div><div class="ttdef"><b>Definition</b> <a href="config__value_8h_source.html#l00009">config_value.h:9</a></div></div>
 <div class="ttc" id="aconfig__value_8h_html_af59c8e96bb2966b590726fc2d285947f"><div class="ttname"><a href="config__value_8h.html#af59c8e96bb2966b590726fc2d285947f">CAN_TG_STATUE</a></div><div class="ttdeci">CAN_TG_STATUE</div><div class="ttdoc">Codes de retour du module TAGCAN.</div><div class="ttdef"><b>Definition</b> <a href="config__value_8h_source.html#l00041">config_value.h:41</a></div></div>
@@ -277,7 +278,6 @@ $(function(){initNavTree('data__container_8c_source.html','',''); });
 <div class="ttc" id="adata__container_8c_html_ae1649807202241b28239e8cb212a18b6"><div class="ttname"><a href="data__container_8c.html#ae1649807202241b28239e8cb212a18b6">can_simulate_send_receive</a></div><div class="ttdeci">void can_simulate_send_receive(uint8_t *tx_buffer, uint8_t *rx_buffer)</div><div class="ttdoc">Simule une transmission CAN locale.</div><div class="ttdef"><b>Definition</b> <a href="#l00165">data_container.c:165</a></div></div>
 <div class="ttc" id="adata__container_8c_html_ae30fab9c73b624e37f064c836fefb7de"><div class="ttname"><a href="data__container_8c.html#ae30fab9c73b624e37f064c836fefb7de">set_value</a></div><div class="ttdeci">CAN_TG_STATUE set_value(const char *tag_name, uint32_t value)</div><div class="ttdoc">Ecrit une valeur dans TxData a partir d&#39;un tag.</div><div class="ttdef"><b>Definition</b> <a href="#l00044">data_container.c:44</a></div></div>
 <div class="ttc" id="adata__container_8h_html"><div class="ttname"><a href="data__container_8h.html">data_container.h</a></div></div>
-<div class="ttc" id="adata__container_8h_html_a0b96d44a8da73070e470c7bf30523ca1"><div class="ttname"><a href="data__container_8h.html#a0b96d44a8da73070e470c7bf30523ca1">TxData</a></div><div class="ttdeci">uint8_t TxData[N_BYTES]</div><div class="ttdef"><b>Definition</b> <a href="#l00012">data_container.c:12</a></div></div>
 <div class="ttc" id="aprint__val_8h_html"><div class="ttname"><a href="print__val_8h.html">print_val.h</a></div></div>
 <div class="ttc" id="astruct_tag_def_html"><div class="ttname"><a href="struct_tag_def.html">TagDef</a></div><div class="ttdoc">Structure de definition d&#39;un tag.</div><div class="ttdef"><b>Definition</b> <a href="tag__manager_8h_source.html#l00014">tag_manager.h:15</a></div></div>
 <div class="ttc" id="astruct_tag_def_html_a1368f5414ba506dc1626d65a1083dc92"><div class="ttname"><a href="struct_tag_def.html#a1368f5414ba506dc1626d65a1083dc92">TagDef::byte_idx_b</a></div><div class="ttdeci">int8_t byte_idx_b</div><div class="ttdef"><b>Definition</b> <a href="tag__manager_8h_source.html#l00019">tag_manager.h:19</a></div></div>

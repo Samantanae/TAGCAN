@@ -1,0 +1,491 @@
+\doxysection{com\+\_\+utils.\+c File Reference}
+\hypertarget{com__utils_8c}{}\label{com__utils_8c}\index{com\_utils.c@{com\_utils.c}}
+{\ttfamily \+\#include "{}com\+\_\+utils.\+h"{}}\newline
+{\ttfamily \+\#include "{}../\+../\+\+TAGCAN/\+include/\+sub\+\_\+include/\+data\+\_\+container.\+h"{}}\newline
+Include dependency graph for com\+\_\+utils.\+c:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{com__utils_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{com__utils_8c_adf9124e89f799fae0f55cc9ed0a94189}{init\+\_\+com}} (void)
+\item 
+void \doxymbox{\hyperlink{com__utils_8c_a13d9a1dcda040041c99ca70ab03192d0}{CAN\+\_\+init\+\_\+\+TAGCAN}} (void)
+\item 
+void \doxymbox{\hyperlink{com__utils_8c_a041f556ab8d1bfd3c0891c94b0f0d8c5}{CAN\+\_\+setup\+\_\+\+DF}} (int32\+\_\+t std\+\_\+id)
+\item 
+void \doxymbox{\hyperlink{com__utils_8c_a91524acc09c84cf5aa22222e3eee50f5}{CAN\+\_\+setup\+\_\+\+TAG}} (void)
+\item 
+CAN\+\_\+\+Filter\+Type\+Def \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{com__utils_8c_adfa3f55b53f7a0c8e6a7ffbf37fe2545}{CAN\+\_\+setup\+\_\+\+Filter}} (int32\+\_\+t minimum\+\_\+id, int32\+\_\+t maximum\+\_\+id, int filter\+Bank)
+\item 
+void \doxymbox{\hyperlink{com__utils_8c_a4aa2d6078cb7f20cad91adb07fdcb5ae}{main\+\_\+loop}} (void)
+\item 
+void \doxymbox{\hyperlink{com__utils_8c_ae53b4eae23a605e3ece8f3a026f350bf}{update\+\_\+\+Tag\+Data}} (void)
+\item 
+void \doxymbox{\hyperlink{com__utils_8c_a8d08a1d9a28114044f9beb2adb97ee7a}{CAN\+\_\+send\+\_\+msg}} (void)
+\item 
+void \doxymbox{\hyperlink{com__utils_8c_a132e1d3529f22ab57d3e747370302698}{CAN\+\_\+change\+\_\+val}} (void)
+\item 
+void \doxymbox{\hyperlink{com__utils_8c_a429e791d9e107e0be61d4b4c00b13b27}{update\+\_\+val}} (const char \texorpdfstring{$\ast$}{*}nom\+\_\+du\+\_\+tag, int32\+\_\+t val)
+\item 
+void \doxymbox{\hyperlink{com__utils_8c_aed4e7ccb92f34e07bbb0839df8a7278f}{update\+\_\+all\+\_\+val\+\_\+send}} (void)
+\item 
+void \doxymbox{\hyperlink{com__utils_8c_a357c3638eed11ace8aff46590f52600a}{update\+\_\+all\+\_\+val\+\_\+receve}} (void)
+\item 
+void \doxymbox{\hyperlink{com__utils_8c_a7368d39e78009c017d6f81ccf33b9b2c}{HAL\+\_\+\+CAN\+\_\+\+Rx\+Fifo0\+Msg\+Pending\+Callback}} (CAN\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}\doxymbox{\hyperlink{com__utils_8h_ae21c10daa2f8cbd18a0e66bb28a19d2d}{hcan}})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+CAN\+\_\+\+Tx\+Header\+Type\+Def \doxymbox{\hyperlink{com__utils_8c_a3e35a666d459f2ac92fc7c35334ff0ff}{Tx\+Header}}
+\item 
+CAN\+\_\+\+Rx\+Header\+Type\+Def \doxymbox{\hyperlink{com__utils_8c_a6ee6e13063b860648180eea65852cc71}{Rx\+Header}}
+\item 
+uint8\+\_\+t \doxymbox{\hyperlink{com__utils_8c_a14629afcc7f0b2d62c2b617b07d98184}{Rx\+Data}} \+[8]\+
+\item 
+int8\+\_\+t \doxymbox{\hyperlink{com__utils_8c_a2bf70f5aaf32f6470e208580dc8bed7b}{val\+\_\+\+SEQ}} = 0
+\item 
+int8\+\_\+t \doxymbox{\hyperlink{com__utils_8c_ad007767ce463586424d87bdafe0ae84a}{val\+\_\+\+HB}} = 0
+\item 
+int8\+\_\+t \doxymbox{\hyperlink{com__utils_8c_a6ad8282033ebc654142cd71d2633ab3a}{val\+\_\+\+CI}} = 0
+\item 
+int8\+\_\+t \doxymbox{\hyperlink{com__utils_8c_a563c97929d53dfd65c6722da474e57de}{val\+\_\+\+AB}} = 0
+\item 
+int8\+\_\+t \doxymbox{\hyperlink{com__utils_8c_a0d03ea68010339af49c95b45d72f1584}{val\+\_\+\+EDC}} = 0
+\item 
+int16\+\_\+t \doxymbox{\hyperlink{com__utils_8c_a52e20247890d4a078c8bf6e27a7d9cdb}{val\+\_\+\+N2\+OPS}} = 0
+\item 
+int16\+\_\+t \doxymbox{\hyperlink{com__utils_8c_af54835c185cf3ea1e1fd9db7a178d5b4}{val\+\_\+\+TLC}} = 0
+\item 
+int8\+\_\+t \doxymbox{\hyperlink{com__utils_8c_aa2826abd1636498ecf600da3165d5a5a}{val\+\_\+\+N2\+ODVS}} = 0
+\item 
+int8\+\_\+t \doxymbox{\hyperlink{com__utils_8c_a686cd636907dfc59d7490e9a1289d63e}{val\+\_\+\+N2\+OIV}} = 0
+\item 
+int8\+\_\+t \doxymbox{\hyperlink{com__utils_8c_aa862edfd1ccb9792c7450773c3a8acdc}{val\+\_\+\+N2\+OMV}} = 0
+\item 
+int16\+\_\+t \doxymbox{\hyperlink{com__utils_8c_a6e3f5faa7238533e87c3c5d782104de7}{val\+\_\+\+TIME}} = 0
+\item 
+int8\+\_\+t \doxymbox{\hyperlink{com__utils_8c_a3021d675302697aad2387d68ea92f5a6}{out\+\_\+\+Rx}} \+[8]\+ = \{0,0,0,0,0,0,0,0\}
+\item 
+int \doxymbox{\hyperlink{com__utils_8c_a414b5e592b824fe8c753d662b5f0f1f5}{datacheck}} = 0
+\item 
+int8\+\_\+t \doxymbox{\hyperlink{com__utils_8c_a113c66c2e8974cce9e7067bcadc1b1ad}{Tx\+Data\+\_\+moteur}} \+[8]\+ = \{0,0,0,0,0,0,0,0\}
+\item 
+int8\+\_\+t \doxymbox{\hyperlink{com__utils_8c_a399e9e1a8ca7222248c0062b1b6b8a4e}{Rx\+Data\+\_\+moteur}} \+[8]\+ = \{0,0,0,0,0,0,0,0\}
+\item 
+int32\+\_\+t \doxymbox{\hyperlink{com__utils_8c_afd0a914dd50d7aa3607d092452037cc1}{Tx\+Mailbox}}
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{com__utils_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{com__utils_8c_a132e1d3529f22ab57d3e747370302698}\index{com\_utils.c@{com\_utils.c}!CAN\_change\_val@{CAN\_change\_val}}
+\index{CAN\_change\_val@{CAN\_change\_val}!com\_utils.c@{com\_utils.c}}
+\doxysubsubsection{\texorpdfstring{CAN\_change\_val()}{CAN\_change\_val()}}
+{\footnotesize\ttfamily \label{com__utils_8c_a132e1d3529f22ab57d3e747370302698} 
+void CAN\+\_\+change\+\_\+val (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{com__utils_8c_source_l00129}{129}} of file \doxymbox{\hyperlink{com__utils_8c_source}{com\+\_\+utils.\+c}}.
+
+\Hypertarget{com__utils_8c_a13d9a1dcda040041c99ca70ab03192d0}\index{com\_utils.c@{com\_utils.c}!CAN\_init\_TAGCAN@{CAN\_init\_TAGCAN}}
+\index{CAN\_init\_TAGCAN@{CAN\_init\_TAGCAN}!com\_utils.c@{com\_utils.c}}
+\doxysubsubsection{\texorpdfstring{CAN\_init\_TAGCAN()}{CAN\_init\_TAGCAN()}}
+{\footnotesize\ttfamily \label{com__utils_8c_a13d9a1dcda040041c99ca70ab03192d0} 
+void CAN\+\_\+init\+\_\+\+TAGCAN (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{com__utils_8c_source_l00054}{54}} of file \doxymbox{\hyperlink{com__utils_8c_source}{com\+\_\+utils.\+c}}.
+
+Here is the call graph for this function:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=314pt]{com__utils_8c_a13d9a1dcda040041c99ca70ab03192d0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=269pt]{com__utils_8c_a13d9a1dcda040041c99ca70ab03192d0_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{com__utils_8c_a8d08a1d9a28114044f9beb2adb97ee7a}\index{com\_utils.c@{com\_utils.c}!CAN\_send\_msg@{CAN\_send\_msg}}
+\index{CAN\_send\_msg@{CAN\_send\_msg}!com\_utils.c@{com\_utils.c}}
+\doxysubsubsection{\texorpdfstring{CAN\_send\_msg()}{CAN\_send\_msg()}}
+{\footnotesize\ttfamily \label{com__utils_8c_a8d08a1d9a28114044f9beb2adb97ee7a} 
+void CAN\+\_\+send\+\_\+msg (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{com__utils_8c_source_l00123}{123}} of file \doxymbox{\hyperlink{com__utils_8c_source}{com\+\_\+utils.\+c}}.
+
+Here is the caller graph for this function:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=264pt]{com__utils_8c_a8d08a1d9a28114044f9beb2adb97ee7a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{com__utils_8c_a041f556ab8d1bfd3c0891c94b0f0d8c5}\index{com\_utils.c@{com\_utils.c}!CAN\_setup\_DF@{CAN\_setup\_DF}}
+\index{CAN\_setup\_DF@{CAN\_setup\_DF}!com\_utils.c@{com\_utils.c}}
+\doxysubsubsection{\texorpdfstring{CAN\_setup\_DF()}{CAN\_setup\_DF()}}
+{\footnotesize\ttfamily \label{com__utils_8c_a041f556ab8d1bfd3c0891c94b0f0d8c5} 
+void CAN\+\_\+setup\+\_\+\+DF (\begin{DoxyParamCaption}\item[{int32\+\_\+t}]{std\+\_\+id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{com__utils_8c_source_l00059}{59}} of file \doxymbox{\hyperlink{com__utils_8c_source}{com\+\_\+utils.\+c}}.
+
+Here is the caller graph for this function:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=253pt]{com__utils_8c_a041f556ab8d1bfd3c0891c94b0f0d8c5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{com__utils_8c_adfa3f55b53f7a0c8e6a7ffbf37fe2545}\index{com\_utils.c@{com\_utils.c}!CAN\_setup\_Filter@{CAN\_setup\_Filter}}
+\index{CAN\_setup\_Filter@{CAN\_setup\_Filter}!com\_utils.c@{com\_utils.c}}
+\doxysubsubsection{\texorpdfstring{CAN\_setup\_Filter()}{CAN\_setup\_Filter()}}
+{\footnotesize\ttfamily \label{com__utils_8c_adfa3f55b53f7a0c8e6a7ffbf37fe2545} 
+CAN\+\_\+\+Filter\+Type\+Def \texorpdfstring{$\ast$}{*} CAN\+\_\+setup\+\_\+\+Filter (\begin{DoxyParamCaption}\item[{int32\+\_\+t}]{minimum\+\_\+id}{, }\item[{int32\+\_\+t}]{maximum\+\_\+id}{, }\item[{int}]{filter\+Bank}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{com__utils_8c_source_l00084}{84}} of file \doxymbox{\hyperlink{com__utils_8c_source}{com\+\_\+utils.\+c}}.
+
+\Hypertarget{com__utils_8c_a91524acc09c84cf5aa22222e3eee50f5}\index{com\_utils.c@{com\_utils.c}!CAN\_setup\_TAG@{CAN\_setup\_TAG}}
+\index{CAN\_setup\_TAG@{CAN\_setup\_TAG}!com\_utils.c@{com\_utils.c}}
+\doxysubsubsection{\texorpdfstring{CAN\_setup\_TAG()}{CAN\_setup\_TAG()}}
+{\footnotesize\ttfamily \label{com__utils_8c_a91524acc09c84cf5aa22222e3eee50f5} 
+void CAN\+\_\+setup\+\_\+\+TAG (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{com__utils_8c_source_l00069}{69}} of file \doxymbox{\hyperlink{com__utils_8c_source}{com\+\_\+utils.\+c}}.
+
+Here is the call graph for this function:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{com__utils_8c_a91524acc09c84cf5aa22222e3eee50f5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{com__utils_8c_a91524acc09c84cf5aa22222e3eee50f5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{com__utils_8c_a7368d39e78009c017d6f81ccf33b9b2c}\index{com\_utils.c@{com\_utils.c}!HAL\_CAN\_RxFifo0MsgPendingCallback@{HAL\_CAN\_RxFifo0MsgPendingCallback}}
+\index{HAL\_CAN\_RxFifo0MsgPendingCallback@{HAL\_CAN\_RxFifo0MsgPendingCallback}!com\_utils.c@{com\_utils.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_CAN\_RxFifo0MsgPendingCallback()}{HAL\_CAN\_RxFifo0MsgPendingCallback()}}
+{\footnotesize\ttfamily \label{com__utils_8c_a7368d39e78009c017d6f81ccf33b9b2c} 
+void HAL\+\_\+\+CAN\+\_\+\+Rx\+Fifo0\+Msg\+Pending\+Callback (\begin{DoxyParamCaption}\item[{CAN\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{hcan}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{com__utils_8c_source_l00169}{169}} of file \doxymbox{\hyperlink{com__utils_8c_source}{com\+\_\+utils.\+c}}.
+
+\Hypertarget{com__utils_8c_adf9124e89f799fae0f55cc9ed0a94189}\index{com\_utils.c@{com\_utils.c}!init\_com@{init\_com}}
+\index{init\_com@{init\_com}!com\_utils.c@{com\_utils.c}}
+\doxysubsubsection{\texorpdfstring{init\_com()}{init\_com()}}
+{\footnotesize\ttfamily \label{com__utils_8c_adf9124e89f799fae0f55cc9ed0a94189} 
+void init\+\_\+com (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyItemize}
+\item initialise tout les fonction de communication. (point d\textquotesingle{}appel unique:\+ main) \texorpdfstring{$\ast$}{*}/\+ 
+\end{DoxyItemize}
+
+Definition at line \doxymbox{\hyperlink{com__utils_8c_source_l00039}{39}} of file \doxymbox{\hyperlink{com__utils_8c_source}{com\+\_\+utils.\+c}}.
+
+Here is the call graph for this function:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{com__utils_8c_adf9124e89f799fae0f55cc9ed0a94189_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{com__utils_8c_a4aa2d6078cb7f20cad91adb07fdcb5ae}\index{com\_utils.c@{com\_utils.c}!main\_loop@{main\_loop}}
+\index{main\_loop@{main\_loop}!com\_utils.c@{com\_utils.c}}
+\doxysubsubsection{\texorpdfstring{main\_loop()}{main\_loop()}}
+{\footnotesize\ttfamily \label{com__utils_8c_a4aa2d6078cb7f20cad91adb07fdcb5ae} 
+void main\+\_\+loop (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{com__utils_8c_source_l00112}{112}} of file \doxymbox{\hyperlink{com__utils_8c_source}{com\+\_\+utils.\+c}}.
+
+Here is the call graph for this function:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{com__utils_8c_a4aa2d6078cb7f20cad91adb07fdcb5ae_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{com__utils_8c_a357c3638eed11ace8aff46590f52600a}\index{com\_utils.c@{com\_utils.c}!update\_all\_val\_receve@{update\_all\_val\_receve}}
+\index{update\_all\_val\_receve@{update\_all\_val\_receve}!com\_utils.c@{com\_utils.c}}
+\doxysubsubsection{\texorpdfstring{update\_all\_val\_receve()}{update\_all\_val\_receve()}}
+{\footnotesize\ttfamily \label{com__utils_8c_a357c3638eed11ace8aff46590f52600a} 
+void update\+\_\+all\+\_\+val\+\_\+receve (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{com__utils_8c_source_l00152}{152}} of file \doxymbox{\hyperlink{com__utils_8c_source}{com\+\_\+utils.\+c}}.
+
+\Hypertarget{com__utils_8c_aed4e7ccb92f34e07bbb0839df8a7278f}\index{com\_utils.c@{com\_utils.c}!update\_all\_val\_send@{update\_all\_val\_send}}
+\index{update\_all\_val\_send@{update\_all\_val\_send}!com\_utils.c@{com\_utils.c}}
+\doxysubsubsection{\texorpdfstring{update\_all\_val\_send()}{update\_all\_val\_send()}}
+{\footnotesize\ttfamily \label{com__utils_8c_aed4e7ccb92f34e07bbb0839df8a7278f} 
+void update\+\_\+all\+\_\+val\+\_\+send (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{com__utils_8c_source_l00137}{137}} of file \doxymbox{\hyperlink{com__utils_8c_source}{com\+\_\+utils.\+c}}.
+
+Here is the call graph for this function:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{com__utils_8c_aed4e7ccb92f34e07bbb0839df8a7278f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=281pt]{com__utils_8c_aed4e7ccb92f34e07bbb0839df8a7278f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{com__utils_8c_ae53b4eae23a605e3ece8f3a026f350bf}\index{com\_utils.c@{com\_utils.c}!update\_TagData@{update\_TagData}}
+\index{update\_TagData@{update\_TagData}!com\_utils.c@{com\_utils.c}}
+\doxysubsubsection{\texorpdfstring{update\_TagData()}{update\_TagData()}}
+{\footnotesize\ttfamily \label{com__utils_8c_ae53b4eae23a605e3ece8f3a026f350bf} 
+void update\+\_\+\+Tag\+Data (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{com__utils_8c_source_l00117}{117}} of file \doxymbox{\hyperlink{com__utils_8c_source}{com\+\_\+utils.\+c}}.
+
+\Hypertarget{com__utils_8c_a429e791d9e107e0be61d4b4c00b13b27}\index{com\_utils.c@{com\_utils.c}!update\_val@{update\_val}}
+\index{update\_val@{update\_val}!com\_utils.c@{com\_utils.c}}
+\doxysubsubsection{\texorpdfstring{update\_val()}{update\_val()}}
+{\footnotesize\ttfamily \label{com__utils_8c_a429e791d9e107e0be61d4b4c00b13b27} 
+void update\+\_\+val (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{nom\+\_\+du\+\_\+tag}{, }\item[{int32\+\_\+t}]{val}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{com__utils_8c_source_l00133}{133}} of file \doxymbox{\hyperlink{com__utils_8c_source}{com\+\_\+utils.\+c}}.
+
+Here is the call graph for this function:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{com__utils_8c_a429e791d9e107e0be61d4b4c00b13b27_cgraph}
+\end{center}
+\end{figure}
+
+
+\label{doc-var-members}
+\Hypertarget{com__utils_8c_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{com__utils_8c_a414b5e592b824fe8c753d662b5f0f1f5}\index{com\_utils.c@{com\_utils.c}!datacheck@{datacheck}}
+\index{datacheck@{datacheck}!com\_utils.c@{com\_utils.c}}
+\doxysubsubsection{\texorpdfstring{datacheck}{datacheck}}
+{\footnotesize\ttfamily \label{com__utils_8c_a414b5e592b824fe8c753d662b5f0f1f5} 
+int datacheck = 0}
+
+
+
+Definition at line \doxymbox{\hyperlink{com__utils_8c_source_l00030}{30}} of file \doxymbox{\hyperlink{com__utils_8c_source}{com\+\_\+utils.\+c}}.
+
+\Hypertarget{com__utils_8c_a3021d675302697aad2387d68ea92f5a6}\index{com\_utils.c@{com\_utils.c}!out\_Rx@{out\_Rx}}
+\index{out\_Rx@{out\_Rx}!com\_utils.c@{com\_utils.c}}
+\doxysubsubsection{\texorpdfstring{out\_Rx}{out\_Rx}}
+{\footnotesize\ttfamily \label{com__utils_8c_a3021d675302697aad2387d68ea92f5a6} 
+int8\+\_\+t out\+\_\+\+Rx\+[8]\+ = \{0,0,0,0,0,0,0,0\}}
+
+
+
+Definition at line \doxymbox{\hyperlink{com__utils_8c_source_l00027}{27}} of file \doxymbox{\hyperlink{com__utils_8c_source}{com\+\_\+utils.\+c}}.
+
+\Hypertarget{com__utils_8c_a14629afcc7f0b2d62c2b617b07d98184}\index{com\_utils.c@{com\_utils.c}!RxData@{RxData}}
+\index{RxData@{RxData}!com\_utils.c@{com\_utils.c}}
+\doxysubsubsection{\texorpdfstring{RxData}{RxData}}
+{\footnotesize\ttfamily \label{com__utils_8c_a14629afcc7f0b2d62c2b617b07d98184} 
+uint8\+\_\+t Rx\+Data\+[8]\+}
+
+
+
+Definition at line \doxymbox{\hyperlink{com__utils_8c_source_l00013}{13}} of file \doxymbox{\hyperlink{com__utils_8c_source}{com\+\_\+utils.\+c}}.
+
+\Hypertarget{com__utils_8c_a399e9e1a8ca7222248c0062b1b6b8a4e}\index{com\_utils.c@{com\_utils.c}!RxData\_moteur@{RxData\_moteur}}
+\index{RxData\_moteur@{RxData\_moteur}!com\_utils.c@{com\_utils.c}}
+\doxysubsubsection{\texorpdfstring{RxData\_moteur}{RxData\_moteur}}
+{\footnotesize\ttfamily \label{com__utils_8c_a399e9e1a8ca7222248c0062b1b6b8a4e} 
+int8\+\_\+t Rx\+Data\+\_\+moteur\+[8]\+ = \{0,0,0,0,0,0,0,0\}}
+
+
+
+Definition at line \doxymbox{\hyperlink{com__utils_8c_source_l00035}{35}} of file \doxymbox{\hyperlink{com__utils_8c_source}{com\+\_\+utils.\+c}}.
+
+\Hypertarget{com__utils_8c_a6ee6e13063b860648180eea65852cc71}\index{com\_utils.c@{com\_utils.c}!RxHeader@{RxHeader}}
+\index{RxHeader@{RxHeader}!com\_utils.c@{com\_utils.c}}
+\doxysubsubsection{\texorpdfstring{RxHeader}{RxHeader}}
+{\footnotesize\ttfamily \label{com__utils_8c_a6ee6e13063b860648180eea65852cc71} 
+CAN\+\_\+\+Rx\+Header\+Type\+Def Rx\+Header}
+
+
+
+Definition at line \doxymbox{\hyperlink{com__utils_8c_source_l00010}{10}} of file \doxymbox{\hyperlink{com__utils_8c_source}{com\+\_\+utils.\+c}}.
+
+\Hypertarget{com__utils_8c_a113c66c2e8974cce9e7067bcadc1b1ad}\index{com\_utils.c@{com\_utils.c}!TxData\_moteur@{TxData\_moteur}}
+\index{TxData\_moteur@{TxData\_moteur}!com\_utils.c@{com\_utils.c}}
+\doxysubsubsection{\texorpdfstring{TxData\_moteur}{TxData\_moteur}}
+{\footnotesize\ttfamily \label{com__utils_8c_a113c66c2e8974cce9e7067bcadc1b1ad} 
+int8\+\_\+t Tx\+Data\+\_\+moteur\+[8]\+ = \{0,0,0,0,0,0,0,0\}}
+
+
+
+Definition at line \doxymbox{\hyperlink{com__utils_8c_source_l00034}{34}} of file \doxymbox{\hyperlink{com__utils_8c_source}{com\+\_\+utils.\+c}}.
+
+\Hypertarget{com__utils_8c_a3e35a666d459f2ac92fc7c35334ff0ff}\index{com\_utils.c@{com\_utils.c}!TxHeader@{TxHeader}}
+\index{TxHeader@{TxHeader}!com\_utils.c@{com\_utils.c}}
+\doxysubsubsection{\texorpdfstring{TxHeader}{TxHeader}}
+{\footnotesize\ttfamily \label{com__utils_8c_a3e35a666d459f2ac92fc7c35334ff0ff} 
+CAN\+\_\+\+Tx\+Header\+Type\+Def Tx\+Header}
+
+
+
+Definition at line \doxymbox{\hyperlink{com__utils_8c_source_l00009}{9}} of file \doxymbox{\hyperlink{com__utils_8c_source}{com\+\_\+utils.\+c}}.
+
+\Hypertarget{com__utils_8c_afd0a914dd50d7aa3607d092452037cc1}\index{com\_utils.c@{com\_utils.c}!TxMailbox@{TxMailbox}}
+\index{TxMailbox@{TxMailbox}!com\_utils.c@{com\_utils.c}}
+\doxysubsubsection{\texorpdfstring{TxMailbox}{TxMailbox}}
+{\footnotesize\ttfamily \label{com__utils_8c_afd0a914dd50d7aa3607d092452037cc1} 
+int32\+\_\+t Tx\+Mailbox}
+
+
+
+Definition at line \doxymbox{\hyperlink{com__utils_8c_source_l00036}{36}} of file \doxymbox{\hyperlink{com__utils_8c_source}{com\+\_\+utils.\+c}}.
+
+\Hypertarget{com__utils_8c_a563c97929d53dfd65c6722da474e57de}\index{com\_utils.c@{com\_utils.c}!val\_AB@{val\_AB}}
+\index{val\_AB@{val\_AB}!com\_utils.c@{com\_utils.c}}
+\doxysubsubsection{\texorpdfstring{val\_AB}{val\_AB}}
+{\footnotesize\ttfamily \label{com__utils_8c_a563c97929d53dfd65c6722da474e57de} 
+int8\+\_\+t val\+\_\+\+AB = 0}
+
+
+
+Definition at line \doxymbox{\hyperlink{com__utils_8c_source_l00019}{19}} of file \doxymbox{\hyperlink{com__utils_8c_source}{com\+\_\+utils.\+c}}.
+
+\Hypertarget{com__utils_8c_a6ad8282033ebc654142cd71d2633ab3a}\index{com\_utils.c@{com\_utils.c}!val\_CI@{val\_CI}}
+\index{val\_CI@{val\_CI}!com\_utils.c@{com\_utils.c}}
+\doxysubsubsection{\texorpdfstring{val\_CI}{val\_CI}}
+{\footnotesize\ttfamily \label{com__utils_8c_a6ad8282033ebc654142cd71d2633ab3a} 
+int8\+\_\+t val\+\_\+\+CI = 0}
+
+
+
+Definition at line \doxymbox{\hyperlink{com__utils_8c_source_l00018}{18}} of file \doxymbox{\hyperlink{com__utils_8c_source}{com\+\_\+utils.\+c}}.
+
+\Hypertarget{com__utils_8c_a0d03ea68010339af49c95b45d72f1584}\index{com\_utils.c@{com\_utils.c}!val\_EDC@{val\_EDC}}
+\index{val\_EDC@{val\_EDC}!com\_utils.c@{com\_utils.c}}
+\doxysubsubsection{\texorpdfstring{val\_EDC}{val\_EDC}}
+{\footnotesize\ttfamily \label{com__utils_8c_a0d03ea68010339af49c95b45d72f1584} 
+int8\+\_\+t val\+\_\+\+EDC = 0}
+
+
+
+Definition at line \doxymbox{\hyperlink{com__utils_8c_source_l00020}{20}} of file \doxymbox{\hyperlink{com__utils_8c_source}{com\+\_\+utils.\+c}}.
+
+\Hypertarget{com__utils_8c_ad007767ce463586424d87bdafe0ae84a}\index{com\_utils.c@{com\_utils.c}!val\_HB@{val\_HB}}
+\index{val\_HB@{val\_HB}!com\_utils.c@{com\_utils.c}}
+\doxysubsubsection{\texorpdfstring{val\_HB}{val\_HB}}
+{\footnotesize\ttfamily \label{com__utils_8c_ad007767ce463586424d87bdafe0ae84a} 
+int8\+\_\+t val\+\_\+\+HB = 0}
+
+
+
+Definition at line \doxymbox{\hyperlink{com__utils_8c_source_l00017}{17}} of file \doxymbox{\hyperlink{com__utils_8c_source}{com\+\_\+utils.\+c}}.
+
+\Hypertarget{com__utils_8c_aa2826abd1636498ecf600da3165d5a5a}\index{com\_utils.c@{com\_utils.c}!val\_N2ODVS@{val\_N2ODVS}}
+\index{val\_N2ODVS@{val\_N2ODVS}!com\_utils.c@{com\_utils.c}}
+\doxysubsubsection{\texorpdfstring{val\_N2ODVS}{val\_N2ODVS}}
+{\footnotesize\ttfamily \label{com__utils_8c_aa2826abd1636498ecf600da3165d5a5a} 
+int8\+\_\+t val\+\_\+\+N2\+ODVS = 0}
+
+
+
+Definition at line \doxymbox{\hyperlink{com__utils_8c_source_l00023}{23}} of file \doxymbox{\hyperlink{com__utils_8c_source}{com\+\_\+utils.\+c}}.
+
+\Hypertarget{com__utils_8c_a686cd636907dfc59d7490e9a1289d63e}\index{com\_utils.c@{com\_utils.c}!val\_N2OIV@{val\_N2OIV}}
+\index{val\_N2OIV@{val\_N2OIV}!com\_utils.c@{com\_utils.c}}
+\doxysubsubsection{\texorpdfstring{val\_N2OIV}{val\_N2OIV}}
+{\footnotesize\ttfamily \label{com__utils_8c_a686cd636907dfc59d7490e9a1289d63e} 
+int8\+\_\+t val\+\_\+\+N2\+OIV = 0}
+
+
+
+Definition at line \doxymbox{\hyperlink{com__utils_8c_source_l00024}{24}} of file \doxymbox{\hyperlink{com__utils_8c_source}{com\+\_\+utils.\+c}}.
+
+\Hypertarget{com__utils_8c_aa862edfd1ccb9792c7450773c3a8acdc}\index{com\_utils.c@{com\_utils.c}!val\_N2OMV@{val\_N2OMV}}
+\index{val\_N2OMV@{val\_N2OMV}!com\_utils.c@{com\_utils.c}}
+\doxysubsubsection{\texorpdfstring{val\_N2OMV}{val\_N2OMV}}
+{\footnotesize\ttfamily \label{com__utils_8c_aa862edfd1ccb9792c7450773c3a8acdc} 
+int8\+\_\+t val\+\_\+\+N2\+OMV = 0}
+
+
+
+Definition at line \doxymbox{\hyperlink{com__utils_8c_source_l00025}{25}} of file \doxymbox{\hyperlink{com__utils_8c_source}{com\+\_\+utils.\+c}}.
+
+\Hypertarget{com__utils_8c_a52e20247890d4a078c8bf6e27a7d9cdb}\index{com\_utils.c@{com\_utils.c}!val\_N2OPS@{val\_N2OPS}}
+\index{val\_N2OPS@{val\_N2OPS}!com\_utils.c@{com\_utils.c}}
+\doxysubsubsection{\texorpdfstring{val\_N2OPS}{val\_N2OPS}}
+{\footnotesize\ttfamily \label{com__utils_8c_a52e20247890d4a078c8bf6e27a7d9cdb} 
+int16\+\_\+t val\+\_\+\+N2\+OPS = 0}
+
+
+
+Definition at line \doxymbox{\hyperlink{com__utils_8c_source_l00021}{21}} of file \doxymbox{\hyperlink{com__utils_8c_source}{com\+\_\+utils.\+c}}.
+
+\Hypertarget{com__utils_8c_a2bf70f5aaf32f6470e208580dc8bed7b}\index{com\_utils.c@{com\_utils.c}!val\_SEQ@{val\_SEQ}}
+\index{val\_SEQ@{val\_SEQ}!com\_utils.c@{com\_utils.c}}
+\doxysubsubsection{\texorpdfstring{val\_SEQ}{val\_SEQ}}
+{\footnotesize\ttfamily \label{com__utils_8c_a2bf70f5aaf32f6470e208580dc8bed7b} 
+int8\+\_\+t val\+\_\+\+SEQ = 0}
+
+
+
+Definition at line \doxymbox{\hyperlink{com__utils_8c_source_l00016}{16}} of file \doxymbox{\hyperlink{com__utils_8c_source}{com\+\_\+utils.\+c}}.
+
+\Hypertarget{com__utils_8c_a6e3f5faa7238533e87c3c5d782104de7}\index{com\_utils.c@{com\_utils.c}!val\_TIME@{val\_TIME}}
+\index{val\_TIME@{val\_TIME}!com\_utils.c@{com\_utils.c}}
+\doxysubsubsection{\texorpdfstring{val\_TIME}{val\_TIME}}
+{\footnotesize\ttfamily \label{com__utils_8c_a6e3f5faa7238533e87c3c5d782104de7} 
+int16\+\_\+t val\+\_\+\+TIME = 0}
+
+
+
+Definition at line \doxymbox{\hyperlink{com__utils_8c_source_l00026}{26}} of file \doxymbox{\hyperlink{com__utils_8c_source}{com\+\_\+utils.\+c}}.
+
+\Hypertarget{com__utils_8c_af54835c185cf3ea1e1fd9db7a178d5b4}\index{com\_utils.c@{com\_utils.c}!val\_TLC@{val\_TLC}}
+\index{val\_TLC@{val\_TLC}!com\_utils.c@{com\_utils.c}}
+\doxysubsubsection{\texorpdfstring{val\_TLC}{val\_TLC}}
+{\footnotesize\ttfamily \label{com__utils_8c_af54835c185cf3ea1e1fd9db7a178d5b4} 
+int16\+\_\+t val\+\_\+\+TLC = 0}
+
+
+
+Definition at line \doxymbox{\hyperlink{com__utils_8c_source_l00022}{22}} of file \doxymbox{\hyperlink{com__utils_8c_source}{com\+\_\+utils.\+c}}.
+

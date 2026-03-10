@@ -35,23 +35,25 @@
       <node id="2">
         <label>TAGCAN.h</label>
         <link refid="_t_a_g_c_a_n_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>com_utils.c</label>
+        <link refid="com__utils_8c"/>
       </node>
       <node id="3">
+        <label>com_utils.h</label>
+        <link refid="com__utils_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
         <label>data_container.h</label>
         <link refid="data__container_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
-      <node id="1">
-        <label>tag_manager.h</label>
-        <link refid="tag__manager_8h"/>
-        <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
@@ -59,22 +61,42 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
       </node>
-      <node id="5">
+      <node id="1">
+        <label>tag_manager.h</label>
+        <link refid="tag__manager_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
         <label>main.c</label>
         <link refid="main_8c"/>
       </node>
-      <node id="4">
+      <node id="6">
         <label>data_container.c</label>
         <link refid="data__container_8c"/>
       </node>
-      <node id="6">
+      <node id="8">
         <label>print_val.c</label>
         <link refid="print__val_8c"/>
       </node>
-      <node id="7">
+      <node id="10">
         <label>tag_manager.c</label>
         <link refid="tag__manager_8c"/>
+      </node>
+      <node id="9">
+        <label>test_print_repartition_bit.c</label>
+        <link refid="test__print__repartition__bit_8c"/>
       </node>
     </invincdepgraph>
     <innerclass refid="struct_tag_def" prot="public">TagDef</innerclass>
@@ -98,7 +120,7 @@
         <referencedby refid="gestion__tag_8h_1aab50a8f567be72e656120fd71f3fb435" compoundref="tag__manager_8c" startline="21" endline="36">init_tag_manager</referencedby>
         <referencedby refid="print__val_8h_1a6904e40665dc664fc6611bfe2d913773" compoundref="print__val_8c" startline="43" endline="56">print_all_data</referencedby>
         <referencedby refid="print__val_8h_1a2b276a5dd504a1eb4d6f216b8f9d7fdb" compoundref="print__val_8c" startline="18" endline="38">print_all_tag_set</referencedby>
-        <referencedby refid="print__val_8h_1a8ee4bb928c2cca54d191cf23edea60ec" compoundref="print__val_8c" startline="78" endline="126">print_repartition_bit</referencedby>
+        <referencedby refid="print__val_8h_1a8ee4bb928c2cca54d191cf23edea60ec" compoundref="print__val_8c" startline="78" endline="128">print_repartition_bit</referencedby>
         <referencedby refid="tag__manager_8c_1a9963af2c23a14e289a3ff39769ea4eeb" compoundref="tag__manager_8c" startline="68" endline="81">set_name_tag</referencedby>
         <referencedby refid="tag__manager_8c_1a30325d29d4baf058d75e6f3c269341af" compoundref="tag__manager_8c" startline="119" endline="135">set_new_tag_9_to_16</referencedby>
       </memberdef>
@@ -120,7 +142,7 @@
         <referencedby refid="gestion__tag_8h_1aab50a8f567be72e656120fd71f3fb435" compoundref="tag__manager_8c" startline="21" endline="36">init_tag_manager</referencedby>
         <referencedby refid="print__val_8h_1a6904e40665dc664fc6611bfe2d913773" compoundref="print__val_8c" startline="43" endline="56">print_all_data</referencedby>
         <referencedby refid="print__val_8h_1a2b276a5dd504a1eb4d6f216b8f9d7fdb" compoundref="print__val_8c" startline="18" endline="38">print_all_tag_set</referencedby>
-        <referencedby refid="print__val_8h_1a8ee4bb928c2cca54d191cf23edea60ec" compoundref="print__val_8c" startline="78" endline="126">print_repartition_bit</referencedby>
+        <referencedby refid="print__val_8h_1a8ee4bb928c2cca54d191cf23edea60ec" compoundref="print__val_8c" startline="78" endline="128">print_repartition_bit</referencedby>
         <referencedby refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="232" endline="282">set_tag</referencedby>
       </memberdef>
       <memberdef kind="variable" id="tag__manager_8h_1af12845c0234390db7498ec51e94f7d58" prot="public" static="no" extern="yes" mutable="no">

@@ -1,0 +1,70 @@
+\doxysection{guide\+\_\+utilisation Directory Reference}
+\hypertarget{dir_7a7edcf529884078f481081b33ab25c5}{}\label{dir_7a7edcf529884078f481081b33ab25c5}\index{guide\_utilisation Directory Reference@{guide\_utilisation Directory Reference}}
+
+
+\doxysubsection{Detailed Description}
+\hypertarget{dir_7a7edcf529884078f481081b33ab25c5_autotoc_md153}{}\doxysubsection{\texorpdfstring{Guide d\textquotesingle{}Utilisation de TAGCAN}{Guide d\textquotesingle{}Utilisation de TAGCAN}}\label{dir_7a7edcf529884078f481081b33ab25c5_autotoc_md153}
+\hypertarget{dir_7a7edcf529884078f481081b33ab25c5_autotoc_md154}{}\doxysubsection{\texorpdfstring{Aperçu}{Aperçu}}\label{dir_7a7edcf529884078f481081b33ab25c5_autotoc_md154}
+Ce guide pratique vous aidera à utiliser {\bfseries{TAGCAN}}, une bibliothèque de gestion de bus CAN pour systèmes embarqués STM32. La documentation s\textquotesingle{}appuie sur l\textquotesingle{}exemple d\textquotesingle{}implémentation présent dans le dossier {\ttfamily exemple\+\_\+utilisation/\+}.\hypertarget{dir_7a7edcf529884078f481081b33ab25c5_autotoc_md155}{}\doxysubsection{\texorpdfstring{Structure du guide}{Structure du guide}}\label{dir_7a7edcf529884078f481081b33ab25c5_autotoc_md155}
+
+\begin{DoxyItemize}
+\item {\bfseries{\doxysectlink{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n}{01\+\_\+\+INITIALISATION.md}{0}}} -\/ Mise en place du système TAGCAN et du bus CAN
+\item {\bfseries{\doxysectlink{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s}{02\+\_\+\+GESTION\+\_\+\+TAGS.md}{0}}} -\/ Création et gestion des tags (variables nommées)
+\item {\bfseries{\doxysectlink{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_203___d_o_n_n_e_e_s___c_a_n}{03\+\_\+\+DONNEES\+\_\+\+CAN.md}{0}}} -\/ Manipulation du buffer de données CAN
+\item {\bfseries{\doxysectlink{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n}{04\+\_\+\+FILTRAGE\+\_\+\+CAN.md}{0}}} -\/ Configuration des filtres CAN
+\item {\bfseries{\doxysectlink{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33}{05\+\_\+\+EXEMPLES\+\_\+\+COMPLETS.md}{0}}} -\/ Exemples pratiques et cas d\textquotesingle{}usage
+\end{DoxyItemize}\hypertarget{dir_7a7edcf529884078f481081b33ab25c5_autotoc_md156}{}\doxysubsection{\texorpdfstring{Points clés}{Points clés}}\label{dir_7a7edcf529884078f481081b33ab25c5_autotoc_md156}
+\hypertarget{dir_7a7edcf529884078f481081b33ab25c5_autotoc_md157}{}\doxysubsubsection{\texorpdfstring{Qu\textquotesingle{}est-\/ce qu\textquotesingle{}un tag ?}{Qu\textquotesingle{}est-\/ce qu\textquotesingle{}un tag ?}}\label{dir_7a7edcf529884078f481081b33ab25c5_autotoc_md157}
+Un {\bfseries{tag}} est une variable nommée associée à une plage de bits dans le buffer CAN. Par exemple :\+
+\begin{DoxyItemize}
+\item {\ttfamily "{}SEQ"{}} -\/\texorpdfstring{$>$}{>} 3 bits (numéro de séquence)
+\item {\ttfamily "{}HB"{}} -\/\texorpdfstring{$>$}{>} 1 bit (heartbeat/\+watchdog)
+\item {\ttfamily "{}N2\+OPS"{}} -\/\texorpdfstring{$>$}{>} 16 bits (capteur de pression N2O)
+\end{DoxyItemize}\hypertarget{dir_7a7edcf529884078f481081b33ab25c5_autotoc_md158}{}\doxysubsubsection{\texorpdfstring{Architecture générale}{Architecture générale}}\label{dir_7a7edcf529884078f481081b33ab25c5_autotoc_md158}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{┌─────────────────────────────────────────────┐}
+\DoxyCodeLine{│\ \ \ Application\ utilisateur\ (main.c)\ \ \ \ \ \ \ \ \ \ │}
+\DoxyCodeLine{├─────────────────────────────────────────────┤}
+\DoxyCodeLine{│\ \ \ TAGCAN\ (Gestion\ des\ tags\ \&\ données)\ \ \ \ \ \ \ │}
+\DoxyCodeLine{│\ \ ├─\ Tag\ Manager\ (init\_tag\_manager,\ set\_tag)\ │}
+\DoxyCodeLine{│\ \ └─\ Data\ Container\ (set\_value,\ get\_value)\ \ \ │}
+\DoxyCodeLine{├─────────────────────────────────────────────┤}
+\DoxyCodeLine{│\ \ \ Driver\ CAN\ STM32\ (HAL)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ │}
+\DoxyCodeLine{└─────────────────────────────────────────────┘}
+
+\end{DoxyCode}
+\hypertarget{dir_7a7edcf529884078f481081b33ab25c5_autotoc_md159}{}\doxysubsection{\texorpdfstring{Démarrage rapide}{Démarrage rapide}}\label{dir_7a7edcf529884078f481081b33ab25c5_autotoc_md159}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ 1.\ Initialiser\ TAGCAN}}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{com__utils_8c_adf9124e89f799fae0f55cc9ed0a94189}{init\_com}}(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{com__utils_8c_a13d9a1dcda040041c99ca70ab03192d0}{CAN\_init\_TAGCAN}}();\ \ \ \ \ \ \textcolor{comment}{//\ Initialise\ le\ gestionnaire\ de\ tags}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{com__utils_8c_a91524acc09c84cf5aa22222e3eee50f5}{CAN\_setup\_TAG}}();\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Crée\ les\ tags\ applicatifs}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{com__utils_8c_a041f556ab8d1bfd3c0891c94b0f0d8c5}{CAN\_setup\_DF}}(0x123);\ \ \ \ \textcolor{comment}{//\ Configure\ le\ header\ CAN}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ 2.\ Écrire\ une\ valeur\ dans\ un\ tag}}
+\DoxyCodeLine{\doxymbox{\hyperlink{data__container_8h_aa84538f1ab0c319056787e9674157405}{set\_value}}(\textcolor{stringliteral}{"{}SEQ"{}},\ 5);\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Écrit\ 5\ dans\ le\ tag\ "{}SEQ"{}\ (3\ bits)}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ 3.\ Lire\ une\ valeur\ depuis\ un\ tag}}
+\DoxyCodeLine{uint32\_t\ val;}
+\DoxyCodeLine{\doxymbox{\hyperlink{data__container_8h_a66cbaaa79a2ba3c2c7912514c1dc805f}{get\_value}}(\textcolor{stringliteral}{"{}HB"{}},\ \&val);\ \ \ \ \ \ \textcolor{comment}{//\ Lit\ la\ valeur\ du\ tag\ "{}HB"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ 4.\ Envoyer\ sur\ le\ bus\ CAN}}
+\DoxyCodeLine{HAL\_CAN\_AddTxMessage(\&\doxymbox{\hyperlink{com__utils_8h_ae21c10daa2f8cbd18a0e66bb28a19d2d}{hcan}},\ \&\doxymbox{\hyperlink{com__utils_8c_a3e35a666d459f2ac92fc7c35334ff0ff}{TxHeader}},\ \doxymbox{\hyperlink{com__utils_8h_af553c31425b32bd9c020380c942ed3bd}{TxData}},\ \&\doxymbox{\hyperlink{com__utils_8c_afd0a914dd50d7aa3607d092452037cc1}{TxMailbox}});}
+
+\end{DoxyCode}
+\hypertarget{dir_7a7edcf529884078f481081b33ab25c5_autotoc_md160}{}\doxysubsection{\texorpdfstring{Documentation de référence}{Documentation de référence}}\label{dir_7a7edcf529884078f481081b33ab25c5_autotoc_md160}
+Pour plus de détails sur l\textquotesingle{}API :\+ voir \doxysectlink{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2documentation_2_a_p_i___r_e_f_e_r_e_n_c_e}{API\+\_\+\+REFERENCE.md}{0}\hypertarget{dir_7a7edcf529884078f481081b33ab25c5_autotoc_md161}{}\doxysubsection{\texorpdfstring{Fichiers sources associés}{Fichiers sources associés}}\label{dir_7a7edcf529884078f481081b33ab25c5_autotoc_md161}
+
+\begin{DoxyItemize}
+\item {\ttfamily \doxylink{com__utils_8c}{exemple\+\_\+utilisation/\+com\+\_\+utils.\+c}} -\/ Code d\textquotesingle{}exemple d\textquotesingle{}intégration
+\item {\ttfamily \doxylink{com__utils_8h}{exemple\+\_\+utilisation/\+com\+\_\+utils.\+h}} -\/ Headers d\textquotesingle{}exemple
+\item {\ttfamily \doxylink{_t_a_g_c_a_n_8h}{TAGCAN.\+h}} -\/ Point d\textquotesingle{}entrée principal
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+
+
+{\bfseries{Besoin d\textquotesingle{}aide ?}} Consultez les exemples complets dans \doxysectlink{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33}{05\+\_\+\+EXEMPLES\+\_\+\+COMPLETS.md}{0} 

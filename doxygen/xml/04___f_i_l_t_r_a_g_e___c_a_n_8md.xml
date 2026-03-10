@@ -1,0 +1,334 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.0" xml:lang="en-US">
+  <compounddef id="04___f_i_l_t_r_a_g_e___c_a_n_8md" kind="file" language="Markdown">
+    <compoundname>04_FILTRAGE_CAN.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>04<sp/>-<sp/>Filtrage<sp/>CAN</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/><sp/>Objectif</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Configurer<sp/>les<sp/>filtres<sp/>CAN<sp/>pour<sp/>recevoir<sp/>**uniquement**<sp/>les<sp/>messages<sp/>pertinents<sp/>et<sp/>ignorer<sp/>le<sp/>reste<sp/>du<sp/>trafic.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/><sp/>Contexte</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Le<sp/>bus<sp/>CAN<sp/>est<sp/>partagé.<sp/>Un<sp/>nœud<sp/>peut<sp/>recevoir<sp/>des<sp/>messages<sp/>destinés<sp/>à<sp/>d&apos;autres<sp/>nœuds.<sp/>Les<sp/>**filtres<sp/>CAN**<sp/>permettent<sp/>:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Réduire<sp/>la<sp/>charge<sp/>CPU<sp/>(moins<sp/>d&apos;interruptions<sp/>inutiles)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Améliorer<sp/>la<sp/>latence<sp/>(traiter<sp/>uniquement<sp/>les<sp/>messages<sp/>pertinents)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Séparer<sp/>logiquement<sp/>le<sp/>trafic</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/><sp/>Fonction<sp/>de<sp/>filtrage</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Prototype</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">CAN_FilterTypeDef*<sp/>CAN_setup_Filter(int32_t<sp/>minimum_id,<sp/>int32_t<sp/>maximum_id,<sp/>int<sp/>filterBank);</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Paramètres</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>Paramètre<sp/>|<sp/>Type<sp/>|<sp/>Description<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|-----------|------|-------------|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`minimum_id`<sp/>|<sp/>`int32_t`<sp/>|<sp/>ID<sp/>CAN<sp/>minimum<sp/>à<sp/>accepter<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`maximum_id`<sp/>|<sp/>`int32_t`<sp/>|<sp/>ID<sp/>CAN<sp/>maximum<sp/>à<sp/>accepter<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`filterBank`<sp/>|<sp/>`int`<sp/>|<sp/>Numéro<sp/>de<sp/>banc<sp/>de<sp/>filtre<sp/>(0-27<sp/>disponibles)<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Valeur<sp/>de<sp/>retour</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Pointeur<sp/>vers<sp/>la<sp/>structure<sp/>`CAN_FilterTypeDef`<sp/>configurée.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/><sp/>Comment<sp/>ça<sp/>marche<sp/>?</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Le<sp/>filtre<sp/>masque<sp/>(IDMASK)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">CAN_FilterTypeDef<sp/>canfilterconfig;</highlight></codeline>
+<codeline><highlight class="normal">canfilterconfig.FilterMode<sp/>=<sp/>CAN_FILTERMODE_IDMASK;<sp/><sp/>//<sp/>Mode<sp/>masque</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Mode<sp/>masque**<sp/>:<sp/>Les<sp/>bits<sp/>du<sp/>filtre<sp/>agissent<sp/>comme<sp/>un<sp/>masque<sp/>binaire.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">ID<sp/>reçu<sp/>:<sp/><sp/><sp/><sp/><sp/>0011<sp/>0101</highlight></codeline>
+<codeline><highlight class="normal">Filtre<sp/>:<sp/><sp/><sp/><sp/><sp/><sp/>1111<sp/>1111<sp/><sp/>(masque)</highlight></codeline>
+<codeline><highlight class="normal">Résultat<sp/>:<sp/><sp/><sp/><sp/>Accepter<sp/>si<sp/>bits<sp/>importants<sp/>Match</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/><sp/>Exemple<sp/>de<sp/>configuration</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Cas<sp/>1<sp/>:<sp/>Accepter<sp/>une<sp/>plage<sp/>d&apos;IDs<sp/>(0x100<sp/>à<sp/>0x120)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">CAN_FilterTypeDef*<sp/>filter1<sp/>=<sp/>CAN_setup_Filter(0x100,<sp/>0x120,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Accepte<sp/>les<sp/>IDs:<sp/>0x100,<sp/>0x101,<sp/>0x102,<sp/>...,<sp/>0x120</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Cas<sp/>2<sp/>:<sp/>Accepter<sp/>un<sp/>ID<sp/>exact<sp/>(0x123)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">CAN_FilterTypeDef*<sp/>filter2<sp/>=<sp/>CAN_setup_Filter(0x123,<sp/>0x123,<sp/>1);</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Accepte<sp/>UNIQUEMENT:<sp/>0x123</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Cas<sp/>3<sp/>:<sp/>Accepter<sp/>tous<sp/>les<sp/>messages</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">CAN_FilterTypeDef*<sp/>filter3<sp/>=<sp/>CAN_setup_Filter(0x000,<sp/>0x7FF,<sp/>2);</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Accepte<sp/>les<sp/>IDs:<sp/>0x000<sp/>à<sp/>0x7FF<sp/>(tous<sp/>les<sp/>IDs<sp/>standards<sp/>11<sp/>bits)</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/><sp/>Détails<sp/>de<sp/>la<sp/>configuration<sp/>interne</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Voici<sp/>ce<sp/>que<sp/>fait<sp/>`CAN_setup_Filter()`<sp/>en<sp/>détail<sp/>:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">CAN_FilterTypeDef*<sp/>CAN_setup_Filter(int32_t<sp/>minimum_id,<sp/>int32_t<sp/>maximum_id,<sp/>int<sp/>filterBank)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>CAN_FilterTypeDef<sp/>canfilterconfig;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Activer<sp/>le<sp/>filtre</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>canfilterconfig.FilterActivation<sp/>=<sp/>CAN_FILTER_ENABLE;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Sélectionner<sp/>le<sp/>numéro<sp/>de<sp/>banc<sp/>(0-27)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>canfilterconfig.FilterBank<sp/>=<sp/>filterBank;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Affecter<sp/>à<sp/>FIFO0<sp/>(interrupt<sp/>CAN_IT_RX_FIFO0_MSG_PENDING)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>canfilterconfig.FilterFIFOAssignment<sp/>=<sp/>CAN_FILTER_FIFO0;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Configurer<sp/>les<sp/>seuils<sp/>ID<sp/>haut<sp/>et<sp/>bas</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>canfilterconfig.FilterIdHigh<sp/>=<sp/>maximum_id<sp/>&lt;&lt;<sp/>5;<sp/><sp/><sp/><sp/>//<sp/>Maximum</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>canfilterconfig.FilterMaskIdHigh<sp/>=<sp/>maximum_id<sp/>&lt;&lt;<sp/>5;<sp/>//<sp/>Masque</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>canfilterconfig.FilterIdLow<sp/>=<sp/>minimum_id;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Minimum</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>canfilterconfig.FilterMaskIdLow<sp/>=<sp/>minimum_id;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Masque</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Mode<sp/>de<sp/>filtrage<sp/>(masque<sp/>binaire)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>canfilterconfig.FilterMode<sp/>=<sp/>CAN_FILTERMODE_IDMASK;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Résolution:<sp/>32<sp/>bits<sp/>(combinaison<sp/>High<sp/>+<sp/>Low)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>canfilterconfig.FilterScale<sp/>=<sp/>CAN_FILTERSCALE_32BIT;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Assigner<sp/>les<sp/>bancs<sp/>de<sp/>filtrage<sp/>au<sp/>CAN1<sp/>(non<sp/>CAN2)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>canfilterconfig.SlaveStartFilterBank<sp/>=<sp/>20;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Appliquer<sp/>la<sp/>configuration<sp/>matérielle</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_CAN_ConfigFilter(&amp;hcan,<sp/>&amp;canfilterconfig);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>&amp;canfilterconfig;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/><sp/>Exemple<sp/>d&apos;intégration<sp/>complet</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Initialisation<sp/>avec<sp/>filtrage</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;TAGCAN.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;stm32f1xx_hal.h&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">extern<sp/>CAN_HandleTypeDef<sp/>hcan;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>init_com(void)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>1.<sp/>Initialiser<sp/>TAGCAN</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>CAN_init_TAGCAN();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>CAN_setup_TAG();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>CAN_setup_DF(0x123);<sp/><sp/>//<sp/>Mon<sp/>ID<sp/>CAN</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>2.<sp/>Configurer<sp/>les<sp/>filtres</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Filtre<sp/>1:<sp/>Accepter<sp/>les<sp/>messages<sp/>du<sp/>capteur<sp/>de<sp/>pression<sp/>(0x200)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>CAN_setup_Filter(0x200,<sp/>0x200,<sp/>0);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Filtre<sp/>2:<sp/>Accepter<sp/>les<sp/>messages<sp/>de<sp/>commande<sp/>(0x100<sp/>à<sp/>0x110)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>CAN_setup_Filter(0x100,<sp/>0x110,<sp/>1);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Filtre<sp/>3:<sp/>Messages<sp/>d&apos;urgence<sp/>(0x050)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>CAN_setup_Filter(0x050,<sp/>0x050,<sp/>2);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>3.<sp/>Activer<sp/>les<sp/>interruptions</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(HAL_CAN_ActivateNotification(&amp;hcan,<sp/>CAN_IT_RX_FIFO0_MSG_PENDING)<sp/>!=<sp/>HAL_OK)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Error_Handler();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef<sp/>*hcan)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>CAN_RxHeaderTypeDef<sp/>RxHeader;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>RxData[8];</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_CAN_GetRxMessage(hcan,<sp/>CAN_RX_FIFO0,<sp/>&amp;RxHeader,<sp/>RxData);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Traiter<sp/>selon<sp/>l&apos;ID<sp/>reçu</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>switch(RxHeader.StdId)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>case<sp/>0x200:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle_pressure_sensor(RxData);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>case<sp/>0x100:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>case<sp/>0x101:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>case<sp/>0x102:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>...<sp/>jusqu&apos;à<sp/>0x110</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle_command(RxData);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>case<sp/>0x050:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle_emergency(RxData);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>default:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Ne<sp/>devrait<sp/>jamais<sp/>arriver<sp/>ici<sp/>grâce<sp/>aux<sp/>filtres</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/><sp/>Limitation<sp/>des<sp/>bancs<sp/>de<sp/>filtrage</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Le<sp/>STM32F1<sp/>propose<sp/>:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>Ressource<sp/>|<sp/>Limite<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|-----------|--------|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>Bancs<sp/>de<sp/>filtrage<sp/>disponibles<sp/>|<sp/>28<sp/>(0-27)<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>Bancs<sp/>réservés<sp/>à<sp/>CAN1<sp/>|<sp/>14<sp/>(0-13)<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>Bancs<sp/>réservés<sp/>à<sp/>CAN2<sp/>|<sp/>14<sp/>(14-27)<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Chaque<sp/>filtre<sp/>peut<sp/>gérer<sp/>:</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**1<sp/>ID<sp/>exact**<sp/>(FilterMode<sp/>=<sp/>IDMASK)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Une<sp/>plage<sp/>d&apos;IDs**<sp/>(FilterMode<sp/>=<sp/>IDLIST)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/><sp/>Stratégies<sp/>de<sp/>filtrage<sp/>recommandées</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Stratégie<sp/>1<sp/>:<sp/>Filtrage<sp/>par<sp/>catégorie<sp/>(Recommandé)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Tous<sp/>les<sp/>capteurs:<sp/>0x200-0x20F<sp/>(1<sp/>filtre)</highlight></codeline>
+<codeline><highlight class="normal">CAN_setup_Filter(0x200,<sp/>0x20F,<sp/>0);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Toutes<sp/>les<sp/>commandes:<sp/>0x100-0x10F<sp/>(1<sp/>filtre)</highlight></codeline>
+<codeline><highlight class="normal">CAN_setup_Filter(0x100,<sp/>0x10F,<sp/>1);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Tout<sp/>le<sp/>diagnostic:<sp/>0x300-0x3FF<sp/>(1<sp/>filtre)</highlight></codeline>
+<codeline><highlight class="normal">CAN_setup_Filter(0x300,<sp/>0x3FF,<sp/>2);</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Avantages**<sp/>:</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Utilise<sp/>peu<sp/>de<sp/>filtres</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Facile<sp/>à<sp/>maintenir</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Extensible</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Stratégie<sp/>2<sp/>:<sp/>Un<sp/>filtre<sp/>par<sp/>source</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Capteur<sp/>1:<sp/>0x200</highlight></codeline>
+<codeline><highlight class="normal">CAN_setup_Filter(0x200,<sp/>0x200,<sp/>0);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Capteur<sp/>2:<sp/>0x201</highlight></codeline>
+<codeline><highlight class="normal">CAN_setup_Filter(0x201,<sp/>0x201,<sp/>1);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Capteur<sp/>3:<sp/>0x202</highlight></codeline>
+<codeline><highlight class="normal">CAN_setup_Filter(0x202,<sp/>0x202,<sp/>2);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>...<sp/>etc</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Avantages**<sp/>:</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Granularité<sp/>fine</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Gestion<sp/>précise</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Inconvénients**<sp/>:</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Consomme<sp/>rapidement<sp/>les<sp/>bancs<sp/>de<sp/>filtrage</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/><sp/>Points<sp/>d&apos;attention</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/><sp/>Point<sp/>|<sp/>Détail<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|---------|--------|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>**Ordre<sp/>d&apos;application**<sp/>|<sp/>Les<sp/>filtres<sp/>doivent<sp/>être<sp/>configurés<sp/>AVANT<sp/>d&apos;activer<sp/>les<sp/>interruptions<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>**Limite<sp/>de<sp/>bancs**<sp/>|<sp/>14<sp/>filtres<sp/>max<sp/>pour<sp/>CAN1.<sp/>Bien<sp/>planifier!<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>**FIFO0<sp/>vs<sp/>FIFO1**<sp/>|<sp/>`CAN_setup_Filter()`<sp/>utilise<sp/>FIFO0.<sp/>À<sp/>adapter<sp/>si<sp/>vous<sp/>utilisez<sp/>FIFO1<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>**Pas<sp/>de<sp/>filtre<sp/>=<sp/>tout<sp/>accepter**<sp/>|<sp/>Si<sp/>aucun<sp/>filtre<sp/>n&apos;est<sp/>configuré,<sp/>tous<sp/>les<sp/>messages<sp/>passent<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>**Mode<sp/>IDLIST<sp/>vs<sp/>IDMASK**<sp/>|<sp/>La<sp/>fonction<sp/>utilise<sp/>IDMASK<sp/>(plages).<sp/>Pour<sp/>listes,<sp/>modifier<sp/>le<sp/>code<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>**Décalage<sp/>des<sp/>bits<sp/>(&lt;&lt;5)**<sp/>|<sp/>Note:<sp/>`maximum_id<sp/>&lt;&lt;<sp/>5`<sp/>-&gt;<sp/>convertit<sp/>l&apos;ID<sp/>de<sp/>11<sp/>bits<sp/>au<sp/>format<sp/>STM32<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/><sp/>Débuggage<sp/>des<sp/>filtres</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Vérifier<sp/>quels<sp/>messages<sp/>arrivent</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef<sp/>*hcan)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>CAN_RxHeaderTypeDef<sp/>RxHeader;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>RxData[8];</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_CAN_GetRxMessage(hcan,<sp/>CAN_RX_FIFO0,<sp/>&amp;RxHeader,<sp/>RxData);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Afficher<sp/>le<sp/>message<sp/>reçu</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;ID:<sp/>0x%03X,<sp/>DLC:<sp/>%u\n&quot;,<sp/>RxHeader.StdId,<sp/>RxHeader.DLC);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>for(int<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>RxHeader.DLC;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(&quot;<sp/><sp/>Data[%d]<sp/>=<sp/>0x%02X\n&quot;,<sp/>i,<sp/>RxData[i]);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Si<sp/>vous<sp/>ne<sp/>voyez<sp/>**aucun<sp/>message**<sp/>malgré<sp/>l&apos;activité<sp/>CAN<sp/>:</highlight></codeline>
+<codeline><highlight class="normal">-<sp/><sp/>Vérifier<sp/>que<sp/>les<sp/>filtres<sp/>acceptent<sp/>l&apos;ID<sp/>envoyé</highlight></codeline>
+<codeline><highlight class="normal">-<sp/><sp/>Vérifier<sp/>que<sp/>les<sp/>interruptions<sp/>sont<sp/>activées</highlight></codeline>
+<codeline><highlight class="normal">-<sp/><sp/>Vérifier<sp/>que<sp/>le<sp/>module<sp/>CAN<sp/>est<sp/>initialisé</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Si<sp/>vous<sp/>voyez<sp/>**trop<sp/>de<sp/>messages**<sp/>:</highlight></codeline>
+<codeline><highlight class="normal">-<sp/><sp/>Ajouter<sp/>des<sp/>filtres<sp/>plus<sp/>restrictifs</highlight></codeline>
+<codeline><highlight class="normal">-<sp/><sp/>Vérifier<sp/>que<sp/>les<sp/>filtres<sp/>ne<sp/>sont<sp/>pas<sp/>inversés<sp/>(min<sp/>&gt;<sp/>max)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/><sp/>Comparaison<sp/>:<sp/>Avec/Sans<sp/>filtres</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Sans<sp/>filtres<sp/>(accepte<sp/>tout)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Aucun<sp/>CAN_setup_Filter()<sp/>appelé</highlight></codeline>
+<codeline><highlight class="normal">while(1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/><sp/>Reçoit<sp/>TOUS<sp/>les<sp/>messages<sp/>du<sp/>bus</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>-&gt;<sp/>CPU<sp/>chargé,<sp/>latence<sp/>mauvaise</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Avec<sp/>filtres<sp/>(recommandé)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Dans<sp/>init_com()</highlight></codeline>
+<codeline><highlight class="normal">CAN_setup_Filter(0x200,<sp/>0x20F,<sp/>0);<sp/><sp/>//<sp/>Capteurs</highlight></codeline>
+<codeline><highlight class="normal">CAN_setup_Filter(0x100,<sp/>0x10F,<sp/>1);<sp/><sp/>//<sp/>Commandes</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">while(1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/><sp/>Reçoit<sp/>UNIQUEMENT<sp/>les<sp/>messages<sp/>0x200-0x20F<sp/>et<sp/>0x100-0x10F</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>-&gt;<sp/>CPU<sp/>libre,<sp/>latence<sp/>optimale</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Voir<sp/>aussi<sp/>:</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[03_DONNEES_CAN.md](03_DONNEES_CAN.md)<sp/>-<sp/>Buffer<sp/>de<sp/>données</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[05_EXEMPLES_COMPLETS.md](05_EXEMPLES_COMPLETS.md)<sp/>-<sp/>Système<sp/>complet</highlight></codeline>
+    </programlisting>
+    <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/guide_utilisation/04_FILTRAGE_CAN.md"/>
+  </compounddef>
+</doxygen>

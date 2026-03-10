@@ -1,0 +1,375 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.0" xml:lang="en-US">
+  <compounddef id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_203___d_o_n_n_e_e_s___c_a_n" kind="page">
+    <compoundname>md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_203___d_o_n_n_e_e_s___c_a_n</compoundname>
+    <title>03 - Manipulation du Buffer de Données CAN</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><anchor id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_203___d_o_n_n_e_e_s___c_a_n_1autotoc_md66"/></para>
+<sect1 id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_203___d_o_n_n_e_e_s___c_a_n_1autotoc_md67">
+<title>Objectif</title><para>Comprendre comment gérer le buffer de données CAN (<computeroutput><ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref></computeroutput> et <computeroutput><ref refid="com__utils_8c_1a14629afcc7f0b2d62c2b617b07d98184" kindref="member">RxData</ref></computeroutput>) au-delà de la simple interface des tags.</para>
+<para><hruler/>
+</para>
+</sect1>
+<sect1 id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_203___d_o_n_n_e_e_s___c_a_n_1autotoc_md69">
+<title>Structure du buffer CAN</title><sect2 id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_203___d_o_n_n_e_e_s___c_a_n_1autotoc_md70">
+<title>Taille et format</title><para><programlisting filename=".c"><codeline><highlight class="normal">uint8_t<sp/><ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref>[8];<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Buffer<sp/>de<sp/>transmission<sp/>(8<sp/>octets<sp/>=<sp/>CAN<sp/>standard)</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">uint8_t<sp/><ref refid="com__utils_8c_1a14629afcc7f0b2d62c2b617b07d98184" kindref="member">RxData</ref>[8];<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Buffer<sp/>de<sp/>réception<sp/>(8<sp/>octets)</highlight></codeline>
+</programlisting></para>
+<para>Le buffer CAN est toujours de <bold>8 octets</bold> (64 bits) pour un frame standard CAN.</para>
+</sect2>
+<sect2 id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_203___d_o_n_n_e_e_s___c_a_n_1autotoc_md71">
+<title>Hiérarchie</title><para><table rows="5" cols="3"><row>
+<entry thead="yes"><para>Niveau  </para>
+</entry><entry thead="yes"><para>Composant  </para>
+</entry><entry thead="yes"><para>Responsabilité  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><bold>Haut</bold>  </para>
+</entry><entry thead="no"><para>Application  </para>
+</entry><entry thead="no"><para>Appelle <computeroutput><ref refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" kindref="member">set_value()</ref></computeroutput>, <computeroutput><ref refid="data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f" kindref="member">get_value()</ref></computeroutput>  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><bold>Moyen</bold>  </para>
+</entry><entry thead="no"><para>Data Container (TAGCAN)  </para>
+</entry><entry thead="no"><para>Mappe les tags dans le buffer  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><bold>Bas</bold>  </para>
+</entry><entry thead="no"><para>Buffer <computeroutput><ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref>[8]</computeroutput> / <computeroutput><ref refid="com__utils_8c_1a14629afcc7f0b2d62c2b617b07d98184" kindref="member">RxData</ref>[8]</computeroutput>  </para>
+</entry><entry thead="no"><para>Storiage binaire brut  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><bold>Très bas</bold>  </para>
+</entry><entry thead="no"><para>HAL CAN STM32  </para>
+</entry><entry thead="no"><para>Envoi/réception matérielle  </para>
+</entry></row>
+</table>
+</para>
+<para><hruler/>
+</para>
+</sect2>
+</sect1>
+<sect1 id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_203___d_o_n_n_e_e_s___c_a_n_1autotoc_md73">
+<title>Fonctions de gestion du buffer</title><sect2 id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_203___d_o_n_n_e_e_s___c_a_n_1autotoc_md74">
+<title>1 init_data_container()</title><para>Réinitialise le buffer à zéro.</para>
+<para><programlisting filename=".c"><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="data__container_8h_1a129f017feb0712be1dcf7932e6035aa0" kindref="member">init_data_container</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+</programlisting></para>
+<para><bold>Effet</bold> :<itemizedlist>
+<listitem><para>Tous les octets de <computeroutput><ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref>[8]</computeroutput> -&gt; 0</para>
+</listitem><listitem><para>Appelé manuellement si vous voulez &quot;effacer&quot; les données</para>
+</listitem></itemizedlist>
+</para>
+<para><bold>Exemple</bold> : <programlisting filename=".c"><codeline><highlight class="comment">//<sp/>Avant:<sp/><sp/>TxData<sp/>=<sp/>{0x12,<sp/>0x34,<sp/>0x56,<sp/>...}</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><ref refid="data__container_8h_1a129f017feb0712be1dcf7932e6035aa0" kindref="member">init_data_container</ref>();</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Après:<sp/><sp/>TxData<sp/>=<sp/>{0x00,<sp/>0x00,<sp/>0x00,<sp/>...}</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+</para>
+</sect2>
+<sect2 id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_203___d_o_n_n_e_e_s___c_a_n_1autotoc_md76">
+<title>2 set_val_TxData()</title><para>Copie un tableau <bold>externe</bold> dans le buffer global <computeroutput><ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref></computeroutput>.</para>
+<para><programlisting filename=".c"><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="data__container_8h_1a45840c759151338fe992664f4a21c4f7" kindref="member">set_val_TxData</ref>(uint8_t<sp/>*TxDataArray);</highlight></codeline>
+</programlisting></para>
+<para><bold>Utile pour</bold> :<itemizedlist>
+<listitem><para>Charger des données pré-formatées</para>
+</listitem><listitem><para>Importer des données d&apos;une autre source</para>
+</listitem><listitem><para>Tester sans passer par les tags</para>
+</listitem></itemizedlist>
+</para>
+<para><bold>Exemple</bold> : <programlisting filename=".c"><codeline><highlight class="normal">uint8_t<sp/>raw_data[8]<sp/>=<sp/>{0xAA,<sp/>0xBB,<sp/>0xCC,<sp/>0xDD,<sp/>0xEE,<sp/>0xFF,<sp/>0x00,<sp/>0x11};</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="data__container_8h_1a45840c759151338fe992664f4a21c4f7" kindref="member">set_val_TxData</ref>(raw_data);<sp/><sp/></highlight><highlight class="comment">//<sp/>Copie<sp/>raw_data<sp/>-&gt;<sp/>TxData</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Après<sp/>cet<sp/>appel:</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>TxData[0]<sp/>=<sp/>0xAA</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>TxData[1]<sp/>=<sp/>0xBB</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>...<sp/>et<sp/>cetera</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Les<sp/>tags<sp/>ne<sp/>voient<sp/>PAS<sp/>cette<sp/>modification<sp/>directement</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Vous<sp/>travaillez<sp/>maintenant<sp/>&quot;en<sp/>dehors&quot;<sp/>du<sp/>système<sp/>de<sp/>tags</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+</para>
+</sect2>
+<sect2 id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_203___d_o_n_n_e_e_s___c_a_n_1autotoc_md78">
+<title>3 can_simulate_send_receive()</title><para>Simule un envoi/réception CAN par copie buffer-à-buffer.</para>
+<para><programlisting filename=".c"><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="data__container_8h_1ae1649807202241b28239e8cb212a18b6" kindref="member">can_simulate_send_receive</ref>(uint8_t*<sp/>tx_buffer,<sp/>uint8_t*<sp/>rx_buffer);</highlight></codeline>
+</programlisting></para>
+<para><bold>Cas d&apos;usage</bold> :<itemizedlist>
+<listitem><para>Tests de la logique sans matériel CAN</para>
+</listitem><listitem><para>Vérifier que les données écrites sont bien formatées</para>
+</listitem><listitem><para>Boucle locale pour déboguer</para>
+</listitem></itemizedlist>
+</para>
+<para><bold>Exemple</bold> : <programlisting filename=".c"><codeline><highlight class="normal">uint8_t<sp/>tx[8]<sp/>=<sp/>{0x00,<sp/>0x00,<sp/>0x00,<sp/>0x00,<sp/>0x00,<sp/>0x00,<sp/>0x00,<sp/>0x00};</highlight></codeline>
+<codeline><highlight class="normal">uint8_t<sp/>rx[8];</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Écrire<sp/>des<sp/>données<sp/>dans<sp/>tx</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><ref refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" kindref="member">set_value</ref>(</highlight><highlight class="stringliteral">&quot;SEQ&quot;</highlight><highlight class="normal">,<sp/>3);</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="data__container_8h_1ae1649807202241b28239e8cb212a18b6" kindref="member">can_simulate_send_receive</ref>(<ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref>,<sp/>rx);<sp/><sp/></highlight><highlight class="comment">//<sp/>Simule<sp/>envoi/réception</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>rx<sp/>contient<sp/>maintenant<sp/>une<sp/>copie<sp/>de<sp/>TxData</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">memcpy(rx,<sp/><ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref>,<sp/>8);<sp/><sp/></highlight><highlight class="comment">//<sp/>Équivalent<sp/>à:</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>can_simulate_send_receive(TxData,<sp/>rx);</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+</para>
+</sect2>
+</sect1>
+<sect1 id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_203___d_o_n_n_e_e_s___c_a_n_1autotoc_md80">
+<title>Workflow complet : Écriture -&gt; Envoi -&gt; Réception</title><sect2 id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_203___d_o_n_n_e_e_s___c_a_n_1autotoc_md81">
+<title>Émission (Tx)</title><para><programlisting><codeline><highlight class="normal">Votre<sp/>application</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>↓</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_value(&quot;SEQ&quot;,<sp/>5)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_value(&quot;AB&quot;,<sp/>75)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>↓</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>TxData[8]<sp/>(rempli<sp/>par<sp/>TAGCAN)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>↓</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>Transmission<sp/>CAN<sp/>(HAL)</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_203___d_o_n_n_e_e_s___c_a_n_1autotoc_md82">
+<title>Code d&apos;émission</title><para><programlisting filename=".c"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_t_a_g_c_a_n_8h" kindref="compound">TAGCAN.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>CAN_HandleTypeDef<sp/><ref refid="com__utils_8h_1ae21c10daa2f8cbd18a0e66bb28a19d2d" kindref="member">hcan</ref>;</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref>[8];</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>CAN_TxHeaderTypeDef<sp/><ref refid="com__utils_8c_1a3e35a666d459f2ac92fc7c35334ff0ff" kindref="member">TxHeader</ref>;</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/><ref refid="com__utils_8c_1afd0a914dd50d7aa3607d092452037cc1" kindref="member">TxMailbox</ref>;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>send_can_frame(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Étape<sp/>1:<sp/>Réinitialiser<sp/>le<sp/>buffer<sp/>(optionnel)</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>init_data_container();<sp/><sp/>//<sp/>Si<sp/>vous<sp/>voulez<sp/>un<sp/>buffer<sp/>vierge</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Étape<sp/>2:<sp/>Écrire<sp/>les<sp/>données<sp/>via<sp/>les<sp/>tags</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" kindref="member">set_value</ref>(</highlight><highlight class="stringliteral">&quot;SEQ&quot;</highlight><highlight class="normal">,<sp/>5);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" kindref="member">set_value</ref>(</highlight><highlight class="stringliteral">&quot;HB&quot;</highlight><highlight class="normal">,<sp/>1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" kindref="member">set_value</ref>(</highlight><highlight class="stringliteral">&quot;AB&quot;</highlight><highlight class="normal">,<sp/>75);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" kindref="member">set_value</ref>(</highlight><highlight class="stringliteral">&quot;N2OPS&quot;</highlight><highlight class="normal">,<sp/>2500);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Étape<sp/>3:<sp/>Envoyer<sp/>via<sp/>CAN</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_Status<sp/>=<sp/>HAL_CAN_AddTxMessage(&amp;<ref refid="com__utils_8h_1ae21c10daa2f8cbd18a0e66bb28a19d2d" kindref="member">hcan</ref>,<sp/>&amp;<ref refid="com__utils_8c_1a3e35a666d459f2ac92fc7c35334ff0ff" kindref="member">TxHeader</ref>,<sp/><ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref>,<sp/>&amp;<ref refid="com__utils_8c_1afd0a914dd50d7aa3607d092452037cc1" kindref="member">TxMailbox</ref>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(HAL_Status<sp/>!=<sp/>HAL_OK)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Erreur<sp/>d&apos;envoi<sp/>CAN\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_203___d_o_n_n_e_e_s___c_a_n_1autotoc_md83">
+<title>Réception (Rx)</title><para><programlisting><codeline><highlight class="normal"><sp/><sp/><sp/>Bus<sp/>CAN</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>↓</highlight></codeline>
+<codeline><highlight class="normal">Réception<sp/>CAN<sp/>(HAL)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>↓</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>RxData[8]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>↓</highlight></codeline>
+<codeline><highlight class="normal"><sp/>Votre<sp/>application<sp/>récupère<sp/>les<sp/>données</highlight></codeline>
+<codeline><highlight class="normal"><sp/>via<sp/>get_value()<sp/>ou<sp/>directement<sp/>dans<sp/>RxData[8]</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_203___d_o_n_n_e_e_s___c_a_n_1autotoc_md84">
+<title>Code de réception</title><para><programlisting filename=".c"><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="com__utils_8c_1a7368d39e78009c017d6f81ccf33b9b2c" kindref="member">HAL_CAN_RxFifo0MsgPendingCallback</ref>(CAN_HandleTypeDef<sp/>*<ref refid="com__utils_8h_1ae21c10daa2f8cbd18a0e66bb28a19d2d" kindref="member">hcan</ref>)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>CAN_RxHeaderTypeDef<sp/><ref refid="com__utils_8c_1a6ee6e13063b860648180eea65852cc71" kindref="member">RxHeader</ref>;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="com__utils_8c_1a14629afcc7f0b2d62c2b617b07d98184" kindref="member">RxData</ref>[8];</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Étape<sp/>1:<sp/>Recevoir<sp/>le<sp/>message<sp/>via<sp/>HAL</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(HAL_CAN_GetRxMessage(<ref refid="com__utils_8h_1ae21c10daa2f8cbd18a0e66bb28a19d2d" kindref="member">hcan</ref>,<sp/>CAN_RX_FIFO0,<sp/>&amp;<ref refid="com__utils_8c_1a6ee6e13063b860648180eea65852cc71" kindref="member">RxHeader</ref>,<sp/><ref refid="com__utils_8c_1a14629afcc7f0b2d62c2b617b07d98184" kindref="member">RxData</ref>)<sp/>!=<sp/>HAL_OK)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Erreur</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Étape<sp/>2a:<sp/>Utiliser<sp/>les<sp/>données<sp/>directement<sp/>(acccès<sp/>brut)</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Octet<sp/>0:<sp/>0x%02X\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="com__utils_8c_1a14629afcc7f0b2d62c2b617b07d98184" kindref="member">RxData</ref>[0]);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Octet<sp/>1:<sp/>0x%02X\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="com__utils_8c_1a14629afcc7f0b2d62c2b617b07d98184" kindref="member">RxData</ref>[1]);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>OU</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Étape<sp/>2b:<sp/>Interpréter<sp/>via<sp/>les<sp/>tags</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>(si<sp/>vous<sp/>avez<sp/>le<sp/>même<sp/>schéma<sp/>de<sp/>tags<sp/>côté<sp/>récepteur)</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>seq,<sp/>battery;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="com__utils_8c_1a14629afcc7f0b2d62c2b617b07d98184" kindref="member">RxData</ref>[0]<sp/>&amp;<sp/>0x38)<sp/>{<sp/><sp/></highlight><highlight class="comment">//<sp/>Bits<sp/>3-5<sp/>contiennent<sp/>possibly<sp/>SEQ</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Extraire<sp/>manuellement...</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Ou<sp/>utiliser<sp/>les<sp/>fonctions<sp/>TAGCAN<sp/>si<sp/>vous<sp/>avez<sp/>copié<sp/>RxData<sp/>dans<sp/>TxData:</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>memcpy(<ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref>,<sp/><ref refid="com__utils_8c_1a14629afcc7f0b2d62c2b617b07d98184" kindref="member">RxData</ref>,<sp/>8);<sp/><sp/></highlight><highlight class="comment">//<sp/>Copier<sp/>RxData<sp/>-&gt;<sp/>TxData</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f" kindref="member">get_value</ref>(</highlight><highlight class="stringliteral">&quot;SEQ&quot;</highlight><highlight class="normal">,<sp/>&amp;seq)<sp/>==<sp/><ref refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3" kindref="member">CAN_TG_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Numéro<sp/>de<sp/>séquence<sp/>distant:<sp/>%u\n&quot;</highlight><highlight class="normal">,<sp/>seq);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+</para>
+</sect2>
+</sect1>
+<sect1 id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_203___d_o_n_n_e_e_s___c_a_n_1autotoc_md86">
+<title>Directement lire/écrire les octets</title><sect2 id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_203___d_o_n_n_e_e_s___c_a_n_1autotoc_md87">
+<title>Lecture directe</title><para><programlisting filename=".c"><codeline><highlight class="comment">//<sp/>Accéder<sp/>directement<sp/>à<sp/>un<sp/>octet</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">uint8_t<sp/>byte0<sp/>=<sp/><ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref>[0];<sp/><sp/></highlight><highlight class="comment">//<sp/>Premier<sp/>octet</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">uint8_t<sp/>byte7<sp/>=<sp/><ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref>[7];<sp/><sp/></highlight><highlight class="comment">//<sp/>Dernier<sp/>octet</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Accéder<sp/>à<sp/>un<sp/>bit<sp/>spécifique</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">uint8_t<sp/>bit3<sp/>=<sp/>(<ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref>[0]<sp/>&gt;&gt;<sp/>3)<sp/>&amp;<sp/>1;<sp/><sp/></highlight><highlight class="comment">//<sp/>Bit<sp/>3<sp/>de<sp/>l&apos;octet<sp/>0</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_203___d_o_n_n_e_e_s___c_a_n_1autotoc_md88">
+<title>Écriture directe</title><para><programlisting filename=".c"><codeline><highlight class="comment">//<sp/>Écrire<sp/>un<sp/>octet<sp/>entier</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref>[0]<sp/>=<sp/>0xA5;<sp/><sp/></highlight><highlight class="comment">//<sp/>Écrit<sp/>0b10100101</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Modifier<sp/>un<sp/>bit<sp/>spécifique</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref>[0]<sp/>|=<sp/>(1<sp/>&lt;&lt;<sp/>3);<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Mettre<sp/>à<sp/>1<sp/>le<sp/>bit<sp/>3</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref>[0]<sp/>&amp;=<sp/>~(1<sp/>&lt;&lt;<sp/>3);<sp/><sp/></highlight><highlight class="comment">//<sp/>Mettre<sp/>à<sp/>0<sp/>le<sp/>bit<sp/>3</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Bitmask<sp/>pour<sp/>plusieurs<sp/>bits</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref>[0]<sp/>=<sp/>(<ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref>[0]<sp/>&amp;<sp/>0xF0)<sp/>|<sp/>0x05;<sp/><sp/></highlight><highlight class="comment">//<sp/>Garder<sp/>les<sp/>4<sp/>bits<sp/>hauts,<sp/>définir<sp/>bas<sp/>à<sp/>0x05</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+</para>
+</sect2>
+</sect1>
+<sect1 id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_203___d_o_n_n_e_e_s___c_a_n_1autotoc_md90">
+<title>Pièges courants</title><para><table rows="5" cols="3"><row>
+<entry thead="yes"><para>Piège  </para>
+</entry><entry thead="yes"><para>Description  </para>
+</entry><entry thead="yes"><para>Solution  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><bold>Mélanger accès direct et tags</bold>  </para>
+</entry><entry thead="no"><para>Écrire un octet directement, puis utiliser <computeroutput><ref refid="data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f" kindref="member">get_value()</ref></computeroutput> peut être confus  </para>
+</entry><entry thead="no"><para>Soyez cohérent: ou tags, ou accès brut  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><bold>Oublier le <computeroutput>memcpy()</computeroutput></bold>  </para>
+</entry><entry thead="no"><para>Recevoir <computeroutput><ref refid="com__utils_8c_1a14629afcc7f0b2d62c2b617b07d98184" kindref="member">RxData</ref></computeroutput>, mais essayer de lire avec <computeroutput><ref refid="data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f" kindref="member">get_value()</ref></computeroutput> sans copier  </para>
+</entry><entry thead="no"><para>Toujours copier <computeroutput><ref refid="com__utils_8c_1a14629afcc7f0b2d62c2b617b07d98184" kindref="member">RxData</ref></computeroutput> -&gt; <computeroutput><ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref></computeroutput> avant <computeroutput><ref refid="data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f" kindref="member">get_value()</ref></computeroutput>  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><bold>Buffer réutilisé</bold>  </para>
+</entry><entry thead="no"><para>Si <computeroutput><ref refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" kindref="member">set_value()</ref></computeroutput> change l&apos;ordre de allocation des tags  </para>
+</entry><entry thead="no"><para>Pas vraiment un piège, mais attention si tags réordonnés  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><bold>Débordement de bits</bold>  </para>
+</entry><entry thead="no"><para>Écrire un octet directement sans respecter le schéma de tags  </para>
+</entry><entry thead="no"><para>Documentez votre layout de tags !  </para>
+</entry></row>
+</table>
+</para>
+<para><hruler/>
+</para>
+</sect1>
+<sect1 id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_203___d_o_n_n_e_e_s___c_a_n_1autotoc_md92">
+<title>Tableau d&apos;aide : Qui fait quoi ?</title><para><table rows="8" cols="3"><row>
+<entry thead="yes"><para>Tâche  </para>
+</entry><entry thead="yes"><para>Fonction  </para>
+</entry><entry thead="yes"><para>Détails  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>Vider le buffer  </para>
+</entry><entry thead="no"><para><computeroutput><ref refid="data__container_8h_1a129f017feb0712be1dcf7932e6035aa0" kindref="member">init_data_container()</ref></computeroutput>  </para>
+</entry><entry thead="no"><para>Remplace TxData par des zéros  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>Écrire une valeur nommée  </para>
+</entry><entry thead="no"><para><computeroutput>set_value(tag, val)</computeroutput>  </para>
+</entry><entry thead="no"><para>Via l&apos;interface des tags  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>Lire une valeur nommée  </para>
+</entry><entry thead="no"><para><computeroutput><ref refid="data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f" kindref="member">get_value</ref>(tag, &amp;val)</computeroutput>  </para>
+</entry><entry thead="no"><para>Via l&apos;interface des tags  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>Charger des données brutes  </para>
+</entry><entry thead="no"><para><computeroutput>set_val_TxData(arr)</computeroutput>  </para>
+</entry><entry thead="no"><para>Copie un tableau externe  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>Tester localement  </para>
+</entry><entry thead="no"><para><computeroutput><ref refid="data__container_8h_1ae1649807202241b28239e8cb212a18b6" kindref="member">can_simulate_send_receive()</ref></computeroutput>  </para>
+</entry><entry thead="no"><para>Simule une boucle locale  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>Envoyer sur le bus  </para>
+</entry><entry thead="no"><para><computeroutput>HAL_CAN_AddTxMessage()</computeroutput>  </para>
+</entry><entry thead="no"><para>Transport matériel (HAL STM32)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>Recevoir du bus  </para>
+</entry><entry thead="no"><para><computeroutput>HAL_CAN_GetRxMessage()</computeroutput>  </para>
+</entry><entry thead="no"><para>Transport matériel (HAL STM32)  </para>
+</entry></row>
+</table>
+</para>
+<para><hruler/>
+</para>
+</sect1>
+<sect1 id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_203___d_o_n_n_e_e_s___c_a_n_1autotoc_md94">
+<title>Exemple : Envoi -&gt; Réception -&gt; Traitement</title><para><programlisting filename=".c"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_t_a_g_c_a_n_8h" kindref="compound">TAGCAN.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;stm32f1xx_hal.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>CAN_HandleTypeDef<sp/><ref refid="com__utils_8h_1ae21c10daa2f8cbd18a0e66bb28a19d2d" kindref="member">hcan</ref>;</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref>[8],<sp/><ref refid="com__utils_8c_1a14629afcc7f0b2d62c2b617b07d98184" kindref="member">RxData</ref>[8];</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>CAN_TxHeaderTypeDef<sp/><ref refid="com__utils_8c_1a3e35a666d459f2ac92fc7c35334ff0ff" kindref="member">TxHeader</ref>;</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/><ref refid="com__utils_8c_1afd0a914dd50d7aa3607d092452037cc1" kindref="member">TxMailbox</ref>;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Tâche<sp/>d&apos;émission<sp/>(toutes<sp/>les<sp/>10ms)</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>task_tx_10ms(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint8_t<sp/>seq<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>seq<sp/>=<sp/>(seq<sp/>+<sp/>1)<sp/>%<sp/>8;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Écrire<sp/>les<sp/>données</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" kindref="member">set_value</ref>(</highlight><highlight class="stringliteral">&quot;SEQ&quot;</highlight><highlight class="normal">,<sp/>seq);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" kindref="member">set_value</ref>(</highlight><highlight class="stringliteral">&quot;HB&quot;</highlight><highlight class="normal">,<sp/>1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" kindref="member">set_value</ref>(</highlight><highlight class="stringliteral">&quot;AB&quot;</highlight><highlight class="normal">,<sp/>read_battery_percent());</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Envoyer</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_CAN_AddTxMessage(&amp;<ref refid="com__utils_8h_1ae21c10daa2f8cbd18a0e66bb28a19d2d" kindref="member">hcan</ref>,<sp/>&amp;<ref refid="com__utils_8c_1a3e35a666d459f2ac92fc7c35334ff0ff" kindref="member">TxHeader</ref>,<sp/><ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref>,<sp/>&amp;<ref refid="com__utils_8c_1afd0a914dd50d7aa3607d092452037cc1" kindref="member">TxMailbox</ref>);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Callback<sp/>de<sp/>réception<sp/>(IRQ)</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="com__utils_8c_1a7368d39e78009c017d6f81ccf33b9b2c" kindref="member">HAL_CAN_RxFifo0MsgPendingCallback</ref>(CAN_HandleTypeDef<sp/>*<ref refid="com__utils_8h_1ae21c10daa2f8cbd18a0e66bb28a19d2d" kindref="member">hcan</ref>)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>CAN_RxHeaderTypeDef<sp/><ref refid="com__utils_8c_1a6ee6e13063b860648180eea65852cc71" kindref="member">RxHeader</ref>;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>RxDataLocal[8];</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_CAN_GetRxMessage(<ref refid="com__utils_8h_1ae21c10daa2f8cbd18a0e66bb28a19d2d" kindref="member">hcan</ref>,<sp/>CAN_RX_FIFO0,<sp/>&amp;<ref refid="com__utils_8c_1a6ee6e13063b860648180eea65852cc71" kindref="member">RxHeader</ref>,<sp/>RxDataLocal);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Voir<sp/>directement<sp/>les<sp/>octets<sp/>reçus</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Reçu:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>8;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;%02X<sp/>&quot;</highlight><highlight class="normal">,<sp/>RxDataLocal[i]);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Si<sp/>le<sp/>même<sp/>schéma<sp/>de<sp/>tags<sp/>:<sp/>interpréter<sp/>via<sp/>TAGCAN</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>memcpy(<ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref>,<sp/>RxDataLocal,<sp/>8);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>remote_seq,<sp/>remote_battery;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f" kindref="member">get_value</ref>(</highlight><highlight class="stringliteral">&quot;SEQ&quot;</highlight><highlight class="normal">,<sp/>&amp;remote_seq);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f" kindref="member">get_value</ref>(</highlight><highlight class="stringliteral">&quot;AB&quot;</highlight><highlight class="normal">,<sp/>&amp;remote_battery);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Séquence:<sp/>%u,<sp/>Batterie:<sp/>%u%%\n&quot;</highlight><highlight class="normal">,<sp/>remote_seq,<sp/>remote_battery);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="main_8c_1a840291bc02cba5474a4cb46a9b9566fe" kindref="member">main</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_Init();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MX_CAN_Init();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="com__utils_8c_1adf9124e89f799fae0f55cc9ed0a94189" kindref="member">init_com</ref>();</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Timer<sp/>pour<sp/>task_tx_10ms()</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>...</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Boucle<sp/>principale</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+</para>
+<para>Voir aussi :<itemizedlist>
+<listitem><para><ref refid="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s" kindref="compound">02_GESTION_TAGS.md</ref> - Tags et variables nommées</para>
+</listitem><listitem><para><ref refid="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n" kindref="compound">04_FILTRAGE_CAN.md</ref> - Filtrage des messages reçus </para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+    </detaileddescription>
+    <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/guide_utilisation/03_DONNEES_CAN.md"/>
+  </compounddef>
+</doxygen>

@@ -1,10 +1,14 @@
 <map id="set_value" name="set_value">
-<area shape="rect" id="Node000001" title="Ecrit une valeur dans TxData a partir d&#39;un tag." alt="" coords="248,31,324,56"/>
-<area shape="rect" id="Node000002" href="$main_8c.html#ae9bbb2f5bb69f73e92c761f83223285a" title="Execute les tests unitaires du module. Les resultats sont affiches dans le terminal." alt="" coords="104,5,200,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="234,36,200,30,201,24,235,31"/>
-<area shape="rect" id="Node000004" href="$main_8c.html#a9c4bb6f6d00e76eae45e966a4c628178" title="Execute un scenario de demonstration des fonctions d&#39;impression." alt="" coords="114,55,190,80"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="235,55,191,63,190,58,234,50"/>
-<area shape="rect" id="Node000003" href="$main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,31,56,56"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="91,33,57,41,56,36,90,28"/>
-<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="100,60,56,51,57,46,101,55"/>
+<area shape="rect" id="Node000001" title="Ecrit une valeur dans TxData a partir d&#39;un tag." alt="" coords="321,55,397,80"/>
+<area shape="rect" id="Node000002" href="$main_8c.html#ae9bbb2f5bb69f73e92c761f83223285a" title="Execute les tests unitaires du module. Les resultats sont affiches dans le terminal." alt="" coords="156,5,252,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="307,54,244,33,245,28,309,49"/>
+<area shape="rect" id="Node000004" href="$main_8c.html#a9c4bb6f6d00e76eae45e966a4c628178" title="Execute un scenario de demonstration des fonctions d&#39;impression." alt="" coords="166,55,242,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="308,70,242,70,242,65,308,65"/>
+<area shape="rect" id="Node000005" href="$com__utils_8c.html#aed4e7ccb92f34e07bbb0839df8a7278f" title=" " alt="" coords="135,104,273,129"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="309,86,245,107,244,101,307,81"/>
+<area shape="rect" id="Node000003" href="$main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="21,31,71,56"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="143,30,72,42,71,37,142,25"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="152,62,71,50,72,44,153,57"/>
+<area shape="rect" id="Node000006" href="$com__utils_8c.html#a4aa2d6078cb7f20cad91adb07fdcb5ae" title=" " alt="" coords="5,104,87,129"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="121,119,87,119,87,114,121,114"/>
 </map>

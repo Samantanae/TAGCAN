@@ -1,0 +1,306 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.0" xml:lang="en-US">
+  <compounddef id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s" kind="page">
+    <compoundname>md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s</compoundname>
+    <title>02 - Gestion des Tags</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><anchor id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_1autotoc_md37"/></para>
+<sect1 id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_1autotoc_md38">
+<title>Qu&apos;est-ce qu&apos;un tag ?</title><para>Un <bold>tag</bold> est une variable nommée qui occupe une plage de bits dans le buffer CAN (TxData). C&apos;est l&apos;interface principale pour lire et écrire des données.</para>
+<para><bold>Analogie</bold> : C&apos;est comme des variables struct, mais mappées directement dans un buffer binaire.</para>
+<para><hruler/>
+</para>
+</sect1>
+<sect1 id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_1autotoc_md40">
+<title>Créer un tag : set_tag()</title><sect2 id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_1autotoc_md41">
+<title>Prototype</title><para><programlisting filename=".c"><codeline><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" kindref="member">set_tag</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag_name,<sp/>uint8_t<sp/>n_bit);</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_1autotoc_md42">
+<title>Paramètres</title><para><table rows="3" cols="3"><row>
+<entry thead="yes"><para>Paramètre  </para>
+</entry><entry thead="yes"><para>Type  </para>
+</entry><entry thead="yes"><para>Description  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>tag_name</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>const char*</computeroutput>  </para>
+</entry><entry thead="no"><para>Nom unique du tag (ex. &quot;SEQ&quot;, &quot;HB&quot;)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>n_bit</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>uint8_t</computeroutput>  </para>
+</entry><entry thead="no"><para>Nombre de bits occupés (1 à 16)  </para>
+</entry></row>
+</table>
+</para>
+</sect2>
+<sect2 id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_1autotoc_md43">
+<title>Valeur de retour</title><para>Consulter <computeroutput><ref refid="_a_p_i___r_e_f_e_r_e_n_c_e_8md" kindref="compound">documentation/API_REFERENCE.md</ref></computeroutput> pour les codes d&apos;erreur.</para>
+</sect2>
+<sect2 id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_1autotoc_md44">
+<title>Exemples</title><para><programlisting filename=".c"><codeline><highlight class="comment">//<sp/>Initialisation<sp/>des<sp/>tags<sp/>(dans<sp/>CAN_setup_TAG())</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="com__utils_8c_1a91524acc09c84cf5aa22222e3eee50f5" kindref="member">CAN_setup_TAG</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" kindref="member">set_tag</ref>(</highlight><highlight class="stringliteral">&quot;SEQ&quot;</highlight><highlight class="normal">,<sp/>3);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>3<sp/>bits<sp/>pour<sp/>numéro<sp/>séquence</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" kindref="member">set_tag</ref>(</highlight><highlight class="stringliteral">&quot;HB&quot;</highlight><highlight class="normal">,<sp/>1);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>1<sp/>bit<sp/>pour<sp/>watchdog</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" kindref="member">set_tag</ref>(</highlight><highlight class="stringliteral">&quot;CI&quot;</highlight><highlight class="normal">,<sp/>2);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>2<sp/>bits<sp/>pour<sp/>continuité</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" kindref="member">set_tag</ref>(</highlight><highlight class="stringliteral">&quot;AB&quot;</highlight><highlight class="normal">,<sp/>7);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>7<sp/>bits<sp/>pour<sp/>batterie<sp/>(0-100%)</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" kindref="member">set_tag</ref>(</highlight><highlight class="stringliteral">&quot;N2OPS&quot;</highlight><highlight class="normal">,<sp/>16);<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>16<sp/>bits<sp/>pour<sp/>pression<sp/>(0-65535<sp/>Pa)</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" kindref="member">set_tag</ref>(</highlight><highlight class="stringliteral">&quot;TIME&quot;</highlight><highlight class="normal">,<sp/>16);<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>16<sp/>bits<sp/>pour<sp/>timestamp<sp/>(0-65535<sp/>ms)</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+</para>
+</sect2>
+</sect1>
+<sect1 id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_1autotoc_md46">
+<title>Écrire une valeur : set_value()</title><sect2 id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_1autotoc_md47">
+<title>Prototype</title><para><programlisting filename=".c"><codeline><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" kindref="member">set_value</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag_name,<sp/>uint32_t<sp/>value);</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_1autotoc_md48">
+<title>Paramètres</title><para><table rows="3" cols="3"><row>
+<entry thead="yes"><para>Paramètre  </para>
+</entry><entry thead="yes"><para>Type  </para>
+</entry><entry thead="yes"><para>Description  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>tag_name</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>const char*</computeroutput>  </para>
+</entry><entry thead="no"><para>Nom du tag à modifier  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>value</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>uint32_t</computeroutput>  </para>
+</entry><entry thead="no"><para>Nouvelle valeur à écrire  </para>
+</entry></row>
+</table>
+</para>
+</sect2>
+<sect2 id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_1autotoc_md49">
+<title>Valeur de retour</title><para><itemizedlist>
+<listitem><para><bold>CAN_TG_SUCCESS</bold> (0) - Succès</para>
+</listitem><listitem><para><bold>CAN_TG_ERROR_VALUE_TO_BIG</bold> - La valeur dépasse les <computeroutput>n_bit</computeroutput> bits du tag</para>
+</listitem><listitem><para>Autres codes d&apos;erreur - Tag non trouvé, etc.</para>
+</listitem></itemizedlist>
+</para>
+</sect2>
+<sect2 id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_1autotoc_md50">
+<title>Comportement important</title><para><bold>La valeur est tronquée si elle dépasse la capacité du tag.</bold></para>
+<para>Par exemple : <programlisting filename=".c"><codeline><highlight class="normal"><ref refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" kindref="member">set_tag</ref>(</highlight><highlight class="stringliteral">&quot;SEQ&quot;</highlight><highlight class="normal">,<sp/>3);<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>3<sp/>bits<sp/>-&gt;<sp/>plage<sp/>0<sp/>à<sp/>7</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><ref refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" kindref="member">set_value</ref>(</highlight><highlight class="stringliteral">&quot;SEQ&quot;</highlight><highlight class="normal">,<sp/>10);<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>Erreur<sp/>:<sp/>10<sp/>&gt;<sp/>2^3<sp/>-<sp/>1<sp/>=<sp/>7</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><ref refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" kindref="member">set_value</ref>(</highlight><highlight class="stringliteral">&quot;SEQ&quot;</highlight><highlight class="normal">,<sp/>5);<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>Ok<sp/>:<sp/>écrit<sp/>0b101</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_1autotoc_md51">
+<title>Exemples d&apos;utilisation</title><para><programlisting filename=".c"><codeline><highlight class="comment">//<sp/>Dans<sp/>la<sp/>boucle<sp/>principale<sp/>ou<sp/>handler</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>seq_counter<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>update_telemetry(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Incrémenter<sp/>et<sp/>envoyer<sp/>le<sp/>numéro<sp/>de<sp/>séquence</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>seq_counter<sp/>=<sp/>(seq_counter<sp/>+<sp/>1)<sp/>%<sp/>8;<sp/><sp/></highlight><highlight class="comment">//<sp/>Cycle<sp/>avec<sp/>3<sp/>bits<sp/>(0-7)</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" kindref="member">set_value</ref>(</highlight><highlight class="stringliteral">&quot;SEQ&quot;</highlight><highlight class="normal">,<sp/>seq_counter)<sp/>!=<sp/><ref refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3" kindref="member">CAN_TG_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Erreur...</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Envoyer<sp/>le<sp/>statut<sp/>batterie</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>battery_percent<sp/>=<sp/>read_battery();<sp/><sp/></highlight><highlight class="comment">//<sp/>0-100</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" kindref="member">set_value</ref>(</highlight><highlight class="stringliteral">&quot;AB&quot;</highlight><highlight class="normal">,<sp/>battery_percent)<sp/>!=<sp/><ref refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3" kindref="member">CAN_TG_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Erreur...</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Envoyer<sp/>une<sp/>pression</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>pressure<sp/>=<sp/>read_sensor();<sp/><sp/></highlight><highlight class="comment">//<sp/>0-65535</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" kindref="member">set_value</ref>(</highlight><highlight class="stringliteral">&quot;N2OPS&quot;</highlight><highlight class="normal">,<sp/>pressure)<sp/>!=<sp/><ref refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3" kindref="member">CAN_TG_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Erreur...</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Envoyer<sp/>le<sp/>timestamp</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>time_ms<sp/>=<sp/>get_timestamp();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" kindref="member">set_value</ref>(</highlight><highlight class="stringliteral">&quot;TIME&quot;</highlight><highlight class="normal">,<sp/>time_ms);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+</para>
+</sect2>
+</sect1>
+<sect1 id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_1autotoc_md53">
+<title>Lire une valeur : get_value()</title><sect2 id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_1autotoc_md54">
+<title>Prototype</title><para><programlisting filename=".c"><codeline><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f" kindref="member">get_value</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag_name,<sp/>uint32_t*<sp/>out_value);</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_1autotoc_md55">
+<title>Paramètres</title><para><table rows="3" cols="3"><row>
+<entry thead="yes"><para>Paramètre  </para>
+</entry><entry thead="yes"><para>Type  </para>
+</entry><entry thead="yes"><para>Description  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>tag_name</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>const char*</computeroutput>  </para>
+</entry><entry thead="no"><para>Nom du tag à lire  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>out_value</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>uint32_t*</computeroutput>  </para>
+</entry><entry thead="no"><para>Pointeur vers variable de sortie  </para>
+</entry></row>
+</table>
+</para>
+</sect2>
+<sect2 id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_1autotoc_md56">
+<title>Valeur de retour</title><para><itemizedlist>
+<listitem><para><bold>CAN_TG_SUCCESS</bold> (0) - Succès, <computeroutput>*out_value</computeroutput> est valide</para>
+</listitem><listitem><para>Négatif - Code d&apos;erreur</para>
+</listitem></itemizedlist>
+</para>
+</sect2>
+<sect2 id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_1autotoc_md57">
+<title>Exemples</title><para><programlisting filename=".c"><codeline><highlight class="normal">uint32_t<sp/>val_seq;</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f" kindref="member">get_value</ref>(</highlight><highlight class="stringliteral">&quot;SEQ&quot;</highlight><highlight class="normal">,<sp/>&amp;val_seq)<sp/>==<sp/><ref refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3" kindref="member">CAN_TG_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Séquence:<sp/>%u\n&quot;</highlight><highlight class="normal">,<sp/>val_seq);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">uint32_t<sp/>val_battery;</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f" kindref="member">get_value</ref>(</highlight><highlight class="stringliteral">&quot;AB&quot;</highlight><highlight class="normal">,<sp/>&amp;val_battery)<sp/>==<sp/><ref refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3" kindref="member">CAN_TG_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Batterie:<sp/>%u<sp/>%%\n&quot;</highlight><highlight class="normal">,<sp/>val_battery);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">uint32_t<sp/>val_pressure;</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f" kindref="member">get_value</ref>(</highlight><highlight class="stringliteral">&quot;N2OPS&quot;</highlight><highlight class="normal">,<sp/>&amp;val_pressure)<sp/>==<sp/><ref refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3" kindref="member">CAN_TG_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Pression<sp/>N2O:<sp/>%u<sp/>Pa\n&quot;</highlight><highlight class="normal">,<sp/>val_pressure);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+</para>
+</sect2>
+</sect1>
+<sect1 id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_1autotoc_md59">
+<title>Workflow complet : set / get / send</title><sect2 id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_1autotoc_md60">
+<title>Scénario d&apos;exemple</title><para><programlisting filename=".c"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_t_a_g_c_a_n_8h" kindref="compound">TAGCAN.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;stm32f1xx_hal.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">CAN_HandleTypeDef<sp/><ref refid="com__utils_8h_1ae21c10daa2f8cbd18a0e66bb28a19d2d" kindref="member">hcan</ref>;</highlight></codeline>
+<codeline><highlight class="normal">uint8_t<sp/><ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref>[8];</highlight></codeline>
+<codeline><highlight class="normal">CAN_TxHeaderTypeDef<sp/><ref refid="com__utils_8c_1a3e35a666d459f2ac92fc7c35334ff0ff" kindref="member">TxHeader</ref>;</highlight></codeline>
+<codeline><highlight class="normal">int32_t<sp/><ref refid="com__utils_8c_1afd0a914dd50d7aa3607d092452037cc1" kindref="member">TxMailbox</ref>;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Étape<sp/>1:<sp/>Initialisation<sp/>(une<sp/>fois<sp/>au<sp/>démarrage)</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>init_system(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="com__utils_8c_1adf9124e89f799fae0f55cc9ed0a94189" kindref="member">init_com</ref>();<sp/><sp/></highlight><highlight class="comment">//<sp/>Appelle<sp/>init_data_container(),<sp/>init_tag_manager(),<sp/>set_tag(),<sp/>etc.</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Étape<sp/>2:<sp/>Boucle<sp/>de<sp/>mise<sp/>à<sp/>jour<sp/>périodique</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>periodic_10ms_task(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint8_t<sp/>seq<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Préparer<sp/>les<sp/>données</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>seq<sp/>=<sp/>(seq<sp/>+<sp/>1)<sp/>%<sp/>8;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" kindref="member">set_value</ref>(</highlight><highlight class="stringliteral">&quot;SEQ&quot;</highlight><highlight class="normal">,<sp/>seq);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" kindref="member">set_value</ref>(</highlight><highlight class="stringliteral">&quot;HB&quot;</highlight><highlight class="normal">,<sp/>1);<sp/><sp/></highlight><highlight class="comment">//<sp/>Heartbeat<sp/>actif</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" kindref="member">set_value</ref>(</highlight><highlight class="stringliteral">&quot;AB&quot;</highlight><highlight class="normal">,<sp/>read_adc_battery());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" kindref="member">set_value</ref>(</highlight><highlight class="stringliteral">&quot;EDC&quot;</highlight><highlight class="normal">,<sp/>get_command_state());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" kindref="member">set_value</ref>(</highlight><highlight class="stringliteral">&quot;TIME&quot;</highlight><highlight class="normal">,<sp/>HAL_GetTick());</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Envoyer<sp/>le<sp/>frame<sp/>CAN</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(HAL_CAN_AddTxMessage(&amp;<ref refid="com__utils_8h_1ae21c10daa2f8cbd18a0e66bb28a19d2d" kindref="member">hcan</ref>,<sp/>&amp;<ref refid="com__utils_8c_1a3e35a666d459f2ac92fc7c35334ff0ff" kindref="member">TxHeader</ref>,<sp/><ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref>,<sp/>&amp;<ref refid="com__utils_8c_1afd0a914dd50d7aa3607d092452037cc1" kindref="member">TxMailbox</ref>)<sp/>!=<sp/>HAL_OK)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Erreur<sp/>d&apos;envoi...</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Étape<sp/>3:<sp/>Callback<sp/>de<sp/>réception<sp/>(déclenchée<sp/>par<sp/>interruption)</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="com__utils_8c_1a7368d39e78009c017d6f81ccf33b9b2c" kindref="member">HAL_CAN_RxFifo0MsgPendingCallback</ref>(CAN_HandleTypeDef<sp/>*<ref refid="com__utils_8h_1ae21c10daa2f8cbd18a0e66bb28a19d2d" kindref="member">hcan</ref>)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>CAN_RxHeaderTypeDef<sp/><ref refid="com__utils_8c_1a6ee6e13063b860648180eea65852cc71" kindref="member">RxHeader</ref>;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="com__utils_8c_1a14629afcc7f0b2d62c2b617b07d98184" kindref="member">RxData</ref>[8];</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Recevoir<sp/>le<sp/>mensaje</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(HAL_CAN_GetRxMessage(<ref refid="com__utils_8h_1ae21c10daa2f8cbd18a0e66bb28a19d2d" kindref="member">hcan</ref>,<sp/>CAN_RX_FIFO0,<sp/>&amp;<ref refid="com__utils_8c_1a6ee6e13063b860648180eea65852cc71" kindref="member">RxHeader</ref>,<sp/><ref refid="com__utils_8c_1a14629afcc7f0b2d62c2b617b07d98184" kindref="member">RxData</ref>)<sp/>==<sp/>HAL_OK)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Copier<sp/>dans<sp/>le<sp/>buffer<sp/>de<sp/>TAGCAN</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="data__container_8h_1ae1649807202241b28239e8cb212a18b6" kindref="member">can_simulate_send_receive</ref>(<ref refid="com__utils_8c_1a14629afcc7f0b2d62c2b617b07d98184" kindref="member">RxData</ref>,<sp/>NULL);<sp/><sp/></highlight><highlight class="comment">//<sp/>ou<sp/>autre<sp/>traitement</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Lire<sp/>les<sp/>valeurs<sp/>reçues</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>remote_seq,<sp/>remote_battery;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f" kindref="member">get_value</ref>(</highlight><highlight class="stringliteral">&quot;SEQ&quot;</highlight><highlight class="normal">,<sp/>&amp;remote_seq);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f" kindref="member">get_value</ref>(</highlight><highlight class="stringliteral">&quot;AB&quot;</highlight><highlight class="normal">,<sp/>&amp;remote_battery);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Nœud<sp/>distant:<sp/>SEQ=%u,<sp/>Batterie=%u%%\n&quot;</highlight><highlight class="normal">,<sp/>remote_seq,<sp/>remote_battery);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="main_8c_1a840291bc02cba5474a4cb46a9b9566fe" kindref="member">main</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_Init();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MX_CAN_Init();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>init_system();</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>periodic_10ms_task();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>...</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+</para>
+</sect2>
+</sect1>
+<sect1 id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_1autotoc_md62">
+<title>Bonnes pratiques</title><para><table rows="7" cols="2"><row>
+<entry thead="yes"><para>À faire  </para>
+</entry><entry thead="yes"><para>À éviter  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>Vérifier la valeur de retour de <computeroutput><ref refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" kindref="member">set_value()</ref></computeroutput>  </para>
+</entry><entry thead="no"><para>Ignorer les codes d&apos;erreur  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>Vérifier la valeur de retour de <computeroutput><ref refid="data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f" kindref="member">get_value()</ref></computeroutput>  </para>
+</entry><entry thead="no"><para>Utiliser <computeroutput>out_value</computeroutput> sans vérification  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>Nommer les tags de façon explicite  </para>
+</entry><entry thead="no"><para>Utiliser des noms génériques (&quot;VAL1&quot;, &quot;VAL2&quot;)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>Dimensionner les tags selon les besoins  </para>
+</entry><entry thead="no"><para>Allouer trop de bits (gaspillage)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>Prévoir le cycle des valeurs (ex: seq 0-7 avec 3 bits)  </para>
+</entry><entry thead="no"><para>Dépasser la limite d&apos;un tag sans gérer  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>Documenter votre schéma de tags  </para>
+</entry><entry thead="no"><para>Laisser du code sans commentaires  </para>
+</entry></row>
+</table>
+</para>
+<para><hruler/>
+</para>
+</sect1>
+<sect1 id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s_1autotoc_md64">
+<title>Schéma de tags recommandé</title><para>Pour un système similaire à l&apos;exemple, structurez les tags comme ceci en commentaire :</para>
+<para><programlisting filename=".c"><codeline><highlight class="comment">/*</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>SCHÉMA<sp/>DE<sp/>TAGS<sp/>CAN<sp/>(ID<sp/>0x123)</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>══════════════════════════════════════════════════════════════</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>Byte<sp/>0:<sp/>[HB(1)<sp/>|<sp/>SEQ(3)<sp/>|<sp/>CI(2)<sp/>|<sp/>XX(2)]</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>Byte<sp/>1:<sp/>[AB(7)<sp/>|<sp/>YY(1)]</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>Byte<sp/>2-3:<sp/>[EDC(4)<sp/>|<sp/>PADDING(12)]</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>Byte<sp/>4-5:<sp/>[N2OPS(16)]<sp/><sp/><sp/><sp/><sp/><sp/><sp/>--<sp/>Pression<sp/>N2O<sp/>(Pa)</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>Byte<sp/>6-7:<sp/>[TLC(12)<sp/>|<sp/>N2ODVS(1)<sp/>|<sp/>N2OIV(1)<sp/>|<sp/>N2OMV(1)<sp/>|<sp/>XX(1)]</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>Total:<sp/>15<sp/>bits<sp/>utilisés,<sp/>reste<sp/>pour<sp/>extension</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*/</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+</para>
+<para>Voir aussi :<itemizedlist>
+<listitem><para><ref refid="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_203___d_o_n_n_e_e_s___c_a_n" kindref="compound">03_DONNEES_CAN.md</ref> - Utilisation avancée du buffer</para>
+</listitem><listitem><para><ref refid="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33" kindref="compound">05_EXEMPLES_COMPLETS.md</ref> - Exemples concrets </para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+    </detaileddescription>
+    <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/guide_utilisation/02_GESTION_TAGS.md"/>
+  </compounddef>
+</doxygen>

@@ -12,15 +12,23 @@
       <node id="2">
         <label>TAGCAN.h</label>
         <link refid="_t_a_g_c_a_n_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>com_utils.c</label>
+        <link refid="com__utils_8c"/>
+      </node>
+      <node id="3">
+        <label>com_utils.h</label>
+        <link refid="com__utils_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
       </node>
       <node id="1">
         <label>config_value.h</label>
         <link refid="config__value_8h"/>
         <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -28,50 +36,64 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
       </node>
-      <node id="8">
+      <node id="10">
         <label>data_container.h</label>
         <link refid="data__container_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="7">
+      <node id="9">
         <label>tag_manager.h</label>
         <link refid="tag__manager_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
       </node>
-      <node id="3">
+      <node id="5">
         <label>config_value.c</label>
         <link refid="config__value_8c"/>
       </node>
-      <node id="5">
+      <node id="7">
         <label>main.c</label>
         <link refid="main_8c"/>
       </node>
-      <node id="4">
+      <node id="6">
         <label>data_container.c</label>
         <link refid="data__container_8c"/>
       </node>
-      <node id="9">
+      <node id="11">
         <label>print_val.c</label>
         <link refid="print__val_8c"/>
       </node>
-      <node id="6">
+      <node id="8">
         <label>tag_manager.c</label>
         <link refid="tag__manager_8c"/>
+      </node>
+      <node id="12">
+        <label>test_print_repartition_bit.c</label>
+        <link refid="test__print__repartition__bit_8c"/>
       </node>
     </invincdepgraph>
     <sectiondef kind="define">
@@ -119,10 +141,12 @@
         <referencedby refid="data__container_8h_1ae1649807202241b28239e8cb212a18b6" compoundref="data__container_8c" startline="165" endline="171">can_simulate_send_receive</referencedby>
         <referencedby refid="tag__manager_8c_1ad5772dac2622697b5f563da0dbfaede3" compoundref="tag__manager_8c" startline="188" endline="222">find_byte2_with_enoung_space</referencedby>
         <referencedby refid="tag__manager_8c_1a5f1ce2cac9791e6b46be230dcce3f804" compoundref="tag__manager_8c" startline="144" endline="176">find_byte_with_enoung_space</referencedby>
+        <referencedby refid="com__utils_8c_1a7368d39e78009c017d6f81ccf33b9b2c" compoundref="com__utils_8c" startline="169" endline="186">HAL_CAN_RxFifo0MsgPendingCallback</referencedby>
         <referencedby refid="data__container_8h_1a129f017feb0712be1dcf7932e6035aa0" compoundref="data__container_8c" startline="14" endline="20">init_data_container</referencedby>
-        <referencedby refid="print__val_8h_1a7d217b9d9a6575858c03ca9854bb151b" compoundref="print__val_8c" startline="148" endline="157">print_all_data_bin</referencedby>
-        <referencedby refid="print__val_8h_1aab1b8ef8b5cbbf7a78a88248ae81155c" compoundref="print__val_8c" startline="162" endline="171">print_all_with_title</referencedby>
-        <referencedby refid="print__val_8h_1a8ee4bb928c2cca54d191cf23edea60ec" compoundref="print__val_8c" startline="78" endline="126">print_repartition_bit</referencedby>
+        <referencedby refid="test__print__repartition__bit_8c_1a20f48ba928d5db34200d841b2f438a8a" compoundref="test__print__repartition__bit_8c" startline="79" endline="119">main__</referencedby>
+        <referencedby refid="print__val_8h_1a7d217b9d9a6575858c03ca9854bb151b" compoundref="print__val_8c" startline="150" endline="159">print_all_data_bin</referencedby>
+        <referencedby refid="print__val_8h_1aab1b8ef8b5cbbf7a78a88248ae81155c" compoundref="print__val_8c" startline="164" endline="173">print_all_with_title</referencedby>
+        <referencedby refid="print__val_8h_1a8ee4bb928c2cca54d191cf23edea60ec" compoundref="print__val_8c" startline="78" endline="128">print_repartition_bit</referencedby>
         <referencedby refid="data__container_8h_1a45840c759151338fe992664f4a21c4f7" compoundref="data__container_8c" startline="24" endline="28">set_val_TxData</referencedby>
       </memberdef>
       <memberdef kind="define" id="config__value_8h_1a486663aa90115780beab9f9d39fa8973" prot="public" static="no">
@@ -263,7 +287,7 @@
           <briefdescription>
           </briefdescription>
           <detaileddescription>
-<para>Reception seule: les updates entrantes peuvent modifier la valeur; l&apos;ecriture locale est bloquee. </para>
+<para>Réception seule: les mises à jour entrantes peuvent modifier la valeur; l&apos;écriture locale est bloquée. </para>
           </detaileddescription>
         </enumvalue>
         <enumvalue id="config__value_8h_1ac0d6cdda2cf4abb51116b86bc99acf99ad5ec70c56183ea13f8a0c16a3708a23e" prot="public">
@@ -271,7 +295,7 @@
           <briefdescription>
           </briefdescription>
           <detaileddescription>
-<para>Emission seule: la valeur locale est emise, les updates entrantes ne la modifient pas. </para>
+<para>Émission seule: la valeur locale est mise, les mises à jour entrantes ne la modifient pas. </para>
           </detaileddescription>
         </enumvalue>
         <enumvalue id="config__value_8h_1ac0d6cdda2cf4abb51116b86bc99acf99ac4e66207fce47c294e4aaab76000c9ce" prot="public">
@@ -279,11 +303,11 @@
           <briefdescription>
           </briefdescription>
           <detaileddescription>
-<para>Emission + reception: ecriture locale et updates entrantes toutes deux autorisees. </para>
+<para>Emission + reception: écriture locale et mises à jour entrantes toutes deux autorisées. </para>
           </detaileddescription>
         </enumvalue>
         <briefdescription>
-<para>Modes d&apos;utilisation CAN (envoi/reception). </para>
+<para>modes d&apos;utilisation CAN (envoi/reception). </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>

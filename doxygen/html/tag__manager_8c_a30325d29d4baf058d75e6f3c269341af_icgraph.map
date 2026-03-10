@@ -1,12 +1,18 @@
 <map id="set_new_tag_9_to_16" name="set_new_tag_9_to_16">
-<area shape="rect" id="Node000001" title="[INTERNE] Cree un tag avec repartition potentielle sur 2 bytes." alt="" coords="361,31,509,56"/>
-<area shape="rect" id="Node000002" href="$tag__manager_8c.html#a7dd7e8cfc97d378d44e7c63bd9f49931" title="Cree un nouveau tag." alt="" coords="248,31,313,56"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="348,46,313,46,313,41,348,41"/>
-<area shape="rect" id="Node000003" href="$main_8c.html#ae9bbb2f5bb69f73e92c761f83223285a" title="Execute les tests unitaires du module. Les resultats sont affiches dans le terminal." alt="" coords="104,5,200,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="234,37,200,30,201,25,235,32"/>
-<area shape="rect" id="Node000005" href="$main_8c.html#a9c4bb6f6d00e76eae45e966a4c628178" title="Execute un scenario de demonstration des fonctions d&#39;impression." alt="" coords="114,55,190,80"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="235,55,191,63,190,58,234,49"/>
-<area shape="rect" id="Node000004" href="$main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,31,56,56"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="91,33,57,41,56,36,90,28"/>
-<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="100,60,56,51,57,46,101,55"/>
+<area shape="rect" id="Node000001" title="[INTERNE] Cree un tag avec repartition potentielle sur 2 bytes." alt="" coords="407,80,555,105"/>
+<area shape="rect" id="Node000002" href="$tag__manager_8c.html#a7dd7e8cfc97d378d44e7c63bd9f49931" title="créé un nouveau tag." alt="" coords="293,80,359,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="393,95,359,95,359,90,393,90"/>
+<area shape="rect" id="Node000003" href="$com__utils_8c.html#a91524acc09c84cf5aa22222e3eee50f5" title=" " alt="" coords="124,5,245,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="294,74,244,44,220,33,222,28,247,40,296,70"/>
+<area shape="rect" id="Node000005" href="$main_8c.html#ae9bbb2f5bb69f73e92c761f83223285a" title="Execute les tests unitaires du module. Les resultats sont affiches dans le terminal." alt="" coords="137,55,233,80"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="280,87,233,79,234,73,281,82"/>
+<area shape="rect" id="Node000007" href="$main_8c.html#a9c4bb6f6d00e76eae45e966a4c628178" title="Execute un scenario de demonstration des fonctions d&#39;impression." alt="" coords="147,104,223,129"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="280,103,223,113,222,108,279,98"/>
+<area shape="rect" id="Node000008" href="$com__utils_8c.html#a429e791d9e107e0be61d4b4c00b13b27" title=" " alt="" coords="143,153,226,179"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="295,115,247,143,220,156,217,151,244,138,292,111"/>
+<area shape="rect" id="Node000004" href="$com__utils_8c.html#adf9124e89f799fae0f55cc9ed0a94189" title=" " alt="" coords="5,5,76,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="110,21,76,21,76,15,110,15"/>
+<area shape="rect" id="Node000006" href="$main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="15,79,66,104"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="123,80,66,90,66,85,123,75"/>
+<area shape="poly" id="edge7_Node000007_Node000006" title=" " alt="" coords="132,110,66,98,67,93,133,105"/>
 </map>

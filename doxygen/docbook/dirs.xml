@@ -4,6 +4,14 @@
 
 <para>documentation </para>
 
+<para>exemple_utilisation </para>
+
+<para>com_utils.c </para>
+
+<para>com_utils.h </para>
+
+<para>guide_utilisation </para>
+
 <para>include </para>
 
 <para>sub_include </para>
@@ -52,6 +60,8 @@
 
 <para>test_file </para>
 
+<para>test_print_repartition_bit.c </para>
+
 <para>test_safty_func.c </para>
 
 <para>test_safty_func.h </para>
@@ -67,6 +77,8 @@
 <para>tests </para>
 
 <para>test_file </para>
+
+<para>test_print_repartition_bit.c </para>
 
 <para>test_safty_func.c </para>
 

@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_7a7edcf529884078f481081b33ab25c5" xml:lang="en-US">
+<title>guide_utilisation Directory Reference</title>
+<indexterm><primary>guide_utilisation Directory Reference</primary></indexterm>
+<section>
+<title>Detailed Description</title>
+<section xml:id="_dir_7a7edcf529884078f481081b33ab25c5_1autotoc_md153">
+<title>Guide d&apos;Utilisation de TAGCAN</title></section>
+<section xml:id="_dir_7a7edcf529884078f481081b33ab25c5_1autotoc_md154">
+<title>Aperçu</title>
+<para>Ce guide pratique vous aidera à utiliser <emphasis role="bold">TAGCAN</emphasis>, une bibliothèque de gestion de bus CAN pour systèmes embarqués STM32. La documentation s&apos;appuie sur l&apos;exemple d&apos;implémentation présent dans le dossier <computeroutput>exemple_utilisation/</computeroutput>.</para>
+</section>
+<section xml:id="_dir_7a7edcf529884078f481081b33ab25c5_1autotoc_md155">
+<title>Structure du guide</title>
+<para><itemizedlist>
+<listitem>
+<para><emphasis role="bold"><link linkend="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n">01_INITIALISATION.md</link></emphasis> - Mise en place du système TAGCAN et du bus CAN</para>
+</listitem><listitem>
+<para><emphasis role="bold"><link linkend="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s">02_GESTION_TAGS.md</link></emphasis> - Création et gestion des tags (variables nommées)</para>
+</listitem><listitem>
+<para><emphasis role="bold"><link linkend="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_203___d_o_n_n_e_e_s___c_a_n">03_DONNEES_CAN.md</link></emphasis> - Manipulation du buffer de données CAN</para>
+</listitem><listitem>
+<para><emphasis role="bold"><link linkend="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n">04_FILTRAGE_CAN.md</link></emphasis> - Configuration des filtres CAN</para>
+</listitem><listitem>
+<para><emphasis role="bold"><link linkend="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33">05_EXEMPLES_COMPLETS.md</link></emphasis> - Exemples pratiques et cas d&apos;usage</para>
+</listitem></itemizedlist>
+</para>
+</section>
+<section xml:id="_dir_7a7edcf529884078f481081b33ab25c5_1autotoc_md156">
+<title>Points clés</title><section xml:id="_dir_7a7edcf529884078f481081b33ab25c5_1autotoc_md157">
+<title>Qu&apos;est-ce qu&apos;un tag ?</title>
+<para>Un <emphasis role="bold">tag</emphasis> est une variable nommée associée à une plage de bits dans le buffer CAN. Par exemple :<itemizedlist>
+<listitem>
+<para><computeroutput>&quot;SEQ&quot;</computeroutput> -&gt; 3 bits (numéro de séquence)</para>
+</listitem><listitem>
+<para><computeroutput>&quot;HB&quot;</computeroutput> -&gt; 1 bit (heartbeat/watchdog)</para>
+</listitem><listitem>
+<para><computeroutput>&quot;N2OPS&quot;</computeroutput> -&gt; 16 bits (capteur de pression N2O)</para>
+</listitem></itemizedlist>
+</para>
+</section>
+<section xml:id="_dir_7a7edcf529884078f481081b33ab25c5_1autotoc_md158">
+<title>Architecture générale</title>
+<para><literallayout><computeroutput>┌─────────────────────────────────────────────┐
+│&#32;&#32;&#32;Application&#32;utilisateur&#32;(main.c)&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;│
+├─────────────────────────────────────────────┤
+│&#32;&#32;&#32;TAGCAN&#32;(Gestion&#32;des&#32;tags&#32;&amp;&#32;données)&#32;&#32;&#32;&#32;&#32;&#32;&#32;│
+│&#32;&#32;├─&#32;Tag&#32;Manager&#32;(init_tag_manager,&#32;set_tag)&#32;│
+│&#32;&#32;└─&#32;Data&#32;Container&#32;(set_value,&#32;get_value)&#32;&#32;&#32;│
+├─────────────────────────────────────────────┤
+│&#32;&#32;&#32;Driver&#32;CAN&#32;STM32&#32;(HAL)&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;│
+└─────────────────────────────────────────────┘
+</computeroutput></literallayout></para>
+</section>
+</section>
+<section xml:id="_dir_7a7edcf529884078f481081b33ab25c5_1autotoc_md159">
+<title>Démarrage rapide</title>
+<para><literallayout><computeroutput>//&#32;1.&#32;Initialiser&#32;TAGCAN
+void&#32;init_com(void)&#32;{
+&#32;&#32;&#32;&#32;CAN_init_TAGCAN();&#32;&#32;&#32;&#32;&#32;&#32;//&#32;Initialise&#32;le&#32;gestionnaire&#32;de&#32;tags
+&#32;&#32;&#32;&#32;CAN_setup_TAG();&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;Crée&#32;les&#32;tags&#32;applicatifs
+&#32;&#32;&#32;&#32;CAN_setup_DF(0x123);&#32;&#32;&#32;&#32;//&#32;Configure&#32;le&#32;header&#32;CAN
+}
+
+//&#32;2.&#32;Écrire&#32;une&#32;valeur&#32;dans&#32;un&#32;tag
+set_value(&quot;SEQ&quot;,&#32;5);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;Écrit&#32;5&#32;dans&#32;le&#32;tag&#32;&quot;SEQ&quot;&#32;(3&#32;bits)
+
+//&#32;3.&#32;Lire&#32;une&#32;valeur&#32;depuis&#32;un&#32;tag
+uint32_t&#32;val;
+get_value(&quot;HB&quot;,&#32;&amp;val);&#32;&#32;&#32;&#32;&#32;&#32;//&#32;Lit&#32;la&#32;valeur&#32;du&#32;tag&#32;&quot;HB&quot;
+
+//&#32;4.&#32;Envoyer&#32;sur&#32;le&#32;bus&#32;CAN
+HAL_CAN_AddTxMessage(&amp;hcan,&#32;&amp;TxHeader,&#32;TxData,&#32;&amp;TxMailbox);
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_dir_7a7edcf529884078f481081b33ab25c5_1autotoc_md160">
+<title>Documentation de référence</title>
+<para>Pour plus de détails sur l&apos;API : voir <link linkend="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2documentation_2_a_p_i___r_e_f_e_r_e_n_c_e">API_REFERENCE.md</link></para>
+</section>
+<section xml:id="_dir_7a7edcf529884078f481081b33ab25c5_1autotoc_md161">
+<title>Fichiers sources associés</title>
+<para><itemizedlist>
+<listitem>
+<para><computeroutput><link linkend="_com__utils_8c">exemple_utilisation/com_utils.c</link></computeroutput> - Code d&apos;exemple d&apos;intégration</para>
+</listitem><listitem>
+<para><computeroutput><link linkend="_com__utils_8h">exemple_utilisation/com_utils.h</link></computeroutput> - Headers d&apos;exemple</para>
+</listitem><listitem>
+<para><computeroutput><link linkend="__t_a_g_c_a_n_8h">TAGCAN.h</link></computeroutput> - Point d&apos;entrée principal</para>
+</listitem></itemizedlist>
+</para>
+
+<para><informaltable frame='bottom'><tgroup cols='1'><colspec align='center'/><tbody><row><entry align='center'>
+</entry></row></tbody></tgroup></informaltable>
+</para>
+
+<para><emphasis role="bold">Besoin d&apos;aide ?</emphasis> Consultez les exemples complets dans <link linkend="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33">05_EXEMPLES_COMPLETS.md</link> </para>
+</section>
+</section>
+</section>

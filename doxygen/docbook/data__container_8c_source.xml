@@ -13,13 +13,13 @@ Go to the documentation of this file.<programlisting linenumbering="unnumbered">
 <anchor xml:id="_data__container_8c_source_1l00009"/>00009 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;PRINT_VAL_H</emphasis>
 <anchor xml:id="_data__container_8c_source_1l00010"/>00010 <emphasis role="preprocessor">#include&#32;&lt;stdio.h&gt;</emphasis>
 <anchor xml:id="_data__container_8c_source_1l00011"/>00011 
-<anchor xml:id="_data__container_8c_source_1l00012"/><link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">00012</link> uint8_t&#32;<link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">TxData</link>[<link linkend="_config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1">N_BYTES</link>];
+<anchor xml:id="_data__container_8c_source_1l00012"/><link linkend="_com__utils_8h_1af553c31425b32bd9c020380c942ed3bd">00012</link> uint8_t&#32;<link linkend="_com__utils_8h_1af553c31425b32bd9c020380c942ed3bd">TxData</link>[<link linkend="_config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1">N_BYTES</link>];
 <anchor xml:id="_data__container_8c_source_1l00013"/>00013 
 <anchor xml:id="_data__container_8c_source_1l00014"/><link linkend="_data__container_8h_1a129f017feb0712be1dcf7932e6035aa0">00014</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_data__container_8c_1a129f017feb0712be1dcf7932e6035aa0">init_data_container</link>(<emphasis role="keywordtype">void</emphasis>)
 <anchor xml:id="_data__container_8c_source_1l00015"/>00015 {
 <anchor xml:id="_data__container_8c_source_1l00016"/>00016 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;<link linkend="_config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1">N_BYTES</link>;&#32;i++)
 <anchor xml:id="_data__container_8c_source_1l00017"/>00017 &#32;&#32;&#32;&#32;{
-<anchor xml:id="_data__container_8c_source_1l00018"/>00018 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">TxData</link>[i]&#32;=&#32;0;
+<anchor xml:id="_data__container_8c_source_1l00018"/>00018 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_com__utils_8h_1af553c31425b32bd9c020380c942ed3bd">TxData</link>[i]&#32;=&#32;0;
 <anchor xml:id="_data__container_8c_source_1l00019"/>00019 &#32;&#32;&#32;&#32;}
 <anchor xml:id="_data__container_8c_source_1l00020"/>00020 }
 <anchor xml:id="_data__container_8c_source_1l00021"/>00021 
@@ -27,7 +27,7 @@ Go to the documentation of this file.<programlisting linenumbering="unnumbered">
 <anchor xml:id="_data__container_8c_source_1l00023"/>00023 
 <anchor xml:id="_data__container_8c_source_1l00024"/><link linkend="_data__container_8h_1a45840c759151338fe992664f4a21c4f7">00024</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_data__container_8c_1a45840c759151338fe992664f4a21c4f7">set_val_TxData</link>(uint8_t&#32;*TxDataArray){
 <anchor xml:id="_data__container_8c_source_1l00025"/>00025 <emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;<link linkend="_config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1">N_BYTES</link>;&#32;i++){
-<anchor xml:id="_data__container_8c_source_1l00026"/>00026 &#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">TxData</link>[i]&#32;=&#32;TxDataArray[i];
+<anchor xml:id="_data__container_8c_source_1l00026"/>00026 &#32;&#32;&#32;&#32;<link linkend="_com__utils_8h_1af553c31425b32bd9c020380c942ed3bd">TxData</link>[i]&#32;=&#32;TxDataArray[i];
 <anchor xml:id="_data__container_8c_source_1l00027"/>00027 }
 <anchor xml:id="_data__container_8c_source_1l00028"/>00028 }
 <anchor xml:id="_data__container_8c_source_1l00029"/><link linkend="_data__container_8h_1a66768c162c3a8352b7d5397e90206085">00029</link> uint8_t&#32;<link linkend="_data__container_8c_1a66768c162c3a8352b7d5397e90206085">prep_mask</link>(uint8_t&#32;p_bit,&#32;uint8_t&#32;n_bit)
@@ -67,9 +67,9 @@ Go to the documentation of this file.<programlisting linenumbering="unnumbered">
 <anchor xml:id="_data__container_8c_source_1l00063"/>00063 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(n_bits&#32;&gt;&#32;8){
 <anchor xml:id="_data__container_8c_source_1l00064"/>00064 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;data_b&#32;=&#32;(value&#32;&amp;&#32;0xFF00)&#32;&gt;&gt;&#32;8;
 <anchor xml:id="_data__container_8c_source_1l00065"/>00065 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;data_a&#32;=&#32;(value&#32;&amp;&#32;0x00FF);
-<anchor xml:id="_data__container_8c_source_1l00066"/>00066 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">TxData</link>[byte_idx_a]&#32;=&#32;data_a;
+<anchor xml:id="_data__container_8c_source_1l00066"/>00066 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_com__utils_8h_1af553c31425b32bd9c020380c942ed3bd">TxData</link>[byte_idx_a]&#32;=&#32;data_a;
 <anchor xml:id="_data__container_8c_source_1l00067"/>00067 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Cas&#32;16&#32;bits:&#32;la&#32;partie&#32;B&#32;occupe&#32;tout&#32;le&#32;byte.</emphasis>
-<anchor xml:id="_data__container_8c_source_1l00068"/>00068 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(n_bits&#32;==&#32;16){<link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">TxData</link>[tag-&gt;<link linkend="_struct_tag_def_1a1368f5414ba506dc1626d65a1083dc92">byte_idx_b</link>]&#32;=&#32;data_b;}
+<anchor xml:id="_data__container_8c_source_1l00068"/>00068 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(n_bits&#32;==&#32;16){<link linkend="_com__utils_8h_1af553c31425b32bd9c020380c942ed3bd">TxData</link>[tag-&gt;<link linkend="_struct_tag_def_1a1368f5414ba506dc1626d65a1083dc92">byte_idx_b</link>]&#32;=&#32;data_b;}
 <anchor xml:id="_data__container_8c_source_1l00069"/>00069 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>{
 <anchor xml:id="_data__container_8c_source_1l00070"/>00070 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Cas&#32;9..15&#32;bits:&#32;insertion&#32;partielle&#32;dans&#32;le&#32;byte&#32;B.</emphasis>
 <anchor xml:id="_data__container_8c_source_1l00071"/>00071 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Creation&#32;du&#32;masque&#32;binaire</emphasis>
@@ -77,15 +77,15 @@ Go to the documentation of this file.<programlisting linenumbering="unnumbered">
 <anchor xml:id="_data__container_8c_source_1l00073"/>00073 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Alignement&#32;de&#32;la&#32;deuxieme&#32;partie</emphasis>
 <anchor xml:id="_data__container_8c_source_1l00074"/>00074 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;data_b&#32;=&#32;data_b&#32;&lt;&lt;&#32;(8&#32;-&#32;bit_pos_b&#32;-&#32;n_bits);
 <anchor xml:id="_data__container_8c_source_1l00075"/>00075 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Mise&#32;a&#32;jour&#32;selective&#32;des&#32;bits&#32;de&#32;la&#32;partie&#32;B.</emphasis>
-<anchor xml:id="_data__container_8c_source_1l00076"/>00076 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">TxData</link>[byte_idx_b]&#32;&amp;=&#32;~mask;
-<anchor xml:id="_data__container_8c_source_1l00077"/>00077 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">TxData</link>[byte_idx_b]&#32;|=&#32;data_b;
+<anchor xml:id="_data__container_8c_source_1l00076"/>00076 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_com__utils_8h_1af553c31425b32bd9c020380c942ed3bd">TxData</link>[byte_idx_b]&#32;&amp;=&#32;~mask;
+<anchor xml:id="_data__container_8c_source_1l00077"/>00077 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_com__utils_8h_1af553c31425b32bd9c020380c942ed3bd">TxData</link>[byte_idx_b]&#32;|=&#32;data_b;
 <anchor xml:id="_data__container_8c_source_1l00078"/>00078 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3">CAN_TG_SUCCESS</link>;
 <anchor xml:id="_data__container_8c_source_1l00079"/>00079 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
 <anchor xml:id="_data__container_8c_source_1l00080"/>00080 &#32;&#32;&#32;&#32;}
 <anchor xml:id="_data__container_8c_source_1l00081"/>00081 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>(tag-&gt;<link linkend="_struct_tag_def_1a894ffee63faf79f0877a12c871a18b3a">n_bits</link>&#32;==&#32;8)
 <anchor xml:id="_data__container_8c_source_1l00082"/>00082 &#32;&#32;&#32;&#32;{
 <anchor xml:id="_data__container_8c_source_1l00083"/>00083 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;data_a&#32;=&#32;(value&#32;&amp;&#32;0x00FF);
-<anchor xml:id="_data__container_8c_source_1l00084"/>00084 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">TxData</link>[tag-&gt;<link linkend="_struct_tag_def_1a985f815d0edbf8a411fbf325a30baec8">byte_idx_a</link>]&#32;=&#32;data_a;
+<anchor xml:id="_data__container_8c_source_1l00084"/>00084 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_com__utils_8h_1af553c31425b32bd9c020380c942ed3bd">TxData</link>[tag-&gt;<link linkend="_struct_tag_def_1a985f815d0edbf8a411fbf325a30baec8">byte_idx_a</link>]&#32;=&#32;data_a;
 <anchor xml:id="_data__container_8c_source_1l00085"/>00085 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3">CAN_TG_SUCCESS</link>;
 <anchor xml:id="_data__container_8c_source_1l00086"/>00086 &#32;&#32;&#32;&#32;}
 <anchor xml:id="_data__container_8c_source_1l00087"/>00087 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>{
@@ -95,8 +95,8 @@ Go to the documentation of this file.<programlisting linenumbering="unnumbered">
 <anchor xml:id="_data__container_8c_source_1l00091"/>00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;vrai_val&#32;=&#32;value;
 <anchor xml:id="_data__container_8c_source_1l00092"/>00092 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Alignement&#32;de&#32;la&#32;valeur&#32;dans&#32;le&#32;byte</emphasis>
 <anchor xml:id="_data__container_8c_source_1l00093"/>00093 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;vrai_val&#32;=&#32;vrai_val&#32;&lt;&lt;&#32;(8&#32;-&#32;bit_pos_a&#32;-&#32;n_bits);
-<anchor xml:id="_data__container_8c_source_1l00094"/>00094 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">TxData</link>[byte_idx_a]&#32;&amp;=&#32;~mask;
-<anchor xml:id="_data__container_8c_source_1l00095"/>00095 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">TxData</link>[byte_idx_a]&#32;|=&#32;vrai_val;
+<anchor xml:id="_data__container_8c_source_1l00094"/>00094 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_com__utils_8h_1af553c31425b32bd9c020380c942ed3bd">TxData</link>[byte_idx_a]&#32;&amp;=&#32;~mask;
+<anchor xml:id="_data__container_8c_source_1l00095"/>00095 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_com__utils_8h_1af553c31425b32bd9c020380c942ed3bd">TxData</link>[byte_idx_a]&#32;|=&#32;vrai_val;
 <anchor xml:id="_data__container_8c_source_1l00096"/>00096 &#32;&#32;&#32;&#32;}
 <anchor xml:id="_data__container_8c_source_1l00097"/>00097 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3">CAN_TG_SUCCESS</link>;
 <anchor xml:id="_data__container_8c_source_1l00098"/>00098 }
@@ -123,16 +123,16 @@ Go to the documentation of this file.<programlisting linenumbering="unnumbered">
 <anchor xml:id="_data__container_8c_source_1l00119"/>00119 &#32;&#32;&#32;&#32;}
 <anchor xml:id="_data__container_8c_source_1l00120"/>00120 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(tag-&gt;<link linkend="_struct_tag_def_1a894ffee63faf79f0877a12c871a18b3a">n_bits</link>&#32;==&#32;16)&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;cas&#32;de&#32;16&#32;bits&#32;exactement</emphasis>
 <anchor xml:id="_data__container_8c_source_1l00121"/>00121 &#32;&#32;&#32;&#32;{
-<anchor xml:id="_data__container_8c_source_1l00122"/>00122 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;ba&#32;=&#32;<link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">TxData</link>[byta];
-<anchor xml:id="_data__container_8c_source_1l00123"/>00123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;bb&#32;=&#32;<link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">TxData</link>[bytb];
+<anchor xml:id="_data__container_8c_source_1l00122"/>00122 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;ba&#32;=&#32;<link linkend="_com__utils_8h_1af553c31425b32bd9c020380c942ed3bd">TxData</link>[byta];
+<anchor xml:id="_data__container_8c_source_1l00123"/>00123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;bb&#32;=&#32;<link linkend="_com__utils_8h_1af553c31425b32bd9c020380c942ed3bd">TxData</link>[bytb];
 <anchor xml:id="_data__container_8c_source_1l00124"/>00124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;*out_value&#32;=&#32;ba&#32;|&#32;(bb&#32;&lt;&lt;&#32;8);&#32;&#32;&#32;<emphasis role="comment">//&#32;Recomposition&#32;16&#32;bits&#32;complete.</emphasis>
 <anchor xml:id="_data__container_8c_source_1l00125"/>00125 &#32;&#32;&#32;&#32;}
 <anchor xml:id="_data__container_8c_source_1l00126"/>00126 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>((n_bits&#32;&lt;&#32;16)&#32;&amp;&amp;&#32;(n_bits&#32;&gt;&#32;8)){<emphasis role="comment">//&#32;cas&#32;d&apos;entre&#32;8&#32;et&#32;16&#32;bits.</emphasis>
-<anchor xml:id="_data__container_8c_source_1l00127"/>00127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;ba&#32;=&#32;<link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">TxData</link>[byta];
+<anchor xml:id="_data__container_8c_source_1l00127"/>00127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;ba&#32;=&#32;<link linkend="_com__utils_8h_1af553c31425b32bd9c020380c942ed3bd">TxData</link>[byta];
 <anchor xml:id="_data__container_8c_source_1l00128"/>00128 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;bb;
 <anchor xml:id="_data__container_8c_source_1l00129"/>00129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Creation&#32;d&apos;un&#32;masque&#32;pour&#32;extraire&#32;la&#32;partie&#32;B.</emphasis>
 <anchor xml:id="_data__container_8c_source_1l00130"/>00130 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;mask&#32;=&#32;<link linkend="_data__container_8c_1a66768c162c3a8352b7d5397e90206085">prep_mask</link>(bpb,&#32;n_bits&#32;-&#32;8);
-<anchor xml:id="_data__container_8c_source_1l00131"/>00131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;data_temp&#32;=&#32;<link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">TxData</link>[bytb]&#32;&amp;&#32;mask;
+<anchor xml:id="_data__container_8c_source_1l00131"/>00131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;data_temp&#32;=&#32;<link linkend="_com__utils_8h_1af553c31425b32bd9c020380c942ed3bd">TxData</link>[bytb]&#32;&amp;&#32;mask;
 <anchor xml:id="_data__container_8c_source_1l00132"/>00132 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;bb&#32;=&#32;data_temp&#32;&gt;&gt;&#32;(8&#32;-&#32;bpa&#32;-&#32;n_bits);
 <anchor xml:id="_data__container_8c_source_1l00133"/>00133 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;*out_value&#32;=&#32;ba&#32;|&#32;(bb&#32;&lt;&lt;&#32;8);&#32;&#32;&#32;<emphasis role="comment">//&#32;Recomposition&#32;avec&#32;partie&#32;B&#32;partielle.</emphasis>
 <anchor xml:id="_data__container_8c_source_1l00134"/>00134 
@@ -146,7 +146,7 @@ Go to the documentation of this file.<programlisting linenumbering="unnumbered">
 <anchor xml:id="_data__container_8c_source_1l00145"/>00145 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//uint8_t&#32;mask&#32;=&#32;((1&#32;&lt;&lt;&#32;n_bits)&#32;-&#32;1)&#32;&lt;&lt;&#32;shift;</emphasis>
 <anchor xml:id="_data__container_8c_source_1l00146"/>00146 
 <anchor xml:id="_data__container_8c_source_1l00152"/>00152 
-<anchor xml:id="_data__container_8c_source_1l00153"/>00153 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;data_temp&#32;=&#32;<link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">TxData</link>[byta]&#32;&amp;&#32;mask;
+<anchor xml:id="_data__container_8c_source_1l00153"/>00153 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;data_temp&#32;=&#32;<link linkend="_com__utils_8h_1af553c31425b32bd9c020380c942ed3bd">TxData</link>[byta]&#32;&amp;&#32;mask;
 <anchor xml:id="_data__container_8c_source_1l00154"/>00154 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;*out_value&#32;=&#32;data_temp&#32;&gt;&gt;&#32;(8&#32;-&#32;bpa&#32;-&#32;n_bits);
 <anchor xml:id="_data__container_8c_source_1l00155"/>00155 &#32;&#32;&#32;&#32;}
 <anchor xml:id="_data__container_8c_source_1l00156"/>00156 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_config__value_8h_1af59c8e96bb2966b590726fc2d285947fa08e8f2b1a9c883eec6fdc9f76bad06e3">CAN_TG_SUCCESS</link>;

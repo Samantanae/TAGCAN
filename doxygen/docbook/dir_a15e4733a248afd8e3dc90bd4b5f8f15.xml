@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_a15e4733a248afd8e3dc90bd4b5f8f15" xml:lang="en-US">
+<title>exemple_utilisation Directory Reference</title>
+<indexterm><primary>exemple_utilisation Directory Reference</primary></indexterm>
+Directory dependency graph for exemple_utilisation:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="dir_a15e4733a248afd8e3dc90bd4b5f8f15_dep.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Files    </title>
+        <itemizedlist>
+            <listitem><para>file <link linkend="_com__utils_8c">com_utils.c</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_com__utils_8h">com_utils.h</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

@@ -1,0 +1,488 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n" xml:lang="en-US">
+<title>
+<para>04 - Filtrage CAN </para>
+</title>
+<indexterm><primary>04 - Filtrage CAN</primary></indexterm>
+
+<para><anchor xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_1autotoc_md96"/></para>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_1autotoc_md97">
+<title>Objectif</title>
+<para>Configurer les filtres CAN pour recevoir <emphasis role="bold">uniquement</emphasis> les messages pertinents et ignorer le reste du trafic.</para>
+
+<para><informaltable frame='bottom'><tgroup cols='1'><colspec align='center'/><tbody><row><entry align='center'>
+</entry></row></tbody></tgroup></informaltable>
+</para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_1autotoc_md99">
+<title>Contexte</title>
+<para>Le bus CAN est partagé. Un nœud peut recevoir des messages destinés à d&apos;autres nœuds. Les <emphasis role="bold">filtres CAN</emphasis> permettent :</para>
+
+<para><itemizedlist>
+<listitem>
+<para>Réduire la charge CPU (moins d&apos;interruptions inutiles)</para>
+</listitem><listitem>
+<para>Améliorer la latence (traiter uniquement les messages pertinents)</para>
+</listitem><listitem>
+<para>Séparer logiquement le trafic</para>
+</listitem></itemizedlist>
+</para>
+
+<para><informaltable frame='bottom'><tgroup cols='1'><colspec align='center'/><tbody><row><entry align='center'>
+</entry></row></tbody></tgroup></informaltable>
+</para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_1autotoc_md101">
+<title>Fonction de filtrage</title><section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_1autotoc_md102">
+<title>Prototype</title>
+<para><literallayout><computeroutput>CAN_FilterTypeDef*&#32;CAN_setup_Filter(int32_t&#32;minimum_id,&#32;int32_t&#32;maximum_id,&#32;int&#32;filterBank);
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_1autotoc_md103">
+<title>Paramètres</title>
+<para><informaltable frame="all">
+    <tgroup cols="3" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+      <colspec colname='c3'/>
+<thead>
+      <row  class='markdownTableHead'>
+<entry>
+<para>Paramètre  </para>
+</entry><entry>
+<para>Type  </para>
+</entry><entry>
+<para>Description  </para>
+</entry></row>
+</thead><tbody>
+      <row  class='markdownTableRowOdd'>
+<entry>
+<para><computeroutput>minimum_id</computeroutput>  </para>
+</entry><entry>
+<para><computeroutput>int32_t</computeroutput>  </para>
+</entry><entry>
+<para>ID CAN minimum à accepter  </para>
+</entry></row>
+      <row  class='markdownTableRowEven'>
+<entry>
+<para><computeroutput>maximum_id</computeroutput>  </para>
+</entry><entry>
+<para><computeroutput>int32_t</computeroutput>  </para>
+</entry><entry>
+<para>ID CAN maximum à accepter  </para>
+</entry></row>
+      <row  class='markdownTableRowOdd'>
+<entry>
+<para><computeroutput>filterBank</computeroutput>  </para>
+</entry><entry>
+<para><computeroutput>int</computeroutput>  </para>
+</entry><entry>
+<para>Numéro de banc de filtre (0-27 disponibles)  </para>
+</entry></row>
+    </tbody>
+    </tgroup>
+</informaltable>
+</para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_1autotoc_md104">
+<title>Valeur de retour</title>
+<para>Pointeur vers la structure <computeroutput>CAN_FilterTypeDef</computeroutput> configurée.</para>
+
+<para><informaltable frame='bottom'><tgroup cols='1'><colspec align='center'/><tbody><row><entry align='center'>
+</entry></row></tbody></tgroup></informaltable>
+</para>
+</section>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_1autotoc_md106">
+<title>Comment ça marche ?</title><section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_1autotoc_md107">
+<title>Le filtre masque (IDMASK)</title>
+<para><literallayout><computeroutput>CAN_FilterTypeDef&#32;canfilterconfig;
+canfilterconfig.FilterMode&#32;=&#32;CAN_FILTERMODE_IDMASK;&#32;&#32;//&#32;Mode&#32;masque
+</computeroutput></literallayout></para>
+
+<para><emphasis role="bold">Mode masque</emphasis> : Les bits du filtre agissent comme un masque binaire.</para>
+
+<para><literallayout><computeroutput>ID&#32;reçu&#32;:&#32;&#32;&#32;&#32;&#32;0011&#32;0101
+Filtre&#32;:&#32;&#32;&#32;&#32;&#32;&#32;1111&#32;1111&#32;&#32;(masque)
+Résultat&#32;:&#32;&#32;&#32;&#32;Accepter&#32;si&#32;bits&#32;importants&#32;Match
+</computeroutput></literallayout></para>
+
+<para><informaltable frame='bottom'><tgroup cols='1'><colspec align='center'/><tbody><row><entry align='center'>
+</entry></row></tbody></tgroup></informaltable>
+</para>
+</section>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_1autotoc_md109">
+<title>Exemple de configuration</title><section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_1autotoc_md110">
+<title>Cas 1 : Accepter une plage d&apos;IDs (0x100 à 0x120)</title>
+<para><literallayout><computeroutput>CAN_FilterTypeDef*&#32;filter1&#32;=&#32;CAN_setup_Filter(0x100,&#32;0x120,&#32;0);
+//&#32;Accepte&#32;les&#32;IDs:&#32;0x100,&#32;0x101,&#32;0x102,&#32;...,&#32;0x120
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_1autotoc_md111">
+<title>Cas 2 : Accepter un ID exact (0x123)</title>
+<para><literallayout><computeroutput>CAN_FilterTypeDef*&#32;filter2&#32;=&#32;CAN_setup_Filter(0x123,&#32;0x123,&#32;1);
+//&#32;Accepte&#32;UNIQUEMENT:&#32;0x123
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_1autotoc_md112">
+<title>Cas 3 : Accepter tous les messages</title>
+<para><literallayout><computeroutput>CAN_FilterTypeDef*&#32;filter3&#32;=&#32;CAN_setup_Filter(0x000,&#32;0x7FF,&#32;2);
+//&#32;Accepte&#32;les&#32;IDs:&#32;0x000&#32;à&#32;0x7FF&#32;(tous&#32;les&#32;IDs&#32;standards&#32;11&#32;bits)
+</computeroutput></literallayout></para>
+
+<para><informaltable frame='bottom'><tgroup cols='1'><colspec align='center'/><tbody><row><entry align='center'>
+</entry></row></tbody></tgroup></informaltable>
+</para>
+</section>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_1autotoc_md114">
+<title>Détails de la configuration interne</title>
+<para>Voici ce que fait <computeroutput><link linkend="_com__utils_8c_1adfa3f55b53f7a0c8e6a7ffbf37fe2545">CAN_setup_Filter()</link></computeroutput> en détail :</para>
+
+<para><literallayout><computeroutput>CAN_FilterTypeDef*&#32;CAN_setup_Filter(int32_t&#32;minimum_id,&#32;int32_t&#32;maximum_id,&#32;int&#32;filterBank)&#32;{
+&#32;&#32;&#32;&#32;CAN_FilterTypeDef&#32;canfilterconfig;
+
+&#32;&#32;&#32;&#32;//&#32;Activer&#32;le&#32;filtre
+&#32;&#32;&#32;&#32;canfilterconfig.FilterActivation&#32;=&#32;CAN_FILTER_ENABLE;
+
+&#32;&#32;&#32;&#32;//&#32;Sélectionner&#32;le&#32;numéro&#32;de&#32;banc&#32;(0-27)
+&#32;&#32;&#32;&#32;canfilterconfig.FilterBank&#32;=&#32;filterBank;
+
+&#32;&#32;&#32;&#32;//&#32;Affecter&#32;à&#32;FIFO0&#32;(interrupt&#32;CAN_IT_RX_FIFO0_MSG_PENDING)
+&#32;&#32;&#32;&#32;canfilterconfig.FilterFIFOAssignment&#32;=&#32;CAN_FILTER_FIFO0;
+
+&#32;&#32;&#32;&#32;//&#32;Configurer&#32;les&#32;seuils&#32;ID&#32;haut&#32;et&#32;bas
+&#32;&#32;&#32;&#32;canfilterconfig.FilterIdHigh&#32;=&#32;maximum_id&#32;&lt;&lt;&#32;5;&#32;&#32;&#32;&#32;//&#32;Maximum
+&#32;&#32;&#32;&#32;canfilterconfig.FilterMaskIdHigh&#32;=&#32;maximum_id&#32;&lt;&lt;&#32;5;&#32;//&#32;Masque
+&#32;&#32;&#32;&#32;
+&#32;&#32;&#32;&#32;canfilterconfig.FilterIdLow&#32;=&#32;minimum_id;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;Minimum
+&#32;&#32;&#32;&#32;canfilterconfig.FilterMaskIdLow&#32;=&#32;minimum_id;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;Masque
+
+&#32;&#32;&#32;&#32;//&#32;Mode&#32;de&#32;filtrage&#32;(masque&#32;binaire)
+&#32;&#32;&#32;&#32;canfilterconfig.FilterMode&#32;=&#32;CAN_FILTERMODE_IDMASK;
+
+&#32;&#32;&#32;&#32;//&#32;Résolution:&#32;32&#32;bits&#32;(combinaison&#32;High&#32;+&#32;Low)
+&#32;&#32;&#32;&#32;canfilterconfig.FilterScale&#32;=&#32;CAN_FILTERSCALE_32BIT;
+
+&#32;&#32;&#32;&#32;//&#32;Assigner&#32;les&#32;bancs&#32;de&#32;filtrage&#32;au&#32;CAN1&#32;(non&#32;CAN2)
+&#32;&#32;&#32;&#32;canfilterconfig.SlaveStartFilterBank&#32;=&#32;20;
+
+&#32;&#32;&#32;&#32;//&#32;Appliquer&#32;la&#32;configuration&#32;matérielle
+&#32;&#32;&#32;&#32;HAL_CAN_ConfigFilter(&amp;hcan,&#32;&amp;canfilterconfig);
+
+&#32;&#32;&#32;&#32;return&#32;&amp;canfilterconfig;
+}
+</computeroutput></literallayout></para>
+
+<para><informaltable frame='bottom'><tgroup cols='1'><colspec align='center'/><tbody><row><entry align='center'>
+</entry></row></tbody></tgroup></informaltable>
+</para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_1autotoc_md116">
+<title>Exemple d&apos;intégration complet</title><section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_1autotoc_md117">
+<title>Initialisation avec filtrage</title>
+<para><literallayout><computeroutput>#include&#32;&quot;TAGCAN.h&quot;
+#include&#32;&quot;stm32f1xx_hal.h&quot;
+
+extern&#32;CAN_HandleTypeDef&#32;hcan;
+
+void&#32;init_com(void)&#32;{
+&#32;&#32;&#32;&#32;//&#32;1.&#32;Initialiser&#32;TAGCAN
+&#32;&#32;&#32;&#32;CAN_init_TAGCAN();
+&#32;&#32;&#32;&#32;CAN_setup_TAG();
+&#32;&#32;&#32;&#32;CAN_setup_DF(0x123);&#32;&#32;//&#32;Mon&#32;ID&#32;CAN
+
+&#32;&#32;&#32;&#32;//&#32;2.&#32;Configurer&#32;les&#32;filtres
+&#32;&#32;&#32;&#32;//&#32;Filtre&#32;1:&#32;Accepter&#32;les&#32;messages&#32;du&#32;capteur&#32;de&#32;pression&#32;(0x200)
+&#32;&#32;&#32;&#32;CAN_setup_Filter(0x200,&#32;0x200,&#32;0);
+
+&#32;&#32;&#32;&#32;//&#32;Filtre&#32;2:&#32;Accepter&#32;les&#32;messages&#32;de&#32;commande&#32;(0x100&#32;à&#32;0x110)
+&#32;&#32;&#32;&#32;CAN_setup_Filter(0x100,&#32;0x110,&#32;1);
+
+&#32;&#32;&#32;&#32;//&#32;Filtre&#32;3:&#32;Messages&#32;d&apos;urgence&#32;(0x050)
+&#32;&#32;&#32;&#32;CAN_setup_Filter(0x050,&#32;0x050,&#32;2);
+
+&#32;&#32;&#32;&#32;//&#32;3.&#32;Activer&#32;les&#32;interruptions
+&#32;&#32;&#32;&#32;if(HAL_CAN_ActivateNotification(&amp;hcan,&#32;CAN_IT_RX_FIFO0_MSG_PENDING)&#32;!=&#32;HAL_OK)&#32;{
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Error_Handler();
+&#32;&#32;&#32;&#32;}
+}
+
+void&#32;HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef&#32;*hcan)&#32;{
+&#32;&#32;&#32;&#32;CAN_RxHeaderTypeDef&#32;RxHeader;
+&#32;&#32;&#32;&#32;uint8_t&#32;RxData[8];
+
+&#32;&#32;&#32;&#32;HAL_CAN_GetRxMessage(hcan,&#32;CAN_RX_FIFO0,&#32;&amp;RxHeader,&#32;RxData);
+
+&#32;&#32;&#32;&#32;//&#32;Traiter&#32;selon&#32;l&apos;ID&#32;reçu
+&#32;&#32;&#32;&#32;switch(RxHeader.StdId)&#32;{
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;case&#32;0x200:
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;handle_pressure_sensor(RxData);
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;break;
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;case&#32;0x100:
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;case&#32;0x101:
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;case&#32;0x102:
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;...&#32;jusqu&apos;à&#32;0x110
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;handle_command(RxData);
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;break;
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;case&#32;0x050:
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;handle_emergency(RxData);
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;break;
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;default:
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;Ne&#32;devrait&#32;jamais&#32;arriver&#32;ici&#32;grâce&#32;aux&#32;filtres
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;break;
+&#32;&#32;&#32;&#32;}
+}
+</computeroutput></literallayout></para>
+
+<para><informaltable frame='bottom'><tgroup cols='1'><colspec align='center'/><tbody><row><entry align='center'>
+</entry></row></tbody></tgroup></informaltable>
+</para>
+</section>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_1autotoc_md119">
+<title>Limitation des bancs de filtrage</title>
+<para>Le STM32F1 propose :</para>
+
+<para><informaltable frame="all">
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<thead>
+      <row  class='markdownTableHead'>
+<entry>
+<para>Ressource  </para>
+</entry><entry>
+<para>Limite  </para>
+</entry></row>
+</thead><tbody>
+      <row  class='markdownTableRowOdd'>
+<entry>
+<para>Bancs de filtrage disponibles  </para>
+</entry><entry>
+<para>28 (0-27)  </para>
+</entry></row>
+      <row  class='markdownTableRowEven'>
+<entry>
+<para>Bancs réservés à CAN1  </para>
+</entry><entry>
+<para>14 (0-13)  </para>
+</entry></row>
+      <row  class='markdownTableRowOdd'>
+<entry>
+<para>Bancs réservés à CAN2  </para>
+</entry><entry>
+<para>14 (14-27)  </para>
+</entry></row>
+    </tbody>
+    </tgroup>
+</informaltable>
+</para>
+
+<para>Chaque filtre peut gérer :<itemizedlist>
+<listitem>
+<para><emphasis role="bold">1 ID exact</emphasis> (FilterMode = IDMASK)</para>
+</listitem><listitem>
+<para><emphasis role="bold">Une plage d&apos;IDs</emphasis> (FilterMode = IDLIST)</para>
+</listitem></itemizedlist>
+</para>
+
+<para><informaltable frame='bottom'><tgroup cols='1'><colspec align='center'/><tbody><row><entry align='center'>
+</entry></row></tbody></tgroup></informaltable>
+</para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_1autotoc_md121">
+<title>Stratégies de filtrage recommandées</title><section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_1autotoc_md122">
+<title>Stratégie 1 : Filtrage par catégorie (Recommandé)</title>
+<para><literallayout><computeroutput>//&#32;Tous&#32;les&#32;capteurs:&#32;0x200-0x20F&#32;(1&#32;filtre)
+CAN_setup_Filter(0x200,&#32;0x20F,&#32;0);
+
+//&#32;Toutes&#32;les&#32;commandes:&#32;0x100-0x10F&#32;(1&#32;filtre)
+CAN_setup_Filter(0x100,&#32;0x10F,&#32;1);
+
+//&#32;Tout&#32;le&#32;diagnostic:&#32;0x300-0x3FF&#32;(1&#32;filtre)
+CAN_setup_Filter(0x300,&#32;0x3FF,&#32;2);
+</computeroutput></literallayout></para>
+
+<para><emphasis role="bold">Avantages</emphasis> :<itemizedlist>
+<listitem>
+<para>Utilise peu de filtres</para>
+</listitem><listitem>
+<para>Facile à maintenir</para>
+</listitem><listitem>
+<para>Extensible</para>
+</listitem></itemizedlist>
+</para>
+
+<para><informaltable frame='bottom'><tgroup cols='1'><colspec align='center'/><tbody><row><entry align='center'>
+</entry></row></tbody></tgroup></informaltable>
+</para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_1autotoc_md124">
+<title>Stratégie 2 : Un filtre par source</title>
+<para><literallayout><computeroutput>//&#32;Capteur&#32;1:&#32;0x200
+CAN_setup_Filter(0x200,&#32;0x200,&#32;0);
+
+//&#32;Capteur&#32;2:&#32;0x201
+CAN_setup_Filter(0x201,&#32;0x201,&#32;1);
+
+//&#32;Capteur&#32;3:&#32;0x202
+CAN_setup_Filter(0x202,&#32;0x202,&#32;2);
+
+//&#32;...&#32;etc
+</computeroutput></literallayout></para>
+
+<para><emphasis role="bold">Avantages</emphasis> :<itemizedlist>
+<listitem>
+<para>Granularité fine</para>
+</listitem><listitem>
+<para>Gestion précise</para>
+</listitem></itemizedlist>
+</para>
+
+<para><emphasis role="bold">Inconvénients</emphasis> :<itemizedlist>
+<listitem>
+<para>Consomme rapidement les bancs de filtrage</para>
+</listitem></itemizedlist>
+</para>
+
+<para><informaltable frame='bottom'><tgroup cols='1'><colspec align='center'/><tbody><row><entry align='center'>
+</entry></row></tbody></tgroup></informaltable>
+</para>
+</section>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_1autotoc_md126">
+<title>Points d&apos;attention</title>
+<para><informaltable frame="all">
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<thead>
+      <row  class='markdownTableHead'>
+<entry>
+<para>Point  </para>
+</entry><entry>
+<para>Détail  </para>
+</entry></row>
+</thead><tbody>
+      <row  class='markdownTableRowOdd'>
+<entry>
+<para><emphasis role="bold">Ordre d&apos;application</emphasis>  </para>
+</entry><entry>
+<para>Les filtres doivent être configurés AVANT d&apos;activer les interruptions  </para>
+</entry></row>
+      <row  class='markdownTableRowEven'>
+<entry>
+<para><emphasis role="bold">Limite de bancs</emphasis>  </para>
+</entry><entry>
+<para>14 filtres max pour CAN1. Bien planifier!  </para>
+</entry></row>
+      <row  class='markdownTableRowOdd'>
+<entry>
+<para><emphasis role="bold">FIFO0 vs FIFO1</emphasis>  </para>
+</entry><entry>
+<para><computeroutput><link linkend="_com__utils_8c_1adfa3f55b53f7a0c8e6a7ffbf37fe2545">CAN_setup_Filter()</link></computeroutput> utilise FIFO0. À adapter si vous utilisez FIFO1  </para>
+</entry></row>
+      <row  class='markdownTableRowEven'>
+<entry>
+<para><emphasis role="bold">Pas de filtre = tout accepter</emphasis>  </para>
+</entry><entry>
+<para>Si aucun filtre n&apos;est configuré, tous les messages passent  </para>
+</entry></row>
+      <row  class='markdownTableRowOdd'>
+<entry>
+<para><emphasis role="bold">Mode IDLIST vs IDMASK</emphasis>  </para>
+</entry><entry>
+<para>La fonction utilise IDMASK (plages). Pour listes, modifier le code  </para>
+</entry></row>
+      <row  class='markdownTableRowEven'>
+<entry>
+<para><emphasis role="bold">Décalage des bits (&lt;&lt;5)</emphasis>  </para>
+</entry><entry>
+<para>Note: <computeroutput>maximum_id &lt;&lt; 5</computeroutput> -&gt; convertit l&apos;ID de 11 bits au format STM32  </para>
+</entry></row>
+    </tbody>
+    </tgroup>
+</informaltable>
+</para>
+
+<para><informaltable frame='bottom'><tgroup cols='1'><colspec align='center'/><tbody><row><entry align='center'>
+</entry></row></tbody></tgroup></informaltable>
+</para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_1autotoc_md128">
+<title>Débuggage des filtres</title>
+<para><literallayout><computeroutput>//&#32;Vérifier&#32;quels&#32;messages&#32;arrivent
+void&#32;HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef&#32;*hcan)&#32;{
+&#32;&#32;&#32;&#32;CAN_RxHeaderTypeDef&#32;RxHeader;
+&#32;&#32;&#32;&#32;uint8_t&#32;RxData[8];
+
+&#32;&#32;&#32;&#32;HAL_CAN_GetRxMessage(hcan,&#32;CAN_RX_FIFO0,&#32;&amp;RxHeader,&#32;RxData);
+
+&#32;&#32;&#32;&#32;//&#32;Afficher&#32;le&#32;message&#32;reçu
+&#32;&#32;&#32;&#32;printf(&quot;ID:&#32;0x%03X,&#32;DLC:&#32;%u\n&quot;,&#32;RxHeader.StdId,&#32;RxHeader.DLC);
+&#32;&#32;&#32;&#32;for(int&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;RxHeader.DLC;&#32;i++)&#32;{
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(&quot;&#32;&#32;Data[%d]&#32;=&#32;0x%02X\n&quot;,&#32;i,&#32;RxData[i]);
+&#32;&#32;&#32;&#32;}
+}
+</computeroutput></literallayout></para>
+
+<para>Si vous ne voyez <emphasis role="bold">aucun message</emphasis> malgré l&apos;activité CAN :<itemizedlist>
+<listitem>
+<para>Vérifier que les filtres acceptent l&apos;ID envoyé</para>
+</listitem><listitem>
+<para>Vérifier que les interruptions sont activées</para>
+</listitem><listitem>
+<para>Vérifier que le module CAN est initialisé</para>
+</listitem></itemizedlist>
+</para>
+
+<para>Si vous voyez <emphasis role="bold">trop de messages</emphasis> :<itemizedlist>
+<listitem>
+<para>Ajouter des filtres plus restrictifs</para>
+</listitem><listitem>
+<para>Vérifier que les filtres ne sont pas inversés (min &gt; max)</para>
+</listitem></itemizedlist>
+</para>
+
+<para><informaltable frame='bottom'><tgroup cols='1'><colspec align='center'/><tbody><row><entry align='center'>
+</entry></row></tbody></tgroup></informaltable>
+</para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_1autotoc_md130">
+<title>Comparaison : Avec/Sans filtres</title><section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_1autotoc_md131">
+<title>Sans filtres (accepte tout)</title>
+<para><literallayout><computeroutput>//&#32;Aucun&#32;CAN_setup_Filter()&#32;appelé
+while(1)&#32;{
+&#32;&#32;&#32;&#32;//&#32;&#32;Reçoit&#32;TOUS&#32;les&#32;messages&#32;du&#32;bus
+&#32;&#32;&#32;&#32;//&#32;-&gt;&#32;CPU&#32;chargé,&#32;latence&#32;mauvaise
+}
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n_1autotoc_md132">
+<title>Avec filtres (recommandé)</title>
+<para><literallayout><computeroutput>//&#32;Dans&#32;init_com()
+CAN_setup_Filter(0x200,&#32;0x20F,&#32;0);&#32;&#32;//&#32;Capteurs
+CAN_setup_Filter(0x100,&#32;0x10F,&#32;1);&#32;&#32;//&#32;Commandes
+
+while(1)&#32;{
+&#32;&#32;&#32;&#32;//&#32;&#32;Reçoit&#32;UNIQUEMENT&#32;les&#32;messages&#32;0x200-0x20F&#32;et&#32;0x100-0x10F
+&#32;&#32;&#32;&#32;//&#32;-&gt;&#32;CPU&#32;libre,&#32;latence&#32;optimale
+}
+</computeroutput></literallayout></para>
+
+<para><informaltable frame='bottom'><tgroup cols='1'><colspec align='center'/><tbody><row><entry align='center'>
+</entry></row></tbody></tgroup></informaltable>
+</para>
+
+<para>Voir aussi :<itemizedlist>
+<listitem>
+<para><link linkend="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_203___d_o_n_n_e_e_s___c_a_n">03_DONNEES_CAN.md</link> - Buffer de données</para>
+</listitem><listitem>
+<para><link linkend="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33">05_EXEMPLES_COMPLETS.md</link> - Système complet </para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>
+</section>

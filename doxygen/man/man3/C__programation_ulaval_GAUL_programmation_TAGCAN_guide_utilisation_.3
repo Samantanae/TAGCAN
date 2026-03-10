@@ -1,0 +1,94 @@
+.TH "guide_utilisation Directory Reference" 3 "TAGCAN" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+guide_utilisation Directory Reference
+.SH SYNOPSIS
+.br
+.PP
+.SH "Detailed Description"
+.PP 
+
+.SH "Guide d'Utilisation de TAGCAN"
+.PP
+.SH "Aperçu"
+.PP
+Ce guide pratique vous aidera à utiliser \fBTAGCAN\fP, une bibliothèque de gestion de bus CAN pour systèmes embarqués STM32\&. La documentation s'appuie sur l'exemple d'implémentation présent dans le dossier \fRexemple_utilisation/\fP\&.
+.SH "Structure du guide"
+.PP
+.IP "\(bu" 2
+\fB\fB01_INITIALISATION\&.md\fP\fP - Mise en place du système TAGCAN et du bus CAN
+.IP "\(bu" 2
+\fB\fB02_GESTION_TAGS\&.md\fP\fP - Création et gestion des tags (variables nommées)
+.IP "\(bu" 2
+\fB\fB03_DONNEES_CAN\&.md\fP\fP - Manipulation du buffer de données CAN
+.IP "\(bu" 2
+\fB\fB04_FILTRAGE_CAN\&.md\fP\fP - Configuration des filtres CAN
+.IP "\(bu" 2
+\fB\fB05_EXEMPLES_COMPLETS\&.md\fP\fP - Exemples pratiques et cas d'usage
+.PP
+.SH "Points clés"
+.PP
+.SS "Qu'est-ce qu'un tag ?"
+Un \fBtag\fP est une variable nommée associée à une plage de bits dans le buffer CAN\&. Par exemple :
+.IP "\(bu" 2
+\fR"SEQ"\fP -> 3 bits (numéro de séquence)
+.IP "\(bu" 2
+\fR"HB"\fP -> 1 bit (heartbeat/watchdog)
+.IP "\(bu" 2
+\fR"N2OPS"\fP -> 16 bits (capteur de pression N2O)
+.PP
+.SS "Architecture générale"
+.PP
+.nf
+┌─────────────────────────────────────────────┐
+│   Application utilisateur (main\&.c)          │
+├─────────────────────────────────────────────┤
+│   TAGCAN (Gestion des tags & données)       │
+│  ├─ Tag Manager (init_tag_manager, set_tag) │
+│  └─ Data Container (set_value, get_value)   │
+├─────────────────────────────────────────────┤
+│   Driver CAN STM32 (HAL)                    │
+└─────────────────────────────────────────────┘
+.fi
+.PP
+.SH "Démarrage rapide"
+.PP
+.PP
+.nf
+// 1\&. Initialiser TAGCAN
+void init_com(void) {
+    CAN_init_TAGCAN();      // Initialise le gestionnaire de tags
+    CAN_setup_TAG();        // Crée les tags applicatifs
+    CAN_setup_DF(0x123);    // Configure le header CAN
+}
+
+// 2\&. Écrire une valeur dans un tag
+set_value("SEQ", 5);        // Écrit 5 dans le tag "SEQ" (3 bits)
+
+// 3\&. Lire une valeur depuis un tag
+uint32_t val;
+get_value("HB", &val);      // Lit la valeur du tag "HB"
+
+// 4\&. Envoyer sur le bus CAN
+HAL_CAN_AddTxMessage(&hcan, &TxHeader, TxData, &TxMailbox);
+.fi
+.PP
+.SH "Documentation de référence"
+.PP
+Pour plus de détails sur l'API : voir \fBAPI_REFERENCE\&.md\fP
+.SH "Fichiers sources associés"
+.PP
+.IP "\(bu" 2
+\fR\fBexemple_utilisation/com_utils\&.c\fP\fP - Code d'exemple d'intégration
+.IP "\(bu" 2
+\fR\fBexemple_utilisation/com_utils\&.h\fP\fP - Headers d'exemple
+.IP "\(bu" 2
+\fR\fBTAGCAN\&.h\fP\fP - Point d'entrée principal
+.PP
+
+.PP
+.PP
+
+.PP
+\fBBesoin d'aide ?\fP Consultez les exemples complets dans \fB05_EXEMPLES_COMPLETS\&.md\fP 

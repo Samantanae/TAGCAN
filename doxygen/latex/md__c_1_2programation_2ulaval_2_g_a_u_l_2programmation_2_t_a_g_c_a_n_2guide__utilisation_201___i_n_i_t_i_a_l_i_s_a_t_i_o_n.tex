@@ -1,0 +1,221 @@
+\chapter{01 -\/ Initialisation de TAGCAN }
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n}{}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n}\index{01 -\/ Initialisation de TAGCAN@{01 -\/ Initialisation de TAGCAN}}
+\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n_autotoc_md17}%
+\Hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n_autotoc_md17}%
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n_autotoc_md18}{}\doxysection{\texorpdfstring{Objectif}{Objectif}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n_autotoc_md18}
+Configurer le système TAGCAN et le bus CAN pour pouvoir communiquer avec d\textquotesingle{}autres nœuds CAN.\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n_autotoc_md19}{}\doxysection{\texorpdfstring{Vue d\textquotesingle{}ensemble du processus}{Vue d\textquotesingle{}ensemble du processus}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n_autotoc_md19}
+L\textquotesingle{}initialisation suit ces étapes :\+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1.\ init\_com()\ (point\ d'appel\ unique)}
+\DoxyCodeLine{\ \ \ ├─\ CAN\_init\_TAGCAN()}
+\DoxyCodeLine{\ \ \ │\ \ ├─\ init\_data\_container()\ \ \ \ \ -\/>\ Efface\ le\ buffer\ TxData}
+\DoxyCodeLine{\ \ \ │\ \ └─\ init\_tag\_manager()\ \ \ \ \ \ \ \ -\/>\ Initialise\ la\ gestion\ des\ tags}
+\DoxyCodeLine{\ \ \ │}
+\DoxyCodeLine{\ \ \ ├─\ CAN\_setup\_TAG()\ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/>\ Crée\ les\ tags\ applicatifs}
+\DoxyCodeLine{\ \ \ │\ \ (set\_tag\ pour\ chaque\ variable)}
+\DoxyCodeLine{\ \ \ │}
+\DoxyCodeLine{\ \ \ ├─\ CAN\_setup\_DF()\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/>\ Configure\ le\ header\ CAN}
+\DoxyCodeLine{\ \ \ │\ \ (ID,\ type\ de\ frame,\ DLC)}
+\DoxyCodeLine{\ \ \ │}
+\DoxyCodeLine{\ \ \ └─\ HAL\_CAN\_ActivateNotification\ -\/>\ Active\ les\ interruptions\ RX}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n_autotoc_md20}{}\doxysection{\texorpdfstring{Détail de chaque étape}{Détail de chaque étape}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n_autotoc_md20}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n_autotoc_md21}{}\doxysubsection{\texorpdfstring{Étape 1 :\+ init\+\_\+data\+\_\+container()}{Étape 1 :\+ init\+\_\+data\+\_\+container()}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n_autotoc_md21}
+Réinitialise le buffer de données CAN à zéro.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{data__container_8h_a129f017feb0712be1dcf7932e6035aa0}{init\_data\_container}}(\textcolor{keywordtype}{void});}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyTable}{3}{}{}{1}
+\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Paramètre  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Type  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Description  \\
+-\/  &-\/  &(aucun)  \\
+\end{DoxyTable}
+
+
+{\bfseries{Effet}} :\+
+\begin{DoxyItemize}
+\item Vide complètement le buffer {\ttfamily \doxylink{com__utils_8h_af553c31425b32bd9c020380c942ed3bd}{Tx\+Data}\+[8]\+}
+\item Doit être appelé (au moins une fois) lors du démarrage 
+\end{DoxyItemize}\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n_autotoc_md22}{}\doxysection{\texorpdfstring{-\/ Atention:\+ un appel en cours d\textquotesingle{}exécution réinitialiseras les valeurs à 0.}{-\/ Atention:\+ un appel en cours d\textquotesingle{}exécution réinitialiseras les valeurs à 0.}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n_autotoc_md22}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n_autotoc_md23}{}\doxysubsection{\texorpdfstring{Étape 2 :\+ init\+\_\+tag\+\_\+manager()}{Étape 2 :\+ init\+\_\+tag\+\_\+manager()}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n_autotoc_md23}
+Initialise le gestionnaire de tags et efface tous les tags existants.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{gestion__tag_8h_aab50a8f567be72e656120fd71f3fb435}{init\_tag\_manager}}(\textcolor{keywordtype}{void});}
+
+\end{DoxyCode}
+
+
+{\bfseries{Note}} :\+ Après cet appel, tous les tags doivent être redéfinis avec {\ttfamily \doxylink{gestion__tag_8h_a7301f247665ed1c0504f27602b3cf012}{set\+\_\+tag()}}.
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n_autotoc_md25}{}\doxysubsection{\texorpdfstring{Étape 3 :\+ CAN\+\_\+setup\+\_\+\+TAG()}{Étape 3 :\+ CAN\+\_\+setup\+\_\+\+TAG()}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n_autotoc_md25}
+Crée les tags applicatifs en fonction de vos besoins.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{com__utils_8c_a91524acc09c84cf5aa22222e3eee50f5}{CAN\_setup\_TAG}}(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{gestion__tag_8h_a7301f247665ed1c0504f27602b3cf012}{set\_tag}}(\textcolor{stringliteral}{"{}SEQ"{}},\ 3);\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Compteur\ de\ séquences\ (3\ bits)}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{gestion__tag_8h_a7301f247665ed1c0504f27602b3cf012}{set\_tag}}(\textcolor{stringliteral}{"{}HB"{}},\ 1);\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Watchdog\ HeartBeat\ (1\ bit)}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{gestion__tag_8h_a7301f247665ed1c0504f27602b3cf012}{set\_tag}}(\textcolor{stringliteral}{"{}CI"{}},\ 2);\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Continuité\ igniter\ (2\ bits)}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{gestion__tag_8h_a7301f247665ed1c0504f27602b3cf012}{set\_tag}}(\textcolor{stringliteral}{"{}AB"{}},\ 7);\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Alim.\ Batterie\ en\ \%\ (7\ bits)}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{gestion__tag_8h_a7301f247665ed1c0504f27602b3cf012}{set\_tag}}(\textcolor{stringliteral}{"{}EDC"{}},\ 4);\ \ \ \ \ \ \ \ \textcolor{comment}{//\ États\ des\ commandes\ (4\ bits)}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{gestion__tag_8h_a7301f247665ed1c0504f27602b3cf012}{set\_tag}}(\textcolor{stringliteral}{"{}N2OPS"{}},\ 16);\ \ \ \ \ \textcolor{comment}{//\ Capteur\ pression\ N2O\ (16\ bits)}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{gestion__tag_8h_a7301f247665ed1c0504f27602b3cf012}{set\_tag}}(\textcolor{stringliteral}{"{}TLC"{}},\ 12);\ \ \ \ \ \ \ \textcolor{comment}{//\ Thrust\ Load\ Cell\ (12\ bits)}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{gestion__tag_8h_a7301f247665ed1c0504f27602b3cf012}{set\_tag}}(\textcolor{stringliteral}{"{}N2ODVS"{}},\ 1);\ \ \ \ \ \textcolor{comment}{//\ État\ soupape\ Dump\ N2O\ (1\ bit)}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{gestion__tag_8h_a7301f247665ed1c0504f27602b3cf012}{set\_tag}}(\textcolor{stringliteral}{"{}N2OIV"{}},\ 1);\ \ \ \ \ \ \textcolor{comment}{//\ Valve\ igniter\ N2O\ (1\ bit)}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{gestion__tag_8h_a7301f247665ed1c0504f27602b3cf012}{set\_tag}}(\textcolor{stringliteral}{"{}N2OMV"{}},\ 1);\ \ \ \ \ \ \textcolor{comment}{//\ Soupape\ principale\ N2O\ (1\ bit)}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{gestion__tag_8h_a7301f247665ed1c0504f27602b3cf012}{set\_tag}}(\textcolor{stringliteral}{"{}TIME"{}},\ 16);\ \ \ \ \ \ \textcolor{comment}{//\ Timestamp\ en\ ms\ (16\ bits)}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+{\bfseries{Paramètres de \doxylink{gestion__tag_8h_a7301f247665ed1c0504f27602b3cf012}{set\+\_\+tag()}}} :\+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{gestion__tag_8h_a7301f247665ed1c0504f27602b3cf012}{set\_tag}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ tag\_name,\ uint8\_t\ n\_bit);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyTable}{3}{}{}{1}
+\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Paramètre  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Type  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Description  \\
+{\ttfamily tag\+\_\+name}  &{\ttfamily const char\texorpdfstring{$\ast$}{*}}  &Nom unique du tag (ex. "{}\+SEQ"{})  \\
+{\ttfamily n\+\_\+bit}  &{\ttfamily uint8\+\_\+t}  &Nombre de bits (1 à 16)  \\
+\end{DoxyTable}
+
+
+{\bfseries{Valeur de retour}} :\+
+\begin{DoxyItemize}
+\item Code de succès ou code d\textquotesingle{}erreur
+\item À consulter pour débugger (voir {\ttfamily \doxylink{_a_p_i___r_e_f_e_r_e_n_c_e_8md}{documentation/\+\+API\+\_\+\+REFERENCE.\+md}})
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n_autotoc_md27}{}\doxysubsection{\texorpdfstring{Étape 4 :\+ CAN\+\_\+setup\+\_\+\+DF()}{Étape 4 :\+ CAN\+\_\+setup\+\_\+\+DF()}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n_autotoc_md27}
+Configure le header de transmission CAN (ID, type de frame, etc.).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{com__utils_8c_a041f556ab8d1bfd3c0891c94b0f0d8c5}{CAN\_setup\_DF}}(int32\_t\ std\_id)\ \{}
+\DoxyCodeLine{\ \ \ \ std\_id\ \&=\ 0x7FFU;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Masque\ pour\ ID\ standard\ 11\ bits}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{com__utils_8c_a3e35a666d459f2ac92fc7c35334ff0ff}{TxHeader}}.IDE\ =\ CAN\_ID\_STD;\ \ \ \ \ \ \ \textcolor{comment}{//\ Utiliser\ ID\ standard\ (non\ étendu)}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{com__utils_8c_a3e35a666d459f2ac92fc7c35334ff0ff}{TxHeader}}.StdId\ =\ std\_id;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Assigner\ l'ID\ CAN}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{com__utils_8c_a3e35a666d459f2ac92fc7c35334ff0ff}{TxHeader}}.RTR\ =\ CAN\_RTR\_DATA;\ \ \ \ \ \textcolor{comment}{//\ Mode\ données\ (non\ RTR)}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{com__utils_8c_a3e35a666d459f2ac92fc7c35334ff0ff}{TxHeader}}.DLC\ =\ 8;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Longueur\ =\ 8\ octets}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+{\bfseries{Points importants}} :\+
+\begin{DoxyItemize}
+\item {\ttfamily IDE = CAN\+\_\+\+ID\+\_\+\+STD} -\/\texorpdfstring{$>$}{>} utilise les IDs standards (11 bits)
+\item {\ttfamily RTR = CAN\+\_\+\+RTR\+\_\+\+DATA} -\/\texorpdfstring{$>$}{>} frame de données (pas une requête)
+\item {\ttfamily DLC = 8} -\/\texorpdfstring{$>$}{>} longueur fixe du payload (8 octets)
+\item {\ttfamily Std\+Id} -\/\texorpdfstring{$>$}{>} l\textquotesingle{}identifiant unique du message CAN
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n_autotoc_md29}{}\doxysubsection{\texorpdfstring{Étape 5 :\+ Activer les interruptions}{Étape 5 :\+ Activer les interruptions}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n_autotoc_md29}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{if}(HAL\_CAN\_ActivateNotification(\&\doxymbox{\hyperlink{com__utils_8h_ae21c10daa2f8cbd18a0e66bb28a19d2d}{hcan}},\ CAN\_IT\_RX\_FIFO0\_MSG\_PENDING)\ !=\ HAL\_OK)\ \{}
+\DoxyCodeLine{\ \ \ \ Error\_Handler();}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+{\bfseries{Explications}} :\+
+\begin{DoxyItemize}
+\item Permet de recevoir les messages CAN par interruption (plutôt que polling)
+\item {\ttfamily CAN\+\_\+\+IT\+\_\+\+RX\+\_\+\+FIFO0\+\_\+\+MSG\+\_\+\+PENDING} -\/\texorpdfstring{$>$}{>} déclenche une IRQ à la réception d\textquotesingle{}un message dans FIFO0
+\item Nécessite l\textquotesingle{}implémentation du callback :\+ {\ttfamily void \doxylink{com__utils_8c_a7368d39e78009c017d6f81ccf33b9b2c}{HAL\+\_\+\+CAN\+\_\+\+Rx\+Fifo0\+Msg\+Pending\+Callback(\+CAN\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}hcan)}}
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n_autotoc_md31}{}\doxysection{\texorpdfstring{Code complet d\textquotesingle{}initialisation}{Code complet d\textquotesingle{}initialisation}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n_autotoc_md31}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{com__utils_8h}{com\_utils.h}}"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_t_a_g_c_a_n_8h}{TAGCAN.h}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{com__utils_8c_adf9124e89f799fae0f55cc9ed0a94189}{init\_com}}(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Étape\ 1\ :\ Initialiser\ les\ conteneurs\ de\ données}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{com__utils_8c_a13d9a1dcda040041c99ca70ab03192d0}{CAN\_init\_TAGCAN}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Étape\ 2\ :\ Créer\ les\ tags\ applicatifs}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{com__utils_8c_a91524acc09c84cf5aa22222e3eee50f5}{CAN\_setup\_TAG}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Étape\ 3\ :\ Configurer\ le\ header\ CAN}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{com__utils_8c_a041f556ab8d1bfd3c0891c94b0f0d8c5}{CAN\_setup\_DF}}(0x123);\ \ \textcolor{comment}{//\ ID\ CAN\ =\ 0x123}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Étape\ 4\ :\ Activer\ la\ réception\ par\ interruption}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}(HAL\_CAN\_ActivateNotification(\&\doxymbox{\hyperlink{com__utils_8h_ae21c10daa2f8cbd18a0e66bb28a19d2d}{hcan}},\ CAN\_IT\_RX\_FIFO0\_MSG\_PENDING)\ !=\ HAL\_OK)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Error\_Handler();}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ \ Système\ TAGCAN\ prêt\ !}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ À\ appeler\ une\ seule\ fois\ dans\ main()\ au\ démarrage}}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{main_8c_a840291bc02cba5474a4cb46a9b9566fe}{main}}(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{\ \ \ \ HAL\_Init();}
+\DoxyCodeLine{\ \ \ \ MX\_CAN\_Init();\ \ \ \ \ \ \textcolor{comment}{//\ Initialisation\ du\ module\ CAN\ matériel}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{com__utils_8c_adf9124e89f799fae0f55cc9ed0a94189}{init\_com}}();\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Initialisation\ TAGCAN}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Boucle\ principale...}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{while}(1)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Votre\ code}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n_autotoc_md33}{}\doxysection{\texorpdfstring{Points d\textquotesingle{}attention}{Points d\textquotesingle{}attention}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n_autotoc_md33}
+
+\begin{DoxyTable}{2}{}{}{1}
+\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Point  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Détail  \\
+{\bfseries{Ordre d\textquotesingle{}appel}}  &Toujours :\+ {\ttfamily \doxylink{data__container_8h_a129f017feb0712be1dcf7932e6035aa0}{init\+\_\+data\+\_\+container()}} -\/\texorpdfstring{$>$}{>} {\ttfamily \doxylink{gestion__tag_8h_aab50a8f567be72e656120fd71f3fb435}{init\+\_\+tag\+\_\+manager()}} -\/\texorpdfstring{$>$}{>} {\ttfamily \doxylink{gestion__tag_8h_a7301f247665ed1c0504f27602b3cf012}{set\+\_\+tag()}}  \\
+{\bfseries{Appel unique}}  &{\ttfamily \doxylink{com__utils_8c_adf9124e89f799fae0f55cc9ed0a94189}{init\+\_\+com()}} doit être appelée {\bfseries{une seule fois}} au démarrage  \\
+{\bfseries{Réinitialisation}}  &Si vous appelez {\ttfamily \doxylink{gestion__tag_8h_aab50a8f567be72e656120fd71f3fb435}{init\+\_\+tag\+\_\+manager()}} à nouveau, tous les tags doivent être recréés  \\
+{\bfseries{Configuration matérielle}}  &Le module CAN STM32 (HAL) doit être initialisé {\bfseries{avant}} TAGCAN  \\
+{\bfseries{ID CAN unique}}  &Chaque nœud du réseau doit avoir un ID CAN unique  \\
+\end{DoxyTable}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n_autotoc_md35}{}\doxysection{\texorpdfstring{Vérification}{Vérification}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n_autotoc_md35}
+Après initialisation :\+
+\begin{DoxyItemize}
+\item {\ttfamily \doxylink{com__utils_8h_af553c31425b32bd9c020380c942ed3bd}{Tx\+Data}\+[8]\+} est rempli de zéros
+\item Les tags sont créés et prêts à l\textquotesingle{}emploi
+\item Le header {\ttfamily \doxylink{com__utils_8c_a3e35a666d459f2ac92fc7c35334ff0ff}{Tx\+Header}} est configuré avec votre ID CAN
+\item Les interruptions CAN sont actives
+\item Prêt pour {\ttfamily \doxylink{data__container_8h_aa84538f1ab0c319056787e9674157405}{set\+\_\+value()}} et {\ttfamily \doxylink{data__container_8h_a66cbaaa79a2ba3c2c7912514c1dc805f}{get\+\_\+value()}}
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+
+
+Voir aussi :\+
+\begin{DoxyItemize}
+\item \doxysectlink{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s}{02\+\_\+\+GESTION\+\_\+\+TAGS.md}{0} -\/ Utiliser les tags
+\item \doxysectlink{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_203___d_o_n_n_e_e_s___c_a_n}{03\+\_\+\+DONNEES\+\_\+\+CAN.md}{0} -\/ Gérer les données CAN 
+\end{DoxyItemize}

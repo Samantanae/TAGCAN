@@ -1,0 +1,53 @@
+\doxysection{com\+\_\+utils.\+h}
+\hypertarget{com__utils_8h_source}{}\label{com__utils_8h_source}\index{com\_utils.h@{com\_utils.h}}
+\doxymbox{\hyperlink{com__utils_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00002}00002\ \textcolor{comment}{\ *\ com\_logic.h}}
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00003}00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00004}00004\ \textcolor{comment}{\ *\ \ Created\ on:\ 4\ Mar\ 2026}}
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00005}00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ Samuel}}
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00006}00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00008}00008\ \textcolor{preprocessor}{\#ifndef\ INC\_COM\_UTILS\_H\_}}
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00009}00009\ \textcolor{preprocessor}{\#define\ INC\_COM\_UTILS\_H\_}}
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_t_a_g_c_a_n_8h}{../../TAGCAN/TAGCAN.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00012}00012\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{data__container_8h}{../../TAGCAN/include/sub\_include/data\_container.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <cmsis\_gcc.h>}}
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00014}00014\ \textcolor{preprocessor}{\#include\ <stm32f103xb.h>}}
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00015}00015\ \textcolor{preprocessor}{\#include\ <stm32f1xx.h>}}
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00016}00016\ \textcolor{preprocessor}{\#include\ <stm32f1xx\_hal\_can.h>}}
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00017}00017\ \textcolor{preprocessor}{\#include\ <stm32f1xx\_hal\_def.h>}}
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00018}00018\ \textcolor{preprocessor}{\#include\ <stm32f1xx\_hal\_flash.h>}}
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <stm32f1xx\_hal\_rcc.h>}}
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00020}00020\ \textcolor{preprocessor}{\#include\ <stm32f1xx\_hal\_rcc\_ex.h>}}
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00021}00021\ \textcolor{preprocessor}{\#include\ <sys/\_stdint.h>}}
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00023}00023\ \textcolor{keyword}{extern}\ uint8\_t\ \doxymbox{\hyperlink{com__utils_8h_af553c31425b32bd9c020380c942ed3bd}{TxData}}[8];}
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00024}00024\ \textcolor{keyword}{extern}\ uint8\_t\ \doxymbox{\hyperlink{com__utils_8c_a14629afcc7f0b2d62c2b617b07d98184}{RxData}}[8];}
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00025}00025\ \textcolor{keyword}{extern}\ CAN\_TxHeaderTypeDef\ \doxymbox{\hyperlink{com__utils_8c_a3e35a666d459f2ac92fc7c35334ff0ff}{TxHeader}};}
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00026}00026\ \textcolor{keyword}{extern}\ CAN\_RxHeaderTypeDef\ \doxymbox{\hyperlink{com__utils_8c_a6ee6e13063b860648180eea65852cc71}{RxHeader}};}
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00027}00027\ \textcolor{keyword}{extern}\ CAN\_HandleTypeDef\ \doxymbox{\hyperlink{com__utils_8h_ae21c10daa2f8cbd18a0e66bb28a19d2d}{hcan}};}
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00028}00028\ \textcolor{keyword}{extern}\ int32\_t\ \doxymbox{\hyperlink{com__utils_8c_afd0a914dd50d7aa3607d092452037cc1}{TxMailbox}};}
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00030}00030\ \textcolor{keyword}{extern}\ int8\_t\ \doxymbox{\hyperlink{com__utils_8c_a2bf70f5aaf32f6470e208580dc8bed7b}{val\_SEQ}};}
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00031}00031\ \textcolor{keyword}{extern}\ int8\_t\ \doxymbox{\hyperlink{com__utils_8c_ad007767ce463586424d87bdafe0ae84a}{val\_HB}};}
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00032}00032\ \textcolor{keyword}{extern}\ int8\_t\ \doxymbox{\hyperlink{com__utils_8c_a6ad8282033ebc654142cd71d2633ab3a}{val\_CI}};}
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00033}00033\ \textcolor{keyword}{extern}\ int8\_t\ \doxymbox{\hyperlink{com__utils_8c_a563c97929d53dfd65c6722da474e57de}{val\_AB}};}
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00034}00034\ \textcolor{keyword}{extern}\ int8\_t\ \doxymbox{\hyperlink{com__utils_8c_a0d03ea68010339af49c95b45d72f1584}{val\_EDC}};}
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00036}00036\ \textcolor{keyword}{extern}\ int8\_t\ \doxymbox{\hyperlink{com__utils_8c_aa2826abd1636498ecf600da3165d5a5a}{val\_N2ODVS}};}
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00037}00037\ \textcolor{keyword}{extern}\ int8\_t\ \doxymbox{\hyperlink{com__utils_8c_a686cd636907dfc59d7490e9a1289d63e}{val\_N2OIV}};}
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00038}00038\ \textcolor{keyword}{extern}\ int8\_t\ \doxymbox{\hyperlink{com__utils_8c_aa862edfd1ccb9792c7450773c3a8acdc}{val\_N2OMV}};}
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00039}00039\ \textcolor{keyword}{extern}\ int16\_t\ \doxymbox{\hyperlink{com__utils_8c_a52e20247890d4a078c8bf6e27a7d9cdb}{val\_N2OPS}};}
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00041}00041\ \textcolor{keyword}{extern}\ int16\_t\ \doxymbox{\hyperlink{com__utils_8c_a6e3f5faa7238533e87c3c5d782104de7}{val\_TIME}};}
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00042}00042\ \textcolor{keyword}{extern}\ int16\_t\ \doxymbox{\hyperlink{com__utils_8c_af54835c185cf3ea1e1fd9db7a178d5b4}{val\_TLC}};}
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00044}00044\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{com__utils_8h_adf9124e89f799fae0f55cc9ed0a94189}{init\_com}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{com__utils_8h_source_l00047}00047\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ INC\_COM\_UTILS\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

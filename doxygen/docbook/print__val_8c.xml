@@ -36,7 +36,7 @@
 </listitem>
             <listitem><para>void <link linkend="_print__val_8c_1a7d217b9d9a6575858c03ca9854bb151b">print_all_data_bin</link> (void)</para>
 
-<para>Prints the binary representation of each byte in <computeroutput><link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">TxData</link></computeroutput>. </para>
+<para>Prints the binary representation of each byte in <computeroutput><link linkend="_com__utils_8h_1af553c31425b32bd9c020380c942ed3bd">TxData</link></computeroutput>. </para>
 </listitem>
             <listitem><para>void <link linkend="_print__val_8c_1aab1b8ef8b5cbbf7a78a88248ae81155c">print_all_with_title</link> (const char *title)</para>
 
@@ -109,14 +109,14 @@ Here is the caller graph for this function:<para>
 <indexterm><primary>print_val.c</primary><secondary>print_all_data_bin</secondary></indexterm>
 <para><computeroutput>void print_all_data_bin (void )</computeroutput></para><para>
 
-<para>Prints the binary representation of each byte in <computeroutput><link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">TxData</link></computeroutput>. </para>
+<para>Prints the binary representation of each byte in <computeroutput><link linkend="_com__utils_8h_1af553c31425b32bd9c020380c942ed3bd">TxData</link></computeroutput>. </para>
 </para>
 
 <para>Affiche tout le payload TxData en binaire.</para>
 
-<para>Prints the binary representation of each byte in the <computeroutput><link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">TxData</link></computeroutput> array. </para>
+<para>Prints the binary representation of each byte in the <computeroutput><link linkend="_com__utils_8h_1af553c31425b32bd9c020380c942ed3bd">TxData</link></computeroutput> array. </para>
 <para>
-Definition at line <link linkend="_print__val_8c_source_1l00148">148</link> of file <link linkend="_print__val_8c_source">print_val.c</link>.</para>
+Definition at line <link linkend="_print__val_8c_source_1l00150">150</link> of file <link linkend="_print__val_8c_source">print_val.c</link>.</para>
 Here is the call graph for this function:<para>
     <informalfigure>
         <mediaobject>
@@ -182,7 +182,7 @@ Parameters</title>
                 </formalpara>
                 </para>
 <para>
-Definition at line <link linkend="_print__val_8c_source_1l00162">162</link> of file <link linkend="_print__val_8c_source">print_val.c</link>.</para>
+Definition at line <link linkend="_print__val_8c_source_1l00164">164</link> of file <link linkend="_print__val_8c_source">print_val.c</link>.</para>
 Here is the call graph for this function:<para>
     <informalfigure>
         <mediaobject>
@@ -226,7 +226,7 @@ Parameters</title>
                 </formalpara>
                 </para>
 <para>
-Definition at line <link linkend="_print__val_8c_source_1l00134">134</link> of file <link linkend="_print__val_8c_source">print_val.c</link>.</para>
+Definition at line <link linkend="_print__val_8c_source_1l00136">136</link> of file <link linkend="_print__val_8c_source">print_val.c</link>.</para>
 Here is the caller graph for this function:<para>
     <informalfigure>
         <mediaobject>

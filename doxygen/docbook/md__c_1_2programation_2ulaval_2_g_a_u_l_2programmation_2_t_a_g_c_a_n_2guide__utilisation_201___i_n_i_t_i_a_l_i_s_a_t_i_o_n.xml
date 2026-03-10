@@ -1,0 +1,335 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n" xml:lang="en-US">
+<title>
+<para>01 - Initialisation de TAGCAN </para>
+</title>
+<indexterm><primary>01 - Initialisation de TAGCAN</primary></indexterm>
+
+<para><anchor xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n_1autotoc_md17"/></para>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n_1autotoc_md18">
+<title>Objectif</title>
+<para>Configurer le système TAGCAN et le bus CAN pour pouvoir communiquer avec d&apos;autres nœuds CAN.</para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n_1autotoc_md19">
+<title>Vue d&apos;ensemble du processus</title>
+<para>L&apos;initialisation suit ces étapes :</para>
+
+<para><literallayout><computeroutput>1.&#32;init_com()&#32;(point&#32;d&apos;appel&#32;unique)
+&#32;&#32;&#32;├─&#32;CAN_init_TAGCAN()
+&#32;&#32;&#32;│&#32;&#32;├─&#32;init_data_container()&#32;&#32;&#32;&#32;&#32;-&gt;&#32;Efface&#32;le&#32;buffer&#32;TxData
+&#32;&#32;&#32;│&#32;&#32;└─&#32;init_tag_manager()&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;-&gt;&#32;Initialise&#32;la&#32;gestion&#32;des&#32;tags
+&#32;&#32;&#32;│
+&#32;&#32;&#32;├─&#32;CAN_setup_TAG()&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;-&gt;&#32;Crée&#32;les&#32;tags&#32;applicatifs
+&#32;&#32;&#32;│&#32;&#32;(set_tag&#32;pour&#32;chaque&#32;variable)
+&#32;&#32;&#32;│
+&#32;&#32;&#32;├─&#32;CAN_setup_DF()&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;-&gt;&#32;Configure&#32;le&#32;header&#32;CAN
+&#32;&#32;&#32;│&#32;&#32;(ID,&#32;type&#32;de&#32;frame,&#32;DLC)
+&#32;&#32;&#32;│
+&#32;&#32;&#32;└─&#32;HAL_CAN_ActivateNotification&#32;-&gt;&#32;Active&#32;les&#32;interruptions&#32;RX
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n_1autotoc_md20">
+<title>Détail de chaque étape</title><section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n_1autotoc_md21">
+<title>Étape 1 : init_data_container()</title>
+<para>Réinitialise le buffer de données CAN à zéro.</para>
+
+<para><literallayout><computeroutput>void&#32;init_data_container(void);
+</computeroutput></literallayout></para>
+
+<para><informaltable frame="all">
+    <tgroup cols="3" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+      <colspec colname='c3'/>
+<thead>
+      <row  class='markdownTableHead'>
+<entry>
+<para>Paramètre  </para>
+</entry><entry>
+<para>Type  </para>
+</entry><entry>
+<para>Description  </para>
+</entry></row>
+</thead><tbody>
+      <row  class='markdownTableRowOdd'>
+<entry>
+<para>-  </para>
+</entry><entry>
+<para>-  </para>
+</entry><entry>
+<para>(aucun)  </para>
+</entry></row>
+    </tbody>
+    </tgroup>
+</informaltable>
+</para>
+
+<para><emphasis role="bold">Effet</emphasis> :<itemizedlist>
+<listitem>
+<para>Vide complètement le buffer <computeroutput><link linkend="_com__utils_8h_1af553c31425b32bd9c020380c942ed3bd">TxData</link>[8]</computeroutput></para>
+</listitem><listitem>
+<para>Doit être appelé (au moins une fois) lors du démarrage </para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n_1autotoc_md22">
+<title>- Atention: un appel en cours d&apos;exécution réinitialiseras les valeurs à 0.</title><section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n_1autotoc_md23">
+<title>Étape 2 : init_tag_manager()</title>
+<para>Initialise le gestionnaire de tags et efface tous les tags existants.</para>
+
+<para><literallayout><computeroutput>void&#32;init_tag_manager(void);
+</computeroutput></literallayout></para>
+
+<para><emphasis role="bold">Note</emphasis> : Après cet appel, tous les tags doivent être redéfinis avec <computeroutput><link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag()</link></computeroutput>.</para>
+
+<para><informaltable frame='bottom'><tgroup cols='1'><colspec align='center'/><tbody><row><entry align='center'>
+</entry></row></tbody></tgroup></informaltable>
+</para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n_1autotoc_md25">
+<title>Étape 3 : CAN_setup_TAG()</title>
+<para>Crée les tags applicatifs en fonction de vos besoins.</para>
+
+<para><literallayout><computeroutput>void&#32;CAN_setup_TAG(void)&#32;{
+&#32;&#32;&#32;&#32;set_tag(&quot;SEQ&quot;,&#32;3);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;Compteur&#32;de&#32;séquences&#32;(3&#32;bits)
+&#32;&#32;&#32;&#32;set_tag(&quot;HB&quot;,&#32;1);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;Watchdog&#32;HeartBeat&#32;(1&#32;bit)
+&#32;&#32;&#32;&#32;set_tag(&quot;CI&quot;,&#32;2);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;Continuité&#32;igniter&#32;(2&#32;bits)
+&#32;&#32;&#32;&#32;set_tag(&quot;AB&quot;,&#32;7);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;Alim.&#32;Batterie&#32;en&#32;%&#32;(7&#32;bits)
+&#32;&#32;&#32;&#32;set_tag(&quot;EDC&quot;,&#32;4);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;États&#32;des&#32;commandes&#32;(4&#32;bits)
+&#32;&#32;&#32;&#32;set_tag(&quot;N2OPS&quot;,&#32;16);&#32;&#32;&#32;&#32;&#32;//&#32;Capteur&#32;pression&#32;N2O&#32;(16&#32;bits)
+&#32;&#32;&#32;&#32;set_tag(&quot;TLC&quot;,&#32;12);&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;Thrust&#32;Load&#32;Cell&#32;(12&#32;bits)
+&#32;&#32;&#32;&#32;set_tag(&quot;N2ODVS&quot;,&#32;1);&#32;&#32;&#32;&#32;&#32;//&#32;État&#32;soupape&#32;Dump&#32;N2O&#32;(1&#32;bit)
+&#32;&#32;&#32;&#32;set_tag(&quot;N2OIV&quot;,&#32;1);&#32;&#32;&#32;&#32;&#32;&#32;//&#32;Valve&#32;igniter&#32;N2O&#32;(1&#32;bit)
+&#32;&#32;&#32;&#32;set_tag(&quot;N2OMV&quot;,&#32;1);&#32;&#32;&#32;&#32;&#32;&#32;//&#32;Soupape&#32;principale&#32;N2O&#32;(1&#32;bit)
+&#32;&#32;&#32;&#32;set_tag(&quot;TIME&quot;,&#32;16);&#32;&#32;&#32;&#32;&#32;&#32;//&#32;Timestamp&#32;en&#32;ms&#32;(16&#32;bits)
+}
+</computeroutput></literallayout></para>
+
+<para><emphasis role="bold">Paramètres de <link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag()</link></emphasis> :</para>
+
+<para><literallayout><computeroutput>int&#32;set_tag(const&#32;char*&#32;tag_name,&#32;uint8_t&#32;n_bit);
+</computeroutput></literallayout></para>
+
+<para><informaltable frame="all">
+    <tgroup cols="3" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+      <colspec colname='c3'/>
+<thead>
+      <row  class='markdownTableHead'>
+<entry>
+<para>Paramètre  </para>
+</entry><entry>
+<para>Type  </para>
+</entry><entry>
+<para>Description  </para>
+</entry></row>
+</thead><tbody>
+      <row  class='markdownTableRowOdd'>
+<entry>
+<para><computeroutput>tag_name</computeroutput>  </para>
+</entry><entry>
+<para><computeroutput>const char*</computeroutput>  </para>
+</entry><entry>
+<para>Nom unique du tag (ex. &quot;SEQ&quot;)  </para>
+</entry></row>
+      <row  class='markdownTableRowEven'>
+<entry>
+<para><computeroutput>n_bit</computeroutput>  </para>
+</entry><entry>
+<para><computeroutput>uint8_t</computeroutput>  </para>
+</entry><entry>
+<para>Nombre de bits (1 à 16)  </para>
+</entry></row>
+    </tbody>
+    </tgroup>
+</informaltable>
+</para>
+
+<para><emphasis role="bold">Valeur de retour</emphasis> :<itemizedlist>
+<listitem>
+<para>Code de succès ou code d&apos;erreur</para>
+</listitem><listitem>
+<para>À consulter pour débugger (voir <computeroutput><link linkend="__a_p_i___r_e_f_e_r_e_n_c_e_8md">documentation/API_REFERENCE.md</link></computeroutput>)</para>
+</listitem></itemizedlist>
+</para>
+
+<para><informaltable frame='bottom'><tgroup cols='1'><colspec align='center'/><tbody><row><entry align='center'>
+</entry></row></tbody></tgroup></informaltable>
+</para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n_1autotoc_md27">
+<title>Étape 4 : CAN_setup_DF()</title>
+<para>Configure le header de transmission CAN (ID, type de frame, etc.).</para>
+
+<para><literallayout><computeroutput>void&#32;CAN_setup_DF(int32_t&#32;std_id)&#32;{
+&#32;&#32;&#32;&#32;std_id&#32;&amp;=&#32;0x7FFU;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;Masque&#32;pour&#32;ID&#32;standard&#32;11&#32;bits
+&#32;&#32;&#32;&#32;TxHeader.IDE&#32;=&#32;CAN_ID_STD;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;Utiliser&#32;ID&#32;standard&#32;(non&#32;étendu)
+&#32;&#32;&#32;&#32;TxHeader.StdId&#32;=&#32;std_id;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;Assigner&#32;l&apos;ID&#32;CAN
+&#32;&#32;&#32;&#32;TxHeader.RTR&#32;=&#32;CAN_RTR_DATA;&#32;&#32;&#32;&#32;&#32;//&#32;Mode&#32;données&#32;(non&#32;RTR)
+&#32;&#32;&#32;&#32;TxHeader.DLC&#32;=&#32;8;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;Longueur&#32;=&#32;8&#32;octets
+}
+</computeroutput></literallayout></para>
+
+<para><emphasis role="bold">Points importants</emphasis> :<itemizedlist>
+<listitem>
+<para><computeroutput>IDE = CAN_ID_STD</computeroutput> -&gt; utilise les IDs standards (11 bits)</para>
+</listitem><listitem>
+<para><computeroutput>RTR = CAN_RTR_DATA</computeroutput> -&gt; frame de données (pas une requête)</para>
+</listitem><listitem>
+<para><computeroutput>DLC = 8</computeroutput> -&gt; longueur fixe du payload (8 octets)</para>
+</listitem><listitem>
+<para><computeroutput>StdId</computeroutput> -&gt; l&apos;identifiant unique du message CAN</para>
+</listitem></itemizedlist>
+</para>
+
+<para><informaltable frame='bottom'><tgroup cols='1'><colspec align='center'/><tbody><row><entry align='center'>
+</entry></row></tbody></tgroup></informaltable>
+</para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n_1autotoc_md29">
+<title>Étape 5 : Activer les interruptions</title>
+<para><literallayout><computeroutput>if(HAL_CAN_ActivateNotification(&amp;hcan,&#32;CAN_IT_RX_FIFO0_MSG_PENDING)&#32;!=&#32;HAL_OK)&#32;{
+&#32;&#32;&#32;&#32;Error_Handler();
+}
+</computeroutput></literallayout></para>
+
+<para><emphasis role="bold">Explications</emphasis> :<itemizedlist>
+<listitem>
+<para>Permet de recevoir les messages CAN par interruption (plutôt que polling)</para>
+</listitem><listitem>
+<para><computeroutput>CAN_IT_RX_FIFO0_MSG_PENDING</computeroutput> -&gt; déclenche une IRQ à la réception d&apos;un message dans FIFO0</para>
+</listitem><listitem>
+<para>Nécessite l&apos;implémentation du callback : <computeroutput>void <link linkend="_com__utils_8c_1a7368d39e78009c017d6f81ccf33b9b2c">HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)</link></computeroutput></para>
+</listitem></itemizedlist>
+</para>
+
+<para><informaltable frame='bottom'><tgroup cols='1'><colspec align='center'/><tbody><row><entry align='center'>
+</entry></row></tbody></tgroup></informaltable>
+</para>
+</section>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n_1autotoc_md31">
+<title>Code complet d&apos;initialisation</title>
+<para><literallayout><computeroutput>#include&#32;&quot;com_utils.h&quot;
+#include&#32;&quot;TAGCAN.h&quot;
+
+void&#32;init_com(void)&#32;{
+&#32;&#32;&#32;&#32;//&#32;Étape&#32;1&#32;:&#32;Initialiser&#32;les&#32;conteneurs&#32;de&#32;données
+&#32;&#32;&#32;&#32;CAN_init_TAGCAN();
+
+&#32;&#32;&#32;&#32;//&#32;Étape&#32;2&#32;:&#32;Créer&#32;les&#32;tags&#32;applicatifs
+&#32;&#32;&#32;&#32;CAN_setup_TAG();
+
+&#32;&#32;&#32;&#32;//&#32;Étape&#32;3&#32;:&#32;Configurer&#32;le&#32;header&#32;CAN
+&#32;&#32;&#32;&#32;CAN_setup_DF(0x123);&#32;&#32;//&#32;ID&#32;CAN&#32;=&#32;0x123
+
+&#32;&#32;&#32;&#32;//&#32;Étape&#32;4&#32;:&#32;Activer&#32;la&#32;réception&#32;par&#32;interruption
+&#32;&#32;&#32;&#32;if(HAL_CAN_ActivateNotification(&amp;hcan,&#32;CAN_IT_RX_FIFO0_MSG_PENDING)&#32;!=&#32;HAL_OK)&#32;{
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Error_Handler();
+&#32;&#32;&#32;&#32;}
+
+&#32;&#32;&#32;&#32;//&#32;&#32;Système&#32;TAGCAN&#32;prêt&#32;!
+}
+
+//&#32;À&#32;appeler&#32;une&#32;seule&#32;fois&#32;dans&#32;main()&#32;au&#32;démarrage
+int&#32;main(void)&#32;{
+&#32;&#32;&#32;&#32;HAL_Init();
+&#32;&#32;&#32;&#32;MX_CAN_Init();&#32;&#32;&#32;&#32;&#32;&#32;//&#32;Initialisation&#32;du&#32;module&#32;CAN&#32;matériel
+
+&#32;&#32;&#32;&#32;init_com();&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;Initialisation&#32;TAGCAN
+
+&#32;&#32;&#32;&#32;//&#32;Boucle&#32;principale...
+&#32;&#32;&#32;&#32;while(1)&#32;{
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;Votre&#32;code
+&#32;&#32;&#32;&#32;}
+}
+</computeroutput></literallayout></para>
+
+<para><informaltable frame='bottom'><tgroup cols='1'><colspec align='center'/><tbody><row><entry align='center'>
+</entry></row></tbody></tgroup></informaltable>
+</para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n_1autotoc_md33">
+<title>Points d&apos;attention</title>
+<para><informaltable frame="all">
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<thead>
+      <row  class='markdownTableHead'>
+<entry>
+<para>Point  </para>
+</entry><entry>
+<para>Détail  </para>
+</entry></row>
+</thead><tbody>
+      <row  class='markdownTableRowOdd'>
+<entry>
+<para><emphasis role="bold">Ordre d&apos;appel</emphasis>  </para>
+</entry><entry>
+<para>Toujours : <computeroutput><link linkend="_data__container_8h_1a129f017feb0712be1dcf7932e6035aa0">init_data_container()</link></computeroutput> -&gt; <computeroutput><link linkend="_gestion__tag_8h_1aab50a8f567be72e656120fd71f3fb435">init_tag_manager()</link></computeroutput> -&gt; <computeroutput><link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag()</link></computeroutput>  </para>
+</entry></row>
+      <row  class='markdownTableRowEven'>
+<entry>
+<para><emphasis role="bold">Appel unique</emphasis>  </para>
+</entry><entry>
+<para><computeroutput><link linkend="_com__utils_8c_1adf9124e89f799fae0f55cc9ed0a94189">init_com()</link></computeroutput> doit être appelée <emphasis role="bold">une seule fois</emphasis> au démarrage  </para>
+</entry></row>
+      <row  class='markdownTableRowOdd'>
+<entry>
+<para><emphasis role="bold">Réinitialisation</emphasis>  </para>
+</entry><entry>
+<para>Si vous appelez <computeroutput><link linkend="_gestion__tag_8h_1aab50a8f567be72e656120fd71f3fb435">init_tag_manager()</link></computeroutput> à nouveau, tous les tags doivent être recréés  </para>
+</entry></row>
+      <row  class='markdownTableRowEven'>
+<entry>
+<para><emphasis role="bold">Configuration matérielle</emphasis>  </para>
+</entry><entry>
+<para>Le module CAN STM32 (HAL) doit être initialisé <emphasis role="bold">avant</emphasis> TAGCAN  </para>
+</entry></row>
+      <row  class='markdownTableRowOdd'>
+<entry>
+<para><emphasis role="bold">ID CAN unique</emphasis>  </para>
+</entry><entry>
+<para>Chaque nœud du réseau doit avoir un ID CAN unique  </para>
+</entry></row>
+    </tbody>
+    </tgroup>
+</informaltable>
+</para>
+
+<para><informaltable frame='bottom'><tgroup cols='1'><colspec align='center'/><tbody><row><entry align='center'>
+</entry></row></tbody></tgroup></informaltable>
+</para>
+</section>
+<section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n_1autotoc_md35">
+<title>Vérification</title>
+<para>Après initialisation :<itemizedlist>
+<listitem>
+<para><computeroutput><link linkend="_com__utils_8h_1af553c31425b32bd9c020380c942ed3bd">TxData</link>[8]</computeroutput> est rempli de zéros</para>
+</listitem><listitem>
+<para>Les tags sont créés et prêts à l&apos;emploi</para>
+</listitem><listitem>
+<para>Le header <computeroutput><link linkend="_com__utils_8c_1a3e35a666d459f2ac92fc7c35334ff0ff">TxHeader</link></computeroutput> est configuré avec votre ID CAN</para>
+</listitem><listitem>
+<para>Les interruptions CAN sont actives</para>
+</listitem><listitem>
+<para>Prêt pour <computeroutput><link linkend="_data__container_8h_1aa84538f1ab0c319056787e9674157405">set_value()</link></computeroutput> et <computeroutput><link linkend="_data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f">get_value()</link></computeroutput></para>
+</listitem></itemizedlist>
+</para>
+
+<para><informaltable frame='bottom'><tgroup cols='1'><colspec align='center'/><tbody><row><entry align='center'>
+</entry></row></tbody></tgroup></informaltable>
+</para>
+
+<para>Voir aussi :<itemizedlist>
+<listitem>
+<para><link linkend="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_202___g_e_s_t_i_o_n___t_a_g_s">02_GESTION_TAGS.md</link> - Utiliser les tags</para>
+</listitem><listitem>
+<para><link linkend="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_203___d_o_n_n_e_e_s___c_a_n">03_DONNEES_CAN.md</link> - Gérer les données CAN </para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>

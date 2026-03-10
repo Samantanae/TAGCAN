@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['succes_0',['SUCCES',['../config__value_8h.html#afb042b80a35ed7a692f9001589ddf8c6',1,'SUCCES:&#160;config_value.c'],['../config__value_8c.html#afb042b80a35ed7a692f9001589ddf8c6',1,'SUCCES:&#160;config_value.c']]],
-  ['succes_5fto_5fset_1',['SUCCES_TO_SET',['../config__value_8h.html#af9a28b199e843773aefbb1e1bcf50559',1,'SUCCES_TO_SET:&#160;config_value.c'],['../config__value_8c.html#af9a28b199e843773aefbb1e1bcf50559',1,'SUCCES_TO_SET:&#160;config_value.c']]]
+  ['n_5fbits_0',['n_bits',['../struct_tag_def.html#a894ffee63faf79f0877a12c871a18b3a',1,'TagDef']]],
+  ['name_1',['name',['../struct_tag_def.html#a5365d3ceaa5fb559687e0d26268ca709',1,'TagDef']]]
 ];

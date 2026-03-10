@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.0" xml:lang="en-US">
+  <compounddef id="guide__utilisation_2_r_e_a_d_m_e_8md" kind="file" language="Markdown">
+    <compoundname>guide_utilisation/README.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>Guide<sp/>d&apos;Utilisation<sp/>de<sp/>TAGCAN</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Aperçu</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Ce<sp/>guide<sp/>pratique<sp/>vous<sp/>aidera<sp/>à<sp/>utiliser<sp/>**TAGCAN**,<sp/>une<sp/>bibliothèque<sp/>de<sp/>gestion<sp/>de<sp/>bus<sp/>CAN<sp/>pour<sp/>systèmes<sp/>embarqués<sp/>STM32.<sp/>La<sp/>documentation<sp/>s&apos;appuie<sp/>sur<sp/>l&apos;exemple<sp/>d&apos;implémentation<sp/>présent<sp/>dans<sp/>le<sp/>dossier<sp/>`exemple_utilisation/`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Structure<sp/>du<sp/>guide</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>**[01_INITIALISATION.md](01_INITIALISATION.md)**<sp/>-<sp/>Mise<sp/>en<sp/>place<sp/>du<sp/>système<sp/>TAGCAN<sp/>et<sp/>du<sp/>bus<sp/>CAN</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**[02_GESTION_TAGS.md](02_GESTION_TAGS.md)**<sp/>-<sp/>Création<sp/>et<sp/>gestion<sp/>des<sp/>tags<sp/>(variables<sp/>nommées)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**[03_DONNEES_CAN.md](03_DONNEES_CAN.md)**<sp/>-<sp/>Manipulation<sp/>du<sp/>buffer<sp/>de<sp/>données<sp/>CAN</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**[04_FILTRAGE_CAN.md](04_FILTRAGE_CAN.md)**<sp/>-<sp/>Configuration<sp/>des<sp/>filtres<sp/>CAN</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**[05_EXEMPLES_COMPLETS.md](05_EXEMPLES_COMPLETS.md)**<sp/>-<sp/>Exemples<sp/>pratiques<sp/>et<sp/>cas<sp/>d&apos;usage</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Points<sp/>clés</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Qu&apos;est-ce<sp/>qu&apos;un<sp/>tag<sp/>?</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Un<sp/>**tag**<sp/>est<sp/>une<sp/>variable<sp/>nommée<sp/>associée<sp/>à<sp/>une<sp/>plage<sp/>de<sp/>bits<sp/>dans<sp/>le<sp/>buffer<sp/>CAN.<sp/>Par<sp/>exemple<sp/>:</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`&quot;SEQ&quot;`<sp/>-&gt;<sp/>3<sp/>bits<sp/>(numéro<sp/>de<sp/>séquence)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`&quot;HB&quot;`<sp/>-&gt;<sp/>1<sp/>bit<sp/>(heartbeat/watchdog)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`&quot;N2OPS&quot;`<sp/>-&gt;<sp/>16<sp/>bits<sp/>(capteur<sp/>de<sp/>pression<sp/>N2O)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Architecture<sp/>générale</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">┌─────────────────────────────────────────────┐</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>Application<sp/>utilisateur<sp/>(main.c)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>│</highlight></codeline>
+<codeline><highlight class="normal">├─────────────────────────────────────────────┤</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>TAGCAN<sp/>(Gestion<sp/>des<sp/>tags<sp/>&amp;<sp/>données)<sp/><sp/><sp/><sp/><sp/><sp/><sp/>│</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/>├─<sp/>Tag<sp/>Manager<sp/>(init_tag_manager,<sp/>set_tag)<sp/>│</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/>└─<sp/>Data<sp/>Container<sp/>(set_value,<sp/>get_value)<sp/><sp/><sp/>│</highlight></codeline>
+<codeline><highlight class="normal">├─────────────────────────────────────────────┤</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>Driver<sp/>CAN<sp/>STM32<sp/>(HAL)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>│</highlight></codeline>
+<codeline><highlight class="normal">└─────────────────────────────────────────────┘</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Démarrage<sp/>rapide</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>1.<sp/>Initialiser<sp/>TAGCAN</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>init_com(void)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>CAN_init_TAGCAN();<sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Initialise<sp/>le<sp/>gestionnaire<sp/>de<sp/>tags</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>CAN_setup_TAG();<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Crée<sp/>les<sp/>tags<sp/>applicatifs</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>CAN_setup_DF(0x123);<sp/><sp/><sp/><sp/>//<sp/>Configure<sp/>le<sp/>header<sp/>CAN</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>2.<sp/>Écrire<sp/>une<sp/>valeur<sp/>dans<sp/>un<sp/>tag</highlight></codeline>
+<codeline><highlight class="normal">set_value(&quot;SEQ&quot;,<sp/>5);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Écrit<sp/>5<sp/>dans<sp/>le<sp/>tag<sp/>&quot;SEQ&quot;<sp/>(3<sp/>bits)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>3.<sp/>Lire<sp/>une<sp/>valeur<sp/>depuis<sp/>un<sp/>tag</highlight></codeline>
+<codeline><highlight class="normal">uint32_t<sp/>val;</highlight></codeline>
+<codeline><highlight class="normal">get_value(&quot;HB&quot;,<sp/>&amp;val);<sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Lit<sp/>la<sp/>valeur<sp/>du<sp/>tag<sp/>&quot;HB&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>4.<sp/>Envoyer<sp/>sur<sp/>le<sp/>bus<sp/>CAN</highlight></codeline>
+<codeline><highlight class="normal">HAL_CAN_AddTxMessage(&amp;hcan,<sp/>&amp;TxHeader,<sp/>TxData,<sp/>&amp;TxMailbox);</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Documentation<sp/>de<sp/>référence</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Pour<sp/>plus<sp/>de<sp/>détails<sp/>sur<sp/>l&apos;API<sp/>:<sp/>voir<sp/>[API_REFERENCE.md](../documentation/API_REFERENCE.md)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/><sp/>Fichiers<sp/>sources<sp/>associés</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>`exemple_utilisation/com_utils.c`<sp/>-<sp/>Code<sp/>d&apos;exemple<sp/>d&apos;intégration</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`exemple_utilisation/com_utils.h`<sp/>-<sp/>Headers<sp/>d&apos;exemple</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`TAGCAN.h`<sp/>-<sp/>Point<sp/>d&apos;entrée<sp/>principal</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Besoin<sp/>d&apos;aide<sp/>?**<sp/>Consultez<sp/>les<sp/>exemples<sp/>complets<sp/>dans<sp/>[05_EXEMPLES_COMPLETS.md](05_EXEMPLES_COMPLETS.md)</highlight></codeline>
+    </programlisting>
+    <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/guide_utilisation/README.md"/>
+  </compounddef>
+</doxygen>

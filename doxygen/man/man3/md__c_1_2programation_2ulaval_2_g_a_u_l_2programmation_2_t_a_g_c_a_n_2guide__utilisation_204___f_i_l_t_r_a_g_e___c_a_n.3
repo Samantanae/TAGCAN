@@ -1,0 +1,360 @@
+.TH "md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n" 3 "TAGCAN" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_204___f_i_l_t_r_a_g_e___c_a_n \- 04 - Filtrage CAN 
+.PP
+
+.SH "Objectif"
+.PP
+Configurer les filtres CAN pour recevoir \fBuniquement\fP les messages pertinents et ignorer le reste du trafic\&.
+
+.PP
+.PP
+.SH "Contexte"
+.PP
+Le bus CAN est partagé\&. Un nœud peut recevoir des messages destinés à d'autres nœuds\&. Les \fBfiltres CAN\fP permettent :
+
+.PP
+.IP "\(bu" 2
+Réduire la charge CPU (moins d'interruptions inutiles)
+.IP "\(bu" 2
+Améliorer la latence (traiter uniquement les messages pertinents)
+.IP "\(bu" 2
+Séparer logiquement le trafic
+.PP
+
+.PP
+.PP
+.SH "Fonction de filtrage"
+.PP
+.SS "Prototype"
+.PP
+.nf
+CAN_FilterTypeDef* CAN_setup_Filter(int32_t minimum_id, int32_t maximum_id, int filterBank);
+.fi
+.PP
+.SS "Paramètres"
+Paramètre  Type  Description  \fRminimum_id\fP  \fRint32_t\fP  ID CAN minimum à accepter  \fRmaximum_id\fP  \fRint32_t\fP  ID CAN maximum à accepter  \fRfilterBank\fP  \fRint\fP  Numéro de banc de filtre (0-27 disponibles)  
+.SS "Valeur de retour"
+Pointeur vers la structure \fRCAN_FilterTypeDef\fP configurée\&.
+
+.PP
+.PP
+.SH "Comment ça marche ?"
+.PP
+.SS "Le filtre masque (IDMASK)"
+.PP
+.nf
+CAN_FilterTypeDef canfilterconfig;
+canfilterconfig\&.FilterMode = CAN_FILTERMODE_IDMASK;  // Mode masque
+.fi
+.PP
+
+.PP
+\fBMode masque\fP : Les bits du filtre agissent comme un masque binaire\&.
+
+.PP
+.PP
+.nf
+ID reçu :     0011 0101
+Filtre :      1111 1111  (masque)
+Résultat :    Accepter si bits importants Match
+.fi
+.PP
+
+.PP
+.PP
+.SH "Exemple de configuration"
+.PP
+.SS "Cas 1 : Accepter une plage d'IDs (0x100 à 0x120)"
+.PP
+.nf
+CAN_FilterTypeDef* filter1 = CAN_setup_Filter(0x100, 0x120, 0);
+// Accepte les IDs: 0x100, 0x101, 0x102, \&.\&.\&., 0x120
+.fi
+.PP
+.SS "Cas 2 : Accepter un ID exact (0x123)"
+.PP
+.nf
+CAN_FilterTypeDef* filter2 = CAN_setup_Filter(0x123, 0x123, 1);
+// Accepte UNIQUEMENT: 0x123
+.fi
+.PP
+.SS "Cas 3 : Accepter tous les messages"
+.PP
+.nf
+CAN_FilterTypeDef* filter3 = CAN_setup_Filter(0x000, 0x7FF, 2);
+// Accepte les IDs: 0x000 à 0x7FF (tous les IDs standards 11 bits)
+.fi
+.PP
+
+.PP
+.PP
+.SH "Détails de la configuration interne"
+.PP
+Voici ce que fait \fR\fBCAN_setup_Filter()\fP\fP en détail :
+
+.PP
+.PP
+.nf
+CAN_FilterTypeDef* CAN_setup_Filter(int32_t minimum_id, int32_t maximum_id, int filterBank) {
+    CAN_FilterTypeDef canfilterconfig;
+
+    // Activer le filtre
+    canfilterconfig\&.FilterActivation = CAN_FILTER_ENABLE;
+
+    // Sélectionner le numéro de banc (0\-27)
+    canfilterconfig\&.FilterBank = filterBank;
+
+    // Affecter à FIFO0 (interrupt CAN_IT_RX_FIFO0_MSG_PENDING)
+    canfilterconfig\&.FilterFIFOAssignment = CAN_FILTER_FIFO0;
+
+    // Configurer les seuils ID haut et bas
+    canfilterconfig\&.FilterIdHigh = maximum_id << 5;    // Maximum
+    canfilterconfig\&.FilterMaskIdHigh = maximum_id << 5; // Masque
+    
+    canfilterconfig\&.FilterIdLow = minimum_id;           // Minimum
+    canfilterconfig\&.FilterMaskIdLow = minimum_id;       // Masque
+
+    // Mode de filtrage (masque binaire)
+    canfilterconfig\&.FilterMode = CAN_FILTERMODE_IDMASK;
+
+    // Résolution: 32 bits (combinaison High + Low)
+    canfilterconfig\&.FilterScale = CAN_FILTERSCALE_32BIT;
+
+    // Assigner les bancs de filtrage au CAN1 (non CAN2)
+    canfilterconfig\&.SlaveStartFilterBank = 20;
+
+    // Appliquer la configuration matérielle
+    HAL_CAN_ConfigFilter(&hcan, &canfilterconfig);
+
+    return &canfilterconfig;
+}
+.fi
+.PP
+
+.PP
+.PP
+.SH "Exemple d'intégration complet"
+.PP
+.SS "Initialisation avec filtrage"
+.PP
+.nf
+#include "TAGCAN\&.h"
+#include "stm32f1xx_hal\&.h"
+
+extern CAN_HandleTypeDef hcan;
+
+void init_com(void) {
+    // 1\&. Initialiser TAGCAN
+    CAN_init_TAGCAN();
+    CAN_setup_TAG();
+    CAN_setup_DF(0x123);  // Mon ID CAN
+
+    // 2\&. Configurer les filtres
+    // Filtre 1: Accepter les messages du capteur de pression (0x200)
+    CAN_setup_Filter(0x200, 0x200, 0);
+
+    // Filtre 2: Accepter les messages de commande (0x100 à 0x110)
+    CAN_setup_Filter(0x100, 0x110, 1);
+
+    // Filtre 3: Messages d'urgence (0x050)
+    CAN_setup_Filter(0x050, 0x050, 2);
+
+    // 3\&. Activer les interruptions
+    if(HAL_CAN_ActivateNotification(&hcan, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK) {
+        Error_Handler();
+    }
+}
+
+void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) {
+    CAN_RxHeaderTypeDef RxHeader;
+    uint8_t RxData[8];
+
+    HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO0, &RxHeader, RxData);
+
+    // Traiter selon l'ID reçu
+    switch(RxHeader\&.StdId) {
+        case 0x200:
+            handle_pressure_sensor(RxData);
+            break;
+        case 0x100:
+        case 0x101:
+        case 0x102:
+        // \&.\&.\&. jusqu'à 0x110
+            handle_command(RxData);
+            break;
+        case 0x050:
+            handle_emergency(RxData);
+            break;
+        default:
+            // Ne devrait jamais arriver ici grâce aux filtres
+            break;
+    }
+}
+.fi
+.PP
+
+.PP
+.PP
+.SH "Limitation des bancs de filtrage"
+.PP
+Le STM32F1 propose :
+
+.PP
+Ressource  Limite  Bancs de filtrage disponibles  28 (0-27)  Bancs réservés à CAN1  14 (0-13)  Bancs réservés à CAN2  14 (14-27)  
+
+.PP
+Chaque filtre peut gérer :
+.IP "\(bu" 2
+\fB1 ID exact\fP (FilterMode = IDMASK)
+.IP "\(bu" 2
+\fBUne plage d'IDs\fP (FilterMode = IDLIST)
+.PP
+
+.PP
+.PP
+.SH "Stratégies de filtrage recommandées"
+.PP
+.SS "Stratégie 1 : Filtrage par catégorie (Recommandé)"
+.PP
+.nf
+// Tous les capteurs: 0x200\-0x20F (1 filtre)
+CAN_setup_Filter(0x200, 0x20F, 0);
+
+// Toutes les commandes: 0x100\-0x10F (1 filtre)
+CAN_setup_Filter(0x100, 0x10F, 1);
+
+// Tout le diagnostic: 0x300\-0x3FF (1 filtre)
+CAN_setup_Filter(0x300, 0x3FF, 2);
+.fi
+.PP
+
+.PP
+\fBAvantages\fP :
+.IP "\(bu" 2
+Utilise peu de filtres
+.IP "\(bu" 2
+Facile à maintenir
+.IP "\(bu" 2
+Extensible
+.PP
+
+.PP
+.PP
+.SS "Stratégie 2 : Un filtre par source"
+.PP
+.nf
+// Capteur 1: 0x200
+CAN_setup_Filter(0x200, 0x200, 0);
+
+// Capteur 2: 0x201
+CAN_setup_Filter(0x201, 0x201, 1);
+
+// Capteur 3: 0x202
+CAN_setup_Filter(0x202, 0x202, 2);
+
+// \&.\&.\&. etc
+.fi
+.PP
+
+.PP
+\fBAvantages\fP :
+.IP "\(bu" 2
+Granularité fine
+.IP "\(bu" 2
+Gestion précise
+.PP
+
+.PP
+\fBInconvénients\fP :
+.IP "\(bu" 2
+Consomme rapidement les bancs de filtrage
+.PP
+
+.PP
+.PP
+.SH "Points d'attention"
+.PP
+Point  Détail  \fBOrdre d'application\fP  Les filtres doivent être configurés AVANT d'activer les interruptions  \fBLimite de bancs\fP  14 filtres max pour CAN1\&. Bien planifier!  \fBFIFO0 vs FIFO1\fP  \fR\fBCAN_setup_Filter()\fP\fP utilise FIFO0\&. À adapter si vous utilisez FIFO1  \fBPas de filtre = tout accepter\fP  Si aucun filtre n'est configuré, tous les messages passent  \fBMode IDLIST vs IDMASK\fP  La fonction utilise IDMASK (plages)\&. Pour listes, modifier le code  \fBDécalage des bits (<<5)\fP  Note: \fRmaximum_id << 5\fP -> convertit l'ID de 11 bits au format STM32  
+
+.PP
+.PP
+.SH "Débuggage des filtres"
+.PP
+.PP
+.nf
+// Vérifier quels messages arrivent
+void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) {
+    CAN_RxHeaderTypeDef RxHeader;
+    uint8_t RxData[8];
+
+    HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO0, &RxHeader, RxData);
+
+    // Afficher le message reçu
+    printf("ID: 0x%03X, DLC: %u\\n", RxHeader\&.StdId, RxHeader\&.DLC);
+    for(int i = 0; i < RxHeader\&.DLC; i++) {
+        printf("  Data[%d] = 0x%02X\\n", i, RxData[i]);
+    }
+}
+.fi
+.PP
+
+.PP
+Si vous ne voyez \fBaucun message\fP malgré l'activité CAN :
+.IP "\(bu" 2
+Vérifier que les filtres acceptent l'ID envoyé
+.IP "\(bu" 2
+Vérifier que les interruptions sont activées
+.IP "\(bu" 2
+Vérifier que le module CAN est initialisé
+.PP
+
+.PP
+Si vous voyez \fBtrop de messages\fP :
+.IP "\(bu" 2
+Ajouter des filtres plus restrictifs
+.IP "\(bu" 2
+Vérifier que les filtres ne sont pas inversés (min > max)
+.PP
+
+.PP
+.PP
+.SH "Comparaison : Avec/Sans filtres"
+.PP
+.SS "Sans filtres (accepte tout)"
+.PP
+.nf
+// Aucun CAN_setup_Filter() appelé
+while(1) {
+    //  Reçoit TOUS les messages du bus
+    // \-> CPU chargé, latence mauvaise
+}
+.fi
+.PP
+.SS "Avec filtres (recommandé)"
+.PP
+.nf
+// Dans init_com()
+CAN_setup_Filter(0x200, 0x20F, 0);  // Capteurs
+CAN_setup_Filter(0x100, 0x10F, 1);  // Commandes
+
+while(1) {
+    //  Reçoit UNIQUEMENT les messages 0x200\-0x20F et 0x100\-0x10F
+    // \-> CPU libre, latence optimale
+}
+.fi
+.PP
+
+.PP
+.PP
+
+.PP
+Voir aussi :
+.IP "\(bu" 2
+\fB03_DONNEES_CAN\&.md\fP - Buffer de données
+.IP "\(bu" 2
+\fB05_EXEMPLES_COMPLETS\&.md\fP - Système complet 
+.PP
+

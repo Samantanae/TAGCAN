@@ -1,0 +1,174 @@
+.TH "com_utils.h" 3 "TAGCAN" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+com_utils.h
+.SH SYNOPSIS
+.br
+.PP
+\fR#include '\&.\&./\&.\&./TAGCAN/TAGCAN\&.h'\fP
+.br
+\fR#include '\&.\&./\&.\&./TAGCAN/include/sub_include/data_container\&.h'\fP
+.br
+\fR#include <cmsis_gcc\&.h>\fP
+.br
+\fR#include <stm32f103xb\&.h>\fP
+.br
+\fR#include <stm32f1xx\&.h>\fP
+.br
+\fR#include <stm32f1xx_hal_can\&.h>\fP
+.br
+\fR#include <stm32f1xx_hal_def\&.h>\fP
+.br
+\fR#include <stm32f1xx_hal_flash\&.h>\fP
+.br
+\fR#include <stm32f1xx_hal_rcc\&.h>\fP
+.br
+\fR#include <stm32f1xx_hal_rcc_ex\&.h>\fP
+.br
+\fR#include <sys/_stdint\&.h>\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBinit_com\fP (void)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "uint8_t \fBTxData\fP [8]"
+.br
+.ti -1c
+.RI "uint8_t \fBRxData\fP [8]"
+.br
+.ti -1c
+.RI "CAN_TxHeaderTypeDef \fBTxHeader\fP"
+.br
+.ti -1c
+.RI "CAN_RxHeaderTypeDef \fBRxHeader\fP"
+.br
+.ti -1c
+.RI "CAN_HandleTypeDef \fBhcan\fP"
+.br
+.ti -1c
+.RI "int32_t \fBTxMailbox\fP"
+.br
+.ti -1c
+.RI "int8_t \fBval_SEQ\fP"
+.br
+.ti -1c
+.RI "int8_t \fBval_HB\fP"
+.br
+.ti -1c
+.RI "int8_t \fBval_CI\fP"
+.br
+.ti -1c
+.RI "int8_t \fBval_AB\fP"
+.br
+.ti -1c
+.RI "int8_t \fBval_EDC\fP"
+.br
+.ti -1c
+.RI "int8_t \fBval_N2ODVS\fP"
+.br
+.ti -1c
+.RI "int8_t \fBval_N2OIV\fP"
+.br
+.ti -1c
+.RI "int8_t \fBval_N2OMV\fP"
+.br
+.ti -1c
+.RI "int16_t \fBval_N2OPS\fP"
+.br
+.ti -1c
+.RI "int16_t \fBval_TIME\fP"
+.br
+.ti -1c
+.RI "int16_t \fBval_TLC\fP"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void init_com (void )"
+
+.IP "\(bu" 2
+initialise tout les fonction de communication\&. (point d'appel unique: main) */ 
+.PP
+
+.PP
+Definition at line \fB39\fP of file \fBcom_utils\&.c\fP\&.
+.SH "Variable Documentation"
+.PP 
+.SS "CAN_HandleTypeDef hcan\fR [extern]\fP"
+
+.SS "uint8_t RxData[8]\fR [extern]\fP"
+
+.PP
+Definition at line \fB13\fP of file \fBcom_utils\&.c\fP\&.
+.SS "CAN_RxHeaderTypeDef RxHeader\fR [extern]\fP"
+
+.PP
+Definition at line \fB10\fP of file \fBcom_utils\&.c\fP\&.
+.SS "uint8_t TxData[8]\fR [extern]\fP"
+
+.PP
+Definition at line \fB12\fP of file \fBdata_container\&.c\fP\&.
+.SS "CAN_TxHeaderTypeDef TxHeader\fR [extern]\fP"
+
+.PP
+Definition at line \fB9\fP of file \fBcom_utils\&.c\fP\&.
+.SS "int32_t TxMailbox\fR [extern]\fP"
+
+.PP
+Definition at line \fB36\fP of file \fBcom_utils\&.c\fP\&.
+.SS "int8_t val_AB\fR [extern]\fP"
+
+.PP
+Definition at line \fB19\fP of file \fBcom_utils\&.c\fP\&.
+.SS "int8_t val_CI\fR [extern]\fP"
+
+.PP
+Definition at line \fB18\fP of file \fBcom_utils\&.c\fP\&.
+.SS "int8_t val_EDC\fR [extern]\fP"
+
+.PP
+Definition at line \fB20\fP of file \fBcom_utils\&.c\fP\&.
+.SS "int8_t val_HB\fR [extern]\fP"
+
+.PP
+Definition at line \fB17\fP of file \fBcom_utils\&.c\fP\&.
+.SS "int8_t val_N2ODVS\fR [extern]\fP"
+
+.PP
+Definition at line \fB23\fP of file \fBcom_utils\&.c\fP\&.
+.SS "int8_t val_N2OIV\fR [extern]\fP"
+
+.PP
+Definition at line \fB24\fP of file \fBcom_utils\&.c\fP\&.
+.SS "int8_t val_N2OMV\fR [extern]\fP"
+
+.PP
+Definition at line \fB25\fP of file \fBcom_utils\&.c\fP\&.
+.SS "int16_t val_N2OPS\fR [extern]\fP"
+
+.PP
+Definition at line \fB21\fP of file \fBcom_utils\&.c\fP\&.
+.SS "int8_t val_SEQ\fR [extern]\fP"
+
+.PP
+Definition at line \fB16\fP of file \fBcom_utils\&.c\fP\&.
+.SS "int16_t val_TIME\fR [extern]\fP"
+
+.PP
+Definition at line \fB26\fP of file \fBcom_utils\&.c\fP\&.
+.SS "int16_t val_TLC\fR [extern]\fP"
+
+.PP
+Definition at line \fB22\fP of file \fBcom_utils\&.c\fP\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for TAGCAN from the source code\&.

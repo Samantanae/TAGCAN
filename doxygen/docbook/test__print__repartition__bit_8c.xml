@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_test__print__repartition__bit_8c" xml:lang="en-US">
+<title>test_print_repartition_bit.c File Reference</title>
+<indexterm><primary>test_print_repartition_bit.c</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;stdio.h&gt;<?linebreak?>#include &lt;stdint.h&gt;<?linebreak?>#include &lt;stdlib.h&gt;<?linebreak?>#include &lt;string.h&gt;<?linebreak?>#include &lt;unistd.h&gt;<?linebreak?>#include &quot;../../include/gestion_tag.h&quot;<?linebreak?>#include &quot;../../include/sub_include/data_container.h&quot;<?linebreak?>#include &quot;../../include/sub_include/print_val.h&quot;<?linebreak?></programlisting>Include dependency graph for test_print_repartition_bit.c:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="test__print__repartition__bit_8c__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>int <link linkend="_test__print__repartition__bit_8c_1a20f48ba928d5db34200d841b2f438a8a">main__</link> (void)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_test__print__repartition__bit_8c_1a20f48ba928d5db34200d841b2f438a8a"/><section>
+    <title>main__()</title>
+<indexterm><primary>main__</primary><secondary>test_print_repartition_bit.c</secondary></indexterm>
+<indexterm><primary>test_print_repartition_bit.c</primary><secondary>main__</secondary></indexterm>
+<para><computeroutput>int main__ (void )</computeroutput></para><para>
+Definition at line <link linkend="_test__print__repartition__bit_8c_source_1l00079">79</link> of file <link linkend="_test__print__repartition__bit_8c_source">test_print_repartition_bit.c</link>.</para>
+</section>
+</section>
+</section>

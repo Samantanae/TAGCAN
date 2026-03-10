@@ -1,0 +1,21 @@
+<map id="CAN_setup_TAG" name="CAN_setup_TAG">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,159,127,185"/>
+<area shape="rect" id="Node000002" href="$tag__manager_8c.html#a7dd7e8cfc97d378d44e7c63bd9f49931" title="créé un nouveau tag." alt="" coords="175,159,240,185"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="127,169,161,169,161,175,127,175"/>
+<area shape="rect" id="Node000003" href="$tag__manager_8c.html#ad5772dac2622697b5f563da0dbfaede3" title="Variante de recherche en excluant le byte deja utilise par la partie A." alt="" coords="288,5,448,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="212,158,240,109,261,80,286,55,293,50,296,55,290,59,265,84,244,112,217,160"/>
+<area shape="rect" id="Node000004" href="$tag__manager_8c.html#a5f1ce2cac9791e6b46be230dcce3f804" title="Trouve le premier byte ayant assez de place libre." alt="" coords="291,69,445,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="230,157,287,126,312,113,314,118,289,130,232,162"/>
+<area shape="rect" id="Node000005" href="$tag__manager_8c.html#ac5f7362c0af4f03bd98573151458442d" title="[INTERNE] Initialise les champs communs d&#39;un tag." alt="" coords="503,159,618,185"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="240,169,489,169,489,175,240,175"/>
+<area shape="rect" id="Node000007" href="$tag__manager_8c.html#a7b7413adbae2eabbe7fcd13e9f91f151" title="[INTERNE] Retourne l&#39;index du premier slot tag libre." alt="" coords="496,234,625,259"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="217,184,243,228,264,252,289,270,317,280,347,286,409,286,467,276,515,261,517,267,468,281,409,291,347,291,316,285,287,274,260,256,239,232,212,186"/>
+<area shape="rect" id="Node000008" href="$tag__manager_8c.html#a5737e741608851f8e3822cf07261da44" title="Recherche un tag actif par son nom." alt="" coords="323,234,413,259"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="228,182,289,219,311,228,309,233,287,224,225,187"/>
+<area shape="rect" id="Node000009" href="$tag__manager_8c.html#a30325d29d4baf058d75e6f3c269341af" title="[INTERNE] Cree un tag avec repartition potentielle sur 2 bytes." alt="" coords="294,185,442,210"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="241,174,281,181,280,186,240,180"/>
+<area shape="rect" id="Node000006" href="$tag__manager_8c.html#a9963af2c23a14e289a3ff39769ea4eeb" title="[INTERNE] Enregistre un nom de tag dans un slot." alt="" coords="673,159,777,185"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="618,169,660,169,660,175,618,175"/>
+<area shape="poly" id="edge9_Node000009_Node000005" title=" " alt="" coords="442,185,489,179,490,184,443,190"/>
+<area shape="poly" id="edge10_Node000009_Node000007" title=" " alt="" coords="419,207,498,228,496,233,418,213"/>
+</map>

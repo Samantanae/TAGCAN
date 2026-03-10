@@ -1,0 +1,623 @@
+\chapter{05 -\/ Exemples Complets }
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33}{}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33}\index{05 -\/ Exemples Complets@{05 -\/ Exemples Complets}}
+\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33_autotoc_md134}%
+\Hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33_autotoc_md134}%
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33_autotoc_md135}{}\doxysection{\texorpdfstring{Exemples d\textquotesingle{}intégration pratiques}{Exemples d\textquotesingle{}intégration pratiques}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33_autotoc_md135}
+Vous trouverez ici des exemples réalistes exploitant l\textquotesingle{}ensemble du système TAGCAN.
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33_autotoc_md137}{}\doxysection{\texorpdfstring{Exemple 1 :\+ Système de télémétrie simple}{Exemple 1 :\+ Système de télémétrie simple}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33_autotoc_md137}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33_autotoc_md138}{}\doxysubsection{\texorpdfstring{Scénario}{Scénario}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33_autotoc_md138}
+Un véhicule envoie périodiquement :\+
+\begin{DoxyItemize}
+\item Son numéro de séquence (3 bits)
+\item Son état (heartbeat, 1 bit)
+\item Le \% de batterie (7 bits)
+\item La pression du réservoir (16 bits)
+\item Un timestamp (16 bits)
+\end{DoxyItemize}\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33_autotoc_md139}{}\doxysubsection{\texorpdfstring{Code complet}{Code complet}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33_autotoc_md139}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ =============================================================================}}
+\DoxyCodeLine{\textcolor{comment}{//\ telemetrie.h}}
+\DoxyCodeLine{\textcolor{comment}{//\ =============================================================================}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#ifndef\ TELEMETRIE\_H\_}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ TELEMETRIE\_H\_}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_t_a_g_c_a_n_8h}{TAGCAN.h}}"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{\ \ \ \ uint8\_t\ seq;}
+\DoxyCodeLine{\ \ \ \ uint8\_t\ heartbeat;}
+\DoxyCodeLine{\ \ \ \ uint8\_t\ battery\_percent;}
+\DoxyCodeLine{\ \ \ \ uint16\_t\ reservoir\_pressure;}
+\DoxyCodeLine{\ \ \ \ uint16\_t\ timestamp\_ms;}
+\DoxyCodeLine{\}\ telemetry\_data\_t;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Initialiser\ le\ système\ de\ télémétrie}}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ telemetry\_init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Envoyer\ un\ paquet\ de\ télémétrie}}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ telemetry\_send(\textcolor{keyword}{const}\ telemetry\_data\_t\ *data);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Traiter\ un\ paquet\ reçu}}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ telemetry\_handle\_rx(\textcolor{keyword}{const}\ uint8\_t\ rx\_data[8]);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ TELEMETRIE\_H\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ =============================================================================}}
+\DoxyCodeLine{\textcolor{comment}{//\ telemetrie.c}}
+\DoxyCodeLine{\textcolor{comment}{//\ =============================================================================}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}telemetrie.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}stm32f1xx\_hal.h"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{extern}\ CAN\_HandleTypeDef\ \doxymbox{\hyperlink{com__utils_8h_ae21c10daa2f8cbd18a0e66bb28a19d2d}{hcan}};}
+\DoxyCodeLine{\textcolor{keyword}{extern}\ uint8\_t\ \doxymbox{\hyperlink{com__utils_8h_af553c31425b32bd9c020380c942ed3bd}{TxData}}[8],\ \doxymbox{\hyperlink{com__utils_8c_a14629afcc7f0b2d62c2b617b07d98184}{RxData}}[8];}
+\DoxyCodeLine{\textcolor{keyword}{extern}\ CAN\_TxHeaderTypeDef\ \doxymbox{\hyperlink{com__utils_8c_a3e35a666d459f2ac92fc7c35334ff0ff}{TxHeader}};}
+\DoxyCodeLine{\textcolor{keyword}{extern}\ int32\_t\ \doxymbox{\hyperlink{com__utils_8c_afd0a914dd50d7aa3607d092452037cc1}{TxMailbox}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ TELEMETRY\_CAN\_ID\ 0x100}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ telemetry\_init(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Initialiser\ TAGCAN}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{data__container_8h_a129f017feb0712be1dcf7932e6035aa0}{init\_data\_container}}();}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{gestion__tag_8h_aab50a8f567be72e656120fd71f3fb435}{init\_tag\_manager}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Créer\ les\ tags}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{gestion__tag_8h_a7301f247665ed1c0504f27602b3cf012}{set\_tag}}(\textcolor{stringliteral}{"{}SEQ"{}},\ 3);\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Numéro\ de\ séquence\ (0-\/7)}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{gestion__tag_8h_a7301f247665ed1c0504f27602b3cf012}{set\_tag}}(\textcolor{stringliteral}{"{}HB"{}},\ 1);\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Heartbeat\ (0\ ou\ 1)}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{gestion__tag_8h_a7301f247665ed1c0504f27602b3cf012}{set\_tag}}(\textcolor{stringliteral}{"{}BATTERY"{}},\ 7);\ \ \ \ \ \ \textcolor{comment}{//\ \%\ batterie\ (0-\/100)}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{gestion__tag_8h_a7301f247665ed1c0504f27602b3cf012}{set\_tag}}(\textcolor{stringliteral}{"{}PRESSURE"{}},\ 16);\ \ \ \ \textcolor{comment}{//\ Pression\ réservoir\ (0-\/65535\ Pa)}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{gestion__tag_8h_a7301f247665ed1c0504f27602b3cf012}{set\_tag}}(\textcolor{stringliteral}{"{}TIME"{}},\ 16);\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Timestamp\ (0-\/65535\ ms)}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Configurer\ le\ header\ CAN}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{com__utils_8c_a3e35a666d459f2ac92fc7c35334ff0ff}{TxHeader}}.IDE\ =\ CAN\_ID\_STD;}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{com__utils_8c_a3e35a666d459f2ac92fc7c35334ff0ff}{TxHeader}}.StdId\ =\ TELEMETRY\_CAN\_ID;}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{com__utils_8c_a3e35a666d459f2ac92fc7c35334ff0ff}{TxHeader}}.RTR\ =\ CAN\_RTR\_DATA;}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{com__utils_8c_a3e35a666d459f2ac92fc7c35334ff0ff}{TxHeader}}.DLC\ =\ 8;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Configurer\ le\ filtre\ pour\ recevoir\ les\ télémétries\ des\ autres\ (ex:\ 0x101-\/0x10F)}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{com__utils_8c_adfa3f55b53f7a0c8e6a7ffbf37fe2545}{CAN\_setup\_Filter}}(0x101,\ 0x10F,\ 0);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Activer\ les\ interruptions}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}(HAL\_CAN\_ActivateNotification(\&\doxymbox{\hyperlink{com__utils_8h_ae21c10daa2f8cbd18a0e66bb28a19d2d}{hcan}},\ CAN\_IT\_RX\_FIFO0\_MSG\_PENDING)\ !=\ HAL\_OK)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Error\_Handler();}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}[Telemetry]\ Initialized\ on\ CAN\ ID\ 0x\%03X\(\backslash\)n"{}},\ TELEMETRY\_CAN\_ID);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ telemetry\_send(\textcolor{keyword}{const}\ telemetry\_data\_t\ *data)\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Réinitialiser\ le\ buffer}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{data__container_8h_a129f017feb0712be1dcf7932e6035aa0}{init\_data\_container}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Écrire\ les\ données}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{data__container_8h_aa84538f1ab0c319056787e9674157405}{set\_value}}(\textcolor{stringliteral}{"{}SEQ"{}},\ data-\/>seq);}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{data__container_8h_aa84538f1ab0c319056787e9674157405}{set\_value}}(\textcolor{stringliteral}{"{}HB"{}},\ data-\/>heartbeat);}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{data__container_8h_aa84538f1ab0c319056787e9674157405}{set\_value}}(\textcolor{stringliteral}{"{}BATTERY"{}},\ data-\/>battery\_percent);}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{data__container_8h_aa84538f1ab0c319056787e9674157405}{set\_value}}(\textcolor{stringliteral}{"{}PRESSURE"{}},\ data-\/>reservoir\_pressure);}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{data__container_8h_aa84538f1ab0c319056787e9674157405}{set\_value}}(\textcolor{stringliteral}{"{}TIME"{}},\ data-\/>timestamp\_ms);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Envoyer\ sur\ le\ bus}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}(HAL\_CAN\_AddTxMessage(\&\doxymbox{\hyperlink{com__utils_8h_ae21c10daa2f8cbd18a0e66bb28a19d2d}{hcan}},\ \&\doxymbox{\hyperlink{com__utils_8c_a3e35a666d459f2ac92fc7c35334ff0ff}{TxHeader}},\ \doxymbox{\hyperlink{com__utils_8h_af553c31425b32bd9c020380c942ed3bd}{TxData}},\ \&\doxymbox{\hyperlink{com__utils_8c_afd0a914dd50d7aa3607d092452037cc1}{TxMailbox}})\ !=\ HAL\_OK)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}[Telemetry]\ ERROR:\ Failed\ to\ send\ CAN\ message\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}[Telemetry]\ TX:\ SEQ=\%u,\ BAT=\%u\%\%,\ PRESSURE=\%u\ Pa\(\backslash\)n"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data-\/>seq,\ data-\/>battery\_percent,\ data-\/>reservoir\_pressure);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ telemetry\_handle\_rx(\textcolor{keyword}{const}\ uint8\_t\ rx\_data[8])\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Copier\ les\ données\ reçues\ dans\ TxData\ pour\ utiliser\ TAGCAN}}
+\DoxyCodeLine{\ \ \ \ memcpy(\doxymbox{\hyperlink{com__utils_8h_af553c31425b32bd9c020380c942ed3bd}{TxData}},\ rx\_data,\ 8);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Lire\ via\ les\ tags}}
+\DoxyCodeLine{\ \ \ \ uint32\_t\ seq,\ hb,\ battery,\ pressure,\ timestamp;}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{data__container_8h_a66cbaaa79a2ba3c2c7912514c1dc805f}{get\_value}}(\textcolor{stringliteral}{"{}SEQ"{}},\ \&seq);}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{data__container_8h_a66cbaaa79a2ba3c2c7912514c1dc805f}{get\_value}}(\textcolor{stringliteral}{"{}HB"{}},\ \&hb);}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{data__container_8h_a66cbaaa79a2ba3c2c7912514c1dc805f}{get\_value}}(\textcolor{stringliteral}{"{}BATTERY"{}},\ \&battery);}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{data__container_8h_a66cbaaa79a2ba3c2c7912514c1dc805f}{get\_value}}(\textcolor{stringliteral}{"{}PRESSURE"{}},\ \&pressure);}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{data__container_8h_a66cbaaa79a2ba3c2c7912514c1dc805f}{get\_value}}(\textcolor{stringliteral}{"{}TIME"{}},\ \&timestamp);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}[Telemetry]\ RX:\ SEQ=\%u,\ HB=\%u,\ BAT=\%u\%\%,\ PRESSURE=\%u\ Pa,\ TIME=\%u\ ms\(\backslash\)n"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ (uint8\_t)seq,\ (uint8\_t)hb,\ (uint8\_t)battery,\ (uint16\_t)pressure,\ (uint16\_t)timestamp);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ =============================================================================}}
+\DoxyCodeLine{\textcolor{comment}{//\ Callback\ d'interruption\ CAN}}
+\DoxyCodeLine{\textcolor{comment}{//\ =============================================================================}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{com__utils_8c_a7368d39e78009c017d6f81ccf33b9b2c}{HAL\_CAN\_RxFifo0MsgPendingCallback}}(CAN\_HandleTypeDef\ *\doxymbox{\hyperlink{com__utils_8h_ae21c10daa2f8cbd18a0e66bb28a19d2d}{hcan}})\ \{}
+\DoxyCodeLine{\ \ \ \ CAN\_RxHeaderTypeDef\ \doxymbox{\hyperlink{com__utils_8c_a6ee6e13063b860648180eea65852cc71}{RxHeader}};}
+\DoxyCodeLine{\ \ \ \ uint8\_t\ RxDataLocal[8];}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}(HAL\_CAN\_GetRxMessage(\doxymbox{\hyperlink{com__utils_8h_ae21c10daa2f8cbd18a0e66bb28a19d2d}{hcan}},\ CAN\_RX\_FIFO0,\ \&\doxymbox{\hyperlink{com__utils_8c_a6ee6e13063b860648180eea65852cc71}{RxHeader}},\ RxDataLocal)\ ==\ HAL\_OK)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Traiter\ selon\ l'ID\ CAN\ reçu}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}((\doxymbox{\hyperlink{com__utils_8c_a6ee6e13063b860648180eea65852cc71}{RxHeader}}.StdId\ >=\ 0x101)\ \&\&\ (\doxymbox{\hyperlink{com__utils_8c_a6ee6e13063b860648180eea65852cc71}{RxHeader}}.StdId\ <=\ 0x10F))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ telemetry\_handle\_rx(RxDataLocal);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ =============================================================================}}
+\DoxyCodeLine{\textcolor{comment}{//\ main.c\ -\/\ Boucle\ principale}}
+\DoxyCodeLine{\textcolor{comment}{//\ =============================================================================}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Tâche\ d'émission\ (10\ ms)}}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ task\_telemetry\_10ms(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ uint8\_t\ seq\ =\ 0;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ uint32\_t\ last\_time\ =\ 0;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ telemetry\_data\_t\ data\ =\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .seq\ =\ (seq++)\ \%\ 8,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .heartbeat\ =\ 1,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .battery\_percent\ =\ read\_adc\_battery(),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .reservoir\_pressure\ =\ read\_sensor\_pressure(),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .timestamp\_ms\ =\ HAL\_GetTick()\ \&\ 0xFFFF}
+\DoxyCodeLine{\ \ \ \ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}((HAL\_GetTick()\ -\/\ last\_time)\ >=\ 10)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ telemetry\_send(\&data);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ last\_time\ =\ HAL\_GetTick();}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{main_8c_a840291bc02cba5474a4cb46a9b9566fe}{main}}(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{\ \ \ \ HAL\_Init();}
+\DoxyCodeLine{\ \ \ \ MX\_CAN\_Init();}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ telemetry\_init();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Timer\ pour\ appeler\ task\_telemetry\_10ms()\ tous\ les\ 10ms}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ ...}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{while}(1)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ task\_telemetry\_10ms();}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33_autotoc_md141}{}\doxysection{\texorpdfstring{Exemple 2 :\+ Système de commande avec réponse}{Exemple 2 :\+ Système de commande avec réponse}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33_autotoc_md141}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33_autotoc_md142}{}\doxysubsection{\texorpdfstring{Scénario}{Scénario}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33_autotoc_md142}
+
+\begin{DoxyItemize}
+\item {\bfseries{Maître envoie commandes}} sur ID 0x200 (allumer/\+éteindre servos)
+\item {\bfseries{Esclaves répondent}} sur ID 0x201-\/0x203 (confirmation + état)
+\end{DoxyItemize}\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33_autotoc_md143}{}\doxysubsection{\texorpdfstring{Code complet}{Code complet}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33_autotoc_md143}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ =============================================================================}}
+\DoxyCodeLine{\textcolor{comment}{//\ commandes.h}}
+\DoxyCodeLine{\textcolor{comment}{//\ =============================================================================}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#ifndef\ COMMANDES\_H\_}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ COMMANDES\_H\_}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_t_a_g_c_a_n_8h}{TAGCAN.h}}"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ IDs\ CAN}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ CMD\_CAN\_ID\_TX\ \ \ \ \ \ \ 0x200}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ CMD\_CAN\_ID\_RX\_BASE\ \ 0x201}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Commandes\ possibles}}
+\DoxyCodeLine{\textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{\ \ \ \ CMD\_SERVO\_OFF\ =\ 0,}
+\DoxyCodeLine{\ \ \ \ CMD\_SERVO\_ON\ =\ 1,}
+\DoxyCodeLine{\ \ \ \ CMD\_SERVO\_PULSE\ =\ 2}
+\DoxyCodeLine{\}\ cmd\_type\_t;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{\ \ \ \ uint8\_t\ device\_id;\ \ \ \ \ \ \textcolor{comment}{//\ Quel\ servomoteur\ ?\ (1-\/3)}}
+\DoxyCodeLine{\ \ \ \ cmd\_type\_t\ command;\ \ \ \ \ \textcolor{comment}{//\ Quelle\ commande\ ?}}
+\DoxyCodeLine{\ \ \ \ uint8\_t\ parameter;\ \ \ \ \ \ \textcolor{comment}{//\ Paramètre\ optionnel\ (ex:\ pulse\ width)}}
+\DoxyCodeLine{\}\ command\_t;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{\ \ \ \ uint8\_t\ device\_id;}
+\DoxyCodeLine{\ \ \ \ uint8\_t\ status;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 0=erreur,\ 1=ok}}
+\DoxyCodeLine{\ \ \ \ uint8\_t\ feedback;\ \ \ \ \ \ \ \textcolor{comment}{//\ Retour\ d'état}}
+\DoxyCodeLine{\}\ response\_t;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ commands\_init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ commands\_send(\textcolor{keyword}{const}\ command\_t\ *cmd);}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ commands\_handle\_response(uint8\_t\ device\_id,\ \textcolor{keyword}{const}\ uint8\_t\ rx\_data[8]);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ =============================================================================}}
+\DoxyCodeLine{\textcolor{comment}{//\ commandes.c}}
+\DoxyCodeLine{\textcolor{comment}{//\ =============================================================================}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}commandes.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}stm32f1xx\_hal.h"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{extern}\ CAN\_HandleTypeDef\ \doxymbox{\hyperlink{com__utils_8h_ae21c10daa2f8cbd18a0e66bb28a19d2d}{hcan}};}
+\DoxyCodeLine{\textcolor{keyword}{extern}\ uint8\_t\ \doxymbox{\hyperlink{com__utils_8h_af553c31425b32bd9c020380c942ed3bd}{TxData}}[8];}
+\DoxyCodeLine{\textcolor{keyword}{extern}\ CAN\_TxHeaderTypeDef\ \doxymbox{\hyperlink{com__utils_8c_a3e35a666d459f2ac92fc7c35334ff0ff}{TxHeader}};}
+\DoxyCodeLine{\textcolor{keyword}{extern}\ int32\_t\ \doxymbox{\hyperlink{com__utils_8c_afd0a914dd50d7aa3607d092452037cc1}{TxMailbox}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ commands\_init(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Initialiser\ TAGCAN}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{data__container_8h_a129f017feb0712be1dcf7932e6035aa0}{init\_data\_container}}();}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{gestion__tag_8h_aab50a8f567be72e656120fd71f3fb435}{init\_tag\_manager}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Tags\ pour\ les\ commandes\ ENVOYÉES}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{gestion__tag_8h_a7301f247665ed1c0504f27602b3cf012}{set\_tag}}(\textcolor{stringliteral}{"{}DEV\_ID"{}},\ 2);\ \ \ \ \ \ \ \textcolor{comment}{//\ ID\ du\ périphérique\ (0-\/3)}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{gestion__tag_8h_a7301f247665ed1c0504f27602b3cf012}{set\_tag}}(\textcolor{stringliteral}{"{}CMD\_TYPE"{}},\ 2);\ \ \ \ \ \textcolor{comment}{//\ Type\ de\ commande\ (0-\/3)}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{gestion__tag_8h_a7301f247665ed1c0504f27602b3cf012}{set\_tag}}(\textcolor{stringliteral}{"{}PARAM"{}},\ 8);\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Paramètre\ (0-\/255)}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Configuration\ du\ header\ TX}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{com__utils_8c_a3e35a666d459f2ac92fc7c35334ff0ff}{TxHeader}}.IDE\ =\ CAN\_ID\_STD;}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{com__utils_8c_a3e35a666d459f2ac92fc7c35334ff0ff}{TxHeader}}.StdId\ =\ CMD\_CAN\_ID\_TX;}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{com__utils_8c_a3e35a666d459f2ac92fc7c35334ff0ff}{TxHeader}}.RTR\ =\ CAN\_RTR\_DATA;}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{com__utils_8c_a3e35a666d459f2ac92fc7c35334ff0ff}{TxHeader}}.DLC\ =\ 8;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Filtre\ pour\ les\ réponses\ des\ esclaves\ (0x201-\/0x203)}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{com__utils_8c_adfa3f55b53f7a0c8e6a7ffbf37fe2545}{CAN\_setup\_Filter}}(0x201,\ 0x203,\ 0);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Interruptions}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}(HAL\_CAN\_ActivateNotification(\&\doxymbox{\hyperlink{com__utils_8h_ae21c10daa2f8cbd18a0e66bb28a19d2d}{hcan}},\ CAN\_IT\_RX\_FIFO0\_MSG\_PENDING)\ !=\ HAL\_OK)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Error\_Handler();}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}[Commands]\ Initialized\(\backslash\)n"{}});}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ commands\_send(\textcolor{keyword}{const}\ command\_t\ *cmd)\ \{}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{data__container_8h_a129f017feb0712be1dcf7932e6035aa0}{init\_data\_container}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{data__container_8h_aa84538f1ab0c319056787e9674157405}{set\_value}}(\textcolor{stringliteral}{"{}DEV\_ID"{}},\ cmd-\/>device\_id);}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{data__container_8h_aa84538f1ab0c319056787e9674157405}{set\_value}}(\textcolor{stringliteral}{"{}CMD\_TYPE"{}},\ cmd-\/>command);}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{data__container_8h_aa84538f1ab0c319056787e9674157405}{set\_value}}(\textcolor{stringliteral}{"{}PARAM"{}},\ cmd-\/>parameter);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}(HAL\_CAN\_AddTxMessage(\&\doxymbox{\hyperlink{com__utils_8h_ae21c10daa2f8cbd18a0e66bb28a19d2d}{hcan}},\ \&\doxymbox{\hyperlink{com__utils_8c_a3e35a666d459f2ac92fc7c35334ff0ff}{TxHeader}},\ \doxymbox{\hyperlink{com__utils_8h_af553c31425b32bd9c020380c942ed3bd}{TxData}},\ \&\doxymbox{\hyperlink{com__utils_8c_afd0a914dd50d7aa3607d092452037cc1}{TxMailbox}})\ !=\ HAL\_OK)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}[Commands]\ ERROR:\ Send\ failed\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}[Commands]\ TX:\ Device=\%u,\ Command=\%u,\ Param=\%u\(\backslash\)n"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cmd-\/>device\_id,\ cmd-\/>command,\ cmd-\/>parameter);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ commands\_handle\_response(uint8\_t\ device\_id,\ \textcolor{keyword}{const}\ uint8\_t\ rx\_data[8])\ \{}
+\DoxyCodeLine{\ \ \ \ memcpy(\doxymbox{\hyperlink{com__utils_8h_af553c31425b32bd9c020380c942ed3bd}{TxData}},\ rx\_data,\ 8);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ uint32\_t\ status,\ feedback;}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{data__container_8h_a66cbaaa79a2ba3c2c7912514c1dc805f}{get\_value}}(\textcolor{stringliteral}{"{}DEV\_ID"{}},\ NULL);\ \ \textcolor{comment}{//\ Ou\ extraire\ directement}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{data__container_8h_a66cbaaa79a2ba3c2c7912514c1dc805f}{get\_value}}(\textcolor{stringliteral}{"{}STATUS"{}},\ \&status);}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{data__container_8h_a66cbaaa79a2ba3c2c7912514c1dc805f}{get\_value}}(\textcolor{stringliteral}{"{}FEEDBACK"{}},\ \&feedback);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}[Commands]\ RX\ Response\ from\ Device\ \%u:\ Status=\%u,\ Feedback=\%u\(\backslash\)n"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ device\_id,\ (uint8\_t)status,\ (uint8\_t)feedback);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{com__utils_8c_a7368d39e78009c017d6f81ccf33b9b2c}{HAL\_CAN\_RxFifo0MsgPendingCallback}}(CAN\_HandleTypeDef\ *\doxymbox{\hyperlink{com__utils_8h_ae21c10daa2f8cbd18a0e66bb28a19d2d}{hcan}})\ \{}
+\DoxyCodeLine{\ \ \ \ CAN\_RxHeaderTypeDef\ \doxymbox{\hyperlink{com__utils_8c_a6ee6e13063b860648180eea65852cc71}{RxHeader}};}
+\DoxyCodeLine{\ \ \ \ uint8\_t\ RxDataLocal[8];}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}(HAL\_CAN\_GetRxMessage(\doxymbox{\hyperlink{com__utils_8h_ae21c10daa2f8cbd18a0e66bb28a19d2d}{hcan}},\ CAN\_RX\_FIFO0,\ \&\doxymbox{\hyperlink{com__utils_8c_a6ee6e13063b860648180eea65852cc71}{RxHeader}},\ RxDataLocal)\ ==\ HAL\_OK)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ uint8\_t\ device\_id\ =\ \doxymbox{\hyperlink{com__utils_8c_a6ee6e13063b860648180eea65852cc71}{RxHeader}}.StdId\ -\/\ CMD\_CAN\_ID\_RX\_BASE\ +\ 1;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}((\doxymbox{\hyperlink{com__utils_8c_a6ee6e13063b860648180eea65852cc71}{RxHeader}}.StdId\ >=\ 0x201)\ \&\&\ (\doxymbox{\hyperlink{com__utils_8c_a6ee6e13063b860648180eea65852cc71}{RxHeader}}.StdId\ <=\ 0x203))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ commands\_handle\_response(device\_id,\ RxDataLocal);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ =============================================================================}}
+\DoxyCodeLine{\textcolor{comment}{//\ main.c\ -\/\ Exemple\ d'utilisation}}
+\DoxyCodeLine{\textcolor{comment}{//\ =============================================================================}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{main_8c_a840291bc02cba5474a4cb46a9b9566fe}{main}}(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{\ \ \ \ HAL\_Init();}
+\DoxyCodeLine{\ \ \ \ MX\_CAN\_Init();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ commands\_init();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Envoyer\ la\ commande\ "{}Allumer\ servomoteur\ 1"{}}}
+\DoxyCodeLine{\ \ \ \ command\_t\ cmd1\ =\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .device\_id\ =\ 1,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .command\ =\ CMD\_SERVO\_ON,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .parameter\ =\ 0}
+\DoxyCodeLine{\ \ \ \ \};}
+\DoxyCodeLine{\ \ \ \ commands\_send(\&cmd1);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Attendre\ la\ réponse\ (via\ callback\ HAL\_CAN\_RxFifo0MsgPendingCallback)}}
+\DoxyCodeLine{\ \ \ \ HAL\_Delay(100);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Envoyer\ la\ commande\ "{}Servomoteur\ 2,\ position\ pulse\ 100"{}}}
+\DoxyCodeLine{\ \ \ \ command\_t\ cmd2\ =\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .device\_id\ =\ 2,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .command\ =\ CMD\_SERVO\_PULSE,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .parameter\ =\ 100}
+\DoxyCodeLine{\ \ \ \ \};}
+\DoxyCodeLine{\ \ \ \ commands\_send(\&cmd2);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{while}(1)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Boucle\ principale}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33_autotoc_md145}{}\doxysection{\texorpdfstring{Exemple 3 :\+ Test en boucle locale (sans matériel CAN)}{Exemple 3 :\+ Test en boucle locale (sans matériel CAN)}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33_autotoc_md145}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33_autotoc_md146}{}\doxysubsection{\texorpdfstring{Scénario}{Scénario}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33_autotoc_md146}
+Tester la logique TAGCAN {\bfseries{sans}} bus CAN physique.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ =============================================================================}}
+\DoxyCodeLine{\textcolor{comment}{//\ test\_tagcan\_local.c}}
+\DoxyCodeLine{\textcolor{comment}{//\ =============================================================================}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_t_a_g_c_a_n_8h}{TAGCAN.h}}"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{uint8\_t\ \doxymbox{\hyperlink{com__utils_8h_af553c31425b32bd9c020380c942ed3bd}{TxData}}[8]\ =\ \{0\};}
+\DoxyCodeLine{uint8\_t\ \doxymbox{\hyperlink{com__utils_8c_a14629afcc7f0b2d62c2b617b07d98184}{RxData}}[8]\ =\ \{0\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ test\_local\_loop(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}===\ TEST\ BOUCLE\ LOCALE\ TAGCAN\ ===\(\backslash\)n\(\backslash\)n"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Étape\ 1:\ Initialiser}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{data__container_8h_a129f017feb0712be1dcf7932e6035aa0}{init\_data\_container}}();}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{gestion__tag_8h_aab50a8f567be72e656120fd71f3fb435}{init\_tag\_manager}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{gestion__tag_8h_a7301f247665ed1c0504f27602b3cf012}{set\_tag}}(\textcolor{stringliteral}{"{}SEQ"{}},\ 3);}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{gestion__tag_8h_a7301f247665ed1c0504f27602b3cf012}{set\_tag}}(\textcolor{stringliteral}{"{}SENSOR\_A"{}},\ 8);}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{gestion__tag_8h_a7301f247665ed1c0504f27602b3cf012}{set\_tag}}(\textcolor{stringliteral}{"{}SENSOR\_B"{}},\ 12);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}\ Initialisé\(\backslash\)n\(\backslash\)n"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Étape\ 2:\ Écrire\ les\ données}}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}Écriture\ des\ données...\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{data__container_8h_aa84538f1ab0c319056787e9674157405}{set\_value}}(\textcolor{stringliteral}{"{}SEQ"{}},\ 5);}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{data__container_8h_aa84538f1ab0c319056787e9674157405}{set\_value}}(\textcolor{stringliteral}{"{}SENSOR\_A"{}},\ 42);}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{data__container_8h_aa84538f1ab0c319056787e9674157405}{set\_value}}(\textcolor{stringliteral}{"{}SENSOR\_B"{}},\ 1000);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Afficher\ le\ buffer\ brut}}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}Buffer\ TxData:\ "{}});}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 8;\ i++)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%02X\ "{}},\ \doxymbox{\hyperlink{com__utils_8h_af553c31425b32bd9c020380c942ed3bd}{TxData}}[i]);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)n"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Étape\ 3:\ Simuler\ envoi\ -\/>\ réception}}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}Simulation\ envoi/réception...\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{data__container_8h_ae1649807202241b28239e8cb212a18b6}{can\_simulate\_send\_receive}}(\doxymbox{\hyperlink{com__utils_8h_af553c31425b32bd9c020380c942ed3bd}{TxData}},\ \doxymbox{\hyperlink{com__utils_8c_a14629afcc7f0b2d62c2b617b07d98184}{RxData}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Vérifier}}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}Buffer\ RxData:\ "{}});}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 8;\ i++)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%02X\ "{}},\ \doxymbox{\hyperlink{com__utils_8c_a14629afcc7f0b2d62c2b617b07d98184}{RxData}}[i]);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)n"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Étape\ 4:\ Lire\ les\ données\ reçues}}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}Lecture\ des\ données\ reçues...\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ memcpy(\doxymbox{\hyperlink{com__utils_8h_af553c31425b32bd9c020380c942ed3bd}{TxData}},\ \doxymbox{\hyperlink{com__utils_8c_a14629afcc7f0b2d62c2b617b07d98184}{RxData}},\ 8);\ \ \textcolor{comment}{//\ Copier\ pour\ lecture}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ uint32\_t\ seq,\ sens\_a,\ sens\_b;}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{data__container_8h_a66cbaaa79a2ba3c2c7912514c1dc805f}{get\_value}}(\textcolor{stringliteral}{"{}SEQ"{}},\ \&seq);}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{data__container_8h_a66cbaaa79a2ba3c2c7912514c1dc805f}{get\_value}}(\textcolor{stringliteral}{"{}SENSOR\_A"{}},\ \&sens\_a);}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{data__container_8h_a66cbaaa79a2ba3c2c7912514c1dc805f}{get\_value}}(\textcolor{stringliteral}{"{}SENSOR\_B"{}},\ \&sens\_b);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}SEQ\ =\ \%u\(\backslash\)n"{}},\ (uint8\_t)seq);}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}SENSOR\_A\ =\ \%u\(\backslash\)n"{}},\ (uint8\_t)sens\_a);}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}SENSOR\_B\ =\ \%u\(\backslash\)n"{}},\ (uint16\_t)sens\_b);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Vérifier}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}(seq\ ==\ 5\ \&\&\ sens\_a\ ==\ 42\ \&\&\ sens\_b\ ==\ 1000)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)n\ TEST\ RÉUSSI!\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)n\ TEST\ ÉCHOUÉ!\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{main_8c_a840291bc02cba5474a4cb46a9b9566fe}{main}}(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{\ \ \ \ test\_local\_loop();}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+{\bfseries{Sortie attendue}} :\+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{===\ TEST\ BOUCLE\ LOCALE\ TAGCAN\ ===}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ Initialisé}
+\DoxyCodeLine{}
+\DoxyCodeLine{Écriture\ des\ données...}
+\DoxyCodeLine{Buffer\ TxData:\ XX\ XX\ XX\ XX\ XX\ XX\ XX\ XX}
+\DoxyCodeLine{}
+\DoxyCodeLine{Simulation\ envoi/réception...}
+\DoxyCodeLine{Buffer\ RxData:\ XX\ XX\ XX\ XX\ XX\ XX\ XX\ XX}
+\DoxyCodeLine{}
+\DoxyCodeLine{Lecture\ des\ données\ reçues...}
+\DoxyCodeLine{SEQ\ =\ 5}
+\DoxyCodeLine{SENSOR\_A\ =\ 42}
+\DoxyCodeLine{SENSOR\_B\ =\ 1000}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ TEST\ RÉUSSI!}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33_autotoc_md148}{}\doxysection{\texorpdfstring{Exemple 4 :\+ Debug /\+ Monitoring CAN}{Exemple 4 :\+ Debug /\+ Monitoring CAN}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33_autotoc_md148}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33_autotoc_md149}{}\doxysubsection{\texorpdfstring{Scénario}{Scénario}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33_autotoc_md149}
+Logger tous les messages CAN reçus pour du monitoring.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ =============================================================================}}
+\DoxyCodeLine{\textcolor{comment}{//\ can\_monitor.h}}
+\DoxyCodeLine{\textcolor{comment}{//\ =============================================================================}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#ifndef\ CAN\_MONITOR\_H\_}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ CAN\_MONITOR\_H\_}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{\ \ \ \ uint32\_t\ id;}
+\DoxyCodeLine{\ \ \ \ uint8\_t\ dlc;}
+\DoxyCodeLine{\ \ \ \ uint8\_t\ data[8];}
+\DoxyCodeLine{\ \ \ \ uint32\_t\ timestamp\_ms;}
+\DoxyCodeLine{\}\ can\_frame\_t;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ CAN\_MONITOR\_BUFFER\_SIZE\ 100}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ can\_monitor\_init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ can\_monitor\_log(\textcolor{keyword}{const}\ can\_frame\_t\ *frame);}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ can\_monitor\_dump(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ =============================================================================}}
+\DoxyCodeLine{\textcolor{comment}{//\ can\_monitor.c}}
+\DoxyCodeLine{\textcolor{comment}{//\ =============================================================================}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}can\_monitor.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}stm32f1xx\_hal.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{static}\ can\_frame\_t\ monitor\_buffer[CAN\_MONITOR\_BUFFER\_SIZE];}
+\DoxyCodeLine{\textcolor{keyword}{static}\ uint32\_t\ monitor\_index\ =\ 0;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ can\_monitor\_init(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{\ \ \ \ monitor\_index\ =\ 0;}
+\DoxyCodeLine{\ \ \ \ memset(monitor\_buffer,\ 0,\ \textcolor{keyword}{sizeof}(monitor\_buffer));}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}[Monitor]\ Initialized\(\backslash\)n"{}});}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ can\_monitor\_log(\textcolor{keyword}{const}\ can\_frame\_t\ *frame)\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}(monitor\_index\ >=\ CAN\_MONITOR\_BUFFER\_SIZE)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ monitor\_index\ =\ 0;\ \ \textcolor{comment}{//\ Circulaire}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ memcpy(\&monitor\_buffer[monitor\_index],\ frame,\ \textcolor{keyword}{sizeof}(can\_frame\_t));}
+\DoxyCodeLine{\ \ \ \ monitor\_index++;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ can\_monitor\_dump(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)n===\ CAN\ FRAME\ LOG\ ===\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}|\ Index\ |\ ID\ \ \ \ |\ DLC\ |\ Data\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\ Timestamp\ |\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}|-\/-\/-\/-\/-\/-\/-\/|-\/-\/-\/-\/-\/-\/-\/|-\/-\/-\/-\/-\/|-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/|-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/|\(\backslash\)n"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}(uint32\_t\ i\ =\ 0;\ i\ <\ monitor\_index\ \&\&\ i\ <\ CAN\_MONITOR\_BUFFER\_SIZE;\ i++)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ can\_frame\_t\ *frame\ =\ \&monitor\_buffer[i];}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}|\ \%5u\ |\ 0x\%03X\ |\ \%u\ \ \ |\ "{}},\ i,\ (\textcolor{keywordtype}{unsigned})frame-\/>id,\ frame-\/>dlc);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ 8;\ j++)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%02X\ "{}},\ frame-\/>data[j]);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}|\ \%9u\ |\(\backslash\)n"{}},\ (\textcolor{keywordtype}{unsigned})frame-\/>timestamp\_ms);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ =============================================================================}}
+\DoxyCodeLine{\textcolor{comment}{//\ Utilisation\ dans\ le\ callback\ CAN}}
+\DoxyCodeLine{\textcolor{comment}{//\ =============================================================================}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{com__utils_8c_a7368d39e78009c017d6f81ccf33b9b2c}{HAL\_CAN\_RxFifo0MsgPendingCallback}}(CAN\_HandleTypeDef\ *\doxymbox{\hyperlink{com__utils_8h_ae21c10daa2f8cbd18a0e66bb28a19d2d}{hcan}})\ \{}
+\DoxyCodeLine{\ \ \ \ CAN\_RxHeaderTypeDef\ \doxymbox{\hyperlink{com__utils_8c_a6ee6e13063b860648180eea65852cc71}{RxHeader}};}
+\DoxyCodeLine{\ \ \ \ uint8\_t\ RxDataLocal[8];}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}(HAL\_CAN\_GetRxMessage(\doxymbox{\hyperlink{com__utils_8h_ae21c10daa2f8cbd18a0e66bb28a19d2d}{hcan}},\ CAN\_RX\_FIFO0,\ \&\doxymbox{\hyperlink{com__utils_8c_a6ee6e13063b860648180eea65852cc71}{RxHeader}},\ RxDataLocal)\ ==\ HAL\_OK)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ can\_frame\_t\ frame\ =\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ .id\ =\ \doxymbox{\hyperlink{com__utils_8c_a6ee6e13063b860648180eea65852cc71}{RxHeader}}.StdId,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ .dlc\ =\ \doxymbox{\hyperlink{com__utils_8c_a6ee6e13063b860648180eea65852cc71}{RxHeader}}.DLC,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ .timestamp\_ms\ =\ HAL\_GetTick()}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ memcpy(frame.data,\ RxDataLocal,\ 8);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ can\_monitor\_log(\&frame);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ =============================================================================}}
+\DoxyCodeLine{\textcolor{comment}{//\ main.c}}
+\DoxyCodeLine{\textcolor{comment}{//\ =============================================================================}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{main_8c_a840291bc02cba5474a4cb46a9b9566fe}{main}}(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{\ \ \ \ HAL\_Init();}
+\DoxyCodeLine{\ \ \ \ MX\_CAN\_Init();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ can\_monitor\_init();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ ...\ votre\ logique\ CAN\ ...}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Afficher\ le\ log\ après\ 10\ secondes}}
+\DoxyCodeLine{\ \ \ \ HAL\_Delay(10000);}
+\DoxyCodeLine{\ \ \ \ can\_monitor\_dump();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{while}(1)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ ...}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33_autotoc_md151}{}\doxysection{\texorpdfstring{Checklist d\textquotesingle{}implémentation}{Checklist d\textquotesingle{}implémentation}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_205___e286b88c2636fb4118cac9c95749c8f33_autotoc_md151}
+
+\begin{DoxyItemize}
+\item[\DoxyUnchecked] Inclure {\ttfamily \doxylink{_t_a_g_c_a_n_8h}{TAGCAN.\+h}}
+\end{DoxyItemize}
+\begin{DoxyItemize}
+\item[\DoxyUnchecked] Appeler {\ttfamily \doxylink{data__container_8h_a129f017feb0712be1dcf7932e6035aa0}{init\+\_\+data\+\_\+container()}}
+\end{DoxyItemize}
+\begin{DoxyItemize}
+\item[\DoxyUnchecked] Appeler {\ttfamily \doxylink{gestion__tag_8h_aab50a8f567be72e656120fd71f3fb435}{init\+\_\+tag\+\_\+manager()}}
+\end{DoxyItemize}
+\begin{DoxyItemize}
+\item[\DoxyUnchecked] Créer les tags via {\ttfamily \doxylink{gestion__tag_8h_a7301f247665ed1c0504f27602b3cf012}{set\+\_\+tag()}}
+\end{DoxyItemize}
+\begin{DoxyItemize}
+\item[\DoxyUnchecked] Configurer le header CAN via {\ttfamily \doxylink{com__utils_8c_a041f556ab8d1bfd3c0891c94b0f0d8c5}{CAN\+\_\+setup\+\_\+\+DF()}}
+\end{DoxyItemize}
+\begin{DoxyItemize}
+\item[\DoxyUnchecked] Configurer les filtres via {\ttfamily \doxylink{com__utils_8c_adfa3f55b53f7a0c8e6a7ffbf37fe2545}{CAN\+\_\+setup\+\_\+\+Filter()}}
+\end{DoxyItemize}
+\begin{DoxyItemize}
+\item[\DoxyUnchecked] Activer les interruptions
+\end{DoxyItemize}
+\begin{DoxyItemize}
+\item[\DoxyUnchecked] Implémenter {\ttfamily \doxylink{com__utils_8c_a7368d39e78009c017d6f81ccf33b9b2c}{HAL\+\_\+\+CAN\+\_\+\+Rx\+Fifo0\+Msg\+Pending\+Callback()}}
+\end{DoxyItemize}
+\begin{DoxyItemize}
+\item[\DoxyUnchecked] Utiliser {\ttfamily \doxylink{data__container_8h_aa84538f1ab0c319056787e9674157405}{set\+\_\+value()}} pour écrire
+\end{DoxyItemize}
+\begin{DoxyItemize}
+\item[\DoxyUnchecked] Utiliser {\ttfamily \doxylink{data__container_8h_a66cbaaa79a2ba3c2c7912514c1dc805f}{get\+\_\+value()}} pour lire
+\end{DoxyItemize}
+\begin{DoxyItemize}
+\item[\DoxyUnchecked] Envoyer via {\ttfamily HAL\+\_\+\+CAN\+\_\+\+Add\+Tx\+Message()}
+\end{DoxyItemize}
+\begin{DoxyItemize}
+\item[\DoxyUnchecked] Recevoir via {\ttfamily HAL\+\_\+\+CAN\+\_\+\+Get\+Rx\+Message()}
+\end{DoxyItemize}
+\begin{DoxyItemize}
+\item[\DoxyUnchecked] Tester en boucle locale (optionnel mais recommandé)
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+
+
+Besoin d\textquotesingle{}aide ? Retour au \doxylink{dir_7a7edcf529884078f481081b33ab25c5}{README.md} 

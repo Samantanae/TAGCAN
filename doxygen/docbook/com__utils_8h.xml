@@ -1,0 +1,214 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_com__utils_8h" xml:lang="en-US">
+<title>com_utils.h File Reference</title>
+<indexterm><primary>com_utils.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;../../TAGCAN/TAGCAN.h&quot;<?linebreak?>#include &quot;../../TAGCAN/include/sub_include/data_container.h&quot;<?linebreak?>#include &lt;cmsis_gcc.h&gt;<?linebreak?>#include &lt;stm32f103xb.h&gt;<?linebreak?>#include &lt;stm32f1xx.h&gt;<?linebreak?>#include &lt;stm32f1xx_hal_can.h&gt;<?linebreak?>#include &lt;stm32f1xx_hal_def.h&gt;<?linebreak?>#include &lt;stm32f1xx_hal_flash.h&gt;<?linebreak?>#include &lt;stm32f1xx_hal_rcc.h&gt;<?linebreak?>#include &lt;stm32f1xx_hal_rcc_ex.h&gt;<?linebreak?>#include &lt;sys/_stdint.h&gt;<?linebreak?></programlisting>Include dependency graph for com_utils.h:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="com__utils_8h__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+This graph shows which files directly or indirectly include this file:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="com__utils_8h__dep__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_com__utils_8h_1adf9124e89f799fae0f55cc9ed0a94189">init_com</link> (void)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para>uint8_t <link linkend="_com__utils_8h_1af553c31425b32bd9c020380c942ed3bd">TxData</link> [8]</para>
+</listitem>
+            <listitem><para>uint8_t <link linkend="_com__utils_8h_1a14629afcc7f0b2d62c2b617b07d98184">RxData</link> [8]</para>
+</listitem>
+            <listitem><para>CAN_TxHeaderTypeDef <link linkend="_com__utils_8h_1a3e35a666d459f2ac92fc7c35334ff0ff">TxHeader</link></para>
+</listitem>
+            <listitem><para>CAN_RxHeaderTypeDef <link linkend="_com__utils_8h_1a6ee6e13063b860648180eea65852cc71">RxHeader</link></para>
+</listitem>
+            <listitem><para>CAN_HandleTypeDef <link linkend="_com__utils_8h_1ae21c10daa2f8cbd18a0e66bb28a19d2d">hcan</link></para>
+</listitem>
+            <listitem><para>int32_t <link linkend="_com__utils_8h_1afd0a914dd50d7aa3607d092452037cc1">TxMailbox</link></para>
+</listitem>
+            <listitem><para>int8_t <link linkend="_com__utils_8h_1a2bf70f5aaf32f6470e208580dc8bed7b">val_SEQ</link></para>
+</listitem>
+            <listitem><para>int8_t <link linkend="_com__utils_8h_1ad007767ce463586424d87bdafe0ae84a">val_HB</link></para>
+</listitem>
+            <listitem><para>int8_t <link linkend="_com__utils_8h_1a6ad8282033ebc654142cd71d2633ab3a">val_CI</link></para>
+</listitem>
+            <listitem><para>int8_t <link linkend="_com__utils_8h_1a563c97929d53dfd65c6722da474e57de">val_AB</link></para>
+</listitem>
+            <listitem><para>int8_t <link linkend="_com__utils_8h_1a0d03ea68010339af49c95b45d72f1584">val_EDC</link></para>
+</listitem>
+            <listitem><para>int8_t <link linkend="_com__utils_8h_1aa2826abd1636498ecf600da3165d5a5a">val_N2ODVS</link></para>
+</listitem>
+            <listitem><para>int8_t <link linkend="_com__utils_8h_1a686cd636907dfc59d7490e9a1289d63e">val_N2OIV</link></para>
+</listitem>
+            <listitem><para>int8_t <link linkend="_com__utils_8h_1aa862edfd1ccb9792c7450773c3a8acdc">val_N2OMV</link></para>
+</listitem>
+            <listitem><para>int16_t <link linkend="_com__utils_8h_1a52e20247890d4a078c8bf6e27a7d9cdb">val_N2OPS</link></para>
+</listitem>
+            <listitem><para>int16_t <link linkend="_com__utils_8h_1a6e3f5faa7238533e87c3c5d782104de7">val_TIME</link></para>
+</listitem>
+            <listitem><para>int16_t <link linkend="_com__utils_8h_1af54835c185cf3ea1e1fd9db7a178d5b4">val_TLC</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_com__utils_8h_1adf9124e89f799fae0f55cc9ed0a94189"/><section>
+    <title>init_com()</title>
+<indexterm><primary>init_com</primary><secondary>com_utils.h</secondary></indexterm>
+<indexterm><primary>com_utils.h</primary><secondary>init_com</secondary></indexterm>
+<para><computeroutput>void init_com (void )</computeroutput></para>
+<para><itemizedlist>
+<listitem>
+<para>initialise tout les fonction de communication. (point d&apos;appel unique: main) *&#8205;/ </para>
+</listitem></itemizedlist>
+</para>
+<para>
+Definition at line <link linkend="_com__utils_8c_source_1l00039">39</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="com__utils_8h_adf9124e89f799fae0f55cc9ed0a94189_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+</section>
+<section>
+<title>Variable Documentation</title>
+<anchor xml:id="_com__utils_8h_1ae21c10daa2f8cbd18a0e66bb28a19d2d"/><section>
+    <title>hcan</title>
+<indexterm><primary>hcan</primary><secondary>com_utils.h</secondary></indexterm>
+<indexterm><primary>com_utils.h</primary><secondary>hcan</secondary></indexterm>
+<para><computeroutput>CAN_HandleTypeDef hcan<computeroutput>[extern]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_com__utils_8h_1a14629afcc7f0b2d62c2b617b07d98184"/><section>
+    <title>RxData</title>
+<indexterm><primary>RxData</primary><secondary>com_utils.h</secondary></indexterm>
+<indexterm><primary>com_utils.h</primary><secondary>RxData</secondary></indexterm>
+<para><computeroutput>uint8_t RxData[8]<computeroutput>[extern]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00013">13</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+</section>
+<anchor xml:id="_com__utils_8h_1a6ee6e13063b860648180eea65852cc71"/><section>
+    <title>RxHeader</title>
+<indexterm><primary>RxHeader</primary><secondary>com_utils.h</secondary></indexterm>
+<indexterm><primary>com_utils.h</primary><secondary>RxHeader</secondary></indexterm>
+<para><computeroutput>CAN_RxHeaderTypeDef RxHeader<computeroutput>[extern]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00010">10</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+</section>
+<anchor xml:id="_com__utils_8h_1af553c31425b32bd9c020380c942ed3bd"/><section>
+    <title>TxData</title>
+<indexterm><primary>TxData</primary><secondary>com_utils.h</secondary></indexterm>
+<indexterm><primary>com_utils.h</primary><secondary>TxData</secondary></indexterm>
+<para><computeroutput>uint8_t TxData[8]<computeroutput>[extern]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_data__container_8c_source_1l00012">12</link> of file <link linkend="_data__container_8c_source">data_container.c</link>.</para>
+</section>
+<anchor xml:id="_com__utils_8h_1a3e35a666d459f2ac92fc7c35334ff0ff"/><section>
+    <title>TxHeader</title>
+<indexterm><primary>TxHeader</primary><secondary>com_utils.h</secondary></indexterm>
+<indexterm><primary>com_utils.h</primary><secondary>TxHeader</secondary></indexterm>
+<para><computeroutput>CAN_TxHeaderTypeDef TxHeader<computeroutput>[extern]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00009">9</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+</section>
+<anchor xml:id="_com__utils_8h_1afd0a914dd50d7aa3607d092452037cc1"/><section>
+    <title>TxMailbox</title>
+<indexterm><primary>TxMailbox</primary><secondary>com_utils.h</secondary></indexterm>
+<indexterm><primary>com_utils.h</primary><secondary>TxMailbox</secondary></indexterm>
+<para><computeroutput>int32_t TxMailbox<computeroutput>[extern]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00036">36</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+</section>
+<anchor xml:id="_com__utils_8h_1a563c97929d53dfd65c6722da474e57de"/><section>
+    <title>val_AB</title>
+<indexterm><primary>val_AB</primary><secondary>com_utils.h</secondary></indexterm>
+<indexterm><primary>com_utils.h</primary><secondary>val_AB</secondary></indexterm>
+<para><computeroutput>int8_t val_AB<computeroutput>[extern]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00019">19</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+</section>
+<anchor xml:id="_com__utils_8h_1a6ad8282033ebc654142cd71d2633ab3a"/><section>
+    <title>val_CI</title>
+<indexterm><primary>val_CI</primary><secondary>com_utils.h</secondary></indexterm>
+<indexterm><primary>com_utils.h</primary><secondary>val_CI</secondary></indexterm>
+<para><computeroutput>int8_t val_CI<computeroutput>[extern]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00018">18</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+</section>
+<anchor xml:id="_com__utils_8h_1a0d03ea68010339af49c95b45d72f1584"/><section>
+    <title>val_EDC</title>
+<indexterm><primary>val_EDC</primary><secondary>com_utils.h</secondary></indexterm>
+<indexterm><primary>com_utils.h</primary><secondary>val_EDC</secondary></indexterm>
+<para><computeroutput>int8_t val_EDC<computeroutput>[extern]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00020">20</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+</section>
+<anchor xml:id="_com__utils_8h_1ad007767ce463586424d87bdafe0ae84a"/><section>
+    <title>val_HB</title>
+<indexterm><primary>val_HB</primary><secondary>com_utils.h</secondary></indexterm>
+<indexterm><primary>com_utils.h</primary><secondary>val_HB</secondary></indexterm>
+<para><computeroutput>int8_t val_HB<computeroutput>[extern]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00017">17</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+</section>
+<anchor xml:id="_com__utils_8h_1aa2826abd1636498ecf600da3165d5a5a"/><section>
+    <title>val_N2ODVS</title>
+<indexterm><primary>val_N2ODVS</primary><secondary>com_utils.h</secondary></indexterm>
+<indexterm><primary>com_utils.h</primary><secondary>val_N2ODVS</secondary></indexterm>
+<para><computeroutput>int8_t val_N2ODVS<computeroutput>[extern]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00023">23</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+</section>
+<anchor xml:id="_com__utils_8h_1a686cd636907dfc59d7490e9a1289d63e"/><section>
+    <title>val_N2OIV</title>
+<indexterm><primary>val_N2OIV</primary><secondary>com_utils.h</secondary></indexterm>
+<indexterm><primary>com_utils.h</primary><secondary>val_N2OIV</secondary></indexterm>
+<para><computeroutput>int8_t val_N2OIV<computeroutput>[extern]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00024">24</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+</section>
+<anchor xml:id="_com__utils_8h_1aa862edfd1ccb9792c7450773c3a8acdc"/><section>
+    <title>val_N2OMV</title>
+<indexterm><primary>val_N2OMV</primary><secondary>com_utils.h</secondary></indexterm>
+<indexterm><primary>com_utils.h</primary><secondary>val_N2OMV</secondary></indexterm>
+<para><computeroutput>int8_t val_N2OMV<computeroutput>[extern]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00025">25</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+</section>
+<anchor xml:id="_com__utils_8h_1a52e20247890d4a078c8bf6e27a7d9cdb"/><section>
+    <title>val_N2OPS</title>
+<indexterm><primary>val_N2OPS</primary><secondary>com_utils.h</secondary></indexterm>
+<indexterm><primary>com_utils.h</primary><secondary>val_N2OPS</secondary></indexterm>
+<para><computeroutput>int16_t val_N2OPS<computeroutput>[extern]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00021">21</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+</section>
+<anchor xml:id="_com__utils_8h_1a2bf70f5aaf32f6470e208580dc8bed7b"/><section>
+    <title>val_SEQ</title>
+<indexterm><primary>val_SEQ</primary><secondary>com_utils.h</secondary></indexterm>
+<indexterm><primary>com_utils.h</primary><secondary>val_SEQ</secondary></indexterm>
+<para><computeroutput>int8_t val_SEQ<computeroutput>[extern]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00016">16</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+</section>
+<anchor xml:id="_com__utils_8h_1a6e3f5faa7238533e87c3c5d782104de7"/><section>
+    <title>val_TIME</title>
+<indexterm><primary>val_TIME</primary><secondary>com_utils.h</secondary></indexterm>
+<indexterm><primary>com_utils.h</primary><secondary>val_TIME</secondary></indexterm>
+<para><computeroutput>int16_t val_TIME<computeroutput>[extern]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00026">26</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+</section>
+<anchor xml:id="_com__utils_8h_1af54835c185cf3ea1e1fd9db7a178d5b4"/><section>
+    <title>val_TLC</title>
+<indexterm><primary>val_TLC</primary><secondary>com_utils.h</secondary></indexterm>
+<indexterm><primary>com_utils.h</primary><secondary>val_TLC</secondary></indexterm>
+<para><computeroutput>int16_t val_TLC<computeroutput>[extern]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_com__utils_8c_source_1l00022">22</link> of file <link linkend="_com__utils_8c_source">com_utils.c</link>.</para>
+</section>
+</section>
+</section>

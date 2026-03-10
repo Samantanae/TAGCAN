@@ -1,0 +1,270 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.0" xml:lang="en-US">
+  <compounddef id="02___g_e_s_t_i_o_n___t_a_g_s_8md" kind="file" language="Markdown">
+    <compoundname>02_GESTION_TAGS.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>02<sp/>-<sp/>Gestion<sp/>des<sp/>Tags</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/><sp/>Qu&apos;est-ce<sp/>qu&apos;un<sp/>tag<sp/>?</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Un<sp/>**tag**<sp/>est<sp/>une<sp/>variable<sp/>nommée<sp/>qui<sp/>occupe<sp/>une<sp/>plage<sp/>de<sp/>bits<sp/>dans<sp/>le<sp/>buffer<sp/>CAN<sp/>(TxData).<sp/>C&apos;est<sp/>l&apos;interface<sp/>principale<sp/>pour<sp/>lire<sp/>et<sp/>écrire<sp/>des<sp/>données.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Analogie**<sp/>:<sp/>C&apos;est<sp/>comme<sp/>des<sp/>variables<sp/>struct,<sp/>mais<sp/>mappées<sp/>directement<sp/>dans<sp/>un<sp/>buffer<sp/>binaire.</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/><sp/>Créer<sp/>un<sp/>tag<sp/>:<sp/>set_tag()</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Prototype</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">int<sp/>set_tag(const<sp/>char*<sp/>tag_name,<sp/>uint8_t<sp/>n_bit);</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Paramètres</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>Paramètre<sp/>|<sp/>Type<sp/>|<sp/>Description<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|-----------|------|-------------|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`tag_name`<sp/>|<sp/>`const<sp/>char*`<sp/>|<sp/>Nom<sp/>unique<sp/>du<sp/>tag<sp/>(ex.<sp/>&quot;SEQ&quot;,<sp/>&quot;HB&quot;)<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`n_bit`<sp/>|<sp/>`uint8_t`<sp/>|<sp/>Nombre<sp/>de<sp/>bits<sp/>occupés<sp/>(1<sp/>à<sp/>16)<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Valeur<sp/>de<sp/>retour</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Consulter<sp/>`documentation/API_REFERENCE.md`<sp/>pour<sp/>les<sp/>codes<sp/>d&apos;erreur.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Exemples</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Initialisation<sp/>des<sp/>tags<sp/>(dans<sp/>CAN_setup_TAG())</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>CAN_setup_TAG(void)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_tag(&quot;SEQ&quot;,<sp/>3);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>3<sp/>bits<sp/>pour<sp/>numéro<sp/>séquence</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_tag(&quot;HB&quot;,<sp/>1);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>1<sp/>bit<sp/>pour<sp/>watchdog</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_tag(&quot;CI&quot;,<sp/>2);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>2<sp/>bits<sp/>pour<sp/>continuité</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_tag(&quot;AB&quot;,<sp/>7);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>7<sp/>bits<sp/>pour<sp/>batterie<sp/>(0-100%)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_tag(&quot;N2OPS&quot;,<sp/>16);<sp/><sp/><sp/><sp/><sp/>//<sp/>16<sp/>bits<sp/>pour<sp/>pression<sp/>(0-65535<sp/>Pa)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_tag(&quot;TIME&quot;,<sp/>16);<sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>16<sp/>bits<sp/>pour<sp/>timestamp<sp/>(0-65535<sp/>ms)</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/><sp/>Écrire<sp/>une<sp/>valeur<sp/>:<sp/>set_value()</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Prototype</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">int<sp/>set_value(const<sp/>char*<sp/>tag_name,<sp/>uint32_t<sp/>value);</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Paramètres</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>Paramètre<sp/>|<sp/>Type<sp/>|<sp/>Description<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|-----------|------|-------------|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`tag_name`<sp/>|<sp/>`const<sp/>char*`<sp/>|<sp/>Nom<sp/>du<sp/>tag<sp/>à<sp/>modifier<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`value`<sp/>|<sp/>`uint32_t`<sp/>|<sp/>Nouvelle<sp/>valeur<sp/>à<sp/>écrire<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Valeur<sp/>de<sp/>retour</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>**CAN_TG_SUCCESS**<sp/>(0)<sp/>-<sp/>Succès</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**CAN_TG_ERROR_VALUE_TO_BIG**<sp/>-<sp/>La<sp/>valeur<sp/>dépasse<sp/>les<sp/>`n_bit`<sp/>bits<sp/>du<sp/>tag</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Autres<sp/>codes<sp/>d&apos;erreur<sp/>-<sp/>Tag<sp/>non<sp/>trouvé,<sp/>etc.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Comportement<sp/>important</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/>**La<sp/>valeur<sp/>est<sp/>tronquée<sp/>si<sp/>elle<sp/>dépasse<sp/>la<sp/>capacité<sp/>du<sp/>tag.**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Par<sp/>exemple<sp/>:</highlight></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">set_tag(&quot;SEQ&quot;,<sp/>3);<sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>3<sp/>bits<sp/>-&gt;<sp/>plage<sp/>0<sp/>à<sp/>7</highlight></codeline>
+<codeline><highlight class="normal">set_value(&quot;SEQ&quot;,<sp/>10);<sp/><sp/><sp/>//<sp/><sp/>Erreur<sp/>:<sp/>10<sp/>&gt;<sp/>2^3<sp/>-<sp/>1<sp/>=<sp/>7</highlight></codeline>
+<codeline><highlight class="normal">set_value(&quot;SEQ&quot;,<sp/>5);<sp/><sp/><sp/><sp/>//<sp/><sp/>Ok<sp/>:<sp/>écrit<sp/>0b101</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Exemples<sp/>d&apos;utilisation</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Dans<sp/>la<sp/>boucle<sp/>principale<sp/>ou<sp/>handler</highlight></codeline>
+<codeline><highlight class="normal">static<sp/>int<sp/>seq_counter<sp/>=<sp/>0;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>update_telemetry(void)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Incrémenter<sp/>et<sp/>envoyer<sp/>le<sp/>numéro<sp/>de<sp/>séquence</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>seq_counter<sp/>=<sp/>(seq_counter<sp/>+<sp/>1)<sp/>%<sp/>8;<sp/><sp/>//<sp/>Cycle<sp/>avec<sp/>3<sp/>bits<sp/>(0-7)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(set_value(&quot;SEQ&quot;,<sp/>seq_counter)<sp/>!=<sp/>CAN_TG_SUCCESS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Erreur...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Envoyer<sp/>le<sp/>statut<sp/>batterie</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>battery_percent<sp/>=<sp/>read_battery();<sp/><sp/>//<sp/>0-100</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(set_value(&quot;AB&quot;,<sp/>battery_percent)<sp/>!=<sp/>CAN_TG_SUCCESS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Erreur...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Envoyer<sp/>une<sp/>pression</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>pressure<sp/>=<sp/>read_sensor();<sp/><sp/>//<sp/>0-65535</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(set_value(&quot;N2OPS&quot;,<sp/>pressure)<sp/>!=<sp/>CAN_TG_SUCCESS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Erreur...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Envoyer<sp/>le<sp/>timestamp</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>time_ms<sp/>=<sp/>get_timestamp();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_value(&quot;TIME&quot;,<sp/>time_ms);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/><sp/>Lire<sp/>une<sp/>valeur<sp/>:<sp/>get_value()</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Prototype</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">int<sp/>get_value(const<sp/>char*<sp/>tag_name,<sp/>uint32_t*<sp/>out_value);</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Paramètres</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>Paramètre<sp/>|<sp/>Type<sp/>|<sp/>Description<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|-----------|------|-------------|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`tag_name`<sp/>|<sp/>`const<sp/>char*`<sp/>|<sp/>Nom<sp/>du<sp/>tag<sp/>à<sp/>lire<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`out_value`<sp/>|<sp/>`uint32_t*`<sp/>|<sp/>Pointeur<sp/>vers<sp/>variable<sp/>de<sp/>sortie<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Valeur<sp/>de<sp/>retour</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>**CAN_TG_SUCCESS**<sp/>(0)<sp/>-<sp/>Succès,<sp/>`*out_value`<sp/>est<sp/>valide</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Négatif<sp/>-<sp/>Code<sp/>d&apos;erreur</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Exemples</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">uint32_t<sp/>val_seq;</highlight></codeline>
+<codeline><highlight class="normal">if(get_value(&quot;SEQ&quot;,<sp/>&amp;val_seq)<sp/>==<sp/>CAN_TG_SUCCESS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Séquence:<sp/>%u\n&quot;,<sp/>val_seq);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">uint32_t<sp/>val_battery;</highlight></codeline>
+<codeline><highlight class="normal">if(get_value(&quot;AB&quot;,<sp/>&amp;val_battery)<sp/>==<sp/>CAN_TG_SUCCESS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Batterie:<sp/>%u<sp/>%%\n&quot;,<sp/>val_battery);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">uint32_t<sp/>val_pressure;</highlight></codeline>
+<codeline><highlight class="normal">if(get_value(&quot;N2OPS&quot;,<sp/>&amp;val_pressure)<sp/>==<sp/>CAN_TG_SUCCESS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Pression<sp/>N2O:<sp/>%u<sp/>Pa\n&quot;,<sp/>val_pressure);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/><sp/>Workflow<sp/>complet<sp/>:<sp/>set<sp/>/<sp/>get<sp/>/<sp/>send</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Scénario<sp/>d&apos;exemple</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;TAGCAN.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;stm32f1xx_hal.h&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">CAN_HandleTypeDef<sp/>hcan;</highlight></codeline>
+<codeline><highlight class="normal">uint8_t<sp/>TxData[8];</highlight></codeline>
+<codeline><highlight class="normal">CAN_TxHeaderTypeDef<sp/>TxHeader;</highlight></codeline>
+<codeline><highlight class="normal">int32_t<sp/>TxMailbox;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Étape<sp/>1:<sp/>Initialisation<sp/>(une<sp/>fois<sp/>au<sp/>démarrage)</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>init_system(void)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>init_com();<sp/><sp/>//<sp/>Appelle<sp/>init_data_container(),<sp/>init_tag_manager(),<sp/>set_tag(),<sp/>etc.</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Étape<sp/>2:<sp/>Boucle<sp/>de<sp/>mise<sp/>à<sp/>jour<sp/>périodique</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>periodic_10ms_task(void)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/>uint8_t<sp/>seq<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Préparer<sp/>les<sp/>données</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>seq<sp/>=<sp/>(seq<sp/>+<sp/>1)<sp/>%<sp/>8;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_value(&quot;SEQ&quot;,<sp/>seq);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_value(&quot;HB&quot;,<sp/>1);<sp/><sp/>//<sp/>Heartbeat<sp/>actif</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_value(&quot;AB&quot;,<sp/>read_adc_battery());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_value(&quot;EDC&quot;,<sp/>get_command_state());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>set_value(&quot;TIME&quot;,<sp/>HAL_GetTick());</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Envoyer<sp/>le<sp/>frame<sp/>CAN</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(HAL_CAN_AddTxMessage(&amp;hcan,<sp/>&amp;TxHeader,<sp/>TxData,<sp/>&amp;TxMailbox)<sp/>!=<sp/>HAL_OK)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Erreur<sp/>d&apos;envoi...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Étape<sp/>3:<sp/>Callback<sp/>de<sp/>réception<sp/>(déclenchée<sp/>par<sp/>interruption)</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef<sp/>*hcan)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>CAN_RxHeaderTypeDef<sp/>RxHeader;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>RxData[8];</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Recevoir<sp/>le<sp/>mensaje</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(HAL_CAN_GetRxMessage(hcan,<sp/>CAN_RX_FIFO0,<sp/>&amp;RxHeader,<sp/>RxData)<sp/>==<sp/>HAL_OK)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Copier<sp/>dans<sp/>le<sp/>buffer<sp/>de<sp/>TAGCAN</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>can_simulate_send_receive(RxData,<sp/>NULL);<sp/><sp/>//<sp/>ou<sp/>autre<sp/>traitement</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Lire<sp/>les<sp/>valeurs<sp/>reçues</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>remote_seq,<sp/>remote_battery;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>get_value(&quot;SEQ&quot;,<sp/>&amp;remote_seq);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>get_value(&quot;AB&quot;,<sp/>&amp;remote_battery);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(&quot;Nœud<sp/>distant:<sp/>SEQ=%u,<sp/>Batterie=%u%%\n&quot;,<sp/>remote_seq,<sp/>remote_battery);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">int<sp/>main(void)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_Init();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MX_CAN_Init();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>init_system();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while(1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>periodic_10ms_task();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/><sp/>Bonnes<sp/>pratiques</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/><sp/>À<sp/>faire<sp/>|<sp/><sp/>À<sp/>éviter<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|-----------|-----------|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>Vérifier<sp/>la<sp/>valeur<sp/>de<sp/>retour<sp/>de<sp/>`set_value()`<sp/>|<sp/>Ignorer<sp/>les<sp/>codes<sp/>d&apos;erreur<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>Vérifier<sp/>la<sp/>valeur<sp/>de<sp/>retour<sp/>de<sp/>`get_value()`<sp/>|<sp/>Utiliser<sp/>`out_value`<sp/>sans<sp/>vérification<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>Nommer<sp/>les<sp/>tags<sp/>de<sp/>façon<sp/>explicite<sp/>|<sp/>Utiliser<sp/>des<sp/>noms<sp/>génériques<sp/>(&quot;VAL1&quot;,<sp/>&quot;VAL2&quot;)<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>Dimensionner<sp/>les<sp/>tags<sp/>selon<sp/>les<sp/>besoins<sp/>|<sp/>Allouer<sp/>trop<sp/>de<sp/>bits<sp/>(gaspillage)<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>Prévoir<sp/>le<sp/>cycle<sp/>des<sp/>valeurs<sp/>(ex:<sp/>seq<sp/>0-7<sp/>avec<sp/>3<sp/>bits)<sp/>|<sp/>Dépasser<sp/>la<sp/>limite<sp/>d&apos;un<sp/>tag<sp/>sans<sp/>gérer<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>Documenter<sp/>votre<sp/>schéma<sp/>de<sp/>tags<sp/>|<sp/>Laisser<sp/>du<sp/>code<sp/>sans<sp/>commentaires<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/><sp/>Schéma<sp/>de<sp/>tags<sp/>recommandé</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Pour<sp/>un<sp/>système<sp/>similaire<sp/>à<sp/>l&apos;exemple,<sp/>structurez<sp/>les<sp/>tags<sp/>comme<sp/>ceci<sp/>en<sp/>commentaire<sp/>:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">/*</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>SCHÉMA<sp/>DE<sp/>TAGS<sp/>CAN<sp/>(ID<sp/>0x123)</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>══════════════════════════════════════════════════════════════</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>Byte<sp/>0:<sp/>[HB(1)<sp/>|<sp/>SEQ(3)<sp/>|<sp/>CI(2)<sp/>|<sp/>XX(2)]</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>Byte<sp/>1:<sp/>[AB(7)<sp/>|<sp/>YY(1)]</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>Byte<sp/>2-3:<sp/>[EDC(4)<sp/>|<sp/>PADDING(12)]</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>Byte<sp/>4-5:<sp/>[N2OPS(16)]<sp/><sp/><sp/><sp/><sp/><sp/><sp/>--<sp/>Pression<sp/>N2O<sp/>(Pa)</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>Byte<sp/>6-7:<sp/>[TLC(12)<sp/>|<sp/>N2ODVS(1)<sp/>|<sp/>N2OIV(1)<sp/>|<sp/>N2OMV(1)<sp/>|<sp/>XX(1)]</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>Total:<sp/>15<sp/>bits<sp/>utilisés,<sp/>reste<sp/>pour<sp/>extension</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*/</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Voir<sp/>aussi<sp/>:</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[03_DONNEES_CAN.md](03_DONNEES_CAN.md)<sp/>-<sp/>Utilisation<sp/>avancée<sp/>du<sp/>buffer</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[05_EXEMPLES_COMPLETS.md](05_EXEMPLES_COMPLETS.md)<sp/>-<sp/>Exemples<sp/>concrets</highlight></codeline>
+    </programlisting>
+    <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/guide_utilisation/02_GESTION_TAGS.md"/>
+  </compounddef>
+</doxygen>

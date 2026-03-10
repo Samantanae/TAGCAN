@@ -1,8 +1,9 @@
 var searchData=
 [
-  ['test_0',['TEST',['../main_8c.html#aa193df92133f441f2a0efd722c3962f9',1,'TEST(const char *name, const bool condition):&#160;main.c'],['../test__utils_8h.html#aa193df92133f441f2a0efd722c3962f9',1,'TEST(const char *name, const bool condition):&#160;main.c']]],
-  ['test_5f_1',['TEST_',['../test__utils_8c.html#aa8146fc4ef1bddae797d44b5daba7f97',1,'test_utils.c']]],
-  ['test_5feq_5fint_2',['TEST_EQ_INT',['../main_8c.html#a67a63463b204713946cce11511fc9231',1,'TEST_EQ_INT(const char *name, const int val_1, const int val_2):&#160;main.c'],['../test__utils_8h.html#a67a63463b204713946cce11511fc9231',1,'TEST_EQ_INT(const char *name, const int val_1, const int val_2):&#160;main.c']]],
-  ['test_5feq_5fint_5f_3',['TEST_EQ_INT_',['../test__utils_8c.html#ad232e9e8300208f8e732e9a9426dab3e',1,'test_utils.c']]],
-  ['test_5fprint_4',['test_print',['../main_8c.html#a9c4bb6f6d00e76eae45e966a4c628178',1,'main.c']]]
+  ['set_5fname_5ftag_0',['set_name_tag',['../tag__manager_8c.html#a9963af2c23a14e289a3ff39769ea4eeb',1,'tag_manager.c']]],
+  ['set_5fnew_5ftag_5f9_5fto_5f16_1',['set_new_tag_9_to_16',['../tag__manager_8c.html#a30325d29d4baf058d75e6f3c269341af',1,'tag_manager.c']]],
+  ['set_5ftag_2',['set_tag',['../gestion__tag_8h.html#a7301f247665ed1c0504f27602b3cf012',1,'set_tag(const char *tag_name, uint8_t n_bit):&#160;tag_manager.c'],['../tag__manager_8c.html#a7dd7e8cfc97d378d44e7c63bd9f49931',1,'set_tag(const char *tag_name, uint8_t siz):&#160;tag_manager.c']]],
+  ['set_5fval_5ftxdata_3',['set_val_TxData',['../data__container_8h.html#a45840c759151338fe992664f4a21c4f7',1,'set_val_TxData(uint8_t *TxDataArray):&#160;data_container.c'],['../data__container_8c.html#a45840c759151338fe992664f4a21c4f7',1,'set_val_TxData(uint8_t *TxDataArray):&#160;data_container.c']]],
+  ['set_5fvalue_4',['set_value',['../data__container_8h.html#aa84538f1ab0c319056787e9674157405',1,'set_value(const char *tag_name, uint32_t value):&#160;data_container.c'],['../data__container_8c.html#ae30fab9c73b624e37f064c836fefb7de',1,'set_value(const char *tag_name, uint32_t value):&#160;data_container.c']]],
+  ['somme_5fother_5ftest_5',['somme_other_test',['../main_8c.html#a4f26f5b24d899127d66338ba3bfd7f1b',1,'main.c']]]
 ];

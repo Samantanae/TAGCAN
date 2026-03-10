@@ -8,13 +8,13 @@
 <para><anchor xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2documentation_2_a_p_i___r_e_f_e_r_e_n_c_e_1autotoc_md0"/></para>
 <section xml:id="_md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2documentation_2_a_p_i___r_e_f_e_r_e_n_c_e_1autotoc_md1">
 <title>Vue d&apos;ensemble</title>
-<para>TAGCAN gere un payload CAN de 8 octets (<computeroutput><link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">TxData</link></computeroutput>) et permet:</para>
+<para>TAGCAN gere un payload CAN de 8 octets (<computeroutput><link linkend="_com__utils_8h_1af553c31425b32bd9c020380c942ed3bd">TxData</link></computeroutput>) et permet:</para>
 
 <para><itemizedlist>
 <listitem>
 <para>de declarer des tags (<computeroutput><link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link></computeroutput>) avec une taille en bits,</para>
 </listitem><listitem>
-<para>d&apos;ecrire une valeur dans <computeroutput><link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">TxData</link></computeroutput> via un tag (<computeroutput><link linkend="_data__container_8h_1aa84538f1ab0c319056787e9674157405">set_value</link></computeroutput>),</para>
+<para>d&apos;ecrire une valeur dans <computeroutput><link linkend="_com__utils_8h_1af553c31425b32bd9c020380c942ed3bd">TxData</link></computeroutput> via un tag (<computeroutput><link linkend="_data__container_8h_1aa84538f1ab0c319056787e9674157405">set_value</link></computeroutput>),</para>
 </listitem><listitem>
 <para>de relire une valeur via un tag (<computeroutput><link linkend="_data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f">get_value</link></computeroutput>).</para>
 </listitem></itemizedlist>
@@ -45,7 +45,7 @@
 </listitem><listitem>
 <para><computeroutput>n_bits</computeroutput>: taille du tag en bits.</para>
 </listitem><listitem>
-<para><computeroutput>byte_idx_a</computeroutput>, <computeroutput>byte_idx_b</computeroutput>: index des octets utilises dans <computeroutput><link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">TxData</link></computeroutput>.</para>
+<para><computeroutput>byte_idx_a</computeroutput>, <computeroutput>byte_idx_b</computeroutput>: index des octets utilises dans <computeroutput><link linkend="_com__utils_8h_1af553c31425b32bd9c020380c942ed3bd">TxData</link></computeroutput>.</para>
 </listitem><listitem>
 <para><computeroutput>bit_pos_a</computeroutput>, <computeroutput>bit_pos_b</computeroutput>: position des bits dans les octets.</para>
 </listitem></itemizedlist>
@@ -61,7 +61,7 @@
 </listitem><listitem>
 <para><computeroutput>uint8_t <link linkend="_tag__manager_8h_1af12845c0234390db7498ec51e94f7d58">g_bytes_used</link>[<link linkend="_config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1">N_BYTES</link>]</computeroutput>: occupation des octets.</para>
 </listitem><listitem>
-<para><computeroutput>uint8_t <link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">TxData</link>[<link linkend="_config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1">N_BYTES</link>]</computeroutput>: buffer CAN (8 octets).</para>
+<para><computeroutput>uint8_t <link linkend="_com__utils_8h_1af553c31425b32bd9c020380c942ed3bd">TxData</link>[<link linkend="_config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1">N_BYTES</link>]</computeroutput>: buffer CAN (8 octets).</para>
 </listitem></itemizedlist>
 </para>
 </section>
@@ -79,7 +79,7 @@
 </listitem><listitem>
 <para><computeroutput>int <link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag(const char* tag_name, uint8_t n_bit)</link></computeroutput><itemizedlist>
 <listitem>
-<para>Declare un tag et lui alloue une zone dans <computeroutput><link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">TxData</link></computeroutput>.</para>
+<para>Declare un tag et lui alloue une zone dans <computeroutput><link linkend="_com__utils_8h_1af553c31425b32bd9c020380c942ed3bd">TxData</link></computeroutput>.</para>
 </listitem><listitem>
 <para>Implementation observee: accepte les tailles <computeroutput>1..16</computeroutput> (pas seulement <computeroutput>1, 3, 4, 8, 16</computeroutput>).</para>
 </listitem><listitem>
@@ -103,13 +103,13 @@
 <listitem>
 <para><computeroutput>void <link linkend="_data__container_8h_1a129f017feb0712be1dcf7932e6035aa0">init_data_container(void)</link></computeroutput><itemizedlist>
 <listitem>
-<para>Met <computeroutput><link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">TxData</link></computeroutput> a zero.</para>
+<para>Met <computeroutput><link linkend="_com__utils_8h_1af553c31425b32bd9c020380c942ed3bd">TxData</link></computeroutput> a zero.</para>
 </listitem></itemizedlist>
 </para>
 </listitem><listitem>
 <para><computeroutput>int <link linkend="_data__container_8h_1aa84538f1ab0c319056787e9674157405">set_value(const char* tag_name, uint32_t value)</link></computeroutput><itemizedlist>
 <listitem>
-<para>Ecrit la valeur dans <computeroutput><link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">TxData</link></computeroutput> selon la definition du tag.</para>
+<para>Ecrit la valeur dans <computeroutput><link linkend="_com__utils_8h_1af553c31425b32bd9c020380c942ed3bd">TxData</link></computeroutput> selon la definition du tag.</para>
 </listitem><listitem>
 <para>Debordement detecte via <computeroutput>value &gt;= (1ULL &lt;&lt; tag-&gt;n_bits)</computeroutput>.</para>
 </listitem></itemizedlist>
@@ -117,7 +117,7 @@
 </listitem><listitem>
 <para><computeroutput>int <link linkend="_data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f">get_value(const char* tag_name, uint32_t* out_value)</link></computeroutput><itemizedlist>
 <listitem>
-<para>Lit la valeur d&apos;un tag depuis <computeroutput><link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">TxData</link></computeroutput>.</para>
+<para>Lit la valeur d&apos;un tag depuis <computeroutput><link linkend="_com__utils_8h_1af553c31425b32bd9c020380c942ed3bd">TxData</link></computeroutput>.</para>
 </listitem></itemizedlist>
 </para>
 </listitem><listitem>
@@ -135,7 +135,7 @@
 </listitem><listitem>
 <para><computeroutput>void <link linkend="_data__container_8h_1a45840c759151338fe992664f4a21c4f7">set_val_TxData(uint8_t *TxDataArray)</link></computeroutput><itemizedlist>
 <listitem>
-<para>Copie un tableau externe vers <computeroutput><link linkend="_data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1">TxData</link></computeroutput>.</para>
+<para>Copie un tableau externe vers <computeroutput><link linkend="_com__utils_8h_1af553c31425b32bd9c020380c942ed3bd">TxData</link></computeroutput>.</para>
 </listitem></itemizedlist>
 </para>
 </listitem></itemizedlist>

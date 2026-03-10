@@ -1,0 +1,240 @@
+.TH "md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n" 3 "TAGCAN" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2guide__utilisation_201___i_n_i_t_i_a_l_i_s_a_t_i_o_n \- 01 - Initialisation de TAGCAN 
+.PP
+
+.SH "Objectif"
+.PP
+Configurer le système TAGCAN et le bus CAN pour pouvoir communiquer avec d'autres nœuds CAN\&.
+.SH "Vue d'ensemble du processus"
+.PP
+L'initialisation suit ces étapes :
+
+.PP
+.PP
+.nf
+1\&. init_com() (point d'appel unique)
+   ├─ CAN_init_TAGCAN()
+   │  ├─ init_data_container()     \-> Efface le buffer TxData
+   │  └─ init_tag_manager()        \-> Initialise la gestion des tags
+   │
+   ├─ CAN_setup_TAG()              \-> Crée les tags applicatifs
+   │  (set_tag pour chaque variable)
+   │
+   ├─ CAN_setup_DF()               \-> Configure le header CAN
+   │  (ID, type de frame, DLC)
+   │
+   └─ HAL_CAN_ActivateNotification \-> Active les interruptions RX
+.fi
+.PP
+.SH "Détail de chaque étape"
+.PP
+.SS "Étape 1 : init_data_container()"
+Réinitialise le buffer de données CAN à zéro\&.
+
+.PP
+.PP
+.nf
+void init_data_container(void);
+.fi
+.PP
+
+.PP
+Paramètre  Type  Description  -  -  (aucun)  
+
+.PP
+\fBEffet\fP :
+.IP "\(bu" 2
+Vide complètement le buffer \fR\fBTxData\fP[8]\fP
+.IP "\(bu" 2
+Doit être appelé (au moins une fois) lors du démarrage 
+.PP
+.SH "- Atention: un appel en cours d'exécution réinitialiseras les valeurs à 0\&."
+.PP
+.SS "Étape 2 : init_tag_manager()"
+Initialise le gestionnaire de tags et efface tous les tags existants\&.
+
+.PP
+.PP
+.nf
+void init_tag_manager(void);
+.fi
+.PP
+
+.PP
+\fBNote\fP : Après cet appel, tous les tags doivent être redéfinis avec \fR\fBset_tag()\fP\fP\&.
+
+.PP
+.PP
+.SS "Étape 3 : CAN_setup_TAG()"
+Crée les tags applicatifs en fonction de vos besoins\&.
+
+.PP
+.PP
+.nf
+void CAN_setup_TAG(void) {
+    set_tag("SEQ", 3);        // Compteur de séquences (3 bits)
+    set_tag("HB", 1);         // Watchdog HeartBeat (1 bit)
+    set_tag("CI", 2);         // Continuité igniter (2 bits)
+    set_tag("AB", 7);         // Alim\&. Batterie en % (7 bits)
+    set_tag("EDC", 4);        // États des commandes (4 bits)
+    set_tag("N2OPS", 16);     // Capteur pression N2O (16 bits)
+    set_tag("TLC", 12);       // Thrust Load Cell (12 bits)
+    set_tag("N2ODVS", 1);     // État soupape Dump N2O (1 bit)
+    set_tag("N2OIV", 1);      // Valve igniter N2O (1 bit)
+    set_tag("N2OMV", 1);      // Soupape principale N2O (1 bit)
+    set_tag("TIME", 16);      // Timestamp en ms (16 bits)
+}
+.fi
+.PP
+
+.PP
+\fBParamètres de \fBset_tag()\fP\fP :
+
+.PP
+.PP
+.nf
+int set_tag(const char* tag_name, uint8_t n_bit);
+.fi
+.PP
+
+.PP
+Paramètre  Type  Description  \fRtag_name\fP  \fRconst char*\fP  Nom unique du tag (ex\&. "SEQ")  \fRn_bit\fP  \fRuint8_t\fP  Nombre de bits (1 à 16)  
+
+.PP
+\fBValeur de retour\fP :
+.IP "\(bu" 2
+Code de succès ou code d'erreur
+.IP "\(bu" 2
+À consulter pour débugger (voir \fR\fBdocumentation/API_REFERENCE\&.md\fP\fP)
+.PP
+
+.PP
+.PP
+.SS "Étape 4 : CAN_setup_DF()"
+Configure le header de transmission CAN (ID, type de frame, etc\&.)\&.
+
+.PP
+.PP
+.nf
+void CAN_setup_DF(int32_t std_id) {
+    std_id &= 0x7FFU;                // Masque pour ID standard 11 bits
+    TxHeader\&.IDE = CAN_ID_STD;       // Utiliser ID standard (non étendu)
+    TxHeader\&.StdId = std_id;         // Assigner l'ID CAN
+    TxHeader\&.RTR = CAN_RTR_DATA;     // Mode données (non RTR)
+    TxHeader\&.DLC = 8;                // Longueur = 8 octets
+}
+.fi
+.PP
+
+.PP
+\fBPoints importants\fP :
+.IP "\(bu" 2
+\fRIDE = CAN_ID_STD\fP -> utilise les IDs standards (11 bits)
+.IP "\(bu" 2
+\fRRTR = CAN_RTR_DATA\fP -> frame de données (pas une requête)
+.IP "\(bu" 2
+\fRDLC = 8\fP -> longueur fixe du payload (8 octets)
+.IP "\(bu" 2
+\fRStdId\fP -> l'identifiant unique du message CAN
+.PP
+
+.PP
+.PP
+.SS "Étape 5 : Activer les interruptions"
+.PP
+.nf
+if(HAL_CAN_ActivateNotification(&hcan, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK) {
+    Error_Handler();
+}
+.fi
+.PP
+
+.PP
+\fBExplications\fP :
+.IP "\(bu" 2
+Permet de recevoir les messages CAN par interruption (plutôt que polling)
+.IP "\(bu" 2
+\fRCAN_IT_RX_FIFO0_MSG_PENDING\fP -> déclenche une IRQ à la réception d'un message dans FIFO0
+.IP "\(bu" 2
+Nécessite l'implémentation du callback : \fRvoid \fBHAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)\fP\fP
+.PP
+
+.PP
+.PP
+.SH "Code complet d'initialisation"
+.PP
+.PP
+.nf
+#include "com_utils\&.h"
+#include "TAGCAN\&.h"
+
+void init_com(void) {
+    // Étape 1 : Initialiser les conteneurs de données
+    CAN_init_TAGCAN();
+
+    // Étape 2 : Créer les tags applicatifs
+    CAN_setup_TAG();
+
+    // Étape 3 : Configurer le header CAN
+    CAN_setup_DF(0x123);  // ID CAN = 0x123
+
+    // Étape 4 : Activer la réception par interruption
+    if(HAL_CAN_ActivateNotification(&hcan, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK) {
+        Error_Handler();
+    }
+
+    //  Système TAGCAN prêt !
+}
+
+// À appeler une seule fois dans main() au démarrage
+int main(void) {
+    HAL_Init();
+    MX_CAN_Init();      // Initialisation du module CAN matériel
+
+    init_com();         // Initialisation TAGCAN
+
+    // Boucle principale\&.\&.\&.
+    while(1) {
+        // Votre code
+    }
+}
+.fi
+.PP
+
+.PP
+.PP
+.SH "Points d'attention"
+.PP
+Point  Détail  \fBOrdre d'appel\fP  Toujours : \fR\fBinit_data_container()\fP\fP -> \fR\fBinit_tag_manager()\fP\fP -> \fR\fBset_tag()\fP\fP  \fBAppel unique\fP  \fR\fBinit_com()\fP\fP doit être appelée \fBune seule fois\fP au démarrage  \fBRéinitialisation\fP  Si vous appelez \fR\fBinit_tag_manager()\fP\fP à nouveau, tous les tags doivent être recréés  \fBConfiguration matérielle\fP  Le module CAN STM32 (HAL) doit être initialisé \fBavant\fP TAGCAN  \fBID CAN unique\fP  Chaque nœud du réseau doit avoir un ID CAN unique  
+
+.PP
+.PP
+.SH "Vérification"
+.PP
+Après initialisation :
+.IP "\(bu" 2
+\fR\fBTxData\fP[8]\fP est rempli de zéros
+.IP "\(bu" 2
+Les tags sont créés et prêts à l'emploi
+.IP "\(bu" 2
+Le header \fR\fBTxHeader\fP\fP est configuré avec votre ID CAN
+.IP "\(bu" 2
+Les interruptions CAN sont actives
+.IP "\(bu" 2
+Prêt pour \fR\fBset_value()\fP\fP et \fR\fBget_value()\fP\fP
+.PP
+
+.PP
+.PP
+
+.PP
+Voir aussi :
+.IP "\(bu" 2
+\fB02_GESTION_TAGS\&.md\fP - Utiliser les tags
+.IP "\(bu" 2
+\fB03_DONNEES_CAN\&.md\fP - Gérer les données CAN 
+.PP
+

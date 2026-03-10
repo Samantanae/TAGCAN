@@ -1,0 +1,844 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.0" xml:lang="en-US">
+  <compounddef id="com__utils_8c" kind="file" language="C++">
+    <compoundname>com_utils.c</compoundname>
+    <includes refid="com__utils_8h" local="yes">com_utils.h</includes>
+    <includes refid="data__container_8h" local="yes">../../TAGCAN/include/sub_include/data_container.h</includes>
+    <incdepgraph>
+      <node id="3">
+        <label>../../TAGCAN/TAGCAN.h</label>
+        <link refid="_t_a_g_c_a_n_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>com_utils.c</label>
+        <link refid="com__utils_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>com_utils.h</label>
+        <link refid="com__utils_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>include/config_value.h</label>
+        <link refid="config__value_8h"/>
+      </node>
+      <node id="5">
+        <label>include/gestion_tag.h</label>
+        <link refid="gestion__tag_8h"/>
+      </node>
+      <node id="6">
+        <label>include/sub_include/data_container.h</label>
+        <link refid="data__container_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>tag_manager.h</label>
+        <link refid="tag__manager_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>cmsis_gcc.h</label>
+      </node>
+      <node id="9">
+        <label>stdbool.h</label>
+      </node>
+      <node id="7">
+        <label>stdint.h</label>
+      </node>
+      <node id="11">
+        <label>stm32f103xb.h</label>
+      </node>
+      <node id="12">
+        <label>stm32f1xx.h</label>
+      </node>
+      <node id="13">
+        <label>stm32f1xx_hal_can.h</label>
+      </node>
+      <node id="14">
+        <label>stm32f1xx_hal_def.h</label>
+      </node>
+      <node id="15">
+        <label>stm32f1xx_hal_flash.h</label>
+      </node>
+      <node id="16">
+        <label>stm32f1xx_hal_rcc.h</label>
+      </node>
+      <node id="17">
+        <label>stm32f1xx_hal_rcc_ex.h</label>
+      </node>
+      <node id="18">
+        <label>sys/_stdint.h</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="com__utils_8c_1a3e35a666d459f2ac92fc7c35334ff0ff" prot="public" static="no" mutable="no">
+        <type>CAN_TxHeaderTypeDef</type>
+        <definition>CAN_TxHeaderTypeDef TxHeader</definition>
+        <argsstring></argsstring>
+        <name>TxHeader</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" line="9" column="21" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="9" bodyend="-1"/>
+        <referencedby refid="com__utils_8c_1a8d08a1d9a28114044f9beb2adb97ee7a" compoundref="com__utils_8c" startline="123" endline="127">CAN_send_msg</referencedby>
+        <referencedby refid="com__utils_8c_1a041f556ab8d1bfd3c0891c94b0f0d8c5" compoundref="com__utils_8c" startline="59" endline="65">CAN_setup_DF</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="com__utils_8c_1a6ee6e13063b860648180eea65852cc71" prot="public" static="no" mutable="no">
+        <type>CAN_RxHeaderTypeDef</type>
+        <definition>CAN_RxHeaderTypeDef RxHeader</definition>
+        <argsstring></argsstring>
+        <name>RxHeader</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" line="10" column="21" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="10" bodyend="-1"/>
+        <referencedby refid="com__utils_8c_1a7368d39e78009c017d6f81ccf33b9b2c" compoundref="com__utils_8c" startline="169" endline="186">HAL_CAN_RxFifo0MsgPendingCallback</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="com__utils_8c_1a14629afcc7f0b2d62c2b617b07d98184" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t RxData[8]</definition>
+        <argsstring>[8]</argsstring>
+        <name>RxData</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" line="13" column="21" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="13" bodyend="-1"/>
+        <referencedby refid="com__utils_8c_1a7368d39e78009c017d6f81ccf33b9b2c" compoundref="com__utils_8c" startline="169" endline="186">HAL_CAN_RxFifo0MsgPendingCallback</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="com__utils_8c_1a2bf70f5aaf32f6470e208580dc8bed7b" prot="public" static="no" mutable="no">
+        <type>int8_t</type>
+        <definition>int8_t val_SEQ</definition>
+        <argsstring></argsstring>
+        <name>val_SEQ</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" line="16" column="8" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="com__utils_8c_1ad007767ce463586424d87bdafe0ae84a" prot="public" static="no" mutable="no">
+        <type>int8_t</type>
+        <definition>int8_t val_HB</definition>
+        <argsstring></argsstring>
+        <name>val_HB</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" line="17" column="8" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="com__utils_8c_1a6ad8282033ebc654142cd71d2633ab3a" prot="public" static="no" mutable="no">
+        <type>int8_t</type>
+        <definition>int8_t val_CI</definition>
+        <argsstring></argsstring>
+        <name>val_CI</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" line="18" column="8" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="com__utils_8c_1a563c97929d53dfd65c6722da474e57de" prot="public" static="no" mutable="no">
+        <type>int8_t</type>
+        <definition>int8_t val_AB</definition>
+        <argsstring></argsstring>
+        <name>val_AB</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" line="19" column="8" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="com__utils_8c_1a0d03ea68010339af49c95b45d72f1584" prot="public" static="no" mutable="no">
+        <type>int8_t</type>
+        <definition>int8_t val_EDC</definition>
+        <argsstring></argsstring>
+        <name>val_EDC</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" line="20" column="8" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="com__utils_8c_1a52e20247890d4a078c8bf6e27a7d9cdb" prot="public" static="no" mutable="no">
+        <type>int16_t</type>
+        <definition>int16_t val_N2OPS</definition>
+        <argsstring></argsstring>
+        <name>val_N2OPS</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" line="21" column="9" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="com__utils_8c_1af54835c185cf3ea1e1fd9db7a178d5b4" prot="public" static="no" mutable="no">
+        <type>int16_t</type>
+        <definition>int16_t val_TLC</definition>
+        <argsstring></argsstring>
+        <name>val_TLC</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" line="22" column="9" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="com__utils_8c_1aa2826abd1636498ecf600da3165d5a5a" prot="public" static="no" mutable="no">
+        <type>int8_t</type>
+        <definition>int8_t val_N2ODVS</definition>
+        <argsstring></argsstring>
+        <name>val_N2ODVS</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" line="23" column="8" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="com__utils_8c_1a686cd636907dfc59d7490e9a1289d63e" prot="public" static="no" mutable="no">
+        <type>int8_t</type>
+        <definition>int8_t val_N2OIV</definition>
+        <argsstring></argsstring>
+        <name>val_N2OIV</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" line="24" column="8" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="com__utils_8c_1aa862edfd1ccb9792c7450773c3a8acdc" prot="public" static="no" mutable="no">
+        <type>int8_t</type>
+        <definition>int8_t val_N2OMV</definition>
+        <argsstring></argsstring>
+        <name>val_N2OMV</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" line="25" column="8" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="com__utils_8c_1a6e3f5faa7238533e87c3c5d782104de7" prot="public" static="no" mutable="no">
+        <type>int16_t</type>
+        <definition>int16_t val_TIME</definition>
+        <argsstring></argsstring>
+        <name>val_TIME</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" line="26" column="9" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="com__utils_8c_1a3021d675302697aad2387d68ea92f5a6" prot="public" static="no" mutable="no">
+        <type>int8_t</type>
+        <definition>int8_t out_Rx[8]</definition>
+        <argsstring>[8]</argsstring>
+        <name>out_Rx</name>
+        <initializer>= {0,0,0,0,0,0,0,0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" line="27" column="8" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="27" bodyend="27"/>
+        <referencedby refid="com__utils_8c_1a7368d39e78009c017d6f81ccf33b9b2c" compoundref="com__utils_8c" startline="169" endline="186">HAL_CAN_RxFifo0MsgPendingCallback</referencedby>
+        <referencedby refid="com__utils_8c_1ae53b4eae23a605e3ece8f3a026f350bf" compoundref="com__utils_8c" startline="117" endline="121">update_TagData</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="com__utils_8c_1a414b5e592b824fe8c753d662b5f0f1f5" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int datacheck</definition>
+        <argsstring></argsstring>
+        <name>datacheck</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" line="30" column="5" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="30" bodyend="-1"/>
+        <referencedby refid="com__utils_8c_1a7368d39e78009c017d6f81ccf33b9b2c" compoundref="com__utils_8c" startline="169" endline="186">HAL_CAN_RxFifo0MsgPendingCallback</referencedby>
+        <referencedby refid="com__utils_8c_1ae53b4eae23a605e3ece8f3a026f350bf" compoundref="com__utils_8c" startline="117" endline="121">update_TagData</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="com__utils_8c_1a113c66c2e8974cce9e7067bcadc1b1ad" prot="public" static="no" mutable="no">
+        <type>int8_t</type>
+        <definition>int8_t TxData_moteur[8]</definition>
+        <argsstring>[8]</argsstring>
+        <name>TxData_moteur</name>
+        <initializer>= {0,0,0,0,0,0,0,0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" line="34" column="8" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="34" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="variable" id="com__utils_8c_1a399e9e1a8ca7222248c0062b1b6b8a4e" prot="public" static="no" mutable="no">
+        <type>int8_t</type>
+        <definition>int8_t RxData_moteur[8]</definition>
+        <argsstring>[8]</argsstring>
+        <name>RxData_moteur</name>
+        <initializer>= {0,0,0,0,0,0,0,0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" line="35" column="8" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="35" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="variable" id="com__utils_8c_1afd0a914dd50d7aa3607d092452037cc1" prot="public" static="no" mutable="no">
+        <type>int32_t</type>
+        <definition>int32_t TxMailbox</definition>
+        <argsstring></argsstring>
+        <name>TxMailbox</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" line="36" column="9" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="36" bodyend="-1"/>
+        <referencedby refid="com__utils_8c_1a8d08a1d9a28114044f9beb2adb97ee7a" compoundref="com__utils_8c" startline="123" endline="127">CAN_send_msg</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="com__utils_8c_1adf9124e89f799fae0f55cc9ed0a94189" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void init_com</definition>
+        <argsstring>(void)</argsstring>
+        <name>init_com</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para>initialise tout les fonction de communication. (point d&apos;appel unique: main) *<zwj/>/ </para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" line="39" column="6" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="39" bodyend="51"/>
+        <references refid="com__utils_8c_1a13d9a1dcda040041c99ca70ab03192d0" compoundref="com__utils_8c" startline="54" endline="57">CAN_init_TAGCAN</references>
+        <references refid="com__utils_8c_1a041f556ab8d1bfd3c0891c94b0f0d8c5" compoundref="com__utils_8c" startline="59" endline="65">CAN_setup_DF</references>
+        <references refid="com__utils_8c_1a91524acc09c84cf5aa22222e3eee50f5" compoundref="com__utils_8c" startline="69" endline="81">CAN_setup_TAG</references>
+        <references refid="com__utils_8h_1ae21c10daa2f8cbd18a0e66bb28a19d2d">hcan</references>
+      </memberdef>
+      <memberdef kind="function" id="com__utils_8c_1a13d9a1dcda040041c99ca70ab03192d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CAN_init_TAGCAN</definition>
+        <argsstring>(void)</argsstring>
+        <name>CAN_init_TAGCAN</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" line="54" column="6" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="54" bodyend="57"/>
+        <references refid="data__container_8h_1a129f017feb0712be1dcf7932e6035aa0" compoundref="data__container_8c" startline="14" endline="20">init_data_container</references>
+        <references refid="gestion__tag_8h_1aab50a8f567be72e656120fd71f3fb435" compoundref="tag__manager_8c" startline="21" endline="36">init_tag_manager</references>
+        <referencedby refid="com__utils_8c_1adf9124e89f799fae0f55cc9ed0a94189" compoundref="com__utils_8c" startline="39" endline="51">init_com</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="com__utils_8c_1a041f556ab8d1bfd3c0891c94b0f0d8c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CAN_setup_DF</definition>
+        <argsstring>(int32_t std_id)</argsstring>
+        <name>CAN_setup_DF</name>
+        <param>
+          <type>int32_t</type>
+          <declname>std_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" line="59" column="6" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="59" bodyend="65"/>
+        <references refid="com__utils_8c_1a3e35a666d459f2ac92fc7c35334ff0ff" compoundref="com__utils_8c" startline="9">TxHeader</references>
+        <referencedby refid="com__utils_8c_1adf9124e89f799fae0f55cc9ed0a94189" compoundref="com__utils_8c" startline="39" endline="51">init_com</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="com__utils_8c_1a91524acc09c84cf5aa22222e3eee50f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CAN_setup_TAG</definition>
+        <argsstring>(void)</argsstring>
+        <name>CAN_setup_TAG</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" line="69" column="6" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="69" bodyend="81"/>
+        <references refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="232" endline="282">set_tag</references>
+        <referencedby refid="com__utils_8c_1adf9124e89f799fae0f55cc9ed0a94189" compoundref="com__utils_8c" startline="39" endline="51">init_com</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="com__utils_8c_1adfa3f55b53f7a0c8e6a7ffbf37fe2545" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>CAN_FilterTypeDef *</type>
+        <definition>CAN_FilterTypeDef * CAN_setup_Filter</definition>
+        <argsstring>(int32_t minimum_id, int32_t maximum_id, int filterBank)</argsstring>
+        <name>CAN_setup_Filter</name>
+        <param>
+          <type>int32_t</type>
+          <declname>minimum_id</declname>
+        </param>
+        <param>
+          <type>int32_t</type>
+          <declname>maximum_id</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>filterBank</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" line="84" column="19" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="84" bodyend="100"/>
+        <references refid="com__utils_8h_1ae21c10daa2f8cbd18a0e66bb28a19d2d">hcan</references>
+      </memberdef>
+      <memberdef kind="function" id="com__utils_8c_1a4aa2d6078cb7f20cad91adb07fdcb5ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void main_loop</definition>
+        <argsstring>(void)</argsstring>
+        <name>main_loop</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" line="112" column="6" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="112" bodyend="115"/>
+        <references refid="com__utils_8c_1a8d08a1d9a28114044f9beb2adb97ee7a" compoundref="com__utils_8c" startline="123" endline="127">CAN_send_msg</references>
+        <references refid="com__utils_8c_1aed4e7ccb92f34e07bbb0839df8a7278f" compoundref="com__utils_8c" startline="137" endline="149">update_all_val_send</references>
+      </memberdef>
+      <memberdef kind="function" id="com__utils_8c_1ae53b4eae23a605e3ece8f3a026f350bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void update_TagData</definition>
+        <argsstring>(void)</argsstring>
+        <name>update_TagData</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" line="117" column="6" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="117" bodyend="121"/>
+        <references refid="com__utils_8c_1a414b5e592b824fe8c753d662b5f0f1f5" compoundref="com__utils_8c" startline="30">datacheck</references>
+        <references refid="com__utils_8c_1a3021d675302697aad2387d68ea92f5a6" compoundref="com__utils_8c" startline="27" endline="27">out_Rx</references>
+      </memberdef>
+      <memberdef kind="function" id="com__utils_8c_1a8d08a1d9a28114044f9beb2adb97ee7a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CAN_send_msg</definition>
+        <argsstring>(void)</argsstring>
+        <name>CAN_send_msg</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" line="123" column="6" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="123" bodyend="127"/>
+        <references refid="com__utils_8h_1ae21c10daa2f8cbd18a0e66bb28a19d2d">hcan</references>
+        <references refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" compoundref="data__container_8c" startline="12">TxData</references>
+        <references refid="com__utils_8c_1a3e35a666d459f2ac92fc7c35334ff0ff" compoundref="com__utils_8c" startline="9">TxHeader</references>
+        <references refid="com__utils_8c_1afd0a914dd50d7aa3607d092452037cc1" compoundref="com__utils_8c" startline="36">TxMailbox</references>
+        <referencedby refid="com__utils_8c_1a4aa2d6078cb7f20cad91adb07fdcb5ae" compoundref="com__utils_8c" startline="112" endline="115">main_loop</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="com__utils_8c_1a132e1d3529f22ab57d3e747370302698" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CAN_change_val</definition>
+        <argsstring>(void)</argsstring>
+        <name>CAN_change_val</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" line="129" column="6" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="129" bodyend="131"/>
+      </memberdef>
+      <memberdef kind="function" id="com__utils_8c_1a429e791d9e107e0be61d4b4c00b13b27" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void update_val</definition>
+        <argsstring>(const char *nom_du_tag, int32_t val)</argsstring>
+        <name>update_val</name>
+        <param>
+          <type>const char *</type>
+          <declname>nom_du_tag</declname>
+        </param>
+        <param>
+          <type>int32_t</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" line="133" column="6" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="133" bodyend="135"/>
+        <references refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" compoundref="tag__manager_8c" startline="232" endline="282">set_tag</references>
+      </memberdef>
+      <memberdef kind="function" id="com__utils_8c_1aed4e7ccb92f34e07bbb0839df8a7278f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void update_all_val_send</definition>
+        <argsstring>(void)</argsstring>
+        <name>update_all_val_send</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" line="137" column="6" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="137" bodyend="149"/>
+        <references refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" compoundref="data__container_8c" startline="44" endline="98">set_value</references>
+        <referencedby refid="com__utils_8c_1a4aa2d6078cb7f20cad91adb07fdcb5ae" compoundref="com__utils_8c" startline="112" endline="115">main_loop</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="com__utils_8c_1a357c3638eed11ace8aff46590f52600a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void update_all_val_receve</definition>
+        <argsstring>(void)</argsstring>
+        <name>update_all_val_receve</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" line="152" column="6" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="152" bodyend="154"/>
+      </memberdef>
+      <memberdef kind="function" id="com__utils_8c_1a7368d39e78009c017d6f81ccf33b9b2c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void HAL_CAN_RxFifo0MsgPendingCallback</definition>
+        <argsstring>(CAN_HandleTypeDef *hcan)</argsstring>
+        <name>HAL_CAN_RxFifo0MsgPendingCallback</name>
+        <param>
+          <type>CAN_HandleTypeDef *</type>
+          <declname>hcan</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" line="169" column="6" bodyfile="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c" bodystart="169" bodyend="186"/>
+        <references refid="com__utils_8c_1a414b5e592b824fe8c753d662b5f0f1f5" compoundref="com__utils_8c" startline="30">datacheck</references>
+        <references refid="com__utils_8h_1ae21c10daa2f8cbd18a0e66bb28a19d2d">hcan</references>
+        <references refid="config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1" compoundref="config__value_8h" startline="9">N_BYTES</references>
+        <references refid="com__utils_8c_1a3021d675302697aad2387d68ea92f5a6" compoundref="com__utils_8c" startline="27" endline="27">out_Rx</references>
+        <references refid="com__utils_8c_1a14629afcc7f0b2d62c2b617b07d98184" compoundref="com__utils_8c" startline="13">RxData</references>
+        <references refid="com__utils_8c_1a6ee6e13063b860648180eea65852cc71" compoundref="com__utils_8c" startline="10">RxHeader</references>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>com_utils.c</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/><sp/>Created<sp/>on:<sp/>4<sp/>Mar<sp/>2026</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>Author:<sp/>Samuel</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="com__utils_8h" kindref="compound">com_utils.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="data__container_8h" kindref="compound">../../TAGCAN/include/sub_include/data_container.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="com__utils_8c_1a3e35a666d459f2ac92fc7c35334ff0ff" refkind="member"><highlight class="normal">CAN_TxHeaderTypeDef<sp/><ref refid="com__utils_8c_1a3e35a666d459f2ac92fc7c35334ff0ff" kindref="member">TxHeader</ref>;</highlight></codeline>
+<codeline lineno="10" refid="com__utils_8c_1a6ee6e13063b860648180eea65852cc71" refkind="member"><highlight class="normal">CAN_RxHeaderTypeDef<sp/><ref refid="com__utils_8c_1a6ee6e13063b860648180eea65852cc71" kindref="member">RxHeader</ref>;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal">CAN_RxHeaderTypeDef<sp/><ref refid="com__utils_8c_1a6ee6e13063b860648180eea65852cc71" kindref="member">RxHeader</ref>;</highlight></codeline>
+<codeline lineno="13" refid="com__utils_8c_1a14629afcc7f0b2d62c2b617b07d98184" refkind="member"><highlight class="normal">uint8_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="com__utils_8c_1a14629afcc7f0b2d62c2b617b07d98184" kindref="member">RxData</ref>[8];</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//<sp/>valeurs</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="com__utils_8c_1a2bf70f5aaf32f6470e208580dc8bed7b" refkind="member"><highlight class="normal">int8_t<sp/><ref refid="com__utils_8c_1a2bf70f5aaf32f6470e208580dc8bed7b" kindref="member">val_SEQ</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="17" refid="com__utils_8c_1ad007767ce463586424d87bdafe0ae84a" refkind="member"><highlight class="normal">int8_t<sp/><ref refid="com__utils_8c_1ad007767ce463586424d87bdafe0ae84a" kindref="member">val_HB</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="18" refid="com__utils_8c_1a6ad8282033ebc654142cd71d2633ab3a" refkind="member"><highlight class="normal">int8_t<sp/><ref refid="com__utils_8c_1a6ad8282033ebc654142cd71d2633ab3a" kindref="member">val_CI</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="19" refid="com__utils_8c_1a563c97929d53dfd65c6722da474e57de" refkind="member"><highlight class="normal">int8_t<sp/><ref refid="com__utils_8c_1a563c97929d53dfd65c6722da474e57de" kindref="member">val_AB</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="20" refid="com__utils_8c_1a0d03ea68010339af49c95b45d72f1584" refkind="member"><highlight class="normal">int8_t<sp/><ref refid="com__utils_8c_1a0d03ea68010339af49c95b45d72f1584" kindref="member">val_EDC</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="21" refid="com__utils_8c_1a52e20247890d4a078c8bf6e27a7d9cdb" refkind="member"><highlight class="normal">int16_t<sp/><ref refid="com__utils_8c_1a52e20247890d4a078c8bf6e27a7d9cdb" kindref="member">val_N2OPS</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="22" refid="com__utils_8c_1af54835c185cf3ea1e1fd9db7a178d5b4" refkind="member"><highlight class="normal">int16_t<sp/><ref refid="com__utils_8c_1af54835c185cf3ea1e1fd9db7a178d5b4" kindref="member">val_TLC</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="23" refid="com__utils_8c_1aa2826abd1636498ecf600da3165d5a5a" refkind="member"><highlight class="normal">int8_t<sp/><ref refid="com__utils_8c_1aa2826abd1636498ecf600da3165d5a5a" kindref="member">val_N2ODVS</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="24" refid="com__utils_8c_1a686cd636907dfc59d7490e9a1289d63e" refkind="member"><highlight class="normal">int8_t<sp/><ref refid="com__utils_8c_1a686cd636907dfc59d7490e9a1289d63e" kindref="member">val_N2OIV</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="25" refid="com__utils_8c_1aa862edfd1ccb9792c7450773c3a8acdc" refkind="member"><highlight class="normal">int8_t<sp/><ref refid="com__utils_8c_1aa862edfd1ccb9792c7450773c3a8acdc" kindref="member">val_N2OMV</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="26" refid="com__utils_8c_1a6e3f5faa7238533e87c3c5d782104de7" refkind="member"><highlight class="normal">int16_t<sp/><ref refid="com__utils_8c_1a6e3f5faa7238533e87c3c5d782104de7" kindref="member">val_TIME</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="27" refid="com__utils_8c_1a3021d675302697aad2387d68ea92f5a6" refkind="member"><highlight class="normal">int8_t<sp/><ref refid="com__utils_8c_1a3021d675302697aad2387d68ea92f5a6" kindref="member">out_Rx</ref>[8]<sp/>=<sp/>{0,0,0,0,0,0,0,0};</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="com__utils_8c_1a414b5e592b824fe8c753d662b5f0f1f5" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="com__utils_8c_1a414b5e592b824fe8c753d662b5f0f1f5" kindref="member">datacheck</ref><sp/>=<sp/>0;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>permet<sp/>d&apos;update<sp/>les<sp/>valeurs<sp/>uniquement<sp/>lors<sp/>de<sp/>la<sp/>reception<sp/>de<sp/>valeurs</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment">//<sp/>module<sp/>pour<sp/>CAN</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>INC_COM_UTILS_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="com__utils_8c_1a113c66c2e8974cce9e7067bcadc1b1ad" refkind="member"><highlight class="normal">int8_t<sp/><ref refid="com__utils_8c_1a113c66c2e8974cce9e7067bcadc1b1ad" kindref="member">TxData_moteur</ref>[8]<sp/>=<sp/>{0,0,0,0,0,0,0,0};</highlight></codeline>
+<codeline lineno="35" refid="com__utils_8c_1a399e9e1a8ca7222248c0062b1b6b8a4e" refkind="member"><highlight class="normal">int8_t<sp/><ref refid="com__utils_8c_1a399e9e1a8ca7222248c0062b1b6b8a4e" kindref="member">RxData_moteur</ref>[8]<sp/>=<sp/>{0,0,0,0,0,0,0,0};</highlight></codeline>
+<codeline lineno="36" refid="com__utils_8c_1afd0a914dd50d7aa3607d092452037cc1" refkind="member"><highlight class="normal">int32_t<sp/><ref refid="com__utils_8c_1afd0a914dd50d7aa3607d092452037cc1" kindref="member">TxMailbox</ref>;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="com__utils_8c_1adf9124e89f799fae0f55cc9ed0a94189" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="com__utils_8c_1adf9124e89f799fae0f55cc9ed0a94189" kindref="member">init_com</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">){</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>init<sp/>module<sp/>extene</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="com__utils_8c_1a13d9a1dcda040041c99ca70ab03192d0" kindref="member">CAN_init_TAGCAN</ref>();</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="com__utils_8c_1a91524acc09c84cf5aa22222e3eee50f5" kindref="member">CAN_setup_TAG</ref>();</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>init<sp/>CAN<sp/>(interne)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="com__utils_8c_1a041f556ab8d1bfd3c0891c94b0f0d8c5" kindref="member">CAN_setup_DF</ref>();</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>init<sp/>msg</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(HAL_CAN_ActivateNotification(&amp;<ref refid="com__utils_8h_1ae21c10daa2f8cbd18a0e66bb28a19d2d" kindref="member">hcan</ref>,<sp/>CAN_IT_RX_FIFO0_MSG_PENDING)!=HAL_OK)</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Error_Handler();</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="com__utils_8c_1a13d9a1dcda040041c99ca70ab03192d0" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="com__utils_8c_1a13d9a1dcda040041c99ca70ab03192d0" kindref="member">CAN_init_TAGCAN</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">){</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="data__container_8h_1a129f017feb0712be1dcf7932e6035aa0" kindref="member">init_data_container</ref>();</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="gestion__tag_8h_1aab50a8f567be72e656120fd71f3fb435" kindref="member">init_tag_manager</ref>();</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="com__utils_8c_1a041f556ab8d1bfd3c0891c94b0f0d8c5" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="com__utils_8c_1a041f556ab8d1bfd3c0891c94b0f0d8c5" kindref="member">CAN_setup_DF</ref>(int32_t<sp/>std_id){</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std_id<sp/>&amp;=<sp/>0x7FFU;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="com__utils_8c_1a3e35a666d459f2ac92fc7c35334ff0ff" kindref="member">TxHeader</ref>.IDE<sp/>=<sp/>CAN_ID_STD;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Standard<sp/>ID<sp/>(11<sp/>bits)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="com__utils_8c_1a3e35a666d459f2ac92fc7c35334ff0ff" kindref="member">TxHeader</ref>.StdId<sp/>=<sp/>std_id;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>id</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="com__utils_8c_1a3e35a666d459f2ac92fc7c35334ff0ff" kindref="member">TxHeader</ref>.RTR<sp/>=<sp/>CAN_RTR_DATA;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>sending<sp/>data</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="com__utils_8c_1a3e35a666d459f2ac92fc7c35334ff0ff" kindref="member">TxHeader</ref>.DLC<sp/>=<sp/>8;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>nb<sp/>of<sp/>bytes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="com__utils_8c_1a91524acc09c84cf5aa22222e3eee50f5" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="com__utils_8c_1a91524acc09c84cf5aa22222e3eee50f5" kindref="member">CAN_setup_TAG</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">){</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" kindref="member">set_tag</ref>(</highlight><highlight class="stringliteral">&quot;SEQ&quot;</highlight><highlight class="normal">,<sp/>3);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//*&gt;Compteur<sp/>de<sp/>séquences<sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" kindref="member">set_tag</ref>(</highlight><highlight class="stringliteral">&quot;HB&quot;</highlight><highlight class="normal">,1);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//*&gt;Watchdog<sp/>HeartBeat<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" kindref="member">set_tag</ref>(</highlight><highlight class="stringliteral">&quot;CI&quot;</highlight><highlight class="normal">,2);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//*&gt;Continuité<sp/>igniter<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" kindref="member">set_tag</ref>(</highlight><highlight class="stringliteral">&quot;AB&quot;</highlight><highlight class="normal">,<sp/>7);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//*&gt;Alim.<sp/>Batetterie<sp/>(%)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" kindref="member">set_tag</ref>(</highlight><highlight class="stringliteral">&quot;EDC&quot;</highlight><highlight class="normal">,<sp/>4);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//*&gt;États<sp/>des<sp/>commandes<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" kindref="member">set_tag</ref>(</highlight><highlight class="stringliteral">&quot;N2OPS&quot;</highlight><highlight class="normal">,16);<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//*&gt;N2O<sp/>Pressure<sp/>Sensor<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" kindref="member">set_tag</ref>(</highlight><highlight class="stringliteral">&quot;TLC&quot;</highlight><highlight class="normal">,12);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//*&gt;Thrust<sp/>Load<sp/>Cell<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" kindref="member">set_tag</ref>(</highlight><highlight class="stringliteral">&quot;N2ODVS&quot;</highlight><highlight class="normal">,1);<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//*&gt;N2O<sp/>Dump<sp/>Valve<sp/>State<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" kindref="member">set_tag</ref>(</highlight><highlight class="stringliteral">&quot;N2OIV&quot;</highlight><highlight class="normal">,1);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//*&gt;N2O<sp/>Igniter<sp/>Valve<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" kindref="member">set_tag</ref>(</highlight><highlight class="stringliteral">&quot;N2OMV&quot;</highlight><highlight class="normal">,1);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//*&gt;N2O<sp/>Main<sp/>Valve<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" kindref="member">set_tag</ref>(</highlight><highlight class="stringliteral">&quot;TIME&quot;</highlight><highlight class="normal">,16);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//*&gt;Timestamp<sp/>(ms)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84" refid="com__utils_8c_1adfa3f55b53f7a0c8e6a7ffbf37fe2545" refkind="member"><highlight class="normal">CAN_FilterTypeDef*<sp/><ref refid="com__utils_8c_1adfa3f55b53f7a0c8e6a7ffbf37fe2545" kindref="member">CAN_setup_Filter</ref>(int32_t<sp/>minimum_id,<sp/>int32_t<sp/>maximum_id,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>filterBank){</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>understanding<sp/>this<sp/>https://youtu.be/JfWlIY0zAIc</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CAN_FilterTypeDef<sp/>canfilterconfig;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>canfilterconfig.FilterActivation<sp/>=<sp/>CAN_FILTER_ENABLE;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>canfilterconfig.FilterBank<sp/>=<sp/>filterBank;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Assign<sp/>and<sp/>Select<sp/>Filter<sp/>Banks</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>canfilterconfig.FilterFIFOAssignment<sp/>=<sp/>CAN_FILTER_FIFO0;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>canfilterconfig.FilterIdHigh<sp/>=<sp/>maximum_id<sp/>&lt;&lt;5;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>canfilterconfig.FilterMaskIdHigh<sp/>=<sp/>maximum_id<sp/>&lt;&lt;<sp/>5;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>canfilterconfig.FilterIdLow<sp/>=<sp/>minimum_id;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>canfilterconfig.FilterMaskIdLow<sp/>=<sp/>minimum_id;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>canfilterconfig.FilterMode<sp/>=<sp/>CAN_FILTERMODE_IDMASK;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>canfilterconfig.FilterScale<sp/>=<sp/>CAN_FILTERSCALE_32BIT;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>16<sp/>ou<sp/>32<sp/>bits<sp/>register</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>canfilterconfig.SlaveStartFilterBank<sp/>=<sp/>20;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>how<sp/>many<sp/>filters<sp/>to<sp/>assign<sp/>to<sp/>the<sp/>CAN1<sp/>(master<sp/>can)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HAL_CAN_ConfigFilter(&amp;<ref refid="com__utils_8h_1ae21c10daa2f8cbd18a0e66bb28a19d2d" kindref="member">hcan</ref>,<sp/>&amp;canfilterconfig);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;canfilterconfig;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight><highlight class="comment">//--------------!!!!-DANS<sp/>LE<sp/>MAIN<sp/>LOOP!!!!!--------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112" refid="com__utils_8c_1a4aa2d6078cb7f20cad91adb07fdcb5ae" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="com__utils_8c_1a4aa2d6078cb7f20cad91adb07fdcb5ae" kindref="member">main_loop</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">){</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="com__utils_8c_1aed4e7ccb92f34e07bbb0839df8a7278f" kindref="member">update_all_val_send</ref>();</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="com__utils_8c_1a8d08a1d9a28114044f9beb2adb97ee7a" kindref="member">CAN_send_msg</ref>();</highlight></codeline>
+<codeline lineno="115"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117" refid="com__utils_8c_1ae53b4eae23a605e3ece8f3a026f350bf" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="com__utils_8c_1ae53b4eae23a605e3ece8f3a026f350bf" kindref="member">update_TagData</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">){</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="com__utils_8c_1a414b5e592b824fe8c753d662b5f0f1f5" kindref="member">datacheck</ref><sp/>==<sp/>1){</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>change_val_to_TagData(&amp;<ref refid="com__utils_8c_1a3021d675302697aad2387d68ea92f5a6" kindref="member">out_Rx</ref>);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123" refid="com__utils_8c_1a8d08a1d9a28114044f9beb2adb97ee7a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="com__utils_8c_1a8d08a1d9a28114044f9beb2adb97ee7a" kindref="member">CAN_send_msg</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">){</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(HAL_CAN_AddTxMessage(&amp;<ref refid="com__utils_8h_1ae21c10daa2f8cbd18a0e66bb28a19d2d" kindref="member">hcan</ref>,<sp/>&amp;<ref refid="com__utils_8c_1a3e35a666d459f2ac92fc7c35334ff0ff" kindref="member">TxHeader</ref>,<sp/><ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref>,<sp/>&amp;<ref refid="com__utils_8c_1afd0a914dd50d7aa3607d092452037cc1" kindref="member">TxMailbox</ref>)!=HAL_OK){</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Error_Handler();</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129" refid="com__utils_8c_1a132e1d3529f22ab57d3e747370302698" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="com__utils_8c_1a132e1d3529f22ab57d3e747370302698" kindref="member">CAN_change_val</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">){</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133" refid="com__utils_8c_1a429e791d9e107e0be61d4b4c00b13b27" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="com__utils_8c_1a429e791d9e107e0be61d4b4c00b13b27" kindref="member">update_val</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>nom_du_tag,<sp/>int32_t<sp/>val){</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" kindref="member">set_tag</ref>(nom_du_tag,<sp/>val);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137" refid="com__utils_8c_1aed4e7ccb92f34e07bbb0839df8a7278f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="com__utils_8c_1aed4e7ccb92f34e07bbb0839df8a7278f" kindref="member">update_all_val_send</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">){<sp/></highlight><highlight class="comment">//TODO:<sp/>changer<sp/>toute<sp/>les<sp/>constantes<sp/>ici<sp/>par<sp/>la<sp/>source<sp/>actuelle<sp/>de<sp/>donné<sp/>(ou<sp/>ne<sp/>jamais<sp/>appeller<sp/>cette<sp/>fonction<sp/>si<sp/>c&apos;est<sp/>le<sp/>recever)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" kindref="member">set_value</ref>(</highlight><highlight class="stringliteral">&quot;SEQ&quot;</highlight><highlight class="normal">,<sp/>3);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//*&gt;Compteur<sp/>de<sp/>séquences<sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" kindref="member">set_value</ref>(</highlight><highlight class="stringliteral">&quot;HB&quot;</highlight><highlight class="normal">,<sp/>1);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//*&gt;Watchdog<sp/>HeartBeat<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" kindref="member">set_value</ref>(</highlight><highlight class="stringliteral">&quot;CI&quot;</highlight><highlight class="normal">,<sp/>2);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//*&gt;Continuité<sp/>igniter<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" kindref="member">set_value</ref>(</highlight><highlight class="stringliteral">&quot;AB&quot;</highlight><highlight class="normal">,<sp/>7);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//*&gt;Alim.<sp/>Batetterie<sp/>(%)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" kindref="member">set_value</ref>(</highlight><highlight class="stringliteral">&quot;EDC&quot;</highlight><highlight class="normal">,<sp/>4);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//*&gt;États<sp/>des<sp/>commandes<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" kindref="member">set_value</ref>(</highlight><highlight class="stringliteral">&quot;N2OPS&quot;</highlight><highlight class="normal">,<sp/>16);<sp/></highlight><highlight class="comment">//*&gt;N2O<sp/>Pressure<sp/>Sensor<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" kindref="member">set_value</ref>(</highlight><highlight class="stringliteral">&quot;TLC&quot;</highlight><highlight class="normal">,<sp/>12);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//*&gt;Thrust<sp/>Load<sp/>Cell<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" kindref="member">set_value</ref>(</highlight><highlight class="stringliteral">&quot;N2ODVS&quot;</highlight><highlight class="normal">,<sp/>1);<sp/></highlight><highlight class="comment">//*&gt;N2O<sp/>Dump<sp/>Valve<sp/>State<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" kindref="member">set_value</ref>(</highlight><highlight class="stringliteral">&quot;N2OIV&quot;</highlight><highlight class="normal">,<sp/>1);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//*&gt;N2O<sp/>Igniter<sp/>Valve<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" kindref="member">set_value</ref>(</highlight><highlight class="stringliteral">&quot;N2OMV&quot;</highlight><highlight class="normal">,<sp/>1);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//*&gt;N2O<sp/>Main<sp/>Valve<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" kindref="member">set_value</ref>(</highlight><highlight class="stringliteral">&quot;TIME&quot;</highlight><highlight class="normal">,<sp/>16);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//*&gt;Timestamp<sp/>(ms)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152" refid="com__utils_8c_1a357c3638eed11ace8aff46590f52600a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="com__utils_8c_1a357c3638eed11ace8aff46590f52600a" kindref="member">update_all_val_receve</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">){</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight><highlight class="comment">//<sp/>événementielle</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169" refid="com__utils_8c_1a7368d39e78009c017d6f81ccf33b9b2c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="com__utils_8c_1a7368d39e78009c017d6f81ccf33b9b2c" kindref="member">HAL_CAN_RxFifo0MsgPendingCallback</ref>(CAN_HandleTypeDef<sp/>*<ref refid="com__utils_8h_1ae21c10daa2f8cbd18a0e66bb28a19d2d" kindref="member">hcan</ref>)</highlight></codeline>
+<codeline lineno="170"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(HAL_CAN_GetRxMessage(<ref refid="com__utils_8h_1ae21c10daa2f8cbd18a0e66bb28a19d2d" kindref="member">hcan</ref>,<sp/>CAN_RX_FIFO0,<sp/>&amp;<ref refid="com__utils_8c_1a6ee6e13063b860648180eea65852cc71" kindref="member">RxHeader</ref>,<sp/><ref refid="com__utils_8c_1a14629afcc7f0b2d62c2b617b07d98184" kindref="member">RxData</ref>)<sp/>!=<sp/>HAL_OK)</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/>Error_Handler();</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((<ref refid="com__utils_8c_1a6ee6e13063b860648180eea65852cc71" kindref="member">RxHeader</ref>.StdId<sp/>==<sp/>0x103))<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>suposé<sp/>être<sp/>l&apos;id<sp/>de<sp/>l&apos;autre<sp/>CAN</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="com__utils_8c_1a414b5e592b824fe8c753d662b5f0f1f5" kindref="member">datacheck</ref><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1" kindref="member">N_BYTES</ref>;<sp/>i++){</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="com__utils_8c_1a3021d675302697aad2387d68ea92f5a6" kindref="member">out_Rx</ref>[i]<sp/>=<sp/><ref refid="com__utils_8c_1a14629afcc7f0b2d62c2b617b07d98184" kindref="member">RxData</ref>[i];</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>update<sp/>du<sp/>conteneur<sp/>de<sp/>donnée.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//change_val_to_TagData(&amp;RxData);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="186"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/com_utils.c"/>
+  </compounddef>
+</doxygen>

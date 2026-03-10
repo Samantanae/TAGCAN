@@ -8,10 +8,10 @@
     <detaileddescription>
 <para><anchor id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2documentation_2_a_p_i___r_e_f_e_r_e_n_c_e_1autotoc_md0"/></para>
 <sect1 id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2documentation_2_a_p_i___r_e_f_e_r_e_n_c_e_1autotoc_md1">
-<title>Vue d&apos;ensemble</title><para>TAGCAN gere un payload CAN de 8 octets (<computeroutput><ref refid="data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1" kindref="member">TxData</ref></computeroutput>) et permet:</para>
+<title>Vue d&apos;ensemble</title><para>TAGCAN gere un payload CAN de 8 octets (<computeroutput><ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref></computeroutput>) et permet:</para>
 <para><itemizedlist>
 <listitem><para>de declarer des tags (<computeroutput><ref refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" kindref="member">set_tag</ref></computeroutput>) avec une taille en bits,</para>
-</listitem><listitem><para>d&apos;ecrire une valeur dans <computeroutput><ref refid="data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1" kindref="member">TxData</ref></computeroutput> via un tag (<computeroutput><ref refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" kindref="member">set_value</ref></computeroutput>),</para>
+</listitem><listitem><para>d&apos;ecrire une valeur dans <computeroutput><ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref></computeroutput> via un tag (<computeroutput><ref refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" kindref="member">set_value</ref></computeroutput>),</para>
 </listitem><listitem><para>de relire une valeur via un tag (<computeroutput><ref refid="data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f" kindref="member">get_value</ref></computeroutput>).</para>
 </listitem></itemizedlist>
 </para>
@@ -31,7 +31,7 @@
 <title><computeroutput>TagDef</computeroutput> (<computeroutput>include/sub_include/tag_manager.h</computeroutput>)</title><para><itemizedlist>
 <listitem><para><computeroutput>name[<ref refid="config__value_8h_1ada71b9f258860d58a86ab220bfce6bf4" kindref="member">MAX_TAG_NAME_LEN</ref>]</computeroutput>: nom logique du tag.</para>
 </listitem><listitem><para><computeroutput>n_bits</computeroutput>: taille du tag en bits.</para>
-</listitem><listitem><para><computeroutput>byte_idx_a</computeroutput>, <computeroutput>byte_idx_b</computeroutput>: index des octets utilises dans <computeroutput><ref refid="data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1" kindref="member">TxData</ref></computeroutput>.</para>
+</listitem><listitem><para><computeroutput>byte_idx_a</computeroutput>, <computeroutput>byte_idx_b</computeroutput>: index des octets utilises dans <computeroutput><ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref></computeroutput>.</para>
 </listitem><listitem><para><computeroutput>bit_pos_a</computeroutput>, <computeroutput>bit_pos_b</computeroutput>: position des bits dans les octets.</para>
 </listitem></itemizedlist>
 </para>
@@ -41,7 +41,7 @@
 <listitem><para><computeroutput><ref refid="struct_tag_def" kindref="compound">TagDef</ref> <ref refid="tag__manager_8h_1ace5be789d004e0752b6b2dec9d845864" kindref="member">g_tags</ref>[<ref refid="config__value_8h_1aa653c0eca99802a09fd9560f28a9b1c1" kindref="member">MAX_TAGS</ref>]</computeroutput>: table des tags.</para>
 </listitem><listitem><para><computeroutput>uint8_t <ref refid="tag__manager_8h_1ab7cad863197c93abe397155a1946c0d0" kindref="member">g_tag_count</ref></computeroutput>: nombre de tags actifs.</para>
 </listitem><listitem><para><computeroutput>uint8_t <ref refid="tag__manager_8h_1af12845c0234390db7498ec51e94f7d58" kindref="member">g_bytes_used</ref>[<ref refid="config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1" kindref="member">N_BYTES</ref>]</computeroutput>: occupation des octets.</para>
-</listitem><listitem><para><computeroutput>uint8_t <ref refid="data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1" kindref="member">TxData</ref>[<ref refid="config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1" kindref="member">N_BYTES</ref>]</computeroutput>: buffer CAN (8 octets).</para>
+</listitem><listitem><para><computeroutput>uint8_t <ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref>[<ref refid="config__value_8h_1a470399f7b67e59b1cd04ab17e03c96d1" kindref="member">N_BYTES</ref>]</computeroutput>: buffer CAN (8 octets).</para>
 </listitem></itemizedlist>
 </para>
 </sect2>
@@ -54,7 +54,7 @@
 </listitem></itemizedlist>
 </para>
 </listitem><listitem><para><computeroutput>int <ref refid="gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012" kindref="member">set_tag(const char* tag_name, uint8_t n_bit)</ref></computeroutput><itemizedlist>
-<listitem><para>Declare un tag et lui alloue une zone dans <computeroutput><ref refid="data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1" kindref="member">TxData</ref></computeroutput>.</para>
+<listitem><para>Declare un tag et lui alloue une zone dans <computeroutput><ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref></computeroutput>.</para>
 </listitem><listitem><para>Implementation observee: accepte les tailles <computeroutput>1..16</computeroutput> (pas seulement <computeroutput>1, 3, 4, 8, 16</computeroutput>).</para>
 </listitem><listitem><para>Retourne un code <computeroutput><ref refid="config__value_8h_1af59c8e96bb2966b590726fc2d285947f" kindref="member">CAN_TG_STATUE</ref></computeroutput>.</para>
 </listitem></itemizedlist>
@@ -70,16 +70,16 @@
 <sect2 id="md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2documentation_2_a_p_i___r_e_f_e_r_e_n_c_e_1autotoc_md8">
 <title>Valeurs (payload)</title><para><itemizedlist>
 <listitem><para><computeroutput>void <ref refid="data__container_8h_1a129f017feb0712be1dcf7932e6035aa0" kindref="member">init_data_container(void)</ref></computeroutput><itemizedlist>
-<listitem><para>Met <computeroutput><ref refid="data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1" kindref="member">TxData</ref></computeroutput> a zero.</para>
+<listitem><para>Met <computeroutput><ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref></computeroutput> a zero.</para>
 </listitem></itemizedlist>
 </para>
 </listitem><listitem><para><computeroutput>int <ref refid="data__container_8h_1aa84538f1ab0c319056787e9674157405" kindref="member">set_value(const char* tag_name, uint32_t value)</ref></computeroutput><itemizedlist>
-<listitem><para>Ecrit la valeur dans <computeroutput><ref refid="data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1" kindref="member">TxData</ref></computeroutput> selon la definition du tag.</para>
+<listitem><para>Ecrit la valeur dans <computeroutput><ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref></computeroutput> selon la definition du tag.</para>
 </listitem><listitem><para>Debordement detecte via <computeroutput>value &gt;= (1ULL &lt;&lt; tag-&gt;n_bits)</computeroutput>.</para>
 </listitem></itemizedlist>
 </para>
 </listitem><listitem><para><computeroutput>int <ref refid="data__container_8h_1a66cbaaa79a2ba3c2c7912514c1dc805f" kindref="member">get_value(const char* tag_name, uint32_t* out_value)</ref></computeroutput><itemizedlist>
-<listitem><para>Lit la valeur d&apos;un tag depuis <computeroutput><ref refid="data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1" kindref="member">TxData</ref></computeroutput>.</para>
+<listitem><para>Lit la valeur d&apos;un tag depuis <computeroutput><ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref></computeroutput>.</para>
 </listitem></itemizedlist>
 </para>
 </listitem><listitem><para><computeroutput>uint8_t <ref refid="data__container_8h_1a66768c162c3a8352b7d5397e90206085" kindref="member">prep_mask(uint8_t p_bit, uint8_t n_bit)</ref></computeroutput><itemizedlist>
@@ -91,7 +91,7 @@
 </listitem></itemizedlist>
 </para>
 </listitem><listitem><para><computeroutput>void <ref refid="data__container_8h_1a45840c759151338fe992664f4a21c4f7" kindref="member">set_val_TxData(uint8_t *TxDataArray)</ref></computeroutput><itemizedlist>
-<listitem><para>Copie un tableau externe vers <computeroutput><ref refid="data__container_8h_1a0b96d44a8da73070e470c7bf30523ca1" kindref="member">TxData</ref></computeroutput>.</para>
+<listitem><para>Copie un tableau externe vers <computeroutput><ref refid="com__utils_8h_1af553c31425b32bd9c020380c942ed3bd" kindref="member">TxData</ref></computeroutput>.</para>
 </listitem></itemizedlist>
 </para>
 </listitem></itemizedlist>

@@ -16,7 +16,7 @@ Go to the documentation of this file.<programlisting linenumbering="unnumbered">
 <anchor xml:id="_gestion__tag_8h_source_1l00021"/>00021 <emphasis role="preprocessor">#ifndef&#32;GESTION_TAG_H</emphasis>
 <anchor xml:id="_gestion__tag_8h_source_1l00022"/>00022 <emphasis role="preprocessor">#define&#32;GESTION_TAG_H</emphasis>
 <anchor xml:id="_gestion__tag_8h_source_1l00023"/>00023 <emphasis role="preprocessor">#include&#32;&lt;stdint.h&gt;</emphasis>
-<anchor xml:id="_gestion__tag_8h_source_1l00024"/>00024 <emphasis role="comment">//&#32;fonction&#32;qui&#32;gere&#32;les&#32;tags</emphasis>
+<anchor xml:id="_gestion__tag_8h_source_1l00024"/>00024 <emphasis role="comment">//&#32;fonction&#32;qui&#32;gère&#32;les&#32;tags</emphasis>
 <anchor xml:id="_gestion__tag_8h_source_1l00028"/>00028 
 <anchor xml:id="_gestion__tag_8h_source_1l00029"/>00029 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_gestion__tag_8h_1aab50a8f567be72e656120fd71f3fb435">init_tag_manager</link>(<emphasis role="keywordtype">void</emphasis>);
 <anchor xml:id="_gestion__tag_8h_source_1l00030"/>00030 

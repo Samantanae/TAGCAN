@@ -3,12 +3,12 @@
 \label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2documentation_2_a_p_i___r_e_f_e_r_e_n_c_e_autotoc_md0}%
 \Hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2documentation_2_a_p_i___r_e_f_e_r_e_n_c_e_autotoc_md0}%
 \hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2documentation_2_a_p_i___r_e_f_e_r_e_n_c_e_autotoc_md1}{}\doxysection{\texorpdfstring{Vue d\textquotesingle{}ensemble}{Vue d\textquotesingle{}ensemble}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2documentation_2_a_p_i___r_e_f_e_r_e_n_c_e_autotoc_md1}
-TAGCAN gere un payload CAN de 8 octets ({\ttfamily \doxylink{data__container_8h_a0b96d44a8da73070e470c7bf30523ca1}{Tx\+Data}}) et permet:\+
+TAGCAN gere un payload CAN de 8 octets ({\ttfamily \doxylink{com__utils_8h_af553c31425b32bd9c020380c942ed3bd}{Tx\+Data}}) et permet:\+
 
 
 \begin{DoxyItemize}
 \item de declarer des tags ({\ttfamily \doxylink{gestion__tag_8h_a7301f247665ed1c0504f27602b3cf012}{set\+\_\+tag}}) avec une taille en bits,
-\item d\textquotesingle{}ecrire une valeur dans {\ttfamily \doxylink{data__container_8h_a0b96d44a8da73070e470c7bf30523ca1}{Tx\+Data}} via un tag ({\ttfamily \doxylink{data__container_8h_aa84538f1ab0c319056787e9674157405}{set\+\_\+value}}),
+\item d\textquotesingle{}ecrire une valeur dans {\ttfamily \doxylink{com__utils_8h_af553c31425b32bd9c020380c942ed3bd}{Tx\+Data}} via un tag ({\ttfamily \doxylink{data__container_8h_aa84538f1ab0c319056787e9674157405}{set\+\_\+value}}),
 \item de relire une valeur via un tag ({\ttfamily \doxylink{data__container_8h_a66cbaaa79a2ba3c2c7912514c1dc805f}{get\+\_\+value}}).
 \end{DoxyItemize}\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2documentation_2_a_p_i___r_e_f_e_r_e_n_c_e_autotoc_md2}{}\doxysection{\texorpdfstring{Modules}{Modules}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2documentation_2_a_p_i___r_e_f_e_r_e_n_c_e_autotoc_md2}
 
@@ -24,7 +24,7 @@ TAGCAN gere un payload CAN de 8 octets ({\ttfamily \doxylink{data__container_8h_
 \begin{DoxyItemize}
 \item {\ttfamily name\+[\doxylink{config__value_8h_ada71b9f258860d58a86ab220bfce6bf4}{MAX\+\_\+\+TAG\+\_\+\+NAME\+\_\+\+LEN}]\+}:\+ nom logique du tag.
 \item {\ttfamily n\+\_\+bits}:\+ taille du tag en bits.
-\item {\ttfamily byte\+\_\+idx\+\_\+a}, {\ttfamily byte\+\_\+idx\+\_\+b}:\+ index des octets utilises dans {\ttfamily \doxylink{data__container_8h_a0b96d44a8da73070e470c7bf30523ca1}{Tx\+Data}}.
+\item {\ttfamily byte\+\_\+idx\+\_\+a}, {\ttfamily byte\+\_\+idx\+\_\+b}:\+ index des octets utilises dans {\ttfamily \doxylink{com__utils_8h_af553c31425b32bd9c020380c942ed3bd}{Tx\+Data}}.
 \item {\ttfamily bit\+\_\+pos\+\_\+a}, {\ttfamily bit\+\_\+pos\+\_\+b}:\+ position des bits dans les octets.
 \end{DoxyItemize}\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2documentation_2_a_p_i___r_e_f_e_r_e_n_c_e_autotoc_md5}{}\doxysubsection{\texorpdfstring{Variables globales}{Variables globales}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2documentation_2_a_p_i___r_e_f_e_r_e_n_c_e_autotoc_md5}
 
@@ -32,7 +32,7 @@ TAGCAN gere un payload CAN de 8 octets ({\ttfamily \doxylink{data__container_8h_
 \item {\ttfamily \doxylink{struct_tag_def}{Tag\+Def} \doxylink{tag__manager_8h_ace5be789d004e0752b6b2dec9d845864}{g\+\_\+tags}\+[\doxylink{config__value_8h_aa653c0eca99802a09fd9560f28a9b1c1}{MAX\+\_\+\+TAGS}]\+}:\+ table des tags.
 \item {\ttfamily uint8\+\_\+t \doxylink{tag__manager_8h_ab7cad863197c93abe397155a1946c0d0}{g\+\_\+tag\+\_\+count}}:\+ nombre de tags actifs.
 \item {\ttfamily uint8\+\_\+t \doxylink{tag__manager_8h_af12845c0234390db7498ec51e94f7d58}{g\+\_\+bytes\+\_\+used}\+[\doxylink{config__value_8h_a470399f7b67e59b1cd04ab17e03c96d1}{N\+\_\+\+BYTES}]\+}:\+ occupation des octets.
-\item {\ttfamily uint8\+\_\+t \doxylink{data__container_8h_a0b96d44a8da73070e470c7bf30523ca1}{Tx\+Data}\+[\doxylink{config__value_8h_a470399f7b67e59b1cd04ab17e03c96d1}{N\+\_\+\+BYTES}]\+}:\+ buffer CAN (8 octets).
+\item {\ttfamily uint8\+\_\+t \doxylink{com__utils_8h_af553c31425b32bd9c020380c942ed3bd}{Tx\+Data}\+[\doxylink{config__value_8h_a470399f7b67e59b1cd04ab17e03c96d1}{N\+\_\+\+BYTES}]\+}:\+ buffer CAN (8 octets).
 \end{DoxyItemize}\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2documentation_2_a_p_i___r_e_f_e_r_e_n_c_e_autotoc_md6}{}\doxysection{\texorpdfstring{Fonctions principales}{Fonctions principales}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2documentation_2_a_p_i___r_e_f_e_r_e_n_c_e_autotoc_md6}
 \hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2documentation_2_a_p_i___r_e_f_e_r_e_n_c_e_autotoc_md7}{}\doxysubsection{\texorpdfstring{Gestion des tags}{Gestion des tags}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2documentation_2_a_p_i___r_e_f_e_r_e_n_c_e_autotoc_md7}
 
@@ -43,7 +43,7 @@ TAGCAN gere un payload CAN de 8 octets ({\ttfamily \doxylink{data__container_8h_
 \end{DoxyItemize}
 \item {\ttfamily int \doxylink{gestion__tag_8h_a7301f247665ed1c0504f27602b3cf012}{set\+\_\+tag(const char\texorpdfstring{$\ast$}{*} tag\+\_\+name, uint8\+\_\+t n\+\_\+bit)}}
 \begin{DoxyItemize}
-\item Declare un tag et lui alloue une zone dans {\ttfamily \doxylink{data__container_8h_a0b96d44a8da73070e470c7bf30523ca1}{Tx\+Data}}.
+\item Declare un tag et lui alloue une zone dans {\ttfamily \doxylink{com__utils_8h_af553c31425b32bd9c020380c942ed3bd}{Tx\+Data}}.
 \item Implementation observee:\+ accepte les tailles {\ttfamily 1..16} (pas seulement {\ttfamily 1, 3, 4, 8, 16}).
 \item Retourne un code {\ttfamily \doxylink{config__value_8h_af59c8e96bb2966b590726fc2d285947f}{CAN\+\_\+\+TG\+\_\+\+STATUE}}.
 \end{DoxyItemize}
@@ -57,16 +57,16 @@ TAGCAN gere un payload CAN de 8 octets ({\ttfamily \doxylink{data__container_8h_
 \begin{DoxyItemize}
 \item {\ttfamily void \doxylink{data__container_8h_a129f017feb0712be1dcf7932e6035aa0}{init\+\_\+data\+\_\+container(void)}}
 \begin{DoxyItemize}
-\item Met {\ttfamily \doxylink{data__container_8h_a0b96d44a8da73070e470c7bf30523ca1}{Tx\+Data}} a zero.
+\item Met {\ttfamily \doxylink{com__utils_8h_af553c31425b32bd9c020380c942ed3bd}{Tx\+Data}} a zero.
 \end{DoxyItemize}
 \item {\ttfamily int \doxylink{data__container_8h_aa84538f1ab0c319056787e9674157405}{set\+\_\+value(const char\texorpdfstring{$\ast$}{*} tag\+\_\+name, uint32\+\_\+t value)}}
 \begin{DoxyItemize}
-\item Ecrit la valeur dans {\ttfamily \doxylink{data__container_8h_a0b96d44a8da73070e470c7bf30523ca1}{Tx\+Data}} selon la definition du tag.
+\item Ecrit la valeur dans {\ttfamily \doxylink{com__utils_8h_af553c31425b32bd9c020380c942ed3bd}{Tx\+Data}} selon la definition du tag.
 \item Debordement detecte via {\ttfamily value \texorpdfstring{$>$}{>}= (1ULL \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} tag-\/\texorpdfstring{$>$}{>}n\+\_\+bits)}.
 \end{DoxyItemize}
 \item {\ttfamily int \doxylink{data__container_8h_a66cbaaa79a2ba3c2c7912514c1dc805f}{get\+\_\+value(const char\texorpdfstring{$\ast$}{*} tag\+\_\+name, uint32\+\_\+t\texorpdfstring{$\ast$}{*} out\+\_\+value)}}
 \begin{DoxyItemize}
-\item Lit la valeur d\textquotesingle{}un tag depuis {\ttfamily \doxylink{data__container_8h_a0b96d44a8da73070e470c7bf30523ca1}{Tx\+Data}}.
+\item Lit la valeur d\textquotesingle{}un tag depuis {\ttfamily \doxylink{com__utils_8h_af553c31425b32bd9c020380c942ed3bd}{Tx\+Data}}.
 \end{DoxyItemize}
 \item {\ttfamily uint8\+\_\+t \doxylink{data__container_8h_a66768c162c3a8352b7d5397e90206085}{prep\+\_\+mask(uint8\+\_\+t p\+\_\+bit, uint8\+\_\+t n\+\_\+bit)}}
 \begin{DoxyItemize}
@@ -78,7 +78,7 @@ TAGCAN gere un payload CAN de 8 octets ({\ttfamily \doxylink{data__container_8h_
 \end{DoxyItemize}
 \item {\ttfamily void \doxylink{data__container_8h_a45840c759151338fe992664f4a21c4f7}{set\+\_\+val\+\_\+\+Tx\+Data(uint8\+\_\+t \texorpdfstring{$\ast$}{*}\+Tx\+Data\+Array)}}
 \begin{DoxyItemize}
-\item Copie un tableau externe vers {\ttfamily \doxylink{data__container_8h_a0b96d44a8da73070e470c7bf30523ca1}{Tx\+Data}}.
+\item Copie un tableau externe vers {\ttfamily \doxylink{com__utils_8h_af553c31425b32bd9c020380c942ed3bd}{Tx\+Data}}.
 \end{DoxyItemize}
 \end{DoxyItemize}\hypertarget{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2documentation_2_a_p_i___r_e_f_e_r_e_n_c_e_autotoc_md9}{}\doxysection{\texorpdfstring{Debug /\+ affichage}{Debug /\+ affichage}}\label{md__c_1_2programation_2ulaval_2_g_a_u_l_2programmation_2_t_a_g_c_a_n_2documentation_2_a_p_i___r_e_f_e_r_e_n_c_e_autotoc_md9}
 

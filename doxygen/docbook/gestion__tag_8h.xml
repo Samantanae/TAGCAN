@@ -20,7 +20,7 @@ This graph shows which files directly or indirectly include this file:<para>
 </listitem>
             <listitem><para>int <link linkend="_gestion__tag_8h_1a7301f247665ed1c0504f27602b3cf012">set_tag</link> (const char *tag_name, uint8_t n_bit)</para>
 
-<para>Cree un nouveau tag. </para>
+<para>créé un nouveau tag. </para>
 </listitem>
         </itemizedlist>
 </simplesect>
@@ -58,7 +58,7 @@ Here is the caller graph for this function:<para>
 <indexterm><primary>gestion_tag.h</primary><secondary>set_tag</secondary></indexterm>
 <para><computeroutput>int set_tag (const char * tag_name, uint8_t siz)</computeroutput></para><para>
 
-<para>Cree un nouveau tag. </para>
+<para>créé un nouveau tag. </para>
 </para>
 
 <para>
@@ -73,12 +73,12 @@ Parameters</title>
                         <tbody>
                             <row>
 <entry>tag_name</entry><entry>
-<para>Le nom (id) relie a la valeur. </para>
+<para>le nom (id) relié a la valeur. </para>
 </entry>
                             </row>
                             <row>
 <entry>n_bit</entry><entry>
-<para>La taille de la valeur (implementation actuelle: 1..16 bits). </para>
+<para>La taille de la valeur (implémentation actuelle: 1 à 16 bits). </para>
 </entry>
                             </row>
                         </tbody>
@@ -88,9 +88,9 @@ Parameters</title>
                 </formalpara>
                 <formalpara><title>Returns</title>
 
-<para>Un code de succes ou d&apos;erreur.</para>
+<para>un code de succès ou d&apos;erreur.</para>
 </formalpara>
-Cree un nouveau tag.</para>
+créé un nouveau tag.</para>
 
 <para>
                 <formalpara>

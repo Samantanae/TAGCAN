@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.0" xml:lang="en-US">
+  <compounddef id="dir_a15e4733a248afd8e3dc90bd4b5f8f15" kind="dir">
+    <compoundname>exemple_utilisation</compoundname>
+    <innerfile refid="com__utils_8c">com_utils.c</innerfile>
+    <innerfile refid="com__utils_8h">com_utils.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/programation/ulaval/GAUL/programmation/TAGCAN/exemple_utilisation/"/>
+  </compounddef>
+</doxygen>
